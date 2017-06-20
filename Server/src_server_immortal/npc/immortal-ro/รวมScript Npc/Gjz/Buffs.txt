@@ -1,0 +1,71 @@
+-	script	BuffsSupport::BFS	-1,{
+if ($@ActiveSv == 0) end;
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+percentheal 100,100;
+sc_start 29,100000000,10;
+sc_start 30,100000000,10;
+sc_start 32,100000000,10;
+sc_start 40,100000000,10;
+sc_start 41,100000000,10;
+sc_start SC_EXPBOOST,100000000,20;
+sc_start SC_ITEMBOOST,100000000,20;
+sc_start SC_STRFood,100000000,5;
+sc_start SC_AGIFood,100000000,5;
+sc_start SC_VITFood,100000000,5;
+sc_start SC_INTFood,100000000,5;
+sc_start SC_DEXFood,100000000,5;
+sc_start SC_LUKFood,100000000,5;
+emotion 10,1;
+end;
+}
+
+-	script	...Buff...::abpp	-1,{ 
+if ($@ActiveSv == 0) end;
+sc_start 29,100000000,10;
+sc_start 30,100000000,10;
+sc_start 32,100000000,10;
+sc_start 40,100000000,10;
+sc_start 41,100000000,10;
+end;
+}
+
+-	script	AutoBuffs::ATBS	-1,10,10,{  
+end;
+OnTouch:
+if ($@ActiveSv == 0) end;
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+percentheal 100,100;
+sc_start 29,100000000,10;
+sc_start 30,100000000,10;
+sc_start 32,100000000,10;
+sc_start 40,100000000,10;
+sc_start 41,100000000,10;
+sc_start SC_EXPBOOST,100000000,20;
+sc_start SC_ITEMBOOST,100000000,20;
+sc_start SC_STRFood,100000000,5;
+sc_start SC_AGIFood,100000000,5;
+sc_start SC_VITFood,100000000,5;
+sc_start SC_INTFood,100000000,5;
+sc_start SC_DEXFood,100000000,5;
+sc_start SC_LUKFood,100000000,5;
+atcommand strcharinfo(0)+ "@repairall";
+end;
+}

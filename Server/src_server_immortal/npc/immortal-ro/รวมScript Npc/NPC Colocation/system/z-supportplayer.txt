@@ -1,0 +1,128 @@
+//------------------------------------------------------------------\\
+//=-=-=- =-=-=-www.howcolo.com =-=-=- =-=-=- =-\\
+//------------------------------------------------------------------\\
+//=-=-=-=- support@howcolo.com =-=-=-=-\\
+//------------------------------------------------------------------\\
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\\
+
+-	script	SupportPlayer::npcsupport	-1,{
+goto L_Main;
+
+L_Main:
+mes "[^0000FFSupport Player^000000]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+cutin "",255;
+switch(select("^009933•^000000 กลับบ้าน","^009933•^000000 เปลี่ยน Pass","^009933•^000000 Reset การแต่งกาย","^FF0000•^000000 ยกเลิก")) 
+{
+	case 1:
+		mes "[^0000FFSupport Player^000000]";
+		mes "ใส่ชื่อตัวละครที่จะกลับบ้าน";
+		input @name1$;
+		next;
+		mes "[^0000FFSupport Player^000000]";
+		mes "ใส่ ID ตัวละครที่จะกลับบ้าน ";
+		input @name2$;
+		next;
+		set @checkchar,0;
+		set @checkid,0;
+		set @savemap$,"";
+		set @savex,0;
+		set @savey,0;
+		set @lastmap$,"";
+		query_sql "SELECT `account_id`,`save_map`,`save_x`,`save_y`,`last_map` FROM `char` WHERE `name`='"+escape_sql(@name1$)+"'",@checkchar,@savemap$,@savex,@savey,@lastmap$;
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+escape_sql(@name2$)+"'",@checkid;
+		if(@lastmap$=="sec_pri"){
+			mes "[^0000FFSupport Player^000000]";
+			mes "ตัวละครติดคุก กลับบ้านไม่ได้";
+		}
+		else if(getarraysize(@checkchar) == 1&&getarraysize(@checkid) == 1&&@checkchar[0]==@checkid[0])
+		{
+			query_sql "UPDATE `char` SET `last_map`='"+@savemap$[0]+"',`last_x`='"+@savex[0]+"',`last_y`='"+@savey[0]+"' WHERE `name`='"+escape_sql(@name1$)+"'";
+			mes "[^0000FFSupport Player^000000]";
+			mes "ตัวละครกลับบ้านแล้ว";
+			mes "ยินดีให้บริการครับ";
+		}
+		else
+		{
+			mes "[^0000FFSupport Player^000000]";
+			mes "มีการใส่ข้อมูลผิดพลาด";
+		}
+		next;
+		goto L_Main;
+	end;
+
+	case 2:
+		mes "[^0000FFSupport Player^000000]";
+		mes "ใส่ ID ที่ต้องการเปลี่ยน Pass";
+		input @name1$;
+		next;
+		mes "[^0000FFSupport Player^000000]";
+		mes "ใส่ Password เดิม";
+		input @name2$;
+		next;
+		mes "[^0000FFSupport Player^000000]";
+		mes "ใส่ Password ใหม่";
+		input @name3$;
+		next;
+		set @checkid,0;
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+escape_sql(@name1$)+"' AND `user_pass`='"+escape_sql(@name2$)+"'",@checkid;
+		if(getarraysize(@checkid)==1&&@name3$!="")
+		{
+			query_sql "UPDATE `login` SET `user_pass`='"+escape_sql(@name3$)+"' WHERE `userid`='"+escape_sql(@name1$)+"'";
+			mes "[^0000FFSupport Player^000000]";
+			mes "เปลี่ยน Password เรียบร้อยแล้ว";
+			mes "ยินดีให้บริการครับ";
+		}
+		else
+		{
+			mes "[^0000FFSupport Player^000000]";
+			mes "มีการใส่ข้อมูลผิดพลาด";
+		}
+		next;
+		goto L_Main;
+	end;
+	
+	case 3:
+		mes "[^0000FFSupport Player^000000]";
+		mes "ใส่ชื่อตัวละครที่ต้องการ Reset";
+		input @name1$;
+		next;
+		mes "[^0000FFSupport Player^000000]";
+		mes "ใส่ ID ตัวละครที่ต้องการ Reset";
+		input @name2$;
+		next;
+		set @checkchar,0;
+		set @checkid,0;
+		query_sql "SELECT `account_id` FROM `char` WHERE `name`='"+escape_sql(@name1$)+"'",@checkchar;
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+escape_sql(@name2$)+"'",@checkid;
+		if(getarraysize(@checkchar) == 1&&getarraysize(@checkid) == 1&&@checkchar[0]==@checkid[0])
+		{
+			query_sql "UPDATE `char` SET `hair`='1',`hair_color`='0',`clothes_color`='0',`head_top`='0',`head_mid`='0',`head_bottom`='0' WHERE `name`='"+escape_sql(@name1$)+"' AND `account_id`='"+@checkid[0]+"'";		
+			mes "[^0000FFSupport Player^000000]";
+			mes "Reset เรียบร้อยแล้ว";
+			mes "ยินดีให้บริการครับ";
+		}
+		else
+		{
+			mes "[^0000FFSupport Player^000000]";
+			mes "มีการใส่ข้อมูลผิดพลาด";
+		}
+		next;
+		goto L_Main;
+	end;
+	
+	case 4:
+		mes "[^0000FFSupport Player^000000]";
+		mes "ยินดีให้บริการครับ";
+		close;
+	end;
+	notyet:close;end;	
+}
+
+
+OnInit:
+waitingroom "๐ Support Player ๐",0;
+end;
+}

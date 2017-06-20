@@ -1,0 +1,155 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+function	script	recallguildparty	{
+	if(getcharid(0) == getguildmasterid(getcharid(2))) {
+		set @CS1$,"คุณเป็นหัวหน้าของกิลด์";
+	} else if(getcharid(2) == 0) {
+		set @CS1$,"คุณยังไม่ได้เข้าร่วมกิลด์";
+	} else {
+		set @CS1$,"คุณเป็นสมาชิกของกิลด์";
+	}
+	if(getcharid(2) == 0) {
+		set @CS2$," ";
+	} else {
+		set @CS2$,""+getguildname(getcharid(2))+"";
+	}
+
+	if(getcharid(0) == getpartyleader(getcharid(1),2)) {
+		set @CS3$,"คุณเป็นหัวหน้าของปาร์ตี้";
+	} else if(getcharid(1) == 0) {
+		set @CS3$,"คุณยังไม่ได้เข้าร่วมปาร์ตี้";
+	} else {
+		set @CS3$,"คุณเป็นสมาชิกของปาร์ตี้";
+	}
+	if(getcharid(1) == 0) {
+		set @CS4$," ";
+	} else {
+		set @CS4$,""+getpartyname(getcharid(1))+"";
+	}
+
+	mes "[ RECALL SYSTEM ]";
+	mes "สวัสดีคุณ ^FF0000"+strcharinfo(0)+"^000000";
+	mes "สถานะของคุณขณะนี้คือ";
+	mes "^008080"+@CS1$+"^000000";
+	mes "^FF8040"+@CS2$+"^000000";
+	mes "^0000FF"+@CS3$+"^000000";
+	mes "^006611"+@CS4$+"^000000";
+
+	if(getcharid(0) == getguildmasterid(getcharid(2)) && getcharid(0) == getpartyleader(getcharid(1),2)) {
+		switch(select("เรียกสมาชิกกิลด์","เรียกสมาชิกปาร์ตี้","ยกเลิก")) {
+			case 1:
+				atcommand "@guildrecall "+getcharid(2);
+				break;
+			case 2:
+				atcommand "@partyrecall "+getcharid(1);
+				break;
+			case 3:
+				break;
+		}
+	} else if(getcharid(1) == 0 && getcharid(0) == getguildmasterid(getcharid(2))) {
+		switch(select("เรียกสมาชิกกิลด์","ยกเลิก")) {
+			case 1:
+				atcommand "@guildrecall "+getcharid(2);
+				break;
+			case 2:
+				break;
+		}
+	} else if(getcharid(2) == 0 && getcharid(0) == getpartyleader(getcharid(1),2)) {
+		switch(select("เรียกสมาชิกปาร์ตี้","ยกเลิก")) {
+			case 1:
+				atcommand "@partyrecall "+getcharid(1);
+				break;
+			case 2:
+				break;
+		}
+	}
+	close;
+	end;
+}
+
+//NPC
+leagepvp11,11,46,4	script	เรียกรวมพล#110	858,{
+callfunc "recallguildparty",0;
+end;
+}
+leagepvp11,71,47,4	script	เรียกรวมพล#120	858,{
+callfunc "recallguildparty",0;
+end;
+}
+alde_gld,278,98,5	script	เรียกรวมพล#1	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+gef_fild13,303,229,5	script	เรียกรวมพล#2	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+prt_gld,143,70,5	script	เรียกรวมพล#3	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+pay_gld,308,298,5	script	เรียกรวมพล#4	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+gef_fild13,154,43,5	script	เรียกรวมพล#5	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+pay_gld,127,229,5	script	เรียกรวมพล#6	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+gef_fild13,184,283,5	script	เรียกรวมพล#7	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+prt_gld,149,141,5	script	เรียกรวมพล#8	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+pay_gld,134,171,5	script	เรียกรวมพล#9	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+alde_gld,240,251,5	script	เรียกรวมพล#10	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+alde_gld,146,91,5	script	เรียกรวมพล#11	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+prt_gld,111,248,5	script	เรียกรวมพล#12	858,{
+callfunc "recallguildparty",0;
+OnInit: 
+waitingroom "  +| เรียกรวมพล |+",0; 
+end;
+}
+
+

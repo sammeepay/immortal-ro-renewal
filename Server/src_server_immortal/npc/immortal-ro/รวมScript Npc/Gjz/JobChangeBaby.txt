@@ -1,0 +1,299 @@
+-	script	Jobchangebaby::JCBB	-1,{
+if ($@ActiveSv == 0) end;
+if(class == 4024) goto Class1;
+if(class == 4025) goto Class2;
+if(class == 4026) goto Class3;
+if(class == 4027) goto Class4;
+if(class == 4028) goto Class5;
+if(class == 4029) goto Class6;
+mes "[ ^FF0000BaBy Class^000000 ]"; 
+mes "สวัสดี..."; 
+mes "ท่านมาหาข้า เพราะ ท่านมีความต้องการเปลี่ยน ^FF0000Baby Job^000000 ใช่ หรือ ไม่"; 
+next; 
+menu "- ใช่แล้ว",babyup,"- ข้ายังไม่พร้อม",Cancel; 
+
+babyup: 
+if(joblevel < 10) goto Nojob1; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "ความสามารถของเจ้าพร้อมแล้ว"; 
+mes "เลือกอาชีพที่อยากเป็น"; 
+next; 
+if(class > 0) goto NoChange; 
+menu 
+"- Baby Sword",Swd_b,
+"- Baby Magician",Mag_b,
+"- Baby Archer",Arc_b,
+"- Baby Acolyte",Aco_b,
+"- Baby Merchant",Mer_b,
+"- Baby Thief",Thi_b,
+"- Baby Super Novice",SupB;
+
+Swd_b: 
+jobchange 4024; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Sword^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Mag_b: 
+jobchange 4025; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Magician^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Arc_b: 
+jobchange 4026; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Archer^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Aco_b: 
+jobchange 4027; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Acolyte^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Mer_b: 
+jobchange 4028; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Merchant^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Thi_b: 
+jobchange 4029; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Thief^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+//=======job2=============
+
+Class1:
+mes "เจ้าอยากเป็นอะไร"; 
+menu "- Baby Knight",KniB,"- Baby Crusader",CruB;
+
+KniB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4030; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Knight^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+CruB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4037; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Crusader^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Class2:
+mes "เจ้าอยากเป็นอะไร";
+menu "- Baby Wizard",WizB,"- Baby Sage ",SagB;
+
+WizB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4032; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Wizard^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+SagB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4039; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Sage^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Class3:
+mes "เจ้าอยากเป็นอะไร";
+menu "- Baby Hunter",HunB,"- Baby Bard-Dancer ",DanB;
+
+
+HunB:
+if(joblevel < 40) goto Nojob;
+jobchange 4034; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Hunter^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+DanB:
+if(joblevel < 40) goto Nojob;
+if(Sex==1) goto BarB;
+jobchange 4043; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Dancer^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+BarB:
+if(joblevel < 40) goto Nojob;
+jobchange 4042; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Bard^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Class4:
+mes "เจ้าอยากเป็นอะไร";
+menu "- Baby Priest",PriB,"- Baby Monk ",MonB;
+
+PriB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4031; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Priest^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close;
+
+MonB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4038; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby monk^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Class5:
+mes "เจ้าอยากเป็นอะไร";
+menu "- Baby Blacksmith",BlaB,"- Baby Alchemist ",AlcB;
+
+
+BlaB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4033; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Blacksmith^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+AlcB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4041; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Alchemist^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Class6:
+mes "เจ้าอยากเป็นอะไร";
+menu "- Baby Assassin",AssB,"- Baby Rogue ",RogB;
+
+
+AssB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4035; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Assassin^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+RogB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4040; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Rogue^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+SupB: 
+if(joblevel < 10) goto Nojob1;
+if(baselevel < 45) goto Nolv;
+jobchange 4045; 
+percentheal 100,100; 
+next; 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Super Novice^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Nojob1: 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าต้องมี Job 10 "; 
+close; 
+
+
+Nojob: 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าต้องมี Job 40 ขึ้นไป "; 
+close; 
+
+Nolv: 
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าต้องมี Level 45 ขึ้นไป "; 
+close; 
+
+NoChange:
+mes "[ ^FF0000BaBy Class^000000 ]";
+mes "เจ้าเลยวัยอันสมควรแล้ว";
+close; 
+
+Cancel: 
+close; 
+}

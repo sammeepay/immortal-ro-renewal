@@ -1,0 +1,55 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+pay_fild09,0,0,0,0	monster	Beast Vincento	2706,1,14400000,0,0
+cmd_fild07,0,0,0,0	monster	Captain Skull	2708,1,14400000,0,0
+c_tower1,0,0,0,0	monster	Cherry Blue	2709,1,14400000,0,0
+odin_tem01,0,0,0,0	monster	Guardian Angel	2710,1,14400000,0,0
+ayo_dun02,0,0,0,0	monster	Crown Zero	2712,1,14400000,0,0
+moc_fild21,0,0,0,0	monster	Cyan Satan	2713,1,14400000,0,0
+ayo_fild01,0,0,0,0	monster	Daehyon	2715,1,14400000,0,0
+ice_dun02,0,0,0,0	monster	Dancer Isabelle	2717,1,14400000,0,0
+odin_tem02,0,0,0,0	monster	Dark Hollow	2719,1,14400000,0,0
+ra_fild05,0,0,0,0	monster	Diablo Baphomet	2723,1,14400000,0,0
+
+um_fild01,0,0,0,0	monster	Elf Men	2726,1,14400000,0,0
+prt_maze02,0,0,0,0	monster	Eye One Devil	2728,1,14400000,0,0
+beach_dun3,0,0,0,0	monster	Fabilsag	2729,1,14400000,0,0
+mag_dun02,0,0,0,0	monster	Fight Man	2730,1,14400000,0,0
+gon_dun03,0,0,0,0	monster	Gentle Sting	2735,1,14400000,0,0
+iz_dun04,0,0,0,0	monster	Kraken	2750,1,14400000,0,0
+gef_fild07,0,0,0,0	monster	Larva	2751,1,14400000,0,0
+ra_fild06,0,0,0,0	monster	Madame Chiffon	2753,1,14400000,0,0
+orcsdun01,0,0,0,0	monster	Maiden Ghost	2755,1,14400000,0,0
+gef_dun03,0,0,0,0	monster	Mikijung	2763,1,14400000,0,0
+
+iz_dun04,0,0,0,0	monster	Office Killer	2769,1,14400000,0,0
+gef_dun02,0,0,0,0	monster	Okto	2770,1,14400000,0,0
+//gl_knt02,0,0,0,0	monster	Old beelzebub	2771,1,14400000,0,0
+c_tower4,0,0,0,0	monster	Phoenix	2772,1,14400000,0,0
+in_sphinx4,0,0,0,0	monster	Queen Mummy	2777,1,14400000,0,0
+xmas_dun01,0,0,0,0	monster	Santagirl	2779,1,14400000,0,0
+beach_dun2,0,0,0,0	monster	Sea Elephant	2780,1,14400000,0,0
+iz_dun03,0,0,0,0	monster	Siren Mermaid	2783,1,14400000,0,0
+pay_fild10,0,0,0,0	monster	Sropho	2788,1,14400000,0,0
+prt_fild05,0,0,0,0	monster	Takashi	2793,1,14400000,0,0
+
+mag_dun01,0,0,0,0	monster	Thor Valkyrie	2794,1,14400000,0,0
+pay_dun03,0,0,0,0	monster	Werepot	2805,1,14400000,0,0
+lhz_fild01,0,0,0,0	monster	Wild Rider	2806,1,14400000,0,0
+orcsdun02,0,0,0,0	monster	xZipper Bear	2809,1,14400000,0,0
+mjo_dun03,0,0,0,0	monster	Bangungot	2810,1,14400000,0,0
+gef_fild03,0,0,0,0	monster	Bungisngis	2811,1,14400000,0,0
+pay_dun04,0,0,0,0	monster	Pyuriel	2812,1,14400000,0,0
+pay_fild04,0,0,0,0	monster	Soheon	2813,1,14400000,0,0
+anthell01,0,0,0,0	monster	Arrow Men	2814,1,14400000,0,0
+ama_fild01,0,0,0,0	monster	Kyo Shirima	2820,1,14400000,0,0
+

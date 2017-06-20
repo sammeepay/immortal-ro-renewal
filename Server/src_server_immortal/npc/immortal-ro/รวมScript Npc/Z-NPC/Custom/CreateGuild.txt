@@ -1,0 +1,70 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	CreGuild	-1,{
+
+set @GIDGUILD,getcharid(2);
+mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000";
+mes "เราสามารถช่วยบริหาร Guild ของท่านได้";
+set @AccID, getcharid(2);
+
+mes "หมายเลขกิลของท่านคือ : ^FF6600[ " +@AccID+ " ]^000000";
+next;
+switch(select("^FF0000•^000000 สร้าง Guild","^FF0000•^000000 ซื้อ Level Guild","^FF0000•^000000 โอนหัว Guild","^FF0000•^000000 ออก")){
+case 1:
+if(getcharid(2) != null) { mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000"; mes "คุณมีกิลอยู่แล้ว!!"; close; }
+callfunc "creaguild";
+end;
+case 2:
+if (strcharinfo(0) != getguildmaster(@GIDGUILD)){ 
+mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000";
+mes "ท่านไม่ใช่ Guild Master";
+close;
+}
+callfunc "uplvguild";
+end;
+case 3:
+if (strcharinfo(0) != getguildmaster(@GIDGUILD)){ mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000"; mes "ท่านไม่ใช่ Guild Master";close;}
+callfunc "chmaguild";
+end;
+case 4:
+close;
+OnInit: 
+waitingroom "   Guild Manager",0;
+end;
+}
+}
+// ฟังชั่นการโอนหัวกิล
+function	script	chmaguild	{
+mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000";
+mes "โปรดกรอกชื่อของผู้เล่นที่ท่านต้องการโอนสถานะการเป็นหัวหน้า Guild ให้";
+mes "กรุณาอย่ากรอกชื่อผิด หรือ กรอกชื่อผู้เล่นที่ไม่ได้ออนไลน์อยู่";
+input @name$;
+next;
+dispbottom "ท่านได้โอนสถานะหัวหน้า Guild ให้แก่ [ "+@name$+" ] เรียบร้อยแล้ว";
+atcommand "@changegm "+@name$+"";
+close;
+}
+// ฟังชั่นการซื้อเลเวลกิล
+function	script	uplvguild	{
+if(Zeny < 100000) { mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000"; mes "ข้าต้องการเงิน 100,000k นะจร๊ะ"; close; }
+set zeny,zeny -100000;
+atcommand "@guildlvup 1";
+close;
+}
+// ฟังชั่นการสร้างกิล
+function	script	creaguild	{
+mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000";
+mes "ใส่ชื่อ Guild ที่ต้องการสร้างเลย";
+input @nameguild$;
+atcommand "@guild "+@nameguild$+"";
+next;
+announce "[ "+strcharinfo(0)+" ] ได้สร้างกิลด์ชื่อ  [ "+@nameguild$+" Guild ]",0,0x33FF00;
+mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000";
+mes "เรียบร้อยแล้ว เจ้าไปได้";
+close;
+}
+
+morocc,146,113,5	duplicate(CreGuild)	สร้างกิลด์	405

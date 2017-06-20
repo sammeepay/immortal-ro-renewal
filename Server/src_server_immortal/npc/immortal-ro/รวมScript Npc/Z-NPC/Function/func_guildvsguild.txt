@@ -1,0 +1,28 @@
+//==================== 1-1  Guild  WARP ====================
+function	script	gvgwarp11	{
+	mes "[ Guild vs Guild - WARP ]";
+	mes "กรุณาเลือกเมนูค่ะ";
+	next;
+	menu "^FF0000[ "+getmapusers("guildvs01.gat")+" ]^000000 - บ้านไทย",mapz1,
+"^FF0000[ "+getmapusers("guildvs02.gat")+" ]^000000 - บ้านลาว",mapz2,
+"^FF0000[ "+getmapusers("guildvs03.gat")+" ]^000000 - บ้านพม่า",mapz3,
+"^FF0000[ "+getmapusers("guildvs04.gat")+" ]^000000 - บ้านเขมร ( 22 คน )",mapz4,
+"^FF0000[ "+getmapusers("guildvs05.gat")+" ]^000000 - บ้านกัมพูชา ( 22 คน )",mapz5;
+
+mapz1:
+	warp "yuno.gat",157,312;
+	close;
+mapz2:
+	warp "yuno.gat",278,285;
+	close;
+mapz3:
+	warp "yuno.gat",324,278;
+	close;
+mapz4:
+	warp "yuno.gat",92,317;
+	close;
+mapz5:
+	warp "yuno.gat",278,104;
+	close;
+	}
+

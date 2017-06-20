@@ -1,0 +1,235 @@
+/*
+	Script : Bonus Time (3.0)
+	Release : 2012/04/08
+	Edition : 2013/09/06
+	Editon By.  : SudTha [ NGL ] Over
+	
+	By : ReadyGo  & แอดมินอีเอ้กเอ้ก
+	From : www.eathena-th.com
+	
+	Description : ตั้งเวลาให้ Exp x2 อัตโนมัติ
+	Comment:
+		v1.1	- แก้ Bug ได้ Exp ไม่ตรงตามที่ประกาศ x2
+		v.2.0 - แก้ไขและเพิ่มเติมลูกเล่นเข้าไปใหม่ โดย SudTha [ NGL ] Over
+		v.2.1 - แก้ไขข้อความใหม่หมด
+		v.3.0 - แก้ไขตัวคูณโดยการเซ็ตแทน และแก้ไขคำอธิบายและเป็น Ver.สุดท้ายที่ทำการแก้ไขและแจกจ่าย
+				
+	# สูตรการทำ x อื่นๆ
+		x0.25	: *1/4	(ได้ Exp น้อยลง 75%)
+		x0.5	: *1/2	(ได้ Exp น้อยลง 50%)
+		x0.75	: *3/4	(ได้ Exp น้อยลง 25%)
+		x1		: *1	(ได้ Exp ปกติ)
+		x1.25	: *5/4	(ได้ Exp มากขึ้น 25%)
+		x1.5	: *3/2	(ได้ Exp มากขึ้น 50%)
+		x1.75	: *7/4	(ได้ Exp มากขึ้น 75%)
+		x2		: *2	(ได้ Exp มากขึ้น 100%)
+*/
+
+-	script	Bonus Time	-1,{
+
+OnInIt:
+	set .base_exp, getbattleflag("base_exp_rate");
+	set .job_exp, getbattleflag("job_exp_rate");
+  set .item_rate_common, getbattleflag("item_rate_common");
+  set .item_rate_heal, getbattleflag("item_rate_heal");
+  set .item_rate_use, getbattleflag("item_rate_use");
+  set .item_rate_equip, getbattleflag("item_rate_equip");
+  set .item_rate_card, getbattleflag("item_rate_card");
+  set .item_rate_mvp, getbattleflag("item_rate_mvp");
+  set .item_rate_adddrop, getbattleflag("item_rate_adddrop");
+  set .item_rate_treasure, getbattleflag("item_rate_treasure");
+	end;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// กำหนดเวลาเริ่ม x1.5
+OnClock1200:
+
+  setbattleflag("base_exp_rate", .base_exp*3/2 );
+	setbattleflag("job_exp_rate", .job_exp*3/2 );
+  
+  setbattleflag("item_rate_common", .item_rate_common*3/2 );
+  setbattleflag("item_rate_heal", .item_rate_heal*3/2 );
+  setbattleflag("item_rate_use", .item_rate_use*3/2 );
+  setbattleflag("item_rate_equip", .item_rate_equip*3/2 );
+  setbattleflag("item_rate_card", .item_rate_card*3/2 );
+  setbattleflag("item_rate_mvp", .item_rate_mvp*3/2 );
+  setbattleflag("item_rate_adddrop", .item_rate_adddrop*3/2 );
+  setbattleflag("item_rate_treasure", .item_rate_treasure*3/2 );
+  
+	announce "[ Bonus Time 12.00 ] เอาละถึงเวลา Exp & Drop x1.5 !! แล้วจร้า",bc_all,0xFF6060;
+	atcommand "@reloadmobdb";
+	end;
+	
+// กำหนดเวลาเริ่ม x2
+OnClock1600:
+
+	setbattleflag("base_exp_rate", .base_exp*2 );
+	setbattleflag("job_exp_rate", .job_exp*2 );
+  
+  setbattleflag("item_rate_common", .item_rate_common*2 );
+  setbattleflag("item_rate_heal", .item_rate_heal*2 );
+  setbattleflag("item_rate_use", .item_rate_use*2 );
+  setbattleflag("item_rate_equip", .item_rate_equip*2 );
+  setbattleflag("item_rate_card", .item_rate_card*2 );
+  setbattleflag("item_rate_mvp", .item_rate_mvp*2 );
+  setbattleflag("item_rate_adddrop", .item_rate_adddrop*2 );
+  setbattleflag("item_rate_treasure", .item_rate_treasure*2 );
+
+	announce "[ Bonus Time 16.00 ] เอาละถึงเวลา Exp & Drop x2 !! แล้วจร้า",bc_all,0x993399 ;
+	atcommand "@reloadmobdb";
+	end;
+
+// กำหนดเวลาเริ่ม x3
+OnClock1748:
+
+	setbattleflag("base_exp_rate", .base_exp*3 );
+	setbattleflag("job_exp_rate", .job_exp*3 );
+  
+  setbattleflag("item_rate_common", .item_rate_common*3 );
+  setbattleflag("item_rate_heal", .item_rate_heal*3 );
+  setbattleflag("item_rate_use", .item_rate_use*3 );
+  setbattleflag("item_rate_equip", .item_rate_equip*3 );
+  setbattleflag("item_rate_card", .item_rate_card*3 );
+  setbattleflag("item_rate_mvp", .item_rate_mvp*3 );
+  setbattleflag("item_rate_adddrop", .item_rate_adddrop*3 );
+  setbattleflag("item_rate_treasure", .item_rate_treasure*3 );
+
+	announce "[ Bonus Time 22.00 ] เอาละถึงเวลา Exp & Drop x3 !! แล้วจร้า",bc_all,0xFF00FF  ;
+	atcommand "@reloadmobdb";
+	end;
+
+// กำหนดเวลาเริ่ม x5
+OnClock0000:
+
+	setbattleflag("base_exp_rate", .base_exp*5 );
+	setbattleflag("job_exp_rate", .job_exp*5 );
+  
+  setbattleflag("item_rate_common", .item_rate_common*5 );
+  setbattleflag("item_rate_heal", .item_rate_heal*5 );
+  setbattleflag("item_rate_use", .item_rate_use*5 );
+  setbattleflag("item_rate_equip", .item_rate_equip*5 );
+  setbattleflag("item_rate_card", .item_rate_card*5 );
+  setbattleflag("item_rate_mvp", .item_rate_mvp*5 );
+  setbattleflag("item_rate_adddrop", .item_rate_adddrop*5 );
+  setbattleflag("item_rate_treasure", .item_rate_treasure*5 );
+  
+	announce "[ Bonus Time 00.00 ] อุ้ย... !! เที่ยวคืนแล้วท่านอย่าลืมทานข้าวเทียงละ",bc_all,0xFF8080 ;
+	atcommand "@reloadmobdb";
+	end;
+OnClock0001:
+	announce "[ Bonus Time 00.01 ] เอาละถึงเวลา Exp & Drop x5 !! แล้วจร้า",bc_all,0xFF0080 ;
+	end;
+	
+// กำหนดเวลาเริ่ม x7
+OnClock0400:
+
+	setbattleflag("base_exp_rate", .base_exp*7 );
+	setbattleflag("job_exp_rate", .job_exp*7 );
+  
+  setbattleflag("item_rate_common", .item_rate_common*7 );
+  setbattleflag("item_rate_heal", .item_rate_heal*7 );
+  setbattleflag("item_rate_use", .item_rate_use*7 );
+  setbattleflag("item_rate_equip", .item_rate_equip*7 );
+  setbattleflag("item_rate_card", .item_rate_card*7 );
+  setbattleflag("item_rate_mvp", .item_rate_mvp*7 );
+  setbattleflag("item_rate_adddrop", .item_rate_adddrop*7 );
+  setbattleflag("item_rate_treasure", .item_rate_treasure*7 );
+  
+	announce "[ Bonus Time 04.00 ] เอ้าทุกท่านดึกมากมายแล้วยังไม่หลับไม่นอนกันอีกหรือ...",bc_all,0xFF0080 ;
+	atcommand "@reloadmobdb";
+	end;
+	
+OnClock0401:
+	announce "[ Bonus Time 04.01] เอ้า...จัดไปถึงเวลา Exp & Drop x7 !! แล้วจร้า",bc_all,0xFF0000 ;
+	end;
+	
+// กำหนดเวลาหมดคูณ
+OnClock0759:
+OnClock1559:
+OnClock1959:
+OnClock2359:
+
+	setbattleflag("base_exp_rate", .base_exp );
+	setbattleflag("job_exp_rate", .job_exp );
+	
+  setbattleflag("item_rate_common", .item_rate_common );
+  setbattleflag("item_rate_heal", .item_rate_heal );
+  setbattleflag("item_rate_use", .item_rate_use );
+  setbattleflag("item_rate_equip", .item_rate_equip );
+  setbattleflag("item_rate_card", .item_rate_card );
+  setbattleflag("item_rate_mvp", .item_rate_mvp );
+  setbattleflag("item_rate_adddrop", .item_rate_adddrop );
+  setbattleflag("item_rate_treasure", .item_rate_treasure );
+				
+	announce "[Bonus Time] หมดเวลา Exp & Drop คูณกันแล้วนะค่ะ !!", bc_all,0xFF8000;
+	atcommand "@reloadmobdb";
+	end;
+}
+
+
+//===================================================================================================================\\
+
+/*
+	Script : Gainpoints (3.0)
+	By : N/A
+	Editon By.  : SudTha [ NGL ] Over
+	Edition : 2013/10/18
+	Description : Online 1 ครั้งต่อวัน ได้รับ Cash ตามจำนวนกำหนดไว้
+	Comment:
+	- v.1.0 N/A (ต้นฉบับ)
+  - v.2.0 นำต้นฉบับมาแก้ไขเพื่อเพิ่มจำนวนวันใหม่ (Script ไม่ทำงาน)
+  - v.3.0  แก้ไขใหม่เนื่องจาก Script ไม่ทำงาน
+              และแก้ไขข้อความใหม่
+*/
+
+-	script	AttendanceScript	-1,{
+OnPCLoginEvent:
+    // last login was BEFORE today
+    if (#lastDayOnline < gettimetick(2)/86400) {
+	
+        
+        // last login was exactly YESTERDAY, set consecutive_days +1
+        if (#lastDayOnline == (gettimetick(2)/86400 - 1))
+            set #consecutive_days, #consecutive_days+1;
+        else    // reset their streak to 1
+            set #consecutive_days, 1;
+         set #lastDayOnline, gettimetick(2)/86400;
+            set #CASHPOINTS, #CASHPOINTS + 1;
+        dispbottom "ได้รับ 1 Point ในการล๊อคอินเข้าเกมสำหรับวันนี้.Points ทั้งหมดของคุณคือ = " + #CASHPOINTS;
+        
+        // check for 7-day streak
+        if (#consecutive_days % 7 == 0){
+            set #CASHPOINTS, #CASHPOINTS + 15;        // จำนวน Points ที่ได้รับเมื่อเข้าเกมติดต่อกันเป็นเวลา 7 วัน
+	dispbottom "ได้รับ 15 Points ในการเข้าเกมติดต่อกันเป็นเวลา 7 วัน.Points ทั้งหมดของคุณคือ = " + #CASHPOINTS;
+
+        // check for 15-day streak
+        if (#consecutive_days % 15 == 0){
+            set #CASHPOINTS, #CASHPOINTS + 45;        // จำนวน Points ที่ได้รับเมื่อเข้าเกมติดต่อกันเป็นเวลา 7 วัน
+	dispbottom "ได้รับ 45 Points ในการเข้าเกมติดต่อกันเป็นเวลา 7 วัน.Points ทั้งหมดของคุณคือ = " + #CASHPOINTS;
+	
+        // check for 30-day streak
+        if (#consecutive_days % 30 == 0){
+            set #CASHPOINTS, #CASHPOINTS + 65;        // จำนวน Points ที่ได้รับเมื่อเข้าเกมติดต่อกันเป็นเวลา 30 วัน
+        dispbottom "ได้รับ 65 Points ในการเข้าเกมติดต่อกันเป็นเวลา 30 วัน.Points ทั้งหมดของคุณคือ = " + #CASHPOINTS;
+        
+        // check for 45-day streak
+        if (#consecutive_days % 45 == 0){
+            set #CASHPOINTS, #CASHPOINTS + 90;        // จำนวน Points ที่ได้รับเมื่อเข้าเกมติดต่อกันเป็นเวลา 30 วัน
+        dispbottom "ได้รับ 90 Points ในการเข้าเกมติดต่อกันเป็นเวลา 45 วัน.Points ทั้งหมดของคุณคือ = " + #CASHPOINTS;
+        
+        // check for 60-day streak
+        if (#consecutive_days % 45 == 0){
+            set #CASHPOINTS, #CASHPOINTS + 115;        // จำนวน Points ที่ได้รับเมื่อเข้าเกมติดต่อกันเป็นเวลา 30 วัน
+        dispbottom "ได้รับ 115 Points ในการเข้าเกมติดต่อกันเป็นเวลา 60 วัน.Points ทั้งหมดของคุณคือ = " + #CASHPOINTS;
+
+        // save today as the Last Day they were Online
+     
+    }   
+    }
+    }
+    }   
+    }
+    end;
+}
+}

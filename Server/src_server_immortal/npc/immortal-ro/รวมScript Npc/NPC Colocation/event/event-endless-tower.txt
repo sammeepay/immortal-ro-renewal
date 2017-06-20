@@ -1,0 +1,29 @@
+//********$antosteam**********
+//$cript  NPC     : Enless Tower [Thai Edition]
+//Current Vertion : V. 1.0
+//#############################
+//Present By      : HABA'SHI
+//#############################
+//Comment Script  : กรุณาใช้คู่กับ Enless Tower-en
+//#############################
+-	script	goendless::goendless1	-1,{
+
+	mes"[Endless Tower]";
+	mes"สวัสดีครับ ท่านผู้กล้า";
+	mes"ต้องการเข้าร่วมกิจกรรมมั้ยครับ";
+	next;
+
+	switch( select( "^009933•^000000 ต้องการ","^FF0000•^000000 ยกเลิก") ) {
+		case 1:
+			warp "e_tower",74,110;
+			end;
+		case 2:
+			mes"[Endless Tower]";
+			mes "ยินดีให้บริการครับ";
+			close;
+	}
+
+OnInit:
+	waitingroom "๐ Endless Tower ๐",0;
+	end;
+}

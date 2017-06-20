@@ -1,0 +1,1910 @@
+//-----ซื้อไข่-------\\
+-	shop	toolpet	-1,9001:10000,9002:10000,9003:10000,9004:10000,9005:10000,9006:10000,9007:15000,9008:15000,9009:15000,9010:15000,9011:15000,9012:15000,9013:20000,9014:20000,9015:20000,9016:80000,9017:30000,9018:20000,9019:20000,9020:80000,9021:50000,9022:50000,9023:50000,9024:80000,9025:50000,9026:1000000,9027:1000000,9029:1000000,9032:1000000,9033:1000000,9034:1000000,9035:1000000,9036:1000000,9037:1000000,643:-1
+//-----ที่จับ-------\\
+-	shop	toolpet2	-1,619:-1,620:-1,621:-1,622:-1,623:-1,624:-1,625:-1,626:-1,627:-1,628:-1,629:-1,630:-1,631:-1,632:-1,633:-1,634:-1,635:-1,636:-1,637:-1,638:-1,639:-1,640:-1,641:-1,642:-1,659:-1,660:-1,661:-1,12225:-1,14569:-1,14570:-1,14571:-1,14572:-1,14573:-1,14574:-1,643:-1
+//-----อุปการณ์-------\\
+-	shop	toolpet3	-1,10002:-1,10003:-1,10004:-1,10005:-1,10006:-1,10007:-1,10008:-1,10009:-1,10010:-1,10011:-1,10012:-1,10013:-1,10014:-1,10015:-1,10016:-1,10017:-1,10018:-1,10019:-1,10020:-1,643:-1
+//-----อาหาร-------\\
+-	shop	toolpet4	-1,531:-1,532:-1,511:-1,507:-1,1002:-1,533:-1,716:-1,534:-1,711:-1,537:-1,518:-1,929:-1,911:-1,7821:-1,7822:-1,7823:-1,7824:-1,643:-1
+
+
+prontera,167,181,4	script	Pet Groomer	435,{
+
+cutin "job_black_hucke01",2;
+mes "^437C17[pet_center]^000000";
+mes "สวัสดีคุณ ^1531EC"+strcharinfo(0)+"^000000";
+mes "ยินดีต้อนรับสู่ ^437C17pet canter^000000 ค่ะ";
+next;
+menu
+	"^306EFFสวัสดีครับ,ค่ะ^000000",sc0,
+	"^306EFFHomunculus^000000",humun,
+	"^C22817ข้าเข้ามาผิด โทษที^000000",cal;
+
+humun:
+if (Class == 18) goto L_go;
+if (Class == 4019) goto L_go;
+if (Class == 4078) goto L_go;
+mes "[^777777Mr.Homunculus^000000]";
+mes "ดูจากสภาพการแต่งตัวของท่าน";
+mes "ท่านไม่ใช้อาชีพ ^FF8000Alchemist^000000";
+mes "ท่านไม่ใช้อาชีพ ^FF0000BioChemist^000000";
+close;
+
+L_go:
+mes "[^777777Mr.Homunculus^000000]";
+mes "สวัสดีท่าน "+ strcharinfo(0) +" ";
+mes "~~ ท่านต้องการมีฮิวมันคูสบ้างรึเปล่า";
+next;
+menu
+"Homun Information",HIF,
+"แน่นอน",L_yes,
+"ไม่หละ",L_no;
+
+L_no:
+close;
+
+HIF:
+set .@mob_6001$, "Lif";
+set .@mob_6002$, "Amistr";
+set .@mob_6003$, "Filir";
+set .@mob_6004$, "Vanilmirth";
+set .@mob_6005$, "Lif";
+set .@mob_6006$, "Amistr";
+set .@mob_6007$, "Filir";
+set .@mob_6008$, "Vanilmirth";
+	
+mes "- -| "+strnpcinfo(0);
+mes " ";
+if ( gethominfo(0) ) {
+	mes "มอนสเตอร์: "+getd( ".@mob_"+gethominfo(1)+"$" );
+	mes "ชื่อ: "+( ( gethominfo(5) ) ? gethominfo(2):"< ยังไม่ได้ตั้งชื่อ >" );
+	mes "เลเวล: "+gethominfo(6);
+	mes "ระดับความสนิทสนม: "+(gethominfo(3)*100/100000)+"%";
+	mes "ระดับความอิ่ม: "+(gethominfo(4)*100/100)+"%";
+} else
+	mes "ไหนละโฮมุนคิวลัสของท่าน ?";
+close;
+
+L_yes:
+mes "[^777777Mr.Homunculus^000000]";
+mes "มาดูสิ่งที่ข้าต้องการกัน";
+mes "^FF00001.Seed Of Life^000000";
+mes "^FF00002.20,000 Zeny^000000";
+mes "ถ้าเจ้าไม่มีสามารถซื้อร้านข้างๆข้าได้";
+mes "ข้าจะถามเข้าอีกรอบต้องการจะทำไหม";
+next;
+menu "แน่นอนอยู่แล้ว",-,"ไม่เอาหละ",L_no;
+if (countitem(7140) == 0 ) goto Ldont;
+delitem 7140,1;
+set Zeny, Zeny-20000;
+next;
+mes "[^777777Mr.Homunculus^000000]";
+mes "กรุณารอสักครู่ ....";
+next;
+mes "[^777777Mr.Homunculus^000000]";
+mes "ฮ่าๆ เสร็จแล้ว !!!";
+mes "ข้าจะให้ Embryo เจ้าด้วย"; 
+mes "ขอให้โชคดีนะ";
+getitem 7142,1;
+skill 238,1,0;
+skill 239,1,0;
+skill 240,1,0;
+skill 241,1,0;
+skill 242,1,0;
+skill 243,1,0;
+skill 246,1,0;
+skill 247,1,0;
+close;
+
+Ldont:
+mes "[^777777Mr.Homunculus^000000]";
+mes "เจ้ามีของไม่ครบ นิ !!! ";
+close;
+end; 
+
+//==========================================================================================================================
+
+sc0:
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",2;
+mes "^437C17[pet_center]^000000";
+mes "กรุณาเลือกรายการทีท่านต้องการได้เลยค่ะ";
+next;
+menu
+	"^578593ทักทาย,พูดคุย^000000",sc1,
+	"^F63526ตรวจสอบสถานะสัตว์เลี้ยง^000000",sc2,
+//	"แลกสัตว์เลี้ยง",PetEggs,
+//	"^817468ทำเควสแลกไข่^000000",sc3,
+//	"^F87217ซื้อไข่^000000",sc4,
+//	"^F52887ซื้อที่จับสัตว์เลี้ยง^000000",sc5,
+	"^3EA99Fซื้ออุปกรณ์สัตว์เลี้ยง^000000",sc6,
+	"^C12283ซื้ออาหาร^000000",sc7,
+//	"^9172ECเปลี่ยนชื่อสัตว์เลี้ยง^000000",sc8,
+//	"เพิ่มความสนิทสนม",P4,
+	"^C22817ยกเลิกรายการ^000000",cal;
+
+//--------ทักทาย,พูดคุย------\\
+sc1:
+mes "^437C17[pet_center]^000000";
+mes "ยินดีต้อนรับสู่ ^437C17pet canter^000000 ค่ะ";
+mes "ที่นี่เป็นแหล่งดูแล รักษา สัตว์เลี้ยงของท่านค่ะ";
+mes "ที่นี่ได้รับรางวัลมากมาย";
+mes "ดังนั้นขอให้ท่านไว้วางใจ";
+mes "ที่ได้มาใช้บริการจากทางเราค่ะ";
+next;
+goto sc0;
+
+//------ตรวจสอบสถานะสัตว์ะเลี้ยง------\\
+sc2:
+mes "^437C17[pet_center]^000000";
+mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูลค่ะ";
+next;
+mes "^437C17[pet_center]^000000";
+mes "ชื่อ : ^FF0000" + getpetinfo(2) + "^000000";
+mes "ความสนิทสนม : ^FF0000" + getpetinfo(3) + "^000000/1000";
+mes "ความหิว : ^FF0000" + getpetinfo(4) + "^000000/100";
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+
+//--------เควสแลกไข่------\\
+sc3:
+mes "^437C17[pet_center]^000000";
+mes "ทางเรามีเควสให้ทำนะค่ะ";
+mes "เพื่อแลกสัตว์เลี้ยงที่ท่านชอบได้ค่ะ";
+mes "สัตว์เลี้ยงแต่ละตัวก็มความยากง่ายแตกต่างกันนะค่ะ";
+mes "ค่ะ...เสร็จแล้วก็เลือกเลยนะค่ะ";
+mes "ว่าจะจะทำเควสแลกสัตว์อะไร!!";
+next;
+menu "1.^0000FFPoring^000000",qp1,"2.^980517Chonchon^000000",qp2,"3.^F63526Spore^000000",qp3,"4.^FBB117Pecopeco^000000",qp4,"5.^437C17Orc Warrior^000000",qp5,"6.^F63817Munak^000000",qp6,"7.^FF0000Isis^000000",qp7,"8.^4CC552Poporing^000000",qp8,"9.^E41B17Hunter Fly^000000",qp9,"10.^7DC56CSteel ChonChon^000000",qp10,"11.^FA9B17Picky^000000",qp11,"12.^99C517Rocker^000000",qp12,"13.^7F4817Smokie",qp13,"14.^7E3817Yoyo^000000",qp14,"15.^EE9A4DLunatic^000000",qp15,"16.^B93B8FPoison Spore^000000",qp16,"17.^7F462CBaphomet Jr.^000000",qp17,"18.^C47451Baby Desert Wolf^000000",qp18,"19.^5E767EDeviruchi^000000",qp19,"20.^5E2217Dokebi^000000",qp20,"21.^F9966BDrops^000000",qp21,"22.^41A317Petit",qp22,"23.^F535AASavage Bebe^000000",qp23,"24.^B048B5Sohee^000000",qp24,"25.^8E35EFBon Gun^000000",qp25,"26.^C35817Zherlthsh^000000",qp26,"27.^2B65ECAlice^000000",qp27,"28.^7F462CChristmas Goblin^000000",qp28,"29.^7F462CGoblin [Dagger]^000000",qp29,"30.^7F462CGoblin [Maces]^000000",qp30,"31.^7F462CGoblin [Hammer]^000000",qp31,"32.^F535AADeleter^000000",qp32,"33.^E54C2CDiabolic^000000",qp33,"34.^858381Wanderer^000000",qp33,"^C22817ยกเลิกรายการ^000000",cal;
+//\\
+qp1:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Poring นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Apple 20 ea";
+mes "2.Sticky Mucus 5 ea.";
+mes "3.Empty Bottle 10 ea.";
+mes "4.เงิน 3,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(512) < 20) goto nh;
+	if (countitem(938) < 5) goto nh;
+	if (countitem(713) < 10) goto nh;
+	if(Zeny<3000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1002";
+	set Zeny,Zeny-3000;
+	getitem 643,1;
+	delitem 512,20;
+	delitem 938,5;
+	delitem 713,10;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp2:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Chonchon นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Shell 20 ea";
+mes "2.Iron ore 10 ea.";
+mes "3.Fly wing 10 ea.";
+mes "4.เงิน 3,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(935) < 20) goto nh;
+	if (countitem(1002) < 10) goto nh;
+	if (countitem(601) < 10) goto nh;
+	if(Zeny<3000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1011";
+	set Zeny,Zeny-3000;
+	getitem 643,1;
+	delitem 935,20;
+	delitem 1002,10;
+	delitem 601,10;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp3:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Spore นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Red herb 20 ea";
+mes "2.Mushroom spore 20 ea.";
+mes "3.Strawberry 10 ea.";
+mes "4.เงิน 3,500 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(507) < 20) goto nh;
+	if (countitem(921) < 20) goto nh;
+	if (countitem(578) < 10) goto nh;
+	if(Zeny<3500) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1014";
+	set Zeny,Zeny-3500;
+	getitem 643,1;
+	delitem 507,20;
+	delitem 921,20;
+	delitem 578,10;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp4:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Pecopeco นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Bill of birds 30 ea";
+mes "2.Yellow herb 20 ea.";
+mes "3.เงิน 4,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(925) < 30) goto nh;
+	if (countitem(508) < 20) goto nh;
+	if(Zeny<4000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1019";
+	set Zeny,Zeny-4000;
+	getitem 643,1;
+	delitem 925,30;
+	delitem 508,20;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp5:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Orc warrior นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Orcish Voucher 40 ea";
+mes "2.Iron 10 ea.";
+mes "3.เงิน 5,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(931) < 40) goto nh;
+	if (countitem(998) < 10) goto nh;
+	if(Zeny<5000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1023";
+	set Zeny,Zeny-5000;
+	getitem 643,1;
+	delitem 931,40;
+	delitem 998,10;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp6:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Munak นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Daenggie 25 ea";
+mes "2.Amulet 5 ea.";
+mes "3.Girl's diary 1 ea.";
+mes "4.เงิน 5,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(1094) < 25) goto nh;
+	if (countitem(609) < 5) goto nh;
+	if (countitem(1558) < 1) goto nh;
+	if(Zeny<5000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1026";
+	set Zeny,Zeny-5000;
+	getitem 643,1;
+	delitem 1094,25;
+	delitem 609,5;
+	delitem 1558,1;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp7:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Isis นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Shining scale 30 ea";
+mes "2.Scale shell 30 ea.";
+mes "3.2carat diamond 5 ea.";
+mes "4.เงิน 10,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(954) < 30) goto nh;
+	if (countitem(936) < 30) goto nh;
+	if (countitem(731) < 5) goto nh;
+	if(Zeny<10000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1029";
+	set Zeny,Zeny-10000;
+	getitem 643,1;
+	delitem 954,30;
+	delitem 936,30;
+	delitem 731,5;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp8:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Poporing นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Grape 20 ea";
+mes "2.Apple 30 ea.";
+mes "3.Sticky mucus 10 ea.";
+mes "4.เงิน 5,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(514) < 20) goto nh;
+	if (countitem(512) < 30) goto nh;
+	if (countitem(938) < 10) goto nh;
+	if(Zeny<5000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1031";
+	set Zeny,Zeny-5000;
+	getitem 643,1;
+	delitem 514,20;
+	delitem 512,30;
+	delitem 938,10;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp9:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Hunter fly นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Zargon 10 ea";
+mes "2.Steel 15 ea.";
+mes "3.Solid shell 40 ea.";
+mes "4.เงิน 5,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(912) < 10) goto nh;
+	if (countitem(999) < 15) goto nh;
+	if (countitem(943) < 40) goto nh;
+	if(Zeny<5000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1035";
+	set Zeny,Zeny-5000;
+	getitem 643,1;
+	delitem 912,10;
+	delitem 999,15;
+	delitem 943,40;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp10:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Steel chonchon นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Garlet 20 ea";
+mes "2.Shell 20 ea.";
+mes "3.Solid shell 20 ea.";
+mes "4.เงิน 5,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(910) < 20) goto nh;
+	if (countitem(935) < 20) goto nh;
+	if (countitem(943) < 20) goto nh;
+	if(Zeny<5000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1042";
+	set Zeny,Zeny-5000;
+	getitem 643,1;
+	delitem 910,20;
+	delitem 935,20;
+	delitem 943,20;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp11:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Picky นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Feather 10 ea";
+mes "2.Feather of bird 10 ea.";
+mes "3.milk 20 ea.";
+mes "4.เงิน 3,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(949) < 10) goto nh;
+	if (countitem(916) < 10) goto nh;
+	if (countitem(519) < 20) goto nh;
+	if(Zeny<3000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1049";
+	set Zeny,Zeny-3000;
+	getitem 643,1;
+	delitem 949,10;
+	delitem 916,10;
+	delitem 519,20;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp12:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Rocker นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Grasshopper's leg 50 ea";
+mes "2.เงิน 3,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(940) < 50) goto nh;
+	if(Zeny<3000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1052";
+	set Zeny,Zeny-3000;
+	getitem 643,1;
+	delitem 940,50;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp13:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Smokie นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Raccoon leaf 25 ea";
+mes "2.Zargon 25 ea.";
+mes "3.Potato 50 ea.";
+mes "4.เงิน 10,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(945) < 25) goto nh;
+	if (countitem(912) < 25) goto nh;
+	if (countitem(516) < 50) goto nh;
+	if(Zeny<10000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1056";
+	set Zeny,Zeny-10000;
+	getitem 643,1;
+	delitem 945,25;
+	delitem 912,25;
+	delitem 516,50;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp14:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Yoyo นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Strawberry 30 ea";
+mes "2.Banana 50 ea.";
+mes "3.Yoyo tail 30 ea.";
+mes "4.เงิน 20,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(578) < 30) goto nh;
+	if (countitem(513) < 50) goto nh;
+	if (countitem(942) < 30) goto nh;
+	if(Zeny<20000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1057";
+	set Zeny,Zeny-20000;
+	getitem 643,1;
+	delitem 578,30;
+	delitem 513,50;
+	delitem 942,30;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp15:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Lunatic นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Carrot 20 ea";
+mes "2.Apple 20 ea.";
+mes "3.Clover 20 ea.";
+mes "4.เงิน 3,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(515) < 20) goto nh;
+	if (countitem(512) < 20) goto nh;
+	if (countitem(705) < 20) goto nh;
+	if(Zeny<3000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1063";
+	set Zeny,Zeny-3000;
+	getitem 643,1;
+	delitem 515,20;
+	delitem 512,20;
+	delitem 705,20;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp16:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Poison spore นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Zargon 20 ea";
+mes "2.Poison spore 25 ea.";
+mes "3.Blue herb 10 ea.";
+mes "4.เงิน 5,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(912) < 20) goto nh;
+	if (countitem(7033) < 25) goto nh;
+	if (countitem(510) < 10) goto nh;
+	if(Zeny<5000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1077";
+	set Zeny,Zeny-5000;
+	getitem 643,1;
+	delitem 912,20;
+	delitem 7033,25;
+	delitem 510,10;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp17:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Bapho Jr. นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Evil horn 15 ea";
+mes "2.Oridecon 10 ea.";
+mes "3.Yggdrasilberry 10 ea.";
+mes "4.เงิน 15,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(923) < 15) goto nh;
+	if (countitem(984) < 10) goto nh;
+	if (countitem(607) < 10) goto nh;
+	if(Zeny<15000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1101";
+	set Zeny,Zeny-15000;
+	getitem 643,1;
+	delitem 923,15;
+	delitem 984,10;
+	delitem 607,10;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp18:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Baby desert wotf นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Orange 5 ea";
+mes "2.Animal skin 20 ea.";
+mes "3.Meat 30 ea.";
+mes "4.เงิน 3,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(582) < 5) goto nh;
+	if (countitem(919) < 20) goto nh;
+	if (countitem(517) < 30) goto nh;
+	if(Zeny<3000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1107";
+	set Zeny,Zeny-3000;
+	getitem 643,1;
+	delitem 582,5;
+	delitem 919,20;
+	delitem 517,30;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp19:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Deviruchi นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Little evil wing 20 ea";
+mes "2.Little evil horn 20 ea.";
+mes "3.Oridecon 15 ea.";
+mes "4.เงิน 15,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(1039) < 20) goto nh;
+	if (countitem(1038) < 20) goto nh;
+	if (countitem(984) < 15) goto nh;
+	if(Zeny<15000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1109";
+	set Zeny,Zeny-15000;
+	getitem 643,1;
+	delitem 1039,20;
+	delitem 1038,20;
+	delitem 984,15;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp20:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Dokebi นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Dokebi horn 40 ea";
+mes "2.Sword mace[0] 1 ea.";
+mes "3.เงิน 10,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(1021) < 20) goto nh;
+	if (countitem(1516) < 1) goto nh;
+	if(Zeny<10000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1110";
+	set Zeny,Zeny-10000;
+	getitem 643,1;
+	delitem 1021,20;
+	delitem 10516,1;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp21:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Drops นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Orange juice 5 ea";
+mes "2.Sticky mucus 25 ea.";
+mes "3.Rod[4] 1 ea.";
+mes "4.เงิน 4,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(620) < 5) goto nh;
+	if (countitem(938) < 25) goto nh;
+	if (countitem(1602) < 1) goto nh;
+	if(Zeny<4000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1113";
+	set Zeny,Zeny-4000;
+	getitem 643,1;
+	delitem 620,5;
+	delitem 938,25;
+	delitem 1602,1;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp22:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Petit นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Dragon tail 15 ea";
+mes "2.Dragon canine 15 ea.";
+mes "3.White herb 20 ea.";
+mes "4.เงิน 8,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(1037) < 15) goto nh;
+	if (countitem(1035) < 15) goto nh;
+	if (countitem(509) < 20) goto nh;
+	if(Zeny<8000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1155";
+	set Zeny,Zeny-8000;
+	getitem 643,1;
+	delitem 1037,15;
+	delitem 938,15;
+	delitem 509,20;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp23:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Savage babe นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Meat 30 ea";
+mes "2.Feather 15 ea.";
+mes "3.Animal skin 20 ea.";
+mes "4.เงิน 5,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(517) < 30) goto nh;
+	if (countitem(949) < 15) goto nh;
+	if (countitem(919) < 20) goto nh;
+	if(Zeny<5000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1167";
+	set Zeny,Zeny-5000;
+	getitem 643,1;
+	delitem 517,30;
+	delitem 949,15;
+	delitem 919,20;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp24:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Sohee นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Black hair 100 ea";
+mes "2.Red herb 30 ea.";
+mes "3.เงิน 30,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(1020) < 100) goto nh;
+	if (countitem(507) < 30) goto nh;
+	if(Zeny<30000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1170";
+	set Zeny,Zeny-30000;
+	getitem 643,1;
+	delitem 1020,100;
+	delitem 507,30;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp25:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Bon gun นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Short daenggie 50 ea";
+mes "2.Yellow herb 30 ea.";
+mes "3.เงิน 15,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(1094) < 50) goto nh;
+	if (countitem(508) < 30) goto nh;
+	if(Zeny<15000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1188";
+	set Zeny,Zeny-15000;
+	getitem 643,1;
+	delitem 1094,50;
+	delitem 508,30;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp26:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Zherlthsh นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.White herb 60 ea";
+mes "2.Executioner's Mitten 20 ea.";
+mes "3.Earring[0] 2 ea.";
+mes "4.เงิน 300,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(509) < 60) goto nh;
+	if (countitem(7017) < 20) goto nh;
+	if (countitem(2602) < 2) goto nh;
+	if(Zeny<300000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1200";
+	set Zeny,Zeny-300000;
+	getitem 643,1;
+	delitem 509,60;
+	delitem 7017,20;
+	delitem 2602,2;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp27:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Alice นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Alice's apron 50 ea";
+mes "2.Rouge 40 ea.";
+mes "3.เงิน 250,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(7047) < 50) goto nh;
+	if (countitem(739) < 40) goto nh;
+	if(Zeny<250000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1275";
+	set Zeny,Zeny-250000;
+	getitem 643,1;
+	delitem 7047,50;
+	delitem 739,40;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp28:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Christmas Goblin นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Iron 50 ea";
+mes "2.Red herb 50 ea.";
+mes "2.Rough oridecon 50 ea.";
+mes "4.เงิน 250,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(998) < 50) goto nh;
+	if (countitem(507) < 50) goto nh;
+	if (countitem(756) < 50) goto nh;
+	if(Zeny<250000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1245";
+	set Zeny,Zeny-250000;
+	getitem 643,1;
+	delitem 998,50;
+	delitem 507,50;
+	delitem 756,50;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp29:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Goblin [Dagger] นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Iron 50 ea";
+mes "2.Red herb 50 ea.";
+mes "2.Rough oridecon 50 ea.";
+mes "4.เงิน 250,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(998) < 50) goto nh;
+	if (countitem(507) < 50) goto nh;
+	if (countitem(756) < 50) goto nh;
+	if(Zeny<250000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1122";
+	set Zeny,Zeny-250000;
+	getitem 643,1;
+	delitem 998,50;
+	delitem 507,50;
+	delitem 756,50;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp30:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Goblin [Maces] นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Iron 50 ea";
+mes "2.Red herb 50 ea.";
+mes "2.Rough oridecon 50 ea.";
+mes "4.เงิน 250,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(998) < 50) goto nh;
+	if (countitem(507) < 50) goto nh;
+	if (countitem(756) < 50) goto nh;
+	if(Zeny<250000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1123";
+	set Zeny,Zeny-250000;
+	getitem 643,1;
+	delitem 998,50;
+	delitem 507,50;
+	delitem 756,50;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp31:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Goblin [Hammer] นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Iron 50 ea";
+mes "2.Red herb 50 ea.";
+mes "2.Rough oridecon 50 ea.";
+mes "4.เงิน 250,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(998) < 50) goto nh;
+	if (countitem(507) < 50) goto nh;
+	if (countitem(756) < 50) goto nh;
+	if(Zeny<250000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1125";
+	set Zeny,Zeny-250000;
+	getitem 643,1;
+	delitem 998,50;
+	delitem 507,50;
+	delitem 756,50;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp32:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Deleter นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Dragon skin 20 ea";
+mes "2.Dragon tail 60 ea.";
+mes "2.Dragon canine 60 ea.";
+mes "4.เงิน 200,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(7123) < 20) goto nh;
+	if (countitem(1037) < 60) goto nh;
+	if (countitem(1035) < 60) goto nh;
+	if(Zeny<200000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1385";
+	set Zeny,Zeny-200000;
+	getitem 643,1;
+	delitem 7123,20;
+	delitem 1037,60;
+	delitem 1035,60;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp33:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Diabolic นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Little evil wing 45 ea";
+mes "2.Little evil horn 45 ea.";
+mes "2.Oridecon 20 ea.";
+mes "4.เงิน 220,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(1039) < 45) goto nh;
+	if (countitem(1038) < 45) goto nh;
+	if (countitem(984) < 20) goto nh;
+	if(Zeny<220000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1382";
+	set Zeny,Zeny-220000;
+	getitem 643,1;
+	delitem 1039,45;
+	delitem 1038,45;
+	delitem 984,20;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+//\\
+qp34:
+mes "^437C17[pet_center]^000000";
+mes "คุณได้เลือก Wanderer นะค่ะ";
+mes "คุณต้องนำสิ่งของต่อไปนี้มาแลกค่ะ";
+mes "1.Skull 70 ea";
+mes "2.Ruby 50 ea.";
+mes "2.Old card album 5 ea.";
+mes "4.เงิน 260,000 zany";
+next;
+menu "ตกลง,ข้ามีของครบแล้ว",-,"ยกเลิกรายการ",cal;
+	if (countitem(7005) < 70) goto nh;
+	if (countitem(723) < 50) goto nh;
+	if (countitem(616) < 5) goto nh;
+	if(Zeny<260000) goto nz;
+	mes "^437C17[pet_center]^000000";
+	mes "กรุณารอสักครู่..ระบบกำลังรวบรวมข้อมูล";
+	next;
+	mes "^437C17[pet_center]^000000";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	mes "ขอให้มีความสุขกับการเลี้ยงสัตว์นะค่ะ";
+	atcommand strcharinfo(0) + "@makeegg 1208";
+	set Zeny,Zeny-260000;
+	getitem 643,1;
+	delitem 7005,70;
+	delitem 723,50;
+	delitem 616,5;
+	cutin "job_black_hucke01",255;
+	cutin "job_black_hucke02",255;
+	close;
+
+
+nh:
+mes "^437C17[pet_center]^000000";
+mes "ขอโทษค่ะ คุณมีวัตถุดิบไม่พอ";
+mes "ถ้าครบแล้วก็มาแลกใหม่นะค่ะ";
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+
+nz:
+mes "^437C17[pet_center]^000000";
+mes "ขอโทษค่ะ คุณเงินไม่พอ";
+mes "ถ้าครบแล้วก็มาแลกใหม่นะค่ะ";
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+
+//--------ซื้อไข่สัตว์เลี้ยง------\\
+sc4:
+close2;
+callshop "toolpet",1;
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+
+//--------ซื้อที่จับสัตว์เลี้ยง------\\
+sc5:
+close2;
+callshop "toolpet2",1;
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+
+//--------ซื้ออุปกรณ์สัตว์เลี้ยง------\\
+sc6:
+close2;
+callshop "toolpet3",1;
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+
+//--------ซื้ออาหาร------\\
+sc7:
+close2;
+callshop "toolpet4",1;
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+
+//----เปลี่ยนชื่อสัตว์เลี้ยง----\\
+sc8:
+mes "^437C17[pet_center]^000000";
+mes "ขณะนี้ ท่านกำลังอยู่ที่รายการ";
+mes "เปลี่ยนชื่อสัตว์เลี้ยง";
+mes "กรุณารอสักครู่นะค่ะ";
+mes "ตอนนี้ระบบกำลังรวบรวมข้อมูล";
+next;
+atcommand strcharinfo(0) + "@petrename";
+mes "^437C17[pet_center]^000000";
+mes "ขณะนี้ได้renameสัตว์เลี้ยง";
+mes "ของท่านเรียบร้อยแล้วค่ะ";
+mes "...";
+mes "ขอบคุณที่ใช้บริการค่ะ";
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+
+P4:
+mes "[ Pet Center ]";
+mes "สัตว์เลี้ยงของท่านเปลี่ยนสถานะ";
+mes "เป็นขั้น สนิทสนม แล้วค่ะ";
+atcommand strcharinfo(0)+"@petfriendly 1000";
+close;
+
+PetEggs:
+mes "[ Pet NPC ]";
+mes "ท่านต้องการสัตว์เลี้ยงเก่า";
+mes "หรือ ท่านต้องการสัตว์เลี้ยงใหม่ คะ.";
+next;
+menu "- สัตว์เลี้ยงเก่า",PE1,"- สัตว์เลี้ยงใหม่",PE2,"Exit",cal;
+
+
+PE1:
+mes "[ Pet NPC ]";
+mes "ใช้ 10 Skull ในการแลก";
+mes "โปรดเลือกสัตว์เลี้ยงที่ต้องการ";
+next;
+menu 
+"- Poring",NP1,
+"- Chonchon",NP2,
+"- Spore",NP3,
+"- Pecopeco",NP4,
+"- Orc Warrior",NP5,
+"- Munak",NP6,
+"- Isis",NP7,
+"- Porpoing",NP8,
+"- Hunter Fly",NP9,
+"- Steel Chonchon",NP10,
+"- Picky",NP11,
+"- Rocker",NP12,
+"- Smokie",NP13,
+"- Yoyo",NP14,
+"- Lunatic",NP15,
+"- Poisob Spore",NP16,
+"- Baphomet Jr",NP17,
+"- Desert wolf B",NP18,
+"- Deviruchi",NP19,
+"- Dokebi",NP20,
+"- Drops",NP21,
+"- Petit",NP22,
+"- Savage Babe",NP23,
+"- Sohee",NP24,
+"- Bon Gun",NP25,
+"- Zherlthsh",NP26,
+"- Alice",NP27,
+"Exit",cal;
+
+
+NP1:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1002;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP2:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1011;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP3:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1014;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP4:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1019;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP5:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1023;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP6:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1026;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP7:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1029;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP8:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1031;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP9:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1035;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP10:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1042;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP11:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1049;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP12:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1052;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP13:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1056;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP14:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1057;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP15:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1063;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP16:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1077;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP17:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1101;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP18:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ไข่แล้วค่ะ";
+makepet 1107;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP19:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1109;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP20:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1110;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP21:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1113;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP22:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1155;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP23:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1167;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP24:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1170;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP25:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1188;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP26:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1200;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+NP27:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1275;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+PE2:
+mes "[ Pet NPC ]";
+mes "ใช้ 20 Skull ในการแลก";
+mes "โปรดเลือกสัตว์เลี้ยงที่ต้องการ";
+next;
+menu 
+"- Valkyrie",NPN1,
+"- Thanatos",NPN2,
+"- Baphomet",NPN3,
+"- Detale",NPN4,
+"- High Priest",NPN5,
+"- High Wizard",NPN6,
+"- Lord Knight",NPN7,
+"- Assassin Cross",NPN8,
+"- Maya",NPN9,
+"- Dark Snake Lord",NPN10,
+"- Incantation Samurai",NPN11,
+"- Alicel",NPN12,
+"- Aliot",NPN13,
+"- Aliza",NPN14,
+"- Arc Angeling",NPN15,
+"- Angeling",NPN16,
+"- Deviling",NPN17,
+"- Ghostring",NPN18,
+"- Christmas Goblin",NPN19,
+"- Lord of Death",NPN20,
+"- Osiris",NPN21,
+"- Doppelganger",NPN22,
+"- Orc Hero",NPN23,
+"- Moonlight",NPN24,
+"- Pharaoh",NPN25,
+"- Stormy Knight",NPN26,
+"- Turtle General",NPN27,
+"- Orc Lord",NPN28,
+"- Tao Gunka",NPN29,
+"- Dracula",NPN30,
+"- Satan Morroc",NPN31,
+"Exit",cal;
+
+
+NPN1:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1751;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN2:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1708;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN3:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1399;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN4:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1719;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN5:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1649;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN6:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1651;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN7:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1646;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN8:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1647;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN9:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1147;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN10:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1529;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN11:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1492;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN12:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1739;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN13:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1740;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN14:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1737;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN15:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1388;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN16:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1096;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN17:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1582;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN18:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ไข่แล้วค่ะ";
+makepet 1576;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN19:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1245;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN20:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1373;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN21:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1038;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN22:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1046;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN23:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1087;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN24:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1150;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN25:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1157;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN26:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1251;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN27:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1312;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN28:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1190;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN29:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1583;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN30:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1530;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+NPN31:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1916;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+nohave:
+mes "[ Pet NPC ]";
+mes "ท่านไม่มี Skull ในการแลก";
+close;
+
+
+//--------ยกเลิก------\\
+cal:
+mes "^437C17[pet_center]^000000";
+mes "โอกาสหน้ามาใหม่นะค่ะ";
+mes "ขอบคุณที่ใช้บริการค่ะ";
+cutin "job_black_hucke01",255;
+cutin "job_black_hucke02",255;
+close;
+	OnInit:
+	Waitingroom ">>[บริการสัตว์เลี้ยง]<<" , 0;
+	end;
+}

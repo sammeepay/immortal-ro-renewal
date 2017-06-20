@@ -1,0 +1,175 @@
+//===== eAthena Script ======================================= 
+//= TCGCashManager
+//===== By: ================================================== 
+//= azsx123
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= eAthena SVN
+//= 3CeAM
+//===== Description: ========================================= 
+//= Converts between Zeny, Cash Point, and TCG
+//===== Additional Comments: ================================= 
+//= 1.0 Initial Release
+//===== Credits: =============================================
+//= azsx123 for the script
+//============================================================
+prontera,165,179,4	script	Exchange7		459,{
+
+set .NPCName$,"[Exchange]";	// NPC Name
+set .CP2TCG,1;		// Convertion of Cash Points to TCG   (Default:100)		
+set .Zen2CP,20000000;		// Convertion of Zeny to Cash Points  (Default:10000000)	
+set .Zen2TCG,20000000;	// Convertion of Zeny to Cash POints  (Default:1000000000)
+
+
+	mes .NPCName$;
+	mes "สวัสดี มีอะไรให้ฉันช่วยไหม?";
+	mes "ขอทราบรายละเอียดการแลก:";
+	mes "^FF0000"+.CP2TCG+"^000000 Cash Points = 1 TCG";
+	mes "^FF0000"+.Zen2CP+"^000000 Zeny = 1 Cash Point";
+	mes "^FF0000"+.Zen2TCG+"^000000 Zeny = 1 TCG";
+	next;
+	menu  "Cash - TCG",CTCG,"Cash - Zeny",CZeny,"TCG - Zeny",TZeny,"View Cash Points",-;
+
+	mes ".NPCName$";
+	mes "คุณมีทั้งหมด ^ff0000"+#Cashpoints+"^000000 Cash Points ในบัญชีของคุณ";
+	close;
+
+CTCG:
+
+	mes .NPCName$;
+	mes "กรุณาเลือกประเภทของการแลกเปลี่ยน?";
+	next;
+	switch(select("Cash -> TCG:TCG -> Cash"))
+	{
+
+		case 1:
+ 		   mes .NPCName$;
+ 		   mes "คุณต้องการแลก TCG Card ในจำนวนเท่าไหร่?";
+ 		   input .@num;
+ 		   next;
+ 		   set .CPoints,.@num*.CP2TCG;
+
+ 		   if(#CASHPOINTS < .CPoints)
+ 		   {
+ 		   mes .NPCName$;
+ 		   mes "ขออภัยคุณมีจำนวน Cash Point ไม่เพียงพอ!";
+ 		   close;
+ 		   }
+ 		   set #CASHPOINTS,#CASHPOINTS-.CPoints;
+ 		   getitem 7227,.@num;
+ 		   mes .NPCName$;
+ 		   mes "คุณมีทั้งหมด ^ff0000"+#Cashpoints+"^000000 Cash Points ในบัญชีของคุณ";
+  		   close;
+
+		case 2:
+  		  mes .NPCName$;
+  		  mes "คุณต้องการใช้ TCG Card แลกในจำนวนเท่าไหร่?";
+  		  input .@num;
+  		  next;
+		  set .CPoints,.@num*.CP2TCG;
+  		  if(countitem(7227) < .@num)
+  		  {
+  		  mes .NPCName$;
+   		  mes "ขออภัยคุณมีจำนวน TCG Card ไม่เพียงพอ!";
+  	       	  close;
+  		  }
+   		  set #Cashpoints,#Cashpoints+.CPoints;
+  		  delitem 7227,.@num;
+  		  mes .NPCName$;
+  		  mes "คุณมีทั้งหมด ^ff0000"+#Cashpoints+"^000000 Cash Points ในบัญชีของคุณ";
+  		  close;
+	 	  }
+
+CZeny:
+	mes .NPCName$;
+	mes "กรุณาเลือกประเภทของการแลกเปลี่ยน?";
+	next;
+	switch(select("Cash -> Zeny:Zeny -> Cash"))
+	{
+		case 1:
+    		mes .NPCName$;
+    		mes "คุณต้องการแลก Cash Point ในจำนวนเท่าไหร่?";
+    		input .@num;
+    		next;
+ 
+    		if(#Cashpoints < .@num)
+    		{
+    		mes .NPCName$;
+    		mes "ขออภัยคุณมีจำนวน Cash Point ไม่เพียงพอ!";
+    		close;
+    		}
+		set .amount,.Zen2CP*.@num;
+    		set zeny,zeny+.amount;
+		set #Cashpoints,#Cashpoints-.@num;
+
+    		mes .NPCName$;
+    		mes "คุณมีทั้งหมด ^ff0000"+#Cashpoints+"^000000 Cash Points ในบัญชีของคุณt";
+    		close;
+
+		case 2:
+    		mes .NPCName$;
+    		mes "คุณต้องการแลก Cash Point จำนวนเท่าไหร่?";
+    		input .@num;
+    		next;
+    		if(zeny < .@num+.Zen2CP)
+    		{
+    		mes .NPCName$;
+    		mes "ขออภัย คุณมี Zeny ไม่เพียงพอ!";
+    		close;
+    		}
+    		set zeny,zeny-.@num*.Zen2CP;
+    		set #Cashpoints,#Cashpoints+.@num;
+    		mes .NPCName$;
+    		mes "คุณมีทั้งหมด ^ff0000"+#Cashpoints+"^000000 Cash Points ในบัญชีของคุณ";
+    		close;
+		}
+
+TZeny:
+
+   	mes .NPCName$;
+	mes "กรุณาเลือกประเภทของการแลกเปลี่ยน?";
+	next;
+	switch(select("TCG -> Zeny:Zeny -> TCG"))
+	{
+		case 1:
+    		mes .NPCName$;
+    		mes "คุณต้องการใช้ TCG Card แลกจำนวนเท่าไหร่";
+    		input .@num;
+    		next;
+
+    		if(countitem(7227) < .@num)
+    		{
+    		mes .NPCName$;
+    		mes "ขออภัยคุณมีจำนวน TCG Card ไม่เพียงพอ";
+    		close;
+    		}
+
+		if(zeny !=0)
+		{
+		mes .NPCName$;
+    		mes "กรุณาตรวจสอบเงิน Zeny ของคุณด้วย!";
+		close;
+		}
+		set .camount,.Zen2TCG*.@num;
+    		set zeny,zeny+.camount;
+    		delitem 7227,.@num;
+    		close;
+
+		case 2:
+   		mes .NPCName$;
+   		mes "คุณต้องการแลก TCG Card จำนวนเท่าไหร่?";
+    		input .@num;
+    		next;
+    		if(zeny < .@num+.convtZen)
+    		{
+    		mes .NPCName$;
+    		mes "ขออภัย คุณมีจำนวน Cash Point ไม่เพียงพอ";
+   		close;
+    		}
+		set .camount,.Zen2TCG*.@num;
+    		set zeny,zeny-.camount;
+    		getitem 7227,.@num;
+    		close;
+}
+}

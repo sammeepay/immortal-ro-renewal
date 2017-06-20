@@ -1,0 +1,167 @@
+homes1,39,60,0	warp	exgvg01a		1,1,aldeg_cas01,34,248
+aldeg_cas01,34,252,0	warp	exgvg01b		1,1,homes1,51,44
+
+homes1,45,60,0	warp	exgvg02a		1,1,gefg_cas01,34,140
+gefg_cas01,34,136,0	warp	exgvg02b		1,1,homes1,51,44
+
+payg_cas01,214,44,0	warp	exgvg03b		1,1,homes1,51,44
+
+prtg_cas01,103,32,0	warp	exgvg04b		1,1,homes1,51,44
+
+/////////////////////////////////////////////////////////
+
+homes1,59,60,0	script	สเตตัสไม่เกิน 400	45,2,2,{
+
+readparam(bStr);
+if(readparam(bStr)<400) goto need1;
+if(readparam(bStr)>401) goto needjob1;
+
+readparam(bAgi);
+if(readparam(bAgi)<400) goto need1;
+if(readparam(bAgi)>401) goto needjob1;
+
+readparam(bVit);
+if(readparam(bVit)<400) goto need1;
+if(readparam(bVit)>401) goto needjob1;
+
+readparam(bInt);
+if(readparam(bInt)<400) goto need1;
+if(readparam(bInt)>401) goto needjob1;
+
+readparam(bDex);
+if(readparam(bDex)<400) goto need1;
+if(readparam(bDex)>401) goto needjob1;
+
+readparam(bLuk);
+if(readparam(bLuk)<400) goto need1; 
+if(readparam(bLuk)>401) goto needjob1;
+
+need1:
+warp "payg_cas01",214,48;
+close;
+
+needjob1:
+mes "เจ้ามีสเตตัสมากไป";
+mes "ต้องการสเตตัสไม่เกิน ^FF00001 ~ 400^000000";
+close;
+
+}
+
+/////////////////////////////////////////////////////////
+
+homes1,65,60,0	script	สเตตัสไม่เกิน 200	45,2,2,{
+
+readparam(bStr);
+if(readparam(bStr)<200) goto need1;
+if(readparam(bStr)>201) goto needjob1;
+
+readparam(bAgi);
+if(readparam(bAgi)<200) goto need1;
+if(readparam(bAgi)>201) goto needjob1;
+
+readparam(bVit);
+if(readparam(bVit)<200) goto need1;
+if(readparam(bVit)>201) goto needjob1;
+
+readparam(bInt);
+if(readparam(bInt)<200) goto need1;
+if(readparam(bInt)>201) goto needjob1;
+
+readparam(bDex);
+if(readparam(bDex)<200) goto need1;
+if(readparam(bDex)>201) goto needjob1;
+
+readparam(bLuk);
+if(readparam(bLuk)<200) goto need1; 
+if(readparam(bLuk)>201) goto needjob1;
+
+need1:
+warp "prtg_cas01",99,32;
+close;
+
+needjob1:
+mes "เจ้ามีสเตตัสมากไป";
+mes "ต้องการสเตตัสไม่เกิน ^FF00001 ~ 200^000000";
+close;
+
+}
+
+//ห้องตีบอส
+guild_vs5,50,75,0	warp	exittomor1	1,1,morocc2,159,92
+
+homes1,64,35,0	warp	gvgexittomor1	1,1,morocc2,159,92
+
+////////////////////////////////////////////////////////////////////
+payg_cas01	mapflag	loadevent
+-	script	antistats	-1,{
+OnPCLoadMapEvent:
+getmapxy ( .@map$,.@x,.@y,0 );
+if( .@map$ == "payg_cas01" && (readparam(bStr)>401 || readparam(bAgi)>401 || readparam(bVit)>401 || readparam(bInt)>401 || readparam(bDex)>401 || readparam(bLuk)>401)) goto needjob1;
+end;
+needjob1:
+mes "เจ้ามีสเตตัสมากไป";
+mes "ต้องการสเตตัสไม่เกิน ^FF00001 ~ 400^000000";
+mes "เราจะส่งท่านกลับจุดเกิดของท่าน";
+next;
+warp "c5",165,113;
+end;
+
+}
+
+////////////////////////////////////////////////////////////////////
+prtg_cas01	mapflag	loadevent
+-	script	antistats	-1,{
+OnPCLoadMapEvent:
+getmapxy ( .@map$,.@x,.@y,0 );
+if( .@map$ == "prtg_cas01" && (readparam(bStr)>201 || readparam(bAgi)>201 || readparam(bVit)>201 || readparam(bInt)>201 || readparam(bDex)>201 || readparam(bLuk)>201)) goto needjob1;
+end;
+needjob1:
+mes "เจ้ามีสเตตัสมากไป";
+mes "ต้องการสเตตัสไม่เกิน ^FF00001 ~ 200^000000";
+mes "เราจะส่งท่านกลับจุดเกิดของท่าน";
+next;
+warp "c5",165,113;
+end;
+
+}
+
+homes1,59,63,4	script	บ้าน400	111,{
+OnInit:
+waitingroom "จำกัดสเตตัส 400",0;
+end;
+}
+homes1,65,63,4	script	บ้าน200	111,{
+OnInit:
+waitingroom "จำกัดสเตตัส 200",0;
+end;
+}
+homes1,45,63,4	script	บ้านไม่จำกัด	111,{
+OnInit:
+waitingroom "บ้านไม่จำกัดสเตตัส",0;
+end;
+}
+homes1,39,63,4	script	บ้านไม่จำกัด	111,{
+OnInit:
+waitingroom "บ้านไม่จำกัดสเตตัส",0;
+end;
+}
+
+homes1,51,59,4	script	รายละเอียดกิลวอร์	691,{
+mes "[ Infomation ]";
+mes "^FF33CCมีทุกวัน วันละ 3 รอบ^000000";
+mes "^FF0000เวลา 11.00 - 12.00 /  17.00 - 18.00 / 22.00 - 23.00  น.^000000";
+mes "^FF0000จะเปิดบ้านตามจำนวนผู้เล่นครับ^000000";
+mes "^FF0000ช่วงแรก เปิด 2 หลังเท่านั้น^000000";
+next;
+mes "[ Infomation ]";
+mes "^3355FFรางวัลกิลด์วอร์ครับ^000000";
+mes "^3355FFTCG 100 ใบ^000000";
+mes "^3355FFเงิน 60M zeny^000000";
+mes "^3355FFโข่ง 10 ea^000000";
+mes "^00BB00รางวัลพิเศษติดตามทางหน้า Web^000000";
+close;
+
+OnInit:
+waitingroom "รายละเอียดกิลวอร์",0;
+end;
+}

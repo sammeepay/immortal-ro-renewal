@@ -1,0 +1,320 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+//ธงหน้าบ้าน
+morocc,105,247,4	script	บ้านเช่าที่ 1	722,{
+OnReOwner1:
+	FlagEmblem $renter_id1;
+	end;
+}
+
+morocc,117,247,4	script	บ้านเช่าที่ 2	722,{
+OnReOwner2:
+	FlagEmblem $renter_id2;
+	end;
+}
+
+morocc,129,247,4	script	บ้านเช่าที่ 3	722,{
+OnReOwner3:
+	FlagEmblem $renter_id3;
+	end;
+}
+
+morocc,142,247,4	script	บ้านเช่าที่ 4	722,{
+OnReOwner4:
+	FlagEmblem $renter_id4;
+	end;
+}
+
+morocc,105,238,8	script	บ้านเช่าที่ 5	722,{
+OnReOwner5:
+	FlagEmblem $renter_id5;
+	end;
+}
+
+morocc,117,238,8	script	บ้านเช่าที่ 6	722,{
+OnReOwner6:
+	FlagEmblem $renter_id6;
+	end;
+}
+
+morocc,129,238,8	script	บ้านเช่าที่ 7	722,{
+OnReOwner7:
+	FlagEmblem $renter_id7;
+	end;
+}
+
+morocc,140,238,8	script	บ้านเช่าที่ 8	722,{
+OnReOwner8:
+	FlagEmblem $renter_id8;
+	end;
+}
+
+morocc,173,247,4	script	บ้านเช่าที่ 9	722,{
+OnReOwner9:
+	FlagEmblem $renter_id9;
+	end;
+}
+
+morocc,185,247,4	script	บ้านเช่าที่ 10	722,{
+OnReOwner10:
+	FlagEmblem $renter_id10;
+	end;
+}
+
+morocc,197,247,4	script	บ้านเช่าที่ 11	722,{
+OnReOwner11:
+	FlagEmblem $renter_id11;
+	end;
+}
+
+morocc,209,247,4	script	บ้านเช่าที่ 12	722,{
+OnReOwner12:
+	FlagEmblem $renter_id12;
+	end;
+}
+
+morocc,173,238,8	script	บ้านเช่าที่ 13	722,{
+OnReOwner13:
+	FlagEmblem $renter_id13;
+	end;
+}
+
+morocc,185,238,8	script	บ้านเช่าที่ 14	722,{
+OnReOwner14:
+	FlagEmblem $renter_id14;
+	end;
+}
+
+morocc,197,238,8	script	บ้านเช่าที่ 15	722,{
+OnReOwner15:
+	FlagEmblem $renter_id15;
+	end;
+}
+
+morocc,209,238,8	script	บ้านเช่าที่ 16	722,{
+OnReOwner16:
+	FlagEmblem $renter_id16;
+	end;
+}
+
+morocc,230,222,6	script	บ้านเช่าที่ 17	722,{
+OnReOwner17:
+	FlagEmblem $renter_id17;
+	end;
+}
+
+morocc,230,210,6	script	บ้านเช่าที่ 18	722,{
+OnReOwner18:
+	FlagEmblem $renter_id18;
+	end;
+}
+
+morocc,230,198,6	script	บ้านเช่าที่ 19	722,{
+OnReOwner19:
+	FlagEmblem $renter_id19;
+	end;
+}
+
+morocc,230,186,6	script	บ้านเช่าที่ 20	722,{
+OnReOwner20:
+	FlagEmblem $renter_id20;
+	end;
+}
+
+morocc,230,174,6	script	บ้านเช่าที่ 21	722,{
+OnReOwner21:
+	FlagEmblem $renter_id21;
+	end;
+}
+
+morocc,230,162,6	script	บ้านเช่าที่ 22	722,{
+OnReOwner22:
+	FlagEmblem $renter_id22;
+	end;
+}
+
+morocc,230,150,6	script	บ้านเช่าที่ 23	722,{
+OnReOwner23:
+	FlagEmblem $renter_id23;
+	end;
+}
+
+morocc,230,138,6	script	บ้านเช่าที่ 24	722,{
+OnReOwner24:
+	FlagEmblem $renter_id24;
+	end;
+}
+
+morocc,230,126,6	script	บ้านเช่าที่ 25	722,{
+OnReOwner25:
+	FlagEmblem $renter_id25;
+	end;
+}
+
+morocc,239,126,2	script	บ้านเช่าที่ 26	722,{
+OnReOwner26:
+	FlagEmblem $renter_id26;
+	end;
+}
+
+morocc,239,138,2	script	บ้านเช่าที่ 27	722,{
+OnReOwner27:
+	FlagEmblem $renter_id27;
+	end;
+}
+
+morocc,239,150,2	script	บ้านเช่าที่ 28	722,{
+OnReOwner28:
+	FlagEmblem $renter_id28;
+	end;
+}
+
+morocc,239,162,2	script	บ้านเช่าที่ 29	722,{
+OnReOwner29:
+	FlagEmblem $renter_id29;
+	end;
+}
+
+morocc,239,174,2	script	บ้านเช่าที่ 30	722,{
+OnReOwner30:
+	FlagEmblem $renter_id30;
+	end;
+}
+
+morocc,239,186,2	script	บ้านเช่าที่ 31	722,{
+OnReOwner31:
+	FlagEmblem $renter_id31;
+	end;
+}
+
+morocc,239,198,2	script	บ้านเช่าที่ 32	722,{
+OnReOwner32:
+	FlagEmblem $renter_id32;
+	end;
+}
+
+morocc,239,210,2	script	บ้านเช่าที่ 33	722,{
+OnReOwner33:
+	FlagEmblem $renter_id33;
+	end;
+}
+
+morocc,239,222,2	script	บ้านเช่าที่ 34	722,{
+OnReOwner34:
+	FlagEmblem $renter_id34;
+	end;
+}
+
+morocc,80,222,6	script	บ้านเช่าที่ 35	722,{
+OnReOwner35:
+	FlagEmblem $renter_id35;
+	end;
+}
+
+
+morocc,80,210,6	script	บ้านเช่าที่ 36	722,{
+OnReOwner36:
+	FlagEmblem $renter_id36;
+	end;
+}
+
+morocc,80,198,6	script	บ้านเช่าที่ 37	722,{
+OnReOwner37:
+	FlagEmblem $renter_id37;
+	end;
+}
+
+morocc,80,186,6	script	บ้านเช่าที่ 38	722,{
+OnReOwner38:
+	FlagEmblem $renter_id38;
+	end;
+}
+
+morocc,80,174,6	script	บ้านเช่าที่ 39	722,{
+OnReOwner39:
+	FlagEmblem $renter_id39;
+	end;
+}
+
+morocc,80,162,6	script	บ้านเช่าที่ 40	722,{
+OnReOwner40:
+	FlagEmblem $renter_id40;
+	end;
+}
+
+morocc,80,151,6	script	บ้านเช่าที่ 41	722,{
+OnReOwner41:
+	FlagEmblem $renter_id41;
+	end;
+}
+
+morocc,80,138,6	script	บ้านเช่าที่ 42	722,{
+OnReOwner42:
+	FlagEmblem $renter_id42;
+	end;
+}
+
+morocc,80,126,6	script	บ้านเช่าที่ 43	722,{
+OnReOwner43:
+	FlagEmblem $renter_id43;
+	end;
+}
+
+morocc,89,126,2	script	บ้านเช่าที่ 44	722,{
+OnReOwner44:
+	FlagEmblem $renter_id44;
+	end;
+}
+
+morocc,89,138,2	script	บ้านเช่าที่ 45	722,{
+OnReOwner45:
+	FlagEmblem $renter_id45;
+	end;
+}
+
+morocc,89,150,2	script	บ้านเช่าที่ 46	722,{
+OnReOwner46:
+	FlagEmblem $renter_id46;
+	end;
+}
+
+morocc,89,163,2	script	บ้านเช่าที่ 47	722,{
+OnReOwner47:
+	FlagEmblem $renter_id47;
+	end;
+}
+
+
+morocc,89,174,2	script	บ้านเช่าที่ 48	722,{
+OnReOwner48:
+	FlagEmblem $renter_id48;
+	end;
+}
+
+morocc,89,186,2	script	บ้านเช่าที่ 49	722,{
+OnReOwner49:
+	FlagEmblem $renter_id49;
+	end;
+}
+
+morocc,89,198,2	script	บ้านเช่าที่ 50	722,{
+OnReOwner50:
+	FlagEmblem $renter_id50;
+	end;
+}
+
+morocc,89,210,2	script	บ้านเช่าที่ 51	722,{
+OnReOwner51:
+	FlagEmblem $renter_id51;
+	end;
+}
+
+morocc,89,222,2	script	บ้านเช่าที่ 52	722,{
+OnReOwner52:
+	FlagEmblem $renter_id52;
+	end;
+}
+

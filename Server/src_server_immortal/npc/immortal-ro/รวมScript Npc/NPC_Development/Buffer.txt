@@ -1,0 +1,128 @@
+morocc,0,0,0	script	Buffer	-1,{
+mes "[Buffer]";
+mes "สวัสดี ["+strcharinfo(0)+"]";
+mes "ข้าคือ NPC อำนวยความสะดวก";
+mes "ทำหน้าที่ช่วยเหลือผู้เล่น";
+mes "ที่ยังไม่สามารถช่วยเหลือตัวเองได้";
+next;
+mes "[Buffer]";
+mes "ไหนดูสิ ข้าขอตรวจสอบเลเวลของท่านหน่อย";
+next;
+mes "[Buffer]";
+mes "รอสักครู่...";
+next;
+if(BaseLevel <= 69)
+{
+mes "[Buffer]";
+mes "ตอนนี้ท่านมีเลเวล ^FF0000" + BaseLevel + "^000000";
+mes "ตัวละครมีเลเวลต่ำกว่า 70 สามารถใช้บริการได้ ฟรี";
+mes "ท่านได้รับบัพระดับ 1";
+next;
+mes "[Buffer]";
+mes"บัพที่ท่านได้รับมีรายการดังต่อไปนี้";
+next;
+mes "[Buffer]";
+mes "- ได้รับทักษะ Increase Agility Lv.5 ระยะเวลา 30 นาที";
+mes "- ได้รับทักษะ Blessing Lv.5 ระยะเวลา 30 นาที";
+mes "- ได้รับทักษะ Magnificat Lv.3 ระยะเวลา 10 นาที";
+mes "- ได้รับ All Status +3 ระยะเวลา 1 ชั่วโมง 30 นาที";
+next;
+progressbar "FF0000",2; 
+percentheal 100,100;
+sc_start SC_INCREASEAGI,1800000,5;
+sc_start SC_BLESSING,1800000,5;
+sc_start SC_MAGNIFICAT,600000,3;
+
+sc_start SC_STRFood,5400000,3;
+sc_start SC_AGIFood,5400000,3;
+sc_start SC_VITFood,5400000,3;
+sc_start SC_INTFood,5400000,3;
+sc_start SC_DEXFood,5400000,3;
+sc_start SC_LUKFood,5400000,3;
+
+sc_end SC_Poison;
+sc_end SC_Freeze;
+sc_end SC_Sleep;
+sc_end SC_Stan;
+sc_end SC_Stun;
+sc_end SC_Stone;
+sc_end SC_Silence;
+sc_end SC_Blind;
+sc_end SC_Bleeding;
+sc_end SC_Confusion;
+sc_end SC_Curse;
+sc_end SC_Hallucination;
+sc_end SC_ORCISH;
+mes "[Buffer]";
+mes"ขอบคุณที่ใช้บริการ";
+mes"ขอให้โชคดี";
+close;
+}
+mes "[Buffer]";
+mes "ตอนนี้ท่านมีเลเวล ^FF0000" + BaseLevel + "^000000";
+mes"ท่านมีเลเวลเกินหรือเท่ากับ 70 แล้ว";
+mes"ท่านจะได้รับบัพ ระดับ 2";
+next;
+mes"ตัวละครมีเลเวล 70 ขึ้นไป ";
+mes"เสียค่าบริการ 1,000 เซนี";
+next;
+if(zeny < 1000) goto cancel;
+set Zeny, Zeny-1000;
+next;
+mes "[Buffer]";
+mes"บัพที่ท่านได้รับมีรายการดังต่อไปนี้";
+next;
+mes "[Buffer]";
+mes"- ได้รับทักษะ Increase Agility Lv.5 ระยะเวลา 30 นาที";
+mes"- ได้รับทักษะ Blessing Lv.5 ระยะเวลา 30 นาที";
+mes"- ได้รับทักษะ Magnificat Lv.3";
+progressbar "FF0000",2; 
+percentheal 100,100;
+sc_start SC_INCREASEAGI,1800000,5;
+sc_start SC_BLESSING,1800000,5;
+sc_start SC_MAGNIFICAT,60000,3;
+
+sc_end SC_Poison;
+sc_end SC_Freeze;
+sc_end SC_Sleep;
+sc_end SC_Stan;
+sc_end SC_Stun;
+sc_end SC_Stone;
+sc_end SC_Silence;
+sc_end SC_Blind;
+sc_end SC_Bleeding;
+sc_end SC_Confusion;
+sc_end SC_Curse;
+sc_end SC_Hallucination;
+sc_end SC_ORCISH;
+next;
+mes "[Buffer]";
+mes"ขอบคุณที่ใช้บริการ";
+mes"ขอให้โชคดี";
+close;
+
+cancel:
+mes "[Buffer]";
+mes"ท่านไม่ได้มีเงินจำนวน 1000 เซนี";
+close;
+}
+
+prontera,149,29,4	duplicate(Buffer)	Buffer#01	109	//ตรวจสอบแล้ว
+prontera,32,209,4	duplicate(Buffer)	Buffer#02	109	//ตรวจสอบแล้ว
+prontera,282,198,4	duplicate(Buffer)	Buffer#03	109	//ตรวจสอบแล้ว
+payon,101,116,4	duplicate(Buffer)	Buffer#04	109		//ตรวจสอบแล้ว
+pay_arche,55,121,4	duplicate(Buffer)	Buffer#05	109	//ตรวจสอบแล้ว
+
+morocc,157,136,4	duplicate(Buffer)	Buffer#06	109		//ตรวจสอบแล้ว
+
+morocc,160,271,4	duplicate(Buffer)	Buffer#07	109	//ตรวจสอบแล้ว
+morocc,30,170,4	duplicate(Buffer)	Buffer#08	109		//ตรวจสอบแล้ว
+morocc,294,211,4	duplicate(Buffer)	Buffer#09	109	//ตรวจสอบแล้ว
+izlude,134,90,4	duplicate(Buffer)	Buffer#10	109		//ตรวจสอบแล้ว
+geffen,122,62,4	duplicate(Buffer)	Buffer#11	109		//ตรวจสอบแล้ว
+geffen,201,123,4	duplicate(Buffer)	Buffer#12	109	//ตรวจสอบแล้ว
+geffen,115,200,4	duplicate(Buffer)	Buffer#13	109	//ตรวจสอบแล้ว
+geffen,39,116,4	duplicate(Buffer)	Buffer#14	109		//ตรวจสอบแล้ว
+aldebaran,145,119,4	duplicate(Buffer)	Buffer#16	109	//ตรวจสอบแล้ว
+alberta,28,238,4	duplicate(Buffer)	Buffer#17	109	//ตรวจสอบแล้ว
+alberta,111,59,5	duplicate(Buffer)	Buffer#18	109	//ตรวจสอบแล้ว

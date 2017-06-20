@@ -1,0 +1,50 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	vending_conf_npc	-1,{
+set .@name$, "[ ^FF0000Vending Manager^000000 ]";
+mes .@name$;
+mes "สวัสดีค่ะ ~";
+mes "นี่คือระบบจัดการการตั้งร้าน";
+mes "กรุณาเลือกประเภท";
+mes "การตั้งร้านที่ต้องการ";
+next;
+switch(select("ใช้ Gold Coin เป็นเงื่อนไขการซื้อ","ใช้ Poring Slot Coin เป็นเงื่อนไขการซื้อ")){
+//switch(select("ใช้ Zeny เป็นเงื่อนไขการซื้อ","ใช้ Cash Coin เป็นเงื่อนไขการซื้อ"," ใช้ Cash Coin เป็นเงื่อนไขการซื้อ"," ใช้ Poring Slot Coin เป็นเงื่อนไขการซื้อ")){
+
+case 1:
+set VENDING_MODE,2;
+set .@item_id,671;
+goto mode2;
+//goto mode;
+
+case 2:
+set VENDING_MODE,2;
+set .@item_id,29000;
+goto mode2;
+
+}
+
+mode:
+set VENDING_SAVED_MODE, VENDING_MODE;
+unitskilluseid getcharid(3),"MC_VENDING",getskilllv("MC_VENDING");
+sleep2 100;
+set VENDING_MODE, 0;
+close;
+
+mode2:
+mes .@name$;
+mes "ใช้ ^0000FF" + getitemname(.@item_id) + "^000000 เป็นเงื่อนไขการซื้อ";
+announce "คุณได้ใช้ " + getitemname(.@item_id) + " เป็นเงื่อนไขการซื้อ",bc_self,0x00FFFF;
+set VENDING_ITEM_REQ, (VENDING_MODE?.@item_id:0);
+goto mode;
+close;
+}

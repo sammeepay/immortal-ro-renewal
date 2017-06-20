@@ -1,0 +1,7 @@
+-	script	OnPCLoginEvent	-1,{
+OnPCLoginEvent:
+mes "[ ^008B45Gusjungsza^000000 ]";
+mes "ยินดีต้อนรับคุณ : ^FF0000"+strcharinfo(0)+"^000000";
+mes "พบปัญหาแจ้ง : ^D2691E"+$@S_Email$+"^000000 ";
+close;
+}

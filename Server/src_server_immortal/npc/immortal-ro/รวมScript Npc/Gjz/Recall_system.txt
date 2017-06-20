@@ -1,0 +1,66 @@
+function	script	recallguildparty	{
+if(getcharid(0) == getguildmasterid(getcharid(2))) {
+set @CS1$,"คุณเป็นหัวหน้าของกิลด์";
+} else if(getcharid(2) == 0) {
+set @CS1$,"คุณยังไม่ได้เข้าร่วมกิลด์";
+} else {
+set @CS1$,"คุณเป็นสมาชิกของกิลด์";
+}
+if(getcharid(2) == 0) {
+set @CS2$," ";
+} else {
+set @CS2$,""+getguildname(getcharid(2))+"";
+}
+
+if(getcharid(0) == getpartyleader(getcharid(1),2)) {
+set @CS3$,"คุณเป็นหัวหน้าของปาร์ตี้";
+} else if(getcharid(1) == 0) {
+set @CS3$,"คุณยังไม่ได้เข้าร่วมปาร์ตี้";
+} else {
+set @CS3$,"คุณเป็นสมาชิกของปาร์ตี้";
+}
+if(getcharid(1) == 0) {
+set @CS4$," ";
+} else {
+set @CS4$,""+getpartyname(getcharid(1))+"";
+}
+
+mes "[ RECALL SYSTEM ]";
+mes "สวัสดีคุณ ^FF0000"+strcharinfo(0)+"^000000";
+mes "สถานะของคุณขณะนี้คือ";
+mes "^008080"+@CS1$+"^000000";
+mes "^FF8040"+@CS2$+"^000000";
+mes "^0000FF"+@CS3$+"^000000";
+mes "^006611"+@CS4$+"^000000";
+
+if(getcharid(0) == getguildmasterid(getcharid(2)) && getcharid(0) == getpartyleader(getcharid(1),2)) {
+switch(select("- เรียกสมาชิกกิลด์","- เรียกสมาชิกปาร์ตี้","- ยกเลิก")) {
+case 1:
+atcommand "@guildrecall "+getcharid(2);
+break;
+case 2:
+atcommand "@partyrecall "+getcharid(1);
+break;
+case 3:
+break;
+}
+} else if(getcharid(1) == 0 && getcharid(0) == getguildmasterid(getcharid(2))) {
+switch(select("- เรียกสมาชิกกิลด์","- ยกเลิก")) {
+case 1:
+atcommand "@guildrecall "+getcharid(2);
+break;
+case 2:
+break;
+}
+} else if(getcharid(2) == 0 && getcharid(0) == getpartyleader(getcharid(1),2)) {
+switch(select("- เรียกสมาชิกปาร์ตี้","- ยกเลิก")) {
+case 1:
+atcommand "@partyrecall "+getcharid(1);
+break;
+case 2:
+break;
+}
+}
+close;
+end;
+}

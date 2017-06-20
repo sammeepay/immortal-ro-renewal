@@ -1,0 +1,22 @@
+homes10,41,49,0	script	OpenWarTest#payg_cas02	858,{
+if(getgmlevel() != 99) end;
+mes "เจ้าต้องการทดลองวอร์พิเศษรึ";
+next;
+menu "เปิดวอร์",sw_open,"ปิดวอร์",sw_end;
+
+sw_open:
+set $SW_Status,1;
+announce "กิลวอร์รอบพิเศษประจำวันนี้ได้เริ่มต้นขึ้นแล้ว",0;
+AgitStart;
+set $SW_Status,2;
+close;
+
+sw_end:
+set $SW_Status,3;
+mapwarp "disco1","vipro_town",116,110;
+announce "กิลวอร์รอบพิเศษประจำวันนี้ได้จบลงแล้ว",0;
+AgitEnd;
+set $SW_Status,0;
+close;
+
+}

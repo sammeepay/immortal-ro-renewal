@@ -1,0 +1,12 @@
+new_1-1,53,111,0,0	monster	Fabre	1007,7,0,0,0
+new_1-1,53,111,0,0	monster	Lunatic	1063,7,0,0,0
+new_1-1,53,111,0,0	monster	Poring	1002,7,0,0,0
+new_1-1,53,111,0,0	monster	Poporing	1031,7,0,0,0
+new_1-1,53,111,0,0	monster	Drops	1113,7,0,0,0
+new_1-1,53,111,0,0	monster	Picky	1049,7,0,0,0
+new_1-1,53,111,0,0	monster	Savage Babe	1167,7,0,0,0
+new_1-1,53,111,0,0	monster	Roda Frog	1012,7,0,0,0
+new_1-1,53,111,0,0	monster	Rocker	1052,7,0,0,0
+new_1-1,53,111,0,0	monster	Picky	1050,7,0,0,0
+new_1-1,53,111,0,0	monster	Santa Poring	1062,7,0,0,0
+new_1-1,53,111,0,0	monster	Marin	1242,7,0,0,0

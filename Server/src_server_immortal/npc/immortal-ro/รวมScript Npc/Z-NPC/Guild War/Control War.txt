@@ -1,0 +1,330 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+function	script	controlwar	{
+menu
+"1 ^0000FFNeuschwanstein^000000",goguild1,
+"2 ^0000FFNuenberg^000000",goguild2,
+"3 ^0000FFWuerzburg^000000",goguild3,
+"4 ^0000FFRothenburg^000000",goguild4,
+"5 ^FF0066Eeyolbriggar^000000",goguild5,
+"6 ^FF0066Yesnelph^000000",goguild6,
+"7 ^FF0066Bergel^000000",goguild7,
+"8 ^FF0066Mersetzdeitz^000000",goguild8,
+"9 ^6600FFBright Arbor^000000r",goguild9,
+"10 ^6600FFSacred Altar^000000",goguild10,
+"11 ^6600FFHoly Shadow^000000",goguild11,
+"12 ^6600FFBamboo Grove Hill^000000",goguild12,
+"13 ^FF6600Kriemhild^000000",goguild13,
+"14 ^FF6600Skoegul^000000",goguild14,
+"15 ^FF6600Fadhgridh^000000",goguild15,
+"16 ^FF6600Repherion^000000",goguild16,
+"17 ^FF6600Hohenschwangau^000000",goguild17,
+"18 ^FF6600Swanhild^000000",goguild18,
+"19 ^FF6600Scarlet Palace^000000",goguild19,
+"20 ^FF6600Gondul^000000",goguild20,
+"21 ^66CCFF‡ª‘¥-ª‘¥ ∫È“π∑ÿ°À≈—ß^000000",goguild21;
+close;
+
+goguild1:
+menu "^0000CCï ‡ª‘¥ ï^000000",map1,"^CC0000ï ª‘¥ ï^000000",map2;
+map1:
+atcommand "@shownpc war001";
+close;
+map2:
+atcommand "@hidenpc war001";
+close;
+goguild2:
+menu "^0000CCï ‡ª‘¥ ï^000000",map3,"^CC0000ï ª‘¥ ï^000000",map4;
+map3:
+atcommand "@shownpc war003";
+close;
+map4:
+atcommand "@hidenpc war003";
+close;
+goguild3:
+menu "^0000CCï ‡ª‘¥ ï^000000",map5,"^CC0000ï ª‘¥ ï^000000",map6;
+map5:
+atcommand "@shownpc war004";
+close;
+map6:
+atcommand "@hidenpc war004";
+close;
+goguild4:
+menu "^0000CCï ‡ª‘¥ ï^000000",map7,"^CC0000ï ª‘¥ ï^000000",map8;
+map7:
+atcommand "@shownpc war005";
+close;
+map8:
+atcommand "@hidenpc war005";
+close;
+goguild5:
+menu "^0000CCï ‡ª‘¥ ï^000000",map9,"^CC0000ï ª‘¥ ï^000000",map10;
+map9:
+atcommand "@shownpc war007";
+close;
+map10:
+atcommand "@hidenpc war007";
+close;
+goguild6:
+menu "^0000CCï ‡ª‘¥ ï^000000",map11,"^CC0000ï ª‘¥ ï^000000",map12;
+map11:
+atcommand "@shownpc war008";
+atcommand "@shownpc war21";
+atcommand "@shownpc war22";
+close;
+map12:
+atcommand "@hidenpc war008";
+atcommand "@hidenpc war21";
+atcommand "@hidenpc war22";
+close;
+goguild7:
+menu "^0000CCï ‡ª‘¥ ï^000000",map13,"^CC0000ï ª‘¥ ï^000000",map14;
+map13:
+atcommand "@shownpc war009";
+close;
+map14:
+atcommand "@hidenpc war009";
+close;
+goguild8:
+menu "^0000CCï ‡ª‘¥ ï^000000",map15,"^CC0000ï ª‘¥ ï^000000",map16;
+map15:
+atcommand "@shownpc war10";
+close;
+map16:
+atcommand "@hidenpc war10";
+close;
+goguild9:
+menu "^0000CCï ‡ª‘¥ ï^000000",map17,"^CC0000ï ª‘¥ ï^000000",map18;
+map17:
+atcommand "@shownpc war11";
+close;
+map18:
+atcommand "@hidenpc war11";
+close;
+goguild10:
+menu "^0000CCï ‡ª‘¥ ï^000000",map19,"^CC0000ï ª‘¥ ï^000000",map20;
+map19:
+atcommand "@shownpc war14";
+close;
+map20:
+atcommand "@hidenpc war14";
+close;
+goguild11:
+menu "^0000CCï ‡ª‘¥ ï^000000",map21,"^CC0000ï ª‘¥ ï^000000",map22;
+map21:
+atcommand "@shownpc war13";	
+close;
+map22:
+atcommand "@hidenpc war13";
+close;
+goguild12:
+menu "^0000CCï ‡ª‘¥ ï^000000",map23,"^CC0000ï ª‘¥ ï^000000",map24;
+map23:
+atcommand "@shownpc war15";	
+close;
+map24:
+atcommand "@hidenpc war15";
+close;
+goguild13:
+menu "^0000CCï ‡ª‘¥ ï^000000",map25,"^CC0000ï ª‘¥ ï^000000",map26;
+map25:
+atcommand "@shownpc war16";	
+close;
+map26:
+atcommand "@hidenpc war16";
+close;
+goguild14:
+menu "^0000CCï ‡ª‘¥ ï^000000",map27,"^CC0000ï ª‘¥ ï^000000",map28;
+map27:
+atcommand "@shownpc war19";	
+close;
+map28:
+atcommand "@hidenpc war19";
+close;
+goguild15:
+menu "^0000CCï ‡ª‘¥ ï^000000",map29,"^CC0000ï ª‘¥ ï^000000",map30;
+map29:
+atcommand "@shownpc war20";	
+close;
+map30:
+atcommand "@hidenpc war20";
+close;
+goguild16:
+menu "^0000CCï ‡ª‘¥ ï^000000",map31,"^CC0000ï ª‘¥ ï^000000",map32;
+map31:
+atcommand "@shownpc war6";
+atcommand "@shownpc war66";		
+close;
+map32:
+atcommand "@hidenpc war6";
+atcommand "@hidenpc war66";
+close;
+goguild17:
+menu "^0000CCï ‡ª‘¥ ï^000000",map33,"^CC0000ï ª‘¥ ï^000000",map34;
+map33:
+atcommand "@shownpc war002";
+close;
+map34:
+atcommand "@hidenpc war002";
+close;
+goguild18:
+menu "^0000CCï ‡ª‘¥ ï^000000",map35,"^CC0000ï ª‘¥ ï^000000",map36;
+map35:
+atcommand "@shownpc war17";	
+close;
+map36:
+atcommand "@hidenpc war17";
+close;
+goguild19:
+menu "^0000CCï ‡ª‘¥ ï^000000",map37,"^CC0000ï ª‘¥ ï^000000",map38;
+map37:
+atcommand "@shownpc war12";	
+close;
+map38:
+atcommand "@hidenpc war12";
+close;
+goguild20:
+menu "^0000CCï ‡ª‘¥ ï^000000",map39,"^CC0000ï ª‘¥ ï^000000",map40;
+map39:
+atcommand "@shownpc war23";	
+close;
+map40:
+atcommand "@hidenpc war23";
+close;
+goguild21:
+menu "^0000CCï ‡ª‘¥ ï^000000",map41,"^CC0000ï ª‘¥ ï^000000",map42;
+map41:
+atcommand "@shownpc war001";
+atcommand "@shownpc war002";
+atcommand "@shownpc war003";
+atcommand "@shownpc war004";
+atcommand "@shownpc war005";
+atcommand "@shownpc war006";
+atcommand "@shownpc war007";
+atcommand "@shownpc war008";
+atcommand "@shownpc war009";
+atcommand "@shownpc war10";
+atcommand "@shownpc war11";
+atcommand "@shownpc war13";
+atcommand "@shownpc war14";
+atcommand "@shownpc war15";
+atcommand "@shownpc war16";
+atcommand "@shownpc war17";
+atcommand "@shownpc war19";
+atcommand "@shownpc war20";
+atcommand "@shownpc war66";
+atcommand "@shownpc war21";
+atcommand "@shownpc war22";
+atcommand "@shownpc war23";
+close;
+map42:
+atcommand "@hidenpc war001";
+atcommand "@hidenpc war002";
+atcommand "@hidenpc war003";
+atcommand "@hidenpc war004";
+atcommand "@hidenpc war005";
+atcommand "@hidenpc war006";
+atcommand "@hidenpc war007";
+atcommand "@hidenpc war008";
+atcommand "@hidenpc war009";
+atcommand "@hidenpc war10";
+atcommand "@hidenpc war11";
+atcommand "@hidenpc war13";
+atcommand "@hidenpc war14";
+atcommand "@hidenpc war15";
+atcommand "@hidenpc war16";
+atcommand "@hidenpc war17";	
+atcommand "@hidenpc war19";	
+atcommand "@hidenpc war20";
+atcommand "@hidenpc war66";
+atcommand "@hidenpc war21";
+atcommand "@hidenpc war22";
+atcommand "@hidenpc war23";
+close;
+}
+
+// Al de Baran Guild Castles Map
+
+// Neuschwanstein
+alde_gld,48,79,0	warp	war001	1,1,aldeg_cas01,34,248
+
+// Hohenschwangau
+alde_gld,95,253,0	warp	war002	1,1,aldeg_cas02,88,163
+
+// Nuenberg
+alde_gld,142,81,0	warp	war003	1,1,aldeg_cas03,114,286
+
+// Wuerzburg
+alde_gld,243,242,0	warp	war004	1,1,aldeg_cas04,125,167
+
+// Rothenburg
+alde_gld,259,90,0	warp	war005	1,1,aldeg_cas05,216,103
+
+// Geffen Castles Map
+
+// Repherion ∑“ß‡¢È“ 1
+gef_fild13,150,54,0	warp	war006	1,1,gefg_cas01,34,140
+
+// Repherion ∑“ß‡¢È“ 2
+gef_fild13,210,75,0	warp	war66	1,1,gefg_cas01,95,178
+
+// Eeyolbriggar
+gef_fild13,308,244,0	warp	war007	1,1,gefg_cas02,70,143
+
+// Yesnelph ∑“ß‡¢È“ 1
+gef_fild13,139,240,0	warp	war008	1,1,gefg_cas03,125,250
+
+// Yesnelph ∑“ß‡¢È“ 2
+gef_fild13,112,269,0	warp	war21	1,1,gefg_cas03,100,280
+
+// Yesnelph ∑“ß‡¢È“ 3
+gef_fild13,77,284,0	warp	war22	1,1,gefg_cas03,60,286
+
+// Bergel
+gef_fild13,196,281,0	warp	war009	1,1,gefg_cas04,24,149
+
+// Mersetzdeitz
+gef_fild13,256,57,0	warp	war10	1,1,gefg_cas05,11,134
+
+// Payon Guild Castles Map
+
+// Bright Arbor
+pay_gld,121,238,0	warp	war11	1,1,payg_cas01,214,48
+
+// Holy Shadow
+pay_gld,321,293,0	warp	war13	1,1,payg_cas03,226,26
+
+// Sacred Altar
+pay_gld,140,156,0	warp	war14	1,1,payg_cas04,252,271
+
+// Bamboo Grove Hill
+pay_gld,204,269,0	warp	war15	3,1,payg_cas05,62,225
+
+// Prontera Castles Map
+
+// Kriemhild
+prt_gld,130,65,0	warp	war16	1,1,prtg_cas01,99,32
+
+// Swanhild
+prt_gld,240,124,0	warp	war17	1,1,prtg_cas02,43,229
+
+// Skoegul
+prt_gld,107,240,0	warp	war19	1,1,prtg_cas04,86,13
+
+// Fadhgridh
+prt_gld,153,141,0	warp	war20	1,1,prtg_cas03,168,12
+
+// Gondul
+prt_gld,212,240,0	warp	war23	1,1,prtg_cas05,17,235
+
+
+

@@ -1,0 +1,162 @@
+//===================================================================
+// NPC : Treasure Box
+// Designe By : ParadoX
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+// -- Mapflags 
+pvp_y_1-5.gat	mapflag	noskill
+
+
+
+morocc.gat,0,0,0	script	TreasureIn	-1,{
+end;
+OnInit:
+disablenpc "treasure"; 
+end;
+}
+
+morocc,139,139,0	warp	treasure	2,2,pvp_y_1-5.gat,0,0
+
+pvp_y_1-5.gat,0,0,0	script	TreasureEvent	111,{
+close;
+
+trevstart:
+set $@trevent,rand(15,35);
+set $@ftrevent,0;
+announce "Treasure Event : กล่องสมบัติ Treasure Box ปรากฏตัว ณ เมือง Satan Morocc จำนวน "+$@trevent+" กล่อง มีเวลาในการล่าสมบัติ 5 นาที [ ของราวัลคือ Skull 50 ea. ]",0,0xFF5555;
+monster "pvp_y_1-5.gat",0,0,"Treasure Box",1324,$@trevent,"TreasureEvent::OnTreasureDie";
+pvpon "pvp_y_1-5.gat";
+disablenpc "Treasure Box";
+enablenpc "treasure";
+end;
+
+
+
+OnTreasureDie:
+set $@ftrevent,$@ftrevent+1;
+if($@ftrevent==$@trevent) goto lastbox;
+if($@ftrevent>=$@trevent) goto usualbox;
+
+
+
+usualbox:
+announce "ผู้เล่น " + strcharinfo(0) + " ได้ค้นพบ Treasure Box กล่องที่ " +$@ftrevent+ "/" +$@trevent+ " ได้รับ Skull 50 ea.",0,0xFF5555;
+getitem 7420,50;
+atcommand strcharinfo(0)+ "@warp rachel 129 133";
+end;
+
+lastbox:
+getitem 7420,50;
+announce "ผู้เล่น " + strcharinfo(0) + " ได้พบ Treasure Box กล่องสุดท้ายแล้ว | กิจกรรมจะจบก่อนเวลาที่กำหนดไว้ค่ะ",0,FF5555;
+pvpoff "pvp_y_1-5.gat";
+mapwarp "pvp_y_1-5.gat","rachel.gat",130,110;
+disablenpc "treasure";
+enablenpc "Treasure Box";
+end;
+
+
+
+trevend:
+if($@ftrevent!=$@trevent)
+announce "หมดเวลาในการล่าสมบัติ Treasure Box ทุกกล่องถูกทำลาย",0,0xFF5555;
+killmonsterall "pvp_y_1-5.gat";
+mapwarp "pvp_y_1-5.gat","morocc.gat",157,92;
+pvpoff "pvp_y_1-5.gat";
+disablenpc "treasure"; 
+enablenpc "Treasure Box";
+end;
+
+OnTimeout:
+end;
+
+OnClock0120:
+OnClock0220:
+OnClock0320:
+OnClock0420:
+OnClock0520:
+OnClock0620:
+OnClock0720:
+OnClock0820:
+OnClock0920:
+OnClock1020:
+OnClock1120:
+OnClock1220:
+OnClock1320:
+OnClock1420:
+OnClock1520:
+OnClock1620:
+OnClock1720:
+OnClock1820:
+OnClock1920:
+OnClock2020:
+OnClock2120:
+OnClock2220:
+OnClock2320:
+OnClock0020:
+goto trevstart;
+end;
+
+OnClock0125:
+OnClock0225:
+OnClock0325:
+OnClock0425:
+OnClock0525:
+OnClock0625:
+OnClock0725:
+OnClock0825:
+OnClock0925:
+OnClock1025:
+OnClock1125:
+OnClock1225:
+OnClock1325:
+OnClock1425:
+OnClock1525:
+OnClock1625:
+OnClock1725:
+OnClock1825:
+OnClock1925:
+OnClock2025:
+OnClock2125:
+OnClock2225:
+OnClock2325:
+OnClock0025:
+goto trevend;
+end;
+}
+
+
+
+morocc.gat,139,140,4	script	Treasure Box	1641,{
+mes "[ ผู้จัดกิจกรรม ]";
+mes "เวลากิจกรรม";
+mes "01.20 น."; 
+mes "02.20 น."; 
+mes "03.20 น."; 
+mes "04.20 น."; 
+mes "05.20 น."; 
+mes "06.20 น."; 
+mes "07.20 น."; 
+mes "08.20 น."; 
+mes "09.20 น."; 
+mes "10.20 น."; 
+mes "11.20 น."; 
+mes "12.20 น."; 
+mes "13.20 น."; 
+mes "14.20 น."; 
+mes "15.20 น."; 
+mes "16.20 น."; 
+mes "17.20 น."; 
+mes "18.20 น."; 
+mes "19.20 น."; 
+mes "20.20 น."; 
+mes "21.20 น."; 
+mes "22.20 น."; 
+mes "23.20 น."; 
+mes "00.20 น."; 
+close;
+OnInit:
+waitingroom "Treasure Box",0;
+end;
+}

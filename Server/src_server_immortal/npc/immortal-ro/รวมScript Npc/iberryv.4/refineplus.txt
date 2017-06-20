@@ -1,0 +1,422 @@
+//(=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)
+//(                 ( C ) 2008 - 2009  Survival's  Development  present		
+//(     ุ_______                                                   ุ__ ุ                                ุ__     ุ__
+//(   /\     ____\                                                 \__\                             /\   \  /\ _\
+//(   \  \   \____  ___ ุ     ___  __    ุ___  __      ุ__    __    __      ุ__    ุ ___ ุ\  \   \\/_ /  ______
+//(    \  \____   \/\    \   / \   \/\   \/  __\/\  \   /   /\ /\   \ /\  \   /   /\ /  __  .\\  \   \     /\   ___/ 
+//(      \_____\   \ \    \_\_\   \ ุ \    /__/\  \  \/   /  /\  \  ุ \  \  \/   /  / \  \_.\   \\  \   \   \ ___   \
+//(       /\_______\ \________\  \__\      \  \__ /  /   \  \_ \  \__ /  / \  \__/ \   \\  \__\  /\_____\
+//(       \/_______/\/________/\/__ /       \/___\/      \___/\/___\/    \/__/\/ _/  \/__ /  \/_____/
+//(								
+//(	                            Script : Refine Master                                 	
+//(	                     New Version 2008, by Survival's                        	
+//(		           special version for eAthena			
+//(	                               Open Release 1.00           	   		
+//(								
+//( -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- )
+
+// Blacksmith Shop ----------
+-	shop	อุปกรณ์ตีบวก&รวมแร่	405,1010:-1,1011:-1,999:-1,613:-1,614:-1,615:-1,612:-1,986:-1,987:-1,988:-1,715:-1,716:-1,717:-1,718:-1,719:-1,720:-1,721:-1,722:-1,723:-1,724:-1,718:-1,725:-1,726:-1,727:-1,728:-1,729:-1,733:1000,1002:-1,1003:-1,1001:-1,990:-1,991:-1,992:-1,993:-1,994:-1,995:-1,996:-1,997:-1,1000:-1
+-	shop	สีย้อมผ้าครับ	405,975:-1,976:-1,978:-1,979:-1,980:-1,981:-1,982:-1,983:-1
+
+// Refine Master -------------
+prontera,125,207,4	script	ช่างตีเหล็กพิเศษ#RM	826,{
+
+	//-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-CONFIGURATION-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-oo-o-o\\
+	set @refinesv,1;				// set ค่าการตีบวก (1) ตีบวกแบบ Lv (2) ตีบวกแบบ PvP
+	set $@weponlv1,7; 		// set การตีบวกอะวุธ Level 1 ว่าจะตีบวกสูงสุดได้เท่าไหร่ (2) Pvp Version
+	set $@weponlv2,6;			// set การตีบวกอะวุธ Level 2 ว่าจะตีบวกสูงสุดได้เท่าไหร่ (2) Pvp Version
+	set $@weponlv3,5;			// set การตีบวกอะวุธ Level 3 ว่าจะตีบวกสูงสุดได้เท่าไหร่ (2) Pvp Version
+	set $@weponlv4,5;			// set การตีบวกอะวุธ Level 4 ว่าจะตีบวกสูงสุดได้เท่าไหร่ (2) Pvp Version
+	set $@armor,5;			// set การตีบวกชุดเกราะ ว่าจะตีบวกสูงสุดได้เท่าไหร่ (2) Pvp Version
+	set @name$,"Refine Master";	// ชื่อของ Npc Refine
+	//-o-o-o-o-o-o-o-o-o-o-o-ooooo-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-oo-o-o-o-o-o-o-o-oo-o-o-o-o-oo-o-o\\
+
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+	mes "สวัสดี ข้ามีนามว่า "+@name$;
+	mes "ช่างตีเหล็กที่เก่งที่สุดในเมืองนี้";
+	next;
+
+	switch(select("->^0000FF ตีอาวุธและชุดเกราะ ^000000",
+			"- ^0000FF ซ่อมอุปกรณ์ ^000000",
+			"- ^0000FF ซื้ออุปกรณ์ต่างๆ ^000000",
+			"- ^0000FF รวมแร่ดิบให้เป็นแร่บริสุทธิ์ ^000000")){
+		// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+		case 1:	mes "[ ^FF0000"+@name$+"^000000 ]";
+			mes "  ข้าเป็นช่างอาวุธสามารถตีอุปกรณ์ ให้ท่านได้ทุกชนิด";
+			mes "  บอกมาเลยว่าท่านต้องการให้จัดการ กับอุปกรณ์ชิ้นใด";
+		next;
+
+		set @Rmenulist$,"";
+		for( set @Rmenu,0; @Rmenu < 10; set @Rmenu,@Rmenu+1 ) {
+			if (!@Rmenu) set @Rmenulist$,"->^FF0000 " + getequipname(1) + "^000000";
+			else set @Rmenulist$,@Rmenulist$ + ":->^FF0000 " + getequipname(@Rmenu + 1) + "^000000";
+		}
+		set @part,select(@Rmenulist$);
+		if (!getequipisequiped(@part)){
+			mes "[ ^FF0000"+@name$+"^000000 ]";
+			mes "คุณไม่มี Item ให้ผมตี";
+			mes "กรุณาตรวจสอบ Item ของท่านด้วย";
+			close2;
+		end;
+		}	switch(@refinesv){
+			case 1:	callfunc "refine01";		// ตีบวกเซฟเก็บ Lv 
+			case 2:	callfunc "refine02";		// ตีบวกเซฟ PVP
+			}
+		break;
+		// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+		case 2:	callfunc "repairm";		break;	// ซ่อมอุปกรณ์
+
+		case 3:	mes "[ ^FF0000"+@name$+"^000000 ]";
+			mes "  ขอบคุณที่ใช้บริการ!~";
+			sleep2 100;
+			callshop "อุปกรณ์ตีบวก&รวมแร่",1;
+			end;
+
+		case 4:	sleep2 100;
+			switch(select("->^FF0000 ยกเลิกการผสม ^000000","-^8470FF ผสม Oridecon ^000000","-^CDB38B ผสม Elunium ^000000")){
+			case 1:	break;
+			case 2:	callfunc "oremain",756,984;	break;	// รวมแร่ : Oridecon
+			case 3:	callfunc "oremain",757,985;	break;	// รวมแร่ : Elunium
+			}
+			break;
+		// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+	}
+	close;
+OnInit:
+waitingroom "ตีบวกครบวงจร",0;
+end;
+}
+//***************************************************************//
+//	สถานที่ตั้งของ (F_refine)
+//***************************************************************//
+//ra_temple,71,188,4	duplicate(F_refine)	ช่างตีอาวุธ#1	813
+//lighthalzen,136,87,5	duplicate(F_refine)	ช่างตีอาวุธ#2	813
+
+//#################################################################################################################################
+function	script	refine01	{
+	if (getequipisenableref(@part)) goto L_START_2;
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  ข้าว่าอุปกรณ์ชิ้นนี้มันตีไม่ได้";
+		close;
+L_START_2:
+	if (getequipisidentify(@part)) goto L_REFINE;
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  ท่านไม่สามารถตีอุปกรณ์ชิ้นนี้ได้ เพราะมันยังไม่ได้ถูกตรวจสอบ..";
+		close;
+L_REFINE:
+		if (getequiprefinerycnt(@part) >= 10){
+			mes "[ ^FF0000"+@name$+"^000000 ]";
+			mes "  ข้าว่าอุปกรณ์ชิ้นนี้ไม่สามารถนำ มาตีเพิ่มไปได้มากกว่านี้แล้ว..";
+			close;
+	}
+	switch(getequipweaponlv(@part)){
+	
+		case 0:	set @itemrefine,985;
+			set @zenyrefine,2000;
+			break;
+
+		case 1:	set @itemrefine,1010;
+			set @zenyrefine,50;
+			break;
+
+		case 2:	set @itemrefine,1011;
+			set @zenyrefine,200;
+			break;
+
+		case 3:	set @itemrefine,984;
+			set @zenyrefine,5000;
+			break;
+
+		case 4:	set @itemrefine,984;
+			set @zenyrefine,20000;
+	}
+		mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  อุปกรณ์ที่ท่านต้องการ Refine คือ";
+		mes "  ^0000FF"+getequipname(@part);
+		mes "  ^000000การตีอุปกรณ์ชิ้นนี้ ข้าต้องการ";
+		mes "^ff9999"+getitemname(@itemrefine)+"^000000 และค่าใช้จ่าย "+@zenyrefine+" Zeny";
+		mes "แน่ใจนะว่าต้องการทำเช่นนั้น?~";
+		next;
+		switch(select("-> ^FF0000ตกลง^000000" , "-> ^FF0000ยกเลิก^000000")){
+
+			case 2:	mes "[ ^FF0000"+@name$+"^000000 ]";
+				mes "  ท่านไม่ต้องรีบร้อนเกินไปเชิญท่าน ตามสบาย";
+				close;
+
+			case 1:	set @refine_rate,getequippercentrefinery(@part);
+				if (getequippercentrefinery(@part) < 100) {
+				mes "[ ^FF0000"+@name$+"^000000 ]";
+				mes "  การตีอุปกรณ์ในครั้งนี้ มีโอกาสที^FF0000";
+				mes "  " + getequipname(@part) + "^000000";
+				mes "  ของท่าน  จะหายไปจากโลกนี้...";
+				set @enriched_rate,((@refine_rate * 120) / 100)*10;
+				set @enriched_rate1,@enriched_rate/10;
+				set @enriched_rate2,@enriched_rate - (@enriched_rate1*10);
+				if (getequipweaponlv(@part) == 0) || (getequipweaponlv(@part) > 2)
+					set @menulist$,"-> ^ff0000ยกเลิก^000000:-> ^ff0000ตีอุปกรณ์ชิ้นนี้^000000 [^0000ff " + @refine_rate + "^000000 % Success ]:-> ^ff0000ตีอุปกรณ์ด้วย Enriched^000000 [^0000ff " + @enriched_rate1 + "." + @enriched_rate2 + "^000000 % Success ]";
+				else
+					set @menulist$,"-> ^ff0000ยกเลิก^000000:-> ^ff0000ตีอุปกรณ์ชิ้นนี้^000000 [^0000ff " + @refine_rate + "^000000 % Success ]";
+				next;
+				switch(select(@menulist$)){
+					case 1:	
+						mes "[ ^FF0000"+@name$+"^000000 ]";
+						mes "  ท่านไม่ต้องรีบร้อนเกินไปเชิญท่าน ตามสบาย";
+						close;
+					
+					case 2:
+						break;
+
+					case 3:
+						set @refine_rate,(@refine_rate*120) / 100;
+						if (@enriched_rate2 > 4)
+							set @refine_rate,@refine_rate+1;
+						if (getequipweaponlv(@part) == 0)
+							set @itemrefine,7619;
+						else if (getequipweaponlv(@part) > 2)
+							set @itemrefine,7620;
+						break;
+					}
+				}
+					if (countitem(@itemrefine) < 1) || (Zeny < @zenyrefine) {
+						mes "[ ^FF0000"+@name$+"^000000 ]";
+						mes "  ท่านขาดอะไรไปบางอย่าง!!?";
+						mes "โปรดตรวจสอบด้วย...";
+					close;
+					}
+						delitem @itemrefine,1;
+						set Zeny,Zeny-@zenyrefine;
+
+				if (@refine_rate <= rand(100)){
+					mes "[ ^FF0000"+@name$+"^000000 ]";
+					mes "ก๊อง! ก๊อง! ก๊อง!";
+					failedrefitem @part;
+					misceffect 45;
+					next;
+					mes "[ ^FF0000"+@name$+"^000000 ]";
+					mes "  โอ้!! คุณพระช่วย~~!!";
+					mes "โธ่เอ๊ย!! ไม่น่ะ!!";
+			} else {
+				mes "[ ^FF0000"+@name$+"^000000 ]";
+				mes "ก๊อง! ก๊อง! ก๊อง!";
+				successrefitem @part;
+				next;
+				mes "[ ^FF0000"+@name$+"^000000 ]";
+				mes "  ฮ่าๆ ฝีมือข้ายอดเยี่ยมจริงๆเลย";
+				next;
+				goto L_REFINE;
+			}
+		break;
+		}
+	close;
+}
+//#################################################################################################################################
+function	script	refine02	{
+	if (getequipisenableref(@part)) goto L_START_2;
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  ข้าว่าอุปกรณ์ชิ้นนี้มันตีไม่ได้";
+		close;
+L_START_2:
+	if (getequipisidentify(@part)) goto L_START_3;
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  ท่านไม่สามารถตีอุปกรณ์ชิ้นนี้ได้ เพราะมันยังไม่ได้ถูกตรวจสอบ..";
+		close;
+L_START_3:
+	if (getequiprefinerycnt(@part) == 0) goto L_REFINE_0;
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  ข้าว่าอุปกรณ์ชิ้นนี้ไม่สามารถนำ มาตีเพิ่มไปได้มากกว่านี้แล้ว..";
+		close;
+L_REFINE_0:
+		mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  อุปกรณ์ที่ท่านต้องการ Refine คือ";
+		mes "  ^0000FF"+getequipname(@part);
+		mes "  ^000000แน่ใจนะว่าต้องการทำเช่นนั้น?~";
+		next;
+		menu "- ^ff0000ตกลง^000000",-,"- ^ff0000ยกเลิก^000000",L_Close3;
+		mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "ก๊อง! ก๊อง! ก๊อง!";
+		switch(getequipweaponlv(@part)){
+			case 0:	set @refine,$@armor;	break;	// ตีชุดเกราะ
+			case 1:	set @refine,$@weponlv1;	break;	// ตีอาวุธ Lv 1
+			case 2:	set @refine,$@weponlv2;	break;	// ตีอาวุธ Lv 2
+			case 3:	set @refine,$@weponlv3;	break;	// ตีอาวุธ Lv 3
+			case 4:	set @refine,$@weponlv4;		// ตีอาวุธ Lv 4
+		}
+			for( set @i,0; @i < @refine; set @i,@i+1 ) {
+				successrefitem @part;
+			}
+		next;
+		set @refine,0;
+		mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "เสร็จสมบรูณ์!!";
+		mes "ฮ่าๆ ฝีมือข้ายอดเยี่ยมจริงๆเลย";
+	close;
+
+L_Close3:
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+	mes "  ถ้าเจ้าอยากได้สิ่งที่เจ้าต้องการ";
+	mes "จงกลับมาเมื่อเจ้าพร้อมที่จะยอมรับมัน";
+	close;
+L_CANCEL_1:
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+	mes "เจ้าขาดอะไรไปบางอย่าง";
+	mes "โปรดตรวจสอบด้วย...";
+	close;
+L_CANCEL_3:
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+	mes "มาหาข้าได้..เมื่อเจ้าต้องการ";
+	close;
+}
+//#################################################################################################################################
+function	script	repairm	{
+
+	set @i_menu,0;
+	set @r_menu,0;
+	set @repair_all,0;
+	set @repair_loop,0;
+	set @repair_list$,"";
+	deletearray @broken[0],127;
+	deletearray @item_repair[0],127;
+	deletearray @zeny_repair[0],127;
+
+	for( set @r,0; @r < 10; set @r,@r+1 ) {
+		set @broken[@r],getbrokenid(@r);
+		if (@broken[@r] == NULL)
+					continue;
+		set @r_menu,@r_menu + 1;
+		if (@repair_loop == 0){
+		set @repair_loop,1;
+		set @repair_list$,"-> ^0000FFซ่อมอุปกรณ์ทั้งหมด^000000:-> ^FF0000" + getitemname(@broken[@r_menu]) + "^000000";
+	} else {
+		set @repair_list$,@repair_list$ + ":-> ^FF0000" + getitemname(@broken[@r_menu]) + "^000000";
+	}
+}
+		if (!@repair_loop){
+			mes "[ ^FF0000"+@name$+"^000000 ]";
+			mes "คุณไม่มี ^4682B4Item^000000 ที่เสียหาย";
+		close;
+	}
+		mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "^0000FF-=^000000อาวุธที่เสียหายมีทั้งหมดดังนี้^0000FF=-^000000";
+		for( set @i,0; @i < 10; set @i,@i+1 ) {
+			set @item_wlv,getiteminfo(@broken[@i],13);
+			set @item_slot,getiteminfo(@broken[@i],10);
+			set @item_slot2,getiteminfo(@broken[@i],10);
+			if (!@item_wlv)	
+				set @item_wlv,5;
+			if (!@item_slot)
+				set @item_slot,5;
+			if (@item_wlv >= 5) && (!@item_slot)
+				set @item_slot,3;
+			if (@broken[@i] == NULL)
+						continue;
+			set @i_menu,@i_menu + 1;
+			set @zeny_repair[@i_menu],(@item_slot * 15) * (@item_wlv * 15) + rand(100);
+			if (!@item_slot2)	mes "->^FF3500 " + getitemname(@broken[@i_menu]) + " ^000000(^0000FF "+@zeny_repair[@i_menu]+"^000000 Zeny )";
+			else mes "->^FF3500 " + getitemname(@broken[@i_menu]) + " ["+@item_slot2+"] ^000000(^0000FF "+@zeny_repair[@i_menu]+"^000000 Zeny )";
+			set @repair_all,@repair_all + @zeny_repair[@i_menu];
+
+		}
+		mes "หากต้องการจะซ่อมอุปกรณ์ทั้งหมด";
+		mes "ต้องเสียค่าใช้จ่าย^FF0000  "+@repair_all+" ^000000 Zeny";
+		next;
+
+	set @repairpart,select(@repair_list$) - 1;
+	if (!@repairpart){
+		if (Zeny < @repair_all){
+			mes "[ ^FF0000"+@name$+"^000000 ]";
+			mes "เจ้าขาดอะไรไปบางอย่าง";
+			mes "โปรดตรวจสอบด้วย...";
+			close;
+		}
+		for( set @all,0; @all < 10; set @all,@all+1 ) {
+			set @broken[@all],getbrokenid(@all);
+			if (@broken[@all] == NULL)
+						continue;
+			for( set @all2,0; @all2 < 10; set @all2,@all2+1 ) {
+				if (@broken[@all] != NULL)	repair(@all);
+			}
+		}
+		set Zeny,Zeny - @repair_all;
+		mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "การ Repair เสร็จสมบรูณ์...";
+		close;
+	}
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+	mes "  อุปกรณ์ที่ต้องการจะ Repair คือ";
+	mes "  ^0000FF" + getitemname(@broken[@repairpart]);
+	mes "  ^000000การซ่อมอุปกรณ์จำเป็นต้องการค่า";
+	mes "ใช้จ่ายจำนวนเงิน  ^FF0000" + @zeny_repair[@repairpart] + "^000000  Zeny";
+	mes "ท่านแน่ใจนะว่าต้องการทำเช่นนั้น!?";
+	next;
+	switch(select("-^FF0000 ตกลง ^000000", "-^FF0000 ยกเลิก ^000000")){
+
+		case 1:	if (Zeny < @zeny_repair[@repairpart]){
+				mes "[ ^FF0000"+@name$+"^000000 ]";
+				mes "เจ้าขาดอะไรไปบางอย่าง";
+				mes "โปรดตรวจสอบด้วย...";
+				break;
+			}
+			repair(@repairpart);
+			set Zeny,Zeny - @zeny_repair[@repairpart];
+			mes "[ ^FF0000"+@name$+"^000000 ]";
+			mes "การ Repair เสร็จสมบรูณ์...";
+			break;
+
+		case 2:	mes "[ ^FF0000"+@name$+"^000000 ]";
+			mes "มาหาข้าได้..เมื่อเจ้าต้องการ";
+			break;
+	}
+	close;
+}
+//#################################################################################################################################
+function	script	oremain	{
+	set @delore,getarg(0);
+	set @getore,getarg(1);
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+	mes "โปรดใส่จำนวนที่ท่านต้องการผสม";
+	mes "หากต้องการยกเลิก โปรดระบุตัวเลข เป็น^FF0000 0 ^000000";
+	next;
+		
+	input @CHANGE_NUM;
+	if (@CHANGE_NUM == 0){
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+	mes "การแลกเปลี่ยนถูกยกเลิก...";
+	close;
+}
+	set @CHANGE_ROUGH,@CHANGE_NUM * 5;
+	mes "[ ^FF0000"+@name$+"^000000 ]";
+	mes "  ในการรวมแร่นั้น ข้าต้องการ";
+	mes "  ^0000FF" +getitemname(@delore)+ "^FF0000 " + @CHANGE_ROUGH + " ^000000ea";
+	mes "เพื่อแลก ^CC00FF" +getitemname(@getore)+ "^FF3500 " + @CHANGE_NUM + " ^000000ea";
+	mes "แน่ใจนะว่าต้องการทำเช่นนั้น!?";
+	next;
+
+	switch(select("-^FF0000 ตกลง ^000000", "-^FF0000 ยกเลิก ^000000")){
+		
+	case 1:	if (countitem(@delore) < @CHANGE_ROUGH){
+		mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  จำนวน " + getitemname(@delore) + " ของท่าน";
+		mes " ^FF3500มีจำนวนเพียง^000000 [^0000FF" + countitem(@delore) + "^000000 / ^0000FF" +@CHANGE_ROUGH+ "^000000] ea";
+		mes "  ไม่เพียงพอในการผสม ^0000FF" + getitemname(@getore);
+		break;
+	}
+		delitem @delore,@CHANGE_ROUGH;
+		getitem @getore,@CHANGE_NUM;
+		specialeffect2(101);
+		sleep2 500;
+		mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "  เอาหละ... เสร็จสมบรูณ์!!! นี่คือ";
+		mes "->^0000CC " +getitemname(@getore)+ " ^000000 จำนวน ^FF3500" + @CHANGE_NUM + " ^000000 ea";
+		mes "  โอกาสหน้าเชิญใหม่นะ...";
+		break;
+
+	case 2:	mes "[ ^FF0000"+@name$+"^000000 ]";
+		mes "งั้น!! ไว้โอกาสหน้าก็แล้วกัน";
+		mes "ขอบคุณที่ใช้บริการ...";
+		next;
+		break;
+	}
+	close;
+}
+//#################################################################################################################################

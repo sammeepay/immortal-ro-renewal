@@ -1,0 +1,76 @@
+//god_town,94,110,5	script	Check status & item	806,{
+mes "^4080FF[ Happy - Ro ]^000000";
+mes "สวัสดีค่ะ ^C080FF"+strcharinfo(0)+"^000000 ";
+mes "ท่านมีอะไรให้ข้าช่วยไหมคะ ?";
+if(select("- Check Status ผู้เล่น:- Check Item ผู้เล่น:- ข้าไม่มีอะไร")==3) close;
+mes "โปรดใส่ชื่อผู้เล่นที่ท่านต้องการตรวจสอบ";
+input @name$; charcommand ""+((@menu==1)?"#stats":"#itemlist")+" "+(@name$)+"";
+close; 
+//---คำพูด---//
+OnInit: 
+waitingroom "เช็ค item&status",0; 
+end;
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+//disco1,90,83,5	script	ส่องไอเทม	766,{
+getinventorylist;
+	for(set @i, 0; @i < @inventorylist_count; set @i, @i + 1) {
+		if (@inventorylist_identify[@i] == 1) continue;
+			delitem2 @inventorylist_id[@i],1,0,0,0,0,0,0,0;
+			getitem @inventorylist_id[@i],1;
+	}
+OnInit: 
+waitingroom "ส่องไอเทม",0; 
+end;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+c5,180,120,4	script	clubza-ro	Zone	723,{
+	mes "^FF0000[JuTi-RO วาปไป zone ต่างๆ]^000000";
+	mes "เราจะพานำท่านไปที่ Zone ต่างๆ";
+	mes "ที่ท่านไปไม่ถูก";
+	mes "^FF0000> •Zone กิจกรรม•<^000000";
+	mes "^FF0000> •Zone ตีบวก~เควส•<^000000";
+	mes "^FF0000> •Zone บ้านส่วนตัว•<^000000";
+	mes "^FF0000> •Zone ขายของ•<^000000";
+	next;
+menu ">> - •Zone กิจกรรม• ",vtown,">> - •Zone ตีบวก• ",vtown1,">> - •Zone บ้านส่วนตัว• ",vtown2,">> - •Zone ขายของ• ",vtown3;
+
+
+vtown:	callfunc "Kf_ZWarp","god_town",72,105;	close;
+vtown1:	callfunc "Kf_ZWarp","homes10",61,38;	close;
+vtown2:
+menu	"^FF0000บ้านนากา^000000",a1,
+	"^FF1493บ้านกิฟ^000000",a2,
+	"^63B8FFบ้านย่อน^000000",a3,
+	"^E066FFบ้านพรอน^000000",a4;
+
+vtown3:	callfunc "Kf_ZWarp","god_town",115,74;	close;
+
+a1:
+warp "god_town",116,206; 
+end;
+a2:
+warp "god_town",98,216; 
+end;
+a3:
+warp "god_town",132,217; 
+end;
+a4:
+warp "god_town",94,208; 
+end;
+
+OnInit:
+waitingroom "•ไปไหนไม่ถูกคลิก•",0;
+set $@mapuser$,"^000000User^000000";	// ???????? ????????????
+
+}
+
+function	script	Kf_ZWarp	{
+	set warp_last_map$,getarg(0);
+	set warp_last_x,getarg(1);
+	set warp_last_y,getarg(2);
+	warp getarg(0),getarg(1),getarg(2);
+}

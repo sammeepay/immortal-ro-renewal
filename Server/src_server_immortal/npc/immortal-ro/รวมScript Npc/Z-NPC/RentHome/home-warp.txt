@@ -1,0 +1,733 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+home01,52,71,0	warp	hhhh001	1,1,home01,51,81
+home01,52,79,0	warp	hhhh002	1,1,home01,52,69
+home02,52,71,0	warp	hhhh003	1,1,home02,51,81
+home02,52,79,0	warp	hhhh004	1,1,home02,52,69
+home03,52,71,0	warp	hhhh005	1,1,home03,51,81
+home03,52,79,0	warp	hhhh006	1,1,home03,52,69
+home04,52,71,0	warp	hhhh007	1,1,home04,51,81
+home04,52,79,0	warp	hhhh008	1,1,home04,52,69
+home05,52,71,0	warp	hhhh009	1,1,home05,51,81
+home05,52,79,0	warp	hhhh010	1,1,home05,52,69
+home06,52,71,0	warp	hhhh011	1,1,home06,51,81
+home06,52,79,0	warp	hhhh012	1,1,home06,52,69
+home07,52,71,0	warp	hhhh013	1,1,home07,51,81
+home07,52,79,0	warp	hhhh014	1,1,home07,52,69
+home08,52,71,0	warp	hhhh015	1,1,home08,51,81
+home08,52,79,0	warp	hhhh016	1,1,home08,52,69
+home09,52,71,0	warp	hhhh017	1,1,home09,51,81
+home09,52,79,0	warp	hhhh018	1,1,home09,52,69
+home10,52,71,0	warp	hhhh019	1,1,home10,51,81
+home10,52,79,0	warp	hhhh020	1,1,home10,52,69
+home11,52,71,0	warp	hhhh021	1,1,home11,51,81
+home11,52,79,0	warp	hhhh022	1,1,home11,52,69
+home12,52,71,0	warp	hhhh023	1,1,home12,51,81
+home12,52,79,0	warp	hhhh024	1,1,home12,52,69
+home13,52,71,0	warp	hhhh025	1,1,home13,51,81
+home13,52,79,0	warp	hhhh026	1,1,home13,52,69
+home14,52,71,0	warp	hhhh027	1,1,home14,51,81
+home14,52,79,0	warp	hhhh028	1,1,home14,52,69
+home15,52,71,0	warp	hhhh029	1,1,home15,51,81
+home15,52,79,0	warp	hhhh030	1,1,home15,52,69
+home16,52,71,0	warp	hhhh031	1,1,home16,51,81
+home16,52,79,0	warp	hhhh032	1,1,home16,52,69
+home17,52,71,0	warp	hhhh033	1,1,home17,51,81
+home17,52,79,0	warp	hhhh034	1,1,home17,52,69
+home18,52,71,0	warp	hhhh035	1,1,home18,51,81
+home18,52,79,0	warp	hhhh036	1,1,home18,52,69
+home19,52,71,0	warp	hhhh037	1,1,home19,51,81
+home19,52,79,0	warp	hhhh038	1,1,home19,52,69
+home20,52,71,0	warp	hhhh039	1,1,home20,51,81
+home20,52,79,0	warp	hhhh040	1,1,home20,52,69
+home21,52,71,0	warp	hhhh041	1,1,home21,51,81
+home21,52,79,0	warp	hhhh042	1,1,home21,52,69
+home22,52,71,0	warp	hhhh043	1,1,home22,51,81
+home22,52,79,0	warp	hhhh044	1,1,home22,52,69
+home23,52,71,0	warp	hhhh045	1,1,home23,51,81
+home23,52,79,0	warp	hhhh046	1,1,home23,52,69
+home24,52,71,0	warp	hhhh047	1,1,home24,51,81
+home24,52,79,0	warp	hhhh048	1,1,home24,52,69
+home25,52,71,0	warp	hhhh049	1,1,home25,51,81
+home25,52,79,0	warp	hhhh050	1,1,home25,52,69
+home26,52,71,0	warp	hhhh051	1,1,home26,51,81
+home26,52,79,0	warp	hhhh052	1,1,home26,52,69
+home27,52,71,0	warp	hhhh053	1,1,home27,51,81
+home27,52,79,0	warp	hhhh054	1,1,home27,52,69
+home28,52,71,0	warp	hhhh055	1,1,home28,51,81
+home28,52,79,0	warp	hhhh056	1,1,home28,52,69
+home29,52,71,0	warp	hhhh057	1,1,home29,51,81
+home29,52,79,0	warp	hhhh058	1,1,home29,52,69
+home30,52,71,0	warp	hhhh059	1,1,home30,51,81
+home30,52,79,0	warp	hhhh060	1,1,home30,52,69
+home31,52,71,0	warp	hhhh061	1,1,home31,51,81
+home31,52,79,0	warp	hhhh062	1,1,home31,52,69
+home32,52,71,0	warp	hhhh063	1,1,home32,51,81
+home32,52,79,0	warp	hhhh064	1,1,home32,52,69
+home33,52,71,0	warp	hhhh065	1,1,home33,51,81
+home33,52,79,0	warp	hhhh066	1,1,home33,52,69
+home34,52,71,0	warp	hhhh067	1,1,home34,51,81
+home34,52,79,0	warp	hhhh068	1,1,home34,52,69
+home35,52,71,0	warp	hhhh069	1,1,home35,51,81
+home35,52,79,0	warp	hhhh070	1,1,home35,52,69
+home36,52,71,0	warp	hhhh200	1,1,home36,51,81
+home36,52,79,0	warp	hhhh201	1,1,home36,52,69
+home37,52,71,0	warp	hhhh071	1,1,home37,51,81
+home37,52,79,0	warp	hhhh072	1,1,home37,52,69
+home38,52,71,0	warp	hhhh073	1,1,home38,51,81
+home38,52,79,0	warp	hhhh074	1,1,home38,52,69
+home39,52,71,0	warp	hhhh075	1,1,home39,51,81
+home39,52,79,0	warp	hhhh076	1,1,home39,52,69
+home40,52,71,0	warp	hhhh077	1,1,home40,51,81
+home40,52,79,0	warp	hhhh078	1,1,home40,52,69
+home41,52,71,0	warp	hhhh079	1,1,home41,51,81
+home41,52,79,0	warp	hhhh080	1,1,home41,52,69
+home42,52,71,0	warp	hhhh081	1,1,home42,51,81
+home42,52,79,0	warp	hhhh082	1,1,home42,52,69
+home43,52,71,0	warp	hhhh083	1,1,home43,51,81
+home43,52,79,0	warp	hhhh084	1,1,home43,52,69
+home44,52,71,0	warp	hhhh085	1,1,home44,51,81
+home44,52,79,0	warp	hhhh086	1,1,home44,52,69
+home45,52,71,0	warp	hhhh087	1,1,home45,51,81
+home45,52,79,0	warp	hhhh088	1,1,home45,52,69
+home46,52,71,0	warp	hhhh089	1,1,home46,51,81
+home46,52,79,0	warp	hhhh090	1,1,home46,52,69
+home47,52,71,0	warp	hhhh091	1,1,home47,51,81
+home47,52,79,0	warp	hhhh092	1,1,home47,52,69
+home48,52,71,0	warp	hhhh093	1,1,home48,51,81
+home48,52,79,0	warp	hhhh094	1,1,home48,52,69
+home49,52,71,0	warp	hhhh095	1,1,home49,51,81
+home49,52,79,0	warp	hhhh096	1,1,home49,52,69
+home50,52,71,0	warp	hhhh097	1,1,home50,51,81
+home50,52,79,0	warp	hhhh098	1,1,home50,52,69
+home51,52,71,0	warp	hhhh099	1,1,home51,51,81
+home51,52,79,0	warp	hhhh100	1,1,home51,52,69
+home52,52,71,0	warp	hhhh101	1,1,home52,51,81
+home52,52,79,0	warp	hhhh102	1,1,home52,52,69
+
+//วาปหน้าบ้านเช่า
+morocc,108,247,4	script	warprhome1	45,1,1,{
+	if($home_Guildid1==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid1)
+		warp "home01",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid1);
+}
+
+morocc,120,247,4	script	warprhome2	45,1,1,{
+	if($home_Guildid2==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid2)
+		warp "home02",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid2);
+}
+
+morocc,132,247,4	script	warprhome3	45,1,1,{
+	if($home_Guildid3==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid3)
+		warp "home03",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid3);
+}
+
+morocc,145,247,4	script	warprhome4	45,1,1,{
+	if($home_Guildid4==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid4)
+		warp "home04",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid4);
+}
+
+morocc,108,238,4	script	warprhome5	45,1,1,{
+	if($home_Guildid5==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid5)
+		warp "home05",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid5);
+}
+
+morocc,120,238,4	script	warprhome6	45,1,1,{
+	if($home_Guildid6==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid6)
+		warp "home06",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid6);
+}
+
+morocc,132,238,4	script	warprhome7	45,1,1,{
+	if($home_Guildid7==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid7)
+		warp "home07",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid7);
+}
+
+morocc,144,238,4	script	warprhome8	45,1,1,{
+	if($home_Guildid8==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid8)
+		warp "home08",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid8);
+}
+
+morocc,176,247,4	script	warprhome9	45,1,1,{
+	if($home_Guildid9==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid9)
+		warp "home09",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid9);
+}
+
+morocc,188,247,4	script	warprhome10	45,1,1,{
+	if($home_Guildid10==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid10)
+		warp "home10",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid10);
+}
+
+morocc,200,247,4	script	warprhome11	45,1,1,{
+	if($home_Guildid11==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid11)
+		warp "home11",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid11);
+}
+
+morocc,212,247,4	script	warprhome12	45,1,1,{
+	if($home_Guildid12==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid12)
+		warp "home12",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid12);
+}
+
+morocc,176,238,4	script	warprhome13	45,1,1,{
+	if($home_Guildid13==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid13)
+		warp "home13",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid13);
+}
+
+morocc,188,238,4	script	warprhome14	45,1,1,{
+	if($home_Guildid14==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid14)
+		warp "home14",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid14);
+}
+
+morocc,200,238,4	script	warprhome15	45,1,1,{
+	if($home_Guildid15==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid15)
+		warp "home15",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid15);
+}
+
+morocc,212,238,4	script	warprhome16	45,1,1,{
+	if($home_Guildid16==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid16)
+		warp "home16",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid16);
+}
+
+
+
+
+morocc,230,219,4	script	warprhome17	45,1,1,{
+	if($home_Guildid17==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid17)
+		warp "home17",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid17);
+}
+
+morocc,230,207,4	script	warprhome18	45,1,1,{
+	if($home_Guildid18==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid18)
+		warp "home18",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid18);
+}
+
+morocc,230,195,4	script	warprhome19	45,1,1,{
+	if($home_Guildid19==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid19)
+		warp "home19",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid19);
+}
+
+morocc,230,183,4	script	warprhome20	45,1,1,{
+	if($home_Guildid20==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid20)
+		warp "home20",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid20);
+}
+
+
+morocc,230,171,4	script	warprhome21	45,1,1,{
+	if($home_Guildid21==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid21)
+		warp "home21",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid21);
+}
+
+
+
+morocc,230,159,4	script	warprhome22	45,1,1,{
+	if($home_Guildid22==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid22)
+		warp "home22",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid22);
+}
+
+
+morocc,230,147,4	script	warprhome23	45,1,1,{
+	if($home_Guildid23==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid23)
+		warp "home23",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid23);
+}
+
+
+
+morocc,230,135,4	script	warprhome24	45,1,1,{
+	if($home_Guildid24==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid24)
+		warp "home24",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid24);
+}
+
+
+
+morocc,230,123,4	script	warprhome25	45,1,1,{
+	if($home_Guildid25==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid25)
+		warp "home25",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid25);
+}
+
+
+
+morocc,239,122,4	script	warprhome26	45,1,1,{
+	if($home_Guildid26==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid26)
+		warp "home26",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid26);
+}
+
+
+
+morocc,239,135,4	script	warprhome27	45,1,1,{
+	if($home_Guildid27==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid27)
+		warp "home27",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid27);
+}
+
+
+
+morocc,239,147,4	script	warprhome28	45,1,1,{
+	if($home_Guildid28==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid28)
+		warp "home28",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid28);
+}
+
+
+
+morocc,239,159,4	script	warprhome29	45,1,1,{
+	if($home_Guildid29==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid29)
+		warp "home29",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid29);
+}
+
+
+
+morocc,239,171,4	script	warprhome30	45,1,1,{
+	if($home_Guildid30==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid30)
+		warp "home30",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid30);
+}
+
+
+morocc,239,183,4	script	warprhome31	45,1,1,{
+	if($home_Guildid31==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid31)
+		warp "home31",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid31);
+}
+
+
+morocc,239,195,4	script	warprhome32	45,1,1,{
+	if($home_Guildid32==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid32)
+		warp "home32",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid32);
+}
+morocc,239,207,4	script	warprhome33	45,1,1,{
+	if($home_Guildid33==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid33)
+		warp "home33",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid33);
+}
+
+
+morocc,239,219,4	script	warprhome34	45,1,1,{
+	if($home_Guildid34==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid34)
+		warp "home34",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid34);
+}
+
+
+
+morocc,80,219,4	script	warprhome35	45,1,1,{
+	if($home_Guildid35==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid35)
+		warp "home35",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid35);
+}
+
+
+
+morocc,80,207,4	script	warprhome36	45,1,1,{
+	if($home_Guildid36==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid36)
+		warp "home36",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid36);
+}
+
+
+morocc,80,195,4	script	warprhome37	45,1,1,{
+	if($home_Guildid37==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid37)
+		warp "home37",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid37);
+}
+
+
+morocc,80,183,4	script	warprhome38	45,1,1,{
+	if($home_Guildid38==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid38)
+		warp "home38",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid38);
+}
+
+
+morocc,80,171,4	script	warprhome39	45,1,1,{
+	if($home_Guildid39==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid39)
+		warp "home39",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid39);
+}
+
+
+morocc,80,159,4	script	warprhome40	45,1,1,{
+	if($home_Guildid40==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid40)
+		warp "home40",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid40);
+}
+
+
+morocc,80,147,4	script	warprhome41	45,1,1,{
+	if($home_Guildid41==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid41)
+		warp "home41",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid41);
+}
+
+
+morocc,80,135,4	script	warprhome42	45,1,1,{
+	if($home_Guildid42==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid42)
+		warp "home42",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid42);
+}
+
+
+morocc,80,123,4	script	warprhome43	45,1,1,{
+	if($home_Guildid43==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid43)
+		warp "home43",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid43);
+}
+
+
+morocc,89,123,4	script	warprhome44	45,1,1,{
+	if($home_Guildid44==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid44)
+		warp "home44",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid44);
+}
+
+
+morocc,89,135,4	script	warprhome45	45,1,1,{
+	if($home_Guildid45==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid45)
+		warp "home45",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid45);
+}
+
+
+morocc,89,147,4	script	warprhome46	45,1,1,{
+	if($home_Guildid46==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid46)
+		warp "home46",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid46);
+}
+
+
+morocc,89,159,4	script	warprhome47	45,1,1,{
+	if($home_Guildid47==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid47)
+		warp "home47",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid47);
+}
+
+
+morocc,89,171,4	script	warprhome48	45,1,1,{
+	if($home_Guildid48==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid48)
+		warp "home48",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid48);
+}
+
+morocc,89,183,4	script	warprhome49	45,1,1,{
+	if($home_Guildid49==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid49)
+		warp "home49",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid49);
+}
+
+morocc,89,195,4	script	warprhome50	45,1,1,{
+	if($home_Guildid50==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid50)
+		warp "home50",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid50);
+}
+
+morocc,89,207,4	script	warprhome51	45,1,1,{
+	if($home_Guildid51==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid51)
+		warp "home51",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid51);
+}
+
+morocc,89,219,4	script	warprhome52	45,1,1,{
+	if($home_Guildid52==0)
+		dispbottom "เข้าได้เฉพาะ Guild ที่เช่าเท่านั้น.";
+	else if(getcharid(2)==$home_Guildid52)
+		warp "home52",52,55;
+	else
+		dispbottom "บ้านหลังนี้เป็นของ Guild "+getguildname($home_Guildid52);
+}
+
+
+
+
+
+
+// warp out home
+home01,52,43,0	warp	hhhh250	1,1,morocc,125,243
+home02,52,43,0	warp	hhhh251	1,1,morocc,125,243
+home03,52,43,0	warp	hhhh252	1,1,morocc,125,243
+home04,52,43,0	warp	hhhh253	1,1,morocc,125,243
+home05,52,43,0	warp	hhhh254	1,1,morocc,125,243
+home06,52,43,0	warp	hhhh255	1,1,morocc,125,243
+home07,52,43,0	warp	hhhh256	1,1,morocc,125,243
+home08,52,43,0	warp	hhhh257	1,1,morocc,125,243
+
+home09,52,43,0	warp	hhhh258	1,1,morocc,193,243
+home10,52,43,0	warp	hhhh259	1,1,morocc,193,243
+home11,52,43,0	warp	hhhh260	1,1,morocc,193,243
+home12,52,43,0	warp	hhhh261	1,1,morocc,193,243
+home13,52,43,0	warp	hhhh262	1,1,morocc,193,243
+home14,52,43,0	warp	hhhh263	1,1,morocc,193,243
+home15,52,43,0	warp	hhhh264	1,1,morocc,193,243
+home16,52,43,0	warp	hhhh265	1,1,morocc,193,243
+
+home17,52,43,0	warp	hhhh266	1,1,morocc,235,178
+home18,52,43,0	warp	hhhh267	1,1,morocc,235,178
+home19,52,43,0	warp	hhhh268	1,1,morocc,235,178
+home20,52,43,0	warp	hhhh269	1,1,morocc,235,178
+home21,52,43,0	warp	hhhh270	1,1,morocc,235,178
+home22,52,43,0	warp	hhhh271	1,1,morocc,235,178
+home23,52,43,0	warp	hhhh272	1,1,morocc,235,178
+home24,52,43,0	warp	hhhh273	1,1,morocc,235,178
+home25,52,43,0	warp	hhhh274	1,1,morocc,235,178
+home26,52,43,0	warp	hhhh275	1,1,morocc,235,178
+home27,52,43,0	warp	hhhh276	1,1,morocc,235,178
+home28,52,43,0	warp	hhhh277	1,1,morocc,235,178
+home29,52,43,0	warp	hhhh278	1,1,morocc,235,178
+home30,52,43,0	warp	hhhh279	1,1,morocc,235,178
+home31,52,43,0	warp	hhhh280	1,1,morocc,235,178
+home32,52,43,0	warp	hhhh281	1,1,morocc,235,178
+home33,52,43,0	warp	hhhh282	1,1,morocc,235,178
+home34,52,43,0	warp	hhhh283	1,1,morocc,235,178
+
+home35,52,43,0	warp	hhhh284	1,1,morocc,85,165
+home36,52,43,0	warp	hhhh285	1,1,morocc,85,165
+home37,52,43,0	warp	hhhh286	1,1,morocc,85,165
+home38,52,43,0	warp	hhhh287	1,1,morocc,85,165
+home39,52,43,0	warp	hhhh288	1,1,morocc,85,165
+home40,52,43,0	warp	hhhh289	1,1,morocc,85,165
+home41,52,43,0	warp	hhhh290	1,1,morocc,85,165
+home42,52,43,0	warp	hhhh291	1,1,morocc,85,165
+home43,52,43,0	warp	hhhh292	1,1,morocc,85,165
+home44,52,43,0	warp	hhhh293	1,1,morocc,85,165
+home45,52,43,0	warp	hhhh294	1,1,morocc,85,165
+home46,52,43,0	warp	hhhh295	1,1,morocc,85,165
+home47,52,43,0	warp	hhhh296	1,1,morocc,85,165
+home48,52,43,0	warp	hhhh297	1,1,morocc,85,165
+home49,52,43,0	warp	hhhh298	1,1,morocc,85,165
+home50,52,43,0	warp	hhhh299	1,1,morocc,85,165
+home51,52,43,0	warp	hhhh300	1,1,morocc,85,165
+home52,52,43,0	warp	hhhh301	1,1,morocc,85,165
+
+// Emperium Home
+home01,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home02,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home03,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home04,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home05,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home06,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home07,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home08,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home09,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home10,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home11,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home12,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home13,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home14,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home15,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home16,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home17,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home18,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home19,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home20,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home21,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home22,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home23,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home24,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home25,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home26,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home27,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home28,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home29,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home30,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home31,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home32,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home33,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home34,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home35,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home36,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home37,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home38,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home39,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home40,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home41,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home42,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home43,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home44,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home45,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home46,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home47,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home48,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home49,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home50,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home51,38,52,0,0	monster	Emperium	3331,2,1000,0,0
+home52,38,52,0,0	monster	Emperium	3331,2,1000,0,0

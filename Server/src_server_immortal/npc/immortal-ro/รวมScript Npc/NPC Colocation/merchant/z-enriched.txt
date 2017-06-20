@@ -1,0 +1,127 @@
+//============================================================
+//www.Howcolo.com
+//============================================================
+
+god_town,135,78,6	script	บวก Elu & Ori เทพ	469,{
+	mes "[Special Refine]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "คุณต้องการตีบวกอะไรครับ";
+	next;
+	
+	setarray .@position$[1], "Head","Body","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head 2","Head 3";
+	set .@menu$,"";
+	for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+	{
+		if( getequipisequiped(.@i) )
+			set .@menu$, .@menu$ + .@position$[.@i] + "-" + "[" + getequipname(.@i) + "]";
+
+		set .@menu$, .@menu$ + ":";
+	}
+	set .@part,select(.@menu$);
+
+	if( !getequipisequiped(.@part) )
+		close;
+
+	if( !getequipisenableref(.@part) )
+	{
+		mes "[Special Refine]";
+		mes "Item นี้ไม่สามารถตีบวกได้ครับ";
+		close;
+	}
+	if( !getequipisidentify(.@part) )
+	{
+		mes "[Special Refine]";
+		mes "Item นี้ไม่สามารถตีบวกได้ครับ";
+		close;
+	}
+	if( getequiprefinerycnt(.@part) >= 10 )
+	{
+		mes "[Special Refine]";
+		mes "Item นี้ตีบวกถึงระดับสูงสุดแล้วครับ";
+		close;
+	}
+
+	// Make sure you have the neccessary items and Zeny to refine your items
+	// Determines chance of failure and verifies that you want to continue.
+	switch( getequipweaponlv(.@part) )
+	{
+		case 1: callsub S_RefineValidate,1,7620,50,.@part; break;
+		case 2: callsub S_RefineValidate,2,7620,200,.@part; break;
+		case 3: callsub S_RefineValidate,3,7620,5000,.@part; break;
+		case 4: callsub S_RefineValidate,4,7620,20000,.@part; break;
+		default: callsub S_RefineValidate,0,7619,2000,.@part; break;
+	}
+
+	if( getequippercentrefinery(.@part) > rand(100) || getequippercentrefinery(.@part) > rand(100) )
+	{
+		mes "[Special Refine]";
+		mes "แก๊ง!! แก๊ง!! แก๊ง!!";
+		SuccessRefItem .@part;
+		if (getequiprefinerycnt(.@part) >= 5) && (getequipweaponlv(.@part) == 0)
+		announce "[Special Refine] : คุณ "+ strcharinfo(0) +" ได้ตีบวก +"+ getequiprefinerycnt(.@part) +" "+ getequipname(.@part) +" ด้วย Enrich Elunium สำเร็จ !!",bc_all,0xFB5092;
+		next;
+		Emotion e_no1;
+		mes "[Special Refine]";
+		mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+		close;
+	}
+	else
+	{
+		mes "[Special Refine]";
+		mes "แก๊ง!! แก๊ง!! แก๊ง!!";
+		FailedRefItem .@part;
+		next;
+		if (rand(5) == 1)
+			Emotion e_cash;
+		else 
+			Emotion e_omg;
+		mes "[Special Refine]";
+		mes "ล้มเหลวครับ ยินดีให้บริการครับ";
+		close;
+	}
+
+S_RefineValidate:
+	mes "[Special Refine]";
+	if (getarg(0))
+	mes "อาวุธ Lv. " + getarg(0) + "";
+	mes "ต้องการ ^ff9999" + getitemname(getarg(1)) + "^000000";
+	mes "ต้องการ ^ff9999" + getarg(2) + "^000000 Zeny";
+	mes "คุณต้องการจะตีบวกเลยมั้ยครับ";
+	next;
+	if( select("^009933•^000000 ตีบวก:^FF0000•^000000 ยกเลิก") == 1 )
+	{
+		if( getequippercentrefinery(getarg(3)) < 100 )
+		{
+			mes "[Special Refine]";
+			mes "มีโอกาสล้มเหลวนะครับ";
+			mes "คุณต้องยืนยันที่จะตีบวกต่อครับ";
+			next;
+			if( select("^009933•^000000 ยืนยัน:^FF0000•^000000 ยกเลิก") == 2 )
+			{
+				mes "[Special Refine]";
+				mes "ยินดีให้บริการครับ";
+				close;
+			}
+		}
+		if( countitem(getarg(1)) > 0 && Zeny > getarg(2) )
+		{
+			delitem getarg(1), 1;
+			set Zeny, Zeny - getarg(2);
+			return;
+		}
+		else
+		{
+			mes "[Special Refine]";
+			mes "กรุณาตรวจสอบ Item ดังนี้ครับ";
+			mes "^FF0000" + getitemname(getarg(1)) + "^000000";
+			mes "^FF0000Zeny^000000";
+			close;
+		}
+	}
+	else
+	{
+		mes "[Special Refine]";
+		mes "ยินดีให้บริการครับ";
+		close;
+	}
+}

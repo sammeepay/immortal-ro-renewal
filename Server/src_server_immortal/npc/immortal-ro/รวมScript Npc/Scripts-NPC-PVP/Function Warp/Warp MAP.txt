@@ -1,0 +1,69 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+function	script	warpa	{
+
+menu
+"- ^FF0000ห้องรับรอง PVP^000000 [^0000FF R T C - R O ^000000]",warpa01,
+"- ^FF0000PVP Death Match^000000 [^0000FF R T C - R O ^000000]",warpa02,
+"- ^FF0000Zone กิจกรรม^000000 [^0000FF R T C - R O ^000000]",warpa03,
+"- ^FF0000Poring Slot^000000 [^0000FF R T C - R O ^000000]",warpa04,
+"- ^FF0000Cash Shop^000000 [^0000FF R T C - R O ^000000]",warpa05,
+"- ^FF0000ตลาดสด^000000 [^0000FF R T C - R O ^000000]",warpa06,
+"- ^FF0000ของแต่งตัวทั้งหมด^000000 [^0000FF R T C - R O ^000000]",warpa07,
+"- ^FF0000สถานที่ตีบวก^000000 [^0000FF R T C - R O ^000000]",warpa08,
+"- ^FF0000บ้านเช่า 1 - 60^000000 [^0000FF R T C - R O ^000000]",warpa09,
+"- ^FF0000ตกปลาพาเพลิน^000000 [^0000FF R T C - R O ^000000]",warpa10,
+"- ^FF0000กลับเมืองหลัก VK^000000 [^0000FF R T C - R O ^000000]",warpa11;
+
+warpa01:
+warp "pvp_y_room",78,60;
+close;
+
+warpa02:
+warp "pvp_y_1-2",0,0;
+close;
+
+warpa03:
+warp "rtc_ro",26,94;
+close;
+
+warpa04:
+warp "rtc_ro",169,21;
+close;
+
+warpa05:
+warp "rtc_ro",164,61;
+close;
+
+warpa06:
+warp "rtc_ro",167,91;
+close;
+
+warpa07:
+warp "rtc_ro",26,31;
+close;
+
+warpa08:
+warp "rtc_ro",12,71;
+close;
+
+warpa09:
+warp "rtc_ro",95,151;
+close;
+
+warpa10:
+warp "rtc_ro",138,23;
+close;
+
+warpa11:
+warp "rtc_ro",100,79;
+close;
+}

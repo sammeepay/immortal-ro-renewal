@@ -1,0 +1,98 @@
+//============ Instruction Novice ===========================================================================
+//=x คำแนะนำสำหรับผู้เริ่มต้น
+//============ Script by ===========================================================================
+//= MegaboyTop  (ห้ามนำเครดิตออกนะครับ)
+//============ Compatible With: ===========================================================================
+//= Any rAthena SVN
+//============ Version: =====================================
+//= 0.1 First Version
+//============ Description: ===========================================================================
+//=
+//=====================================================
+
+prontera,144,180,6	script	คำแนะนำ	857,{
+
+mes "[ ^0000FFพนักงานต้อนรับ^000000 ]";
+mes "สวัสดีท่าน ^800000"+strcharinfo(0)+"^000000";
+mes "^0000FFขณะนี้วันที่ : "+ gettimestr("%d/%m/%y",19) +" เวลา : "+ gettimestr("%H:%M",19) +"^000000";
+mes "...นี่เป็นคำแนะนำเบื้องต้นสำหรับผู้เล่นใหม่...";
+mes "^FF0000อ่านรายละเอียดหน้าต่อไปได้เลย^000000";
+next;
+menu
+"^FF0000•^000000 อัตราการดรอป",x401,
+"^FF0000•^000000 item ที่ได้จากกิลด์วอ",gvg402,
+"^FF0000•^000000 ไอเท็มดรอปราคาแพง",drop403,
+"^FF0000•^000000 วิธีลบตัวละคร",del404,
+"^009933•^000000 ยกเลิก",cal405;
+
+
+x401:
+mes "::คำแนะนำสำหรับผู้เริ่มต้น::";
+mes "::อัตราการดรอป::";
+mes "Exp: x50";
+mes "Job: x50";
+mes "Card: x10";
+mes "Etc.: x10";
+mes "Card Boss: เท่าTRO";
+mes "Card & Skill: ไม่มีการแบนใดๆทั้งสิ้น";
+mes "อัตราการตีบวก: เท่าTRO";
+close;
+
+
+gvg402:
+mes "^FF0000::item ที่ได้จากกิลด์วอ::^0000FF";
+mes "เงิน 36m";
+mes "ยาแอส 10กล่อง";
+mes "ยาปา 10กล่อง";
+mes "ไม้บอส 10อัน";
+mes "กล่อง tcg card (100ใบ) 5กล่อง";
+close;
+
+
+drop403:
+mes "^FF0000::ขยะแพง ราคา 3000::^0000FF";
+mes "Cyfar (ไซฟาร์)";
+mes "Brigan (แร่สีแดง)";
+mes "Zargon (ซาก้อน)";
+mes "Worn Out Prison Uniform (เสื้อคนคุก)";
+mes "Tongue (ลิ้น)";
+mes "Fin (ครีบปลา)";
+mes "Sticky Mucus (...)";
+mes "Skel-Bone (กระดูก)";
+mes "Rotten Bandage (ผ้าคนคุก)";
+mes "Ogre Tooth (ฟันของออค)";
+mes "Nose Ring (ห่วงคล้องจมูก)";
+close;
+
+
+del404:
+mes "^FF0000::วิธีลบตัวละคร::^0000FF";
+mes "ให้กด delete ตัวที่จะลบ 1ครั้งแล้ว แล้วเลื่อนไปช่องตัวละครอื่น1ครั้ง แล้วเลื่อนกลับมาตัวละครที่จะลบ";
+mes "จากนั้นก็กดลบได้เลย โดยใส่เลข 0 ทั้งหมด 8ตัว";
+mes "หากผู้เล่นท่านใด มีปัญหา พบ Bug กรุณาแจ้ง Admin_iBerry เท่านั้น";
+close;
+
+
+cal405:
+mes "^FF0000::ขอให้ผู้เล่นทุกท่านจงโชคดี::^0000FF";
+mes "^FF0000::By Admin_iBerry::^0000FF";
+close;
+
+OnInit:
+waitingroom "คำแนะนำสำหรับผู้เริ่มต้น",0;
+end;
+}
+
+Coliseum,104,105,5	duplicate(คำแนะนำ)	คำแนะนำ#2	857
+
+Coliseum	mapflag	nowarpto
+Coliseum	mapflag	noteleport
+Coliseum	mapflag	nosave	SavePoint
+Coliseum	mapflag	nomemo
+Coliseum	mapflag	nowarp
+Coliseum	mapflag	noreturn
+Coliseum	mapflag	nobranch
+Coliseum	mapflag	noicewall
+Coliseum	mapflag	noskill
+Coliseum	mapflag	monster_noteleport
+Coliseum	mapflag	nopenalty

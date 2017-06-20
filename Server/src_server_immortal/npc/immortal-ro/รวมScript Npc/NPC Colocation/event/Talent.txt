@@ -1,0 +1,419 @@
+c5,208,75,4	script	Talent Match	998,{
+
+if($Open_Dun_talent==1){end;}
+mes "[Talent Match Guard]";
+	mes "สวัสดีครับ ท่านผู้กล้า";
+	mes "ต้องการเข้าร่วมกิจกรรมมั้ยครับ";
+next; 
+menu "^009933•^000000 ต้องการ",-,"^FF0000•^000000 รายละเอียด",Info,"^FF0000•^000000 ยกเลิก",Cancel;
+
+if(Baselevel < 95) goto LReq; 
+if($inf1 == 1) goto L_go; 
+goto L_eror; 
+
+LReq: 
+mes "[Talent Match Guard]"; 
+mes "ท่านต้องมี Lv. มากว่า 80 ครับ"; 
+close; 
+end;
+
+L_go:  
+announce "[ Talent Match ] : ท่าน "+strcharinfo(0)+" ได้เข้าร่วมกิจกรรม Talent Match แล้ว !!",0,0x8A2BE2; 
+percentheal 100,100; 
+warp "force_1-3",100,185; 
+end; 
+
+L_eror: 
+mes "[Talent Match Guard]"; 
+	mes "ยังไม่ถึงเวลากิจกรรมครับ";
+	mes "กิจกรรมจะเปิดทุก 4 ชม. ครับ";
+close; 
+end;
+
+Info: 
+mes "[Talent Match Guard]"; 
+	mes "ไม่มีผู้ใดรู้รายละเอียดเลยครับ";
+	mes "เพราะไม่เคยมีผู้ใดรอดกลับมาครับ";
+close; 
+end; 
+
+
+Cancel: 
+mes "[Talent Match Guard]"; 
+	mes "ยินดีให้บริการครับ";
+close; 
+end;
+
+OnInit:
+	waitingroom " ๐ Talent  ๐ ",0;
+end;
+} 
+
+////End Of Devil Square Entrance 
+
+
+ordeal_1-1,182,183,5	script	TalMa	-1,{ 
+if($Open_Dun_talent==1){end;}
+OnTimer30000: 
+if (getmapusers("force_1-3") == 0){
+disablenpc "AtoB";disablenpc "BtoC";disablenpc "CtoD";disablenpc "DtoE";disablenpc "EtoF";disablenpc "FtoG";disablenpc "GtoH";disablenpc "keyD";disablenpc "GOD";
+}
+if (getmapusers("force_1-3") == 0) Announce "[ Talent Match ] : กิจกรรมได้จบลงแล้ว !!",0,0x8A2BE2; 
+if (getmapusers("force_1-3") == 0) set $status,1; 
+if (getmapusers("force_1-3") == 0) killmonsterall "force_1-3"; 
+if (getmapusers("force_1-3") == 0) end; 
+//Announce "",0,0x9966FF;
+initnpctimer; 
+end; 
+
+OnInit:setnpctimer 0;stopnpctimer;end;
+
+} 
+
+force_1-3,100,185,5	script	HiddenTalMa	-1,{ 
+if($Open_Dun_talent==1){end;}
+OnClock0100:
+OnClock0500:
+OnClock0900:
+OnClock1300:
+OnClock1700:
+OnClock2100:
+Announce "[ Talent Match ] : กิจกรรมกำลังจะเปิดใน 5 นาที !!",0,0x8A2BE2;
+disablenpc "AtoB";disablenpc "BtoC";disablenpc "CtoD";disablenpc "DtoE";disablenpc "EtoF";disablenpc "FtoG";disablenpc "GtoH";disablenpc "keyD";disablenpc "GOD";
+initnpctimer; 
+set $inf1,1; 
+set $status,0; 
+killmonsterall "force_1-3"; 
+end; 
+
+OnTimer60000: 
+Announce "[ Talent Match ] : กิจกรรมกำลังจะเปิดใน 4 นาที !!",0,0x8A2BE2; 
+end; 
+
+OnTimer120000: 
+Announce "[ Talent Match ] : กิจกรรมกำลังจะเปิดใน 3 นาที !!",0,0x8A2BE2;
+end; 
+
+OnTimer180000: 
+Announce "[ Talent Match ] : กิจกรรมกำลังจะเปิดใน 2 นาที !!",0,0x8A2BE2;
+end; 
+
+OnTimer240000: 
+Announce "[ Talent Match ] : กิจกรรมกำลังจะเปิดใน 1 นาที !!",0,0x8A2BE2;
+end; 
+
+OnTimer300000:
+Announce "[ Talent Match ] : กิจกรรมได้เริ่มต้นขึ้นแล้ว !!",0,0x8A2BE2;
+initnpctimer "TalMa";
+setnpctimer 0;
+stopnpctimer;
+set $cankeyd,0;
+set $inf1,0; 
+set $mob,10; 
+areamonster "force_1-3",106,189,107,190,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",100,184,101,185,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",96,186,97,187,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",93,182,94,183,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",96,177,97,178,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",109,177,110,178,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",114,182,115,183,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",97,189,98,190,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",87,178,88,179,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3",102,187,103,188,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+end;
+
+OnA: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 5) goto a1;
+if($mob == 0) goto a2; 
+end;
+
+a1: 
+mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+end; 
+
+a2: 
+mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+goto B;
+end; 
+
+B:
+enablenpc "AtoB";
+monster "force_1-3",100,186,"Treasure Box",1325,1,"HiddenTalMa::OnboxA";
+set $mob,15;
+monster "force_1-3",99,137,"หนอนดิน",1127,10,"HiddenTalMa::OnB";
+monster "force_1-3",99,137,"ทรายโหด",1165,5,"HiddenTalMa::OnB";
+end;  
+
+OnB: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 8) goto b1; 
+if($mob == 0) goto b3;  
+end; 
+
+b1: 
+mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+end; 
+
+b3: 
+mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00; 
+monster "force_1-3",99,137,"[BOSS]",1159,1,"HiddenTalMa::OnB1";
+goto C;
+end; 
+
+OnB1:
+monster "force_1-3",105,137,"Treasure Box",1325,1,"HiddenTalMa::OnboxB";
+end;
+
+C:
+disablenpc "AtoB";
+monster "force_1-3",100,185,"Hero",1708,2,"HiddenTalMa::OnDeadSure";
+enablenpc "BtoC";
+set $mob,44;
+monster "force_1-3",86,103,"ผู้คุมห้อง",1285,2,"HiddenTalMa::OnC";
+monster "force_1-3",86,97,"ผู้คุมห้อง",1285,2,"HiddenTalMa::OnC";
+monster "force_1-3",73,100,"มนุษย์โครงเหล็ก",1276,20,"HiddenTalMa::OnC";
+monster "force_1-3",54,100,"มนุษย์โครงเหล็ก",1163,20,"HiddenTalMa::OnC";
+end;  
+
+OnC: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 40) mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+monster "force_1-3",99,137,"Hero",1708,2,"HiddenTalMa::OnDeadSure";
+if($mob == 20) mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00; 
+if($mob == 0) goto c5; 
+end;
+
+c5: 
+mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+goto D;
+end;
+D:
+disablenpc "BtoC";
+enablenpc "CtoD";
+enablenpc "keyD";
+monster "force_1-3",60,100,"Treasure Box",1329,1,"HiddenTalMa::OnboxC";
+monster "force_1-3",52,105,"Treasure Box",1331,1,"HiddenTalMa::OnboxC";
+monster "force_1-3",52,92,"Treasure Box",1333,1,"HiddenTalMa::OnboxC";
+monster "force_1-3",66,92,"Treasure Box",1335,1,"HiddenTalMa::OnboxC";
+monster "force_1-3",66,106,"Treasure Box",1337,1,"HiddenTalMa::OnboxC";
+set $mob,40;
+monster "force_1-3",16,136,"มัมมี่",1297,5,"HiddenTalMa::OnD";
+monster "force_1-3",23,136,"มัมมี่",1297,5,"HiddenTalMa::OnD";
+monster "force_1-3",20,132,"มัมมี่ผู้กำกุญแจ",1297,1,"HiddenTalMa::OnD1";
+end;  
+
+D2:
+monster "force_1-3",15,104,"???",1268,5,"HiddenTalMa::OnD";
+monster "force_1-3",24,104,"???",1208,15,"HiddenTalMa::OnD";
+monster "force_1-3",24,96,"???",1219,5,"HiddenTalMa::OnD";
+monster "force_1-3",15,96,"???",1197,15,"HiddenTalMa::OnD";
+end;
+
+OnD1:
+getitem 7026,1;//Key 1 ea
+end;
+
+OnD: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 25) {mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00; disablenpc "CtoD";
+monster "force_1-3",54,100,"Hero",1708,2,"HiddenTalMa::OnDeadSure";goto D2;}
+if($mob == 15) mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+if($mob == 0) {set $cankeyd,1;mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00; goto E;}
+end;
+
+E:
+monster "force_1-3",16,103,"Treasure Box",1339,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",23,103,"Treasure Box",1341,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",21,103,"Treasure Box",1343,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",18,103,"Treasure Box",1345,1,"HiddenTalMa::OnboxA";
+set $mob,45;
+monster "force_1-3",41,60,"เทพ",1412,15,"HiddenTalMa::OnE";
+monster "force_1-3",32,60,"มาร",1504,15,"HiddenTalMa::OnE";
+monster "force_1-3",48,60,"สัตว์",1037,15,"HiddenTalMa::OnE";
+monster "force_1-3",65,58,"มนุษย์",1638,1,"HiddenTalMa::OnboxB";
+monster "force_1-3",65,58,"มนุษย์",1634,1,"HiddenTalMa::OnboxB";
+monster "force_1-3",65,58,"มนุษย์",1635,1,"HiddenTalMa::OnboxB";
+end;
+
+OnE: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 25) mapannounce "force_1-3","[ Modern-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+if($mob == 0) {mapannounce "force_1-3","[ Modern-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00; goto F;}
+end;
+
+F:
+enablenpc "EtoF";
+monster "force_1-3",18,60,"Treasure Box",1347,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",15,60,"Treasure Box",1349,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",21,60,"Treasure Box",1349,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",24,60,"Treasure Box",1353,1,"HiddenTalMa::OnboxA";
+set $mob,46;
+monster "force_1-3",99,61,"Hero",1639,1,"HiddenTalMa::OnF";
+monster "force_1-3",100,16,"อ่อนแอ",1725,1,"HiddenTalMa::OnDeadSure";
+monster "force_1-3",100,16,"Hero",1725,9,"HiddenTalMa::OnF1";
+end;
+
+OnDeadSure:
+monster "force_1-3",100,20,"Hero",1708,2,"HiddenTalMa::OnDeadSure";
+end;
+
+OnF1:
+monster "force_1-3",100,61,"Hero",1693,2,"HiddenTalMa::OnF";
+monster "force_1-3",100,61,"Hero",1694,2,"HiddenTalMa::OnF";
+monster "force_1-3",100,61,"Hero",1698,1,"HiddenTalMa::OnF";
+monster "force_1-3",100,61,"Hero",1701,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",100,61,"Hero",1702,1,"HiddenTalMa::OnboxA";
+end;
+
+OnF: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 30) mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+if($mob == 0) {mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00; goto G;}
+end;
+
+G:
+enablenpc "FtoG";
+set $mob,9;
+monster "force_1-3",138,20,"Hero",1634,1,"HiddenTalMa::OnG";
+monster "force_1-3",161,20,"Hero",1634,1,"HiddenTalMa::OnG";
+monster "force_1-3",185,20,"Hero",1634,1,"HiddenTalMa::OnG";
+monster "force_1-3",185,20,"Hero",1635,1,"HiddenTalMa::OnG";
+monster "force_1-3",185,20,"Hero",1636,2,"HiddenTalMa::OnG";
+monster "force_1-3",185,20,"Hero",1637,2,"HiddenTalMa::OnG";
+monster "force_1-3",185,20,"Hero",1638,1,"HiddenTalMa::OnG";
+end;
+
+OnG: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 5) mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00;
+if($mob == 0) {mapannounce "force_1-3","[ JuTi-Ro ] : มาสนุกด้วยกันนะครับ",bc_map,0xFFFF00; goto H;}
+end;
+
+H:
+enablenpc "GOD";
+enablenpc "GtoH";
+monster "force_1-3",186,24,"Treasure Box",1355,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",186,15,"Treasure Box",1357,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",174,15,"Treasure Box",1359,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",174,24,"Treasure Box",1361,1,"HiddenTalMa::OnboxA";
+monster "force_1-3",179,19,"Treasure Box",1363,1,"HiddenTalMa::OnboxB";
+monster "force_1-3",18,180,"จุติ",1726,10,"HiddenTalMa::OnDeadSureSure";
+monster "force_1-3",24,174,"Treasure Box",1325,1,"HiddenTalMa::OnboxAB";
+monster "force_1-3",21,174,"Treasure Box",1325,1,"HiddenTalMa::OnboxAB";
+monster "force_1-3",17,174,"Treasure Box",1329,1,"HiddenTalMa::OnboxAB";
+monster "force_1-3",14,174,"Treasure Box",1331,1,"HiddenTalMa::OnboxAB";
+end;
+
+OnDeadSureSure:
+monster "force_1-3",18,180,"Hero",1708,1,"HiddenTalMa::OnDeadSure1";
+end;
+
+OnDeadSureSure1:
+getitem 607,50;
+getitem 7227,3;
+end;
+
+OnboxA: 
+getitem 607,20;
+getitem 7227,3;
+end;
+
+OnboxB: 
+getitem 607,20;
+getitem 7227,3;
+
+end;
+OnboxC: 
+getitem 607,20;
+getitem 7227,3;
+end;
+
+OnboxAB: 
+Announce "[ Talent Match ] : ท่าน " + strcharinfo(0) +" ได้เปิดกล่องสมบัติ Talent Match แล้ว !!",0,0x8A2BE2;
+getitem 607,20;
+getitem 7227,3;
+end;
+
+OnInit:setnpctimer 0;stopnpctimer;end;
+
+} 
+
+// -- Mapflags 
+force_1-3	mapflag	nowarp 
+force_1-3	mapflag	nowarpto 
+force_1-3	mapflag	noteleport 
+force_1-3	mapflag	nosave	SavePoint 
+force_1-3	mapflag	nomemo 
+force_1-3	mapflag	nobranch 
+force_1-3	mapflag	nopenalty 
+force_1-3	mapflag	noreturn
+
+force_1-3,19,100,5	script	keyD	735,{  
+mes "[Talent Match]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "ใช้กุญแจ 1 ดอกเพื่อไปต่อครับ";
+next;
+menu "ตกลง",-,"ยกเลิก",waititem;
+if (countitem(7026) < 1) goto noitem;
+if($cankeyd==0){goto nokeyd;}
+next;
+delitem 7026,1;
+enablenpc "DtoE";
+close; 
+
+waititem:
+mes "[Talent Match]";
+mes "ยินดีให้บริการครับ";
+close;
+
+noitem:
+mes "[Talent Match]";
+mes "ยินดีให้บริการครับ";
+close;
+
+nokeyd:
+mes "[Talent Match]";
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+force_1-3,99,164,5	script	AtoB	735,{  
+warp "force_1-3",100,147; 
+close; 
+}
+force_1-3,99,128,5	script	BtoC	735,{  
+warp "force_1-3",109,99; 
+close; 
+}
+force_1-3,59,109,5	script	CtoD	735,{  
+warp "force_1-3",20,147; 
+close; 
+}
+force_1-3,19,90,5	script	DtoE	735,{  
+warp "force_1-3",19,69; 
+close; 
+}
+force_1-3,69,60,5	script	EtoF	735,{  
+warp "force_1-3",99,69; 
+close; 
+}
+force_1-3,109,19,5	script	FtoG	735,{  
+warp "force_1-3",130,20; 
+close; 
+}
+force_1-3,180,29,5	script	GtoH	735,{  
+warp "force_1-3",20,189; 
+close; 
+}
+
+
+
+//Credit VanNovA

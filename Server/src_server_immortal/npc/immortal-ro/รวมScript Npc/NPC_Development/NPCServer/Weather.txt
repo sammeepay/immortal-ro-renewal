@@ -1,0 +1,63 @@
+//===================================================================
+// NPC : Weather Effect + Day & Night
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+// If you want to stop all weather effects
+// Use this command " @clearweather "
+
+-	script	WeatherServer	-1,{
+OnInit:
+OnClock0600:
+OnClock1200:
+OnClock1800:
+OnClock0000:
+
+set .@hr, gettime(3);
+
+if(.@hr >= 6 && .@hr < 12) goto morning ;
+if(.@hr >= 12 && .@hr < 18) goto afternoon ;
+if(.@hr >= 18 && .@hr < 24) goto evening ;
+if(.@hr >= 0 && .@hr < 6) goto dawn ;
+end;
+
+
+
+morning:
+day;
+setmapflag "rachel.gat",mf_sakura;
+removemapflag "rachel.gat",mf_leaves;
+removemapflag "rachel.gat",mf_snow;
+removemapflag "rachel.gat",mf_clouds;
+end;
+
+
+
+afternoon:
+day;
+setmapflag "rachel.gat",mf_leaves;
+removemapflag "rachel.gat",mf_sakura;
+removemapflag "rachel.gat",mf_snow;
+removemapflag "rachel.gat",mf_clouds;
+end;
+
+
+
+evening:
+night;
+setmapflag "rachel.gat",mf_snow;
+removemapflag "rachel.gat",mf_leaves;
+removemapflag "rachel.gat",mf_sakura;
+removemapflag "rachel.gat",mf_clouds;
+end;
+
+
+
+dawn:
+night;
+setmapflag "rachel.gat",mf_clouds;
+removemapflag "rachel.gat",mf_leaves;
+removemapflag "rachel.gat",mf_sakura;
+removemapflag "rachel.gat",mf_snow;
+end;
+}

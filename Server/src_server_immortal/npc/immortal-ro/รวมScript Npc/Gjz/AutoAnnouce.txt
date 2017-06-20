@@ -1,0 +1,32 @@
+-	script	AutoAnnouces	-1,{
+OnMinute01:
+Announce "Server : ยินดีต้อนรับสู่ [ Server "+$@S_Name$+" ] เก็บเลเวล 99/70 ไม่โกง ไม่เส้น ถาวร.",8,0xF8A5BF;
+end;
+OnMinute11:
+Announce "MvP Easy : แม๊พรวม MvP Easy เกิดทุกๆ 30 นาทีหลังจากตาย ( ยกเว้น แม๊พ จริง )",8,0xF8A5BF;
+end;
+OnMinute12:
+Announce "MvP Hard : แม๊พรวม MvP Hard เกิดทุกๆ 1 ชั่วโมง 30 นาที หลังจากตาย ( ยกเว้น แม๊พ จริง )",8,0xF8A5BF;
+end;
+OnMinute13:
+Announce "Server : TCG Card สามารถกดใช้ได้ คุณจะได้รับ 1 CashPoint ดรอปจาก MvP ทุกตัว",8,0xF8A5BF;
+end;
+OnMinute21:
+Announce "Guildwars : เวลากิลด์วอล์ทุกวัน [ "+$@S_GUILDWAR$+" ]",8,0xF8A5BF;
+end;
+OnMinute31:
+Announce "Server : เวลาให้บริการ [ "+$@S_TIME$+" ]",8,0xF8A5BF;
+end;
+OnMinute32:
+Announce "Server : เลขกระทู้ประมูล [ "+$@S_KATOO$+" ]",8,0xF8A5BF;
+end;
+OnMinute33:
+Announce "Server : เว็บเซิฟเวอร์ [ "+$@S_WebServer$+" ]",8,0xF8A5BF;
+end;
+OnMinute41:
+Announce "Contact : ติดต่อ GM ได้ที่ : [ "+$@S_Email$+" / "+$@S_TEL$+" ]",8,0xF8A5BF;
+end;
+OnMinute51:
+Announce "Server : ช่วยกันโปรโมทเซิฟเวอร์หน่อยนะครับ",8,0xF8A5BF;
+end;
+}

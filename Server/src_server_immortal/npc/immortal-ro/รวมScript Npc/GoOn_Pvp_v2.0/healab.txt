@@ -1,0 +1,23 @@
+guild_vs3.gat,30,30,9 script AB 788,{
+emotion 21; 
+percentheal 100,100; 
+sc_start 30,180000,10; 
+sc_start 32,180000,10; 
+sc_start 29,180000,10; 
+sc_start 39,180000,10; 
+sc_start 40,180000,10; 
+sc_start 41,180000,10; 
+close; 
+}
+
+guild_vs3.gat,69,69,9 script AB 788,{
+emotion 21; 
+percentheal 100,100; 
+sc_start 30,180000,10; 
+sc_start 32,180000,10; 
+sc_start 29,180000,10; 
+sc_start 39,180000,10; 
+sc_start 40,180000,10; 
+sc_start 41,180000,10; 
+close; 
+}

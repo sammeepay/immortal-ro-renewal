@@ -1,0 +1,60 @@
+-	script	WARTIME02	-1,{
+OnGVGSTART:
+AgitStart3;
+Announce "Guild Vs Guild : นอกรอบได้เริ่มขึ้นแล้ว",8;
+sleep2 2000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 59 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 58 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 57 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 56 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 55 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 54 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 53 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 52 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 51 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เหลือเวลาอีก 59 นาที 50 วินาที",8;
+sleep2 1000;
+Announce "Guild Vs Guild : เวลาจะนับถอยหลังไปเรื่อยๆจนกว่าจะครบ 1 ชั่วโมง !!",8;
+
+sleep2 3528000;
+set .roundoff_msg, 60;
+set .timemsg, 0;
+set .timeset, 60;
+initnpctimer;
+end;
+
+OnTimer1000:
+if(.timemsg >= .roundoff_msg){
+Announce "Guild Vs Guild : นอกรอบได้สิ้นสุดลงแล้ว",8;
+stopnpctimer;
+AgitEnd3;
+
+end;
+} else {
+set .timemsg, .timemsg+1;
+set .timeset, .timeset-1;
+Announce "Guild Vs Guild : เหลือเวลาอีก "+.timeset+" วินาที",8;
+stopnpctimer;
+initnpctimer;
+}
+end;
+}
+
+-	script	war	-1,{
+OnWhisperGlobal:
+if(getgmlevel() < 99) end;
+if(@whispervar0$ == "1")
+donpcevent "WARTIME02::OnGVGSTART";
+end;
+OnInit:
+end;
+}

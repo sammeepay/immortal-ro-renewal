@@ -1,0 +1,635 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+prt_are01,131,168,4	script	Beast Vincento	2706,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Robe 1%^000000";
+mes "^FF6633Bison Horn 3%^000000";
+next;
+menu "[ ^F00000pay_fild09^000000 ] | ผู้ล่า ["+getmapusers("pay_fild09")+"] คน",A1;
+A1:
+warp "pay_fild09",201,224;
+close;
+OnInit: 
+waitingroom "• Beast Vincento •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,137,168,4	script	Captain Skull	2708,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Lucius's Fierce  of Volcano 1%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+next;
+menu "[ ^F00000cmd_fild07^000000 ] | ผู้ล่า ["+getmapusers("cmd_fild07")+"] คน",A1;
+A1:
+warp "cmd_fild07",234,177;
+close;
+OnInit: 
+waitingroom "• Captain Skull •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,143,168,4	script	Cherry Blue	2709,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Meteo Plate Armor 3%^000000";
+mes "^FF6633Diabolus Boots 1%^000000";
+next;
+menu "[ ^F00000c_tower1^000000 ] | ผู้ล่า ["+getmapusers("c_tower1")+"] คน",A1;
+A1:
+warp "c_tower1",199,159;
+close;
+OnInit: 
+waitingroom "• Cherry Blue •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,155,168,4	script	Guardian Angel	2710,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+mes "^FF6633Valkyrian Armor 1%^000000";
+mes "^FF6633Valkyrian Manteau 1%^000000";
+next;
+menu "[ ^F00000odin_tem01^000000 ] | ผู้ล่า ["+getmapusers("odin_tem01")+"] คน",A1;
+A1:
+warp "odin_tem01",298,167;
+close;
+OnInit: 
+waitingroom "• Guardian Angel •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,161,168,4	script	Crown Zero	2712,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Bison Horn 3%^000000";
+mes "^FF6633Bazerald 1%^000000";
+next;
+menu "[ ^F00000ayo_dun02^000000 ] | ผู้ล่า ["+getmapusers("ayo_dun02")+"] คน",A1;
+A1:
+warp "ayo_dun02",150,16;
+close;
+OnInit: 
+waitingroom "• Crown Zero •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,167,168,4	script	Cyan Satan	2713,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Robe 1%^000000";
+mes "^FF6633Diabolus Boots 1%^000000";
+mes "^FF6633Diabolus Manteau 1%^000000";
+next;
+menu "[ ^F00000moc_fild21^000000 ] | ผู้ล่า ["+getmapusers("moc_fild21")+"] คน",A1;
+A1:
+warp "moc_fild21",0,0;
+close;
+OnInit: 
+waitingroom "• Cyan Satan •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,131,163,4	script	Daehyon	2715,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Robe 1%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+mes "^FF6633Steamed Desert Scorpions 20%^000000";
+next;
+menu "[ ^F00000ayo_fild01^000000 ] | ผู้ล่า ["+getmapusers("ayo_fild01")+"] คน",A1;
+A1:
+warp "ayo_fild01",0,0;
+close;
+OnInit: 
+waitingroom "• Daehyon •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,137,163,4	script	Dancer Isabelle	2717,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Bison Horn 3%^000000";
+mes "^FF6633Lucius's Fierce  of Volcano 1%^000000";
+next;
+menu "[ ^F00000ayo_fild01^000000 ] | ผู้ล่า ["+getmapusers("ayo_fild01")+"] คน",A1;
+A1:
+warp "ayo_fild01",0,0;
+close;
+OnInit: 
+waitingroom "• Dancer Isabelle •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,143,163,4	script	Dark Hollow	2719,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Ring 1%^000000";
+mes "^FF6633Variant Shoes 1%^000000";
+mes "^FF6633Assassin Dagger 1%^000000";
+next;
+menu "[ ^F00000odin_tem02^000000 ] | ผู้ล่า ["+getmapusers("odin_tem02")+"] คน",A1;
+A1:
+warp "odin_tem02",224,149;
+close;
+OnInit: 
+waitingroom "• Dark Hollow •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,155,163,4	script	Diablo Baphomet	2723,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Boots 1%^000000";
+mes "^FF6633Diabolus Manteau 1%^000000";
+next;
+menu "[ ^F00000ra_fild05^000000 ] | ผู้ล่า ["+getmapusers("ra_fild05")+"] คน",A1;
+A1:
+warp "ra_fild05",225,202;
+close;
+OnInit: 
+waitingroom "• Diablo Baphomet •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,161,163,4	script	Elf Men	2726,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Valkyrian Armor 1%^000000";
+mes "^FF6633Combat Knife 0.50%^000000";
+mes "^FF6633Orleans's Glove 0.50%^000000";
+next;
+menu "[ ^F00000um_fild01^000000 ] | ผู้ล่า ["+getmapusers("um_fild01")+"] คน",A1;
+A1:
+warp "um_fild01",217,206;
+close;
+OnInit: 
+waitingroom "• Elf Men •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,167,163,4	script	Fabilsag	2729,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Bison Horn 3%^000000";
+mes "^FF6633Diabolus Armor 1%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+next;
+menu "[ ^F00000beach_dun3^000000 ] | ผู้ล่า ["+getmapusers("beach_dun3")+"] คน",A1;
+A1:
+warp "beach_dun3",23,260;
+close;
+OnInit: 
+waitingroom "• Fabilsag •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,131,158,4	script	Fight Man	2730,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+mes "^FF6633Valkyrian Armor 1%^000000";
+mes "^FF6633Valkyrian Manteau 1%^000000";
+next;
+menu "[ ^F00000mag_dun02^000000 ] | ผู้ล่า ["+getmapusers("mag_dun02")+"] คน",A1;
+A1:
+warp "mag_dun02",47,30;
+close;
+OnInit: 
+waitingroom "• Fight Man •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,137,158,4	script	Gentle Sting	2735,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Orleans's Glove 0.50%^000000";
+mes "^FF6633Bison Horn 4%^000000";
+mes "^FF6633Diabolus Ring 1%^000000";
+next;
+menu "[ ^F00000gon_dun03^000000 ] | ผู้ล่า ["+getmapusers("gon_dun03")+"] คน",A1;
+A1:
+warp "gon_dun03",68,12;
+close;
+OnInit: 
+waitingroom "• Gentle Sting •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,143,158,4	script	Kraken	2750,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Sniping Suit 3%^000000";
+next;
+menu "[ ^F00000iz_dun04^000000 ] | ผู้ล่า ["+getmapusers("iz_dun04")+"] คน",A1;
+A1:
+warp "iz_dun04",26,30;
+close;
+OnInit: 
+waitingroom "• Kraken •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,155,158,4	script	Larva	2751,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Saphien's Armor of Ocean 1%^000000";
+mes "^FF6633Meteo Plate Armor 3%^000000";
+next;
+menu "[ ^F00000gef_fild07^000000 ] | ผู้ล่า ["+getmapusers("gef_fild07")+"] คน",A1;
+A1:
+warp "gef_fild07",195,191;
+close;
+OnInit: 
+waitingroom "• Larva •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,161,158,4	script	Madame Chiffon	2753,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Ring Of Flame Lord 1%^000000";
+mes "^FF6633Ring Of Resonance 1%^000000";
+mes "^FF6633Lucius's Fierce  of Volcano 1%^000000";
+next;
+menu "[ ^F00000ra_fild06^000000 ] | ผู้ล่า ["+getmapusers("ra_fild06")+"] คน",A1;
+A1:
+warp "ra_fild06",202,214;
+close;
+OnInit: 
+waitingroom "• Madame Chiffon •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,167,158,4	script	Maiden Ghost	2755,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Boots 1%^000000";
+mes "^FF6633Meteo Plate Armor 4^000000";
+next;
+menu "[ ^F00000orcsdun01^000000 ] | ผู้ล่า ["+getmapusers("orcsdun01")+"] คน",A1;
+A1:
+warp "orcsdun01",32,170;
+close;
+OnInit: 
+waitingroom "• Maiden Ghost •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,131,152,4	script	Mikijung	2763,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Sniping Suit 3%^000000";
+next;
+menu "[ ^F00000gef_dun03^000000 ] | ผู้ล่า ["+getmapusers("gef_dun03")+"] คน",A1;
+A1:
+warp "gef_dun03",203,200;
+close;
+OnInit: 
+waitingroom "• Mikijung •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,137,152,4	script	Office Killer	2769,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+mes "^FF6633Meteo Plate Armor 4^000000";
+next;
+menu "[ ^F00000iz_dun04^000000 ] | ผู้ล่า ["+getmapusers("iz_dun04")+"] คน",A1;
+A1:
+warp "iz_dun04",26,30;
+close;
+OnInit: 
+waitingroom "• Office Killer •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,143,152,4	script	Okto	2770,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Bison Horn 4^000000";
+mes "^FF6633Diabolus Robe 1%^000000";
+next;
+menu "[ ^F00000gef_dun02^000000 ] | ผู้ล่า ["+getmapusers("gef_dun02")+"] คน",A1;
+A1:
+warp "gef_dun02",106,132;
+close;
+OnInit: 
+waitingroom "• Okto •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,155,152,4	script	Phoenix	2772,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Combat Knife 0.50%^000000";
+mes "^FF6633Bison Horn 3%^000000";
+mes "^FF6633Evolved majestic Goat 1%^000000";
+next;
+menu "[ ^F00000c_tower4^000000 ] | ผู้ล่า ["+getmapusers("c_tower4")+"] คน",A1;
+A1:
+warp "c_tower4",56,155;
+close;
+OnInit: 
+waitingroom "• Old beelzebub •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,161,152,4	script	Queen Mummy	2777,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%000000";
+mes "^FF6633Bazerald 4%000";
+mes "^FF6633Diabolus Boots 1%^000000";
+mes "^FF6633Dragon Breath Cocktail 9%^000000";
+next;
+menu "[ ^F00000in_sphinx4^000000 ] | ผู้ล่า ["+getmapusers("in_sphinx4")+"] คน",A1;
+A1:
+warp "in_sphinx4",10,222;
+close;
+OnInit: 
+waitingroom "• Queen Mummy •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,167,152,4	script	Santagirl	2779,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Bison Horn 3%^000000";
+mes "^FF6633Orleans's Glove 0.50%^000000";
+next;
+menu "[ ^F00000xmas_dun01^000000 ] | ผู้ล่า ["+getmapusers("xmas_dun01")+"] คน",A1;
+A1:
+warp "xmas_dun01",205,15;
+close;
+OnInit: 
+waitingroom "• Santagirl •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,131,148,4	script	Sea Elephant	2780,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Ring 1%^000000";
+mes "^FF6633Variant Shoes 1%^000000";
+mes "^FF6633Diabolus Robe 1%^000000";
+next;
+menu "[ ^F00000beach_dun2^000000 ] | ผู้ล่า ["+getmapusers("beach_dun2")+"] คน",A1;
+A1:
+warp "beach_dun2",255,244;
+close;
+OnInit: 
+waitingroom "• Sea Elephant •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,137,148,4	script	Siren Mermaid	2783,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+mes "^FF6633Valkyrian Manteau 1%^000000";
+next;
+menu "[ ^F00000iz_dun03^000000 ] | ผู้ล่า ["+getmapusers("iz_dun03")+"] คน",A1;
+A1:
+warp "iz_dun03",33,64;
+close;
+OnInit: 
+waitingroom "• Siren Mermaid •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,143,148,4	script	Sropho	2788,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+mes "^FF6633Diabolus Boots 1%^000000";
+mes "^FF6633Steamed Desert Scorpions 20%^000000";
+next;
+menu "[ ^F00000pay_fild10^000000 ] | ผู้ล่า ["+getmapusers("pay_fild10")+"] คน",A1;
+A1:
+warp "pay_fild10",160,205;
+close;
+OnInit: 
+waitingroom "• Sropho •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,155,148,4	script	Takashi	2793,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Assassin Dagger [] 1%^000000";
+mes "^FF6633Valkyrian Armor 1%^000000";
+mes "^FF6633Valkyrian Manteau 1%^000000";
+next;
+menu "[ ^F00000prt_fild05^000000 ] | ผู้ล่า ["+getmapusers("prt_fild05")+"] คน",A1;
+A1:
+warp "prt_fild05",239,213;
+close;
+OnInit: 
+waitingroom "• Takashi •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,161,148,4	script	Thor Valkyrie	2794,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Valkyrian Armor 1%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+mes "^FF6633Variant Shoes 1%^000000";
+next;
+menu "[ ^F00000mag_dun01^000000 ] | ผู้ล่า ["+getmapusers("mag_dun01")+"] คน",A1;
+A1:
+warp "mag_dun01",126,68;
+close;
+OnInit: 
+waitingroom "• Thor Valkyrie •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,167,148,4	script	Werepot	2805,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Meteo Plate Armor 5%^000000";
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Assassin Dagger [] 1%^000000";
+next;
+menu "[ ^F00000pay_dun03^000000 ] | ผู้ล่า ["+getmapusers("pay_dun03")+"] คน",A1;
+A1:
+warp "pay_dun03",155,159;
+close;
+OnInit: 
+waitingroom "• Werepot •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,131,143,4	script	Wild Rider	2806,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Bison Horn 3%^000000";
+mes "^FF6633Diabolus Ring 1%^000000";
+next;
+menu "[ ^F00000lhz_fild01^000000 ] | ผู้ล่า ["+getmapusers("lhz_fild01")+"] คน",A1;
+A1:
+warp "lhz_fild01",240,179;
+close;
+OnInit: 
+waitingroom "• Wild Rider •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,137,143,4	script	xZipper Bear	2809,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Armor 1%^000000";
+mes "^FF6633Orleans's Glove 0.50%^000000";
+next;
+menu "[ ^F00000orcsdun02^000000 ] | ผู้ล่า ["+getmapusers("orcsdun02")+"] คน",A1;
+A1:
+warp "orcsdun02",21,185;
+close;
+OnInit: 
+waitingroom "• xZipper Bear •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,143,143,4	script	Bangungot	2810,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Claytos Cracking Earth Armor 1%^000000";
+mes "^FF6633Dark Bacilium 1%^000000";
+next;
+menu "[ ^F00000mjo_dun03^000000 ] | ผู้ล่า ["+getmapusers("mjo_dun03")+"] คน",A1;
+A1:
+warp "mjo_dun03",84,132;
+close;
+OnInit: 
+waitingroom "• Bangungot •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,155,143,4	script	Bungisngis	2811,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Meteo Plate Armor 4%^000000";
+mes "^FF6633Executioner  5%^000000";
+next;
+menu "[ ^F00000gef_fild03^000000 ] | ผู้ล่า ["+getmapusers("gef_fild03")+"] คน",A1;
+A1:
+warp "gef_fild03",257,192;
+close;
+OnInit: 
+waitingroom "• Bungisngis •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,161,143,4	script	Pyuriel	2812,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Valkyrja's Shield 1%^000000";
+mes "^FF6633Diabolus Robe 1%^000000";
+mes "^FF6633Steamed Desert Scorpions 20%^000000";
+next;
+menu "[ ^F00000pay_dun04^000000 ] | ผู้ล่า ["+getmapusers("pay_dun04")+"] คน",A1;
+A1:
+warp "pay_dun04",201,204;
+close;
+OnInit: 
+waitingroom "• Pyuriel •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,167,143,4	script	Soheon	2813,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Diabolus Ring 1%^000000";
+mes "^FF6633Variant Shoes 1%^000000";
+mes "^FF6633Tiara [1] 1% ^000000";
+next;
+menu "[ ^F00000pay_fild04^000000 ] | ผู้ล่า ["+getmapusers("pay_fild04")+"] คน",A1;
+A1:
+warp "pay_fild04",186,247;
+close;
+OnInit: 
+waitingroom "• Soheon •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,143,139,4	script	Arrow Men	2814,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Orleans's Glove 0.50%^000000";
+mes "^FF6633Sniping Suit 4%^000000";
+mes "^FF6633Diabolus Boots 1%^000000";
+next;
+menu "[ ^F00000anthell01^000000 ] | ผู้ล่า ["+getmapusers("anthell01")+"] คน",A1;
+A1:
+warp "anthell01",35,262;
+close;
+OnInit: 
+waitingroom "• Arrow Men •",0;
+end;
+}
+//---------------------------------------------------------------------------------------------
+prt_are01,155,139,4	script	Kyo Shirima	2820,{
+mes "^FF6633Bag of Gold Coins 100%^000000";
+mes "^FF6633Enriched Elunium 5%^000000";
+mes "^FF6633Enriched Oridecon 5%^000000";
+mes "^FF6633Bazerald 1%^000000";
+mes "^FF6633Diabolus Robe 1%^000000";
+next;
+menu "[ ^F00000ama_fild01^000000 ] | ผู้ล่า ["+getmapusers("ama_fild01")+"] คน",A1;
+A1:
+warp "ama_fild01",190,197;
+close;
+OnInit: 
+waitingroom "• Kyo Shirima •",0;
+end;
+}

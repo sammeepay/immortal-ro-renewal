@@ -1,0 +1,1345 @@
+//===== eAthena script =====================================
+//= Badboy Ash Script
+//===== Idea by =============================================
+//= xzard
+//===== Edit by =============================================
+//= MegaboyTop
+//===== Compatible With: ===================================== 
+//= eAthena SVN 4057+
+//===== Current Version: =====================================
+//= 2.0
+//===== Description: =======================================
+//= เมื่อผู้เล่นถูกนักเลงข่มเหง เอาละสิเมื่อเจอเหตุการณ์แบบนี้แล้ว จะทำอย่างไร สู้หรือหนี เลือกให้ดี แต่อย่าแพ้เค้าละ !!!
+//===== Additional Comments: ================================= 
+//= 1.0 ~ 1.5 First Version
+//= 2.0 เพิ่มออฟชั่นในการต่อสู้มากขึ้น
+//= 	- เปิดโอกาสให้ใช้ไอเท็มเพื่อฟื้นพลังได้เพียงหนึ่งเทิร์นเท่านั้น
+//=	- เอฟเฟคการต่อสู้แหลกลานตระการตา (พูดซะ- -")
+//=	- สามารถต่อสู้ได้เรื่อยๆ เพื่อความฮา
+//========================================================
+alberta,65,175,6	script	นักเลง	953,1,1,{
+cutin "v_seryu01",2;
+if(section==1) goto Lrew;
+if(section==0) goto Lnotme;
+Lnotme:
+if(zeny < 50000 ) {
+mes "[Ash]";
+mes "ไอ้ลุกกระจ๊อก";
+mes "ไปให้ไกลๆไปรำคาญสายตา";
+cutin " ",255;
+close;
+}
+mes "[Ash]";
+mes "เฮ้ยๆๆ  เอ็งอ่ะ";
+mes "มานี่เด้ะะ~";
+next;
+menu "ผมหรอ",-,"เดินต่อไปไม่สนใจ",Lwalk,"เผ่นดีก่า",Lrun;
+mes "[Ash]";
+mes "สาดดดดดดดด";
+mes "มรึงเดินอยู่คนเดียวไม่ใช่มรึงแล้วจาเรียกครายยว้าาาาา~";
+mes "ไอ้นี่!!";
+emotion 36; 
+next;
+disable_items;
+mes "[Ash]";
+mes "เฮยยย~ หมั่นไส้ว่ะะ";
+mes "เอาตังมาใช้โหน่ยยเด้~";
+mes "ไม่ให้เด่วมีเรื่อง";
+emotion 36;
+next;
+menu "ไม่ให้มีไรป่ะ",-,"ด..ด..ได้คับพี่",Lbuff;
+mes "[Ash]";
+mes "อาววว~~~";
+mes "อย่างนี้ก็สวยดี๋~~";
+mes "ต้องสั่งสอนหน่อยซะแว้ว";
+emotion 36;
+next;
+if(hp <50) goto Ldead;
+mes "[Ash]";
+mes "อึดเหมือนกันนิ";
+specialeffect 149;
+next;
+mes "[^FFFF00" + strcharinfo(0) + "^000000]";
+mes "อย่างต้องเอาคืน ย่าห์ห์ห์ห์ห์ห์";
+specialeffect2 2;
+specialeffect2 415;
+heal -50,-10;
+emotion 36;
+next;
+enable_items;
+mes "[^FFFF00" + strcharinfo(0) + "^000000]";
+mes "มันเสียจังหวะแล้ว โอกาสนี้ถ้าใช้ไอเท็มฟื้นพลังก็จะมีโอกาสรอด";
+if(hp <4000) goto Ldead;
+next;
+mes "[Ash]";
+mes "นึกว่าข้าจะแพ้งั้นรึ 555555+";
+specialeffect 329;
+specialeffect 399;
+specialeffect2 415;
+emotion 36;
+next;
+disable_items;
+heal -4000,-200;
+mes "[Ash]";
+mes "อั๊นน่ออ  ม่ายเลวนี่หว่า เก่งเหมือนกันนี่";
+mes "ไหน ลอง ชิมพลังข้าต่ออีกดอกเป็นไง";
+next;
+menu "รอจังหวะแล้วสวนกลับไป",-,"ต่อยไปเลย",ashbash,"หลบ",Llost;
+heal -250,-50;
+ashbash:
+set @fight,rand(0,4);
+specialeffect 415;
+specialeffect 380;
+specialeffect 439;
+specialeffect2 17;
+specialeffect2 415;
+if (@fight == 3) goto Llost;
+next;
+mes "[Ash]";
+mes "อุเบ้ มรึงจะอึดไปถึงไหนวะ ไปตายซะ";
+mes "มาถึงขั้นนี้แล้วเอาให้รู้ดำรู้แดงกันไปเลย";
+next;
+menu "ใช้ท่าไม้ตาย",-,"รอจังหวะ",Llost;
+set @fight,rand(1,4);
+specialeffect 415;
+specialeffect 380;
+specialeffect 387;
+specialeffect 439;
+specialeffect2 415;
+mes "[Ash]";
+mes "ย๊ากกกสส~~~";
+mes "ตูม  พลั่กกๆๆๆ ตูมม  โครมมโครมมโครมม เอี๊ยดด  ปะแง้ววว  เมี๊ยวว หง่าวว  โฮ่งๆๆๆ หวีหว่อๆๆ ";
+next;
+mes "^FF0000ทั้งคู่นิ่งเงียบไปสักพัก สายลมพัดผ่านไป ใครจะเป็นผู้เหลือรอด หนึ่งเดียวคือผู้ชนะ^000000";
+mes "^FF0000...............................................................^000000";
+next;
+mes "^FF0000. . . . . . . . . . . . . . . . . . .^000000";
+mes "^FF0000. . . . . . . . . . . . . . . . . . . ^000000";
+next;
+mes "^FF0000. . . . . . . . . . . . . . .  ^000000";
+mes "^FF0000. . . . . . . . . . . . . . . . . . . . ^000000";
+next;
+mes "^FF0000. . . . . . . . .  ^000000";
+mes "^FF0000. . . . . . . . . . . . . . . . . . . . . . . . . . . . .^000000";
+next;
+next;
+mes "^FF0000. . . . . . . . . . . . . . .  ^000000";
+mes "^FF0000. . .  ^000000";
+next;
+if (@fight == 1) goto Llost;
+if (@fight == 2) goto Llost;
+if (@fight == 3) goto Lwin;
+if (@fight == 4) goto Lwin;
+
+//=หากใครติดบัคจะมาทางนี้ โดยปกติมาไม่ถึงอยู่แล้ว 100%
+mes "[ มาตรงนี้ได้ ก็บัคแล้วละ]"; 
+mes "แต่บัคนี้ไม่สามารถทำอะไรได้หรอก";
+cutin " ",255;
+close; 
+//=====================
+
+
+
+
+Lwin:
+specialeffect 415;
+specialeffect 380;
+specialeffect 420;
+specialeffect 44;
+cutin "v_seryu08",2;
+mes "[Ash]";
+mes "ออ..#.@$%^*! x_x  อ๋ออยยย";
+mes "ย..ยย ยอมแพ้แล้วคับพี่";
+mes "ไม่หาเรื่องแย้วงาบบ  ไปละงงาบบ";
+emotion 28;
+next;
+menu "เฮ้ย ขอค่าเสียหายด้วย",-;
+set zeny,zeny +500;
+set section, 1;
+mes "[Ash]";
+mes "คร๊าบบ พี่ทั้งเนื้อทั้งตัวมีแค่นี้นะคร๊าบบบ";
+mes "ไปละคร๊าบบบ";
+specialeffect 387;
+specialeffect 439;
+specialeffect2 68;
+cutin "v_seryu08",255;
+emotion 28;
+close;
+
+Lbuff:
+set zeny,zeny -5000;
+cutin "v_seryu01",255;
+mes "[Ash]";
+mes "ดีมากไอ้น้อง";
+mes "วันหลังมีเรื่องไรบอกพี่ได้";
+mes "เด่วพี่จัดการห้ายย~~";
+mes "ไปได้ละ";
+close;
+
+Lwalk:
+set @ashkill,rand(0,4);
+if (@ashkill == 1) goto Lrun;
+if (@ashkill == 4) goto Lrun;
+specialeffect 399;
+specialeffect 329;
+specialeffect2 415;
+mes "[Ash]";
+mes "อย่างนี้ต้อง!!! โดนซะๆๆๆๆๆๆ!!";
+next;
+mes "[Ash]";
+mes "อะหนอยยแน่";
+mes "ทำเปงไม่สนใจ";
+mes "สม";
+emotion 36;
+set zeny,zeny -10000;
+next;
+cutin "v_seryu01",255;
+specialeffect 68;
+percentheal -100,-100;
+close;
+
+Llost:
+specialeffect 435;
+mes "[Ash]";
+mes "โดนหมัดดาวเหนือเหลือรับประทานเข้าไป";
+mes "อีก10วินาทีเจ้าตาย";
+mes "เชอะ  จำพี่ไว้ไอ้น้องอยากมีเรื่องมาอีกได้ 5555+";
+emotion 18;
+next;
+percentheal -100,-100;
+set zeny,zeny -10000;
+specialeffect 68;
+cutin "v_seryu01",255;
+emotion 18;
+close;
+
+Ldead:
+mes "[Ash]";
+mes "โดนซะๆๆๆ พลั๊กๆๆ";
+specialeffect 399;
+specialeffect 387;
+specialeffect 329;
+specialeffect2 415;
+heal -2000,-500;
+emotion 36;
+next;
+specialeffect 435;
+mes "[Ash]";
+mes "โดนหมัดดาวเหนือเหลือรับประทานเข้าไป";
+mes "อีก10วินาทีเจ้าตาย";
+mes "5555+ สู้ไม่ได้หรอกไอ้น้องเอ้ยยย";
+mes "ดับไหนแว้วว";
+emotion 36;
+set zeny,zeny -10000;
+next;
+cutin "v_seryu01",255;
+percentheal -100,-100;
+close;
+
+Lrew:
+specialeffect 426;
+cutin "v_seryu10",2;
+mes "[Ash]";
+mes "สวัสดีครับพี่ พี่นั่นเอง";
+mes "ไม่มีไรครับ เชิญตามสบายเลยครับพี่";
+next;
+mes "[Ash]";
+mes "มีอะไรเรียกถามได้ครับ แหะแหะ";
+cutin "v_seryu01",255;
+set section, -1;
+close;
+
+OnTouch:
+if ( section==1 ) goto seryu;
+mes "[Ash]";
+mes "เฮ้ย เดินงี้มันหาเรื่องกันนี่หว่า";
+cutin " ",255;
+close;
+
+seryu:
+mes "[Ash]";
+mes "ขอโทษครับพี่ ผมไม่น่ายืนขว้างเลย";
+cutin " ",255;
+close;
+
+Lrun:
+cutin "v_seryu01",255;
+close;
+
+}
+
+//========================================================
+
+//===== eAthena Script =======================================
+//= Berzebub Card Quest Script
+//===== By: ==================================================
+//= jabs <jabbedxorz@hotmail.com>
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Any eAthena Version; RO Episode XX
+//===== Description: =========================================
+//= Quest to get the Berzebub Card
+//===== Additional Comments: =================================
+//= MINE
+//----- แปล ไทย โดย kamonphop
+//============================================================
+amatsu,237,171,4	script	Old Woman	103,{
+if(BerzQuest == 1) goto alreadyDone;
+mes "[Old Woman]";
+mes "วันหนึ่ง , ขณะที่ฉันกำลังเก็บ เมล็ดของเห็ดใกล้ๆ กลาสแฮมอ่ะนะ";
+next;
+menu "พูดต่อสิ", goOn, "ข้าต้องไปแล้ว", leave;
+
+leave:
+  mes "[Old Woman]";
+  mes "ถ้าต้องการ item ดีๆ มาคุยกับข้าใหม่นะ";
+  close;
+  
+goOn:
+  mes "[Old Woman]";
+  mes "ฉันไม่เคยเห็น ไอเท็ม แบบนี้มาก่อนเลย.  ฉันเห็น ว่ามันสามารถใส่ item สามารถใส่รวมกับ เครื่องประดับที่มี รู ได้.";
+  next;
+  mes "[Old Woman]";
+  mes "ถ้าคุณสนใจมัน ละก็นะ, บอกฉัน แล้วฉันจะ ให้คุณทำเควสนี้ เพื่อแลกกับ item ลึกลับนี้.  ฉันสามารถให้ไอเท็มนี้แก่ ผู้เล่น ท่านละ 1 คนเท่านั้นนะ, เมื่อไหร่ที่คุณทำเควสนี้เสร้จแล้ว อย่าทำเควสนี้ต่อนะค่ะ -*-.";
+  next;
+  menu "บอกข้าสิว่าต้องทำอย่างไรบ้าง", getInfo, "น่า ข้าไม่ได้สนใจเกี่ยวกับมันสะหน่อย", leave;
+  
+getInfo:
+  mes "[Old Woman]";
+  mes "ฉันเชื่อว่า item นี้เขาเรียกกันมาแต่สมัยโบราณว่า Berzebub Card.  มันสามารถทำให้ เจ้าร่ายเวทย์เร็วขึ้นได้อย่างเห็นได้ชัด !";
+  next;
+  mes "[Old Woman]";
+  mes "ฉันต้องการ item ต่อไปนี้เพื่อจะมาสร้าง Berzebub Card ให้ท่านได้:";
+  mes "^0080FF10^000000 Emperium";
+  mes "^0080FF100^000000 Witched Starsand";
+  mes "^0080FF200^000000 Needle of Alarm";
+  mes "^0080FF10^000000 Worn Out Scrolls";
+  mes "^0080FF1^000000 Bible";
+  mes "^0080FF1^000000 Wand of the Occult";
+  mes "^0080FF20^000000 Opal";
+  next;
+  menu "ข้ามีมาให้ท่านแล้ว!", checkItems, "ข้าขี้เกียจทำละหล่ะ เบื่อจิงๆ", leave;
+  
+checkItems:
+  mes "[Old Woman]";
+  mes "ทุกคนที่มาคุยกับข้า บอกว่า ท่านเหล่านั้นมี แต่แท้ที่จริงแล้ว แหกตาข้าทั้งนั้น ดังนั้น ข้าจึงต้อง ลองสำรวจดูก่อนนะ...";
+  next;
+  if(countitem(714) < 10) goto noItems;
+  if(countitem(1061) < 100) goto noItems;
+  if(countitem(1095) < 200) goto noItems;
+  if(countitem(618) < 10) goto noItems;
+  if(countitem(1551) < 1) goto noItems;
+  if(countitem(1614) < 1) goto noItems;
+  if(countitem(727) < 20) goto noItems;
+  delitem 714, 10;
+  delitem 1061, 100;
+  delitem 1095, 200;
+  delitem 618, 10;
+  delitem 1551, 1;
+  delitem 1614, 1;
+  delitem 727, 20;
+  getitem 4145, 1;
+  set BerzQuest, 1;
+  mes "[Old Woman]";
+  mes "ดี ยินดีด้วยนะ คุณมี item ทั้งหมดแล้ว อ่ะ นี้ Berzebub Card ข้าให้ตามที่ข้าสัญญาแล้วนะ";
+  close;
+
+noItems:
+  mes "[Old Woman]";
+  mes "ฉันว่าแล้วว่า ท่านต้องหลอกหลวง ข้าเพื่อที่ท่านอยากจะได้ item ลึกลับ อันนั้นไป  ท่าน ยังหาของไม่พบแล้วยังจะมาสะเออะบอกว่ามีอีก เบื่อจริงๆ คนประเภทนี้นะ.";
+  close;
+
+alreadyDone:
+  mes "[Old Woman]";
+  mes "เฮ้ ฉันจำคุณได้ !  ว่าเควสนี้ทำได้เพียงครั้งเดียวเท่านั้นนะ จงจำไว้.";
+  close;
+}
+
+
+//========================================================
+
+comodo.gat,217,162,4	script	Kachua9	91,{
+  mes "[Kachua]";
+  mes "ครั้งหนึ่งฉันเคยพบชายคนหนึ่งที่มีเพชรอยู่กับเขา";
+  mes "เพชรนั่นมันใหญ่และสวยมาก";
+  mes "ฉันไม่ติดว่าฉันจะลืมเพชรเม็ดนั้นลงได้เลย";
+  mes "ฉันอยากได้เพชรแบบนั้นซักเม็ด แต่ฉันไม่รู้ว่า";
+  mes "ฉันจะไปหามันมาได้จากไหน";
+  next;
+  menu "เอาเพชรของฉันไปไหมล่ะ",Lcasino,"น่าอายอะไรอย่างนี้",Lcancel;
+
+Lcancel:
+  mes "[Kachua]";
+  mes "ใช่ฉันรู้ดี";
+  mes "เทียบกับเพชรแล้ว";
+  mes "ไม่มีอะไรที่ฉันเก็บไว้เทียบมันได้เลย";
+  close;
+
+Lcasino:
+  if (countitem(732) < 1) goto LNocasino;
+  mes "[Kachua]";
+  mes "คุณให้ฉันจริงๆน่ะ ? ไม่เป็นไรจริงๆเหรอ ?";
+  mes "ขอบคุณ คุณมาก";
+  mes "ตอนนี้ฉันไม่มีเงินไม่มากนัก";
+  mes "ฉันจะให้ของสะสมที่ฉันมีแทนละกัน";
+  next;
+  delitem 732,1;
+  mes "[Kachua]";
+  mes "คุณอยากได้อะไรล่ะ";
+  next;
+  menu "Weapon",Lweapon,"Armor",Larmor,"Garment",Lmuffler,"Helmet",Lhat,"Shoes",Lshoes,"Shield",Lshield;
+
+//=== Hat ===\\
+Lhat:
+  set @random,rand(195);
+  if (@random == 1) set @itemget,2201;
+  if (@random == 2) set @itemget,2202;
+  if (@random == 3) set @itemget,2203;
+  if (@random == 4) set @itemget,2204;
+  if (@random == 5) set @itemget,2205;
+  if (@random == 6) set @itemget,2206;
+  if (@random == 7) set @itemget,2207;
+  if (@random == 8) set @itemget,2208;
+  if (@random == 9) set @itemget,2209;
+  if (@random == 10) set @itemget,2210;
+  if (@random == 11) set @itemget,2211;
+  if (@random == 12) set @itemget,2212;
+  if (@random == 13) set @itemget,2213;
+  if (@random == 14) set @itemget,2214;
+  if (@random == 15) set @itemget,2215;
+  if (@random == 16) set @itemget,2216;
+  if (@random == 17) set @itemget,2217;
+  if (@random == 18) set @itemget,2218;
+  if (@random == 19) set @itemget,2219;
+  if (@random == 20) set @itemget,2220;
+  if (@random == 21) set @itemget,2221;
+  if (@random == 22) set @itemget,2222;
+  if (@random == 23) set @itemget,2223;
+  if (@random == 24) set @itemget,2224;
+  if (@random == 25) set @itemget,2225;
+  if (@random == 26) set @itemget,2226;
+  if (@random == 27) set @itemget,2227;
+  if (@random == 28) set @itemget,2228;
+  if (@random == 29) set @itemget,2229;
+  if (@random == 30) set @itemget,2230;
+  if (@random == 31) set @itemget,2231;
+  if (@random == 32) set @itemget,2232;
+  if (@random == 33) set @itemget,2233;
+  if (@random == 34) set @itemget,2234;
+  if (@random == 35) set @itemget,2235;
+  if (@random == 36) set @itemget,2236;
+  if (@random == 37) set @itemget,2237;
+  if (@random == 38) set @itemget,2238;
+  if (@random == 39) set @itemget,2239;
+  if (@random == 40) set @itemget,2240;
+  if (@random == 41) set @itemget,2241;
+  if (@random == 42) set @itemget,2242;
+  if (@random == 43) set @itemget,2243;
+  if (@random == 44) set @itemget,2244;
+  if (@random == 45) set @itemget,2245;
+  if (@random == 46) set @itemget,2246;
+  if (@random == 47) set @itemget,2247;
+  if (@random == 48) set @itemget,2248;
+  if (@random == 49) set @itemget,2249;
+  if (@random == 50) set @itemget,2250;
+  if (@random == 51) set @itemget,2251;
+  if (@random == 52) set @itemget,2252;
+  if (@random == 53) set @itemget,2253;
+  if (@random == 54) set @itemget,2254;
+  if (@random == 55) set @itemget,2255;
+  if (@random == 56) set @itemget,2256;
+  if (@random == 57) set @itemget,2257;
+  if (@random == 58) set @itemget,2258;
+  if (@random == 59) set @itemget,2259;
+  if (@random == 60) set @itemget,2260;
+  if (@random == 61) set @itemget,2261;
+  if (@random == 62) set @itemget,2262;
+  if (@random == 63) set @itemget,2263;
+  if (@random == 64) set @itemget,2264;
+  if (@random == 65) set @itemget,2265;
+  if (@random == 66) set @itemget,2266;
+  if (@random == 67) set @itemget,2267;
+  if (@random == 68) set @itemget,2268;
+  if (@random == 69) set @itemget,2269;
+  if (@random == 70) set @itemget,2270;
+  if (@random == 71) set @itemget,2271;
+  if (@random == 72) set @itemget,2272;
+  if (@random == 73) set @itemget,2273;
+  if (@random == 74) set @itemget,2274;
+  if (@random == 75) set @itemget,2275;
+  if (@random == 76) set @itemget,2276;
+  if (@random == 77) set @itemget,2277;
+  if (@random == 78) set @itemget,2278;
+  if (@random == 79) set @itemget,2279;
+  if (@random == 80) set @itemget,2280;
+  if (@random == 81) set @itemget,2281;
+  if (@random == 82) set @itemget,2282;
+  if (@random == 83) set @itemget,2283;
+  if (@random == 84) set @itemget,2284;
+  if (@random == 85) set @itemget,2285;
+  if (@random == 86) set @itemget,2286;
+  if (@random == 87) set @itemget,2287;
+  if (@random == 88) set @itemget,2288;
+  if (@random == 89) set @itemget,2289;
+  if (@random == 90) set @itemget,2290;
+  if (@random == 91) set @itemget,2291;
+  if (@random == 92) set @itemget,2292;
+  if (@random == 93) set @itemget,2293;
+  if (@random == 94) set @itemget,2294;
+  if (@random == 95) set @itemget,2295;
+  if (@random == 96) set @itemget,2296;
+  if (@random == 97) set @itemget,2297;
+  if (@random == 98) set @itemget,2298;
+  if (@random == 99) set @itemget,2299;
+  if (@random == 100) set @itemget,5001;
+  if (@random == 101) set @itemget,5002;
+  if (@random == 102) set @itemget,5003;
+  if (@random == 103) set @itemget,5004;
+  if (@random == 104) set @itemget,5005;
+  if (@random == 105) set @itemget,5006;
+  if (@random == 106) set @itemget,5007;
+  if (@random == 107) set @itemget,5008;
+  if (@random == 108) set @itemget,5009;
+  if (@random == 109) set @itemget,5010;
+  if (@random == 110) set @itemget,5011;
+  if (@random == 111) set @itemget,5012;
+  if (@random == 112) set @itemget,5014;
+  if (@random == 113) set @itemget,5015;
+  if (@random == 114) set @itemget,5016;
+  if (@random == 115) set @itemget,5017;
+  if (@random == 116) set @itemget,5018;
+  if (@random == 117) set @itemget,5019;
+  if (@random == 118) set @itemget,5020;
+  if (@random == 119) set @itemget,5021;
+  if (@random == 120) set @itemget,5022;
+  if (@random == 121) set @itemget,5023;
+  if (@random == 122) set @itemget,5024;
+  if (@random == 123) set @itemget,5025;
+  if (@random == 124) set @itemget,5026;
+  if (@random == 125) set @itemget,5027;
+  if (@random == 126) set @itemget,5028;
+  if (@random == 127) set @itemget,5029;
+  if (@random == 128) set @itemget,5030;
+  if (@random == 129) set @itemget,5031;
+  if (@random == 130) set @itemget,5032;
+  if (@random == 131) set @itemget,5033;
+  if (@random == 132) set @itemget,5034;
+  if (@random == 133) set @itemget,5035;
+  if (@random == 134) set @itemget,5036;
+  if (@random == 135) set @itemget,5037;
+  if (@random == 136) set @itemget,5038;
+  if (@random == 137) set @itemget,5039;
+  if (@random == 138) set @itemget,5040;
+  if (@random == 139) set @itemget,5041;
+  if (@random == 140) set @itemget,5042;
+  if (@random == 141) set @itemget,5043;
+  if (@random == 142) set @itemget,5044;
+  if (@random == 143) set @itemget,5045;
+  if (@random == 144) set @itemget,5046;
+  if (@random == 145) set @itemget,5047;
+  if (@random == 146) set @itemget,5048;
+  if (@random == 147) set @itemget,5049;
+  if (@random == 148) set @itemget,5050;
+  if (@random == 149) set @itemget,5051;
+  if (@random == 150) set @itemget,5052;
+  if (@random == 151) set @itemget,5053;
+  if (@random == 152) set @itemget,5054;
+  if (@random == 153) set @itemget,5055;
+  if (@random == 154) set @itemget,5056;
+  if (@random == 155) set @itemget,5057;
+  if (@random == 156) set @itemget,5058;
+  if (@random == 157) set @itemget,5059;
+  if (@random == 158) set @itemget,5060;
+  if (@random == 159) set @itemget,5061;
+  if (@random == 160) set @itemget,5062;
+  if (@random == 161) set @itemget,5063;
+  if (@random == 162) set @itemget,5064;
+  if (@random == 163) set @itemget,5065;
+  if (@random == 164) set @itemget,5066;
+  if (@random == 165) set @itemget,5067;
+  if (@random == 166) set @itemget,5068;
+  if (@random == 167) set @itemget,5069;
+  if (@random == 168) set @itemget,5070;
+  if (@random == 169) set @itemget,5071;
+  if (@random == 170) set @itemget,5072;
+  if (@random == 171) set @itemget,5073;
+  if (@random == 172) set @itemget,5074;
+  if (@random == 173) set @itemget,5075;
+  if (@random == 174) set @itemget,5076;
+  if (@random == 175) set @itemget,5077;
+  if (@random == 176) set @itemget,5078;
+  if (@random == 177) set @itemget,5079;
+  if (@random == 178) set @itemget,5080;
+  if (@random == 179) set @itemget,5081;
+  if (@random == 180) set @itemget,5082;
+  if (@random == 181) set @itemget,5083;
+  if (@random == 182) set @itemget,5084;
+  if (@random == 183) set @itemget,5085;
+  if (@random == 184) set @itemget,5086;
+  if (@random == 185) set @itemget,5087;
+  if (@random == 186) set @itemget,5088;
+  if (@random == 187) set @itemget,5089;
+  if (@random == 188) set @itemget,5090;
+  if (@random == 189) set @itemget,5091;
+  if (@random == 190) set @itemget,5092;
+  if (@random == 191) set @itemget,5093;
+  if (@random == 192) set @itemget,5094;
+  if (@random == 193) set @itemget,5096;
+  if (@random == 194) set @itemget,5098;
+  if (@random == 195) set @itemget,5099;
+  goto Lget;
+
+//=== Armor ===\\
+Larmor:
+  set @random,rand(52);
+  if (@random == 1) set @itemget,2301;
+  if (@random == 2) set @itemget,2302;
+  if (@random == 3) set @itemget,2303;
+  if (@random == 4) set @itemget,2304;
+  if (@random == 5) set @itemget,2305;
+  if (@random == 6) set @itemget,2306;
+  if (@random == 7) set @itemget,2307;
+  if (@random == 8) set @itemget,2308;
+  if (@random == 9) set @itemget,2309;
+  if (@random == 10) set @itemget,2310;
+  if (@random == 11) set @itemget,2311;
+  if (@random == 12) set @itemget,2312;
+  if (@random == 13) set @itemget,2313;
+  if (@random == 14) set @itemget,2314;
+  if (@random == 15) set @itemget,2315;
+  if (@random == 16) set @itemget,2316;
+  if (@random == 17) set @itemget,2317;
+  if (@random == 18) set @itemget,2318;
+  if (@random == 19) set @itemget,2319;
+  if (@random == 20) set @itemget,2320;
+  if (@random == 21) set @itemget,2321;
+  if (@random == 22) set @itemget,2322;
+  if (@random == 23) set @itemget,2323;
+  if (@random == 24) set @itemget,2324;
+  if (@random == 25) set @itemget,2325;
+  if (@random == 26) set @itemget,2326;
+  if (@random == 27) set @itemget,2327;
+  if (@random == 28) set @itemget,2328;
+  if (@random == 29) set @itemget,2329;
+  if (@random == 30) set @itemget,2330;
+  if (@random == 31) set @itemget,2331;
+  if (@random == 32) set @itemget,2332;
+  if (@random == 33) set @itemget,2333;
+  if (@random == 34) set @itemget,2334;
+  if (@random == 35) set @itemget,2335;
+  if (@random == 36) set @itemget,2336;
+  if (@random == 37) set @itemget,2337;
+  if (@random == 38) set @itemget,2338;
+  if (@random == 39) set @itemget,2339;
+  if (@random == 40) set @itemget,2340;
+  if (@random == 41) set @itemget,2341;
+  if (@random == 42) set @itemget,2342;
+  if (@random == 43) set @itemget,2343;
+  if (@random == 44) set @itemget,2344;
+  if (@random == 45) set @itemget,2345;
+  if (@random == 46) set @itemget,2346;
+  if (@random == 47) set @itemget,2347;
+  if (@random == 48) set @itemget,2348;
+  if (@random == 49) set @itemget,2349;
+  if (@random == 50) set @itemget,2350;
+  if (@random == 51) set @itemget,2351;
+  if (@random == 52) set @itemget,2352;
+  goto Lget;
+
+//=== Weapon ===\\
+Lweapon:
+  set @random,rand(304);
+  //=== Sword ===\\
+  if (@random == 1) set @itemget,1101;
+  if (@random == 2) set @itemget,1102;
+  if (@random == 3) set @itemget,1103;
+  if (@random == 4) set @itemget,1104;
+  if (@random == 5) set @itemget,1105;
+  if (@random == 6) set @itemget,1106;
+  if (@random == 7) set @itemget,1107;
+  if (@random == 8) set @itemget,1108;
+  if (@random == 9) set @itemget,1109;
+  if (@random == 10) set @itemget,1110;
+  if (@random == 11) set @itemget,1111;
+  if (@random == 12) set @itemget,1112;
+  if (@random == 13) set @itemget,1113;
+  if (@random == 14) set @itemget,1114;
+  if (@random == 15) set @itemget,1115;
+  if (@random == 16) set @itemget,1116;
+  if (@random == 17) set @itemget,1117;
+  if (@random == 18) set @itemget,1118;
+  if (@random == 19) set @itemget,1119;
+  if (@random == 20) set @itemget,1120;
+  if (@random == 21) set @itemget,1121;
+  if (@random == 22) set @itemget,1122;
+  if (@random == 23) set @itemget,1123;
+  if (@random == 24) set @itemget,1124;
+  if (@random == 25) set @itemget,1125;
+  if (@random == 26) set @itemget,1126;
+  if (@random == 27) set @itemget,1127;
+  if (@random == 28) set @itemget,1128;
+  if (@random == 29) set @itemget,1129;
+  if (@random == 30) set @itemget,1130;
+  if (@random == 31) set @itemget,1131;
+  if (@random == 32) set @itemget,1132;
+  if (@random == 33) set @itemget,1133;
+  if (@random == 34) set @itemget,1134;
+  if (@random == 35) set @itemget,1135;
+  if (@random == 36) set @itemget,1136;
+  if (@random == 37) set @itemget,1137;
+  if (@random == 38) set @itemget,1138;
+  if (@random == 39) set @itemget,1139;
+  if (@random == 40) set @itemget,1140;
+  if (@random == 41) set @itemget,1141;
+  if (@random == 42) set @itemget,1142;
+  if (@random == 43) set @itemget,1143;
+  if (@random == 44) set @itemget,1144;
+  if (@random == 45) set @itemget,1145;
+  //=== Two-Handed-Axe ===\\
+  if (@random == 46) set @itemget,1151;
+  if (@random == 47) set @itemget,1152;
+  if (@random == 48) set @itemget,1153;
+  if (@random == 49) set @itemget,1154;
+  if (@random == 50) set @itemget,1155;
+  if (@random == 51) set @itemget,1156;
+  if (@random == 52) set @itemget,1157;
+  if (@random == 53) set @itemget,1158;
+  if (@random == 54) set @itemget,1159;
+  if (@random == 55) set @itemget,1160;
+  if (@random == 56) set @itemget,1162;
+  if (@random == 57) set @itemget,1163;
+  if (@random == 58) set @itemget,1164;
+  if (@random == 59) set @itemget,1165;
+  if (@random == 60) set @itemget,1166;
+  if (@random == 61) set @itemget,1167;
+  if (@random == 62) set @itemget,1168;
+  if (@random == 63) set @itemget,1169;
+  if (@random == 64) set @itemget,1170;
+  //=== Dagger ===\\
+  if (@random == 65) set @itemget,1201;
+  if (@random == 66) set @itemget,1202;
+  if (@random == 67) set @itemget,1203;
+  if (@random == 68) set @itemget,1204;
+  if (@random == 69) set @itemget,1204;
+  if (@random == 70) set @itemget,1205;
+  if (@random == 71) set @itemget,1206;
+  if (@random == 72) set @itemget,1207;
+  if (@random == 73) set @itemget,1208;
+  if (@random == 74) set @itemget,1209;
+  if (@random == 75) set @itemget,1210;
+  if (@random == 76) set @itemget,1211;
+  if (@random == 77) set @itemget,1212;
+  if (@random == 78) set @itemget,1213;
+  if (@random == 79) set @itemget,1214;
+  if (@random == 80) set @itemget,1215;
+  if (@random == 81) set @itemget,1216;
+  if (@random == 82) set @itemget,1217;
+  if (@random == 83) set @itemget,1218;
+  if (@random == 84) set @itemget,1219;
+  if (@random == 85) set @itemget,1220;
+  if (@random == 86) set @itemget,1221;
+  if (@random == 87) set @itemget,1222;
+  if (@random == 88) set @itemget,1223;
+  if (@random == 89) set @itemget,1224;
+  if (@random == 90) set @itemget,1225;
+  if (@random == 91) set @itemget,1226;
+  if (@random == 92) set @itemget,1227;
+  if (@random == 93) set @itemget,1228;
+  if (@random == 94) set @itemget,1229;
+  if (@random == 95) set @itemget,1230;
+  if (@random == 96) set @itemget,1231;
+  if (@random == 97) set @itemget,1232;
+  if (@random == 98) set @itemget,1233;
+  if (@random == 99) set @itemget,1234;
+  if (@random == 100) set @itemget,1235;
+  if (@random == 101) set @itemget,1236;
+  if (@random == 102) set @itemget,1237;
+  if (@random == 103) set @itemget,1238;
+  if (@random == 104) set @itemget,1239;
+  if (@random == 105) set @itemget,1240;
+  if (@random == 106) set @itemget,1241;
+  if (@random == 107) set @itemget,1242;
+  if (@random == 108) set @itemget,1243;
+  //=== Katar ===\\
+  if (@random == 109) set @itemget,1250;
+  if (@random == 110) set @itemget,1251;
+  if (@random == 111) set @itemget,1252;
+  if (@random == 112) set @itemget,1253;
+  if (@random == 113) set @itemget,1254;
+  if (@random == 114) set @itemget,1255;
+  if (@random == 115) set @itemget,1256;
+  if (@random == 116) set @itemget,1257;
+  if (@random == 117) set @itemget,1258;
+  if (@random == 118) set @itemget,1259;
+  if (@random == 119) set @itemget,1260;
+  if (@random == 120) set @itemget,1261;
+  //=== Axe ===\\
+  if (@random == 121) set @itemget,1301;
+  if (@random == 122) set @itemget,1302;
+  if (@random == 123) set @itemget,1303;
+  if (@random == 124) set @itemget,1304;
+  if (@random == 125) set @itemget,1305;
+  if (@random == 126) set @itemget,1306;
+  //=== Two-Handed-Axe ===\\
+  if (@random == 127) set @itemget,1351;
+  if (@random == 128) set @itemget,1352;
+  if (@random == 129) set @itemget,1353;
+  if (@random == 130) set @itemget,1354;
+  if (@random == 131) set @itemget,1355;
+  if (@random == 132) set @itemget,1356;
+  if (@random == 133) set @itemget,1357;
+  if (@random == 134) set @itemget,1358;
+  if (@random == 135) set @itemget,1359;
+  if (@random == 136) set @itemget,1360;
+  if (@random == 137) set @itemget,1361;
+  if (@random == 138) set @itemget,1362;
+  if (@random == 139) set @itemget,1363;
+  if (@random == 140) set @itemget,1364;
+  if (@random == 141) set @itemget,1365;
+  if (@random == 142) set @itemget,1366;
+  if (@random == 143) set @itemget,1367;
+  if (@random == 144) set @itemget,1368;
+  if (@random == 145) set @itemget,1369;
+  //=== Spear ===\\
+  if (@random == 146) set @itemget,1401;
+  if (@random == 147) set @itemget,1402;
+  if (@random == 148) set @itemget,1403;
+  if (@random == 149) set @itemget,1404;
+  if (@random == 150) set @itemget,1405;
+  if (@random == 151) set @itemget,1406;
+  if (@random == 152) set @itemget,1407;
+  if (@random == 153) set @itemget,1408;
+  if (@random == 154) set @itemget,1409;
+  if (@random == 155) set @itemget,1410;
+  if (@random == 156) set @itemget,1411;
+  if (@random == 157) set @itemget,1412;
+  if (@random == 158) set @itemget,1413;
+  if (@random == 159) set @itemget,1414;
+  if (@random == 160) set @itemget,1415;
+  if (@random == 161) set @itemget,1416;
+  if (@random == 162) set @itemget,1417;
+  //=== Two-Handed-Spear ===\\
+  if (@random == 163) set @itemget,1451;
+  if (@random == 164) set @itemget,1452;
+  if (@random == 165) set @itemget,1453;
+  if (@random == 166) set @itemget,1454;
+  if (@random == 167) set @itemget,1455;
+  if (@random == 168) set @itemget,1456;
+  if (@random == 169) set @itemget,1457;
+  if (@random == 170) set @itemget,1458;
+  if (@random == 171) set @itemget,1459;
+  if (@random == 172) set @itemget,1460;
+  if (@random == 173) set @itemget,1461;
+  if (@random == 174) set @itemget,1462;
+  if (@random == 175) set @itemget,1463;
+  if (@random == 176) set @itemget,1464;
+  if (@random == 177) set @itemget,1465;
+  if (@random == 178) set @itemget,1466;
+  if (@random == 179) set @itemget,1467;
+  if (@random == 180) set @itemget,1468;
+  if (@random == 181) set @itemget,1469;
+  if (@random == 182) set @itemget,1470;
+  if (@random == 183) set @itemget,1471;
+  //=== Two-Handed-Rod ===\\
+  if (@random == 184) set @itemget,1472;
+  if (@random == 185) set @itemget,1473;
+  //=== Mace ===\\
+  if (@random == 186) set @itemget,1501;
+  if (@random == 187) set @itemget,1502;
+  if (@random == 188) set @itemget,1503;
+  if (@random == 189) set @itemget,1504;
+  if (@random == 190) set @itemget,1505;
+  if (@random == 191) set @itemget,1506;
+  if (@random == 192) set @itemget,1507;
+  if (@random == 193) set @itemget,1508;
+  if (@random == 194) set @itemget,1509;
+  if (@random == 195) set @itemget,1510;
+  if (@random == 196) set @itemget,1511;
+  if (@random == 197) set @itemget,1512;
+  if (@random == 198) set @itemget,1513;
+  if (@random == 199) set @itemget,1514;
+  if (@random == 200) set @itemget,1515;
+  if (@random == 201) set @itemget,1516;
+  if (@random == 202) set @itemget,1517;
+  if (@random == 203) set @itemget,1518;
+  if (@random == 204) set @itemget,1519;
+  if (@random == 205) set @itemget,1520;
+  if (@random == 206) set @itemget,1521;
+  if (@random == 207) set @itemget,1522;
+  if (@random == 208) set @itemget,1523;
+  if (@random == 209) set @itemget,1524;
+  if (@random == 210) set @itemget,1525;
+  if (@random == 211) set @itemget,1526;
+  if (@random == 212) set @itemget,1527;
+  if (@random == 213) set @itemget,1528;
+  if (@random == 214) set @itemget,1529;
+  if (@random == 215) set @itemget,1530;
+  if (@random == 216) set @itemget,1531;
+  //=== Book ===\\
+  if (@random == 217) set @itemget,1550;
+  if (@random == 218) set @itemget,1551;
+  if (@random == 219) set @itemget,1552;
+  if (@random == 220) set @itemget,1553;
+  if (@random == 221) set @itemget,1554;
+  if (@random == 222) set @itemget,1555;
+  if (@random == 223) set @itemget,1556;
+  if (@random == 224) set @itemget,1557;
+  if (@random == 225) set @itemget,1558;
+  //=== Rod ===\\
+  if (@random == 226) set @itemget,1601;
+  if (@random == 227) set @itemget,1602;
+  if (@random == 228) set @itemget,1603;
+  if (@random == 229) set @itemget,1604;
+  if (@random == 230) set @itemget,1605;
+  if (@random == 231) set @itemget,1606;
+  if (@random == 232) set @itemget,1607;
+  if (@random == 233) set @itemget,1608;
+  if (@random == 234) set @itemget,1609;
+  if (@random == 235) set @itemget,1610;
+  if (@random == 236) set @itemget,1611;
+  if (@random == 237) set @itemget,1612;
+  if (@random == 238) set @itemget,1613;
+  if (@random == 239) set @itemget,1614;
+  if (@random == 240) set @itemget,1615;
+  //=== Bow ===\\
+  if (@random == 241) set @itemget,1701;
+  if (@random == 242) set @itemget,1702;
+  if (@random == 243) set @itemget,1703;
+  if (@random == 244) set @itemget,1704;
+  if (@random == 245) set @itemget,1705;
+  if (@random == 246) set @itemget,1706;
+  if (@random == 247) set @itemget,1707;
+  if (@random == 248) set @itemget,1708;
+  if (@random == 249) set @itemget,1709;
+  if (@random == 250) set @itemget,1710;
+  if (@random == 251) set @itemget,1711;
+  if (@random == 252) set @itemget,1712;
+  if (@random == 253) set @itemget,1713;
+  if (@random == 254) set @itemget,1714;
+  if (@random == 255) set @itemget,1715;
+  if (@random == 256) set @itemget,1716;
+  if (@random == 257) set @itemget,1717;
+  if (@random == 258) set @itemget,1718;
+  if (@random == 259) set @itemget,1719;
+  if (@random == 260) set @itemget,1720;
+  if (@random == 261) set @itemget,1721;
+  if (@random == 262) set @itemget,1722;
+  //=== Knuckle ===\\
+  if (@random == 263) set @itemget,1801;
+  if (@random == 264) set @itemget,1802;
+  if (@random == 265) set @itemget,1803;
+  if (@random == 266) set @itemget,1804;
+  if (@random == 267) set @itemget,1805;
+  if (@random == 268) set @itemget,1806;
+  if (@random == 269) set @itemget,1807;
+  if (@random == 270) set @itemget,1808;
+  if (@random == 271) set @itemget,1809;
+  if (@random == 272) set @itemget,1810;
+  if (@random == 273) set @itemget,1811;
+  if (@random == 274) set @itemget,1812;
+  if (@random == 275) set @itemget,1813;
+  if (@random == 276) set @itemget,1814;
+  //=== Music Instrument ===\\
+  if (@random == 277) set @itemget,1901;
+  if (@random == 278) set @itemget,1902;
+  if (@random == 279) set @itemget,1903;
+  if (@random == 280) set @itemget,1904;
+  if (@random == 281) set @itemget,1905;
+  if (@random == 282) set @itemget,1906;
+  if (@random == 283) set @itemget,1907;
+  if (@random == 284) set @itemget,1908;
+  if (@random == 285) set @itemget,1909;
+  if (@random == 286) set @itemget,1910;
+  if (@random == 287) set @itemget,1911;
+  if (@random == 288) set @itemget,1912;
+  if (@random == 289) set @itemget,1913;
+  //=== Rope ===\\
+  if (@random == 290) set @itemget,1950;
+  if (@random == 291) set @itemget,1951;
+  if (@random == 292) set @itemget,1952;
+  if (@random == 293) set @itemget,1953;
+  if (@random == 294) set @itemget,1954;
+  if (@random == 295) set @itemget,1955;
+  if (@random == 296) set @itemget,1956;
+  if (@random == 297) set @itemget,1957;
+  if (@random == 298) set @itemget,1958;
+  if (@random == 299) set @itemget,1959;
+  if (@random == 300) set @itemget,1960;
+  if (@random == 301) set @itemget,1961;
+  if (@random == 302) set @itemget,1962;
+  if (@random == 303) set @itemget,1963;
+  if (@random == 304) set @itemget,1964;
+  goto Lget;
+
+//=== Shield ===\\
+Lshield:
+  set @random,rand(12);
+  if (@random == 1) set @itemget,2101;
+  if (@random == 2) set @itemget,2102;
+  if (@random == 3) set @itemget,2103;
+  if (@random == 4) set @itemget,2104;
+  if (@random == 5) set @itemget,2105;
+  if (@random == 6) set @itemget,2106;
+  if (@random == 7) set @itemget,2107;
+  if (@random == 8) set @itemget,2108;
+  if (@random == 9) set @itemget,2109;
+  if (@random == 10) set @itemget,2110;
+  if (@random == 11) set @itemget,2111;
+  if (@random == 12) set @itemget,2112;
+  goto Lget;
+
+//=== Muffler ===\\
+Lmuffler:
+  set @random,rand(10);
+  if (@random == 1) set @itemget,2501;
+  if (@random == 2) set @itemget,2502;
+  if (@random == 3) set @itemget,2503;
+  if (@random == 4) set @itemget,2504;
+  if (@random == 5) set @itemget,2505;
+  if (@random == 6) set @itemget,2506;
+  if (@random == 7) set @itemget,2507;
+  if (@random == 8) set @itemget,2508;
+  if (@random == 9) set @itemget,2509;
+  if (@random == 10) set @itemget,2510;
+  goto Lget;
+
+//=== Shoes ===\\
+Lshoes: 
+  set @random,rand(14);
+  if (@random == 1) set @itemget,2401;
+  if (@random == 2) set @itemget,2402;
+  if (@random == 3) set @itemget,2403;
+  if (@random == 4) set @itemget,2404;
+  if (@random == 5) set @itemget,2405;
+  if (@random == 6) set @itemget,2406;
+  if (@random == 7) set @itemget,2407;
+  if (@random == 8) set @itemget,2408;
+  if (@random == 9) set @itemget,2409;
+  if (@random == 10) set @itemget,2410;
+  if (@random == 11) set @itemget,2411;
+  if (@random == 12) set @itemget,2412;
+  if (@random == 13) set @itemget,2413;
+  if (@random == 14) set @itemget,2414;
+  goto Lget;
+
+//=== Get Item ===\\
+Lget:
+  getitem @itemget,1;
+  mes "[Kachua]";
+  mes "อ้า...เพชรนี่ช่างสวยจริงๆ";
+  mes "ฉันฝันเอาไว้จริงๆว่าฉันอยากมีมันไว้มากที่เท่าฉันอยากได้";
+  close;
+
+LNocasino:
+  mes "[Kachua]";
+  mes "คุณไม่มี เพชรนี่";
+  mes "อย่ามาหลอกฉันน่ะ";
+  close;
+}
+
+
+//========================================================
+//===== eAthena Script =======================================
+//= Sex Quest Script
+//===== By: ==================================================
+//= [MegaboyTop]
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Any eAthena & rAthena Version
+//===== Description: =========================================
+//= Quest to get the Sex
+//===== Additional Comments: =================================
+//= MINE
+//======== Translate into Thai by [MegaboyTop]
+//============================================================
+
+alberta,91,137,4	script	ลินลี่จัง	700,{
+mes "[ลินลี่จัง]";
+mes "สวัสดีค่ะ " + strcharinfo(0) + "";
+mes "ท่านมาหาข้ามีธุระอะไรหรอ";
+mes "ตอนนี้ข้าอยากมี Sex อย่างแรง";
+mes "ท่านช่วยมี Sex กับข้าหน่อยได้ไหม";
+next;
+menu "กำลังอยากพอดีเลย จัดไป",xxx,"ไม่ไหวหรอก ข้ายังไม่พร้อม",cancel;
+xxx:
+mes "[ลินลี่จัง]";
+set regisman, regisman + 1;
+mes "กรุณาใส่ถุงยางก่อนนะ เดี๋ยวข้าท้องขึ้นมาใครจะรับผิดชอบ";
+mes "ข้าจะเอาเงินท่านไปก่อนนะเดียวท่าเสร็จจะคืนให้ ถ้าไม่เสร็จก็อดนะคะ";
+mes "ว้าย!!!  ไอนั่นของท่านเล็กจัง";
+mes "เริ่มเลย";
+next;
+mes "[ลินลี่จัง]";
+mes "อะๆ  อื้ม อ่า เบาๆสิ ข้าเจ็บนะ";
+mes "มาๆ  ตาข้าบ้าง  ข้าจะขึ้นคร่อมเจ้า เจ้าเตรียมตัวรับท่ายากของข้าให้ดีๆ";
+mes "อ้าาา  ใกล้แล้วๆๆ!!   เร่งอีก!!   เร่งอีก!!  ข้าจะเสร็จแล้ว  ท่านเร่งเครื่องเลย";
+mes "...... ข้ามีความสุขมากๆเลย ท่านี่เก่งสมคำร่ำลือจริงๆ รับท่ายากของข้าได้หมด";
+mes "โอ๊ะๆ!!.....  ข้าลืมบอกเจ้าไป ข้าเป็นเอดส์ เจ้าติดเอดส์ข้าแล้วล่ะ 55555+";
+heal -8000,0;
+next;
+mes "[ลินลี่จัง]";
+mes "ท่านเก่งมากๆ ที่ทำให้ข้าถึงจุดสุดยอดได้";
+mes "ท่านทนไวรัส เอดส์ของข้าได้ เงินเเค่นี้คงพอใช้นะ ท่านว่างเมื่อไรก็มาระเริงรักกับข้าต่อนะ ถึงท่านจะ.....เล็กเเต่ มันส์มากๆ";
+mes "ค่ามีเงินอยู่ 100 m ท่านต้องการเท่าไร โปรดใส่ตัวเลขลงไปได้เลย";
+next;
+input @zeny;
+if (@zeny == 0 ) goto Lclose;
+if (@zeny > 100000000) goto Ldont;
+mes "[ลินลี่จัง]";
+mes "ข้าจะให้เงินตามที่ท่านต้องการต้องการ ";
+mes "เอ้า....เอาไป";
+set Zeny,Zeny +@zeny;
+close;
+cancel:
+mes "[ลินลี่จัง]";
+mes "ทำไมท่านขี้ขลาดจริงๆ ดูหนุ่มๆแถวนี้สิ เขายังกล้ามีอะไรกับข้าเลย โดยไม่เกรงกลัวอะไร";
+close;
+LAMsecond2:
+mes "[ลินลี่จัง]";
+mes "ท่านไม่ใช่ผู้ชายนี่นา ท่านจะมา XXX กับข้าไม่ได้นะ";
+close;
+LNotEnough:
+mes "[ลินลี่จัง]";
+mes "ท่านไม่มีเงินนี่.... แล้วจะมา XXX กับข้าแล้วข้าจะเอาอะไรเป็นประกันละ ไปหาเงินมาก่อน แล้วค่อยมา XXXกัน";
+Ldont:
+mes "[ลินลี่จัง]";
+mes "ท่านใส่จำนวณเงินเกินที่กำหนด..จะโลภทำไมฮ๊ะ!!!.....มาขอแล้วยังจะเรื่องมากอีก..";
+next;
+mes "สมน้ำหน้า โลกเอดส์ กำเริบตาย";
+heal -8000000,0;
+close;
+}
+
+
+//========= Quest GOD ===================================================================================================================\\
+
+prontera,146,106,4	script	ค้อนเทพ	721,{
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "มีธุระอะไรกับข้า?";
+next;
+menu "มีผู้คนเล่นว่ากันว่าท่านทำของวิเศษได้",acc1,"ข้าแค่มาทักทายเฉยๆ",goout;
+acc1: 
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "ใช่แล้วข้าทำได้";
+mes "แล้วเจ้ามีอะไรหรอ";
+next;
+menu "รบกวนท่านสร้างของวิเศษให้แก่ข้า",v1,"ข้าไม่มีอะไร ขำๆน่ะ",goout;
+close;
+next;
+v1: 
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "ข้าจะทำเมื่อเจ้ามีของมาแลก";
+next;
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "แล้วท่านต้องการอะไรบ้างล่ะ";
+next;
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "สิ่งที่ข้าต้องการมีอยู่นิดเดียว";
+mes "TCG  100 ea";
+mes "กระโหลก      300 ea";
+mes "และสุดท้ายเงิน 200m";
+next;
+if (countitem(7420) < 300) goto ino;
+if (countitem(7227) < 100) goto ino;
+if (Zeny < 200000000) goto zno;
+next;
+delitem 7227,100;
+delitem 7420,300;
+set Zeny, Zeny - 200000000;
+next;
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "ของทุกอย่างครบแล้ว";
+next;
+mes "งั้นข้าจะเสกให้เข้าเดี๋ยวนี้";
+next;
+mes "โอมม..ปะติโถ.ปะติโถ.โถเถ";
+next;
+mes "โอมม..ปะติเถ.ปะติเถ.เถโถ";
+next;
+mes "โอมมมม...พพพพพพพ..เพี้ยง";
+next;
+mes "หุหุ เจ้าทำสำเร็จ";
+next;
+mes "รับนี่ไปหมวกเทพ";
+next;
+
+getitem 1530,1;
+
+next;
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "เรียบร้อยแล้วหนิ..เจ้าไปเถอะ";
+close;
+
+zno: 
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "มีเงินไม่พออย่ามาเล่นกับข้า";
+close;
+
+ino:
+mes "[^FF8000ช่างทำค้อนเทพ^000000]"; 
+mes "เจ้ามีของยังไม่ครบนะ";
+close;
+
+goout: 
+mes "[^FF8000ช่างทำค้อนเทพ^000000]";
+mes "ถ้าเจ้าจะเล่นกับข้า";
+mes "เจ้าควรจะรู้จักที่ต่ำที่สูง";
+close;
+}
+
+prontera,143,106,4	script	God Ring	721,{
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "มีธุระอะไรกับข้า?";
+next;
+menu "มีผู้คนเล่นว่ากันว่าท่านทำของวิเศษได้",acc1,"ข้าแค่มาทักทายเฉยๆ",goout;
+acc1: 
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "ใช่แล้วข้าทำได้";
+mes "แล้วเจ้ามีอะไรหรอ";
+next;
+menu "รบกวนท่านสร้างของวิเศษให้แก่ข้า",v1,"ข้าไม่มีอะไร ขำๆน่ะ",goout;
+close;
+next;
+v1: 
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "ข้าจะทำเมื่อเจ้ามีของมาแลก";
+next;
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "แล้วท่านต้องการอะไรบ้างล่ะ";
+next;
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "สิ่งที่ข้าต้องการมีอยู่นิดเดียว";
+mes "TCG  300 ea";
+mes "Valkyrie Helm 1 ea";
+mes "และสุดท้ายเงิน 400m";
+next;
+if (countitem(5171) < 1) goto ino;
+if (countitem(7227) < 300) goto ino;
+if (Zeny < 400000000) goto zno;
+next;
+delitem 7227,300;
+delitem 5171,1;
+set Zeny, Zeny - 400000000;
+next;
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "ของทุกอย่างครบแล้ว";
+next;
+mes "งั้นข้าจะเสกให้เข้าเดี๋ยวนี้";
+next;
+mes "โอมม..ปะติโถ.ปะติโถ.โถเถ";
+next;
+mes "โอมม..ปะติเถ.ปะติเถ.เถโถ";
+next;
+mes "โอมมมม...พพพพพพพ..เพี้ยง";
+next;
+mes "หุหุ เจ้าทำสำเร็จ";
+next;
+mes "รับนี่ไปแหวนเทพ";
+next;
+
+getitem 2629,1;
+
+next;
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "เรียบร้อยแล้วหนิ..เจ้าไปเถอะ";
+close;
+
+zno: 
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "มีเงินไม่พออย่ามาเล่นกับข้า";
+close;
+
+ino:
+mes "[^FF8000ช่างทำแหวน^000000]"; 
+mes "เจ้ามีของยังไม่ครบนะ";
+close;
+
+goout: 
+mes "[^FF8000ช่างทำแหวน^000000]";
+mes "ถ้าเจ้าจะเล่นกับข้า";
+mes "เจ้าควรจะรู้จักที่ต่ำที่สูง";
+close;
+}
+
+prontera,143,103,4	script	สร้อยเทพ	721,{
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "มีธุระอะไรกับข้า?";
+next;
+menu "มีผู้คนเล่นว่ากันว่าท่านทำของวิเศษได้",acc1,"ข้าแค่มาทักทายเฉยๆ",goout;
+acc1: 
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "ใช่แล้วข้าทำได้";
+mes "แล้วเจ้ามีอะไรหรอ";
+next;
+menu "รบกวนท่านสร้างของวิเศษให้แก่ข้า",v1,"ข้าไม่มีอะไร ขำๆน่ะ",goout;
+close;
+next;
+v1: 
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "ข้าจะทำเมื่อเจ้ามีของมาแลก";
+next;
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "แล้วท่านต้องการอะไรบ้างล่ะ";
+next;
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "สิ่งที่ข้าต้องการมีอยู่นิดเดียว";
+mes "Poring Card  100 ea";
+mes "TCG 300 ea";
+mes "และสุดท้ายเงิน 500m";
+next;
+if (countitem(4001) < 100) goto ino;
+if (countitem(7227) < 100) goto ino;
+if (Zeny < 500000000) goto zno;
+next;
+delitem 4001,100;
+delitem 7227,300;
+set Zeny, Zeny - 500000000;
+next;
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "ของทุกอย่างครบแล้ว";
+next;
+mes "งั้นข้าจะเสกให้เข้าเดี๋ยวนี้";
+next;
+mes "โอมม..ปะติโถ.ปะติโถ.โถเถ";
+next;
+mes "โอมม..ปะติเถ.ปะติเถ.เถโถ";
+next;
+mes "โอมมมม...พพพพพพพ..เพี้ยง";
+next;
+mes "หุหุ เจ้าทำสำเร็จ";
+next;
+mes "รับนี่ไปแหวนเทพ";
+next;
+
+getitem 2630,1;
+
+next;
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "เรียบร้อยแล้วหนิ..เจ้าไปเถอะ";
+close;
+
+zno: 
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "มีเงินไม่พออย่ามาเล่นกับข้า";
+close;
+
+ino:
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]"; 
+mes "เจ้ามีของยังไม่ครบนะ";
+close;
+
+goout: 
+mes "[^FF8000ช่างทำสร้อยเทพ^000000]";
+mes "ถ้าเจ้าจะเล่นกับข้า";
+mes "เจ้าควรจะรู้จักที่ต่ำที่สูง";
+close;
+}
+
+prontera,146,109,5	script	ZONE	111,{
+OnInit:
+Waitingroom "ZONEแลกของ" , 0;
+end;
+}
+

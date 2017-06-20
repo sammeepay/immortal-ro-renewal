@@ -1,0 +1,160 @@
+rachel.gat,137,115,4	script	Status Recovery	936,{
+if (BD == 1) {
+dispbottom "ยังไม่สามารถใช้งาน Buff ได้ในขณะนี้";
+end;
+}
+
+
+
+addtimer 5000,"Buffer::OnDelay";
+set BD,1;
+emotion 21;
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+sc_start 29,1800000,10; 
+sc_start 30,1800000,10; // Blessing
+sc_start 32,1800000,10; // Agi up
+sc_start 40,1800000,10;  // Magnificaf
+sc_start 41,1800000,10;  // Gloria
+sc_start SC_ITEMBOOST,1800000,60;    // Drop *2
+sc_start SC_EXPBOOST,1800000,60;    // EXP *2
+percentheal 100,100;  
+specialeffect2(73);
+specialeffect2(320);
+specialeffect2(411);
+specialeffect2(83);
+close;
+
+
+ 
+OnInit:
+OnTimer1000:
+set $@second2$,gettime(1);
+set $@days$,gettimestr("%H:%M:",19);
+waitingroom "Time : "+$@days$+""+$@second2$+"",0;
+stopnpctimer;
+initnpctimer;
+end;
+}
+
+
+
+-	script	Buffer	111,{
+OnDelay:
+dispbottom "สามารถใช้งาน Buff ได้ตามปกติค่ะ";
+set BD,0;
+deltimer "Buffer::OnDelay";
+close;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+rachel.gat,130,110,4	script	AutoRecovery	-1,1,1,{  
+end;
+OnTouch:
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+sc_start 29,1800000,10; 
+sc_start 30,1800000,10; // Blessing
+sc_start 32,1800000,10; // Agi up
+sc_start 40,1800000,10;  // Magnificaf
+sc_start 41,1800000,10;  // Gloria
+sc_start SC_ITEMBOOST,1800000,60;    // Drop *2
+sc_start SC_EXPBOOST,1800000,60;    // EXP *2
+percentheal 100,100;
+percentheal 100,100;
+//atcommand strcharinfo(0)+"@fakename";
+Savepoint "rachel.gat",130,110;
+end;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+guild_vs1.gat,69,69,4	script	Recovery::Recovery	838,{
+if (BD == 1) {
+dispbottom "ยังไม่สามารถใช้งานได้ในขณะนี้";
+end;
+}
+
+
+
+addtimer 3000,"Buffer::OnDelay";
+set BD,1;
+emotion 21;
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+sc_start 29,1800000,10; 
+sc_start 30,1800000,10; // Blessing
+sc_start 32,1800000,10; // Agi up
+sc_start 40,1800000,10;  // Magnificaf
+sc_start 41,1800000,10;  // Gloria
+sc_start SC_ITEMBOOST,1800000,60;    // Drop *2
+sc_start SC_EXPBOOST,1800000,60;    // EXP *2
+percentheal 0,100;  
+specialeffect2(320);
+specialeffect2(411);
+close; 
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+job_hunte.gat,164,18,6	duplicate(Status Recovery)	Status Recovery#2	838
+
+job_sage.gat,48,104,4	duplicate(Status Recovery)	Status Recovery#3	838
+
+job_knt.gat,149,54,4	duplicate(Status Recovery)	Status Recovery#4	838
+
+pvp_n_8-5.gat,105,99,4	duplicate(Status Recovery)	Status Recovery#5	838
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+guild_vs1.gat,30,30,8	duplicate(Recovery)	Recovery#2	838
+
+guild_vs2.gat,34,34,8	duplicate(Recovery)	Recovery#3	838
+guild_vs2.gat,65,65,4	duplicate(Recovery)	Recovery#4	838
+
+guild_vs3.gat,30,30,8	duplicate(Recovery)	Recovery#5	838
+guild_vs3.gat,69,69,4	duplicate(Recovery)	Recovery#6	838
+
+guild_vs4.gat,38,38,8	duplicate(Recovery)	Recovery#7	838
+guild_vs4.gat,61,61,4	duplicate(Recovery)	Recovery#8	838

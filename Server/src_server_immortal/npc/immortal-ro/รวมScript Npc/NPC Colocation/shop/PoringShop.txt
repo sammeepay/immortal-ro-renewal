@@ -1,0 +1,488 @@
+//homeb1,15,64,6	script	Guild Shop#01	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb2,15,64,6	script	Guild Shop#02	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb6,15,64,6	script	Guild Shop#06	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb7,15,64,6	script	Guild Shop#07	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb3,15,64,6	script	Guild Shop#03	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb4,15,64,6	script	Guild Shop#04	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb5,15,64,6	script	Guild Shop#05	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb8,15,64,6	script	Guild Shop#08	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb9,15,64,6	script	Guild Shop#09	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+
+//=======================================================================================
+
+homeb10,15,64,6	script	Guild Shop#10	810,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Guild Shop";
+waitingroom "๐ Guild Shop ๐",0;
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ท่านมี Coupon ViP [ ^FF0000"+countitem(25481)+"^000000 ] ea";
+	next;
+	switch(select("^009933•^000000 ดูรายการสินค้า:^FF0000•^000000 ยกเลิก")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Guild Shop] : คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Guild Shop] : คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(25481)) {
+			dispbottom "[Guild Shop] : คุณมี Coupon ViP ไม่พอ คุณมีทั้งหมด [ "+countitem(25481)+" ] ea ครับ";
+		} else {
+			delitem 25481,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Guild Shop] : เรียบร้อยครับ ยินดีให้บริการครับ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+

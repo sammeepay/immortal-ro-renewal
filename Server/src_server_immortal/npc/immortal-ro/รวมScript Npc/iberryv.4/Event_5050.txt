@@ -1,0 +1,114 @@
+//===================================================================
+// NPC : 50:50 Game
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+prontera,167,199,4	script	50-50 NPC	984,{
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"ยินดีต้อนรับเข้าสู่กิจกรรม";
+mes"50:50 เกมส์";
+mes"โชคดีได้สองเท่า โชคร้ายลบสองเท่า";
+mes"ถ้าคุณโชคดีจะได้คืนสองเท่า";
+mes"ถ้าคุณโชคร้ายจะถึงลบสองเท่า";
+mes"___________________________";
+mes"^0000FFตรวจสอบจำนวน Skull ของท่าน";
+mes"ให้เรียบร้อย^000000";
+next;
+menu 
+"- เล่น",yes,
+"- ไม่เล่น",cancel,
+"Exit",cancel;
+
+
+
+yes:
+if(countitem(7420) <= 0) goto nohave;
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"โปรดใส่จำนวน Skull ที่ต้องการเล่น";
+next;
+set @input,0;
+	input @input;
+	if(@input >= 30000 ) goto max;
+	if(@input == 0 ) goto putskull;
+	if(countitem(7420)<@input*2) goto uncomplete;
+set @random,rand(1,2);
+goto random;
+
+
+
+random:
+if( @random == 1 ) goto Lose;
+if( @random == 2 ) goto Jackpot;
+close;
+
+
+
+Jackpot:
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"^FF0000Random Successful^000000";
+mes"ท่านได้รับ Skull จำนวนสองเท่า ";
+mes"จากเดิม ^FF0000"+@input+" ea.^000000 ท่านจะได้รับ";
+mes"Skull ^FF0000"+@input*2+" ea.^000000 จากเกมส์นี้ค่ะ";
+specialeffect2(610);
+announce "คุณ [ "+strcharinfo(0)+" ] ได้รับ Skull จำนวน "+@input*2+" ea. จาก 50:50 Game",0,0x9999FF;
+getitem 7420,@input*2;
+close;
+
+
+
+Lose:
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"^FF0000Random failed^000000";
+mes"ท่านได้เสีย Skull จำนวนสองเท่า ";
+mes"จากเดิม ^FF0000"+@input+" ea.^000000 ท่านจะเสีย";
+mes"Skull ^FF0000"+@input*2+" ea.^000000 จากเกมส์นี้ค่ะ";
+specialeffect2(611);
+announce "คุณ [ "+strcharinfo(0)+" ] เสีย Skull จำนวน "+@input*2+" ea. จาก 50:50 Game",0,0xFFCCCC;
+delitem 7420,@input*2;
+close;
+
+
+
+nohave:
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"ท่านไม่มี Skull ในการเล่น";
+close;
+
+
+
+uncomplete:
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"จำนวน Skull ที่ท่านเล่น";
+mes"ไม่เพียงพอต่อการเสีย";
+mes"^FF0000ท่านต้องใส่จำนวนครึ่งนึง";
+mes"ของ Skull ที่ท่านมี^000000";
+close;
+
+
+
+max:
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"เกิน 30000 ea.";
+close;
+
+
+
+putskull:
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"โปรดใส่จำนวน Skull";
+close;
+
+
+
+cancel:
+mes"^FF0000[ 50:50 NPC ]^000000";
+mes"แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "50 : 50 Game",0;
+end;
+}

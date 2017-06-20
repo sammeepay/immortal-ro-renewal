@@ -1,0 +1,50 @@
+//===================================================================
+// NPC : Fight With Myself
+// Design By : Unknow Credit
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+job_sage.gat,43,104,6	script	Necromancer	880,{
+mes"[ Necromancer ]";
+mes"ท่านต้องการสู้กับ ^FF0000"+strcharinfo(0)+" Evil^000000 ใช่ หรือ ไม่";
+next;
+menu 
+"- ใช่",yes,
+"- ไม่ใช่",Cancel,
+"Exit",Cancel;
+
+
+
+yes:
+mes "[ Necromancer ]";
+mes"5";
+sleep2 1000;
+mes"4";
+sleep2 1000;
+mes"3";
+sleep2 1000;
+mes"2";
+sleep2 1000;
+mes"1";
+sleep2 1000;
+mes"เริ่ม....";
+sleep2 1000;
+specialeffect2(587);
+atcommand strcharinfo(0)+ "@jump 45 99";
+atcommand strcharinfo(0)+ "@evilclone "+strcharinfo(0)+"";
+close;
+
+
+
+Cancel:
+mes"[ Necromancer ]";
+mes"แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "Fight With Myself",0;
+end;
+}

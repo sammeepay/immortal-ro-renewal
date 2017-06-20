@@ -1,0 +1,67 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	MVPKilllerSystem	-1,{
+	end;
+
+OnWhisperGlobal:
+	if (getgmlevel() < 99) end;
+	if (@whispervar0$ == "Run") goto TestRun;
+OnInit:
+	setarray $@MBKSmob_id[0],1038,1039,1046,1059,1086,1087,1096,1112,1115,1120,
+		1147,1150,1157,1159,1190,1251,1252,1272,1312,1373,
+		1388,1389,1418,1492,1511,1582,1583,1623,1630,1658,
+		1685,1688,1708,1719,1734,1751,1768,1779,1785;
+
+	setarray $@MBKSmap$[0],"prt_fild02","gef_fild05","pay_fild03","moc_fild18",
+		"prt_fild10","gef_fild07","pay_fild05","moc_fild03","ama_fild01",
+		"cmd_fild02","cmd_fild03","mjolnir_06","mjolnir_03";
+	end;
+
+OnClock0020:
+goto TestRun;
+end;
+
+OnClock0320:
+goto TestRun;
+end;
+
+OnClock0620:
+goto TestRun;
+end;
+
+OnClock0920:
+goto TestRun;
+end;
+
+OnClock1220:
+goto TestRun;
+end;
+
+OnClock1520:
+goto TestRun;
+end;
+
+OnClock1820:
+goto TestRun;
+end;
+
+OnClock2120:
+goto TestRun;
+end;
+
+TestRun:
+	set .@mob_id,rand(0,getarraysize($@MBKSmob_id)-1);
+	set .@map,rand(0,getarraysize($@MBKSmap$)-1);
+	announce "[ MVP Killer ] : ขณะนี้ [ "+strmobinfo(2,$@MBKSmob_id[.@mob_id])+" ] ได้ถือกำเนิดขึ้นที่แมพ [ "+$@MBKSmap$[.@map]+" ]",0,0x0DFF0D;
+	monster $@MBKSmap$[.@map],0,0,strmobinfo(2,$@MBKSmob_id[.@mob_id]),$@MBKSmob_id[.@mob_id],1,"MVPKilllerSystem::OnKillBoss";
+	end;
+
+OnKillBoss:
+	getmapxy(.@map$, .@x, .@y, 0, strcharinfo(0));
+	announce "[ MVP Killer ] : ผู้กล้า [ "+strcharinfo(0)+" ] กำจัด Boss Monster ที่แมพ [ "+.@map$+" ] เรียบร้อยแล้ว",0,0x0DFF0D;
+	getitem 29000,1000;
+	end;
+}

@@ -1,0 +1,356 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+function	script	S_Kafra	{
+
+mes "^FF33FFKafra Express^000000";
+mes "สวัสดีท่าน ^0000FF"+strcharinfo(0)+"^000000";
+mes "มีอะไรให้ข้าช่วย ว่ามาเลย !";
+next;
+menu 
+"- เซฟ",K_save,
+"- เก็บของ",K_storage,
+"- เช่ารถและนก",Rents,
+"- บริการรีเซ็ต",Resetss,
+"- สกิลเสริม",Skills,
+"- ยกเลิก",Lcancel;
+
+K_save:
+mes "^FF33FFKafra Express^000000";
+mes "คุณได้ทำการเซฟเรียบร้อยแล้ว";
+savepoint getarg(0),getarg(1),getarg(2);
+close2;
+end;
+
+K_save1:
+callfunc "repairmain1"," Repairman ";
+end;
+
+K_storage:
+if (Zeny < 150) {
+mes "คุณมีเงินไม่พอ";
+close2;
+end;
+}
+set Zeny,Zeny-150;
+mes "^FF33FFKafra Express^000000";
+mes "ข้าเปิดคลังเก็บของให้เจ้าแล้ว !";
+close2;
+openstorage;
+end;
+
+Rents:
+mes "^FF33FFKafra Express^000000";
+mes "คุณต้องการเช่าอะไร";
+next;
+menu "- เช่ารถเข็น",L_Cart,"- เช่านก",L_Falcon,"- เช่า Pecopeco",L_Peco,"- ยกเลิก",LCancel;
+
+L_Cart:
+if(getskilllv(39)<1) goto L_Need_Skill;
+if(Class == 5) goto L_Cart_Ok;
+if(Class == 10) goto L_Cart_Ok;
+if(Class == 18) goto L_Cart_Ok;
+if(Class == 23) goto L_Cart_Ok;
+if(Class == 4006) goto L_Cart_Ok;
+if(Class == 4011) goto L_Cart_Ok;
+if(Class == 4019) goto L_Cart_Ok;
+if(Class == 4028) goto L_Cart_Ok;
+if(Class == 4033) goto L_Cart_Ok;
+if(Class == 4041) goto L_Cart_Ok;
+if(Class == 4045) goto L_Cart_Ok;
+close;
+
+L_Cart_Ok:
+setcart;
+close;
+
+L_Need_Skill:
+mes "^FF33FFKafra Express^000000";
+mes "คุณไม่มีสกิลสำหรับ เช่า รถเข็น";
+close;
+
+L_Falcon:
+if(getskilllv(127)<1) goto L_Need_Skill2;
+if(Class == 11) goto L_falc;
+if(Class == 4012) goto L_falc;
+if(Class == 4034) goto L_falc;
+close;
+
+L_falc:
+setfalcon;
+close;
+
+L_Need_Skill2:
+mes "^FF33FFKafra Express^000000";
+mes "คุณไม่มีสกิลสำหรับ เช่า นกเหยี่ยว";
+close;
+
+L_Peco:
+if (getskilllv(63)<1) goto L_Need_Skill3;
+if (Class == 7) goto L_Peco_Ok;
+if (Class == 14) goto L_Peco_Ok;
+if (Class == 4008) goto L_Peco_Ok;
+if (Class == 4015) goto L_Peco_Ok;
+if (Class == 4030) goto L_Peco_Ok;
+if (Class == 4037) goto L_Peco_Ok;
+close;
+
+L_Peco_Ok:
+setriding;
+close;
+
+L_Need_Skill3:
+mes "^FF33FFKafra Express^000000";
+mes "คุณไม่มีสกิลสำหรับ ขี่ Peco Peco";
+close;
+
+Resetss:
+mes "^FF33FFKafra Express^000000";
+mes "คุณต้องการรีเซ็ตอะไร";
+mes "- 1.Status";
+mes "- 2.Skill";
+mes "- 3.Status & Skill";
+next;
+menu 
+"- Reset Stats",L_Status,
+"- Reset Skill",L_Skill,
+"- Reset Stats & Skill",L_StatusSkill,
+"- ยกเลิก",Lcancel;
+
+L_Status:
+mes "^FF33FFKafra Express^000000";
+mes "ทำการ Reset เรียบร้อย";
+resetstatus;
+close;
+
+L_Skill:
+mes "^FF33FFKafra Express^000000";
+mes "ทำการ Reset เรียบร้อย";
+resetskill;
+close;
+
+L_StatusSkill:
+mes "^FF33FFKafra Express^000000";
+mes "ทำการ Reset เรียบร้อย";
+resetstatus;
+resetskill;
+close;
+
+Skills:
+mes "^FF33FFKafra Express^000000";
+mes "คุณต้องการสกิวเสริมใช่มั้ย ?";
+next;
+menu "- ใช่",Lgetskills,"- ไม่อ่ะ",Lcancel;
+
+Lgetskills:
+if (Class==Job_Knight) || (Class==Job_Lord_Knight) goto L_sKnight;
+if (Class==Job_Assassin) || (Class==Job_Assassin_Cross) goto L_sAssassin;
+if (Class==Job_Bard) || (Class==Job_Clown) goto L_sBard;
+if (Class==Job_Dancer) || (Class==Job_Gypsy) goto L_sDancer;
+if (Class==Job_Blacksmith) || (Class==Job_Whitesmith) goto L_sBlacksmithf;
+if (Class==Job_Crusader) || (Class==Job_Paladin) goto L_sCrusader;
+if (Class==Job_Hunter) || (Class==Job_Sniper) goto L_sHunter;
+if (Class==Job_Monk) || (Class==Job_Champion) goto L_sMonk;
+if (Class==Job_Priest) || (Class==Job_High_Priest) goto L_sPriest;
+if (Class==Job_Rogue) || (Class==Job_Stalker) goto L_sRogue;
+if (Class==Job_Sage) || (Class==Job_Professor) goto L_sSage;
+if (Class==Job_Wizard) || (Class==Job_High_Wizard) goto L_sWizard;
+if (BaseClass==Job_Novice) goto L_sSuperN;
+if (BaseClass==Job_Swordman) goto L_sSword;
+if (BaseClass==Job_Mage) goto L_sMage;
+if (BaseClass==Job_Archer) goto L_sArcher;
+if (BaseClass==Job_Acolyte) goto L_sAcolyte;
+if (BaseClass==Job_Merchant) goto L_sMerchant;
+if (BaseClass==Job_Thief) goto L_sThief;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sKnight:
+skill 157,0,0;
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+skill 1001,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sAssassin:
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+skill 1003,1,0;
+skill 1004,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sBard:
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+skill 1010,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sDancer:
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+skill 1011,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sBlacksmithf:
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+skill 1013,1,0;
+skill 1012,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sCrusader:
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+skill 1002,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sHunter:
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+skill 1009,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sMonk:
+skill 142,1,0;
+skill 156,1,0;
+skill 1015,1,0;
+skill 1016,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sPriest:
+skill 142,1,0;
+skill 156,1,0;
+skill 1014,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sRogue:
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+skill 1005,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sSage:
+skill 142,1,0;
+skill 157,1,0;
+skill 1007,1,0;
+skill 1008,1,0;
+skill 1017,1,0;
+skill 1018,1,0;
+skill 1019,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sWizard:
+skill 142,1,0;
+skill 157,1,0;
+skill 1006,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sSuperN:
+if(BaseJob==0)
+skill 142,1,0;
+skill 143,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sSword:
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sMage:
+skill 142,1,0;
+skill 157,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sArcher:
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sAcolyte:
+skill 142,1,0;
+skill 156,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sMerchant:
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+L_sThief:
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+mes "^FF33FFKafra Express^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+LCancel:
+close;
+}

@@ -1,0 +1,56 @@
+//723
+//specialeffect2(587);
+//mes " ...ขอให้สนุกกันเต็มที่เลย... ";
+//====================================================================
+//next;
+//mes "[ ^008080Warp^000000 ]";
+//mes "==========";
+//mes "^0000FFวิธีออกจาก PvP DeathMatch^000000";
+//mes "^FF0000ออกเข้าใหม่ / @load^000000";
+//sleep2 1500;
+//====================================================================
+// Script By Gjz
+
+-	script	Warp::Warpall	-1,{
+if ($@ActiveSv == 0) end;
+mes "[ ^008080Warp^000000 ]";
+mes "ยินดีต้อนรับคุณ :^FF0000 "+strcharinfo(0)+" ^000000 ";
+mes " ...^0000FFสู่บริการวาป^000000... ";
+mes " ...^FF33FFกรุณาเลือกห้องเลยค่ะ^000000... ";
+menu 
+"- ^FF0000 PvP–Deathmatch  [ "+getmapusers("pvp_y_8-2")+" ]^000000",DeathMatchPvP,
+"- ^0000FF PvP–Normal  [ "+getmapusers("guild_vs3")+" ]^000000",NormalPvP,
+"- ^008080 Duel 1-1  [ "+getmapusers("knight_3-1")+"/2 ]^000000",DuelPvP,
+"- ^990011 กิลวอบ้าน 1  [ "+getmapusers("gefg_cas05")+" ]^000000",GuildWar1,
+"- ^110099 กิลวอบ้าน 2  [ "+getmapusers("payg_cas03")+" ]^000000",GuildWar2,
+"-  ออก ",Lcancel;
+
+NormalPvP:
+warp "guild_vs3",0,0;
+close;
+
+DuelPvP:
+if (getmapusers("knight_3-1")>= 2) goto MaxPlayerRoom;
+warp "knight_3-1",0,0;
+close;
+
+MaxPlayerRoom:
+mes "   ";
+mes "...^FF0000ห้องไม่ว่าง^000000...";
+close;
+
+GuildWar1:
+warp "gefg_cas05",11,138;
+close;
+
+GuildWar2:
+warp "payg_cas03",226,26;
+close;
+
+DeathMatchPvP:
+warp "pvp_y_8-2",0,0;
+close;
+
+Lcancel:
+close;
+}

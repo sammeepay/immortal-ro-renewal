@@ -1,0 +1,141 @@
+rtc_ro,169,60,4	script	Promotion	265,{
+mes "Promotion เติมเงินครบ 2000บาท";
+mes "แลกหมวกไปใส่ฟรีๆ ท่านได้รับ Item";
+mes "Platinum Coin แลกที่ตู้ ได้ตามบัตรเติมที่เราเติม";
+next;
+query_sql "SELECT * FROM `ITEM01_HAT01` WHERE `o2itemmain`>'0' limit 50",$@ITEM01_HATS01itemmain,$@ITEM01_HATS01money,$@ITEM01_HATS01item1,$@ITEM01_HATS01amount1,$@ITEM01_HATS01item2,$@ITEM01_HATS01amount2,$@ITEM01_HATS01item3,$@ITEM01_HATS01amount3,$@ITEM01_HATS01item4,$@ITEM01_HATS01amount4,$@ITEM01_HATS01item5,$@ITEM01_HATS01amount5,$@ITEM01_HATS01item6,$@ITEM01_HATS01amount6,$@ITEM01_HATS01item7,$@ITEM01_HATS01amount7,$@ITEM01_HATS01item8,$@ITEM01_HATS01amount8,$@ITEM01_HATS01item9,$@ITEM01_HATS01amount9,$@ITEM01_HATS01item10,$@ITEM01_HATS01amount10,$@ITEM01_HATS01item11,$@ITEM01_HATS01amount11,$@ITEM01_HATS01item12,$@ITEM01_HATS01amount12;
+set $@hattero2_size,getarraysize($@ITEM01_HATS01itemmain);
+npcshopitem "Tool3TEM01", $@ITEM01_HATS01itemmain[0],$@ITEM01_HATS01money[0],$@ITEM01_HATS01itemmain[1],$@ITEM01_HATS01money[1],$@ITEM01_HATS01itemmain[2],$@ITEM01_HATS01money[2],$@ITEM01_HATS01itemmain[3],$@ITEM01_HATS01money[3],$@ITEM01_HATS01itemmain[4],$@ITEM01_HATS01money[4],$@ITEM01_HATS01itemmain[5],$@ITEM01_HATS01money[5],$@ITEM01_HATS01itemmain[6],$@ITEM01_HATS01money[6],$@ITEM01_HATS01itemmain[7],$@ITEM01_HATS01money[7],$@ITEM01_HATS01itemmain[8],$@ITEM01_HATS01money[8],$@ITEM01_HATS01itemmain[9],$@ITEM01_HATS01money[9],$@ITEM01_HATS01itemmain[10],$@ITEM01_HATS01money[10],$@ITEM01_HATS01itemmain[11],$@ITEM01_HATS01money[11]
+,$@ITEM01_HATS01itemmain[12],$@ITEM01_HATS01money[12],$@ITEM01_HATS01itemmain[13],$@ITEM01_HATS01money[13],$@ITEM01_HATS01itemmain[14],$@ITEM01_HATS01money[14],$@ITEM01_HATS01itemmain[15],$@ITEM01_HATS01money[15],$@ITEM01_HATS01itemmain[16],$@ITEM01_HATS01money[16],$@ITEM01_HATS01itemmain[17],$@ITEM01_HATS01money[17],$@ITEM01_HATS01itemmain[18],$@ITEM01_HATS01money[18],$@ITEM01_HATS01itemmain[19],$@ITEM01_HATS01money[19],$@ITEM01_HATS01itemmain[20],$@ITEM01_HATS01money[20],$@ITEM01_HATS01itemmain[21],$@ITEM01_HATS01money[21],$@ITEM01_HATS01itemmain[22],$@ITEM01_HATS01money[22],$@ITEM01_HATS01itemmain[23],$@ITEM01_HATS01money[23]
+,$@ITEM01_HATS01itemmain[24],$@ITEM01_HATS01money[24],$@ITEM01_HATS01itemmain[25],$@ITEM01_HATS01money[25],$@ITEM01_HATS01itemmain[26],$@ITEM01_HATS01money[26],$@ITEM01_HATS01itemmain[27],$@ITEM01_HATS01money[27],$@ITEM01_HATS01itemmain[28],$@ITEM01_HATS01money[28],$@ITEM01_HATS01itemmain[29],$@ITEM01_HATS01money[29],$@ITEM01_HATS01itemmain[30],$@ITEM01_HATS01money[30],$@ITEM01_HATS01itemmain[31],$@ITEM01_HATS01money[31],$@ITEM01_HATS01itemmain[32],$@ITEM01_HATS01money[32],$@ITEM01_HATS01itemmain[33],$@ITEM01_HATS01money[33],$@ITEM01_HATS01itemmain[34],$@ITEM01_HATS01money[34],$@ITEM01_HATS01itemmain[35],$@ITEM01_HATS01money[35]
+,$@ITEM01_HATS01itemmain[36],$@ITEM01_HATS01money[36],$@ITEM01_HATS01itemmain[37],$@ITEM01_HATS01money[37],$@ITEM01_HATS01itemmain[38],$@ITEM01_HATS01money[38],$@ITEM01_HATS01itemmain[39],$@ITEM01_HATS01money[39],$@ITEM01_HATS01itemmain[40],$@ITEM01_HATS01money[40],$@ITEM01_HATS01itemmain[41],$@ITEM01_HATS01money[41],$@ITEM01_HATS01itemmain[42],$@ITEM01_HATS01money[42],$@ITEM01_HATS01itemmain[43],$@ITEM01_HATS01money[43],$@ITEM01_HATS01itemmain[44],$@ITEM01_HATS01money[44],$@ITEM01_HATS01itemmain[45],$@ITEM01_HATS01money[45],$@ITEM01_HATS01itemmain[46],$@ITEM01_HATS01money[46],$@ITEM01_HATS01itemmain[47],$@ITEM01_HATS01money[47]
+,$@ITEM01_HATS01itemmain[48],$@ITEM01_HATS01money[48],$@ITEM01_HATS01itemmain[49],$@ITEM01_HATS01money[49];
+sleep2 100;
+callshop "Tool3TEM01",1;
+npcshopattach "Tool3TEM01";
+end;
+
+OnBuyItem:
+
+for(set @j,0; @j < getarraysize(@bought_nameid);set @j,@j+1){
+set @check_loop,0;
+for(set @i,0; @i < $@hattero2_size&&@check_loop==0; set @i,@i+1){
+if(@bought_nameid[@j]==$@ITEM01_HATS01itemmain[@i])
+set @check_loop,1;
+
+}
+set @i,@i-1;
+dispbottom "[ "+getitemname($@ITEM01_HATS01itemmain[@i])+" ] : ";
+dispbottom "==========";
+if($@ITEM01_HATS01money[@i]>0)dispbottom "ใช้เงิน [ "+$@ITEM01_HATS01money[@i]+" ] zeny.";
+if($@ITEM01_HATS01amount1[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item1[@i])+" ["+getitemSlots($@ITEM01_HATS01item1[@i])+"] จำนวน "+$@ITEM01_HATS01amount1[@i]+" ชิ้น ";
+if($@ITEM01_HATS01amount2[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item2[@i])+" ["+getitemSlots($@ITEM01_HATS01item2[@i])+"] จำนวน "+$@ITEM01_HATS01amount2[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount3[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item3[@i])+" ["+getitemSlots($@ITEM01_HATS01item3[@i])+"] จำนวน "+$@ITEM01_HATS01amount3[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount4[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item4[@i])+" ["+getitemSlots($@ITEM01_HATS01item4[@i])+"] จำนวน "+$@ITEM01_HATS01amount4[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount5[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item5[@i])+" ["+getitemSlots($@ITEM01_HATS01item5[@i])+"] จำนวน "+$@ITEM01_HATS01amount5[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount6[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item6[@i])+" ["+getitemSlots($@ITEM01_HATS01item6[@i])+"] จำนวน "+$@ITEM01_HATS01amount6[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount7[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item7[@i])+" ["+getitemSlots($@ITEM01_HATS01item7[@i])+"] จำนวน "+$@ITEM01_HATS01amount7[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount8[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item8[@i])+" ["+getitemSlots($@ITEM01_HATS01item8[@i])+"] จำนวน "+$@ITEM01_HATS01amount8[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount9[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item9[@i])+" ["+getitemSlots($@ITEM01_HATS01item9[@i])+"] จำนวน "+$@ITEM01_HATS01amount9[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount10[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item10[@i])+" ["+getitemSlots($@ITEM01_HATS01item10[@i])+"] จำนวน "+$@ITEM01_HATS01amount10[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount11[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item11[@i])+" ["+getitemSlots($@ITEM01_HATS01item11[@i])+"] จำนวน "+$@ITEM01_HATS01amount11[@i]+" ชิ้น";
+if($@ITEM01_HATS01amount12[@i]>0)dispbottom "ใช้ "+getitemname($@ITEM01_HATS01item12[@i])+" ["+getitemSlots($@ITEM01_HATS01item12[@i])+"] จำนวน "+$@ITEM01_HATS01amount12[@i]+" ชิ้น";
+dispbottom "==========";
+if(Zeny<$@ITEM01_HATS01money[@i])
+goto L_Pass;
+if($@ITEM01_HATS01item1[@i]!=0){
+if(countitem($@ITEM01_HATS01item1[@i])<$@ITEM01_HATS01amount1[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item2[@i]!=0){
+if(countitem($@ITEM01_HATS01item2[@i])<$@ITEM01_HATS01amount2[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item3[@i]!=0){
+if(countitem($@ITEM01_HATS01item3[@i])<$@ITEM01_HATS01amount3[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item4[@i]!=0){
+if(countitem($@ITEM01_HATS01item4[@i])<$@ITEM01_HATS01amount4[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item5[@i]!=0){
+if(countitem($@ITEM01_HATS01item5[@i])<$@ITEM01_HATS01amount5[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item6[@i]!=0){
+if(countitem($@ITEM01_HATS01item6[@i])<$@ITEM01_HATS01amount6[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item7[@i]!=0){
+if(countitem($@ITEM01_HATS01item7[@i])<$@ITEM01_HATS01amount7[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item8[@i]!=0){
+if(countitem($@ITEM01_HATS01item8[@i])<$@ITEM01_HATS01amount8[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item9[@i]!=0){
+if(countitem($@ITEM01_HATS01item9[@i])<$@ITEM01_HATS01amount9[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item10[@i]!=0){
+if(countitem($@ITEM01_HATS01item11[@i])<$@ITEM01_HATS01amount11[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item11[@i]!=0){
+if(countitem($@ITEM01_HATS01item11[@i])<$@ITEM01_HATS01amount11[@i])
+goto L_Pass;
+}
+if($@ITEM01_HATS01item12[@i]!=0){
+if(countitem($@ITEM01_HATS01item12[@i])<$@ITEM01_HATS01amount12[@i])
+goto L_Pass;
+}
+delitem $@ITEM01_HATS01item1[@i],$@ITEM01_HATS01amount1[@i];
+delitem $@ITEM01_HATS01item2[@i],$@ITEM01_HATS01amount2[@i];
+delitem $@ITEM01_HATS01item3[@i],$@ITEM01_HATS01amount3[@i];
+delitem $@ITEM01_HATS01item4[@i],$@ITEM01_HATS01amount4[@i];
+delitem $@ITEM01_HATS01item5[@i],$@ITEM01_HATS01amount5[@i];
+delitem $@ITEM01_HATS01item6[@i],$@ITEM01_HATS01amount6[@i];
+delitem $@ITEM01_HATS01item7[@i],$@ITEM01_HATS01amount7[@i];
+delitem $@ITEM01_HATS01item8[@i],$@ITEM01_HATS01amount8[@i];
+delitem $@ITEM01_HATS01item9[@i],$@ITEM01_HATS01amount9[@i];
+delitem $@ITEM01_HATS01item10[@i],$@ITEM01_HATS01amount10[@i];
+delitem $@ITEM01_HATS01item11[@i],$@ITEM01_HATS01amount11[@i];
+delitem $@ITEM01_HATS01item12[@i],$@ITEM01_HATS01amount12[@i];
+getitem $@ITEM01_HATS01itemmain[@i],1;
+dispbottom "[ >> คุณได้รับของเรียบร้อยแล้ว << ]";
+dispbottom "==========";
+dispbottom " ";
+}
+deletearray @bought_nameid, getarraysize(@bought_nameid);
+set @bought_nameid,0;
+end;
+
+L_Pass:
+dispbottom "[ >> คุณมีของไม่ครบ โปรดกลับมาใหม่เมื่อมีของครบ << ]";
+dispbottom "==========";
+dispbottom " ";
+deletearray @bought_nameid, getarraysize(@bought_nameid);
+set @bought_nameid,0;
+close;
+OnInit: 
+waitingroom "• Promotion •",0;
+end;
+}
+
+-	script	ColorITEM01	-1,{
+OnInit:
+query_sql "SELECT * FROM `ITEM01_HAT01` WHERE `o2itemmain`>'0' limit 50",$@ITEM01_HATS01itemmain,$@ITEM01_HATS01money,$@ITEM01_HATS01item1,$@ITEM01_HATS01amount1,$@ITEM01_HATS01item2,$@ITEM01_HATS01amount2,$@ITEM01_HATS01item3,$@ITEM01_HATS01amount3,$@ITEM01_HATS01item4,$@ITEM01_HATS01amount4,$@ITEM01_HATS01item5,$@ITEM01_HATS01amount5,$@ITEM01_HATS01item6,$@ITEM01_HATS01amount6,$@ITEM01_HATS01item7,$@ITEM01_HATS01amount7,$@ITEM01_HATS01item8,$@ITEM01_HATS01amount8,$@ITEM01_HATS01item9,$@ITEM01_HATS01amount9,$@ITEM01_HATS01item10,$@ITEM01_HATS01amount10,$@ITEM01_HATS01item11,$@ITEM01_HATS01amount11,$@ITEM01_HATS01item12,$@ITEM01_HATS01amount12;
+set $@hattero2_size,getarraysize($@ITEM01_HATS01itemmain);
+npcshopitem "Tool3TEM01", $@ITEM01_HATS01itemmain[0],$@ITEM01_HATS01money[0],$@ITEM01_HATS01itemmain[1],$@ITEM01_HATS01money[1],$@ITEM01_HATS01itemmain[2],$@ITEM01_HATS01money[2],$@ITEM01_HATS01itemmain[3],$@ITEM01_HATS01money[3],$@ITEM01_HATS01itemmain[4],$@ITEM01_HATS01money[4],$@ITEM01_HATS01itemmain[5],$@ITEM01_HATS01money[5],$@ITEM01_HATS01itemmain[6],$@ITEM01_HATS01money[6],$@ITEM01_HATS01itemmain[7],$@ITEM01_HATS01money[7],$@ITEM01_HATS01itemmain[8],$@ITEM01_HATS01money[8],$@ITEM01_HATS01itemmain[9],$@ITEM01_HATS01money[9],$@ITEM01_HATS01itemmain[10],$@ITEM01_HATS01money[10],$@ITEM01_HATS01itemmain[11],$@ITEM01_HATS01money[11]
+,$@ITEM01_HATS01itemmain[12],$@ITEM01_HATS01money[12],$@ITEM01_HATS01itemmain[13],$@ITEM01_HATS01money[13],$@ITEM01_HATS01itemmain[14],$@ITEM01_HATS01money[14],$@ITEM01_HATS01itemmain[15],$@ITEM01_HATS01money[15],$@ITEM01_HATS01itemmain[16],$@ITEM01_HATS01money[16],$@ITEM01_HATS01itemmain[17],$@ITEM01_HATS01money[17],$@ITEM01_HATS01itemmain[18],$@ITEM01_HATS01money[18],$@ITEM01_HATS01itemmain[19],$@ITEM01_HATS01money[19],$@ITEM01_HATS01itemmain[20],$@ITEM01_HATS01money[20],$@ITEM01_HATS01itemmain[21],$@ITEM01_HATS01money[21],$@ITEM01_HATS01itemmain[22],$@ITEM01_HATS01money[22],$@ITEM01_HATS01itemmain[23],$@ITEM01_HATS01money[23]
+,$@ITEM01_HATS01itemmain[24],$@ITEM01_HATS01money[24],$@ITEM01_HATS01itemmain[25],$@ITEM01_HATS01money[25],$@ITEM01_HATS01itemmain[26],$@ITEM01_HATS01money[26],$@ITEM01_HATS01itemmain[27],$@ITEM01_HATS01money[27],$@ITEM01_HATS01itemmain[28],$@ITEM01_HATS01money[28],$@ITEM01_HATS01itemmain[29],$@ITEM01_HATS01money[29],$@ITEM01_HATS01itemmain[30],$@ITEM01_HATS01money[30],$@ITEM01_HATS01itemmain[31],$@ITEM01_HATS01money[31],$@ITEM01_HATS01itemmain[32],$@ITEM01_HATS01money[32],$@ITEM01_HATS01itemmain[33],$@ITEM01_HATS01money[33],$@ITEM01_HATS01itemmain[34],$@ITEM01_HATS01money[34],$@ITEM01_HATS01itemmain[35],$@ITEM01_HATS01money[35]
+,$@ITEM01_HATS01itemmain[36],$@ITEM01_HATS01money[36],$@ITEM01_HATS01itemmain[37],$@ITEM01_HATS01money[37],$@ITEM01_HATS01itemmain[38],$@ITEM01_HATS01money[38],$@ITEM01_HATS01itemmain[39],$@ITEM01_HATS01money[39],$@ITEM01_HATS01itemmain[40],$@ITEM01_HATS01money[40],$@ITEM01_HATS01itemmain[41],$@ITEM01_HATS01money[41],$@ITEM01_HATS01itemmain[42],$@ITEM01_HATS01money[42],$@ITEM01_HATS01itemmain[43],$@ITEM01_HATS01money[43],$@ITEM01_HATS01itemmain[44],$@ITEM01_HATS01money[44],$@ITEM01_HATS01itemmain[45],$@ITEM01_HATS01money[45],$@ITEM01_HATS01itemmain[46],$@ITEM01_HATS01money[46],$@ITEM01_HATS01itemmain[47],$@ITEM01_HATS01money[47]
+,$@ITEM01_HATS01itemmain[48],$@ITEM01_HATS01money[48],$@ITEM01_HATS01itemmain[49],$@ITEM01_HATS01money[49];
+end;
+}
+
+-	shop	Tool3TEM01	-1,502:-1 
+
+

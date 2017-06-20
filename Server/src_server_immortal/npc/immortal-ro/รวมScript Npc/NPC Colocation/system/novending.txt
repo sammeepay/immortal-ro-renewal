@@ -1,0 +1,124 @@
+-	script	NOVENDING#21	-1,{
+OnInit:
+setcell "god_town",90,141,143,86,cell_novending,1;
+setcell "god_town",96,38,135,20,cell_novending,1;
+end;
+}
+
+
+c5,156,78,4	script	Zone•ขายของ#01	858,{ end;}
+c5,159,78,4	script	Zone•ขายของ#1	858,{ end;}
+c5,162,78,4	script	Zone•ขายของ#2	858,{ end;}
+c5,165,78,4	script	Zone•ขายของ#3	858,{ end;}
+c5,168,78,4	script	Zone•ขายของ#4	858,{ end;}
+c5,171,78,4	script	Zone•ขายของ#5	858,{ end;}
+c5,156,67,4	script	Zone•ขายของ#6	858,{ end;}
+c5,171,67,4	script	Zone•ขายของ#7	858,{ end;}
+c5,183,61,4	script	Zone•ขายของ#8	858,{ end;}
+c5,182,46,4	script	Zone•ขายของ#11	858,{ end;}
+c5,136,46,4	script	Zone•ขายของ#12	858,{ end;}
+c5,136,52,4	script	Zone•ขายของ#13	858,{ end;}
+c5,157,54,4	script	Zone•ขายของ#16	858,{ end;}
+
+c5,141,87,4	script	zoneตี+#17	858,{ end;}
+c5,133,87,4	script	zoneตี+#18	858,{ end;}
+c5,126,87,4	script	zoneตี+#19	858,{ end;}
+god_town,96,60,4	script	ห้ามตั้งร้าน#20	858,{ end;}
+god_town,96,57,4	script	ห้ามตั้งร้าน#21	858,{ end;}
+god_town,96,54,4	script	ห้ามตั้งร้าน#22	858,{ end;}
+god_town,96,51,4	script	ห้ามตั้งร้าน#23	858,{ end;}
+god_town,96,48,4	script	ห้ามตั้งร้าน#24	858,{ end;}
+god_town,96,45,4	script	ห้ามตั้งร้าน#25	858,{ end;}
+god_town,96,42,4	script	ห้ามตั้งร้าน#26	858,{ end;}
+god_town,96,39,4	script	ห้ามตั้งร้าน#27	858,{ end;}
+
+god_town,135,69,4	script	ห้ามตั้งร้าน#28	858,{ end;}
+god_town,135,66,4	script	ห้ามตั้งร้าน#29	858,{ end;}
+god_town,135,63,4	script	ห้ามตั้งร้าน#30	858,{ end;}
+god_town,135,60,4	script	ห้ามตั้งร้าน#31	858,{ end;}
+god_town,135,57,4	script	ห้ามตั้งร้าน#32	858,{ end;}
+god_town,135,54,4	script	ห้ามตั้งร้าน#33	858,{ end;}
+god_town,135,51,4	script	ห้ามตั้งร้าน#34	858,{ end;}
+god_town,135,48,4	script	ห้ามตั้งร้าน#35	858,{ end;}
+god_town,135,45,4	script	ห้ามตั้งร้าน#36	858,{ end;}
+god_town,135,42,4	script	ห้ามตั้งร้าน#37	858,{ end;}
+god_town,135,39,4	script	ห้ามตั้งร้าน#38	858,{ end;}
+
+god_town,145,107,4	script	Zone•ตีบวก#39	858,{ end;}
+god_town,147,107,4	script	Zone•ตีบวก#40	858,{ end;}
+god_town,149,107,4	script	Zone•ตีบวก#41	858,{ end;}
+god_town,151,107,4	script	Zone•ตีบวก#42	858,{ end;}
+god_town,153,107,4	script	Zone•ตีบวก#43	858,{ end;}
+god_town,155,107,4	script	Zone•ตีบวก#44	858,{ end;}
+god_town,157,107,4	script	Zone•ตีบวก#45	858,{ end;}
+god_town,159,107,4	script	Zone•ตีบวก#46	858,{ end;}
+god_town,161,107,4	script	Zone•ตีบวก#47	858,{ end;}
+god_town,163,107,4	script	Zone•ตีบวก#48	858,{ end;}
+god_town,165,107,4	script	Zone•ตีบวก#49	858,{ end;}
+god_town,167,107,4	script	Zone•ตีบวก#50	858,{ end;}
+god_town,169,107,4	script	Zone•ตีบวก#51	858,{ end;}
+god_town,171,107,4	script	Zone•ตีบวก#52	858,{ end;}
+god_town,173,107,4	script	Zone•ตีบวก#53	858,{ end;}
+god_town,175,107,4	script	Zone•ตีบวก#54	858,{ end;}
+
+god_town,175,109,4	script	Zone•ตีบวก#55	858,{ end;}
+god_town,175,111,4	script	Zone•ตีบวก#56	858,{ end;}
+god_town,175,113,4	script	Zone•ตีบวก#57	858,{ end;}
+god_town,175,115,4	script	Zone•ตีบวก#58	858,{ end;}
+god_town,175,117,4	script	Zone•ตีบวก#59	858,{ end;}
+god_town,175,119,4	script	Zone•ตีบวก#60	858,{ end;}
+god_town,175,121,4	script	Zone•ตีบวก#61	858,{ end;}
+god_town,175,123,4	script	Zone•ตีบวก#62	858,{ end;}
+god_town,175,125,4	script	Zone•ตีบวก#63	858,{ end;}
+god_town,175,127,4	script	Zone•ตีบวก#64	858,{ end;}
+god_town,175,129,4	script	Zone•ตีบวก#65	858,{ end;}
+god_town,175,131,4	script	Zone•ตีบวก#66	858,{ end;}
+god_town,175,133,4	script	Zone•ตีบวก#67	858,{ end;}
+god_town,175,135,4	script	Zone•ตีบวก#68	858,{ end;}
+god_town,175,137,4	script	Zone•ตีบวก#69	858,{ end;}
+god_town,175,139,4	script	Zone•ตีบวก#70	858,{ end;}
+god_town,175,141,4	script	Zone•ตีบวก#71	858,{ end;}
+god_town,175,143,4	script	Zone•ตีบวก#72	858,{ end;}
+god_town,175,145,4	script	Zone•ตีบวก#73	858,{ end;}
+
+god_town,173,134,4	script	Zone•ตีบวก#74	858,{ end;}
+god_town,171,134,4	script	Zone•ตีบวก#75	858,{ end;}
+god_town,169,134,4	script	Zone•ตีบวก#76	858,{ end;}
+god_town,167,134,4	script	Zone•ตีบวก#77	858,{ end;}
+god_town,165,134,4	script	Zone•ตีบวก#78	858,{ end;}
+god_town,163,134,4	script	Zone•ตีบวก#79	858,{ end;}
+god_town,161,134,4	script	Zone•ตีบวก#80	858,{ end;}
+god_town,159,134,4	script	Zone•ตีบวก#81	858,{ end;}
+god_town,157,134,4	script	Zone•ตีบวก#82	858,{ end;}
+god_town,155,134,4	script	Zone•ตีบวก#83	858,{ end;}
+god_town,153,134,4	script	Zone•ตีบวก#84	858,{ end;}
+god_town,151,134,4	script	Zone•ตีบวก#85	858,{ end;}
+god_town,149,134,4	script	Zone•ตีบวก#86	858,{ end;}
+god_town,147,134,4	script	Zone•ตีบวก#87	858,{ end;}
+god_town,145,134,4	script	Zone•ตีบวก#88	858,{ end;}
+
+god_town,99,39,4	script	ห้ามตั้งร้าน#89	858,{ end;}
+god_town,102,39,4	script	ห้ามตั้งร้าน#90	858,{ end;}
+god_town,105,39,4	script	ห้ามตั้งร้าน#91	858,{ end;}
+god_town,108,39,4	script	ห้ามตั้งร้าน#92	858,{ end;}
+god_town,111,39,4	script	ห้ามตั้งร้าน#93	858,{ end;}
+god_town,114,39,4	script	ห้ามตั้งร้าน#94	858,{ end;}
+god_town,117,39,4	script	ห้ามตั้งร้าน#95	858,{ end;}
+god_town,120,39,4	script	ห้ามตั้งร้าน#96	858,{ end;}
+god_town,123,39,4	script	ห้ามตั้งร้าน#97	858,{ end;}
+god_town,126,39,4	script	ห้ามตั้งร้าน#98	858,{ end;}
+god_town,129,39,4	script	ห้ามตั้งร้าน#99	858,{ end;}
+god_town,131,39,4	script	ห้ามตั้งร้าน#100	858,{ end;}
+god_town,134,39,4	script	ห้ามตั้งร้าน#101	858,{ end;}
+
+
+god_town,98,86,4	script	Zone•ขายของ	858,{
+OnInit:
+waitingroom "Zone•ขายของ",0;
+end;
+}
+god_town,134,86,4	script	Zone•ขายของ	858,{
+OnInit:
+waitingroom "Zone•ขายของ",0;
+end;
+}

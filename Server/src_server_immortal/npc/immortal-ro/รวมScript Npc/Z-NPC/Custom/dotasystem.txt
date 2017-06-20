@@ -1,0 +1,82 @@
+//=-=-=-=-=-=-=-= Script by ColoExpress =-=-=-=-=-=-=-=
+//=-=-=-=-=-=-=-= 2010 - 2011 Develop present =-=-=-=-=-=-=-=
+//=-=-=-=-=-=-=-= Powered By www.coloexpress.in.th =-=-=-=-=-=-=-=
+
+-	script	DOTAPVP	-1,{
+
+OnPCLoginEvent:
+	query_sql "SELECT `char_id`, `r_pvp` FROM `ranking` WHERE `char_id` ='"+ getcharid(0,strcharinfo(0))+ "' LIMIT 1", .@cid, .@qc;
+	if(!.@cid) query_sql "insert into ranking(char_id, r_pvp) values ('" + getcharid(0,strcharinfo(0)) +"','0')";
+	set PlayersKilled, .@qc;
+	end;
+
+OnPCKillEvent:
+	getmapxy .@mDot$,.@xDot,.@yDot,0;
+	if( agitcheck() && getmapflag(.@mDot$,mf_gvg) && getmapflag(.@mDot$,mf_battleground) || (.@mDot$ == "leagepvp11") || (.@mDot$ == "guildvs01") || (.@mDot$ == "guildvs02") || (.@mDot$ == "guildvs03") || (.@mDot$ == "guildvs04") || (.@mDot$ == "guildvs05")) end;
+
+	query_sql "update ranking set r_pvp = '" + (PlayersKilled+1) + "' where char_id ='"+ getcharid(0,strcharinfo(0)) + "'";
+	set @PlayersKilledStreak,@PlayersKilledStreak + 1;
+	set PlayersKilled,PlayersKilled + 1;
+	getmapxy .@map$,.@x,.@y,0;
+	if ( !attachrid(killedrid) ) end;
+		message strcharinfo(0),"คุณโดนฆ่าโดย "+ rid2name(killerrid);
+		if ( @PlayersKilledStreak >= 10 ) set .@streakname$,"Beyond Godlike";
+		else if ( @PlayersKilledStreak == 9 ) set .@streakname$,"Godlike";
+		else if ( @PlayersKilledStreak == 8 ) set .@streakname$,"Monster Kill";
+		else if ( @PlayersKilledStreak == 7 ) set .@streakname$,"Wicked Sick";
+		else if ( @PlayersKilledStreak == 6 ) set .@streakname$,"Unstoppable";
+		else if ( @PlayersKilledStreak == 5 ) set .@streakname$,"Mega-kill";
+		else if ( @PlayersKilledStreak == 4 ) set .@streakname$,"Dominating";
+		else if ( @PlayersKilledStreak == 3 ) set .@streakname$,"Killing Spree";
+	if ( @PlayersKilledStreak >= 3 )
+		announce rid2name(killerrid) +" ได้สกัดดาวรุ่งจัดการ "+ strcharinfo(0) +" หงายเงิบไปหยุดคอมโบการฆ่าต่อเนื่อง"+ .@streakname$ +" ที่แผนที่ "+ .@map$,1;
+	set @PlayersKilledStreak,0;
+	set @dota_multikills,0;
+	if (!attachrid(killerrid)) end;
+		if (@PlayersKilledStreak == 3) setarray .@streakname$,"killingspree.wav","มาแบบนิ่มๆ KILLING SPREE","";
+		else if (@PlayersKilledStreak == 4)
+			setarray .@streakname$,"dominating.wav","กำลังมาแล้ววว DOMINATING!","";
+		else if (@PlayersKilledStreak == 5)
+			setarray .@streakname$,"megakill.wav","โหดสุดๆ MEGA KILL!","";
+		else if (@PlayersKilledStreak == 6)
+			setarray .@streakname$,"unstoppable.wav","ของจริงหวะ ! UNSTOPPABLE!","";
+		else if (@PlayersKilledStreak == 7)
+			setarray .@streakname$,"wickedsick.wav","คอมโบเทพ! WICKED SICK!","";
+		else if (@PlayersKilledStreak == 8)
+			setarray .@streakname$,"monsterkill.wav","ใครเปรี้ยวก็เข้ามา! MONSTER KILL!","";
+		else if (@PlayersKilledStreak == 9)
+			setarray .@streakname$,"godlike.wav","เทพจริง! GODLIKE!","จะมีใครหยุดเขาได้หรือไม่!?";
+		else if (@PlayersKilledStreak >= 10 && @PlayersKilledStreak % 1 == 0)
+			setarray .@streakname$,"holyshit.wav","โคตรเทพ! BEYOND GODLIKE!","ใครก็ได้ฆ่ามันสักทีเหอะ!";
+		else goto OnWhisperGlobal;
+	announce strcharinfo(0) +" "+ .@streakname$[1] +" ด้วยสถิติฆ่าต่อเนื่อง "+ @PlayersKilledStreak +" ที่แผนที่ "+ .@map$ + .@streakname$[2],1;
+	soundeffectall .@streakname$[0],0,.@map$;
+
+OnWhisperGlobal:
+	dispbottom "Player PvP Static";
+	dispbottom "จำนวนการฆ่าต่อเนื่อง          : "+ @PlayersKilledStreak;
+	dispbottom "จำนวนการฆ่าทั้งหมด          : "+ PlayersKilled;
+	dispbottom "จำนวนการตายทั้งหมด        : "+ Playersdied;
+	set @dota_multikills, @dota_multikills + 1;
+	deltimer "DOTAPVP::OnStreakReset";
+	addtimer 13000,"DOTAPVP::OnStreakReset";
+	sleep2 2500;
+	if ( @dota_multikills == 2 ){
+		announce strcharinfo(0) +" ฆ่าต่อเนื่องติดสองครั้ง Double Kill !",1;
+		soundeffectall "Double_Kill.wav",0,.@map$;
+	}else if ( @dota_multikills == 3 ) {
+		announce strcharinfo(0) +" ฆ่าต่อเนื่องติดต่อกันสามครั้ง TRIPLE KILL !!!!!!",1;
+		soundeffectall "triple_kill.wav",0,.@map$;
+	}else if ( @dota_multikills == 4 ) {
+		announce strcharinfo(0) +" ฆ่าต่อเนื่องติดต่อกันสี่ครั้ง ULTRA KILL !!!!!!",1;
+		soundeffectall "UltraKill.wav",0,.@map$;
+	}else if ( @dota_multikills >= 5 ) {
+		announce strcharinfo(0) +" ฆ่าต่อเนื่องไม่ยอมหยุด! RAMPAGE !!!!!!",1;
+		soundeffectall "Rampage.wav",0,.@map$;
+	}
+	end;
+
+OnStreakReset:
+	set @dota_multikills,0;
+	end;
+}

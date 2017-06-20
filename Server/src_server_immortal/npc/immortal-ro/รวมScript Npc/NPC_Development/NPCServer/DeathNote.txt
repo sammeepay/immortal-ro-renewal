@@ -1,0 +1,45 @@
+// item code 1006
+
+function	script	Death-Note	{
+mes "[ Death Note ]";
+mes "กรุณาใส่ชื่อผู้เล่นที่ต้องการฆ่าค่ะ";
+mes "หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+atcommand strcharinfo(0)+":@kamic FF99F Death NOTE : [ "+$NamePlayer$+" ] ได้ถูกเขียนชื่อลงใน Death Note แล้วโดยคุณ ( " + strcharinfo(0)+ " )";
+sleep2 3000; 
+mes "...คุณ [ "+$NamePlayer$+" ] จะตายในอีก 3 วินาที...";
+announce "Death Note : [ "+$NamePlayer$+" ] จะตายใน 3 วินาที",BF0B03;
+sleep2 1000; 
+mes "...คุณ [ "+$NamePlayer$+" ] จะตายในอีก 2 วินาที...";
+announce "Death Note : [ "+$NamePlayer$+" ] จะตายใน 2 วินาที",BF0B03; 
+sleep2 1000; 
+mes "...คุณ [ "+$NamePlayer$+" ] จะตายในอีก 1 วินาที...";
+announce "Death Note : [ "+$NamePlayer$+" ] จะตายใน 1 วินาที",BF0B03; 
+sleep2 1000; 
+mes "...คุณ [ "+$NamePlayer$+" ] ได้สิ้นลมหายใจแล้ว...";
+atcommand strcharinfo(0)+":@kill "+$NamePlayer$+""; 
+sleep2 1000; 
+mes "...อโหสิให้ด้วยนะ อิอิ...";
+announce "Death Note : [ "+$NamePlayer$+" ] ได้ไปเกิดเรียบร้อยแล้ว สาธุ",BF0B03;
+close;
+
+
+
+offline:
+mes "[ Death Note ]";
+mes"ขออภัยค่ะ ผู้เล่นที่ท่านต้องการฆ่า";
+mes"ไม่ได้ออนไลท์ในขณะนี้";
+getitem 1006,1;
+close;
+
+
+
+Cancel:
+mes "[ Death Note ]";
+mes "แล้วพบกันใหม่";
+getitem 1006,1;
+close;
+}

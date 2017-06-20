@@ -1,0 +1,70 @@
+//===== eAthena Script =======================================
+//= Special Shop ( Quest Shop + Slot Shop )
+//===== By: ==================================================
+//= Readygo
+//===== Current Version: =====================================
+//= 3.1
+//============================================================
+
+-	shop	QFashion1	-1,25611:-1,25612:-1,25613:-1,25614:-1,25615:-1,25551:-1,25552:-1,25553:-1,25554:-1,25555:-1,25557:-1,25558:-1,25559:-1,25560:-1,25562:-1,25563:-1,25564:-1,25565:-1,25568:-1,25569:-1,25570:-1,25571:-1,25572:-1,25573:-1,25574:-1,25575:-1,25577:-1,25578:-1,25581:-1,25582:-1,25584:-1,25585:-1
+
+// ============================================= Run Set Shop ===============================================
+// หมวกใหม่
+function	script	ShopQFashion1	{	npcshopattach "QFashion1",1;	close2;	cutin "",255;	callshop "QFashion1",1;	end;	}
+
+// =============================================== NPC Quest Shop =========================================
+-	script	QuestShopFas	-1,{
+set @broken,0;	set @zenyuse, 0;
+set $@tr$,"^000080[ Quest Shop Fashion ]^000000";
+cutin "kh_ellisia",2;
+mes $@tr$;
+mes "สวัสดีค่ะ คุณ ^FF0000 "+strcharinfo(0)+" ^000000 ";
+mes "เลือกรายการที่คุณต้องการค่ะ";
+next;
+callfunc "ShopQFashion1";
+
+// ===================================================================================================
+OnBuyItem:
+
+if(@bought_nameid == 25611) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25612) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25613) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25614) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25615) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25551) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25552) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25553) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25554) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25555) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25557) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25558) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25559) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25560) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25562) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25563) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25564) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25565) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25568) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25569) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25570) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25571) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25572) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25573) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25574) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25575) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25577) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25578) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25581) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25582) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25584) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25585) {	setarray @itemuse[0], 5170;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+
+dispbottom "=============================================";	
+dispbottom "ไม่มีรายการแลกของที่ท่านได้เลือก .";	
+dispbottom "=============================================";	
+end;
+
+OnInit: 
+waitingroom "๐ Fashion Hat ๐",0;
+end;
+}

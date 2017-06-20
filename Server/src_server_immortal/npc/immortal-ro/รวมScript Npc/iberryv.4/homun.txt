@@ -1,0 +1,64 @@
+prontera,135,189,5	script	แจกสกิล Homunculus	872,{
+if (Class == 18) goto L_go;
+if (Class == 4019) goto L_go;
+if (Class == 4071) goto L_go;
+if (Class == 4078) goto L_go;
+if (Class == 4041) goto L_go;
+if (Class == 4107) goto L_go;
+mes "[^777777Homunculus^000000]";
+mes "ขออภัย";
+mes "ท่านไม่ใช้อาชีพ ^FF8000Alchemist^000000";
+mes "ท่านไม่ใช้อาชีพ ^FF0000BioChemist^000000";
+close;
+
+L_go:
+mes "[^777777Mr.Homunculus^000000]";
+mes "สวัสดีท่าน "+ strcharinfo(0) +" ";
+mes "~~ ท่านต้องการมี Homunculus บ้างรึเปล่า";
+next;
+menu "แน่นอน",L_yes,"ไม่หละ",L_no;
+
+L_no:
+close;
+
+L_yes:
+mes "[^777777Mr.Homunculus^000000]";
+mes "มาดูสิ่งที่ข้าต้องการกัน";
+mes "^FF00001.Seed Of Life^000000";
+mes "^FF00002.200,000 Zeny^000000";
+mes "ถ้าเจ้าไม่มีสามารถซื้อร้านข้างๆข้าได้";
+mes "ข้าจะถามเข้าอีกรอบ ว่าเจ้าต้องการจะทำไหม";
+next;
+menu "แน่นอนอยู่แล้ว",-,"ข้าเปลี่ยนใจ",L_no;
+if (countitem(7140) == 0 ) goto Ldont;
+delitem 7140,1;
+set Zeny, Zeny-200000;
+next;
+mes "[^777777Mr.Homunculus^000000]";
+mes "กรุณารอสักครู่ ....";
+next;
+mes "[^777777Mr.Homunculus^000000]";
+mes "ฮ่าๆ เสร็จแล้ว !!!";
+mes "ข้าจะให้ Embryo เจ้าด้วย"; 
+mes "ขอให้โชคดีนะ";
+getitem 7142,1;
+skill 238,1,0;
+skill 239,1,0;
+skill 240,1,0;
+skill 241,1,0;
+skill 242,1,0;
+skill 243,1,0;
+skill 246,1,0;
+skill 247,1,0;
+close;
+
+Ldont:
+mes "[^777777Mr.Homunculus^000000]";
+mes "เจ้ามีของที่ข้าต้องการไม่ครบนี่?";
+close;
+
+OnInit:
+waitingroom "[ แจกHomunculus ]",0; 
+end; 
+
+}

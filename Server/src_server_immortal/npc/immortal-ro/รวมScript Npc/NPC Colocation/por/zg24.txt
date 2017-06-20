@@ -1,0 +1,438 @@
+
+-	shop	Shop_Antibot	-,501:-1
+
+-	script	Antibot	-1,{
+
+OnPCLoginEvent:
+	if (getgmlevel()==99) {
+		atcommand "@battleignore";
+		//specialeffect2 381;
+		//specialeffect2 501;
+		close;
+		end;
+		}
+	getmapxy .@mapname$,.@mapx,.@mapy,0,strcharinfo(0);
+	if ( .@mapname$ == "sec_pri" ) {
+		mes "[^9400D3•  AntiLogin •^000000]";
+		mes "ยินดีต้อนรับ นักโทษ ^4233F4"+strcharinfo(0)+"^000000";
+		mes "กรุณาคุยกับ NPC เพื่อขอนิรโทษ";
+		close;
+		end;
+	}
+
+	if ($antibotsys == 0) { 
+		mes "[^9400D3• ประกาศจาก GM_Clubza •^000000]";
+		mes "ยินดีต้อนรับ ^4233F4"+strcharinfo(0)+"^000000";
+		mes "";
+		mes "---------------------------------";
+		mes "^4233F4กิลวอร์ใหญ่ทุกวันอาทิตย์ ^000000";
+		mes "^4233F4 แจก 500 บาท ทุกอาทิตย์^000000";
+		mes "^4233F4 ดูตารางกิลวอร์ได้ที่หน้า web^000000";
+		mes "---------------------------------";
+		mes "^4233F4 พบปัญหาในการเล่นแจ้งได้ที่^000000";
+		mes "^4233F4 clubza-ro@hotmail.com^000000";
+		close;
+	}
+
+	if ($antibotsys == 3) { set @atb, rand (1,2); }
+
+	if ($antibotsys == 1 || @atb == 1) {
+		//setoption 0x40;
+		//setoption 0x2000;
+		pcblockmove getcharid(3),1;
+		atcommand "@me กำลังตอบคำถาม Antibot";
+		percentheal 100,100;
+ 		atcommand "@aw กำลังตอบคำถาม Antibot";
+		atcommand "@noask";
+
+		mes "[^9400D3•  AntiLogin •^000000]";
+		mes "โปรดให้ความร่วมมือในการตรวจสอบ";
+		mes "โปรดอ่านข้อความให้เข้าใจก่อนตอบ";
+		mes "คุณมีเวลา ^FF00003 นาที^000000 ";
+		mes "สำหรับการตอบคำถาม";
+		mes "• ^FF0000ถ้าตอบผิด เราจะส่งคุณเข้าคุก^000000 •";
+		next;
+		set number1, rand (1000000,9999999);
+		set number2, rand (1000000,9999999);
+		set number3, rand (1000000,9999999);
+		set number4, rand (1000000,9999999);
+		set number5, rand (1000000,9999999);
+		set number6, rand (1000000,9999999);
+		set number00, rand (1000000,9999999);
+		set number01, rand (1000000,9999999);
+		set number02, rand (1000000,9999999);
+		set number03, rand (1000000,9999999);
+		set number04, rand (1000000,9999999);
+		set number05, rand (1000000,9999999);
+		set number06, rand (1000000,9999999);
+		set number07, rand (1000000,9999999);
+		set number08, rand (1000000,9999999);
+		set number09, rand (1000000,9999999);
+		set number10, rand (1000000,9999999);
+		set number66, rand (1000,9999);
+		set number99, rand (100,999);
+		set @Col, rand (1,6);
+		set @ok,0;
+
+		switch(@col)
+		{
+		case 1:
+			mes "^F5F9FD"+ number6 +"^000000^A52A2A"+ number6 +"^000000^F8F8FF"+ number10 +"^000000";
+			mes "^F8F8FF"+ number5 +"^000000^008000"+ number5 +"^000000^F5F9FD"+ number09 +"^000000";
+			mes "^F5F9FD"+ number3 +"^000000^9400D3"+ number4 +"^000000^F8F8FF"+ number08 +"^000000";
+			mes "^F8F8FF"+ number1 +"^000000^0000FF"+ number3 +"^000000^F5F9FD"+ number07 +"^000000";
+			mes "^F5F9FD"+ number2 +"^000000^FFA500"+ number2 +"^000000^F5F9FD"+ number05 +"^000000";
+			mes "^F8F8FF"+ number5 +"^000000^FF0000"+ number1 +"^000000^F5F9FD"+ number02 +"^000000";
+			mes "กรุณาป้อน สี ^F5F9FD##^FF0000 ####^F8F8FF#######^FFF9FA#^FFF9EE#^F7F7FF#";
+			next;
+			input number;
+			if(number == number1) set @ok,1;
+			break;
+		case 2:
+			mes "^FFF9EE"+ number4 +"^000000^A52A2A"+ number6 +"^000000^F5F9FD"+ number07 +"^000000";
+			mes "^F8F8FF"+ number3 +"^000000^9400D3"+ number4 +"^000000^F5F9FD"+ number00 +"^000000";
+			mes "^F5F9FD"+ number1 +"^000000^FF0000"+ number1 +"^000000^F5F9FD"+ number06 +"^000000";
+			mes "^F8F8FF"+ number2 +"^000000^0000FF"+ number3 +"^000000^F5F9FD"+ number04 +"^000000";
+			mes "^F5F9FD"+ number5 +"^000000^FF8C00"+ number2 +"^000000^F5F9FD"+ number08 +"^000000";
+			mes "^F5F9FD"+ number6 +"^000000^008000"+ number5 +"^000000^F8F8FF"+ number10 +"^000000";
+			mes "กรุณาป้อน สี ^F5F9FD#^FFF9EE####^FFA500 ######^F5F9FD#^F5F9FD####^F7F7FF##^FFF9FA##";
+			next;
+			input number;
+			if(number == number2 ) set @ok,1;
+			break;
+		case 3:
+			mes "^F8F8FF"+ number01 +"^000000^FFA500"+ number2 +"^000000^F7F7FF"+ number66 +"^000000^F5F9FD"+ number99 +"^000000";
+			mes "^FFF9EE"+ number09 +"^000000^A52A2A"+ number6 +"^000000^F5F9FD"+ number66 +"^000000^FFF9EE"+ number99 +"^000000";
+			mes "^F5F9FD"+ number08 +"^000000^FF0000"+ number1 +"^000000^F7F7FF"+ number66 +"^000000^FFF9EE"+ number99 +"^000000";
+			mes "^F8F8FF"+ number07 +"^000000^0000FF"+ number3 +"^000000^F5F9FD"+ number66 +"^000000^F5F9FD"+ number99 +"^000000";
+			mes "^FFF9EE"+ number06 +"^000000^008000"+ number5 +"^000000^F5F9FD"+ number66 +"^000000^FFF9EE"+ number99 +"^000000";
+			mes "^F5F9FD"+ number05 +"^000000^9400D3"+ number4 +"^000000^F7F7FF"+ number66 +"^000000^F5F9FD"+ number99 +"^000000";
+			mes "กรุณาป้อน สี ^F5F9FD#^FFF9EE###^0000FF #####^F8F8FF######^F5F9FD#^FFF9FA#^F7F7FF##";
+			next;
+			input number;
+			if(number == number3) set @ok,1;
+			break;
+		case 4:
+			mes "^F7F7FF"+ number66 +"^000000^FFF9EE"+ number99 +"^000000^9400D3"+ number4 +"^000000^F5F9FD"+ number09 +"^000000";
+			mes "^F7F7FF"+ number66 +"^000000^FFF9EE"+ number99 +"^000000^FFA500"+ number2 +"^000000^F5F9FD"+ number04 +"^000000";
+			mes "^F7F7FF"+ number66 +"^000000^FFF9EE"+ number99 +"^000000^A52A2A"+ number6 +"^000000^F5F9FD"+ number05 +"^000000";
+			mes "^FFF9EE"+ number99 +"^000000^F7F7FF"+ number66 +"^000000^FF0000"+ number1 +"^000000^F5F9FD"+ number06 +"^000000";
+			mes "^FFF9EE"+ number99 +"^000000^F7F7FF"+ number66 +"^000000^0000FF"+ number3 +"^000000^F5F9FD"+ number08 +"^000000";
+			mes "^FFF9EE"+ number99 +"^000000^F7F7FF"+ number66 +"^000000^008000"+ number5 +"^000000^F5F9FD"+ number01 +"^000000";
+			mes "กรุณาป้อน สี  ^F5F9FD#^FFF9EE#^FFF9FA#^9400D3 #########^F8F8FF#^F5F9FD##^F7F7FF##";
+			next;
+			input number;
+			if(number == number4 ) set @ok,1;
+			break;
+		case 5:
+			mes "^FFF9EE"+ number66 +"^000000^FFF9EE"+ number99 +"^000000^008000"+ number5 +"^000000^F5F9FD"+ number04 +"^000000";
+			mes "^FFF9FA"+ number99 +"^000000^F7F7FF"+ number66 +"^000000^FFA500"+ number2 +"^000000^F5F9FD"+ number03 +"^000000";
+			mes "^F5F9FD"+ number66 +"^000000^FFF9EE"+ number99 +"^000000^FF0000"+ number1 +"^000000^F5F9FD"+ number00 +"^000000";
+			mes "^FFF9EE"+ number99 +"^000000^FFF9EE"+ number66 +"^000000^9400D3"+ number4 +"^000000^F5F9FD"+ number01 +"^000000";
+			mes "^F7F7FF"+ number66 +"^000000^FFF9FA"+ number99 +"^000000^0000FF"+ number3 +"^000000^F5F9FD"+ number06 +"^000000";
+			mes "^FFF9EE"+ number99 +"^000000^F5F9FD"+ number66 +"^000000^A52A2A"+ number6 +"^000000^F5F9FD"+ number05 +"^000000";
+			mes "กรุณาป้อน สี  ^F7F7FF#^FFF9FA#^F5F9FD#^008000#########^F5F9FD#^F8F8FF#^FFF9EE##";
+			next;
+			input number;
+			if(number == number5 ) set @ok,1;
+			break;
+		case 6:
+			mes "^F5F9FD"+ number99 +"^000000^FFF9EE"+ number66 +"^000000^FF8C00"+ number2 +"^000000^F5F9FD"+ number05 +"^000000";
+			mes "^F8F8FF"+ number66 +"^000000^F7F7FF"+ number99 +"^000000^A52A2A"+ number6 +"^000000^F5F9FD"+ number05 +"^000000";
+			mes "^F5F9FD"+ number99 +"^000000^FFF9EE"+ number66 +"^000000^9400D3"+ number4 +"^000000^F8F8FF"+ number06 +"^000000";
+			mes "^F5F9FD"+ number66 +"^000000^F7F7FF"+ number99 +"^000000^FF0000"+ number1 +"^000000^F5F9FD"+ number02 +"^000000";
+			mes "^F8F8FF"+ number99 +"^000000^FFF9EE"+ number66 +"^000000^0000FF"+ number3 +"^000000^F8F8FF"+ number01 +"^000000";
+			mes "^F5F9FD"+ number99 +"^000000^F7F7FF"+ number66 +"^000000^008000"+ number5 +"^000000^F5F9FD"+ number03 +"^000000";
+			mes "กรุณาป้อน สี ^F7F7FF#^F5F9FD#^FFF9FA#^A52A2A##########^FFF9EE##^F8F8FF#";
+			next;
+			input number;
+			if(number == number6 ) set @ok,1;
+			break;
+		}
+
+		if(@ok)
+		{
+			mes "[^9400D3•  AntiLogin •^000000]";
+			mes "ยินดีต้อนรับ ^4233F4"+strcharinfo(0)+"^000000";
+			mes "สีที่คุณตอบ ถูกต้อง";
+			mes "ขอให้สนุกกับการเล่น";
+			mes "ขอบคุณ... ที่ให้ความร่วมมือ.....";	
+			//setoption 0x40,0;
+			//setoption 0x2000,0;
+			pcblockmove getcharid(3),0;
+			percentheal 100,100;
+ 			atcommand "@aw";
+			atcommand "@noask";
+			//specialeffect2 381;
+			close;
+		} else {
+			mes "[^9400D3•  AntiLogin •^000000]";
+			mes "สีที่คุณตอบ ไม่ถูกต้อง";
+			mes "เราจะส่งคุณไปยังคุกก่อน";
+			next;
+			//setoption 0x40,0;
+			//setoption 0x2000,0;
+			pcblockmove getcharid(3),0;
+			percentheal 100,100;
+ 			atcommand "@aw";
+			atcommand "@noask";
+			atcommand "@jail " + strcharinfo(0);
+		}
+	}
+	if ($antibotsys == 2 || @atb == 2) {
+		setarray @SP_AntiBot[0],912,910,916,923,929,931,936,940,942,945,946;
+		pcblockmove getcharid(3),1;
+
+		switch (rand(1,20))
+		{
+		case 1:	set @SP_Msg$,"หัวใจของสัตว์ร้าย";	set @SP_Random,929;	break;
+		case 2:	set @SP_Msg$,"ขนนกสีขาว";	set @SP_Random,916;	break;
+		case 3:	set @SP_Msg$,"สิ่งที่หาได้จาก Rocker";	set @SP_Random,940;	break;
+		case 4:	set @SP_Msg$,"ชิ้นส่วนจาก Baphomet";	set @SP_Random,923;	break;
+		case 5:	set @SP_Msg$,"หางลิงในป่าลึก";	set @SP_Random,942;	break;
+		case 6:	set @SP_Msg$,"เกล็ดที่ได้จาก Isis";	set @SP_Random,936;	break;
+		case 7:	set @SP_Msg$,"รูปร่างเหมือนไข่สีเขียว";	set @SP_Random,912;	break;
+		case 8:	set @SP_Msg$,"สิ่งที่พบได้จากป่า Orc";	set @SP_Random,931;	break;
+		case 9:	set @SP_Msg$,"รูปร่างเหมือนไข่สีม่วง";	set @SP_Random,910;	break;
+		default:
+			set .@tmp,rand(0,getarraysize(@SP_AntiBot)-1);
+			set @SP_Msg$,"ไอเทมลำดับที่"+callfunc("ntos",.@tmp+1);
+			set @SP_Random,@SP_AntiBot[.@tmp];
+			break;
+		}
+		set @SP_Amount,rand(1,100);
+
+		mes "[^9400D3•  AntiLogin •^000000]";
+		mes "นี้คือระบบตรวจสอบโปรแกรมช่วยเล่น";
+		mes "• ^FF0000ถ้าตอบผิด เราจะส่งคุณเข้าคุก^000000 •";
+		next;
+		mes "[^9400D3•  AntiLogin •^000000]";
+		mes "ให้ท่านซื้อ";
+		mes "^FF0000"+@SP_Msg$+"^000000 จำนวน";
+		mes "^0000FF"+callfunc("ntos",@SP_Amount)+"^000000 ชิ้น";
+		mes "จากร้านที่จะปรากฏขึ้น";
+		close2;
+
+		npcshopitem "Shop_Antibot",@SP_AntiBot[0],0;
+		for ( set .@y,1; .@y < getarraysize(@SP_AntiBot); set .@y,.@y+1 )
+			npcshopadditem "Shop_Antibot",getd("@SP_AntiBot["+.@y+"]"),0;
+
+		npcshopattach "Shop_Antibot",1;
+		dispbottom "ให้ท่านซื้อ "+@SP_Msg$+" จำนวน "+callfunc("ntos",@SP_Amount)+" ชิ้น จากร้านที่จะปรากฏขึ้น";
+		callshop "Shop_Antibot",1;
+		end;
+	
+OnBuyItem:
+		pcblockmove getcharid(3),0;
+		sc_end 47;
+		percentheal 100,100;
+
+		getmapxy .@mapname$,.@mapx,.@mapy,0,strcharinfo(0);
+		if ( @bought_nameid[0] != @SP_Random || @bought_quantity[0] != @SP_Amount ){
+			atcommand "@jail "+strcharinfo(0);
+		} else {
+			dispbottom "Antibot : ขอให้สนุกกับการเล่น ขอบคุณ... ที่ให้ความร่วมมือ.....";
+		}
+	}
+end;
+}
+
+function	script	ntos	{
+	if (!getarg(O)) return "0 Zeny";
+	set .@tmp,getarg(O);
+
+	set .@i,0;
+	while (.@tmp > 0)
+	{
+		setarray .@t[.@i],.@tmp%10;
+		set .@tmp,.@tmp/10;
+		set .@i,.@i+1;
+	}
+	set .@strzeny$,"";
+	for (set .@i,getarraysize(.@t)-1;.@i>=0;set .@i,.@i-1)
+	{
+		switch (.@t[.@i])
+		{
+		case 1:	set .@strzeny$,.@strzeny$+(.@i==1?"":(rand(0,1)&& .@i==1?"เอ็ด":"หนึ่ง"));	break;
+		case 2:	set .@strzeny$,.@strzeny$+(.@i==1?"ยี่":"สอง");	break;
+		case 3:	set .@strzeny$,.@strzeny$+"สาม";	break;
+		case 4:	set .@strzeny$,.@strzeny$+"สี่";	break;
+		case 5:	set .@strzeny$,.@strzeny$+"ห้า";	break;
+		case 6:	set .@strzeny$,.@strzeny$+"หก";	break;
+		case 7:	set .@strzeny$,.@strzeny$+"เจ็ด";	break;
+		case 8:	set .@strzeny$,.@strzeny$+"แปด";	break;
+		case 9:	set .@strzeny$,.@strzeny$+"เก้า";	break;
+		}
+		if (!.@t[.@i]) continue;
+		switch (.@i)
+		{
+		case 1:	set .@strzeny$,.@strzeny$+"สิบ";	break;
+	//	case 2:	set .@strzeny$,.@strzeny$+"ร้อย";	break;
+	//	case 3:	set .@strzeny$,.@strzeny$+"พัน";	break;
+	//	case 4:	set .@strzeny$,.@strzeny$+"หมื่น";	break;
+		}
+	}
+	return .@strzeny$;
+}
+
+-	script	Antijail	998,{
+	mes "[^9400D3•  Antijail •^000000]";
+	mes "เจ้ามาหาข้า มีอะไรให้ช่วยหรือป่าว";
+	set @mjail, rand (1,6);
+	next;
+	if (@mjail==1) {
+	menu	"^FF0000- ข้ามาขอนิรโทษ^000000",UNOK,
+		"- ข้าหิวข้าวแล้ว",UNNOOK,
+		"- นั่นสิ ข้ามาหาท่านทำไม",CANCEL;
+	} else if (@mjail==2) {
+	menu	"^FF0000- ข้ามาขอนิรโทษ^000000",UNOK,
+		"- นั่นสิ ข้ามาหาท่านทำไม",CANCEL,
+		"- ข้าหิวข้าวแล้ว",UNNOOK;
+	} else if (@mjail==3) {
+	menu	"- ข้าหิวข้าวแล้ว",UNNOOK,
+		"^FF0000- ข้ามาขอนิรโทษ^000000",UNOK,
+		"- นั่นสิ ข้ามาหาท่านทำไม",CANCEL;
+	} else if (@mjail==4) {
+	menu	"- ข้าหิวข้าวแล้ว",UNNOOK,
+		"- นั่นสิ ข้ามาหาท่านทำไม",CANCEL,
+		"^FF0000- ข้ามาขอนิรโทษ^000000",UNOK;
+	} else if (@mjail==5) {
+	menu	"- นั่นสิ ข้ามาหาท่านทำไม",CANCEL,
+		"- ข้าหิวข้าวแล้ว",UNNOOK,
+		"^FF0000- ข้ามาขอนิรโทษ^000000",UNOK;
+	} else if (@mjail==6) {
+	menu	"- นั่นสิ ข้ามาหาท่านทำไม",CANCEL,
+		"^FF0000- ข้ามาขอนิรโทษ^000000",UNOK,
+		"- ข้าหิวข้าวแล้ว",UNNOOK;
+	}
+
+UNNOOK:
+	mes "[^9400D3•  Antijail •^000000]";
+	mes "ยังไม่ถึงเวลาอาหารเลย";
+	mes "ไปรออาหารเงียบๆ ไป๊";
+	close;
+
+CANCEL:
+	mes "[^9400D3•  Antijail •^000000]";
+	mes "งั้นเจ้าไปคิดให้ดีก่อนนะ";
+	mes "ว่ามาหาข้าทำไม";
+	close;
+
+UNOK:
+	mes "[^9400D3•  Antijail •^000000]";
+	mes "อยากจะถูกนิรโทษ";
+	mes "• ^FF0000ก็ต้องตอบคำถามซะก่อน^000000 •";
+	next;
+	mes "[^9400D3•  Antijail •^000000]";
+	mes "โปรดอ่านให้เข้าใจก่อนตอบ";
+	mes "• ^FF0000ถ้าผิด 3 ครั้งจะโดนแบน 15 นาที^000000 •";
+	set @remainq,3 - #SP_Counter;
+	next;
+NEWQ:
+	mes "[^9400D3•  Antijail •^000000]";
+	mes "• คุณตอบคำถามได้อีก ^009900" +@remainq+ "^000000 ครั้ง •";
+	next;
+	set numer1, rand (1,5);
+	set numer2, rand (1,5);
+	set numer3, rand (6,10);
+	set numer4, rand (6,10);
+	set @antij, rand (1,6);
+	set @okja,0;
+	switch(@antij)
+	{
+	case 1:
+		mes "[^9400D3•  Antijail •^000000]";
+		mes "โจทย์ข้อนี้คือ";
+		mes " ";
+		mes "จงหาคำตอบของ "+ numer1 +" + "+ numer4 +" = ???? ";
+		mes "กรุณาใส่คำตอบของโจทย์";
+		next;
+		input numer;
+		if(numer == (numer1+numer4)) set @okja,1;
+		break;
+	case 2:
+		mes "[^9400D3•  Antijail •^000000]";
+		mes "โจทย์ข้อนี้คือ";
+		mes " ";
+		mes "จงหาคำตอบของ "+ numer4 +" - "+ numer1 +" = ???? ";
+		mes "กรุณาใส่คำตอบของโจทย์";
+		next;
+		input numer;
+		if(numer == (numer4-numer1)) set @okja,1;
+		break;
+	case 3:
+		mes "[^9400D3•  Antijail •^000000]";
+		mes "โจทย์ข้อนี้คือ";
+		mes " ";
+		mes "จงหาคำตอบของ "+ numer1 +" x "+ numer2 +" = ???? ";
+		mes "กรุณาใส่คำตอบของโจทย์";
+		next;
+		input numer;
+		if(numer == (numer1*numer2)) set @okja,1;
+		break;
+	case 4:
+		mes "[^9400D3•  Antijail •^000000]";
+		mes "โจทย์ข้อนี้คือ";
+		mes " ";
+		mes "จงหาคำตอบของ "+ numer1 +" x "+ numer3 +" = ???? ";
+		mes "กรุณาใส่คำตอบของโจทย์";
+		next;
+		input numer;
+		if(numer == (numer1*numer3)) set @okja,1;
+		break;
+	case 5:
+		mes "[^9400D3•  Antijail •^000000]";
+		mes "โจทย์ข้อนี้คือ";
+		mes " ";
+		mes "จงหาคำตอบของ ("+ numer1 +" x "+ numer3 +") -  "+ numer2 +" = ???? ";
+		mes "กรุณาใส่คำตอบของโจทย์";
+		next;
+		input numer;
+		if(numer == ((numer1*numer3)-numer2)) set @okja,1;
+		break;
+	case 6:
+		mes "[^9400D3•  Antijail •^000000]";
+		mes "โจทย์ข้อนี้คือ";
+		mes " ";
+		mes "จงหาคำตอบของ ("+ numer1 +" x "+ numer2 +") +  "+ numer3 +" = ???? ";
+		mes "กรุณาใส่คำตอบของโจทย์";
+		next;
+		input numer;
+		if(numer == ((numer1*numer2)+numer3)) set @okja,1;
+		break;
+	}
+	
+	if(@okja)
+	{
+		mes "[^9400D3•  Antijail •^000000]";
+		mes "คำตอบของคุณ ถูกต้อง";
+		mes "ขอให้สนุกกับการเล่น";
+		mes "ขอบคุณ... ที่ให้ความร่วมมือ.....";
+		set #SP_Counter,0;
+		atcommand "@unjail " + strcharinfo(0);
+	} else {
+		mes "[^9400D3•  Antijail •^000000]";
+		mes "คุณกรอก คำตอบไม่ถูกต้อง";
+		mes "กรุณา ตอบใหม่";
+		next;
+		set #SP_Counter,#SP_Counter + 1;
+		set @remainq,@remainq-1;
+		if (#SP_Counter > 2) { 
+			mes "[^9400D3•  Antijail •^000000]";
+			mes "คุณตอบผิด 3 ข้อแล้ว";
+			mes "กรุณารอการปลดแบน 15 นาที";
+			mes "แล้วค่อยล้อคอินเข้ามาใหม่นะค่ะ";
+			set #SP_Counter,0;
+			atcommand "@ban 15mn "+strcharinfo(0);
+		} else { goto NEWQ; }
+		close;
+	}
+end;
+}
+
+//sec_pri,36,59,4	duplicate(Antijail)	ผู้คุมคุก#01	998
+//sec_pri,63,59,4	duplicate(Antijail)	ผู้คุมคุก#02	998
+//sec_pri,36,33,4	duplicate(Antijail)	ผู้คุมคุก#03	998
+//sec_pri,49,33,4	duplicate(Antijail)	ผู้คุมคุก#04	998
+//sec_pri,61,33,4	duplicate(Antijail)	ผู้คุมคุก#05	998
+//sec_pri,73,33,4	duplicate(Antijail)	ผู้คุมคุก#06	998

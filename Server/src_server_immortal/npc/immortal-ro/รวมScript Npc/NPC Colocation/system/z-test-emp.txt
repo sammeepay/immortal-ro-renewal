@@ -1,0 +1,60 @@
+//ทดสอบหิน
+homes3,64,35,0	warp	2exittomor1	1,1,god_town,115,111
+
+homes3,47,42,0,0	monster	EMPERIUM	1907,1,0,0,1
+homes3,43,42,0,0	monster	EMPERIUM	1907,1,0,0,1
+homes3,55,42,0,0	monster	EMPERIUM	1907,1,0,0,1
+homes3,59,42,0,0	monster	EMPERIUM	1907,1,0,0,1
+
+
+homeb1,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb2,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb3,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb4,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb5,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb6,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb7,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb8,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb9,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+homeb10,36,64,0,0	monster	EMPERIUM	1907,1,0,0,1
+
+c5,133,151,0,0	monster	EMPERIUM	1288,1,0,0,1
+c5,137,151,0,0	monster	EMPERIUM	1288,1,0,0,1
+//god_town,137,156,0,0	monster	EMPERIUM	1288,1,0,0,1
+
+homeb10	mapflag	nodrop
+homeb10	mapflag	nobranch
+homeb10	mapflag	noloot
+homeb10	mapflag	noteleport
+homeb10	mapflag	nosave
+homeb10	mapflag	novending
+homeb10	mapflag	notrade
+
+-	script	ห้องทดสอบอาวุธ::testemp	767,{
+	set .@heading$, "[ทดสอบตีหินGuild]";
+
+	mes .@heading$;
+	mes "สวัสดีค่ะ ยินดีให้บริการค่ะ";
+	mes "ต้องการทดสอบตีหินมั้ยค่ะ";
+	next;
+
+	menu "^009933•^000000 ต้องการ",gotonow,"^FF0000•^000000 ยกเลิก",cancel;
+
+gotonow:
+	emotion 43;
+	mes .@heading$;
+	mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+	sleep2 2000;
+
+	warp "homes3",51,39;
+	close;
+
+cancel:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	close;
+
+OnInit:
+	Waitingroom "๐ ทดสอบหินกิลด์ ๐" , 0;
+	end;
+}

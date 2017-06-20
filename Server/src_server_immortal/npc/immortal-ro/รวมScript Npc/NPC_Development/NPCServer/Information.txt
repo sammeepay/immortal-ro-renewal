@@ -1,0 +1,914 @@
+//===================================================================
+// NPC : Information
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,125,109,4	script	Deputy Gm	837,{
+mes"[ Deputy Gm ]";
+mes"สวัสดีค่ะคุณ [ ^FF0000 " + strcharinfo(0) + " ^000000 ]";
+mes"โปรดเลือกหัวข้ออ่าน";
+mes"จากเมนูด้านล่างค่ะ.";
+next;
+menu 
+"- ข้อความจาก ผู้ดูแลเซิฟเวอร์",inform,
+"- กฎของเซิฟเวอร์",rule,
+"- ข้อมูลเซิฟเวอร์",info,
+"- ไอเท็มแก้ไข",itemedit,
+"^FF0000- เฉพาะผู้ดูแลเซิฟเวอร์เท่านั้น^000000",CheckGm,
+"Exit",cancel;
+
+
+
+inform:
+mes"[ Deputy Gm ]";
+mes"1. ^3355FF"+$message1$+"^000000";
+mes"2. ^3355FF"+$message2$+"^000000";
+mes"3. ^3355FF"+$message3$+"^000000";
+mes"4. ^3355FF"+$message4$+"^000000";
+mes"5. ^3355FF"+$message5$+"^000000";
+next;
+if(getgmlevel() >90) goto SpecialLink1;
+npctalk "ขอบคุณค่ะคุณ [ "+strcharinfo(0)+" ] ที่เข้ามาอ่านข่าวสารจากเซิฟเวอร์ ผู้ที่อยู่แถวๆนี้โปรดเข้ามาอ่านด้วยค่ะ ขอบคุณค่ะ";
+emotion 15;
+mes"[ Deputy Gm ]";
+mes"ขอบคุณสำหรับท่านที่มาดู";
+close;
+
+
+
+rule:
+mes"[ Deputy Gm ]";
+mes"1. ^3355FF"+$rule1$+"^000000";
+mes"2. ^3355FF"+$rule2$+"^000000";
+mes"3. ^3355FF"+$rule3$+"^000000";
+mes"4. ^3355FF"+$rule4$+"^000000";
+mes"5. ^3355FF"+$rule5$+"^000000";
+mes"6. ^3355FF"+$rule6$+"^000000";
+mes"7. ^3355FF"+$rule7$+"^000000";
+mes"8. ^3355FF"+$rule8$+"^000000";
+next;
+if(getgmlevel() >90) goto SpecialLink2;
+npctalk "ขอบคุณค่ะคุณ [ "+strcharinfo(0)+" ] ที่เข้ามาอ่านข่าวสารจากเซิฟเวอร์ ผู้ที่อยู่แถวๆนี้โปรดเข้ามาอ่านด้วยค่ะ ขอบคุณค่ะ";
+emotion 15;
+mes"[ Deputy Gm ]";
+mes"ขอบคุณสำหรับท่านที่มาดู";
+close;
+
+
+
+info:
+mes"[ Deputy Gm ]";
+mes"1. ^3355FF"+$info1$+"^000000";
+mes"2. ^3355FF"+$info2$+"^000000";
+mes"3. ^3355FF"+$info3$+"^000000";
+next;
+if(getgmlevel() >90) goto SpecialLink3;
+npctalk "ขอบคุณค่ะคุณ [ "+strcharinfo(0)+" ] ที่เข้ามาอ่านข่าวสารจากเซิฟเวอร์ ผู้ที่อยู่แถวๆนี้โปรดเข้ามาอ่านด้วยค่ะ ขอบคุณค่ะ";
+emotion 15;
+mes"[ Deputy Gm ]";
+mes"ขอบคุณสำหรับท่านที่มาดู";
+close;
+
+
+
+CheckGm:
+if(getgmlevel() ==0) goto NormalUser;
+if(getgmlevel() >90) goto GmUser;
+if(getgmlevel() <90) goto SubUser;
+
+
+
+SpecialLink1:
+mes"[ Deputy Gm ]";
+mes"ท่านต้องการแก้ไขข้อมูลหรือไม่";
+next;
+menu 
+"- แก้ไขข้อมูล",g1,
+"Exit",cancel;
+
+
+
+SpecialLink2:
+mes"[ Deputy Gm ]";
+mes"ท่านต้องการแก้ไขข้อมูลหรือไม่";
+next;
+menu 
+"- แก้ไขข้อมูล",g2,
+"Exit",cancel;
+
+
+SpecialLink3:
+mes"[ Deputy Gm ]";
+mes"ท่านต้องการแก้ไขข้อมูลหรือไม่";
+next;
+menu 
+"- แก้ไขข้อมูล",g3,
+"Exit",cancel;
+
+
+
+SubUser:
+mes"[ Deputy Gm ]";
+mes"สวัสดีค่ะ [ "+strcharinfo(0)+" ]";
+mes"ท่านจัดอบู่ในระดับ Sub User";
+mes"และ Sub User จะฝากข้อความได้นั้น";
+mes"จะต้องมี Password ในการเข้า";
+mes"Password สามารถหาได้จาก Gm เท่านั้น";
+next;
+mes"[ Deputy Gm ]";
+mes"โปรดใส่ Password ค่ะ";
+next;
+set $pass,159357;
+input @pw;
+if (@pw != $pass) goto miss;
+if (@pw == $pass) goto GmUser;
+
+
+
+GmUser:
+mes"[ Deputy Gm ]";
+mes"สวัสดีค่ะท่าน [ "+strcharinfo(0)+" ]";
+mes"ท่านต้องแก้ไข ข้อมูลส่วนไหน";
+next;
+menu 
+"- แก้ไข Inform",g1,
+"- แก้ไข Rule Server",g2,
+"- แก้ไข Server Info",g3,
+"- แก้ไข Item Edit",g4,
+"Exit",cancel;
+
+
+
+g1:
+mes"[ Deputy Gm ]";
+mes"โปรดเลือกแก้ไขข้อความ";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"แก้ไขข้อความทีละข้อ",EditMessage,
+"เลือกข้อความที่แก้ไข",ChooseEditMessage,
+"Exit",cancel;
+
+
+
+EditMessage:
+mes"[ Deputy Gm ]";
+mes"แก้ไขข้อความที่ 1";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขข้อความที่ 1",WriteMessage1,
+"Exit",cancel;
+
+
+
+WriteMessage1:
+input $message1$;
+if ($message1$ == "-") goto CancelMessage;
+goto NextWriteMessage2;
+
+
+
+NextWriteMessage2:
+mes"[ Deputy Gm ]";
+mes"แก้ไขข้อความที่ 2";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขข้อความที่ 2",WriteMessage2,
+"Exit",cancel;
+
+
+
+WriteMessage2:
+input $message2$;
+if ($message2$ == "-") goto CancelMessage;
+goto NextWriteMessage3;
+
+
+
+NextWriteMessage3:
+mes"[ Deputy Gm ]";
+mes"แก้ไขข้อความที่ 3";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขข้อความที่ 3",WriteMessage3,
+"Exit",cancel;
+
+
+
+WriteMessage3:
+input $message3$;
+if ($message3$ == "-") goto CancelMessage;
+goto NextWriteMessage4;
+
+
+
+NextWriteMessage4:
+mes"[ Deputy Gm ]";
+mes"แก้ไขข้อความที่ 4";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขข้อความที่ 4",WriteMessage4,
+"Exit",cancel;
+
+
+
+WriteMessage4:
+input $message4$;
+if ($message4$ == "-") goto CancelMessage;
+goto NextWriteMessage5;
+
+
+
+NextWriteMessage5:
+mes"[ Deputy Gm ]";
+mes"แก้ไขข้อความที่ 5";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขข้อความที่ 5",WriteMessage5,
+"Exit",cancel;
+
+
+
+WriteMessage5:
+input $message5$;
+if ($message5$ == "-") goto CancelMessage;
+goto FinishWriteMessage;
+
+
+
+ChooseEditMessage:
+mes"[ Deputy Gm ]";
+mes"โปรดเลือกข้อที่จะทำการแก้ไข";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"แก้ไขข้อความที่ 1",EWriteMessage1,
+"แก้ไขข้อความที่ 2",EWriteMessage2,
+"แก้ไขข้อความที่ 3",EWriteMessage3,
+"แก้ไขข้อความที่ 4",EWriteMessage4,
+"แก้ไขข้อความที่ 5",EWriteMessage5,
+"Exit",cancel;
+
+
+
+EWriteMessage1:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $message1$;
+next;
+if ($message1$ == "-") goto CancelMessage;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขข้อความที่ 1 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$message1$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 1 )",EWriteMessage1;
+
+
+
+EWriteMessage2:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $message2$;
+next;
+if ($message2$ == "-") goto CancelMessage;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขข้อความที่ 2 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$message2$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 2 )",EWriteMessage2;
+
+
+
+EWriteMessage3:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $message3$;
+next;
+if ($message3$ == "-") goto CancelMessage;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขข้อความที่ 3 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$message3$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 3 )",EWriteMessage3;
+
+
+
+EWriteMessage4:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $message4$;
+next;
+if ($message4$ == "-") goto CancelMessage;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขข้อความที่ 4 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$message4$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 4 )",EWriteMessage4;
+
+
+
+EWriteMessage5:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $message5$;
+next;
+if ($message5$ == "-") goto CancelMessage;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขข้อความที่ 5 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$message5$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 5 )",EWriteMessage5;
+
+
+
+g2:
+mes"[ Deputy Gm ]";
+mes"โปรดเลือกแก้ไขกฎระเบียบ";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"แก้ไขกฎระเบียบทีละข้อ",EditRule,
+"เลือกแก้ไขกฎระเบียบ",ChooseEditRule,
+"Exit",cancel;
+
+
+
+EditRule:
+mes"[ Deputy Gm ]";
+mes"แก้ไขกฎระเบียบ ข้อที่ 1";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขกฎระเบียบ ข้อที่ 1",WriteRule1,
+"Exit",cancel;
+
+
+
+WriteRule1:
+input $rule1$;
+if ($rule1$ == "-") goto CancelRule;
+goto NextWriteRule2;
+
+
+
+NextWriteRule2:
+mes"[ Deputy Gm ]";
+mes"แก้ไขกฎระเบียบ ข้อที่ 2";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขกฎระเบียบ ข้อที่ 2",WriteRule2,
+"Exit",cancel;
+
+
+
+WriteRule2:
+input $rule2$;
+if ($rule2$ == "-") goto CancelRule;
+goto NextWriteRule3;
+
+
+
+NextWriteRule3:
+mes"[ Deputy Gm ]";
+mes"แก้ไขกฎระเบียบ ข้อที่ 3";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขกฎระเบียบ ข้อที่ 3",WriteRule3,
+"Exit",cancel;
+
+
+
+WriteRule3:
+input $rule3$;
+if ($rule3$ == "-") goto CancelRule;
+goto NextWriteRule4;
+
+
+
+NextWriteRule4:
+mes"[ Deputy Gm ]";
+mes"แก้ไขกฎระเบียบ ข้อที่ 4";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขกฎระเบียบ ข้อที่ 4",WriteRule4,
+"Exit",cancel;
+
+
+
+WriteRule4:
+input $rule4$;
+if ($rule4$ == "-") goto CancelRule;
+goto NextWriteRule5;
+
+
+
+NextWriteRule5:
+mes"[ Deputy Gm ]";
+mes"แก้ไขกฎระเบียบ ข้อที่ 5";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขกฎระเบียบ ข้อที่ 5",WriteRule5,
+"Exit",cancel;
+
+
+
+WriteRule5:
+input $rule5$;
+if ($rule5$ == "-") goto CancelRule;
+goto NextWriteRule6;
+
+
+
+NextWriteRule6:
+mes"[ Deputy Gm ]";
+mes"แก้ไขกฎระเบียบ ข้อที่ 6";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขกฎระเบียบ ข้อที่ 6",WriteRule6,
+"Exit",cancel;
+
+
+
+WriteRule6:
+input $rule6$;
+if ($rule6$ == "-") goto CancelRule;
+goto NextWriteRule7;
+
+
+
+NextWriteRule7:
+mes"[ Deputy Gm ]";
+mes"แก้ไขกฎระเบียบ ข้อที่ 7";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขกฎระเบียบ ข้อที่ 7",WriteRule7,
+"Exit",cancel;
+
+
+
+WriteRule7:
+input $rule7$;
+if ($rule7$ == "-") goto CancelRule;
+goto NextWriteRule8;
+
+
+
+NextWriteRule8:
+mes"[ Deputy Gm ]";
+mes"แก้ไขกฎระเบียบ ข้อที่ 8";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขกฎระเบียบ ข้อที่ 8",WriteRule8,
+"Exit",cancel;
+
+
+
+WriteRule8:
+input $rule8$;
+if ($rule8$ == "-") goto CancelRule;
+goto FinishWriteRule;
+
+
+
+ChooseEditRule:
+mes"[ Deputy Gm ]";
+mes"โปรดเลือกข้อที่จะทำการแก้ไข";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"แก้ไขกฎระเบียบข้อ 1",EWriteRule1,
+"แก้ไขกฎระเบียบข้อ 2",EWriteRule2,
+"แก้ไขกฎระเบียบข้อ 3",EWriteRule3,
+"แก้ไขกฎระเบียบข้อ 4",EWriteRule4,
+"แก้ไขกฎระเบียบข้อ 5",EWriteRule5,
+"แก้ไขกฎระเบียบข้อ 6",EWriteRule6,
+"แก้ไขกฎระเบียบข้อ 7",EWriteRule7,
+"แก้ไขกฎระเบียบข้อ 8",EWriteRule8,
+"Exit",cancel;
+
+
+
+EWriteRule1:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $rule1$;
+next;
+if ($rule1$ == "-") goto CancelRule;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขกฎข้อที่ 1 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$rule1$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 1 )",EWriteRule1;
+
+
+
+EWriteRule2:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $rule2$;
+next;
+if ($rule2$ == "-") goto CancelRule;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขกฎข้อที่ 2 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$rule2$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 2 )",EWriteRule2;
+
+
+
+EWriteRule3:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $rule3$;
+next;
+if ($rule3$ == "-") goto CancelRule;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขกฎข้อที่ 3 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$rule3$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 3 )",EWriteRule3;
+
+
+
+EWriteRule4:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $rule4$;
+next;
+if ($rule4$ == "-") goto CancelRule;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขกฎข้อที่ 4 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$rule4$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 4 )",EWriteRule4;
+
+
+
+EWriteRule5:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $rule5$;
+next;
+if ($rule5$ == "-") goto CancelRule;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขกฎข้อที่ 5 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$rule5$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 5 )",EWriteRule5;
+
+
+
+EWriteRule6:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $rule6$;
+next;
+if ($rule6$ == "-") goto CancelRule;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขกฎข้อที่ 6 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$rule6$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 6 )",EWriteRule6;
+
+
+
+EWriteRule7:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $rule7$;
+next;
+if ($rule7$ == "-") goto CancelRule;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขกฎข้อที่ 7 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$rule7$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 7 )",EWriteRule7;
+
+
+
+EWriteRule8:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $rule8$;
+next;
+if ($rule8$ == "-") goto CancelRule;
+mes "[ Deputy Gm ]";
+mes "ท่านได้แก้ไขกฎข้อที่ 8 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$rule8$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 8 )",EWriteRule8;
+
+
+g3:
+mes"[ Deputy Gm ]";
+mes"โปรดเลือกแก้ไขข้อความ";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"แก้ไขข้อความทีละข้อ",EditServerInfo,
+"เลือกข้อความที่แก้ไข",ChooseEditServerInfo,
+"Exit",cancel;
+
+
+
+EditServerInfo:
+mes"[ Deputy Gm ]";
+mes"แก้ไขข้อความที่ 1";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขข้อความที่ 1",WriteInfo1,
+"Exit",cancel;
+
+
+
+WriteInfo1:
+input $info1$;
+if ($info1$ == "-") goto CancelInfo;
+goto NextWriteInfo2;
+
+
+
+NextWriteInfo2:
+mes"[ Deputy Gm ]";
+mes"แก้ไขข้อความที่ 2";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขข้อความที่ 2",WriteInfo2,
+"Exit",cancel;
+
+
+
+WriteInfo2:
+input $info2$;
+if ($info2$ == "-") goto CancelInfo;
+goto NextWriteInfo3;
+
+
+
+NextWriteInfo3:
+mes"[ Deputy Gm ]";
+mes"แก้ไขข้อความที่ 3";
+mes"เลือก Exit เพื่อออก";
+mes"หรือใส่ - เพื่อยกเลิก";
+next;
+menu 
+"แก้ไขข้อความที่ 3",WriteInfo3,
+"Exit",cancel;
+
+
+
+WriteInfo3:
+input $info3$;
+if ($info3$ == "-") goto CancelInfo;
+goto FinishWriteInfo;
+
+
+
+ChooseEditServerInfo:
+mes"[ Deputy Gm ]";
+mes"โปรดเลือกข้อที่จะทำการแก้ไข";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"แก้ไขข้อความที่ 1",EditServerInfo1,
+"แก้ไขข้อความที่ 2",EditServerInfo2,
+"แก้ไขข้อความที่ 3",EditServerInfo3,
+"Exit",cancel;
+
+
+
+EditServerInfo1:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $info1$;
+next;
+if ($info1$ == "-") goto CancelInfo;
+mes"[ Deputy Gm ]";
+mes"ท่านได้แก้ไขข้อความที่ 1 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$info1$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 1 )",EditServerInfo1;
+
+
+
+EditServerInfo2:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $info2$;
+next;
+if ($info2$ == "-") goto CancelInfo;
+mes"[ Deputy Gm ]";
+mes"ท่านได้แก้ไขข้อความที่ 2 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$info2$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 2 )",EditServerInfo2;
+
+
+
+EditServerInfo3:
+mes"[ Deputy Gm ]";
+mes"ใส่ - เพื่อยกเลิก";
+input $info3$;
+next;
+if ($info3$ == "-") goto CancelInfo;
+mes"[ Deputy Gm ]";
+mes"ท่านได้แก้ไขข้อความที่ 3 แล้ว";
+mes"^FF0000แสดงตัวอย่าง ";
+mes"[ "+$info3$+" ]^000000";
+next;
+menu 
+"Exit",cancel,
+"แก้ไขข้อมูลเพิ่มเติ่ม ( ข้อ 3 )",EditServerInfo3;
+
+
+
+
+FinishWriteMessage:
+mes"[ แสดงตัวอย่าง ]";
+mes"1. ^3355FF"+$message1$+"^000000";
+mes"2. ^3355FF"+$message2$+"^000000";
+mes"3. ^3355FF"+$message3$+"^000000";
+mes"4. ^3355FF"+$message4$+"^000000";
+mes"5. ^3355FF"+$message5$+"^000000";
+mes"________________________________";
+mes"ท่านต้องการเปลี่ยนแปลงข้อมูลหรือไม่";
+next;
+menu 
+"แก้ไขข้อมูล",g1,
+"Exit",cancel;
+
+
+
+CancelMessage:
+mes "[ Deputy Gm ]";
+mes "ท่านได้ยกเลิกข้อความนี้แล้ว";
+close;
+
+
+
+FinishWriteRule:
+mes"[ แสดงตัวอย่าง ]";
+mes"1. ^3355FF"+$rule1$+"^000000";
+mes"2. ^3355FF"+$rule2$+"^000000";
+mes"3. ^3355FF"+$rule3$+"^000000";
+mes"4. ^3355FF"+$rule4$+"^000000";
+mes"5. ^3355FF"+$rule5$+"^000000";
+mes"6. ^3355FF"+$rule6$+"^000000";
+mes"7. ^3355FF"+$rule7$+"^000000";
+mes"8. ^3355FF"+$rule8$+"^000000";
+mes"________________________________";
+mes"ท่านต้องการเปลี่ยนแปลงข้อมูลหรือไม่";
+next;
+menu 
+"แก้ไขข้อมูล",g2,
+"Exit",cancel;
+
+
+
+
+
+CancelRule:
+mes "[ Deputy Gm ]";
+mes "ท่านยกเลิกกฎข้อนี้แล้ว";
+close;
+
+
+
+FinishWriteInfo:
+mes"[ แสดงตัวอย่าง ]";
+mes"1. ^3355FF"+$info1$+"^000000";
+mes"2. ^3355FF"+$info2$+"^000000";
+mes"3. ^3355FF"+$info3$+"^000000";
+mes"________________________________";
+mes"ท่านต้องการเปลี่ยนแปลงข้อมูลหรือไม่";
+next;
+menu 
+"แก้ไขข้อมูล",g3,
+"Exit",cancel;
+
+
+
+CancelInfo:
+mes "[ Deputy Gm ]";
+mes "ท่านได้ยกเลิกข้อความนี้แล้ว";
+close;
+
+
+
+g4:
+mes"[ Deputy Gm ]";
+mes"ขออภัยค่ะ เมนู Item Edit";
+mes"ไม่สามารถแก้ไขในเกมส์ได้";
+mes"วิธีแก้ไขเข้าโฟร์เดอร์ที่ท่านเก็บ";
+mes"ตัวเปิด Sv. แล้วเข้าโฟร์เดอร์";
+mes"ที่มีชื่อว่า NPCServer";
+mes"แล้วก็หาไฟล์ที่มีชื่อว่า Information.txt";
+mes"หาบันทัดที่มีชื่อว่า itemedit:";
+mes"นอกเหนือจากนี้ ท่านต้องทำการแก้ไขเอง";
+close;
+
+
+itemedit:
+mes "[ Deputy Gm ]";
+mes "ยังไม่มีการบันทึก";
+close;
+
+
+
+miss:
+mes "[ Deputy Gm ]";
+mes "Password ผิดพลาด";
+close;
+
+
+
+NormalUser:
+mes "[ Deputy Gm ]";
+mes "ท่านไม่มีสิทธิ์ใช้ เมนูนี้";
+close;
+
+
+
+cancel:
+mes "[ Deputy Gm ]";
+mes "แล้วพบกันใหม่";
+close;
+OnInit:
+Waitingroom "Information Center",0;
+end;
+}

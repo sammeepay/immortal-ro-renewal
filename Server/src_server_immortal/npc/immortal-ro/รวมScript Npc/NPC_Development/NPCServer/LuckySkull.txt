@@ -1,0 +1,243 @@
+//===================================================================
+// NPC : Lucky Skull
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,164,129,4	script	Lucky NPC	986,{
+mes"^FF0000[ Lucky NPC ]^000000";
+mes"ยินดีต้อนรับเข้าสู่กิจกรรม";
+mes"Lucky Skull กระโหลกก็มีประโยชน์";
+mes"กิจกรรมนี้เป็นการ Random Item";
+mes"ยิ่งเลือกตัวเลขที่มีค่ามาก";
+mes"ก็จะยิ่งเพิ่มโอกาส";
+mes"ในการ Random Item มากขึ้นไปตามลำดับ";
+mes"ท่านอยากเล่นกิจกรรมนี้ไหมล่ะ";
+next;
+menu 
+"- เล่น",yes,
+"- ไม่เล่น",cancel,
+"Exit",cancel;
+
+
+
+yes:
+if(countitem(7420)==0) goto noskull;
+mes"^FF0000[ Lucky NPC ]^000000";
+mes"โปรดเลือกจำนวน Skull";
+mes"หรือจำนวน Coupon";
+mes"ยิ่งเลือกมาก โอกาสก็ยิ่งมาก";
+mes"และทุกครั้งที่ท่านเล่นจะได้รับ";
+mes"Coupon 1 ใบ ทุกๆครั้ง";
+mes"เก็บ Coupon ไว้ดีๆล่ะ";
+mes"เพราะว่า Coupon มีโอกาส";
+mes"ที่จะแลกได้สำเร็จมากกว่า Skull";
+next;
+menu 
+"- ใช้ Skull ในการเล่น",skull,
+"- ใช้ Coupon ในการเล่น",coupon,
+"Exit",cancel;
+
+
+
+skull:
+mes"^FF0000[ Lucky NPC ]^000000";
+mes"โปรดเลือกจำนวน Skull ค่ะ";
+mes"ในการแลกค่ะ";
+next;
+menu 
+"- 10 Skull",ri1,
+"- 20 Skull",ri2,
+"- 30 Skull",ri3,
+"- 40 Skull",ri4,
+"- 50 Skull",ri5,
+"Exit",cancel;
+
+
+
+coupon:
+mes"^FF0000[ Lucky NPC ]^000000";
+mes"โปรดเลือกจำนวน Coupon ค่ะ";
+mes"ในการแลกค่ะ";
+next;
+menu 
+"- 50 Coupon",ri6,
+"- 70 Coupon",ri7,
+"- 100 Coupon",ri8,
+"Exit",cancel;
+
+
+
+ri1:
+if(countitem(7420)<10) goto noskull;
+delitem 7420,10;
+set @pr,4;
+callfunc "Percent";
+
+ri2:
+if(countitem(7420)<20) goto noskull;
+delitem 7420,20;
+set @pr,8;
+callfunc "Percent";
+
+ri3:
+if(countitem(7420)<30) goto noskull;
+delitem 7420,30;
+set @pr,12;
+callfunc "Percent";
+
+ri4:
+if(countitem(7420)<40) goto noskull;
+delitem 7420,40;
+set @pr,16;
+callfunc "Percent";
+
+ri5:
+if(countitem(7420)<50) goto noskull;
+delitem 7420,50;
+set @pr,20;
+callfunc "Percent";
+
+ri6:
+if(countitem(7037)<50) goto nocoupon;
+delitem 7037,50;
+set @pr,30;
+callfunc "Percent";
+
+ri7:
+if(countitem(7037)<70) goto nocoupon;
+delitem 7037,70;
+set @pr,40;
+callfunc "Percent";
+
+
+ri8:
+if(countitem(7037)<100) goto nocoupon;
+delitem 7037,100;
+set @pr,50;
+callfunc "Percent";
+
+
+
+noskull:
+mes"^FF0000[ Lucky NPC ]^000000";
+mes "ท่านมี Skull ไม่พอในการเล่น";
+close;
+
+
+
+nocoupon:
+mes"^FF0000[ Lucky NPC ]^000000";
+mes "ท่านมี Coupon ไม่พอในการเล่น";
+close;
+
+
+
+cancel:
+mes"^FF0000[ Lucky NPC ]^000000";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "Lucky Skull Game",0;
+end;
+}
+
+
+
+function	script	Percent	{
+getitem 7037,1;
+if(@pr<rand(1,100)) goto Fail;
+callfunc "LS_Random";  
+getitem @Item[@ItemRandom], 1;
+close;
+
+
+
+Fail:
+mes"^FF0000[ Lucky NPC ]^000000";
+mes "Random failed";
+specialeffect2(611);
+close;
+}
+
+
+
+function	script	LS_Random	{
+mes"^FF0000[ Lucky NPC ]^000000";
+mes "Random Successful";
+specialeffect2(610);
+announce "ท่าน ["+strcharinfo(0)+"] ได้รับ Item จาก Lucky Skull Game",0,0x9999FF;
+set @ItemRandom, rand(68);
+set @Item[0], 2115;
+set @Item[1], 2537;
+set @Item[2], 2421;
+set @Item[3], 2524;
+set @Item[4], 5171;
+set @Item[5], 5256;
+set @Item[6], 5022;
+set @Item[7], 7227;
+set @Item[8], 4121;
+set @Item[9], 4146;
+set @Item[10], 4142;
+set @Item[11], 4047;
+set @Item[12], 4123;
+set @Item[13], 4132;
+set @Item[14], 4054;
+set @Item[15], 4144;
+set @Item[16], 4128;
+set @Item[17], 4137;
+set @Item[18], 4131;
+set @Item[19], 13017;
+set @Item[20], 1261;
+set @Item[21], 1161;
+set @Item[22], 1363;
+set @Item[23], 1530;
+set @Item[24], 1720;
+set @Item[25], 2410;
+set @Item[26], 2629;
+set @Item[27], 5022;
+set @Item[28], 7227;
+set @Item[29], 607;
+set @Item[30], 12016;
+set @Item[31], 12116;
+set @Item[32], 12115;
+set @Item[33], 12117;
+set @Item[34], 12114;
+set @Item[35], 12120;
+set @Item[36], 12121;
+set @Item[37], 12118;
+set @Item[38], 12119;
+set @Item[39], 12075;
+set @Item[40], 12080;
+set @Item[41], 12085;
+set @Item[42], 12090;
+set @Item[43], 12095;
+set @Item[44], 12100;
+set @Item[45], 12027;
+set @Item[46], 12034;
+set @Item[47], 12029;
+set @Item[48], 12030;
+set @Item[49], 12031;
+set @Item[50], 12032;
+set @Item[51], 12033;
+set @Item[52], 12219;
+set @Item[53], 12218;
+set @Item[54], 12217;
+set @Item[55], 14512;
+set @Item[56], 14513;
+set @Item[57], 14514;
+set @Item[58], 14515;
+set @Item[59], 14516;
+set @Item[60], 4145;
+set @Item[61], 4147;
+set @Item[62], 4148;
+set @Item[63], 4399;
+set @Item[64], 4135;
+set @Item[65], 4143;
+set @Item[66], 4302;
+set @Item[67], 4342;
+return;
+}

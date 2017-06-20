@@ -1,0 +1,36 @@
+-	script	Guild Master::makeguild	-1,{
+mes "[Guild Master]";
+cutin "job_sage_kayron",2;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "ค่าบริการ ^FF00001K^000000";
+mes "ท่านต้องการสร้างกิลด์ใช่มั้ยครับ";
+next;
+cutin "",255;
+menu "^009933•^000000 ใช่ต้องการ",yes,"^FF0000•^000000 วิธียุบกิลด์",Ca,"^FF0000•^000000 ยกเลิก",no;
+
+yes:
+mes "[Guild Master]";
+if( zeny < 1000){ mes "ท่านไม่มีเงิน 1 K Zeny ครับ"; close; }
+if( getcharid(2) ){ mes "ท่านมีกิลด์อยู่แล้วครับ"; close; }
+mes "ใส่ชื่อกิลด์ที่ต้องการครับ";
+input @nameguild$;
+atcommand "@guild "+@nameguild$;
+atcommand strcharinfo(0) + "@guildlvup 50";
+set zeny,zeny-1000;
+announce "[ ClubZ@ ] : คุณ [" + strcharinfo(0) + "] ได้จัดตั้ง Guild [" + @nameguild$ + "] แล้วครับ !!",0;
+next;
+mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+close;
+
+Ca:
+mes "[Guild Master]";
+mes "พิมพ์ ^FF0000/breakguild^000000 ตามด้วยชื่อกิลด์";
+close;
+
+no:
+close;
+
+OnInit:
+waitingroom "๐ สร้าง Guild ฟรี ๐",0;
+end;
+}

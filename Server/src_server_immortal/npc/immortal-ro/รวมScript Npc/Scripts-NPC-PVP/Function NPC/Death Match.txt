@@ -1,0 +1,92 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	roomchampion	-1,{
+
+OnPCDieEvent:
+getmapxy @mapname2$,@mapx,@mapy,0,strcharinfo(0);
+if (@mapname2$ == "pvp_n_1-3") goto ok;
+close;
+
+ok:
+sleep2 100;
+
+atcommand strcharinfo(0)+"@alive";
+sc_start 29,3600000,10; // Angelus
+sc_start 30,3600000,10; // Blessing
+sc_start 32,3600000,10; // Increase Agi
+sc_start 40,3600000,10;  // Magnificat
+sc_start 41,3600000,10;  // Gloria
+warp "pvp_n_1-3",0,0;
+close;
+}
+
+
+-	script	roomassassin	-1,{
+
+OnPCDieEvent:
+getmapxy @mapname2$,@mapx,@mapy,0,strcharinfo(0);
+if (@mapname2$ == "pvp_n_2-3") goto ok;
+close;
+
+ok:
+sleep2 100;
+
+atcommand strcharinfo(0)+"@alive";
+sc_start 29,3600000,10; // Angelus
+sc_start 30,3600000,10; // Blessing
+sc_start 32,3600000,10; // Increase Agi
+sc_start 40,3600000,10;  // Magnificat
+sc_start 41,3600000,10;  // Gloria
+warp "pvp_n_2-3",0,0;
+close;
+}
+
+
+-	script	roomscholarchampion	-1,{
+
+OnPCDieEvent:
+getmapxy @mapname2$,@mapx,@mapy,0,strcharinfo(0);
+if (@mapname2$ == "pvp_n_3-3") goto ok;
+close;
+
+ok:
+sleep2 100;
+
+atcommand strcharinfo(0)+"@alive";
+sc_start 29,3600000,10; // Angelus
+sc_start 30,3600000,10; // Blessing
+sc_start 32,3600000,10; // Increase Agi
+sc_start 40,3600000,10;  // Magnificat
+sc_start 41,3600000,10;  // Gloria
+warp "pvp_n_3-3",0,0;
+close;
+}
+
+-	script	pvpy12deathmap	-1,{
+
+OnPCDieEvent:
+getmapxy @mapname2$,@mapx,@mapy,0,strcharinfo(0);
+if (@mapname2$ == "pvp_y_1-2") goto ok;
+close;
+
+ok:
+sleep2 100;
+
+atcommand strcharinfo(0)+"@alive";
+sc_start 29,3600000,10; // Angelus
+sc_start 30,3600000,10; // Blessing
+sc_start 32,3600000,10; // Increase Agi
+sc_start 40,3600000,10;  // Magnificat
+sc_start 41,3600000,10;  // Gloria
+warp "pvp_y_1-2",0,0;
+close;
+}

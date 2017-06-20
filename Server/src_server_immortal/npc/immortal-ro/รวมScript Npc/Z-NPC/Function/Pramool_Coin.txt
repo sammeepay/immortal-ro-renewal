@@ -1,0 +1,21 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+manuk,300,119,4	script	digdebug	-1,{
+end;
+
+Ondig:
+query_sql "SELECT `digg` FROM `point` WHERE `account_id`="+getcharid(3),@point;
+dispbottom "[ Server System ] : ได้รับ DIG POINT จำนวน "+(countitem(29012)+1);
+set @point,@point+countitem(29012)+1;
+
+delitem 29012,countitem(29012);
+query_sql "UPDATE `point` SET `digg` = '"+@point+"' WHERE `account_id` ="+getcharid(3)+" LIMIT 1";
+query_sql "INSERT INTO `point` (`account_id`,`digg`) VALUES ('"+getcharid(3)+"', '"+@point+"')";
+dispbottom "[ Server System ] : รวม Dig POINT ทั้งหมดมี "+@point;
+set @point,0;
+end;
+}
+

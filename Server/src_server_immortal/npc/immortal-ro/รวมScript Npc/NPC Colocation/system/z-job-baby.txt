@@ -1,0 +1,340 @@
+-	script	Babyc::jobbaby	-1,{
+
+	if (Class == 0) goto Sucuss;
+	if (Class == 4023) goto CBN;
+	if (Class == 4024) goto CBSW;
+	if (Class == 4025) goto CBMG;
+	if (Class == 4026) goto CBAC;
+	if (Class == 4027) goto CBAL;
+	if (Class == 4028) goto CBMC;
+	if (Class == 4029) goto CBTH;
+	if (Class == 4030) goto HighBaby;
+	if (Class == 4031) goto HighBaby;
+	if (Class == 4032) goto HighBaby;
+	if (Class == 4033) goto HighBaby;
+	if (Class == 4034) goto HighBaby;
+	if (Class == 4035) goto HighBaby;
+	if (Class == 4037) goto HighBaby;
+	if (Class == 4038) goto HighBaby;
+	if (Class == 4039) goto HighBaby;
+	if (Class == 4040) goto HighBaby;
+	if (Class == 4041) goto HighBaby;
+	if (Class == 4042) goto HighBaby;
+	if (Class == 4043) goto HighBaby;
+	if (Class == 4045) goto HighBaby;
+		mes "[ Baby ]";
+		mes "สวัสดีครับ ยินดีให้บริการครับ";
+		mes "ท่านไม่ใช่ Novice ครับ";
+		close;	
+HighBaby:	
+		mes "[ Baby ]";
+		mes "สวัสดีครับ ยินดีให้บริการครับ";
+		mes "ท่านมาถึงจุดสูงสุดแล้วครับ";
+		close;
+Sucuss:
+		mes "[ Baby ]";
+		mes "สวัสดีครับ ท่าน ^FF0000 " + strcharinfo(0) +" ^000000";
+		mes "ท่านมีอะไรให้รับใช้ครับ";
+		next;
+		menu
+			"เปลี่ยน Class Baby",BNovice,"ยกเลิก",L_cancle;
+BNovice:
+	mes "[ Baby ]";
+	mes "โปรดยืนยันคำตอบของท่าน";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4023;
+	Resetlvl(1);
+	ResetStatus;
+	ResetSkill;
+	set SkillPoint,0;
+	close;
+L_cancle:
+	mes "[ Baby ]";
+	mes "ยินดีให้บริการครับ";
+	close;
+CBN:
+	mes "[ Baby ]";
+	if(JobLevel < 10) goto L_notJ10;
+	if(SkillPoint >0) goto L_notUseAll;
+	mes "ท่านจะเปลี่ยน Baby Class 1  ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เลือกสายอาชีพของท่านครับ";
+	next;
+	menu	"Baby Super Novice",BySPN,
+		"Baby Swordman",BySW,
+		"Baby Mage",ByMG,
+		"Baby Archer",ByAC,
+		"Baby Acolyte",ByAL,
+		"Baby Merchant",ByMC,
+		"Baby Thief",ByTH;
+L_notJ10:
+	mes "Job Lv ของท่านยังไม่ถึง 10 ครับ";
+	close;
+L_notJ40:
+	mes "Job Lv ของท่านยังไม่ถึง 40 ครับ";
+	close;
+L_notB45:
+	mes "Lv ของท่านยังไม่ถึง 45 ครับ";
+	close;
+L_notUseAll:
+	mes "Skill Point ยังใช้ไม่หมดครับ";
+	close;
+BySPN:
+	mes "[ Baby ]";
+	if(baseLevel < 45) goto L_notB45;	
+	mes "ท่านจะเปลี่ยน Baby SuperNo ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4045;
+	close;
+
+BySW:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Swordman ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4024;
+	close;
+
+ByMG:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Mage ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4025;
+	close;
+ByAC:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Archer ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4026;
+	close;
+ByAL:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Acolyte ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4027;
+	close;
+ByMC:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Merchant ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4028;
+	close;
+ByTH:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Thief ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4029;
+	close;
+
+CBSW:
+	mes "[ Baby ]";
+	if(JobLevel < 40) goto L_notJ40;
+	if(SkillPoint >0) goto L_notUseAll;
+	mes "ท่านจะเปลี่ยน Baby Class 2 ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เลือกสายอาชีพของคุณครับ";
+	next;
+	menu "Baby Knight",ByKN,"Baby Crusader",ByCR;
+ByKN:
+	mes "[ Baby ]";
+	mes "ท่านต้องการที่จะเป็น Baby Knight ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของท่าน";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4030;
+	close;
+ByCR:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Crusader ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของท่าน";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4037;
+	close;
+
+CBMG:
+	mes "[ Baby ]";
+	if(JobLevel < 40) goto L_notJ40;
+	if(SkillPoint >0) goto L_notUseAll;
+	mes "ท่านจะเปลี่ยน Baby Class 2 ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เลือกสายอาชีพของคุณครับ";
+	next;
+	menu "Baby Wizard",ByWZ,"Baby Sage",BySA;
+ByWZ:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Wizard ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4032;
+	close;
+BySA:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Sage ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4039;
+	close;
+
+CBAL:
+	mes "[ Baby ]";
+	if(JobLevel < 40) goto L_notJ40;
+	if(SkillPoint >0) goto L_notUseAll;
+	mes "ท่านจะเปลี่ยน Baby Class 2 ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เลือกสายอาชีพของคุณครับ";
+	next;
+	menu "Baby Priest",ByPR,"Baby Monk",ByMO;
+ByPR:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Priest ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4031;
+	close;
+ByMO:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Monk ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4038;
+	close;
+
+CBAC:
+	if(Sex==0) goto L_Female;
+	if(Sex==1) goto L_Male;
+L_Female:
+	mes "[ Baby ]";
+	if(JobLevel < 40) goto L_notJ40;
+	if(SkillPoint >0) goto L_notUseAll;
+	mes "ท่านจะเปลี่ยน Baby Class 2 ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เลือกสายอาชีพของคุณครับ";
+	next;
+	menu "Baby Hunter",ByHT,"Baby Dancer",ByDC;
+L_Male:
+	if(JobLevel < 40) goto L_notJ40;
+	if(SkillPoint >0) goto L_notUseAll;
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Class 2 ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เลือกสายอาชีพของคุณครับ";
+	next;
+	menu "Baby Hunter",ByHT,"Baby Bard",ByBD;
+ByHT:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Hunter ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4034;
+	close;
+ByBD:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Bard ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4042;
+	close;
+ByDC:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Dancer ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4042;
+	close;
+
+CBMC:
+	mes "[ Baby ]";
+	if(JobLevel < 40) goto L_notJ40;
+	if(SkillPoint >0) goto L_notUseAll;
+	mes "ท่านจะเปลี่ยน Baby Class 2 ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เลือกสายอาชีพของคุณครับ";
+	next;
+	menu "Baby Black Smith",ByBS,"Baby Alchemist",ByAM;
+ByBS:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Black Smith ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4033;
+	close;
+ByAM:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Alchemist ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4041;
+	close;
+
+CBTH:
+	mes "[ Baby ]";
+	if(JobLevel < 40) goto L_notJ40;
+	if(SkillPoint >0) goto L_notUseAll;
+	mes "ท่านจะเปลี่ยน Baby Class 2 ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เลือกสายอาชีพของคุณครับ";
+	next;
+	menu "Baby Assassin",ByAS,"Baby Rogue",ByRG;
+ByAS:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Assassin ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4035;
+	close;
+ByRG:
+	mes "[ Baby ]";
+	mes "ท่านจะเปลี่ยน Baby Rogue ใช่หรือไม่";
+	mes "โปรดยืนยันคำตอบของคุณ";
+	next;
+	menu "ใช่",-,"ไม่ใช่",L_cancle;
+	mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+	JobChange 4040;
+	close;
+}

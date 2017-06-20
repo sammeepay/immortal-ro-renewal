@@ -1,0 +1,305 @@
+//===================================================================
+// NPC : Login/Out Event & Safety Gm ID Login
+// Design By : Jhondominic
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+-	script	OnPCLoginEvent	-1,{ 
+OnPCLoginEvent:
+set @CharID,getcharid(0);
+set @PartyID,getcharid(1);
+set @GuildID,getcharid(2);
+set @AccID,getcharid(3);
+if (class == 0) set $@currentclass$,"Novice";
+if (class == 1) set $@currentclass$,"Swordman";
+if (class == 2) set $@currentclass$,"Mage";
+if (class == 3) set $@currentclass$,"Archer";
+if (class == 4) set $@currentclass$,"Acolyte";
+if (class == 5) set $@currentclass$,"Merchant";
+if (class == 6) set $@currentclass$,"Thief";
+if (class == 7) set $@currentclass$,"Knight";
+if (class == 8) set $@currentclass$,"Priest";
+if (class == 9) set $@currentclass$,"Wizard";
+if (class == 10) set $@currentclass$,"Blacksmith";
+if (class == 11) set $@currentclass$,"Hunter";
+if (class == 12) set $@currentclass$,"Assasin";
+if (class == 14) set $@currentclass$,"Crusader";
+if (class == 15) set $@currentclass$,"Monk";
+if (class == 16) set $@currentclass$,"Sage";
+if (class == 17) set $@currentclass$,"Rogue";
+if (class == 18) set $@currentclass$,"Alchemist";
+if (class == 19) set $@currentclass$,"Bard";
+if (class == 20) set $@currentclass$,"Dancer";
+if (class == 23) set $@currentclass$,"Super Novice";
+if (class == 4001) set $@currentclass$,"Novice High";
+if (class == 4002) set $@currentclass$,"Swordman High";
+if (class == 4003) set $@currentclass$,"Mage High";
+if (class == 4004) set $@currentclass$,"Archer High";
+if (class == 4005) set $@currentclass$,"Acolyte High";
+if (class == 4006) set $@currentclass$,"Merchant High";
+if (class == 4007) set $@currentclass$,"Thief High";
+if (class == 4008) set $@currentclass$,"Lord Knight";
+if (class == 4009) set $@currentclass$,"High Priest";
+if (class == 4010) set $@currentclass$,"High Wizard";
+if (class == 4011) set $@currentclass$,"Whitesmith";
+if (class == 4012) set $@currentclass$,"Sniper";
+if (class == 4013) set $@currentclass$,"Assasin Cross";
+if (class == 4015) set $@currentclass$,"Paladin";
+if (class == 4016) set $@currentclass$,"Champion";
+if (class == 4017) set $@currentclass$,"Professor";
+if (class == 4018) set $@currentclass$,"Stalker";
+if (class == 4019) set $@currentclass$,"Creator";
+if (class == 4020) set $@currentclass$,"Clown";
+if (class == 4021) set $@currentclass$,"Gypsy";
+if (class == 4022) set $@currentclass$,"Paladin";
+if (class == 4023) set $@currentclass$,"Baby";
+if (class == 4024) set $@currentclass$,"Baby Sword";
+if (class == 4025) set $@currentclass$,"Baby Magician";
+if (class == 4026) set $@currentclass$,"Baby Archer";
+if (class == 4027) set $@currentclass$,"Baby Acolyte";
+if (class == 4028) set $@currentclass$,"Baby Merchant";
+if (class == 4029) set $@currentclass$,"Baby Thief";
+if (class == 4030) set $@currentclass$,"Baby Knight";
+if (class == 4031) set $@currentclass$,"Baby Priest";
+if (class == 4032) set $@currentclass$,"Baby Wizard";
+if (class == 4033) set $@currentclass$,"Baby Blacksmith";
+if (class == 4034) set $@currentclass$,"Baby Hunter";
+if (class == 4035) set $@currentclass$,"Baby Assassin";
+if (class == 4036) set $@currentclass$,"Baby Knight";
+if (class == 4037) set $@currentclass$,"Baby Crusader";
+if (class == 4038) set $@currentclass$,"Baby Monk";
+if (class == 4039) set $@currentclass$,"Baby Sage";
+if (class == 4040) set $@currentclass$,"Baby Rogue";
+if (class == 4041) set $@currentclass$,"Baby Alchemist";
+if (class == 4042) set $@currentclass$,"Baby Bard";
+if (class == 4043) set $@currentclass$,"Baby Dancer";
+if (class == 4044) set $@currentclass$,"Baby Crusader";
+if (class == 4045) set $@currentclass$,"Super Baby";
+
+announce "ยินดีต้อนรับคุณ [ "+strcharinfo(0)+" ] อาชีพ [ "+$@currentclass$+" ] เข้าสู่ Interesting Ro Exciting PvP By InCe Intelligent ค่ะ.",0,0xFFFFCC;
+
+mes "^FF0000Welcome to Interesting Ro";
+mes "Exciting PvP By InCe Intelligent^000000";
+mes "สวัสดีค่ะคุณ ^0000FF" +strcharinfo(0)+ "^000000";
+mes "คุณเข้าสู่เซิฟเวอร์ เวลา";
+mes "^0000FF[ "+ gettime(3) +" : "+ gettime(2) +" : "+ gettime(1) +" ]^000000";
+mes "==============================";
+mes "^FF0000~• User Info •~^000000";
+mes "Name: ^804040" +strcharinfo(0)+ "^000000.";
+mes "Job: ^804040" +readparam(19)+ "^000000.";
+mes "Base Level: ^804040" +readparam(11)+ "^000000.";
+mes "Job Level: ^804040" +readparam(55)+ "^000000.";
+mes "Exp Base Level: ^804040" +readparam(1)+ "^000000.";
+mes "Exp Job Level: ^804040" +readparam(2)+ "^000000.";
+mes "Hp: ^804040" +readparam(5)+ " / " +readparam(6)+ "^000000.";
+mes "Sp: ^804040" +readparam(7)+ " / " +readparam(8)+ "^000000.";
+mes "Weight: ^804040" +readparam(24)+ " / " +readparam(25)+ "^000000.";
+mes "Zeny: ^804040" +readparam(20)+ "^000000.";
+mes "Pet Name: ^804040"+ getpetinfo(2) +"^000000.";
+mes "Kill Points [ ^FF0000"+KillPYPoint+"^000000 ] Points.";
+mes "Account ID : ^804040" +@AccID+ "^000000";
+mes "Char ID : ^804040" +@CharID+ "^000000";
+mes "Guild Name : ^804040"+ getguildname(@GuildID) +"^000000";
+mes "Party Name : ^804040"+ getpartyname(@PartyID) +"^000000";
+mes "==============================";
+mes "^FF0000~• คำสั่งที่ใช้ได้ •~^000000";
+mes "@autoloot";
+mes "@homtalk";
+mes "@iteminfo";
+mes "@load";
+mes "@mapinfo";
+mes "@mobinfo";
+mes "@pettalk";
+mes "@storage";
+mes "@time";
+mes "@who";
+mes "@whogm";
+mes "==============================";
+mes "^FF0000~• Contact •~^000000";
+mes "^0000FFMSN : badboy_love_girl@hotmail.com^000000";
+mes "______________________________";
+mes "^00CC00Stop Using Program Game.";
+mes "กรุณา อย่าใช้โปรแกรมในการเล่น";
+mes "ด้วยความหวังดี จากเซิฟเวอร์";
+mes "ขอบคุณค่ะ...^000000";
+set #check,0; // for InCe-WickeD Sv ( Only )
+set BD,0; // for InCe-WickeD Sv ( Only )
+set $invite,0; // for InCe-WickeD Sv ( Only )
+next;
+if(getgmlevel() >= 1) goto GmLogin;
+atcommand strcharinfo(0)+"@load";
+close;
+
+
+
+GmLogin:
+if($gm_password != 0) goto GmPass;
+goto GM1;
+close;
+
+
+
+GM1:
+mes "[^9400D3 Safety GM ^000000]";
+mes "^FF0000โปรดตั้ง Password ต้องมี 4 ตัวเท่านั้นค่ะ^000000";
+next;
+input @password; 
+if(@password == 0) goto GNP1; 
+set $gm_password, @password;
+close;
+
+
+
+GmPass:
+mes "[^9400D3 Safety GM ^000000]";
+mes "^0000FFโปรดกรอก Password^000000";
+next; 
+input @password; 
+if(@password != $gm_password) goto Kick;
+goto AGP2;
+close;
+
+
+
+AGP2:
+if($gm2_password != 0) goto GmPass2;
+goto GM2;
+close;
+
+
+
+GmPass2: 
+mes "[^9400D3 Safety GM ^000000]";
+mes "^0000FFโปรดกรอก Password 2^000000";
+next; 
+input @password; 
+if( @password != $gm2_password) goto Kick;
+mes "[^9400D3 Safety GM ^000000]";
+mes "^FF0000ท่านสามารถใช้งาน ID นี้ได้ค่ะ^000000";
+//next;
+//atcommand strcharinfo(0)+"@load";
+atcommand strcharinfo(0)+"@speed 20";
+close;
+
+
+
+GM2:
+mes "[^9400D3 Safety GM ^000000]";
+mes "^FF0000โปรดตั้ง Password 2 ต้องมี 4 ตัวเท่านั้นค่ะ^000000";
+next;
+input @password; 
+if(@password == 0) goto GNP2; 
+set $gm2_password, @password;
+close;
+
+
+
+GNP1:
+mes "[^9400D3 Safety GM ^000000]";
+mes "^0000FFPassword ต้องมี 4 ตัว^000000";
+next;
+goto GM1;
+close;
+
+
+
+GNP2:
+mes "[^9400D3 Safety GM ^000000]";
+mes "^0000FFPassword ต้องมี 4 ตัว^000000";
+next;
+goto GM2;
+close;
+
+
+
+Kick:
+mes "[^9400D3 Safety GM ^000000]";
+mes "^FF0000Password ผิดพลาด^000000";
+sleep2 1500;
+mes "คุณจะถูกไล่ออกภายใน 5 วินาที";
+sleep2 1000;
+mes "คุณจะถูกไล่ออกภายใน 4 วินาที";
+sleep2 1000;
+mes "คุณจะถูกไล่ออกภายใน 3 วินาที";
+sleep2 1000;
+mes "คุณจะถูกไล่ออกภายใน 2 วินาที";
+sleep2 1000;
+mes "คุณจะถูกไล่ออกภายใน 1 วินาที";
+sleep2 1000;
+atcommand "@kick " + strcharinfo(0);
+close;
+}
+
+
+
+-	script	OnPCLogoutEvent	-1,{
+OnPCLogoutEvent:
+if (class == 0) set $@currentclass$,"Novice";
+if (class == 1) set $@currentclass$,"Swordman";
+if (class == 2) set $@currentclass$,"Mage";
+if (class == 3) set $@currentclass$,"Archer";
+if (class == 4) set $@currentclass$,"Acolyte";
+if (class == 5) set $@currentclass$,"Merchant";
+if (class == 6) set $@currentclass$,"Thief";
+if (class == 7) set $@currentclass$,"Knight";
+if (class == 8) set $@currentclass$,"Priest";
+if (class == 9) set $@currentclass$,"Wizard";
+if (class == 10) set $@currentclass$,"Blacksmith";
+if (class == 11) set $@currentclass$,"Hunter";
+if (class == 12) set $@currentclass$,"Assasin";
+if (class == 14) set $@currentclass$,"Crusader";
+if (class == 15) set $@currentclass$,"Monk";
+if (class == 16) set $@currentclass$,"Sage";
+if (class == 17) set $@currentclass$,"Rogue";
+if (class == 18) set $@currentclass$,"Alchemist";
+if (class == 19) set $@currentclass$,"Bard";
+if (class == 20) set $@currentclass$,"Dancer";
+if (class == 23) set $@currentclass$,"Super Novice";
+if (class == 4001) set $@currentclass$,"Novice High";
+if (class == 4002) set $@currentclass$,"Swordman High";
+if (class == 4003) set $@currentclass$,"Mage High";
+if (class == 4004) set $@currentclass$,"Archer High";
+if (class == 4005) set $@currentclass$,"Acolyte High";
+if (class == 4006) set $@currentclass$,"Merchant High";
+if (class == 4007) set $@currentclass$,"Thief High";
+if (class == 4008) set $@currentclass$,"Lord Knight";
+if (class == 4009) set $@currentclass$,"High Priest";
+if (class == 4010) set $@currentclass$,"High Wizard";
+if (class == 4011) set $@currentclass$,"Whitesmith";
+if (class == 4012) set $@currentclass$,"Sniper";
+if (class == 4013) set $@currentclass$,"Assasin Cross";
+if (class == 4015) set $@currentclass$,"Paladin";
+if (class == 4016) set $@currentclass$,"Champion";
+if (class == 4017) set $@currentclass$,"Professor";
+if (class == 4018) set $@currentclass$,"Stalker";
+if (class == 4019) set $@currentclass$,"Creator";
+if (class == 4020) set $@currentclass$,"Clown";
+if (class == 4021) set $@currentclass$,"Gypsy";
+if (class == 4022) set $@currentclass$,"Paladin";
+if (class == 4023) set $@currentclass$,"Baby";
+if (class == 4024) set $@currentclass$,"Baby Sword";
+if (class == 4025) set $@currentclass$,"Baby Magician";
+if (class == 4026) set $@currentclass$,"Baby Archer";
+if (class == 4027) set $@currentclass$,"Baby Acolyte";
+if (class == 4028) set $@currentclass$,"Baby Merchant";
+if (class == 4029) set $@currentclass$,"Baby Thief";
+if (class == 4030) set $@currentclass$,"Baby Knight";
+if (class == 4031) set $@currentclass$,"Baby Priest";
+if (class == 4032) set $@currentclass$,"Baby Wizard";
+if (class == 4033) set $@currentclass$,"Baby Blacksmith";
+if (class == 4034) set $@currentclass$,"Baby Hunter";
+if (class == 4035) set $@currentclass$,"Baby Assassin";
+if (class == 4036) set $@currentclass$,"Baby Knight";
+if (class == 4037) set $@currentclass$,"Baby Crusader";
+if (class == 4038) set $@currentclass$,"Baby Monk";
+if (class == 4039) set $@currentclass$,"Baby Sage";
+if (class == 4040) set $@currentclass$,"Baby Rogue";
+if (class == 4041) set $@currentclass$,"Baby Alchemist";
+if (class == 4042) set $@currentclass$,"Baby Bard";
+if (class == 4043) set $@currentclass$,"Baby Dancer";
+if (class == 4044) set $@currentclass$,"Baby Crusader";
+if (class == 4045) set $@currentclass$,"Super Baby";
+specialeffect2(587);
+announce "คุณ [ "+strcharinfo(0)+" ] อาชีพ [ "+$@currentclass$+" ] ได้ออกจาก  Interesting Ro Exciting PvP By InCe Intelligent แล้วค่ะ.",0,0xFF00CC;
+}

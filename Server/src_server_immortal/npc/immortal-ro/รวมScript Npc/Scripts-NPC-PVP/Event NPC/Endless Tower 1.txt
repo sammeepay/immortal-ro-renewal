@@ -1,0 +1,39 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+
+-	script	100tower	-1,{
+mes"[Endless Tower]";
+mes"เจ้าต้องการไป Endless_Tower เหรอ";
+mes"ในนั้นมีแต่ Monster โหดๆทั้งนั้นเลยนะ";
+next;
+mes"[Endless Tower]";
+mes"เจ้าแน่ใจนะว่าจะไป";
+mes"ข้าเตือนเจ้าแล้วนะ";
+mes"ใน Endless Tower เจ้าต้องเข้าไปเป็น Payty นะ";
+mes"ไม่งั้นเจ้าเข้าไปไม่ได้";
+next;
+switch( select( "ใช่ ข้าจะไป.","ไม่ไป ...") )
+{
+	case 1:
+		warp "e_tower",74,110;
+		end;
+	case 2:
+		mes "เหอะๆ...";
+		close;
+}
+OnInit:
+waitingroom "-> หอคอย 100 ชั้น",0;
+end;
+}
+
+
+rtc_ro,18,97,4	duplicate(100tower)	100ชั้น	731

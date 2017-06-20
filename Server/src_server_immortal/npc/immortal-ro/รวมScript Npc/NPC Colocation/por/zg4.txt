@@ -1,0 +1,172 @@
+//=============================================================
+//			-             mOnster studiO Scripts               -
+//				www.monsterstudio.in.th
+//#############################################################
+
+-	script	SexC::Changesex	-1,{
+mes "[พนักงานแปลงเพศ]";
+mes "ต้องการเปลี่ยนเพศหรือปล่าว"; 
+mes "การแปลงเพศต้องทำการผ่าตัดอวัยวะเพศของท่าน"; 
+mes "อาจจะทำให้ท่านเสื่อมสมรรถภาพทางเพศได้";
+next;
+mes "[พนักงานแปลงเพศ]";
+mes "และต้องใช้เงินทุนสูงถึง 10,000,000 Zeny ในการแปลงเพศแต่ละครั้ง";
+mes "ไม่แพงใช่ไหมละ ";
+next;
+menu "ได้",L1,"ไม่หละ ขอบคุณ",L2; 
+
+L1:
+if(Zeny<10000000) goto Q1;
+set Zeny, Zeny - 10000000; 
+changesex; 
+mes "[พนักงานแปลงเพศ]";
+mes "เอาละ, นี่ไง!"; 
+mes "ดูดีมาก, และใช้ได้ซะด้วย!"; 
+close;
+
+Q1:
+mes "[พนักงานแปลงเพศ]";
+mes "ดูเหมือนเจ้าจะมีเงินไม่พอที่จะใช้บริการนี้ได้สินะ...";
+next;
+mes "โปรดกลับมาใหม่เมื่อเจ้ามีเงินพร้อม!";
+close;
+
+L2: 
+mes "[พนักงานแปลงเพศ]";
+mes "โอเคโอเคๆๆๆ..."; 
+next;
+mes "เปลี่ยนใจเมื่อไหร่ค่อยกลับมาหาข้าละกัน !=)";
+close;
+OnInit:
+waitingroom "  ==แปลงเพศ==",0;
+end;
+}
+
+c5,192,160,4	duplicate(Changesex)	แปลงเพศ	831
+
+
+//              =======  =    =   =====   =      =
+//                 =     =    =  =     =  ==     =
+//                 =     =    = =       = = =    =
+//                 =     ====== =       = =  =   =
+//                 =     =    = =       = =   =  =
+//              =  =     =    =  =     =  =    = =
+//                =      =    =   =====   =     ==
+//
+// =====       =====   =        = ======= =      = =======    ======
+// =     =    =     =  =        =    =    ==     =    =     =
+// =      =  =       = ==      ==    =    = =    =    =    =
+// =      =  =       = = =    = =    =    =  =   =    =    =
+// =      =  =       = =  =  =  =    =    =   =  =    =    =
+// =     =    =     =  =   ==   =    =    =    = =    =     =
+// =====       =====   =        = ======= =     == =======    ======
+
+-	script	TCG Center	-1,{
+first:
+	mes "[ TCG Center ]";
+	mes "สวัสดีท่าน "+strcharinfo(0)+"";
+	mes "ท่านมีอะไรให้ข้าช่วยรึเปล่า ?";
+	next;
+	menu "1 TCG./2 M.",TCM,"1 TCG./20 ดอกเหลือง.",TPC,"1 TCG/1 Point.",PCP;
+
+TCM:
+	mes "[ TCG Center ]";
+	mes "ท่านมี TCG ให้ข้าหรอ";
+	mes "ข้าจะให้ TCG ละ ^0000FF2 m.^000000";
+	next;
+	menu "มี",-,"ไม่มี",O_not;
+	mes "[ TCG Center ]";
+	mes "บอกจำนวน TCG ที่จะแลกมา!!";
+	set @input, 0;
+	input @input;
+	next;  
+	if(countitem(7227)<1) goto O_have;
+	if(@input < 1 ) goto O_Menu;
+	if(@input > 1000 ) goto O_Max;
+	mes "[ TCG Center ]";
+	mes "ตรวจสอบแปบ...";
+	next;  
+	if(@input > countitem(7227)) goto O_dis;
+	set Zeny, Zeny + (2000000 * @input);
+	delitem 7227, @input;
+	mes "[ TCG Center ]";
+	mes "ให้ TCG [^FF3355" + @input + "^000000] ใบ";
+	mes "ได้รับเงิน [^0000FF" + 2000000 * @input + "^000000] Zeny.";
+	close;
+
+TPC:
+	mes "[ TCG Center ]";
+	mes "ท่านมี TCG ให้ข้าหรอ";
+	mes "ข้าจะให้ TCG ละ ^0000FF20 ดอกเหลือง.^000000";
+	next;
+	menu "มี",-,"ไม่มี",O_not;
+	mes "[ TCG Center ]";
+	mes "บอกจำนวน TCG ที่จะแลกมา!!";
+	set @input, 0;
+	input @input;
+	next;  
+	if(countitem(7227)<1) goto O_have;
+	if(@input < 1 ) goto O_Menu;
+	if(@input > 1000 ) goto O_Max;
+	mes "[ TCG Center ]";
+	mes "ตรวจสอบแปบ...";
+	next;  
+	if(@input > countitem(7227)) goto O_dis;
+	getitem 607, (20 * @input);
+	delitem 7227, @input;
+	mes "[ TCG Center ]";
+	mes "ให้ TCG [^FF3355" + @input + "^000000] ใบ";
+	mes "ได้ ดอกเหลือง[^0000FF" + 20 * @input + "^000000] ดอก";
+	close;
+
+PCP:
+set .@TCG,1;
+set .@CASH,1;
+mes "[ TCG Card ]";
+mes "ต้องการแลกจุติเป็นพ้อย";
+mes "อัตราการแลก";
+mes ""+ .@CASH +" CASH";
+mes "ต้องใช้ TCG Card จำนวน "+ .@TCG +"";
+next;
+
+mes "กรุณาใส่จำนวน ครั้งที่แลก";
+mes "ต้องการยกเลิกกรุณาใส่ [ 0 ] ค่ะ";
+input .@INPUT;
+if (.@INPUT == 0) { close; }
+if (countitem(7227) < .@TCG * .@INPUT ) { mes "คุณมี TCG Card ไม่พอค่ะ"; close; }
+delitem 7227,.@TCG * .@INPUT;
+atcommand "@cash "+.@CASH * .@INPUT+"";
+mes "การแลกเปลี่ยน เสร็จสมบูรณ์ 100% ค่ะ";
+close;
+
+O_Menu:
+	mes "[ TCG Center ]";
+	mes "อย่าทำให้ข้าเสียเวลากับท่านได้ไหม";
+	close;
+
+O_dis:
+	mes "[ TCG Center ]";
+	mes "ท่านหลอกข้า ท่านมีไม่มากอย่างที่ท่านบอก";
+	close;
+O_Max:
+	mes "[ TCG Center ]";
+	mes "ข้าไม่รับเกิน 1000 นะ เพื่อป้องกันปัญหาต่างๆ";
+	close;
+
+O_not:
+	close;
+
+  noear:
+  close;
+
+O_have:
+	mes "[ TCG Center ]";
+	mes "ท่านไม่มีของที่จะนำมากแลกหนิ";
+	mes "กลับไปหาแล้วมาหาข้าใหม่";
+	close;
+OnInit: 
+	waitingroom "::รับซื้อ TCG::",0; 
+	end;
+}
+
+c5,195,160,4	duplicate(TCG Center)	TCG Center#1	795

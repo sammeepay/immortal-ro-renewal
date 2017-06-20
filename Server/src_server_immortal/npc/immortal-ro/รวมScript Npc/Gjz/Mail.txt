@@ -1,0 +1,72 @@
+prontera	mapflag	town
+izlude	mapflag	town
+morocc	mapflag	town
+geffen	mapflag	town
+payon	mapflag	town
+pay_arche	mapflag	town
+alberta	mapflag	town
+aldebaran	mapflag	town
+yuno	mapflag	town
+lighthalzen	mapflag	town
+einbroch	mapflag	town
+einbech	mapflag	town
+comodo	mapflag	town
+umbala	mapflag	town
+amatsu	mapflag	town
+gonryun	mapflag	town
+ayothaya	mapflag	town
+louyang	mapflag	town
+hugel	mapflag	town
+rachel	mapflag	town
+veins	mapflag	town
+//========================================================================
+-	script	Mailbox#main::MailBox	-1,{
+if ($@ActiveSv == 0) end;
+mes "[ Mailbox ]";
+mes "คุณต้องการใช้มันมั้ย";
+mes "ระบบ Mailbox Service,";
+mes "คุณต้องการใช้";
+mes "Mail Box เดี๋ยวนี้เลยมั้ย?";
+next;
+if (select("- ต้องการ.:- ยังไม่ต้องการ.") == 1) {
+mes "[ Mailbox ]";
+mes "ขอบคุณที่ใช้บริการค่ะ";		
+mes "จะเปิด Mail Box เดียวนี้ค่ะ~";
+openmail;
+close;
+}
+mes "[ Mailbox ]";
+mes "ขอบคุณที่ใช้บริการ แล้วพบกันใหม่.";
+close;
+}
+// ========================================================================
+prontera,146,86,0	duplicate(MailBox)	Mailbox#1prt	888
+prontera,275,213,0	duplicate(MailBox)	Mailbox#2prt	888
+prontera,34,212,0	duplicate(MailBox)	Mailbox#3prt	888
+izlude,136,94,0	duplicate(MailBox)	Mailbox#iz	888
+morocc,166,111,0	duplicate(MailBox)	Mailbox#moc	888
+morocc,168,262,0	duplicate(MailBox)	Mailbox#2moc	888
+geffen,115,67,0	duplicate(MailBox)	Mailbox#gef	888
+geffen,199,125,0	duplicate(MailBox)	Mailbox#2gef	888
+payon,191,104,0	duplicate(MailBox)	Mailbox#pay	888
+payon,171,226,0	duplicate(MailBox)	Mailbox#2pay	888
+pay_arche,55,127,0	duplicate(MailBox)	Mailbox#3pay	888
+alberta,90,60,0	duplicate(MailBox)	Mailbox#alb	888
+alberta,30,240,0	duplicate(MailBox)	Mailbox#2alb	888
+aldebaran,135,122,0	duplicate(MailBox)	Mailbox#alde	888
+yuno,148,187,0	duplicate(MailBox)	Mailbox#yuno	888
+yuno,332,108,0	duplicate(MailBox)	Mailbox#2yuno	888
+lighthalzen,164,85,0	duplicate(MailBox)	Mailbox#lht	888
+lighthalzen,196,320,0	duplicate(MailBox)	Mailbox#2lht	888
+einbroch,231,215,0	duplicate(MailBox)	Mailbox#ein	888
+einbroch,77,202,0	duplicate(MailBox)	Mailbox#2ein	888
+einbech,182,124,0	duplicate(MailBox)	Mailbox#3ein	888
+comodo,200,150,0	duplicate(MailBox)	Mailbox#cmd	888
+umbala,104,155,0	duplicate(MailBox)	Mailbox#um	888
+amatsu,102,146,0	duplicate(MailBox)	Mailbox#ama	888
+gonryun,152,117,0	duplicate(MailBox)	Mailbox#gon	888
+ayothaya,205,169,0	duplicate(MailBox)	Mailbox#ayo	888
+louyang,204,100,0	duplicate(MailBox)	Mailbox#lou	888
+hugel,86,168,0	duplicate(MailBox)	Mailbox#hu	888
+rachel,122,146,0	duplicate(MailBox)	PostBox#ra	888
+veins,218,123,0	duplicate(MailBox)	PostBox#ve	888

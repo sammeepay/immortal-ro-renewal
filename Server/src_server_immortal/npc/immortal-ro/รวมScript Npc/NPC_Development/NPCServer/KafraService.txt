@@ -1,0 +1,1757 @@
+//===================================================================
+// NPC : Kafra Service
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,122,115,4	script	Kafra Service	859,{
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดเลือกทำรายการ"; 
+mes "จากเมนูด้านล่างค่ะ"; 
+next;
+menu 
+"- Announce Message ( บริการประกาศ )",k1,
+"- Bug Report Service ( บริการแจ้งปัญหา )",k2,
+"- Save Point ( เซฟตำแหน่ง )",k3,
+"- About Guild ( เกี่ยวกับกิวล์ )",k4,
+"- Skill Support ( สกิลเสริม )",k5,
+"- Use Storage ( เก็บของ )",k6,
+"- Rent Pushcart | Falcon | Pecopeco",k7,
+"- Reset Service ( บริการรีเซ็ท )",k8,
+"- Card Remove Service ( บริการถอดการ์ด )",k9,
+"- Gender Conversion Service ( บริการแปลงเพศ )",k10,
+"- Bank Service ( บริการทางการเงิน และ อื่นๆ )",k11,
+"Exit",Cancel;
+
+
+
+k1:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดใส่ข้อความลงในช่องว่าง";
+next;
+input @Megaphone$; 
+mes "ท่านได้ประกาศข้อความว่า";
+mes "[ ^FF0000"+@Megaphone$+"^000000 ] แล้วค่ะ";
+announce strcharinfo(0) + " : " + @Megaphone$,bc_all,0xffffff;
+close;
+
+
+
+k2:
+if (getgmlevel() >= 90) goto GMMassage;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "^FF0000ถ้าท่านในคำที่ไม่สุภาพ";
+mes "หรือ หยาบคาย^000000";
+mes "ทางเซิฟเวอร์จะระงับ ID ของท่าน 7 วัน";
+next;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดลงทะเบียน";
+mes "หรือ อ่านข้อความ";
+next;
+menu 
+"- ลงทะเบียน",RegisterMsg,
+"- อ่านข้อความ",ReadMsg,
+"Exit",Cancel;
+
+
+
+RegisterMsg:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้ลงทะเบียนเรียบร้อยแล้ว";
+mes "โปรดใส่ข้อความลงในช่องว่าง";
+next;
+input .@msg$;
+set $lastnr2,$lastnr2+1;
+set $message$[$lastnr],"^0000ff"+$lastnr2+". "+strcharinfo(0)+":^000000 "+.@msg$+"";
+if ($lastnr >= 100) goto ordering;
+set $lastnr,$lastnr+1;
+set $acount,$acount+1;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้แจ้งมาว่า : ^0000ff"+.@msg$+"^000000";
+mes "ข้อความของท่านถูกบันทึกแล้ว";
+mes "^FF0000______________________^000000";
+goto ReadMsg;
+close;
+
+
+
+GMMassage:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการอ่านข้อความหรือไม่";
+next;
+menu
+"- อ่านข้อความ",ReadMsg,
+"- ไม่อ่านข้อความ",Cancel,
+"- ลบข้อความทั้งหมด",ClearMsg,
+"Exit",Cancel;
+
+
+
+ReadMsg:
+mes ""+$message$[.@z]+"";
+if ((.@z >= 99) || ($message$[.@z] == "")) close;
+mes "^00FF00______________________^000000";
+set .@z,.@z+1;
+goto ReadMsg;
+
+
+
+ordering:
+set $message$[.@x],""+$message$[.@x+1]+"";
+if ((.@x >= 99) || ($message$[.@x+1] == "")) goto ReadMsg;
+set .@x,.@x+1;
+goto ordering;
+
+
+
+ClearMsg:
+deletearray $message$,100;
+set $lastnr2,0;
+set $lastnr,0;
+set $acount,0;
+set .@x,0;
+set .@z,0;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ลบข้อความเสร็จสมบูรณ์";
+close;
+
+
+
+k3:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้เซปตำแหน่งเรียบร้อยแล้ว";
+Savepoint "rachel.gat",130,110;
+close;
+
+
+
+k4:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดเลือกทำรายการ"; 
+mes "จากเมนูด้านล่าง"; 
+next; 
+menu
+"- สร้างกิวล์",CreateGuild,
+"- อัพเลเววกิวล์",UpLvGuild,
+"Exit",Cancel; 
+
+
+
+CreateGuild:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดใส่ชื่อกิวล์ที่ต้องการ";
+input @nameguild$;
+atcommand strcharinfo(0)+ "@guild "+@nameguild$+"";
+next;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่างเราจะอัพเลเววกิวล์";
+mes "ของท่านให้เลย แล้วพบกันใหม่";
+announce "ท่าน ["+strcharinfo(0)+"] ได้จัดตั้งกิวล์  ชื่อ  ["+@nameguild$+"`Guild] เรียบร้อยแล้วค่ะ.",0,0xFF00CC;
+atcommand strcharinfo(0) + "@guildlvlup 50";
+close;
+
+
+
+UpLvGuild:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "อัพเลเววกิวล์เสร็จสมบูรณ์";
+atcommand strcharinfo(0) + "@guildlvlup 50";
+close;
+
+
+
+k5:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้รับสกิลเสริมแล้วค่ะ";
+		if (Class==Job_Knight) || (Class==Job_Lord_Knight) goto L_sKnight;
+		if (Class==Job_Assassin) || (Class==Job_Assassin_Cross) goto L_sAssassin;
+		if (Class==Job_Bard) || (Class==Job_Clown) goto L_sBard;
+		if (Class==Job_Dancer) || (Class==Job_Gypsy) goto L_sDancer;
+		if (Class==Job_Blacksmith) || (Class==Job_Whitesmith) goto L_sBlacksmithf;
+		if (Class==Job_Crusader) || (Class==Job_Paladin) goto L_sCrusader;
+		if (Class==Job_Hunter) || (Class==Job_Sniper) goto L_sHunter;
+		if (Class==Job_Monk) || (Class==Job_Champion) goto L_sMonk;
+		if (Class==Job_Priest) || (Class==Job_High_Priest) goto L_sPriest;
+		if (Class==Job_Rogue) || (Class==Job_Stalker) goto L_sRogue;
+		if (Class==Job_Sage) || (Class==Job_Professor) goto L_sSage;
+		if (Class==Job_Wizard) || (Class==Job_High_Wizard) goto L_sWizard;
+
+		if (BaseClass==Job_Novice) goto L_sSuperN;
+		if (BaseClass==Job_Swordman) goto L_sSword;
+		if (BaseClass==Job_Mage) goto L_sMage;
+		if (BaseClass==Job_Archer) goto L_sArcher;
+		if (BaseClass==Job_Acolyte) goto L_sAcolyte;
+		if (BaseClass==Job_Merchant) goto L_sMerchant;
+		if (BaseClass==Job_Thief) goto L_sThief;
+		close;
+
+L_sKnight:
+			skill 157,0,0;
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			skill 1001,1,0;
+			close;
+L_sAssassin:
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			skill 1003,1,0;
+			skill 1004,1,0;
+			close;
+L_sBard:
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			skill 1010,1,0;
+			close;
+L_sDancer:
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			skill 1011,1,0;
+			close;
+L_sBlacksmithf:
+			skill 142,1,0;
+			skill 153,1,0;
+			skill 154,1,0;
+			skill 155,1,0;
+			skill 1013,1,0;
+			skill 1012,1,0;
+			close;
+L_sCrusader:
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			skill 1002,1,0;
+			close;
+L_sHunter:
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			skill 1009,1,0;
+			close;
+L_sMonk:
+			skill 142,1,0;
+			skill 156,1,0;
+			skill 1015,1,0;
+			skill 1016,1,0;
+			close;
+L_sPriest:
+			skill 142,1,0;
+			skill 156,1,0;
+			skill 1014,1,0;
+			close;
+L_sRogue:
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			skill 1005,1,0;
+			close;
+L_sSage:
+			skill 142,1,0;
+			skill 157,1,0;
+			skill 1007,1,0;
+			skill 1008,1,0;
+			skill 1017,1,0;
+			skill 1018,1,0;
+			skill 1019,1,0;
+			close;
+L_sWizard:
+			skill 142,1,0;
+			skill 157,1,0;
+			skill 1006,1,0;
+			close;
+
+
+		L_sSuperN:
+			skill 142,1,0;
+			if(BaseJob==0) skill 143,1,0;
+			close;
+		L_sSword:
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			close;
+		L_sMage:
+			skill 142,1,0;
+			skill 157,1,0;
+			close;
+		L_sArcher:
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			close;
+		L_sAcolyte:
+			skill 142,1,0;
+			skill 156,1,0;
+			close;
+		L_sMerchant:
+			skill 142,1,0;
+			skill 153,1,0;
+			skill 154,1,0;
+			skill 155,1,0;
+			close;
+		L_sThief:
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			close;
+
+
+
+k6:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "เราจะเปิดให้ท่านเดี๋ยวนี้";
+openstorage;
+close;
+
+
+
+k7:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "คุณต้องการเช่าอะไร";
+next;
+menu 
+"- Pushcart",Cart,
+"- Falcon",Falcon,
+"- Pecopeco",Peco,
+"Exit",Cancel;
+
+
+
+Cart:
+if(Class == 5) goto L_Cart_Ok;
+if(Class == 10) goto L_Cart_Ok;
+if(Class == 18) goto L_Cart_Ok;
+if(Class == 23) goto L_Cart_Ok;
+if(Class == 4006) goto L_Cart_Ok;
+if(Class == 4011) goto L_Cart_Ok;
+if(Class == 4019) goto L_Cart_Ok;
+if(Class == 4028) goto L_Cart_Ok;
+if(Class == 4033) goto L_Cart_Ok;
+if(Class == 4041) goto L_Cart_Ok;
+if(Class == 4045) goto L_Cart_Ok;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขออภัยค่ะ " + strcharinfo(0) + " Merchants, Blacksmiths และ Alchimists เท่านั้นใช้บริการนี้ได้";
+close;
+L_Cart_Ok:
+setcart;
+goto L_Quit2;
+
+
+
+Falcon:
+if(Class == 11) goto L_falc;
+if(Class == 4012) goto L_falc;
+if(Class == 4034) goto L_falc;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขออภัยค่ะ " + strcharinfo(0) + " Hunters เท่านั้นใช้บริการนี้ได้";
+close;
+L_falc:
+setfalcon;
+goto L_Quit2;
+
+
+
+Peco:
+if (Class == 7) goto L_Peco_Ok;
+if (Class == 14) goto L_Peco_Ok;
+if (Class == 4008) goto L_Peco_Ok;
+if (Class == 4015) goto L_Peco_Ok;
+if (Class == 4030) goto L_Peco_Ok;
+if (Class == 4037) goto L_Peco_Ok;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขออภัยค่ะ " + strcharinfo(0) + " Knight และ Crusader เท่านั้นใช้บริการนี้ได้";
+close;
+L_Peco_Ok:
+setriding;
+goto L_Quit2;
+L_Quit2:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ถ้าท่านต้องการใช้บริการใหม่";
+mes "ก็กลับมาได้ตลอด เรายินดีต้อนรับเสมอ";
+close;
+
+
+
+k8:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการรีเซ็ท อะไรหรอ";
+next;
+menu 
+"- Reset Status",Reset1,
+"- Reset Skill",Reset2,
+"- Reset Status & Skill",Reset3,
+"Exit",Cancel;
+
+
+
+Reset1:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "สเตตัส ของท่าน";
+
+mes "ได้ถูกรีเซ็ทแล้วค่ะ";
+resetstatus;
+close;
+
+
+
+Reset2:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "สกิล ของท่าน";
+
+mes "ได้ถูกรีเซ็ทแล้วค่ะ";
+resetskill;
+close;
+
+
+
+Reset3:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "สเตตัส และ สกิล ของท่าน";
+
+mes "ได้ถูกรีเซ็ทแล้วค่ะ";
+resetstatus;
+resetskill;
+close;
+
+
+
+k9:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการถอดการ์ด";
+mes "ส่วนไหนของท่าน";
+next;
+menu	
+getequipname(1),SLOT1,
+getequipname(2),SLOT2,
+getequipname(3),SLOT3,
+getequipname(4),SLOT4,
+getequipname(5),SLOT5,
+getequipname(6),SLOT6,
+getequipname(7),SLOT7,
+getequipname(8),SLOT8,
+getequipname(9),SLOT9,
+getequipname(10),SLOT10,
+"Exit",Cancel;
+
+
+
+SLOT1:
+set @part,1;
+goto remove;
+
+SLOT2:
+set @part,2;
+goto remove;
+
+SLOT3:
+set @part,3;
+goto remove;
+
+SLOT4:
+set @part,4;
+goto remove;
+
+SLOT5:
+set @part,5;
+goto remove;
+
+SLOT6:
+set @part,6;
+goto remove;
+
+SLOT7:
+set @part,7;
+goto remove;
+
+SLOT8:
+set @part,8;
+goto remove;
+
+SLOT9:
+set @part,9;
+goto remove;
+
+SLOT10:
+set @part,10;
+goto remove;
+
+
+
+remove:
+if(getequipcardcnt(@part) == 0) goto DenyEquipment;
+successremovecards @part;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "การถอดการ์ด เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+DenyEquipment:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านไม่ได้ใส่อุปกรณ์";
+mes "หรือ อุปกรณ์ไม่มีการ์ด";
+close;
+
+
+
+k10:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการแปลงเพศ ตัวละคร";
+mes "ใช่ หรือ ไม่";
+next;
+menu
+"- ใช่",ChangeNow,
+"- ไม่ใช่",Cancel,
+"Exit",Cancel;
+
+
+
+ChangeNow: 
+changesex;
+close;
+
+
+
+k11:
+set @cost,10000;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ยินดีต้อนรับ เข้าสู่ บริการ ฝาก เงิน";
+mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+next;
+menu 
+"- ฝากเงิน",Ldeposit,
+"- ถอนเงิน",Lwithdrawl,
+"- โอนเงิน ข้ามตัวละคร",TransferZ,
+"- โอนเกระโหลก ข้ามตัวละคร",TransferS,
+"Exit",Cancel;
+
+
+
+Ldeposit:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "อยากฝากเงินเท่าไรละ";
+next;
+if (@cost > 0) goto Ldepocost;
+goto Ldepocont;
+
+    Ldepocost:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "คิดค่าบริการ " + @cost + " Zeny";
+        next;
+        goto Ldepocont;
+
+Ldepocont:
+    input @deposit;
+    if (@deposit < 10000) goto Lrealamount;
+    if (@deposit > Zeny) goto Lneedzeny;
+    if (@deposit > (Zeny - @cost)) goto Lneedzeny2;
+    set Zeny,Zeny - @deposit;
+    set Zeny,Zeny - @cost;
+    set #bankstorage,#bankstorage + @deposit;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ขอบคุณที่ใช้บริการ กองเงินของคุณ ถูกฝากไว้เรียบร้อยแล้งว";
+    mes " ";
+    mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+    close;
+
+Lwithdrawl:
+    if (#bankstorage <= 0) goto notinbank;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณจะถอนเงินใช่ไหม";
+    next;
+    if (@cost > 0) goto Lwithcost;
+    goto Lwithcont;
+
+    Lwithcost:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "ค่าบริการ จำนวน " + @cost + " Zeny ";
+        next;
+        goto Lwithcont;
+
+Lwithcont:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+    next;
+    input @withdrawl;
+    if (@withdrawl < 10000) goto Lrealamount;
+    if (@withdrawl > #bankstorage) goto Lneedzeny3;
+    if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) goto Lcostask;
+    if (@cost > Zeny) goto Lneedzeny2;
+    goto Lwithcont2;
+
+    Lcostask:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "คุณจะถอนเงินใช่ไหม";
+        next;
+        menu 
+	"- ใช่ตกลง",Lwithtake,
+	"- ไม่ละ",Lcancel2;
+
+    Lwithtake:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "Ok";
+        set @withdrawl,@withdrawl - @cost;
+        set #bankstorage,#bankstorage - @cost;
+        set @cost,0;
+        next;
+        goto Lwithcont2;
+
+Lwithcont2:
+    set Zeny,Zeny - @cost;
+    set Zeny,Zeny + @withdrawl;
+    set #bankstorage,#bankstorage - @withdrawl;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "การถอนเงินเสร็จสมบูรณ์";
+    close;
+
+Lrealamount:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "กรุณาใส่ จำนวน เงิน ให้มากกว่านี้ ห้ามต่ำกว่า 10,000 Zeny";
+    close;
+
+Lneedzeny:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณไม่มีเงินที่ จะฝากเข้า ธนาคาร";
+    close;
+
+Lneedzeny2:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ยอดคงเหลือของคุณ ไม่พอกับจำนวนเงินที่คุณจะ ถอน";
+    close;
+
+Lneedzeny3:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณไม่มีเงินเลยใน ระบบ";
+    close;
+
+Lcancel2:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ขอขอบคุณที่ใช้บริการ";
+    close;
+
+notinbank:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "เจ้ายังไม่ได้เปิดบัญชี";
+    close;
+
+
+
+TransferZ:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ยินดีต้อนรับสู่บริการ โอนเงินข้ามตัวละคร";
+	mes "คุณสามารถ ส่งผ่านเงินไปยังตัวละครของคุณตัวอื่นได้ค่ะ";
+	mes "^FF0000เงินที่โอนจะไม่เกี่ยวกับเงินในบัญชีของท่าน^000000";
+	next;
+	if($bank_money!=0 && $bank_password!=0) goto L_Hold;
+	menu
+	"- ตกลง",L_Yes,
+	"- ไม่ล่ะ ขอบคุณ",Cancel,
+	"Exit",Cancel;
+
+
+
+L_Yes:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ใส่จำนวนเงินที่ต้องการลงไปเลย";
+	next;
+	input @money;
+	if(@money>zeny) goto L_Yes;
+	if(@money==0) goto L_No;
+	set $bank_money,@money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ใส่รหัสเพื่อป้องกันเงินของเจ้า";
+	mes "^FF0000ใส่เป็นตัวเลขน้ะ^000000";
+	next;
+	input @password;
+	if(@password==0) goto L_Yes;
+	set $bank_password,@password;
+	set zeny,zeny-@money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "มาใช้บริการบ่อยๆล่ะ";
+	close;
+
+
+
+L_Hold:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	emotion 2;
+	mes "มีคนใช้บริการนี้แล้วค่ะ";
+	mes "คุณมี Password";
+	mes "ที่ใช้รับเงินไหมคะ";
+	next;
+	emotion 3;
+	menu
+	"- มี",L_Yeah,
+	"- ไม่มี",Cancel,
+	"Exit",Cancel;
+
+
+
+L_Yeah:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	emotion 1;
+	mes "กรุณากรอก Password ที่จะโอนเงินค่ะ";
+	next;
+	input @password;
+	if(@password!=$bank_password) goto L_Bye;
+	set zeny,zeny+$bank_money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	emotion 0;
+	set $bank_money,0;
+	set $bank_password,0;
+	close;
+
+
+
+L_Bye:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "เสียใจด้วยค่ะ password ไม่ถูกต้อง";
+	mes "ลองพยายามอีกครั้งค่ะ";
+	close;
+
+
+
+TransferS:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ยินดีต้อนรับเข้าสู่บริการ"; 
+mes "โอนกระโหลก ข้ามตัวละคร";
+mes "ท่านสามารถโอนกระโหลกของท่าน"; 
+mes "ไปยังตัวละครตัวอื่นได้";
+mes "โดยผ่านบริการของเราค่ะ";
+next;
+if($bank_skull != 0 && $skull_password != 0) goto Hold;
+menu 
+"- ตกลง",BSYes,
+"- ไม่ล่ะ ขอบคุณ",Cancel,
+"Exit",Cancel;
+
+
+
+BSYes:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดใส่จำนวน กระโหลกค่ะ";
+next;
+input @skull;
+set $bank_skull,@skull;
+if(countitem(7420) < @skull) goto noskull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "กรุณากรอก Password เพื่อป้องกันค่ะ";
+mes "Password จะต้องมี 4 ตัว และเป็นเลข [1-9] เท่านั้นค่ะ ";
+next;
+input @Spassword;
+if(@Spassword == 0) goto BSYes;
+set $skull_password,@Spassword;
+delitem 7420,@skull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขอบคุณที่ใช้บริการค่ะ";
+close;
+
+
+
+Hold:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "มีคนใช้บริการนี้แล้วค่ะ";
+mes "คุณมี Password";
+mes "ที่ใช้รับกระโหลกไหมคะ";
+next;
+menu
+"- มี",SYeah,
+"- ไม่มี",Cancel,
+"Exit",Cancel;
+
+
+
+SYeah:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "กรุณากรอก Password ค่ะ";
+next;
+input @Spassword;
+if(@Spassword != $skull_password) goto PWError;
+getitem 7420,$bank_skull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขอบคุณที่ใช้บริการค่ะ";
+set $bank_skull,0;
+set $skull_password,0;
+close;
+
+
+
+PWError:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "เสียใจด้วยค่ะ password ไม่ถูกต้อง";
+close;
+
+
+
+noskull:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านมี ระโหลกไม่พอ";
+close;
+
+
+
+Cancel:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+Waitingroom "Kafra Service" , 0;
+end;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//===================================================================
+// NPC : Kafra Service Special for InCe-WickeD Sv ( Only )
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+function	script	KafraSpecial	{
+menu
+"- วิธีใช้คำสั่ง Hot Key และ รหัสคำสั่ง",HTUHK,
+//"- Call Guild Member ( สำหรับหัวหน้ากิวล์ )",cg,
+//"- Call Party Member ( สำหรับหัวหน้าปาร์ตี้ )",cp,
+//"- Easy recovery ( Agi | Blessing | other )",er,
+//"- Easy shop ( ร้านสะดวกซื้อ )",es,
+"- Announce Message( บริการประกาศ )",k1,
+"- Bug Report Service ( บริการแจ้งปัญหา )",k2,
+"- Save Point ( เซฟตำแหน่ง )",k3,
+"- About Guild ( เกี่ยวกับกิวล์ )",k4,
+"- Skill Support ( สกิลเสริม )",k5,
+"- Use Storage ( เก็บของ )",k6,
+"- Rent Pushcart | Falcon | Pecopeco",k7,
+"- Reset Service ( บริการรีเซ็ท )",k8,
+"- Card Remove Service ( บริการถอดการ์ด )",k9,
+"- Gender Conversion Service ( บริการแปลงเพศ )",k10,
+"- Bank Service ( บริการทางการเงิน และ อื่นๆ )",k11,
+"Exit",Cancel;
+
+
+
+HTUHK:
+menu 
+"- วิธีใช้คำสั่ง Hot Key",h1,
+"- รหัสคำสั่งสำหรับ Hot Key",h2;
+
+
+
+h1:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes"วิธีใช้ Hot Key";
+mes"มีวิธีง่ายๆคือ พิมพ์คำว่า";
+mes"^FF0000NPC:HotKey ที่ช่อง";
+mes"ชื่อคนที่จะกระซิบ^000000";
+mes"จากนั้นพิมพ์รหัสคำสั่ง";
+mes"ใน^FF0000ช่องที่สำหรับพิมพ์ข้อความ^000000";
+close;
+
+
+
+h2:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes"รหัสคำสั่ง Hot Key";
+mes"^FF0000GM^000000 = Gm Manu";
+mes"สำหรับจีเอ็มที่เล่นรหัสธรรมดา";
+mes"สามารถเข้าไปใช้คำสั่งจีเอ็มได้";
+mes"^FF0000ab^000000 = Status Recovery";
+mes"Agi | Blessing | other ไม่มี Heal";
+mes"^FF0000am^000000 = ประกาศข้อความต่างๆ";
+mes"^FF0000cg^000000 = เรียกคนในกิวล์";
+mes"สำหรับหัวหน้ากิวล์เท่านั้น";
+mes"^FF0000cp^000000 = เรียกคนในปาร์ตี้";
+mes"สำหรับหัวหน้าปาร์ตี้เท่านั้น ";
+mes"^FF0000ci^000000 = ตรวจสอบไอเท็ม";
+mes"^FF0000cs^000000 = ตรวจสอบสเตตัส";
+mes"^FF0000es^000000 = ร้านสะดวกซื้อ";
+mes"^FF0000gvg^000000 = เข้าสู่ห้อง Guild War";
+mes"^FF0000pvp^000000 = เข้าสู่ห้อง Normal PvP";
+close;
+
+
+
+cg:
+set @guildm,getcharid(2);
+if (strcharinfo(0) == getguildmaster(@guildm)) goto YGM;
+if (getcharid(2) == @guildm) goto NGM;
+close;
+
+
+
+YGM:
+atcommand strcharinfo(0) + "@guildrecall "+ getcharid(2) +"";
+close;
+
+
+
+NGM:
+dispbottom "Sorry ; This menu can't manage because you aren't the guild master";
+close;
+
+
+
+cp:
+set @party,getcharid(1);
+if (strcharinfo(1) == getpartyname(@party)) goto YP;
+close;
+
+
+
+YP:
+atcommand strcharinfo(0) + "@partyrecall "+ getcharid(1) +"";
+close;
+
+
+
+er:
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+sc_start 29,1800000,10; 
+sc_start 30,1800000,10; // Blessing
+sc_start 32,1800000,10; // Agi up
+sc_start 40,1800000,10;  // Magnificaf
+sc_start 41,1800000,10;  // Gloria
+//percentheal 100,100;  
+specialeffect2(14);
+close; 
+
+
+
+es:
+switch(select("- ของปั๊ม:- ลูกธนู | กระสุนปืน | ดาวกระจาย:- ของทำยา:- แร่ต่าง ๆ:- Homunculus Foods")) {
+case 1:
+callshop "1",1;
+close;
+          
+case 2:
+callshop "2",1;
+close;
+
+case 3:
+callshop "3",1;
+close;
+
+case 4:
+callshop "4",1;
+close;
+
+case 5:
+callshop "5",1;
+close;
+}
+
+
+
+k1:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดใส่ข้อความลงในช่องว่าง";
+next;
+input @Megaphone$; 
+mes "ท่านได้ประกาศข้อความว่า";
+mes "[ ^FF0000"+@Megaphone$+"^000000 ] แล้วค่ะ";
+announce strcharinfo(0) + " : " + @Megaphone$,bc_all,0xffffff;
+close;
+
+
+
+k2:
+if (getgmlevel() >= 90) goto GMMassage;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "^FF0000ถ้าท่านในคำที่ไม่สุภาพ";
+mes "หรือ หยาบคาย^000000";
+mes "ทางเซิฟเวอร์จะระงับ ID ของท่าน 7 วัน";
+next;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดลงทะเบียน";
+mes "หรือ อ่านข้อความ";
+next;
+menu 
+"- ลงทะเบียน",RegisterMsg,
+"- อ่านข้อความ",ReadMsg,
+"Exit",Cancel;
+
+
+
+RegisterMsg:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้ลงทะเบียนเรียบร้อยแล้ว";
+mes "โปรดใส่ข้อความลงในช่องว่าง";
+next;
+input .@msg$;
+set $lastnr2,$lastnr2+1;
+set $message$[$lastnr],"^0000ff"+$lastnr2+". "+strcharinfo(0)+":^000000 "+.@msg$+"";
+if ($lastnr >= 100) goto ordering;
+set $lastnr,$lastnr+1;
+set $acount,$acount+1;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้แจ้งมาว่า : ^0000ff"+.@msg$+"^000000";
+mes "ข้อความของท่านถูกบันทึกแล้ว";
+mes "^FF0000______________________^000000";
+goto ReadMsg;
+close;
+
+
+
+GMMassage:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการอ่านข้อความหรือไม่";
+next;
+menu
+"- อ่านข้อความ",ReadMsg,
+"- ไม่อ่านข้อความ",Cancel,
+"- ลบข้อความทั้งหมด",ClearMsg,
+"Exit",Cancel;
+
+
+
+ReadMsg:
+mes ""+$message$[.@z]+"";
+if ((.@z >= 99) || ($message$[.@z] == "")) close;
+mes "^00FF00______________________^000000";
+set .@z,.@z+1;
+goto ReadMsg;
+
+
+
+ordering:
+set $message$[.@x],""+$message$[.@x+1]+"";
+if ((.@x >= 99) || ($message$[.@x+1] == "")) goto ReadMsg;
+set .@x,.@x+1;
+goto ordering;
+
+
+
+ClearMsg:
+deletearray $message$,100;
+set $lastnr2,0;
+set $lastnr,0;
+set $acount,0;
+set .@x,0;
+set .@z,0;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ลบข้อความเสร็จสมบูรณ์";
+close;
+
+
+
+k3:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้เซปตำแหน่งเรียบร้อยแล้ว";
+Savepoint "rachel.gat",130,110;
+close;
+
+
+
+k4:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดเลือกทำรายการ"; 
+mes "จากเมนูด้านล่าง"; 
+next; 
+menu
+"- สร้างกิวล์",CreateGuild,
+"- อัพเลเววกิวล์",UpLvGuild,
+"Exit",Cancel; 
+
+
+
+CreateGuild:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดใส่ชื่อกิวล์ที่ต้องการ";
+input @nameguild$;
+atcommand strcharinfo(0)+ "@guild "+@nameguild$+"";
+next;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่างเราจะอัพเลเววกิวล์";
+mes "ของท่านให้เลย แล้วพบกันใหม่";
+announce "ท่าน ["+strcharinfo(0)+"] ได้จัดตั้งกิวล์  ชื่อ  ["+@nameguild$+"`Guild] เรียบร้อยแล้วค่ะ.",0,0xFF00CC;
+atcommand strcharinfo(0) + "@guildlvlup 50";
+close;
+
+
+
+UpLvGuild:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "อัพเลเววกิวล์เสร็จสมบูรณ์";
+atcommand strcharinfo(0) + "@guildlvlup 50";
+close;
+
+
+
+k5:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้รับสกิลเสริมแล้วค่ะ";
+		if (Class==Job_Knight) || (Class==Job_Lord_Knight) goto L_sKnight;
+		if (Class==Job_Assassin) || (Class==Job_Assassin_Cross) goto L_sAssassin;
+		if (Class==Job_Bard) || (Class==Job_Clown) goto L_sBard;
+		if (Class==Job_Dancer) || (Class==Job_Gypsy) goto L_sDancer;
+		if (Class==Job_Blacksmith) || (Class==Job_Whitesmith) goto L_sBlacksmithf;
+		if (Class==Job_Crusader) || (Class==Job_Paladin) goto L_sCrusader;
+		if (Class==Job_Hunter) || (Class==Job_Sniper) goto L_sHunter;
+		if (Class==Job_Monk) || (Class==Job_Champion) goto L_sMonk;
+		if (Class==Job_Priest) || (Class==Job_High_Priest) goto L_sPriest;
+		if (Class==Job_Rogue) || (Class==Job_Stalker) goto L_sRogue;
+		if (Class==Job_Sage) || (Class==Job_Professor) goto L_sSage;
+		if (Class==Job_Wizard) || (Class==Job_High_Wizard) goto L_sWizard;
+
+		if (BaseClass==Job_Novice) goto L_sSuperN;
+		if (BaseClass==Job_Swordman) goto L_sSword;
+		if (BaseClass==Job_Mage) goto L_sMage;
+		if (BaseClass==Job_Archer) goto L_sArcher;
+		if (BaseClass==Job_Acolyte) goto L_sAcolyte;
+		if (BaseClass==Job_Merchant) goto L_sMerchant;
+		if (BaseClass==Job_Thief) goto L_sThief;
+		close;
+
+L_sKnight:
+			skill 157,0,0;
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			skill 1001,1,0;
+			close;
+L_sAssassin:
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			skill 1003,1,0;
+			skill 1004,1,0;
+			close;
+L_sBard:
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			skill 1010,1,0;
+			close;
+L_sDancer:
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			skill 1011,1,0;
+			close;
+L_sBlacksmithf:
+			skill 142,1,0;
+			skill 153,1,0;
+			skill 154,1,0;
+			skill 155,1,0;
+			skill 1013,1,0;
+			skill 1012,1,0;
+			close;
+L_sCrusader:
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			skill 1002,1,0;
+			close;
+L_sHunter:
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			skill 1009,1,0;
+			close;
+L_sMonk:
+			skill 142,1,0;
+			skill 156,1,0;
+			skill 1015,1,0;
+			skill 1016,1,0;
+			close;
+L_sPriest:
+			skill 142,1,0;
+			skill 156,1,0;
+			skill 1014,1,0;
+			close;
+L_sRogue:
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			skill 1005,1,0;
+			close;
+L_sSage:
+			skill 142,1,0;
+			skill 157,1,0;
+			skill 1007,1,0;
+			skill 1008,1,0;
+			skill 1017,1,0;
+			skill 1018,1,0;
+			skill 1019,1,0;
+			close;
+L_sWizard:
+			skill 142,1,0;
+			skill 157,1,0;
+			skill 1006,1,0;
+			close;
+
+
+		L_sSuperN:
+			skill 142,1,0;
+			if(BaseJob==0) skill 143,1,0;
+			close;
+		L_sSword:
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			close;
+		L_sMage:
+			skill 142,1,0;
+			skill 157,1,0;
+			close;
+		L_sArcher:
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			close;
+		L_sAcolyte:
+			skill 142,1,0;
+			skill 156,1,0;
+			close;
+		L_sMerchant:
+			skill 142,1,0;
+			skill 153,1,0;
+			skill 154,1,0;
+			skill 155,1,0;
+			close;
+		L_sThief:
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			close;
+
+
+
+k6:
+//mes "[ ^0061C1Kafra Service^000000 ]";
+//mes "เราจะเปิดให้ท่านเดี๋ยวนี้";
+openstorage;
+close;
+
+
+
+k7:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "คุณต้องการเช่าอะไร";
+next;
+menu 
+"- Pushcart",Cart,
+"- Falcon",Falcon,
+"- Pecopeco",Peco,
+"Exit",Cancel;
+
+
+
+Cart:
+if(Class == 5) goto L_Cart_Ok;
+if(Class == 10) goto L_Cart_Ok;
+if(Class == 18) goto L_Cart_Ok;
+if(Class == 23) goto L_Cart_Ok;
+if(Class == 4006) goto L_Cart_Ok;
+if(Class == 4011) goto L_Cart_Ok;
+if(Class == 4019) goto L_Cart_Ok;
+if(Class == 4028) goto L_Cart_Ok;
+if(Class == 4033) goto L_Cart_Ok;
+if(Class == 4041) goto L_Cart_Ok;
+if(Class == 4045) goto L_Cart_Ok;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขออภัยค่ะ " + strcharinfo(0) + " Merchants, Blacksmiths และ Alchimists เท่านั้นใช้บริการนี้ได้";
+close;
+L_Cart_Ok:
+setcart;
+goto L_Quit2;
+
+
+
+Falcon:
+if(Class == 11) goto L_falc;
+if(Class == 4012) goto L_falc;
+if(Class == 4034) goto L_falc;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขออภัยค่ะ " + strcharinfo(0) + " Hunters เท่านั้นใช้บริการนี้ได้";
+close;
+L_falc:
+setfalcon;
+goto L_Quit2;
+
+
+
+Peco:
+if (Class == 7) goto L_Peco_Ok;
+if (Class == 14) goto L_Peco_Ok;
+if (Class == 4008) goto L_Peco_Ok;
+if (Class == 4015) goto L_Peco_Ok;
+if (Class == 4030) goto L_Peco_Ok;
+if (Class == 4037) goto L_Peco_Ok;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขออภัยค่ะ " + strcharinfo(0) + " Knight และ Crusader เท่านั้นใช้บริการนี้ได้";
+close;
+L_Peco_Ok:
+setriding;
+goto L_Quit2;
+L_Quit2:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ถ้าท่านต้องการใช้บริการใหม่";
+mes "ก็กลับมาได้ตลอด เรายินดีต้อนรับเสมอ";
+close;
+
+
+
+k8:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการรีเซ็ท อะไรหรอ";
+next;
+menu 
+"- Reset Status",Reset1,
+"- Reset Skill",Reset2,
+"- Reset Status & Skill",Reset3,
+"Exit",Cancel;
+
+
+
+Reset1:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "สเตตัส ของท่าน";
+
+mes "ได้ถูกรีเซ็ทแล้วค่ะ";
+resetstatus;
+close;
+
+
+
+Reset2:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "สกิล ของท่าน";
+
+mes "ได้ถูกรีเซ็ทแล้วค่ะ";
+resetskill;
+close;
+
+
+
+Reset3:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "สเตตัส และ สกิล ของท่าน";
+
+mes "ได้ถูกรีเซ็ทแล้วค่ะ";
+resetstatus;
+resetskill;
+close;
+
+
+
+k9:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการถอดการ์ด";
+mes "ส่วนไหนของท่าน";
+next;
+menu	
+getequipname(1),SLOT1,
+getequipname(2),SLOT2,
+getequipname(3),SLOT3,
+getequipname(4),SLOT4,
+getequipname(5),SLOT5,
+getequipname(6),SLOT6,
+getequipname(7),SLOT7,
+getequipname(8),SLOT8,
+getequipname(9),SLOT9,
+getequipname(10),SLOT10,
+"Exit",Cancel;
+
+
+
+SLOT1:
+set @part,1;
+goto remove;
+
+SLOT2:
+set @part,2;
+goto remove;
+
+SLOT3:
+set @part,3;
+goto remove;
+
+SLOT4:
+set @part,4;
+goto remove;
+
+SLOT5:
+set @part,5;
+goto remove;
+
+SLOT6:
+set @part,6;
+goto remove;
+
+SLOT7:
+set @part,7;
+goto remove;
+
+SLOT8:
+set @part,8;
+goto remove;
+
+SLOT9:
+set @part,9;
+goto remove;
+
+SLOT10:
+set @part,10;
+goto remove;
+
+
+
+remove:
+if(getequipcardcnt(@part) == 0) goto DenyEquipment;
+successremovecards @part;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "การถอดการ์ด เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+DenyEquipment:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านไม่ได้ใส่อุปกรณ์";
+mes "หรือ อุปกรณ์ไม่มีการ์ด";
+close;
+
+
+
+k10:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการแปลงเพศ ตัวละคร";
+mes "ใช่ หรือ ไม่";
+next;
+menu
+"- ใช่",ChangeNow,
+"- ไม่ใช่",Cancel,
+"Exit",Cancel;
+
+
+
+ChangeNow: 
+changesex;
+close;
+
+
+
+k11:
+set @cost,10000;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ยินดีต้อนรับ เข้าสู่ บริการ ฝาก เงิน";
+mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+next;
+menu 
+"- ฝากเงิน",Ldeposit,
+"- ถอนเงิน",Lwithdrawl,
+"- โอนเงิน ข้ามตัวละคร",TransferZ,
+"- โอนเกระโหลก ข้ามตัวละคร",TransferS,
+"Exit",Cancel;
+
+
+
+Ldeposit:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "อยากฝากเงินเท่าไรละ";
+next;
+if (@cost > 0) goto Ldepocost;
+goto Ldepocont;
+
+    Ldepocost:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "คิดค่าบริการ " + @cost + " Zeny";
+        next;
+        goto Ldepocont;
+
+Ldepocont:
+    input @deposit;
+    if (@deposit < 10000) goto Lrealamount;
+    if (@deposit > Zeny) goto Lneedzeny;
+    if (@deposit > (Zeny - @cost)) goto Lneedzeny2;
+    set Zeny,Zeny - @deposit;
+    set Zeny,Zeny - @cost;
+    set #bankstorage,#bankstorage + @deposit;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ขอบคุณที่ใช้บริการ กองเงินของคุณ ถูกฝากไว้เรียบร้อยแล้งว";
+    mes " ";
+    mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+    close;
+
+Lwithdrawl:
+    if (#bankstorage <= 0) goto notinbank;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณจะถอนเงินใช่ไหม";
+    next;
+    if (@cost > 0) goto Lwithcost;
+    goto Lwithcont;
+
+    Lwithcost:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "ค่าบริการ จำนวน " + @cost + " Zeny ";
+        next;
+        goto Lwithcont;
+
+Lwithcont:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+    next;
+    input @withdrawl;
+    if (@withdrawl < 10000) goto Lrealamount;
+    if (@withdrawl > #bankstorage) goto Lneedzeny3;
+    if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) goto Lcostask;
+    if (@cost > Zeny) goto Lneedzeny2;
+    goto Lwithcont2;
+
+    Lcostask:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "คุณจะถอนเงินใช่ไหม";
+        next;
+        menu 
+	"- ใช่ตกลง",Lwithtake,
+	"- ไม่ละ",Lcancel2;
+
+    Lwithtake:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "Ok";
+        set @withdrawl,@withdrawl - @cost;
+        set #bankstorage,#bankstorage - @cost;
+        set @cost,0;
+        next;
+        goto Lwithcont2;
+
+Lwithcont2:
+    set Zeny,Zeny - @cost;
+    set Zeny,Zeny + @withdrawl;
+    set #bankstorage,#bankstorage - @withdrawl;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "การถอนเงินเสร็จสมบูรณ์";
+    close;
+
+Lrealamount:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "กรุณาใส่ จำนวน เงิน ให้มากกว่านี้ ห้ามต่ำกว่า 10,000 Zeny";
+    close;
+
+Lneedzeny:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณไม่มีเงินที่ จะฝากเข้า ธนาคาร";
+    close;
+
+Lneedzeny2:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ยอดคงเหลือของคุณ ไม่พอกับจำนวนเงินที่คุณจะ ถอน";
+    close;
+
+Lneedzeny3:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณไม่มีเงินเลยใน ระบบ";
+    close;
+
+Lcancel2:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ขอขอบคุณที่ใช้บริการ";
+    close;
+
+notinbank:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "เจ้ายังไม่ได้เปิดบัญชี";
+    close;
+
+
+
+TransferZ:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ยินดีต้อนรับสู่บริการ โอนเงินข้ามตัวละคร";
+	mes "คุณสามารถ ส่งผ่านเงินไปยังตัวละครของคุณตัวอื่นได้ค่ะ";
+	mes "^FF0000เงินที่โอนจะไม่เกี่ยวกับเงินในบัญชีของท่าน^000000";
+	next;
+	if($bank_money!=0 && $bank_password!=0) goto L_Hold;
+	menu
+	"- ตกลง",L_Yes,
+	"- ไม่ล่ะ ขอบคุณ",Cancel,
+	"Exit",Cancel;
+
+
+
+L_Yes:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ใส่จำนวนเงินที่ต้องการลงไปเลย";
+	next;
+	input @money;
+	if(@money>zeny) goto L_Yes;
+	if(@money==0) goto L_No;
+	set $bank_money,@money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ใส่รหัสเพื่อป้องกันเงินของเจ้า";
+	mes "^FF0000ใส่เป็นตัวเลขน้ะ^000000";
+	next;
+	input @password;
+	if(@password==0) goto L_Yes;
+	set $bank_password,@password;
+	set zeny,zeny-@money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "มาใช้บริการบ่อยๆล่ะ";
+	close;
+
+
+
+L_Hold:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	emotion 2;
+	mes "มีคนใช้บริการนี้แล้วค่ะ";
+	mes "คุณมี Password";
+	mes "ที่ใช้รับเงินไหมคะ";
+	next;
+	emotion 3;
+	menu
+	"- มี",L_Yeah,
+	"- ไม่มี",Cancel,
+	"Exit",Cancel;
+
+
+
+L_Yeah:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	emotion 1;
+	mes "กรุณากรอก Password ที่จะโอนเงินค่ะ";
+	next;
+	input @password;
+	if(@password!=$bank_password) goto L_Bye;
+	set zeny,zeny+$bank_money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	emotion 0;
+	set $bank_money,0;
+	set $bank_password,0;
+	close;
+
+
+
+L_Bye:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "เสียใจด้วยค่ะ password ไม่ถูกต้อง";
+	mes "ลองพยายามอีกครั้งค่ะ";
+	close;
+
+
+
+TransferS:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ยินดีต้อนรับเข้าสู่บริการ"; 
+mes "โอนกระโหลก ข้ามตัวละคร";
+mes "ท่านสามารถโอนกระโหลกของท่าน"; 
+mes "ไปยังตัวละครตัวอื่นได้";
+mes "โดยผ่านบริการของเราค่ะ";
+next;
+if($bank_skull != 0 && $skull_password != 0) goto Hold;
+menu 
+"- ตกลง",BSYes,
+"- ไม่ล่ะ ขอบคุณ",Cancel,
+"Exit",Cancel;
+
+
+
+BSYes:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดใส่จำนวน กระโหลกค่ะ";
+next;
+input @skull;
+set $bank_skull,@skull;
+if(countitem(7420) < @skull) goto noskull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "กรุณากรอก Password เพื่อป้องกันค่ะ";
+mes "Password จะต้องมี 4 ตัว และเป็นเลข [1-9] เท่านั้นค่ะ ";
+next;
+input @Spassword;
+if(@Spassword == 0) goto BSYes;
+set $skull_password,@Spassword;
+delitem 7420,@skull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขอบคุณที่ใช้บริการค่ะ";
+close;
+
+
+
+Hold:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "มีคนใช้บริการนี้แล้วค่ะ";
+mes "คุณมี Password";
+mes "ที่ใช้รับกระโหลกไหมคะ";
+next;
+menu
+"- มี",SYeah,
+"- ไม่มี",Cancel,
+"Exit",Cancel;
+
+
+
+SYeah:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "กรุณากรอก Password ค่ะ";
+next;
+input @Spassword;
+if(@Spassword != $skull_password) goto PWError;
+getitem 7420,$bank_skull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขอบคุณที่ใช้บริการค่ะ";
+set $bank_skull,0;
+set $skull_password,0;
+close;
+
+
+
+PWError:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "เสียใจด้วยค่ะ password ไม่ถูกต้อง";
+close;
+
+
+
+noskull:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านมีกระโหลกไม่พอ";
+close;
+
+
+
+Cancel:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+}

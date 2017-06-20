@@ -1,0 +1,38 @@
+izlude.gat,118,126,4	script	เอา Skill homunculus	750,{
+	mes "[Homunculus Skill]";
+	mes "เจ้าจะมาเอา skill ใช่ป่าว";
+	mes "ข้อขอตรวจสอบตัวเจ้าก่อนนะ";
+	if(BaseJob != Job_Alchem) goto L_noalche;
+	if(JobLevel<40) goto L_nojob;
+	next;
+	getitem 7142,1;
+	next;
+
+	mes "เจ้าจะมาเอา skill ใช่ป่าว";
+	mes "เจ้าต้องเลี้ยงสัตว์ให้ดีที่สุด";
+	mes "รักมันให้มากๆๆ";
+	mes "ข้าจะให้ skill แก่เจ้า";
+	next;
+	skill 238,1,0;
+	skill 239,1,0;
+	skill 240,1,0;
+	skill 241,1,0;
+	skill 242,1,0;
+	skill 245,1,0;
+	skill 246,1,0;
+	mes "เจ้าได้Skillสมใจแล้ว";
+	mes "ใช้มันให้มีประโยชน์ละ";
+	close;
+
+L_noalche:
+	mes "เจ้าไม่ใช่สายอาชีพนี้";
+	mes "เสียใจด้วย อด!!";
+	emotion e_gasp;
+	close;
+
+L_nojob:
+	mes "เสียใจนะครับ Job ของท่านต่ำกว่า 40";
+	mes "ไม่สามารถเอาสกิลได้";
+	close;
+}
+

@@ -1,0 +1,71 @@
+//===== eAthena Script =======================================
+//= Special Shop ( Quest Shop + Slot Shop )
+//===== By: ==================================================
+//= Readygo
+//===== Current Version: =====================================
+//= 3.1
+//============================================================
+
+// หมวกใหม่
+//-	shop	QValkyrieco	-1,24801:50000,24802:50000,24803:50000,24804:50000,24805:50000,24806:50000,24807:50000,24808:50000,24809:50000,24810:50000,24811:50000,24812:50000,24813:50000,24814:50000,24815:50000,24816:50000,24817:50000,24818:50000,24819:50000,24820:50000,24821:50000,24822:50000,24823:50000,24824:50000,24825:50000,24826:50000,24827:50000,24828:50000,25422:50000,25423:50000,25424:50000
+//morocc2,153,115,4	shop	หมวกEmotionต่างๆ#Emotion01	620,25293:200000,25294:200000,25295:200000,25296:200000,25297:200000,25298:200000,25299:200000,25300:200000,25301:200000,25302:200000,25303:200000,25306:200000,25329:200000
+-	shop	Qemotext	-1,25293:100,25294:100,25295:100,25296:100,25297:100,25298:100,25299:100,25300:100,25301:100,25302:100,25303:100,25306:100,25329:100,25334:100,25335:100,25336:100,25337:100,25338:100,25339:100,25422:100,25424:100
+
+// ============================================= Run Set Shop ===============================================
+// หมวกใหม่
+//function	script	ShopNewHatzian	{	npcshopattach "QNewHatzian",1;	close2;	cutin "",255;	callshop "QNewHatzian",1;	end;	}
+//function	script	ShopValkyrieco	{	npcshopattach "QValkyrieco",1;	close2;	cutin "",255;	callshop "QValkyrieco",1;	end;	}
+function	script	ShopQemotext	{	npcshopattach "Qemotext",1;	close2;	cutin "",255;	callshop "Qemotext",1;	end;	}
+
+// =============================================== NPC Quest Shop =========================================
+-	script	QuestShopEmo	-1,{
+set @broken,0;	set @zenyuse, 0;
+set $@tr$,"^000080[ Quester Of Ellisia ]^000000";
+cutin "kh_ellisia",2;
+mes $@tr$;
+mes "สวัสดี ^FF0000 "+strcharinfo(0)+" ^000000 ";
+mes "เรามีป้ายข้อความเก๋ๆ น่ารักๆ ด้วย";
+mes "ไม่มีคุณสมบัติใดๆ ทั้งสิ้น";
+mes "อันละ 5 ล้านเซน";
+next;
+mes "เชิญเลือกคุณสมบัติที่เจ้าต้องการเลย";
+next;
+callfunc "ShopQemotext";
+
+// ===================================================================================================
+OnBuyItem:
+
+if(@bought_nameid == 25293) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25294) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25295) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25296) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25297) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25298) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25299) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25300) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25301) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25302) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25303) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25305) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25306) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25329) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25334) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25335) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25336) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25337) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25338) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25339) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25422) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25423) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+if(@bought_nameid == 25424) {	setarray @itemuse[0], 602;	setarray @itemusemany[0], 1;	set @zenyuse, 5000000;	callfunc "C_Buy",0;	}
+
+
+dispbottom "=============================================";	
+dispbottom "ไม่มีรายการแลกของที่ท่านได้เลือก .";	
+dispbottom "=============================================";	
+end;
+
+OnInit: 
+waitingroom "ป้ายข้อความ",0;
+end;
+}

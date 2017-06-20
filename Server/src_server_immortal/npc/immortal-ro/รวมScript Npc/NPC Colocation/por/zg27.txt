@@ -1,0 +1,79 @@
+//=============================================================
+//			-             mOnster studiO Scripts               -
+//				www.monsterstudio.in.th
+//#############################################################
+
+-	script	jutirank::Exchagejutirank	-1,{
+	query_sql "SELECT * FROM `shop_jutirank` WHERE `msitemmain`>'0' limit 50",$@jutirank_msitemmain,$@jutirank_msjutirank;
+	set $@shop_jutirank_size,getarraysize($@jutirank_msitemmain);
+npcshopitem "ToolDig5", $@jutirank_msitemmain[0],$@jutirank_msjutirank[0],$@jutirank_msitemmain[1],$@jutirank_msjutirank[1],$@jutirank_msitemmain[2],$@jutirank_msjutirank[2],$@jutirank_msitemmain[3],$@jutirank_msjutirank[3],$@jutirank_msitemmain[4],$@jutirank_msjutirank[4],$@jutirank_msitemmain[5],$@jutirank_msjutirank[5],$@jutirank_msitemmain[6],$@jutirank_msjutirank[6],$@jutirank_msitemmain[7],$@jutirank_msjutirank[7],$@jutirank_msitemmain[8],$@jutirank_msjutirank[8],$@jutirank_msitemmain[9],$@jutirank_msjutirank[9],$@jutirank_msitemmain[10],$@jutirank_msjutirank[10],$@jutirank_msitemmain[11],$@jutirank_msjutirank[11]
+,$@jutirank_msitemmain[12],$@jutirank_msjutirank[12],$@jutirank_msitemmain[13],$@jutirank_msjutirank[13],$@jutirank_msitemmain[14],$@jutirank_msjutirank[14],$@jutirank_msitemmain[15],$@jutirank_msjutirank[15],$@jutirank_msitemmain[16],$@jutirank_msjutirank[16],$@jutirank_msitemmain[17],$@jutirank_msjutirank[17],$@jutirank_msitemmain[18],$@jutirank_msjutirank[18],$@jutirank_msitemmain[19],$@jutirank_msjutirank[19],$@jutirank_msitemmain[20],$@jutirank_msjutirank[20],$@jutirank_msitemmain[21],$@jutirank_msjutirank[21],$@jutirank_msitemmain[22],$@jutirank_msjutirank[22],$@jutirank_msitemmain[23],$@jutirank_msjutirank[23]
+,$@jutirank_msitemmain[24],$@jutirank_msjutirank[24],$@jutirank_msitemmain[25],$@jutirank_msjutirank[25],$@jutirank_msitemmain[26],$@jutirank_msjutirank[26],$@jutirank_msitemmain[27],$@jutirank_msjutirank[27],$@jutirank_msitemmain[28],$@jutirank_msjutirank[28],$@jutirank_msitemmain[29],$@jutirank_msjutirank[29],$@jutirank_msitemmain[30],$@jutirank_msjutirank[30],$@jutirank_msitemmain[31],$@jutirank_msjutirank[31],$@jutirank_msitemmain[32],$@jutirank_msjutirank[32],$@jutirank_msitemmain[33],$@jutirank_msjutirank[33],$@jutirank_msitemmain[34],$@jutirank_msjutirank[34],$@jutirank_msitemmain[35],$@jutirank_msjutirank[35]
+,$@jutirank_msitemmain[36],$@jutirank_msjutirank[36],$@jutirank_msitemmain[37],$@jutirank_msjutirank[37],$@jutirank_msitemmain[38],$@jutirank_msjutirank[38],$@jutirank_msitemmain[39],$@jutirank_msjutirank[39],$@jutirank_msitemmain[40],$@jutirank_msjutirank[40],$@jutirank_msitemmain[41],$@jutirank_msjutirank[41],$@jutirank_msitemmain[42],$@jutirank_msjutirank[42],$@jutirank_msitemmain[43],$@jutirank_msjutirank[43],$@jutirank_msitemmain[44],$@jutirank_msjutirank[44],$@jutirank_msitemmain[45],$@jutirank_msjutirank[45],$@jutirank_msitemmain[46],$@jutirank_msjutirank[46],$@jutirank_msitemmain[47],$@jutirank_msjutirank[47]
+,$@jutirank_msitemmain[48],$@jutirank_msjutirank[48],$@jutirank_msitemmain[49],$@jutirank_msjutirank[49];
+	sleep2 100;
+	query_sql "SELECT `point_juti` FROM `char`  WHERE `account_id` = " + getcharid(3) + "",@digpoint;
+	dispbottom "========= คุณมี แต้มจุติ ทั้งหมด "+@digpoint+" ===========";
+	dispbottom "========= คุณสามารถซื้อได้ทีละชิ้นเท่านั้น ===========";
+	callshop "ToolDig5",1;
+	npcshopattach "ToolDig5";
+end;
+
+OnBuyItem:
+
+for(set @j,0; @j < getarraysize(@bought_nameid);set @j,@j+1){
+	set @check_loop,0;
+	for(set @i,0; @i < $@shop_jutirank_size&&@check_loop==0; set @i,@i+1){
+		if(@bought_nameid[@j]==$@jutirank_msitemmain[@i])
+			set @check_loop,1;
+
+	}
+	set @i,@i-1;
+	dispbottom "[ "+getitemname($@jutirank_msitemmain[@i])+" ] : ";
+	if($@jutirank_msjutirank[@i]*@bought_quantity[@j]>0)dispbottom "ใช้แต้ม [ "+$@jutirank_msjutirank[@i]*@bought_quantity[@j]+" ] Point.";
+	if(@digpoint<$@jutirank_msjutirank[@i]*@bought_quantity[@j])
+		goto L_Pass;
+	set @digpoint,@digpoint - $@jutirank_msjutirank[@i]*@bought_quantity[@j];
+	sleep2 100;
+	query_sql "UPDATE `char` SET `point_juti` = '"+escape_sql(@digpoint)+"' WHERE `account_id` = "+getcharid(3);
+	query_sql "INSERT INTO `LogUseDig` (`id`,`AccID`,`UsePoint`) VALUES (NULL,'" +getcharid(3)+"','" +@digpoint+"')";
+	getitem $@jutirank_msitemmain[@i],@bought_quantity[@j];
+	dispbottom "[ >> คุณได้รับของเรียบร้อยแล้ว << ]";
+	sleep2 100;
+	query_sql "SELECT `point_juti` FROM `char`  WHERE `account_id` = " + getcharid(3) + "",@digpoint;
+	dispbottom "========= คุณมี Point จุติ ที่เหลือทั้งหมด "+@digpoint+" ===========";
+	deletearray @bought_nameid, getarraysize(@bought_nameid);
+	deletearray @bought_quantity, getarraysize(@bought_quantity);
+	set @bought_nameid,0;
+	set @bought_quantity,0;
+end;
+}
+
+L_Pass:
+	dispbottom "[ >> แต้มคุณมีไม่พอใช้ ไปจัดการจุติเพิ่มซะนะ << ]";
+	deletearray @bought_nameid, getarraysize(@bought_nameid);
+	deletearray @bought_quantity, getarraysize(@bought_quantity);
+	set @bought_nameid,0;
+	set @bought_quantity,0;
+end;
+
+OnInit:
+waitingroom "  :: แลกของจุติ ::",0;
+end;
+}
+
+-	script	jutirank	-1,{
+OnInit:
+	query_sql "SELECT * FROM `shop_jutirank` WHERE `msitemmain`>'0' limit 50",$@jutirank_msitemmain,$@jutirank_msjutirank;
+	set $@shop_jutirank_size,getarraysize($@jutirank_msitemmain);
+npcshopitem "ToolDig5", $@jutirank_msitemmain[0],$@jutirank_msjutirank[0],$@jutirank_msitemmain[1],$@jutirank_msjutirank[1],$@jutirank_msitemmain[2],$@jutirank_msjutirank[2],$@jutirank_msitemmain[3],$@jutirank_msjutirank[3],$@jutirank_msitemmain[4],$@jutirank_msjutirank[4],$@jutirank_msitemmain[5],$@jutirank_msjutirank[5],$@jutirank_msitemmain[6],$@jutirank_msjutirank[6],$@jutirank_msitemmain[7],$@jutirank_msjutirank[7],$@jutirank_msitemmain[8],$@jutirank_msjutirank[8],$@jutirank_msitemmain[9],$@jutirank_msjutirank[9],$@jutirank_msitemmain[10],$@jutirank_msjutirank[10],$@jutirank_msitemmain[11],$@jutirank_msjutirank[11]
+,$@jutirank_msitemmain[12],$@jutirank_msjutirank[12],$@jutirank_msitemmain[13],$@jutirank_msjutirank[13],$@jutirank_msitemmain[14],$@jutirank_msjutirank[14],$@jutirank_msitemmain[15],$@jutirank_msjutirank[15],$@jutirank_msitemmain[16],$@jutirank_msjutirank[16],$@jutirank_msitemmain[17],$@jutirank_msjutirank[17],$@jutirank_msitemmain[18],$@jutirank_msjutirank[18],$@jutirank_msitemmain[19],$@jutirank_msjutirank[19],$@jutirank_msitemmain[20],$@jutirank_msjutirank[20],$@jutirank_msitemmain[21],$@jutirank_msjutirank[21],$@jutirank_msitemmain[22],$@jutirank_msjutirank[22],$@jutirank_msitemmain[23],$@jutirank_msjutirank[23]
+,$@jutirank_msitemmain[24],$@jutirank_msjutirank[24],$@jutirank_msitemmain[25],$@jutirank_msjutirank[25],$@jutirank_msitemmain[26],$@jutirank_msjutirank[26],$@jutirank_msitemmain[27],$@jutirank_msjutirank[27],$@jutirank_msitemmain[28],$@jutirank_msjutirank[28],$@jutirank_msitemmain[29],$@jutirank_msjutirank[29],$@jutirank_msitemmain[30],$@jutirank_msjutirank[30],$@jutirank_msitemmain[31],$@jutirank_msjutirank[31],$@jutirank_msitemmain[32],$@jutirank_msjutirank[32],$@jutirank_msitemmain[33],$@jutirank_msjutirank[33],$@jutirank_msitemmain[34],$@jutirank_msjutirank[34],$@jutirank_msitemmain[35],$@jutirank_msjutirank[35]
+,$@jutirank_msitemmain[36],$@jutirank_msjutirank[36],$@jutirank_msitemmain[37],$@jutirank_msjutirank[37],$@jutirank_msitemmain[38],$@jutirank_msjutirank[38],$@jutirank_msitemmain[39],$@jutirank_msjutirank[39],$@jutirank_msitemmain[40],$@jutirank_msjutirank[40],$@jutirank_msitemmain[41],$@jutirank_msjutirank[41],$@jutirank_msitemmain[42],$@jutirank_msjutirank[42],$@jutirank_msitemmain[43],$@jutirank_msjutirank[43],$@jutirank_msitemmain[44],$@jutirank_msjutirank[44],$@jutirank_msitemmain[45],$@jutirank_msjutirank[45],$@jutirank_msitemmain[46],$@jutirank_msjutirank[46],$@jutirank_msitemmain[47],$@jutirank_msjutirank[47]
+,$@jutirank_msitemmain[48],$@jutirank_msjutirank[48],$@jutirank_msitemmain[49],$@jutirank_msjutirank[49];
+end;
+}
+
+-	shop	ToolDig5	-1,502:-1
+
+//c5,161,93,4	duplicate(Exchagejutirank)	แลกของจุติ	622

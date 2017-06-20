@@ -1,0 +1,44 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+/*
+	Script : Mixed Ore (1.0)
+	Release : 2012/04/17
+	By : ReadyGo
+	From : ro-basic.com
+	
+	Description : รวมแร่เล็กทั้งหมด ให้เป็นแร่ใหญ่ในทีเดียว
+*/
+-	script	orei::oreio	-1,{
+	setarray .@ori, 984, 756, 5;
+	setarray .@elu, 985, 757, 5;
+	
+	mes "- -| "+strnpcinfo(0);
+	mes " ";
+	mes "ต้องการรวมแร่ไหมล่ะ ?";
+	mes "-: รวมแร่ "+getitemname(.@ori);
+	mes " ใช้ "+getitemname(.@ori[1])+"  "+.@ori[2]+" ea";
+	mes "-: รวมแร่ "+getitemname(.@elu);
+	mes " ใช้ "+getitemname(.@elu[1])+"  "+.@elu[2]+" ea";
+	next;
+	menu "- รวมแร่ทั้งหมด", -;
+	set .@amount, countitem(.@ori[1])/ .@ori[2];
+	if ( .@amount ) {
+		delitem .@ori[1], .@amount*.@ori[2];
+		getitem .@ori, .@amount;
+	}
+	set .@amount, countitem(.@elu[1])/ .@elu[2];
+	if ( .@amount ) {
+		delitem .@elu[1], .@amount*.@elu[2];
+		getitem .@elu, .@amount;
+	}
+	close;
+}

@@ -1,0 +1,195 @@
+-	shop	ShopCre	-1,678:50000,547:50000,7135:50000,7136:50000,7137:50000,7138:50000,7139:50000,605:50000,606:50000,7142:50000,12118:50000,12119:50000,12120:50000,12121:50000,12114:50000,12115:50000,12116:50000,12117:50000
+
+c5,127,83,4	script	ของทำยา	740,{
+npcshopattach "ShopCre";
+callshop "ShopCre",1;
+close;
+OnInit:
+waitingroom "ส่วนผสมทำยา",0;
+end;
+
+OnBuyItem:
+if(@bought_nameid==678){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 657,1*@bought_quantity;
+getitem 937,1*@bought_quantity;
+getitem 952,1*@bought_quantity;
+getitem 7033,1*@bought_quantity;
+getitem 972,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 939,1*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==547){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 7134,1*@bought_quantity;
+getitem 1092,1*@bought_quantity;
+getitem 1061,1*@bought_quantity;
+getitem 504,1*@bought_quantity;
+if(countitem(7133) >= 1) close;
+getitem 7133,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==7135){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 970,1*@bought_quantity;
+getitem 1059,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+if(countitem(7129) >= 1) close;
+getitem 7129,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==7136){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 929,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+if(countitem(7128) >= 1) close;
+getitem 7128,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==7137){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 970,1*@bought_quantity;
+getitem 1032,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+if(countitem(7130) >= 1) close;
+getitem 7130,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==7138){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 1050,1*@bought_quantity;
+getitem 1051,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+if(countitem(7131) >= 1) close;
+getitem 7131,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==7139){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 970,1*@bought_quantity;
+getitem 950,1*@bought_quantity;
+getitem 1044,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+if(countitem(7132) >= 1) close;
+getitem 7132,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==605){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 970,1*@bought_quantity;
+getitem 708,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+if(countitem(7144) >= 1) close;
+getitem 7144,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==606){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 518,1*@bought_quantity;
+getitem 704,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+if(countitem(7144) >= 1) close;
+getitem 7144,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==7142){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 7140,1*@bought_quantity;
+getitem 7141,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 7143,1*@bought_quantity;
+if(countitem(7144) >= 1) close;
+getitem 7144,1;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==12118){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 716,1*@bought_quantity;
+getitem 1012,2*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+getitem 7434,1*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==12119){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 717,1*@bought_quantity;
+getitem 950,3*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+getitem 7434,1*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==12120){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 715,1*@bought_quantity;
+getitem 7126,2*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+getitem 7434,1*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==12121){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 7134,2*@bought_quantity;
+getitem 7126,2*@bought_quantity;
+getitem 715,1*@bought_quantity;
+getitem 7093,2*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+getitem 717,1*@bought_quantity;
+getitem 1057,3*@bought_quantity;
+getitem 7434,1*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==12114){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 7433,1*@bought_quantity;
+getitem 904,3*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==12115){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 7433,1*@bought_quantity;
+getitem 946,3*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==12116){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 7433,1*@bought_quantity;
+getitem 947,3*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+if(@bought_nameid==12117){
+if( zeny < 50000*@bought_quantity) goto L_not;
+getitem 7433,1*@bought_quantity;
+getitem 1013,3*@bought_quantity;
+set zeny,zeny - 50000*@bought_quantity;
+close;
+}
+close;
+}

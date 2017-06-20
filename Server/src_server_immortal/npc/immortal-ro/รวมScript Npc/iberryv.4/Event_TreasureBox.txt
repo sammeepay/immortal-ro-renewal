@@ -1,0 +1,216 @@
+//===============================
+// Script : Event Treasure Box
+// Designe By : ParadoX
+//===============================
+
+prontera.gat,0,0,0	script	::TreasureEvent	111,{
+	close;
+trevstart:
+	set $@trevent,rand(50,60);
+	set $@ftrevent,0;
+	announce "Treasure Event : กล่องสมบัติ Treasure Box ได้ปรากฏตัว ณ เมือง Prontera จำนวน "+$@trevent+" กล่อง มีเวลาในการล่าสมบัติ 5 นาที",0,0xFF1493;
+
+	monster "prontera.gat",0,0,"Treasure Box",1732,$@trevent,"TreasureEvent::OnTreasureDie";
+	end;
+OnTreasureDie:
+	set $@ftrevent,$@ftrevent+1;
+	if($@ftrevent>=$@trevent)
+	announce "ผู้เล่น " + strcharinfo(0) + " ได้ค้นพบ Treasure Box กล่องสุดท้าย",0,FF1493;
+	if($@ftrevent!=$@trevent)
+	announce "ผู้เล่น " + strcharinfo(0) + " ได้ค้นพบ Treasure Box กล่องที่ "+$@ftrevent+"/"+$@trevent+"",0,0xFF1493;
+	getitem 671,1;
+	getitem 7227,1;
+	getitem 7539,1;
+	end;
+trevend:
+	if($@ftrevent!=$@trevent)
+	announce "หมดเวลาในการล่าสมบัติ Treasure Box ทุกกล่องถูกทำลาย",0,0xFF1493;
+	killmonster "prontera.gat","TreasureEvent::OnTreasureDie";
+	end;
+OnTimeout:
+	end;
+
+OnClock0105:
+	goto trevstart;
+	end;
+OnClock0110:
+	goto trevend;
+	end;
+
+OnClock0205:
+	goto trevstart;
+	end;
+OnClock0210:
+	goto trevend;
+	end;
+
+OnClock0305:
+	goto trevstart;
+	end;
+OnClock0310:
+	goto trevend;
+	end;
+
+OnClock0405:
+	goto trevstart;
+	end;
+OnClock0410:
+	goto trevend;
+	end;
+
+OnClock0505:
+	goto trevstart;
+	end;
+OnClock0510:
+	goto trevend;
+	end;
+
+OnClock0605:
+	goto trevstart;
+	end;
+OnClock0610:
+	goto trevend;
+	end;
+
+OnClock0705:
+	goto trevstart;
+	end;
+OnClock0710:
+	goto trevend;
+	end;
+
+OnClock0805:
+	goto trevstart;
+	end;
+OnClock0810:
+	goto trevend;
+	end;
+
+OnClock0905:
+	goto trevstart;
+	end;
+OnClock0910:
+	goto trevend;
+	end;
+
+OnClock1005:
+	goto trevstart;
+	end;
+OnClock1010:
+	goto trevend;
+	end;
+
+OnClock1105:
+	goto trevstart;
+	end;
+OnClock1110:
+	goto trevend;
+	end;
+
+OnClock1205:
+	goto trevstart;
+	end;
+OnClock1210:
+	goto trevend;
+	end;
+
+OnClock1305:
+	goto trevstart;
+	end;
+OnClock1310:
+	goto trevend;
+	end;
+
+OnClock1405:
+	goto trevstart;
+	end;
+OnClock1410:
+	goto trevend;
+	end;
+
+OnClock1505:
+	goto trevstart;
+	end;
+OnClock1510:
+	goto trevend;
+	end;
+
+OnClock1605:
+	goto trevstart;
+	end;
+OnClock1610:
+	goto trevend;
+	end;
+
+OnClock1705:
+	goto trevstart;
+	end;
+OnClock1710:
+	goto trevend;
+	end;
+
+OnClock1805:
+	goto trevstart;
+	end;
+OnClock1810:
+	goto trevend;
+	end;
+
+OnClock1905:
+	goto trevstart;
+	end;
+OnClock1910:
+	goto trevend;
+	end;
+
+OnClock2005:
+	goto trevstart;
+	end;
+OnClock2010:
+	goto trevend;
+	end;
+
+OnClock2105:
+	goto trevstart;
+	end;
+OnClock2110:
+	goto trevend;
+	end;
+
+OnClock2205:
+	goto trevstart;
+	end;
+OnClock2210:
+	goto trevend;
+	end;
+
+OnClock2305:
+	goto trevstart;
+	end;
+OnClock2310:
+	goto trevend;
+	end;
+
+OnClock0005:
+	goto trevstart;
+	end;
+OnClock0010:
+	goto trevend;
+	end;
+}
+
+//oasis.gat,177,40,4	script	ล่ากล่องสมบัติ	1641,{
+//mes "[ ^FF0000TreasureBox^000000 ]";
+//mes "ในเมือง Oasis จะมีกล่องสมบัติ";
+//mes "มันจะสุ่มเกิดในเมือง Oasis นี่แหล่ะ";
+//mes "[ ^FF0000เวลาเกิดของมัน^000000 ]";
+//mes "เกิดเวลา 5 - 10 นาทีแรกในทุกๆชั่วโมง";
+//mes "ไอเท็มที่ได้จากกล่องสมบัติก็คือ!!";
+//mes "Cash Coin 1 ea./TCG 1 ea./Poring Coin 1 ea. /1กล่อง";
+//mes "[ ^FF0000เจ้าคอยเฝ้าดูให้ดีก็แล้วกัน 555 !!!^000000 ]";
+//close;
+//
+//Oninit:
+//waitingroom "ล่ากล่องสมบัติ",0;
+//end;
+//} 

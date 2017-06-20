@@ -1,0 +1,115 @@
+homes10,40,46,5	script	Poring Coin shop	825,{ 
+	goto L_Main;
+OnInit:
+waitingroom "  PC แลก ITEM",0;
+	set $donation_name1$,"Poring Coin Shop";
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name1$+"]";
+	mes "สวัสดี ท่าน [ ^FF0000" + strcharinfo(0) + "^000000 ]";
+	mes "ท่านมี PC ทั้งหมด [ ^FF0000"+countitem(7539)+"^000000 ] อัน";
+	mes "^FF0000Item พวกนี้ไม่นับ Dc^000000";
+	mes "^00BB00Poring Coin สามารถหาได้จาก กิจกรรมทุกอย่าง^000000";
+	mes "^63B8FF*ห้ามพกเหรียญ เกิน 30k อัน^000000";
+	next;
+	switch(select("- ชมสินค้า:- ไม่สนใจ")) {
+		case 1:
+			close2;
+			callshop "Event_Shop2",1;
+			end;
+		case 2:
+			close;
+}
+L_Load:
+	if(npcshopattach("Event_Shop2") == 0) {
+		debugmes "[Poring Coin] ไม่สามารถเข้าดูสินค้าได้";
+	}
+	end;
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Poring Coin] คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Poring Coin] คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(7539)) {
+			dispbottom "[Poring Coin] คุณมี Poring Coin ไม่พอ ตอนนี้คุณมีทั้งหมด ("+countitem(7539)+") อัน";
+		} else {
+			delitem 7539,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Poring Coin] คุณซื้อ  "+getitemname(@bought_nameid)+" ทั้งหมด "+@bought_quantity[@i]+" เป็นPoringCoin "+@cost*@bought_quantity[@i]+" อัน";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+
+}
+
+// วิธีเพิ่มของ \\
+// 501 คือเลขไอเทม ถ้าจะเพิ่มไอเทมต้องเพิ่ม ทั้ง 2บรรทัดเช่น
+//if(getarg(0) == 501) return 1; >> ให้ต่อท้ายลงมาจากบรรทัด เดิมได้เลย 
+//if(getarg(0) == 505) return 1; >> ให้ต่อท้ายลงมาจากบรรทัด เดิมได้เลย 
+//ก็ต้องเพิ่ม 501:1,505:1
+
+function	script	EventID2Price	{
+	if(getarg(0) == 12920) return 500;
+	if(getarg(0) == 12921) return 500;
+	if(getarg(0) == 12913) return 20;
+	if(getarg(0) == 12914) return 20;
+	if(getarg(0) == 13538) return 100;
+	if(getarg(0) == 13539) return 100;
+	if(getarg(0) == 13540) return 100;
+	if(getarg(0) == 12903) return 200;
+	if(getarg(0) == 12904) return 200;
+	if(getarg(0) == 12905) return 200;
+	if(getarg(0) == 12906) return 200;
+	if(getarg(0) == 12907) return 200;
+	if(getarg(0) == 12908) return 200;
+	if(getarg(0) == 2724) return 2500;
+	if(getarg(0) == 2723) return 2500;
+	if(getarg(0) == 2722) return 2500;
+	if(getarg(0) == 2721) return 2500;
+	if(getarg(0) == 2720) return 2500;
+	if(getarg(0) == 2725) return 2500;
+	if(getarg(0) == 2733) return 5000;
+	if(getarg(0) == 2729) return 5000;
+	if(getarg(0) == 2701) return 5000;
+	if(getarg(0) == 2702) return 2500;
+	if(getarg(0) == 2531) return 1000;
+	if(getarg(0) == 2553) return 300;
+	if(getarg(0) == 2554) return 5000;
+	if(getarg(0) == 5374) return 3000;
+	if(getarg(0) == 1265) return 1000;
+	if(getarg(0) == 13033) return 1500;
+	if(getarg(0) == 1179) return 2000;
+	if(getarg(0) == 2730) return 500;
+	if(getarg(0) == 2731) return 500;
+	if(getarg(0) == 2732) return 500;
+	if(getarg(0) == 4368) return 1000;
+	if(getarg(0) == 2389) return 2500;
+	if(getarg(0) == 2388) return 500;
+	if(getarg(0) == 1624) return 500;
+	if(getarg(0) == 2376) return 5000;
+	if(getarg(0) == 2377) return 5000;
+	if(getarg(0) == 2378) return 5000;
+	if(getarg(0) == 2379) return 5000;
+	if(getarg(0) == 2380) return 5000;
+	if(getarg(0) == 2381) return 5000;
+	if(getarg(0) == 2539) return 5000;
+	if(getarg(0) == 2436) return 5000;
+	if(getarg(0) == 2423) return 5000;
+	if(getarg(0) == 2375) return 5000;
+	if(getarg(0) == 2524) return 5000;
+	if(getarg(0) == 2421) return 5000;
+	if(getarg(0) == 2374) return 6000;
+	if(getarg(0) == 2537) return 6000;
+	if(getarg(0) == 2433) return 6000;
+	if(getarg(0) == 2357) return 6000;
+	if(getarg(0) == 2115) return 7000;
+	if(getarg(0) == 2435) return 7000;
+	if(getarg(0) == 2538) return 7000;
+	if(getarg(0) == 2554) return 5000;
+}
+-	shop	Event_Shop2	-1,12920:500,12921:500,12913:20,12914:20,13538:100,13539:100,13540:100,12903:200,12904:200,12905:200,12906:200,12907:200,12908:200,2724:2500,2723:2500,2722:2500,2721:2500,2720:2500,2725:2500,2733:5000,2729:5000,2701:5000,2702:5000,2531:100,2553:300,2554:5000,5374:2500,1265:1000,13033:1500,1179:2000,2730:500,2731:500,2732:500,4368:1000,2389:2500,2388:500,1624:500,2376:5000,2377:5000,2378:5000,2379:5000,2380:5000,2381:5000,2539:5000,2436:5000,2423:5000,2375:5000,2524:5000,2421:5000,2374:6000,2537:6000,2433:6000,2357:6000,2115:7000,2435:7000,2538:7000,2554:5000, 

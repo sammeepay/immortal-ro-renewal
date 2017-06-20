@@ -1,0 +1,375 @@
+//===============================
+// Script : Donation Shop
+// By : kai mai ru wa gu jum mai dai
+//===============================
+// Svn : 9909 + / 14000+ (v.7 / v.9)
+// TXT+SQL Version
+
+// ห้ามแก้ไขส่วนนี้ครับ
+-	shop	F_Cash1	811,501:50
+
+-	script	cashshop_conf1	-1,{
+end;
+OnInit:
+	set $@cpoint$, "Points"; // ลงท้ายหลังจำนวน เช่น 10 Points ถ้าแก้ก็ 10 ที่แก้
+	set $@webname$, "1 บาท = 1 Points";
+	set $@maxpoint, 1000000; // จำนวนเต็มพ้อย
+	set $@gmlvl, 99;
+	set $@npc$,"[ ^0000FFDonation Shop^000000 ]"; // ชื่อ Npc
+	set $@kickall,0;
+	set $@clearannounce,0;
+	set $@maxInv,100;
+	set $@dzeny,1000000;
+
+npcshopdelitem "F_Cash1",501;
+if (getarraysize($cash_item) >= 1) {
+npcshopitem "F_Cash1",$cash_item[0],$cash_price1[0];
+for (set .@i,1; .@i < getarraysize($cash_item); set .@i,.@i+1) {
+npcshopadditem "F_Cash1",$cash_item[.@i],$cash_price1[.@i];
+}
+}
+end;
+}
+-	script	custom_cash1#C1-1::custom_cash1	-1,{
+
+if(getgmlevel() == $@gmlvl) goto L_GM;
+
+L_start:
+	if(clearpoints != $clearpoints) {
+		set #cashpoint,0;
+		set clearpoints,$clearpoints;
+		}
+	mes $@npc$;
+	mes "ยินดีต้อนรับเข้าสู่ Donation Shop";
+	mes "ขณะนี้คุณมี : ^0000FF"+#cashpoint+" "+$@cpoint$+".";
+	next;
+	switch(select("^0000FF๐ ซื้อสินค้า^000000:๐ ดูข้อมูลข่าวสาร:๐ ยกเลิก")) {
+
+	case 1:
+		close2;
+		callshop "F_Cash1",1;
+		dispbottom "ขณะนี้คุณมี "+#cashpoint+" "+$@cpoint$+".";
+		end;
+	case 2:
+		mes $@npc$;
+		mes "^FF0000"+$@cpoint$+"^000000 ที่ใช้ซื้อสินค้านั้น";
+		mes "ได้จากการเติมบัตรกับทาง GM เท่านั้น";
+		mes "ซึ่งจะรับเฉพาะ ^FF0000บัตรเติมเงินเท่านั้น ( กรุณาถาม GM ว่าเอาบัตรอะไร ) ^000000";
+		mes "อัตราแลก : ^338C60"+$@webname$+"^000000";
+		mes "พบปัญหาแจ้ง : ^FF0000Administrator^000000 ด่วน !";
+		close;
+	case 3:
+		mes $@npc$;
+		mes "โปรดระบุ ^FF00000จำนวน Points^000000 ที่จะแลกลงในช่องว่าง";
+		mes "-----------------------------------";
+		mes "ระบุ ^FF00000^000000 เพื่อ ยกเลิก";
+		next;
+		input @dpoints;
+		if(@dpoints == 0) close;
+		else if(@dpoints > #cashpoint) {
+		mes $@npc$;
+		mes "เสียใจด้วย คุณมี ^FF0000"+$@cpoint$+"^000000 ไม่พอกับที่คุณระบุ";
+		close;
+		}
+		set $@dzenys,@dpoints*$@dzeny;
+		mes $@npc$;
+		mes "กรุณาตรวจเช็คความถูกต้องอีกครั้ง";
+		mes "จำนวน Point ที่จะแลก : ^FF0000"+@dpoints+"^000000";
+		mes "รวมเป็นเงิน : ^FF0000"+$@dzenys+"^000000";
+		next;
+		if(select("๐ ^FF0000ถูกต้อง^000000:๐ ยกเลิก")==1) {
+			set #cashpoint,#cashpoint-@dpoints;
+			set zeny,zeny + $@dzenys;
+			dispbottom "ขอบคุณค่ะ ที่ไช้บริการ.";
+			dispbottom "ขณะนี้คุณมี "+#cashpoint+" "+$@cpoint$+".";
+	}
+		end;
+		}
+L_GM:
+	mes $@npc$;
+	mes "สวัดดี ^0000FFGM^000000";
+	mes "ต้องการไห้ฉันช่วยอะไรคุณไหม?";
+	next;
+	switch(select("๐ ดูรายการสินค้า:๐ จัดการ Point:๐ จัดการ Item:๐ เมนูปกติ")) {
+case 1:
+	close2;
+	callshop "F_Cash1",1;
+	mes "ขณะนี้คุณมี : ^0000FF"+#cashpoint+" "+$@cpoint$+".";
+	end;
+case 2:
+	mes $@npc$;
+	mes "คุณต้องการ จะเพิ่ม หรือลบ Point ดี?";
+	next;
+	switch(select("๐ เพิ่ม Points:๐ ลบ Points")) {
+case 1:
+	mes $@npc$;
+	mes "โปรดระบุ ^FF0000ชื่อของผู้เล่น^000000 ลงในช่องว่าง";
+	mes "-----------------------------------";
+	mes "ระบุ ^FF00000^000000 เพื่อ ยกเลิก";
+	next;
+	input .@dname$;
+	if(.@dname$ == "0") goto L_canc;
+	if(!isloggedin(getcharid(3,.@dname$)) ) {
+		mes $@npc$;
+		mes "ผู้เล่น ^0000FF"+.@dname$+"^000000 ในขณะนี้มีสถานะ ^FF0000offline^000000.";
+		mes "คุณต้องการดำเนินการต่อไปไหม?";
+		next;
+		if(select("๐ ไม่ต้อง:^FF0000๐ ตกลง^000000")==1) close;
+		goto L_donating;
+		}
+L_donating:
+	mes $@npc$;
+	mes "โปรดระบุ ^FF0000จำนวน "+$@cpoint$+"^000000 ลงในช่องว่าง";
+	mes "-----------------------------------";
+	mes "ระบุ ^FF00000^000000 เพื่อ ยกเลิก";
+	next;
+	input .@cpoint;
+	if(!.@cpoint) goto L_canc;
+	else if(.@cpoint > $@maxpoint) {
+		mes $@npc$;
+		mes "จำนวนสูงสุด ของ ^FF0000"+$@cpoint$+"^000000 ที่ คุณสามารถให้ได้คือ ^FF0000"+$@maxpoint+"^000000.";
+		close;
+		}
+	mes $@npc$;
+	mes "กรุณาตรวจเช็คความถูกต้องอีกครั้ง";
+	mes "ผู้เล่น : ^FF0000"+.@dname$+"^000000";
+	mes "Points : ^FF0000"+.@cpoint+"^000000";
+	next;
+	if(select("๐ ^FF0000ถูกต้อง^000000:๐ แก้ไขใหม่")==1) {
+		if (!isloggedin(getcharid(3,.@dname$)) ) { goto L_confirmdonate2; }
+		goto L_confirmdonate;
+		}
+	goto L_donating;
+
+L_confirmdonate:
+	if(!isloggedin(getcharid(3,.@dname$)) ) {
+		mes $@npc$;
+		mes "ไม่สามารถดำเนินการต่อได้ เนื่องจาก ^0000FF"+@donatorname$+"^000000 ในขณะนี้ มีสถานะ ^FF0000offline^000000.";
+		close;
+		}
+	mes $@npc$;
+	mes "^338C60กรุณารอสักครู่...^000000.";
+	mes "ระบบกำลังดำเนินการเติม "+$@cpoint$+" ให้กับผู้เล่นอยู่";
+	sleep2 1000;
+	close2;
+	if(!isloggedin(getcharid(3,.@dname$)) ) {
+		announce "การดำเนินการล้มเหลว",bc_self,0xFF0000;
+		dispbottom "ระบบไม่สามารถดำเนินการเติม "+$@cpoint$+" ให้กับผู้เล่นได้ในขณะนี้";
+		end;
+		}
+	announce "การการดำเนินการเสร็จสิน.",bc_self,0x08F8C6;
+	dispbottom "ระบบได้ดำเนินการเติม "+$@cpoint$+" ให้กับผู้เล่นแล้วในขณะนี้";
+	set @RID, getcharid(3,.@dname$);
+	attachrid(@RID);
+	set #cashpoint,#cashpoint+.@cpoint;
+	announce "คุณได้รับการเติม Points จากระบบแล้ว",bc_self,0x08F8C6;
+	mes "ขณะนี้คุณมี : ^0000FF"+#cashpoint+" "+$@cpoint$+".";
+	detachrid;
+	end;
+L_confirmdonate2:
+	if (isloggedin(getcharid(3,.@dname$)) ) {
+		announce "การการดำเนินการเสร็จสิน.",bc_self,0x08F8C6;
+		dispbottom "ระบบได้ดำเนินการเติม "+$@cpoint$+" ให้กับผู้เล่นแล้วในขณะนี้";
+		set @RID, getcharid(3,.@dname$);
+		attachrid(@RID);
+		set #cashpoint,#cashpoint+.@cpoint;
+		announce "คุณได้รับการเติม Points จากระบบแล้ว",bc_self,0x08F8C6;
+		mes "ขณะนี้คุณมี : ^0000FF"+#cashpoint+" "+$@cpoint$+".";
+		detachrid;
+		end;
+		}
+	if (getarraysize($dnames1$) == 128 ) { // there might be a chance when too many players don't want to claim prize
+	deletearray $dnames1$[0],1;
+	deletearray $dpoints[0],1;
+	}
+	set $dnames1$[getarraysize($dnames1$)],.@dname$;
+	set $dpoints[getarraysize($dpoints)],.@cpoint;
+	mes $@npc$;
+	mes "^0000FF"+.@cpoint+" "+$@cpoint$+"^000000 ถึง ^0000FF"+.@dname$+"^000000 ";
+	close;
+
+case 2:
+	mes $@npc$;
+	mes "คุณต้องการลบ "+$@cpoint$+" ทั้งหมดจาก Server เลยไหม?";
+	next;
+	if(select("๐ ยกเลิก:^FF0000๐ ตกลง^000000")==1) goto L_canc;
+	mes $@npc$;
+	mes "^338C60กรุณารอสักครู่...^000000.";
+	mes "ระบบกำลังดำเนินการลบ "+$@cpoint$+" ทั้งหมด ใน Server อยู่";
+	sleep2 1000;
+	announce "การการดำเนินการเสร็จสิน.",bc_self,0x08F8C6;
+	dispbottom "ระบบได้ดำเนินการลบ "+$@cpoint$+" ทั้งหมด ใน Server แล้วในขณะนี้";
+	set $clearpoints,$clearpoints+1;
+	close2;
+	switch ($@kickall) {
+	
+	default:
+		end;
+	case 1:
+		if($@clearannounce) {
+		announce "ผู้เล่นทั้งหมด จะถูกตัดออกจาก Server ภายใน 10 วินาที.",bc_all;
+		sleep 10000;
+		announce "กรุณา ล้อคเอาท์ออกจากเกม เพื่อหลีกเลี่ยงการสูญหาย ของ items.",bc_all; // Not true,that is for players to log-out.
+		sleep 10000;
+		atcommand "@kickall";
+		end;
+			}
+		atcommand "@kickall";
+		end;
+	case 2:
+		detachrid;
+		for ( set .@i,2000000; .@i <= 2010000; set .@i, .@i + 1 ) { // 1990000 to make sure it loops through the sleep command
+		if ( .@i % 250 == 0 ) sleep 20;
+		if ( !attachrid(.@i) ) continue;
+		set #cashpoint,0;
+		set clearpoints,$clearpoints;
+				}
+    		if($@clearannounce)
+		announce ""+$@cpoint$+" Points ทั้งหมดบน server ได้ถูกลบโดย admin.",bc_all;
+		}
+		end;
+	}
+case 3:
+	mes $@npc$;
+	mes "คุณต้องการ จะเพิ่ม หรือลบ Item ดี?";
+	next;
+	switch(select("๐ เพิ่ม Item:๐ ลบ Item:๐ ลบรายการสินค้าทั้งหมด")) {
+
+case 1:
+	mes $@npc$;
+	mes "โปรด ระบุ ^0000FFitem id^000000.";
+	mes "-----------------------------------";
+	mes "ระบุ ^FF00000^000000 เพื่อทำการ ยกเลิก";
+	next;
+	input .@item;
+	if(!.@item) goto L_canc;
+	mes $@npc$;
+	mes "โปรด ระบุ ^0000FFราคา^000000.";
+	mes "-----------------------------------";
+	mes "ระบุ ^FF00000^000000 เพื่อทำการ ยกเลิก";
+	next;
+	input .@price;
+	if(!.@price) goto L_canc;
+	mes $@npc$;
+	mes "กรุณาตรวจเช็คความถูกต้องอีกครั้ง";
+	mes "Item : ^FF0000"+getitemname(.@item)+"^000000";
+	mes "ราคา : ^FF0000"+.@price+"^000000";
+	next;
+	if(select("^FF0000๐ ตกลง^000000:๐ ยกเลิก")==2) goto L_canc;
+
+	set $cash_item[getarraysize($cash_item)],.@item;
+	set $cash_price1[getarraysize($cash_price1)],.@price;
+	npcshopadditem "F_Cash1",.@item,.@price;
+	mes $@npc$;
+	mes "ระบบได้ทำการเพิ่ม ^FF0000"+getitemname(.@item)+"^000000 ลงในรายการสินค้าเรียบร้อยแล้ว";
+	close;
+case 2:
+	mes $@npc$;
+	mes "โปรด ระบุ ^0000FFitem id^000000 ที่คุณต้องการลบ.";
+	mes "-----------------------------------";
+	mes "ระบุ ^FF00000^000000 เพื่อทำการ ยกเลิก";
+	next;
+	input .@remitem;
+	if(!.@remitem) goto L_canc;
+	mes $@npc$;
+	mes "กรุณาตรวจเช็คความถูกต้องอีกครั้ง";
+	mes "Item ที่จะลบ : ^FF0000"+getitemname(.@remitem)+"^000000";
+	next;
+	if(select("^FF0000๐ ตกลง^000000:๐ ยกเลิก")==2) goto L_canc;
+	for (set .@i,0; .@i < getarraysize($cash_item); set .@i,.@i+1) {
+			if ($cash_item[.@i] == .@remitem) {
+				deletearray $cash_item[.@i],1;
+				deletearray $cash_price1[.@i],1;
+				npcshopdelitem "F_Cash1",.@remitem;
+				mes $@npc$;
+				mes "ระบบได้ทำการลบ ^FF0000"+getitemname(.@remitem)+"^000000 จากรายการสินค้าเรียบร้อยแล้ว";
+				close;
+			} else {
+				mes $@npc$;
+				mes "ระบบไม่สามารถทำการลบ ^FF0000"+getitemname(.@remitem)+"^000000 ได้เนื่องจากไม่ได้ในรายการสินค้า";
+				close;
+			}
+		}
+case 3:
+	mes $@npc$;
+	mes "คุณต้องการลบรายการสินค้าทั้งหมดเลยไหม?";
+	next;
+	if(select("๐ ยกเลิก:^FF0000๐ ตกลง^000000")==1) goto L_canc;
+	
+	deletearray $cash_item[0],127;
+	deletearray $cash_price1[0],127;
+	npcshopitem "F_Cash1",501,1;
+	npcshopdelitem "F_Cash1",501;
+	mes $@npc$;
+	announce "การการดำเนินการเสร็จสิน.",bc_self,0x08F8C6;
+	dispbottom "ระบบได้ดำเนินการลบสินค้าทั้งหมด ในรายการสินค้าแล้วในขณะนี้";
+	close;
+L_canc:
+	mes $@npc$;
+	mes "ขั้นตอนถูกยกเลิก!!";
+	close;
+	}
+
+case 4:
+	goto L_start;
+	}
+
+OnBuyItem:
+	getinventorylist;
+	if(@inventorylist_count >= $@maxInv){
+		dispbottom "ไม่สามารถดำเนินการต่อไปได้ เนื่องจากคุณมี item มากเกินไป.";
+		end;
+	}
+for (set .@i,0; .@i < getarraysize(@bought_nameid); set .@i,.@i+1) {
+		if (@bought_quantity[.@i] <= 0) {
+			end;
+		}
+		set @cost,callfunc("F_CashPrice1",@bought_nameid[.@i]);
+		if ((@cost*@bought_quantity[.@i]) > #cashpoint) {
+			dispbottom "คุณมี "+$@cpoint$+" ไม่พอ.";
+		} else if (!checkweight(@bought_nameid[.@i],@bought_quantity[.@i])) {
+			dispbottom "ไม่สามารถดำเนินการต่อไปได้ เนื่องจาก คุณ มีน้ำหนักเกิน.";
+		} else {
+			set #cashpoint,#cashpoint-@cost*@bought_quantity[.@i];
+			getitem @bought_nameid[.@i],@bought_quantity[.@i];
+			dispbottom "ขอบคุณค่ะ ที่ไช้บริการ.";
+			dispbottom "ขณะนี้คุณมี "+#cashpoint+" "+$@cpoint$+".";
+		}		
+	}
+deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+end;
+
+OnInit:
+	npcshopattach "F_Cash1",1;
+	end;
+
+OnPCLoginEvent:
+if(clearpoints != $clearpoints) {
+	set #cashpoint,0;
+	set clearpoints,$clearpoints;
+	}
+for ( set .@i,0; .@i < getarraysize($dnames1$); set .@i,.@i + 1) {
+	if ( $dnames1$[.@i] != strcharinfo(0) ) continue;
+	set #cashpoint,#cashpoint + $dpoints[.@i];
+	deletearray $dnames1$[.@i],1;
+	deletearray $dpoints[.@i],1;
+	announce "คุณได้รับการเติม Points จากระบบแล้ว",bc_self,0x08F8C6;
+	dispbottom "ขณะนี้คุณมี "+#cashpoint+" "+$@cpoint$+".";
+	}
+end;
+}
+
+function	script	F_CashPrice1	{
+	for (set .@i,0; .@i < getarraysize($cash_item); set .@i,.@i+1) {
+		if ($cash_item[.@i] == getarg(0)) {
+			return $cash_price1[.@i];
+		}
+	}
+	return;
+}
+
+
+//==============Add NPC====================//
+
+rachel.gat,141,129,4	duplicate(custom_cash1)	Donation Shop#1	807

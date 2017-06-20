@@ -1,0 +1,153 @@
+homes1,39,60,0	warp	exgvg01a		1,1,aldeg_cas01,34,248
+aldeg_cas01,34,252,0	warp	exgvg01b		1,1,homes1,51,44
+
+
+////////////////////////////////////////////////////////
+payg_cas01	mapflag	loadevent
+-	script	antistats	-1,{
+OnPCLoadMapEvent:
+getmapxy ( .@map$,.@x,.@y,0 );
+if( .@map$ == "payg_cas01" && (readparam(bStr)>401 || readparam(bAgi)>401 || readparam(bVit)>401 || readparam(bInt)>401 || readparam(bDex)>401 || readparam(bLuk)>401)) goto needjob1;
+end;
+needjob1:
+mes "เจ้ามีสเตตัสมากไป";
+mes "ต้องการสเตตัสไม่เกิน ^FF00001 ~ 400^000000";
+mes "เราจะส่งท่านกลับจุดเกิดของท่าน";
+next;
+warp "c5",165,113;
+end;
+
+}
+
+////////////////////////////////////////////////////////////////////
+
+homes1,59,63,4	script	บ้าน400	111,{
+OnInit:
+waitingroom "จำกัดสเตตัส 400",0;
+end;
+}
+homes1,65,63,4	script	เบบี้	111,{
+OnInit:
+waitingroom "    บ้านเบบี้",0;
+end;
+}
+homes1,45,63,4	script	บ้านไม่จำกัด	111,{
+OnInit:
+waitingroom "บ้านไม่จำกัดสเตตัส",0;
+end;
+}
+homes1,39,63,4	script	บ้านไม่จำกัด	111,{
+OnInit:
+waitingroom "บ้านไม่จำกัดสเตตัส",0;
+end;
+}
+
+homes1,51,59,4	script	รายละเอียดกิลวอร์	691,{
+mes "[ Infomation ]";
+mes "^FF33CCมีทุกวัน วันละ 3 รอบ^000000";
+mes "^FF0000เวลา 11.00 - 12.00 / 17.00 - 18.00 / / 21.00 - 22.00 น.^000000";
+next;
+mes "[ Infomation ]";
+mes "^3355FFรางวัลกิลด์วอร์ครับ^000000";
+mes "^3355FFTCG 100 ใบ^000000";
+mes "^3355FFเงิน 60M zeny^000000";
+mes "^3355FFโข่ง 10 ea^000000";
+mes "^3355FFดอกเหลือง และ ยาปายาแอส 10 ea^000000";
+mes "^00BB00รางวัลพิเศษติดตามทางหน้า Web^000000";
+close;
+
+OnInit:
+waitingroom "รายละเอียดกิลวอร์",0;
+end;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+homes1,65,60,0	script	เบบี้	45,2,2,{
+
+if ((Class==4023) || (Class==4024) || (Class==4025) || (Class==4026) || (Class==4027) || (Class==4028) || (Class==4029) || (Class==4030) || (Class==4031) || (Class==4032) || (Class==4033) || (Class==4034) || (Class==4035) || (Class==4036) || (Class==4037) || (Class==4038) || (Class==4039) || (Class==4040) || (Class==4041) || (Class==4042) || (Class==4043) || (Class==4044) || (Class==4045))  goto Lbaby;
+mes "[ Guild ]";
+mes "สำหรับอาชีพเบบี้เท่านั้น";
+close;
+
+Lbaby:
+emotion e_hmm;
+emotion e_wah,1;
+mes "[ Guild ]";
+	if(getcharid(2)!=0){
+		if(getgdskilllv(getcharid(2),10013)){
+			mes "ฉันเห็นคุณมี Skill Emergency Call mastered.";
+			mes "ขอโทษทีนะฉันไม่สามารถให้คุณเข้าเล่นวอเบบี้ไม่ได้";
+			close;
+		}
+
+	} else {
+		mes "^FF0000คุณไม่มี Guild ไม่สามารถเข้าได้^000000";
+		close;
+	}
+	mes "ฉันต้องการเล่นวอเบบี้";
+	mes "^FF0000ห้ามอัพสกิล เรียกลูกกิล^000000";
+	next;
+		menu "วาปไปวอเล็ก",M_WARP,"ไร้สาระ",-;
+
+	mes "[ Guild ]";
+	mes "ถ้าไม่เล่นก้ออย่ามาหยามวอเบบี้";
+	emotion e_sry;
+close;
+
+M_WARP:
+warp "prtg_cas01",99,32;
+close;
+end;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+payg_cas01,214,44,0	warp	exgvg03b		1,1,homes1,51,44
+
+prtg_cas01,103,32,0	warp	exgvg04b		1,1,homes1,51,44
+
+guild_vs5,50,75,0	warp	exittomor1	1,1,god_town,115,111
+
+homes1,64,35,0	warp	gvgexittomor1	1,1,god_town,115,111
+
+/////////////////////////////////////////////////////////
+
+homes1,59,60,0	script	สเตตัสไม่เกิน 400	45,2,2,{
+
+readparam(bStr);
+if(readparam(bStr)<400) goto need1;
+if(readparam(bStr)>401) goto needjob1;
+
+readparam(bAgi);
+if(readparam(bAgi)<400) goto need1;
+if(readparam(bAgi)>401) goto needjob1;
+
+readparam(bVit);
+if(readparam(bVit)<400) goto need1;
+if(readparam(bVit)>401) goto needjob1;
+
+readparam(bInt);
+if(readparam(bInt)<400) goto need1;
+if(readparam(bInt)>401) goto needjob1;
+
+readparam(bDex);
+if(readparam(bDex)<400) goto need1;
+if(readparam(bDex)>401) goto needjob1;
+
+readparam(bLuk);
+if(readparam(bLuk)<400) goto need1; 
+if(readparam(bLuk)>401) goto needjob1;
+
+need1:
+warp "payg_cas01",214,48;
+close;
+
+needjob1:
+mes "เจ้ามีสเตตัสมากไป";
+mes "ต้องการสเตตัสไม่เกิน ^FF00001 ~ 400^000000";
+close;
+
+}
+
+gefg_cas01,34,136,0	warp	exgvg02b		1,1,homes1,51,44
+homes1,45,60,0	warp	exgvg02a		1,1,gefg_cas01,34,140

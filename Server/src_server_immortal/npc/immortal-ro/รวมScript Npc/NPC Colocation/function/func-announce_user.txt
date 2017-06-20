@@ -1,0 +1,37 @@
+function	script	announce_msg1	{
+	mes "[ประกาศ]";
+	mes "บริการประกาศทั่วเซิฟเวอร์!!";
+	mes "ใส่ข้อความได้ 10 - 70 ตัวอักษร";
+	mes "^FF0000ข้อความจะประกาศขึ้นไปหน้าเว็บด้วย^000000";
+	next;
+	menu "^009933•^000000 เริ่มประกาศ",ann1,"^FF0000•^000000 ยกเลิก",cancel;
+
+ann1:
+	input @megaphone$;
+
+	if( getstrlen( @megaphone$ ) < 10 ){
+		mes "[ประกาศ]";
+		mes "^FF0000ใส่ข้อความระหว่าง 10 - 70 ตัวอักษรเท่านั้น^000000";
+		getitem 12221,1;
+		close;
+	}
+
+	progressbar "0x00FF66",2;
+	announce strcharinfo(0) + " : " + @megaphone$,bc_all,0x00FF66;
+
+	dispbottom "Announce System : กำลังโพสข้อความลงที่หน้าเว็บไซต์ กรุณารอ...";
+	progressbar "0x00FF66",3;
+
+	set .charid2$,getcharid(0);
+	query_sql "INSERT INTO `announce_message` (char_id, message) VALUES ('"+ escape_sql(.charid2$) +"', '"+ escape_sql(@megaphone$) +"')";
+	dispbottom "Announce System : โพสที่หน้าเว็บเรียบร้อยแล้ว";
+	close;
+
+cancel:
+	mes "[ประกาศ]";
+	mes "ไว้ประกาศคราวหน้าก็ได้";
+	mes "โปรดเอาไอเท็มคืนไป...";
+	getitem 12221,1;
+	close;
+
+}

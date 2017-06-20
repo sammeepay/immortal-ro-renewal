@@ -1,0 +1,32 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	OnlineBonus2	-1,{
+OnInIt:
+	set .time_count, 30;	// ออนไลน์นานเท่าไหร่ จึงจะได้ Cash (นาที)
+	end;
+
+OnPCLoginEvent:
+	dispbottom "[ รายละเอียด Online Bonus ผู้เล่น !! ]";
+	dispbottom "[ Event Server ] : เมื่อคุณ Online ตัวละครครบ 30 นาที !! จะได้รับ 1 Cash";
+	initnpctimer getcharid(3);
+	end;
+
+OnTimer60000:
+	stopnpctimer;
+	initnpctimer;
+	getmapxy( .@map$, .@x, .@y, 0 );
+	if ( .@map$ != @map$ || .@x != @x || .@y != @y ) {	// ถ้าไม่ขยับไปไหน จะพักเวลาไว้
+		set @map$, .@map$;
+		set @x, .@x;
+		set @y, .@y;
+		set @count, @count+1;
+		if ( @count >= .time_count ) {
+			set @count, 0;
+			atcommand "@cash 1";
+		}
+	}
+	end;
+}

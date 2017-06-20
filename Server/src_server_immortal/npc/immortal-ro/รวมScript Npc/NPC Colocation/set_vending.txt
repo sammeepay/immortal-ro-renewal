@@ -1,0 +1,46 @@
+//=============================================================
+//			-             mOnster studiO Scripts               -
+//				www.monsterstudio.in.th
+//#############################################################
+
+
+-	script	vending_conf_npc	-1,{
+	set .@npc$, "^0033FF[ ระบบการตั้งร้าน ]^000000";
+	mes .@npc$;
+	mes "สวัสดีค่ะ ~";
+	mes "นี่คือระบบจัดการการตั้งร้าน";
+	mes "กรุณาเลือกประเภท";
+	mes "การตั้งร้านที่ต้องการ";
+	next;
+	set .@list,select(.menu$);
+
+	if (.@list == 1) {
+		set VENDING_MODE,1;
+		set VENDING_ITEM_REQ,1;
+	} else {
+		set VENDING_MODE,2;
+		set VENDING_ITEM_REQ,.unix_item_id[.@list-2];
+		dispbottom .unix_item_id[.@list-2];
+	}
+	set VENDING_SAVED_MODE, VENDING_MODE;
+
+	mes .@npc$;
+	mes "กดปุ่ม^FF0000ปิด^000000เพื่อเริ่มตั้งร้านค่ะ";
+	close2;
+	unitskilluseid getcharid(3),"MC_VENDING",getskilllv("MC_VENDING");
+	sleep2 100;
+	set VENDING_MODE,0;
+	end;
+
+OnInit:
+	setarray .unix_item_id[0],607,7227; // เพิ่ม ITEM ที่ชื้อเป็นหน่วยในการชื้อการ
+
+	set .menu$,"ใช้ ^FF0000Zeny^000000 เป็นเงื่อนไขการซื้อ:";
+	for (set .@i,0; .@i < getarraysize(.unix_item_id); set .@i,.@i+1)
+		if (getitemname(.unix_item_id[.@i]) == "null") {
+			deletearray .unix_item_id[.@i],1;
+		} else {
+			set .menu$,.menu$+"ใช้ ^0000FF"+getitemname(.unix_item_id[.@i])+"^000000 เป็นเงื่อนไขการซื้อ:";
+		}
+	end;
+}

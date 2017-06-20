@@ -1,0 +1,48 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+morocc	mapflag	nobranch
+morocc	mapflag	noteleport
+morocc	mapflag	noicewall
+morocc	mapflag	nodrop
+morocc	mapflag	noteleport
+
+new_1-1	mapflag	nodrop
+
+leagepvp01	mapflag	nowarp
+leagepvp01	mapflag	nowarpto
+leagepvp01	mapflag	nosave	SavePoint
+leagepvp01	mapflag	nomemo
+leagepvp01	mapflag	noteleport
+leagepvp01	mapflag	noicewall
+leagepvp01	mapflag	nobranch
+leagepvp01	mapflag	noreturn
+leagepvp01	mapflag	pvp
+leagepvp01	mapflag	pvp_noguild
+
+leagepvp11	mapflag	gvg
+leagepvp11	mapflag	nomemo
+leagepvp11	mapflag	nosave	SavePoint
+leagepvp11	mapflag	noteleport
+leagepvp11	mapflag	nowarp
+leagepvp11	mapflag	nowarpto
+leagepvp11	mapflag	nobranch
+
+// Normal Map
+morocc	mapflag	restricted	6
+prt_gld	mapflag	restricted	6
+pay_gld	mapflag	restricted	6
+alde_gld	mapflag	restricted	6
+gef_fild13	mapflag	restricted	6
+
+// Zone Guild Vs Guild
+leagepvp11	mapflag	restricted	7
+
+// Guild Castles 1-1 Guild Vs Guild
+guildvs01	mapflag	restricted	5
+guildvs02	mapflag	restricted	5
+guildvs03	mapflag	restricted	5
+guildvs04	mapflag	restricted	5
+guildvs05	mapflag	restricted	5

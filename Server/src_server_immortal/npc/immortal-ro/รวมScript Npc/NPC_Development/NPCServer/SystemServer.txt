@@ -1,0 +1,278 @@
+//===================================================================
+// NPC : System Server
+// Design Pine-Athena
+// Contact : http://www.heavensaber.ob.tc/
+//===================================================================
+
+izlude_in.gat,72,172,4	script	System Server	871,{
+	mes "[ System Server ]";
+	mes "ยินดีต้อนรับเข้าสู่ระบบ";
+	next;
+	set @gm,getgmlevel();
+	if (@gm <= 50) goto USER;
+	if (@gm >= 90) goto GM;
+
+
+
+	USER:
+	mes "[ System Server ]";
+	mes "ขออภัยค่ะ NPC ตัวนี้";
+	mes "ผู้ที่เป็น Administrator ใช้ได้เท่านั้น";
+	close;
+
+
+
+	GM:
+	mes "[ System Server ]";
+	mes "สวัสดีค่ะ  [ ^8B0000 " + strcharinfo(0) + " ^000000 ]";
+	mes "โปรดเลือกทำรายการจาก เมนูด้านล่างค่ะ";
+	misceffect(348); 
+	misceffect(485); 
+	misceffect(418); 
+	misceffect(203); 
+	next;
+	menu 
+	"เปลี่ยนแปลงข้อมูล ภายในระบบ",ET,
+	"ดำเนินการของระบบต่อ",DE;
+
+
+
+	ET:
+	mes "[ System Server ]";
+	mes "กำลัง Login......";
+	sleep2 1000;
+	mes"________________________________";
+	mes "Login สำเร็จ";
+	mes "โปรดเลือกหัวข้อจากเมนูด้านล่างค่ะ";
+	next;
+	menu 
+"Reload NPC",E1,
+"Reload Data Base",E2,
+"ปิด Server 1ชม.",timeend1,
+"ปิด Server ประจำวัน.",timeend2,
+"ปิด Server นอกเวลา.",timeend3,
+"ดำเนินการระบบต่อ.",DE;
+
+
+
+	E1:
+	mes "[ System Server ]";
+	mes "ท่านต้องการ Reload NPC ใหม่ทั้งหมดหรือไม่";
+	next;
+	menu 
+	"ต้องการ Reload NPC ใหม่ ",-,
+	"ดำเนินการของระบบต่อ",DE;
+
+
+
+	mes "[ System Server ]";
+	mes "^FF0000คำเตือน: การ Reload NPC อาจทำให้ตัวแปรบางตัวที่อยู่ใน script เสียหายได้นะค่ะ";
+	mes "^FF8040ท่านแน่ใจว่าต้องการ Reload NPC ใหม่";
+	next;
+	menu 
+	"ต้องการ Reload NPC ใหม่ ",-,
+	"ดำเนินการของระบบต่อ",DE;
+
+
+
+	mes "[ System Server ]";
+	mes "^0000FF กำลัง Reload NPC ใหม่ โปรดรอ......... ^000000";
+	announce "กำลัง Reload NPC ใหม่ โปรดรอ........." ,0;
+	next;
+	mes "[ System Server ]";
+	AgitEnd;
+	sleep2 3000;
+	atcommand strcharinfo(0)+"@reloadscript";
+	announce "การ Reload NPC เสร็จสมบูรณ์." ,0;
+	mes "^0000FF การ Reload NPC เสร็จสมบูรณ์. ^000000";
+	close;
+
+
+
+	E2:
+	mes "[ System Server ]";
+	mes "ท่านต้องการ Reload DB ใหม่ทั้งหมดหรือไม่";
+	next;
+	menu 
+	"ต้องการ Reload DB ใหม่ ",-,
+	"ดำเนินการของระบบต่อ",DE;
+
+
+
+	mes "[ System Server ]";
+	mes "^0000FF กำลัง Reload DB ใหม่ โปรดรอ......... ^000000";
+	announce "กำลัง Reload DB ใหม่ โปรดรอ........." ,0;
+	next;
+	mes "[ System Server ]";
+	AgitEnd;
+	sleep2 3000;
+	atcommand strcharinfo(0)+"@reloaditemdb"; 
+	atcommand strcharinfo(0)+"@reloadmobdb"; 
+	atcommand strcharinfo(0)+"@reloadskilldb"; 
+	atcommand strcharinfo(0)+"@reloadgmdb";
+	atcommand strcharinfo(0)+"@reloadatcommand";  
+	atcommand strcharinfo(0)+"@reloadstatusdb"; 
+	atcommand strcharinfo(0)+"@reloadpcdb"; 
+	mes "^0000FF การ Reload DB เสร็จสมบูรณ์. ^000000";
+	close;
+
+
+
+	timeend1:
+	mes "[ System Server ]";
+	mes "ท่านต้องการปิดServer หรือไม่";
+	next;
+	menu 
+	"นับถอยหลังก ปิด Server",-,
+	"ดำเนินการของระบบต่อ",DE;
+
+
+
+	addtimer 1000,"time1::OnTimer1";	//ทางเราจะทำการปิดพักServer ในอีก 2นาที !
+	addtimer 10000,"time1::OnTimer2";	//Server จะเปิด Online ในอีก 1 ชั่วโมงข้างหน้า ค่ะ !
+	addtimer 20000,"time1::OnTimer3";	//ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !
+	addtimer 30000,"time1::OnTimer2";	//Server จะเปิด Online ในอีก 1 ชั่วโมงข้างหน้า ค่ะ !
+	addtimer 40000,"time1::OnTimer3";	//ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !
+	addtimer 60000,"time1::OnTimer4";	//Server จะถูกปิดลงในอีก 1นาทีข้างหน้า !
+	addtimer 70000,"time1::OnTimer2";	//Server จะเปิด Online ในอีก 1 ชั่วโมงข้างหน้า ค่ะ !
+	addtimer 80000,"time1::OnTimer3";	//ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !
+	addtimer 90000,"time1::OnTimer2";	//Server จะเปิด Online ในอีก 1 ชั่วโมงข้างหน้า ค่ะ !
+	addtimer 100000,"time1::OnTimer3";	//ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !
+	addtimer 120000,"time1::OnTimer5";	//ขอบคุณค่ะ เจอกันในอีก 1ชั่วโมงข้างหน้า !
+	addtimer 123000,"time1::OnTimer6";	//@mapexit
+	mes "[ System Server ]";
+	mes "Server จะถูกปิดภายใน 2 นาที.";
+	close;
+
+
+
+	timeend2:
+	mes "[ System Server ]";
+	mes "ท่านต้องการปิดServer หรือไม่";
+	next;
+	menu 
+	"นับถอยหลัง ปิด Server",-,
+	"ดำเนินการของระบบต่อ",DE;
+
+
+
+	addtimer 1000,"time2::OnTimer1";	//ทางเราจะทำการปิดพักServer ในอีก 2นาที !
+	addtimer 10000,"time2::OnTimer2";	//Server จะเปิด Online พรุ่งนี้ค่ะ ในเวลาเปิดของ Server ค่ะ !
+	addtimer 20000,"time2::OnTimer3";	//ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !
+	addtimer 30000,"time2::OnTimer2";	//Server จะเปิด Online พรุ่งนี้ค่ะ ในเวลาเปิดของ Server ค่ะ !
+	addtimer 40000,"time2::OnTimer3";	//ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !
+	addtimer 60000,"time2::OnTimer4";	//Server จะถูกปิดลงในอีก 1นาทีข้างหน้า !
+	addtimer 70000,"time2::OnTimer2";	//Server จะเปิด Online พรุ่งนี้ค่ะ ในเวลาเปิดของ Server ค่ะ !
+	addtimer 80000,"time2::OnTimer3";	//ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !
+	addtimer 90000,"time2::OnTimer2";	//Server จะเปิด Online พรุ่งนี้ค่ะ ในเวลาเปิดของ Server ค่ะ !
+	addtimer 100000,"time2::OnTimer3";	//ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !
+	addtimer 120000,"time2::OnTimer5";	//ขอบคุณค่ะ เจอกันในอีก 1ชั่วโมงข้างหน้า !
+	addtimer 123000,"time2::OnTimer6";	//@mapexit
+	mes "[ System Server ]";
+	mes "Server จะถูกปิดภายใน 2 นาที.";
+	close;
+
+
+
+	timeend3:
+	mes "[ System Server ]";
+	mes "กรุณาใส่ข้อความในการปิด Server";
+	set @closesv3$,0;
+	input @closesv3$;
+	next;
+	mes "[ System Server ]";
+	mes "ท่านต้องการปิดServer หรือไม่";
+	next;
+	menu 
+	"นับถอยหลัง ปิด Server",-,
+	"ดำเนินการของระบบต่อ",DE;
+
+
+
+	addtimer 1000,"time3::OnTimer1";
+	addtimer 10000,"time3::OnTimer2";
+	addtimer 20000,"time3::OnTimer3";
+	addtimer 30000,"time3::OnTimer2";
+	addtimer 40000,"time3::OnTimer3";
+	addtimer 60000,"time3::OnTimer4";
+	addtimer 70000,"time3::OnTimer2";
+	addtimer 80000,"time3::OnTimer3";
+	addtimer 90000,"time3::OnTimer2";
+	addtimer 100000,"time3::OnTimer3";
+	addtimer 120000,"time3::OnTimer5";
+	addtimer 123000,"time3::OnTimer6";
+	mes "[ System Server ]";
+	mes "Server จะถูกปิดภายใน 2 นาที.";
+	mes "ด้วยหมายเหตุ "+@closesv3$+".";
+	close;
+
+
+	DE:
+	mes "[ System Server ]";
+	mes "สิ่งที่เป็นค่าเดิมซึ่งดีอยู่แล้วควรใช้งานต่อไป";
+	close;
+	}
+
+//=================	time1-6	===================================================================
+-	script	time1	-1,{
+OnTimer1:
+	announce "System Server: ทางเราจะทำการปิด Server ในอีก 2นาที !",0;
+	end;
+OnTimer2:
+	announce "System Server: Server จะเปิด Online ในอีก 1 ชั่วโมงข้างหน้า ค่ะ !",0;
+	end;
+OnTimer3:
+	announce "System Server: ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !",0;
+	end;
+OnTimer4:
+	announce "System Server: Server จะถูกปิดลงในอีก 1 นาทีข้างหน้า !",0;
+	end;
+OnTimer5:
+	announce "System Server: ขอบคุณค่ะ เจอกันในอีก 1 ชั่วโมงข้างหน้า !",0;
+	end;
+OnTimer6:
+	atcommand strcharinfo(0)+"@mapexit";
+	end;
+}
+//=================	time2-6	===================================================================
+-	script	time2	-1,{
+OnTimer1:
+	announce "System Server: ทางเราจะทำการปิด Server ในอีก 2นาที !",0;
+	end;
+OnTimer2:
+	announce "System Server: Server จะเปิด Online พรุ่งนี้ค่ะ ในเวลาเปิดของ Server ค่ะ !",0;
+	end;
+OnTimer3:
+	announce "System Server: ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !",0;
+	end;
+OnTimer4:
+	announce "System Server: Server จะถูกปิดลงในอีก 1นาทีข้างหน้า !",0;
+	end;
+OnTimer5:
+	announce "System Server: ขอบคุณค่ะ เจอกันพรุ่งนี้ค่ะ !",0;
+	end;
+OnTimer6:
+	atcommand strcharinfo(0)+"@mapexit";
+end;
+}
+//=================	time3-6	===================================================================
+-	script	time3	-1,{
+OnTimer1:
+	announce "System Server: ทางเราจะทำการปิด Server ในอีก 2นาที. ด้วยหมายเหตุ "+@closesv3$+" !",0;
+	end;
+OnTimer2:
+	announce "System Server: ทางเราจะทำการปิด Server ด้วยหมายเหตุ "+@closesv3$+". !",0;
+	end;
+OnTimer3:
+	announce "System Server: ขอให้ผู้เล่นทุกท่าน Logout ด้วยค่ะ เพื่อความปลอดภัยในข้อมูลตัวละครของท่าน !",0;
+	end;
+OnTimer4:
+	announce "System Server: Server จะถูกปิดลงในอีก 1นาทีข้างหน้า !",0;
+	end;
+OnTimer5:
+	announce "System Server: ขอบคุณค่ะ เจอกันตามที่ประกาศนะค่ะ ด้วยหมายเหตุ "+@closesv3$+". !",0;
+	end;
+OnTimer6:
+	atcommand strcharinfo(0)+"@mapexit"; 
+	end;
+}

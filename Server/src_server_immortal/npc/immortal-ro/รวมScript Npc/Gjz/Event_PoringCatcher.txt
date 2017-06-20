@@ -1,0 +1,224 @@
+poring_w01	mapflag	nobranch
+poring_w01	mapflag	noicewall
+poring_w01	mapflag	noreturn
+poring_w01	mapflag	nomemo
+poring_w01	mapflag	nosave	SavePoint
+poring_w01	mapflag	noteleport
+poring_w01	mapflag	nodrop
+poring_w01	mapflag	nowarp
+poring_w01	mapflag	nowarpto
+poring_w01	mapflag	noskill
+
+-	script	poring_end	-1,{
+OnClock0130:
+OnClock0230:
+OnClock0330:
+OnClock0430:
+OnClock0530:
+OnClock0630:
+OnClock0730:
+OnClock0830:
+OnClock0930:
+OnClock1030:
+OnClock1130:
+OnClock1230:
+OnClock1330:
+OnClock1430:
+OnClock1530:
+OnClock1630:
+OnClock1730:
+OnClock1830:
+OnClock1930:
+OnClock2030:
+OnClock2130:
+OnClock2230:
+OnClock2330:
+OnClock0030:
+stopnpctimer;
+set $pstart,0;
+killmonster "poring_w01","All";
+mapwarp "poring_w01","SavePoint",0,0;
+announce "PoringCatcher : กิจกรรมได้จบลงแล้ว !!!",0,0xFFC0CB;
+end;
+}
+
+-	script	poring_event	-1,{
+OnClock0120:
+OnClock0220:
+OnClock0320:
+OnClock0420:
+OnClock0520:
+OnClock0620:
+OnClock0720:
+OnClock0820:
+OnClock0920:
+OnClock1020:
+OnClock1120:
+OnClock1220:
+OnClock1320:
+OnClock1420:
+OnClock1520:
+OnClock1620:
+OnClock1720:
+OnClock1820:
+OnClock1920:
+OnClock2020:
+OnClock2120:
+OnClock2220:
+OnClock2320:
+OnClock0020:
+killmonster "poring_w01","All";
+announce "PoringCatcher : กิจกรรมจะเริ่มในอีก 1 นาที กรุณาเตรียมพร้อม !",0,0xFFC0CB;
+initnpctimer;
+end;
+OnTimer60000:
+announce "PoringCatcher : กิจกรรมได้เริ่มต้นขึ้นแล้ว คุณมีเวลา 10 นาทีในการเล่นกิจกรรม",0,0xFFC0CB;
+stopnpctimer;
+setnpctimer 0;
+callfunc "OnEventPoringCatcher";
+sleep2 200;
+stopnpctimer;
+setnpctimer 0;
+end;
+}
+
+function	script	OnEventPoringCatcher	{
+OnEventPorC:
+//initnpctimer;
+set $pstart,1;
+callfunc "Poringsummoner";
+end;
+}
+
+-	script	PoringCatcher::PorC	909,{
+OnTouch:
+if (!$pstart)
+{
+mes "^FF0000[ ตารางเวลากิจกรรม ]^000000";
+mes "01.20 น."; 
+mes "02.20 น."; 
+mes "03.20 น."; 
+mes "04.20 น."; 
+mes "05.20 น."; 
+mes "06.20 น."; 
+mes "07.20 น."; 
+mes "08.20 น."; 
+mes "09.20 น."; 
+mes "10.20 น."; 
+mes "11.20 น."; 
+mes "12.20 น."; 
+mes "13.20 น."; 
+mes "14.20 น."; 
+mes "15.20 น."; 
+mes "16.20 น."; 
+mes "17.20 น."; 
+mes "18.20 น."; 
+mes "19.20 น."; 
+mes "20.20 น."; 
+mes "21.20 น."; 
+mes "22.20 น."; 
+mes "23.20 น."; 
+mes "00.20 น."; 
+close;
+}
+if ($@ActiveSv == 0) end;
+mes "[ Poringcatcher ]";
+mes "สวัสดี [^FF0000 "+strcharinfo(0)+" ^000000] คุณต้องการอะไร ?";
+next;
+switch(select("- เข้าร่วมกิจกรรม [ "+getmapusers("poring_w01")+" ]","- คำแนะนำ","- ไม่มีอะไร"))
+{
+case 1:
+mes "[ Poringcatcher ]";
+mes "ไปกันเลย   !";
+announce "PoringCatcher : [ "+strcharinfo(0)+" ] ได้เข้าไปยัง กิจกรรม PoringCatcher แล้วครับ",0,0xFFC0CB;
+warp "poring_w01",115,96;
+break;
+
+case 2:
+mes "[ Poringcatcher ]";
+mes "นี่คือ กิจกรรมตามหา Poring ซึ่งจะมี 1เดียวใน 100ตัว";
+mes "เมื่อคุณพบ Poring จงฆ่ามันซะ และจะได้รับรางวัล.";
+mes "ถ้าคุณทำพลาด ฆ่ามอนเตอร์ตัวอื่น คุณจะออกจากการแข่งขันทันที";
+mes "มอนเตอร์จะเกิดเรื่อยๆจนครบ 10 นาที";
+next;
+mes "^FF0000[ ตารางเวลากิจกรรม ]^000000";
+mes "01.20 น."; 
+mes "02.20 น."; 
+mes "03.20 น."; 
+mes "04.20 น."; 
+mes "05.20 น."; 
+mes "06.20 น."; 
+mes "07.20 น."; 
+mes "08.20 น."; 
+mes "09.20 น."; 
+mes "10.20 น."; 
+mes "11.20 น."; 
+mes "12.20 น."; 
+mes "13.20 น."; 
+mes "14.20 น."; 
+mes "15.20 น."; 
+mes "16.20 น."; 
+mes "17.20 น."; 
+mes "18.20 น."; 
+mes "19.20 น."; 
+mes "20.20 น."; 
+mes "21.20 น."; 
+mes "22.20 น."; 
+mes "23.20 น."; 
+mes "00.20 น."; 
+break;
+
+case 3:
+mes "[ Poringcatcher ]";
+mes "โชคดี สำลีแปะหัว ฮ่าๆ";
+break;
+}
+close;
+
+OnInit:
+set $pstart,0;
+waitingroom "Poring Catcher",0;
+end;
+}
+
+function	script	Poringsummoner	{
+OnSummonPoringCatcher:
+monster "poring_w01",0,0,"Pouring",1002,15,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Proing",1002,12,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Poirng",1002,15,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Poing",1002,15,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"I'm not a Poring",1002,8,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Poring",1113,5,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Poring",1062,5,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Poring",1002,1,"poringwin::OnMobKilled";
+monster "poring_w01",0,0,"Gnirop",1002,4,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Por|ng",1002,12,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Por1ng",1002,15,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Porong",1002,11,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"P0ring",1002,12,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"P@ring",1002,12,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Porng",1002,10,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Poring",1031,15,"poringlose::OnMobKilled";
+monster "poring_w01",0,0,"Poring",1242,10,"poringlose::OnMobKilled";
+end;
+}
+
+-	script	poringwin	-1,{
+OnMobKilled:
+dispbottom "Event : คุณได้รับ  TCG Card 10 ea .";
+dispbottom "Event : ขอแสดงความดีใจด้วย";
+getitem 7227,10;
+killmonster "poring_w01","All";
+announce "[ "+strcharinfo(0)+" ] : พบ Poring แล้ว กำลังเริ่มรอบต่อไป ...",0,0xFFC0CB;
+callfunc "Poringsummoner";
+end;
+}
+-	script	poringlose	-1,{
+OnMobKilled:
+dispbottom "Event : ว้า... !!!, คุณแพ้แล้ว ";
+percentheal -100,-100;
+sleep2 200;
+atcommand strcharinfo(0)+"@alive";
+warp "SavePoint",0,0;
+close;
+}

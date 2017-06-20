@@ -1,0 +1,337 @@
+
+-	script	poringcom::porcommado	-1,{ callfunc "PORCOMMAN";	end; }
+
+function	script	ev_setting	{
+
+	// Event รอบที่ 1
+	set $@heventon[1],12;	set $@meventon[1],30;		// Event รอบที่ 1 [12.30 น.]
+
+	// Event รอบที่ 2
+	set $@heventon[2],15;	set $@meventon[2],40;		// Event รอบที่ 2 [16.00 น.]
+
+	// Event รอบที่ 3
+	set $@heventon[3],15;	set $@meventon[3],55;		// Event รอบที่ 3 [20.00 น.]
+
+	// Event รอบที่ 4
+	set $@heventon[4],00;	set $@meventon[4],00;		// Event รอบที่ 4 [ปิดกิจกรรม]
+
+	set $eventpc,0;
+	set $eventnpc,0;
+	set $time,0;
+	return 0;
+}
+
+function	script	ev_settingtime	{
+	mes "กิจกรรม Poring Commado"; 
+	mes "จะมีทั้งหมด 4 รอบ ซึ่งจะแบ่งได้ดังนี้";
+	mes "รอบที่ 1 : [^FF000012.30^000000 น.]";
+	mes "รอบที่ 2 : [^FF000015.40^000000 น.]";
+	mes "รอบที่ 3 : [^FF000015.55^000000 น.]";
+	mes "รอบที่ 4 : [^FF0000ปิดกิจกรรม^000000]";
+	return 1;
+
+}
+
+function	script	PORCOMMAN	{
+	mes "[^FF0000ผู้จัดกิจกรรม^000000]"; 
+	mes "ยินดีต้อนสู่ลานกิจกรรม ^0000BBPoring Commado^000000"; 
+	next;
+	mes "[^FF0000ผู้จัดกิจกรรม^000000]"; 
+	mes "เราคือ ^0000FFผู้จัดกิจกรรม^000000";
+	mes "ท่านสามารถสอบถามกิจกรรมได้";
+	goto DD;
+
+
+	DD:
+	next;
+	if ($eventpc == 1)	set @select , select( "^FF0000•^000000 ขั้นตอนการเข้าร่วมกิจกรรม" , "^FF0000•^000000 เวลาการเข้าร่วมกิจกรรม" , "^009933•^000000 เข้าร่วมกิจกรรม" );
+	if ($eventpc == 0)	set @select , select( "^FF0000•^000000 ขั้นตอนการเข้าร่วมกิจกรรม" , "^FF0000•^000000 เวลาการเข้าร่วมกิจกรรม" );
+	switch( @select )
+	{
+		case 1:
+		mes "[^FF0000ผู้จัดกิจกรรม^000000]";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00001^000000 นาที ได้รับเงินจำนวน : ^0000FF6,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00002^000000 นาที ได้รับเงินจำนวน : ^0000FF7,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00003^000000 นาที ได้รับเงินจำนวน : ^0000FF8,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00004^000000 นาที ได้รับเงินจำนวน : ^0000FF10,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00005^000000 นาที ได้รับเงินจำนวน : ^0000FF12,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00006^000000 นาที ได้รับเงินจำนวน : ^0000FF15,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00007^000000 นาที ได้รับเงินจำนวน : ^0000FF20,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00008^000000 นาที ได้รับเงินจำนวน : ^0000FF25,000^000000 Zeny";
+	next;
+		mes "[^FF0000ผู้จัดกิจกรรม^000000]";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF00009^000000 นาที ได้รับเงินจำนวน : ^0000FF45,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF000010^000000 นาที ได้รับเงินจำนวน : ^0000FF75,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF000011^000000 นาที ได้รับเงินจำนวน : ^0000FF120,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF000012^000000 นาที ได้รับเงินจำนวน : ^0000FF150,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF000013^000000 นาที ได้รับเงินจำนวน : ^0000FF230,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF000014^000000 นาที ได้รับเงินจำนวน : ^0000FF300,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF000015^000000 นาที ได้รับเงินจำนวน : ^0000FF500,000^000000 Zeny";
+		mes "คุณอยู่ได้นานเป็นเวลา ^FF000020^000000 นาที ได้รับเงินจำนวน : ^0000FF999,999^000000 Zeny";
+	next;
+		mes "[^FF0000ผู้จัดกิจกรรม^000000]";
+		mes "และพิเศษ เมื่อผู้ใดมีชีวิตรอดเป็นคนสุดท้าย จะได้รับ เงินเป็น ^FF00002 เท่าของเงินที่ได้รับ^000000";
+		mes "และถ้าคุณอยู่ได้นานเป็นเวลา ^FF000020^000000 นาที ได้รับเงิน Jackport : ^0000FF5,000,000^000000 Zeny";
+	goto DD;
+		case 2:
+		mes "[^FF0000ผู้จัดกิจกรรม^000000]"; 
+		callfunc "ev_settingtime";
+		goto DD;
+		case 3:
+		percentheal 100,100;
+		warp "job_knt",143,56;
+		set @PoringEvent,1;
+	}
+end;
+close;
+OnInit:
+	waitingroom " ๐ Poring Commado ๐ ",0;
+end;
+}
+
+
+//==========================================================================================\\
+//	Mapflags
+//==========================================================================================\\
+//job_knt	mapflag	indoors
+job_knt	mapflag	nobranch
+job_knt	mapflag	noicewall
+job_knt	mapflag	noreturn
+job_knt	mapflag	nomemo
+job_knt	mapflag	nosave	SavePoint
+job_knt	mapflag	noteleport
+job_knt	mapflag	nowarp
+job_knt	mapflag	nowarpto
+job_knt	mapflag	noskill
+
+//==========================================================================================\\
+//	TimeOut Event 
+//==========================================================================================\\
+job_knt,143,55,5	script	TimeOut	-1,{ 
+OnTimer5000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2994,2997),1;
+if ($time >= 5)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2997),1;
+end;
+
+OnTimer10000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2994,2997),1;
+if ($time >= 10)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2997),1;
+end;
+
+OnTimer15000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2991),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2994,2997),1;
+if ($time >= 15)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2997),1;
+end;
+
+OnTimer20000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2997),1;
+if ($time >= 5)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2997),1;
+end;
+
+OnTimer25000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2997),1;
+if ($time >= 10)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2997),1;
+end;
+
+OnTimer30000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+if ($time >= 15)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2992,2993),1;
+end;
+
+OnTimer35000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+if ($time >= 10)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2991),1;
+end;
+
+OnTimer40000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+if ($time >= 15)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2992,2993),1;
+end;
+
+OnTimer45000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2991),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+if ($time >= 5)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2991),1;
+end;
+
+OnTimer50000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2991),1;
+if ($time >= 10)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+end;
+
+OnTimer55000: 
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2992,2993),1;
+if ($time >= 15)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2991),1;
+end;
+
+OnTimer60000: 
+if (getmapusers("job_knt") == 0) goto GameOver;
+set $time,$time +1;
+MapAnnounce "job_knt","Poring Commado : เวลาผ่านไป "+$time+" นาที ยังเหลือผู้เล่นอยู่ในการแข่งขันทั้งหมด " + getmapusers("job_knt") + " คน",17,0x00FF00;
+if ($time == 2)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 4)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 6)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 8)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 10)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 11)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 12)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 13)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 14)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 15)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 16)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 17)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 18)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time == 19)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),1;
+if ($time >= 20)	monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2996,2997),1;
+if ($time >= 20)	monster "job_knt",rand(126,161),rand(38,73),"Super Poring Event",rand(2994,2995),2;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2996,2997),1;
+initnpctimer; 
+end;
+
+GameOver: 
+	Announce "Poring Commado : กิจกรรม Poring Commado จบลงแล้ว ",0,0x00FF00; 
+	killmonsterall "job_knt"; 
+	set $BonusTime,0;
+	set $eventnpc,0; 
+	set $eventpc,0;
+	set $time,0; 
+	end; 
+}
+
+//==========================================================================================\\
+//	เวลาการเข้าร่วมกิจกรรม
+//==========================================================================================\\
+job_knt,0,0,0	script	HiddenNpccom	-1,{ 
+OnMinute00:	
+OnMinute01:	OnMinute02:	OnMinute03:	OnMinute04:	OnMinute05:
+OnMinute06:	OnMinute07:	OnMinute08:	OnMinute09:	OnMinute10:
+OnMinute11:	OnMinute12:	OnMinute13:	OnMinute14:	OnMinute15:
+OnMinute16:	OnMinute17:	OnMinute18:	OnMinute19:	OnMinute20:
+OnMinute21:	OnMinute22:	OnMinute23:	OnMinute24:	OnMinute25:
+OnMinute26:	OnMinute27:	OnMinute28:	OnMinute29:	OnMinute30:
+OnMinute31:	OnMinute32:	OnMinute33:	OnMinute34:	OnMinute35:
+OnMinute36:	OnMinute37:	OnMinute38:	OnMinute39:	OnMinute40:
+OnMinute41:	OnMinute42:	OnMinute43:	OnMinute44:	OnMinute45:
+OnMinute46:	OnMinute47:	OnMinute48:	OnMinute49:	OnMinute50:
+OnMinute51:	OnMinute52:	OnMinute53:	OnMinute54:	OnMinute55:
+OnMinute56:	OnMinute57:	OnMinute58:	OnMinute59:	OnMinute60:
+
+	set $@H,gettimestr("%H",19);
+	set $@M,gettimestr("%M",19);
+
+	//ประกาศ เวลาเริ่มกิจกรรม
+	if (($@H == $@heventon[1]) && ($@M == $@meventon[1])) goto OpenEvent;
+	if (($@H == $@heventon[2]) && ($@M == $@meventon[2])) goto OpenEvent;
+	if (($@H == $@heventon[3]) && ($@M == $@meventon[3])) goto OpenEvent;
+	if (($@H == $@heventon[4]) && ($@M == $@meventon[4])) goto OpenEvent;
+	end;
+
+OpenEvent:
+	Announce "Poring Commado : ได้เปิดขึ้นมีเวลา 3 นาที ในการเข้าร่วมกิจกรรม",0,0x00FF00;
+	set $eventpc,1;
+	initnpctimer "TimeEvent"; 
+	killmonsterall "job_knt"; 
+	end; 
+
+OnInit:
+	callfunc "ev_setting";
+	set $@H,gettimestr("%H",19);
+	set $@M,gettimestr("%M",19);
+	end;
+}
+//==========================================================================================\\
+//	นับถอยหลัง
+//==========================================================================================\\
+job_knt,0,0,0	script	TimeEvent	-1,{ 
+end;
+
+OnTimer60000: 
+Announce "Poring Commado : ได้เปิดขึ้นมีเวลา 2 นาที ในการเข้าร่วมกิจกรรม",0,0x00FF00; 
+end; 
+
+OnTimer120000: 
+Announce "Poring Commado : ได้เปิดขึ้นมีเวลา 1 นาที ในการเข้าร่วมกิจกรรม",0,0x00FF00; 
+end; 
+
+OnTimer150000: 
+Announce "Poring Commado : ได้เปิดขึ้นมีเวลา 30 วินาที ในการเข้าร่วมกิจกรรม",0,0x00FF00; 
+end; 
+
+OnTimer180000: 
+Announce "Poring Commado : ประตูลานกิจกรรม Poring Commado ได้ถูกปิดลงแล้ว ",0,0x00FF00; 
+set $eventpc,0;
+end; 
+
+OnTimer185000: 
+if (getmapusers("job_knt") == 0) end; 
+MapAnnounce "job_knt","Poring Commado : คุณมีเวลาเตรียมตัวเป็นเวลา 25 วินาทีก่อนที่จะเริ่มการแข่งขัน",17,0x00FF00; 
+end; 
+
+OnTimer210000: 
+if (getmapusers("job_knt") == 0) addtimer 5000, "TimeOut";
+MapAnnounce "job_knt","Poring Commado : Poring Commado ได้เริ่มต้นขึ้น มีผู้เล่นเข้าร่วมการแข่งขัน " + getmapusers("job_knt") + " คน",0,0x00FF00; 
+initnpctimer "TimeOut"; 
+set $time,0; 
+set $eventpc,0;
+set $eventnpc,1; 
+set $BonusTime,rand(5,20);
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2990,2993),1;
+monster "job_knt",rand(126,161),rand(38,73),"Poring Event",rand(2991,2993),1;
+end; 
+}
+
+//================================================================================\\
+
+-	script	OnPCDieEvent	-1,{ 
+OnPCDieEvent:
+
+	if (@PoringEvent == 1) {
+
+		getmapxy @map$, @x, @y, 0;
+
+		if(@map$ == "job_knt") {
+
+			set @name$,strcharinfo(0);
+
+			if ($time == 1) set @zeny,60000;
+			if ($time == 2) set @zeny,70000;
+			if ($time == 3) set @zeny,80000;
+			if ($time == 4) set @zeny,100000;
+			if ($time == 5) set @zeny,120000;
+			if ($time == 6) set @zeny,150000;
+			if ($time == 7) set @zeny,200000;
+			if ($time == 8) set @zeny,250000;
+			if ($time == 9) set @zeny,450000;
+			if ($time == 10) set @zeny,750000;
+			if ($time == 11) set @zeny,1200000;
+			if ($time == 12) set @zeny,1500000;
+			if ($time == 13) set @zeny,2300000;
+			if ($time == 14) set @zeny,3000000;
+			if ($time >= 15) set @zeny,5000000;
+			if ($time >= 20) set @zeny,9999999;
+
+			Announce "Poring Commado : คุณ '"+@name$+"' อยู่ได้นานเป็นเวลา "+$time+" นาที ได้รับเงินจำนวน "+@zeny+" Zeny.",0,0x00FF00;
+			sleep2 1000;
+			set zeny,zeny+@zeny;
+			set @zeny,0; 
+			set @PoringEvent,0;
+			warp "SavePoint",0,0;
+			end;
+		}
+		end;
+	}
+	end;
+
+}
+

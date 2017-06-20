@@ -1,0 +1,131 @@
+-	script	Refine#Cash::RFAV	-1,{
+if ($@ActiveSv == 0) end;
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ฉันคือ Armsmith";
+mes "ฉันสามารถอัพเกรด";
+mes "อาวุธและอุปกรณ์ทุกชนิดได้";
+mes "คุณต้องการอัพเกรดอะไรล่ะ . ";
+next;
+setarray .@position$[1], "Head","Body","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head 2","Head 3";
+set .@menu$,"";
+for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+{
+if( getequipisequiped(.@i) )
+set .@menu$, .@menu$ + .@position$[.@i] + " - " + "[^FF0000 " + getequipname(.@i) + " ^000000]";
+set .@menu$, .@menu$ + ":";
+}
+set .@part,select(.@menu$);
+if( !getequipisequiped(.@part) )
+close;
+
+if( !getequipisenableref(.@part) )
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ไอเทมชิ้นนี้ไม่สามารถอัพเกรดได้.";
+close;
+}
+if( !getequipisidentify(.@part) )
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "This has not been identified. So, it can't be refined...";
+close;
+}
+if( getequiprefinerycnt(.@part) >= 10 )
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ไอเทมชิ้นนี้ได้อัพเกรดมาในระดับสูงสุดแล้ว...";
+close;
+}
+
+switch( getequipweaponlv(.@part) )
+{
+case 1: callsub S_RefineValidate,1,7620,50,.@part; break;
+case 2: callsub S_RefineValidate,2,7620,200,.@part; break;
+case 3: callsub S_RefineValidate,3,7620,5000,.@part; break;
+case 4: callsub S_RefineValidate,4,7620,20000,.@part; break;
+default: callsub S_RefineValidate,0,7619,2000,.@part; break;
+}
+
+if( getequippercentrefinery(.@part) > rand(100) || getequippercentrefinery(.@part) > rand(100) )
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ก๊อง ก๊อง ก๊อง !!!";
+SuccessRefItem .@part;
+next;
+Emotion e_no1;
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ว้าว ...";
+mes "เป็นยังไงฝีมือข้า";
+close;
+}
+else
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ก๊อง ก๊อง ก๊อง !!!";
+FailedRefItem .@part;
+next;
+if (rand(5) == 1)
+Emotion e_cash;
+else 
+Emotion e_omg;
+mes "[^FF0000 Suhnbi ^000000]";
+mes "อุ้ย... !!!!";
+next;
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ข้าขอโทษ..";
+mes "มัน...";
+mes "ไอเทมมันลื่นหลุดมือไป...";
+close;
+}
+
+S_RefineValidate:
+mes "[^FF0000 Suhnbi ^000000]";
+if (getarg(0))
+mes "อาวุธเลเวล [^0000FF " + getarg(0) + " ^000000]";
+mes "คุณต้องใช้ ^ff9999" + getitemname(getarg(1)) + "^000000 และ Zeny จำนวน " + getarg(2) + " .";
+mes "คุณต้องการดำเนินการต่อหรือไม่?";
+next;
+if( select("- ใช่:- ไม่.") == 1 )
+{
+if( getequippercentrefinery(getarg(3)) < 100 )
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ว้าว !!";
+mes "ไอเทมคุณอาจจะมีโอกาศ";
+mes "แตกเสียหายได้นะ...";
+next;
+mes "[^FF0000 Suhnbi ^000000]";
+mes "^ff0000ไอเทมที่คุณกำลังจะอัพเกรด^000000!!";
+mes "^ff0000 มีโอกาศแตกเสียหายได้นะ !^000000";
+mes "คุณต้องการดำเนินการต่อหรือไม่?";
+next;
+if( select("- ใช่ !:- ไม่.") == 2 )
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ไม่เป็นไร...";
+mes "ถ้าคุณต้องการอัพเกรดไอเทมก็แวะมาหากันได้นะ.";
+close;
+}
+}
+if( countitem(getarg(1)) > 0 && Zeny > getarg(2) )
+{
+delitem getarg(1), 1;
+set Zeny, Zeny - getarg(2);
+return;
+}
+else
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "คุณมี ^FF0000Zeny^000000 ไม่พอที่จะอัพเกรดไอเทม หรือไม่มี ^0000FF" + getitemname(getarg(1)) + "^000000....";
+mes "กรุณากลับไปหามาใหม่.";
+close;
+}
+}
+else
+{
+mes "[^FF0000 Suhnbi ^000000]";
+mes "ไม่เป็นไร.";
+mes "ข้ามีเวลาทั้งวัน.";
+close;
+}
+}

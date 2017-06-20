@@ -1,0 +1,771 @@
+//	....... if your server has { Overwriting user function [int__] } don't blame me ..........
+function	script	int__	{
+	set .@num, atoi(getarg(0));
+	if ( .@num == 0 || .@num >= 2147483647 ) return getarg(0);
+	set .@l, getstrlen(.@num);
+	for ( set .@i,0; .@i < .@l; set .@i, .@i + 1 ) {
+		set .@num$, .@num % pow(10,.@i+1) / pow(10,.@i) + .@num$;
+		if ( (.@i+1) % 3 == 0 && .@i+1 != .@l ) set .@num$, ","+ .@num$;
+	}
+	return .@num$;
+}
+
+//===== eAthena Script ======================================
+//= Private MVP/Branch Room
+//===== By: ===============================================
+//= by ~AnnieRuru~  ////// แปลภาษาไทยโดย ArunnafeL แห่ง www.ea.in.th
+//===== Current Version: ======================================
+//= 1.3
+//===== Compatible With: ===================================== 
+//= eAthena 11650 Trunk above or 11863 Stable above
+//===== Description: ========================================= 
+//= Player can rent MVP room for the player him/herself, for party or for guilds
+//===== Topic =================================================
+//= http://www.eathena.ws/board/index.php?showtopic=187654
+//===== Additional Comments: ================================== 
+//= 1.0 
+//= ---- break the tradition which a script only for a player, or only for a party.
+//=      now 1 room can be use for party and another room can use for guilds.
+//= ---- timeout feature to prevent player owns the room indefinitely,
+//=      by create a new account and sit/@at'ing inside overnight.
+//= ---- can disable mvp/boss summon via configuration and becomes a branch room script.
+//= ---- a double check to prevent players rent all the rooms for himself.
+//= 1.0a
+//= ---- fix a critial bug that the time count too fast -_-"
+//= 1.1
+//= ---- added item cost to rent or to summon
+//= ---- added a config to limit summoning per session
+//= ---- added flood control option
+//= 1.2
+//= ---- rewrite the waitingroom counter
+//= ---- optimize the script in a way can add custom summon group
+//= ---- add config to kill the monsters if the room just being left empty
+//= ---- add GM can kick room in use
+//= ---- add able to spawn in numbers
+//= ---- add limitspawn can configure to negative to limit spawn in that group instead of individual one
+//= 1.3
+//= ---- fix chatroom countdown issue due to rev13269
+//= ---- fix a bug if 2 people rent a room at same time, the later 1 will get the room
+//= ---- add a feature so the GM can know how long the room has rented or abandoned
+//= 1.4
+//= ---- update with new mvp and mini bosses
+//= ---- fix an exploit if server allow to use @mail, player can send item/zeny away to prevent item/zeny deletion when registering the room
+//= ---- players die inside mvp room shouldn't lose exp
+//========================================================
+
+//	This is the shop for this Branch room IF you already enable it. Can sell whatever things you want.
+-	shop	MVP room#branch	-1,604:1000000,12103:1000000
+
+
+
+-	script	MVP Summoner	-1,{
+	goto L_Start;
+
+OnInit:
+	getmapxy .@map$, .@x, .@y, 1;
+	if ( .@map$ == "" ) {
+
+//	Config ---------------------------------------------------------------------------------------
+
+	// Time for rent a room IN MINUTES. When time out, players inside the room will kick out. Do Not set this as 0
+	set .timeout, 60;
+	// if the room left empty for # minutes, will be treated as give up the room. Do Not set this as 0
+	set .nobodygiveup, 5;
+
+	// NOTE : The script only search item OR zeny. if you specify item amount, then it will ask for the item. If item amount is 0, then it will ask for zeny.
+
+	// the cost to rent a room
+	set .rentitemid, 7227; // item id use for rent a room - 674 - mithil coin
+	set .rentitemamount, 10; // amount of items to rent a room
+	set .rentcost, 5000000; // otherwise, zeny cost to rent a room
+
+	// limit each room can only summon 1 monster at a time. (only the Summoning option)
+	// Turn it off (0) means the player can summon a lot of monsters as long as the player has enough zeny/item. High rate server players love the room with a lot MVPs
+	// Turn it on (1) means the player have to kill existing monster before can summon a new one. Low rate server player prefer to take out MVP 1 by 1
+	set .floodcontrol, 0;
+
+	// if .floodcontrol is turn off, your players might experience lag if they summoned too many MVPs
+	// so what is the maximum input to limit your players summon too many ?
+	set .inputlimit, 3;
+
+	// If the room has left over monsters while nobody in the room and the room not give up yet, shall we kill monsters in empty room ?
+	set .killmonster, 1; // Default is yes
+
+	//	Options menu setting for MVP Summoner NPC.
+	set .@menu[0], 1; // Turn Heal option On/Off
+	set .@menu[1], 1; // Turn Group 1 summons On/Off -> MVP
+	set .@menu[2], 1; // Turn Group 2 summons On/Off -> mini boss
+	set .@menu[3], 0; // Turn Group 3 summons On/Off
+	set .@menu[4], 0; // Turn Group 4 summons On/Off
+	set .@menu[5], 0; // Turn Group 5 summons On/Off
+	set .@menu[6], 0; // Turn Group 6 summons On/Off
+	set .@menu[7], 0; // Turn Group 7 summons On/Off
+	set .@menu[8], 0; // Turn Group 8 summons On/Off
+	set .@menu[9], 0; // Turn Group 9 summons On/Off
+	set .@menu[10], 0; // Sell shop items options On/Off ( shop npc above )
+
+	//	set respawn point when they leave the room. Obviously warp to the Private MVP Room Warper npc
+	set .respawnmap$, "god_town"; // Note : "SavePoint" does NOT work
+	set .respawnx, 115;
+	set .respawny, 111;
+
+	// The minimum GM level can kick a room in use
+	set .gmlvlkick, 80;
+
+	// .limitspawn in previous revision changed to .grouplimit .
+	// it is for limit each monster spawn per session, prevent them only killing same monster again and again
+	// Now you can configure one group has limited summon, and another group has unlimited summon
+	// Tips: if you server has an insane custom MVP, you can put your custom mob to Group 3~9 with insane item cost, and limit only 1 summon per session
+	// .grouplimit use amount, means if group1limit set to 10, then each session can only summon up to 10 amount of that kind of monster. 0 is unlimited
+
+	// ---------
+	// Group 1 -> MVP 
+	// ---------
+	set .group1name$, "MVP"; // Group 1 name
+	set .group1itemid, 674; // item id use for summon any Group 1 monster - 674 - mithil coin
+	set .group1itemamount, 0; // amount of items to summon a Group 1 monster
+	set .group1cost, 500000; // if no item is specify, zeny cost to summon a Group 1 monster
+	set .group1limit, 0; // limit of summon of Group 1 monster per session, prevent them only killing same monster again and again
+	setarray .group1id,
+		1511,//	Amon Ra
+		1647,// Assassin Cross Eremes
+		1785,//	Atroce
+		1630,//	Bacsojin
+		1039,//	Baphomet
+		1874,//	Beelzebub
+		1272,//	Dark Lord
+		1719,//	Datale
+		1046,//	Doppelgangger
+		1389,//	Dracula
+		1112,//	Drake
+		1115,//	Eddga
+		1418,//	Evil Snake Lord
+		1871,//	Fallen Bishop
+		1252,//	Garm
+		1768,//	Gloom Under Night
+		1086,//	Golden Thief Bug
+		1885,//	Gopinich
+		1649,// High Priest Magaleta
+		1651,// High Wizard Katrinn
+		1832,//	Ifrit
+		1492,//	Incantation Samurai
+		1734,//	Kiel D-01
+		1251,//	Knight of Windstorm
+		1779,//	Ktullanux
+	//	1980,// Kubkin ( I think this mvp is still new )
+		1688,//	Lady Tanee
+		1646,// Lord Knight Seyren
+		1373,//	Lord of Death
+		1147,//	Maya
+		1059,//	Mistress
+		1150,//	Moonlight Flower
+		1087,//	Orc Hero
+		1190,//	Orc Lord
+		1038,//	Osiris
+		1157,//	Pharaoh
+		1159,//	Phreeoni
+		1623,//	RSX 0806
+		1650,// Sniper Cecil
+		1583,//	Tao Gunka
+		1708,//	Thanatos
+		1312,//	Turtle General
+		1751,//	Valkyrie Randgris
+		1685,// Vesper
+		1648,// Whitesmith Harword
+		1917,// Satan Morocc
+		1658;//	Ygnizem
+
+	// ---------
+	// Group 2 -> mini boss
+	// ---------
+	set .group2name$, "mini boss"; // Group 2 name
+	set .group2itemid, 674; // item id use for summon any Group 2 monster - 674 - mithil coin
+	set .group2itemamount, 0; // amount of items to summon a Group 2 monster
+	set .group2cost, 500000; // if no item is specify, zeny cost to summon a Group 2 monster
+	set .group2limit, 0; // limit of summon of Group 2 monster per session, prevent them only killing same monster again and again
+	setarray .group2id,
+		1096,// Angeling
+		1388,// Archangeling
+		1795,// Bloody Knight
+		1830,// Bow Guardian
+		1839,// Byorgue
+		1309,// Cat O' Nine Tail
+		1283,// Chimera
+		1302,// Dark Illusion
+		1198,// Dark Priest
+		1582,// Deviling
+		1091,// Dragon Fly
+		1093,// Eclipse
+		1205,// Executioner
+		1783,// Galion
+		1592,// Gangster
+		1120,// Ghostring
+		1259,// Gryphon
+		1720,// Hydro
+		1090,// Mastering
+		1289,// Maya Purple
+		1262,// Mutant Dragon
+		1203,// Mysteltainn
+		1870,// Necromancer
+		1295,// Owl Baron
+		1829,// Sword Guardian
+		1204,// Tirfing
+		1089,// Toad
+		1092,// Vagabond Wolf
+		1765;// Valkyrie
+
+	// ---------
+	// Group 3
+	// ---------
+	set .group3name$, "Poring-Family"; // Group 3 name
+	set .group3itemid, 12109; // item id use for summon any Group 3 monster - 12109 - Poring box
+	set .group3itemamount, 1; // amount of items to summon a Group 3 monster
+	set .group3cost, 0; // if no item is specify, zeny cost to summon a Group 3 monster
+	set .group3limit, -5; // limit of summon of Group 3 monster per session, prevent them only killing same monster again and again
+	setarray .group3id,
+		1002,// Poring
+		1113,// Drops
+		1031,// Poporing
+		1242,// Marin
+		1062,// Santa Poring
+		1613,// Metaling
+		1784,// Stapo
+		1090,// Mastering
+		1096,// Angeling
+		1120,// Ghostring
+		1582,// Deviling
+		1388,// Arc Angeling
+		1502;// Pori Pori
+
+	// ---------
+	// Group 4
+	// ---------
+	set .group4name$, ""; // Group 4 name
+	set .group4itemid, 0; // item id use for summon any Group 4 monster
+	set .group4itemamount, 0; // amount of items to summon a Group 4 monster
+	set .group4cost, 0; // if no item is specify, zeny cost to summon a Group 4 monster
+	set .group4limit, 0; // limit of summon of Group 4 monster per session, prevent them only killing same monster again and again
+	setarray .group4id,
+		1001,
+		1002;
+
+	// ---------
+	// Group 5
+	// ---------
+	set .group5name$, ""; // Group 5 name
+	set .group5itemid, 0; // item id use for summon any Group 5 monster
+	set .group5itemamount, 0; // amount of items to summon a Group 5 monster
+	set .group5cost, 0; // if no item is specify, zeny cost to summon a Group 5 monster
+	set .group5limit, 0; // limit of summon of Group 5 monster per session, prevent them only killing same monster again and again
+	setarray .group5id,
+		1001,
+		1002;
+
+	// ---------
+	// Group 6
+	// ---------
+	set .group6name$, ""; // Group 6 name
+	set .group6itemid, 0; // item id use for summon any Group 6 monster
+	set .group6itemamount, 0; // amount of items to summon a Group 6 monster
+	set .group6cost, 0; // if no item is specify, zeny cost to summon a Group 6 monster
+	set .group6limit, 0; // limit of summon of Group 6 monster per session, prevent them only killing same monster again and again
+	setarray .group6id,
+		1001,
+		1002;
+
+	// ---------
+	// Group 7
+	// ---------
+	set .group7name$, ""; // Group 7 name
+	set .group7itemid, 0; // item id use for summon any Group 7 monster
+	set .group7itemamount, 0; // amount of items to summon a Group 7 monster
+	set .group7cost, 0; // if no item is specify, zeny cost to summon a Group 7 monster
+	set .group7limit, 0; // limit of summon of Group 7 monster per session, prevent them only killing same monster again and again
+	setarray .group7id,
+		1001,
+		1002;
+
+	// ---------
+	// Group 8
+	// ---------
+	set .group8name$, ""; // Group 8 name
+	set .group8itemid, 0; // item id use for summon any Group 8 monster
+	set .group8itemamount, 0; // amount of items to summon a Group 8 monster
+	set .group8cost, 0; // if no item is specify, zeny cost to summon a Group 8 monster
+	set .group8limit, 0; // limit of summon of Group 8 monster per session, prevent them only killing same monster again and again
+	setarray .group8id,
+		1001,
+		1002;
+
+	// ---------
+	// Group 9
+	// ---------
+	set .group9name$, ""; // Group 9 name
+	set .group9itemid, 0; // item id use for summon any Group 9 monster
+	set .group9itemamount, 0; // amount of items to summon a Group 9 monster
+	set .group9cost, 0; // if no item is specify, zeny cost to summon a Group 9 monster
+	set .group9limit, 0; // limit of summon of Group 9 monster per session, prevent them only killing same monster again and again
+	setarray .group9id,
+		1001,
+		1002;
+
+//	Config Ends ------------------------------------------------------------------------
+
+		if ( .timeout == 0 ) set .timeout, 60;
+		if ( .nobodygiveup == 0 ) set .nobodygiveup, 5;
+		if ( .inputlimit < 1 ) set .inputlimit, 1;
+
+		if ( .rentitemid && .rentitemamount ) {
+			if ( getitemname(.rentitemid) == "null" ) {
+				debugmes "Private MVP Room: Rent a room is using invalid item id.";
+			}
+		}
+		set .@i, 1;
+		while ( .@i <= 9 ) {
+			if ( .@menu[.@i] && getd(".group"+ .@i +"itemid") && getd(".group"+ .@i +"itemamount") ) {
+				if ( getitemname( getd(".group"+ .@i +"itemid") ) == "null" ) {
+					debugmes "Private MVP Room: Group no. "+ .@i +" is using invalid item id.";
+				}
+			}
+			set .@i, .@i +1 ;
+		}
+		set .menu$, ( (.@menu[0])?"ฟื้นฟู":"" )+":"+( (.@menu[1])?"เรียก "+ .group1name$:"" )+":"+( (.@menu[2])?"เรียก "+ .group2name$:"" )+":"+( (.@menu[3])?"เรียก "+ .group3name$:"" )+":"+( (.@menu[4])?"เรียก "+ .group4name$:"" )+":"+( (.@menu[5])?"Summon "+ .group5name$:"" )+":"+( (.@menu[6])?"Summon "+ .group6name$:"" )+":"+( (.@menu[7])?"Summon "+ .group7name$:"" )+":"+( (.@menu[8])?"Summon "+ .group8name$:"" )+":"+( (.@menu[9])?"Summon "+ .group9name$:"" )+":"+( (.@menu[10])?"Buy branches":"" )+":ออกจากห้อง:ยกเลิกสัญญาเช่า";
+
+		set .@i, 1;
+		while ( .@i <= 9 ) {
+			setd ".group"+ .@i +"idsize", getarraysize( getd(".group"+ .@i +"id") );
+			if ( .@menu[.@i] && getd(".group"+ .@i +"limit") <= 0 ) {
+				set .@j, 0;
+				while ( .@j < getd(".group"+ .@i +"idsize") ) {
+					setd ".group"+ .@i +"menu$", getd(".group"+ .@i +"menu$") + getmonsterinfo( getd(".group"+ .@i +"id["+ .@j +"]"), 0) +":";
+					set .@j, .@j +1 ;
+				}
+			}
+			set .@i, .@i +1 ;
+		}
+	}
+	else {
+		sleep 1;
+		mapannounce .@map$, "Admin has refresh the server, please register the room again.", 1;
+		mapwarp .@map$, .respawnmap$, .respawnx, .respawny;
+	}
+	end;
+
+L_Start: // I hate gotos ... but ...
+	set .@dif, strnpcinfo(2);
+	if ( .remind[.@dif] == 0 ) {
+		set .remind[.@dif], 1;
+		initnpctimer;
+	}
+	mes "[MVP Summoner]";
+	mes "สวัสดี, จะให้ชั้นช่วยอะไรมั้ย? ?";
+	next;
+	switch ( select(.menu$) ) {
+		case 1:
+			mes "[MVP Summoner]";
+			if ( getmapmobs("this") > 0 ) {
+				mes "ขออภัย กรุณากำจัด Monster ให้เสร็จก่อน ถึงจะได้รับการฟื้นฟูได้.";
+				close;
+			}
+			sc_end sc_stone;
+			sc_end sc_slowdown;
+			sc_end sc_freeze;
+			sc_end sc_sleep;
+			sc_end sc_curse;
+			sc_end sc_silence;
+			sc_end sc_confusion;
+			sc_end sc_blind;
+			sc_end sc_bleeding;
+			sc_end sc_decreaseagi;
+			sc_end sc_poison;
+			sc_end sc_hallucination;
+			sc_end sc_stripweapon;
+			sc_end sc_striparmor;
+			sc_end sc_striphelm;
+			sc_end sc_stripshield;
+			sc_end sc_changeundead;
+			sc_end sc_orcish;
+			sc_end sc_berserk;
+			sc_end sc_ske;
+			sc_end sc_swoo;
+			sc_end sc_ska;
+			percentheal 100,100;
+			sc_start SC_STRFood, 1500000,10;
+			sc_start SC_AGIFood, 1500000,10;
+			sc_start SC_VITFood, 1500000,10;
+			sc_start SC_INTFood, 1500000,10;
+			sc_start SC_DEXFood, 1500000,10;
+			sc_start SC_LUKFood, 1500000,10;
+			sc_start SC_BLESSING,1500000,10;
+			sc_start SC_EXPBOOST,8000000,100;
+			sc_start SC_ITEMBOOST,8000000,100;
+			sc_start SC_INCREASEAGI,1500000,10;
+			sc_start 29,1500000,5;
+			sc_start 35,1500000,3;
+			sc_start 41,1500000,5;
+			sc_start SC_ASPDPOTION2,1500000,0;
+			specialeffect2 7;
+			mes "คุณได้รับการฟื้นฟูแล้ว.";
+			close;
+		default:
+			set .@group, @menu -1;
+			if ( .floodcontrol && getmapmobs("this") > 0 ) {
+				mes "[MVP Summoner]";
+				mes "I cannot summon another monster when there are monsters around.";
+				close;
+			}
+			else if ( getd(".group"+ .@group +"itemid") && getd(".group"+ .@group +"itemamount") ) {
+				mes "[MVP Summoner]";
+				mes "ค่าใช้จ่ายในการเรียก "+ getd(".group"+ .@group +"name$") +" เท่ากับ "+ getd(".group"+ .@group +"itemamount") +" "+ getitemname( getd(".group"+ .@group +"itemid") ) +".";
+				if ( getd(".group"+ .@group +"limit") < 0 )
+					mes "("+( ( ~getd(".group"+ .@group +"limit")+1 - getd(".group"+ .@group +"limit"+ .@dif) <= 0 )?0:( ~getd(".group"+ .@group +"limit")+1 - getd(".group"+ .@group +"limit"+ .@dif) ) )+") more summons for this group.";
+				next;
+			}
+			else if ( getd(".group"+ .@group +"cost") ) {
+				mes "[MVP Summoner]";
+				mes "ค่าใช้จ่ายในการเรียก "+ getd(".group"+ .@group +"name$") +" เท่ากับ "+ callfunc("int__", getd(".group"+ .@group +"cost") ) +" zeny.";
+				if ( getd(".group"+ .@group +"limit") < 0 )
+					mes "("+( ( ~getd(".group"+ .@group +"limit")+1 - getd(".group"+ .@group +"limit"+ .@dif) <= 0 )?0:( ~getd(".group"+ .@group +"limit")+1 - getd(".group"+ .@group +"limit"+ .@dif) ) )+") more summons for this group.";
+				next;
+			}
+			else if ( getd(".group"+ .@group +"limit") < 0 ) {
+				mes "[MVP Summoner]";
+				mes "("+( ( ~getd(".group"+ .@group +"limit")+1 - getd(".group"+ .@group +"limit"+ .@dif) <= 0 )?0:( ~getd(".group"+ .@group +"limit")+1 - getd(".group"+ .@group +"limit"+ .@dif) ) )+") more summons for this group.";
+				next;
+			}
+			if ( getd(".group"+ .@group +"limit") < 0 && getd(".group"+ .@group +"limit"+ .@dif) >= ~getd(".group"+ .@group +"limit")+1 ) {
+				mes "[MVP Summoner]";
+				mes "I'm sorry, but you can't summon any more monster for this group.";
+				close;
+			}
+			else if ( getd(".group"+ .@group +"limit") > 0 ) {
+				for ( set .@i, 0; .@i < getd(".group"+ .@group +"idsize"); set .@i, .@i +1 )
+					set .@menu$, .@menu$ +( ( getd(".group"+ .@group +"limit"+ .@dif +"["+ .@i +"]") >= getd(".group"+ .@group +"limit") )?"^999999":"^000000" )+ getmonsterinfo( getd(".group"+ .@group +"id["+ .@i +"]"), 0) +" ("+ ( ( getd(".group"+ .@group +"limit") - getd(".group"+ .@group +"limit"+ .@dif +"["+ .@i +"]") <= 0 )?0:( getd(".group"+ .@group +"limit") - getd(".group"+ .@group +"limit"+ .@dif +"["+ .@i +"]") ) ) +")"+":";
+				set .@menu, select(.@menu$) -1;
+			}
+			else
+				set .@menu, select( getd(".group"+ .@group +"menu$") ) -1;
+			mes "[MVP Summoner]";
+			if ( .floodcontrol == 0 && .inputlimit > 1 ) {
+				mes "ใส่จำนวนของมอนสเตอร์ที่จะเรียก.";
+				next;
+				input .@amount;
+				if ( .@amount == 0 ) close;
+				else if ( .@amount > .inputlimit )
+					set .@amount, .inputlimit;
+				mes "[MVP Summoner]";
+			}
+			else
+				set .@amount, 1;
+			if ( getd(".group"+ .@group +"itemid") && getd(".group"+ .@group +"itemamount") ) {
+				if ( countitem( getd(".group"+ .@group +"itemid") ) < getd(".group"+ .@group +"itemamount") * .@amount ) {
+					mes "คุณมี "+ getitemname( getd(".group"+ .@group +"itemid") ) +" ไม่เพียงพอในการ "+ getd(".group"+ .@group +"name$") +".";
+					close;
+				}
+			}
+			else if ( getd(".group"+ .@group +"cost") ) {
+				if ( zeny < getd(".group"+ .@group +"cost") * .@amount ) {
+					mes "คุณมีเงินไม่เพียงพอในการเรียก "+ getd(".group"+ .@group +"name$") +".";
+					close;
+				}
+			}
+			if ( .floodcontrol && getmapmobs("this") > 0 ) {
+				mes "ฉันไม่สามารถเรียก Monster ตัวเดียวกันออกมาทีเดียว 2 ตัวได้ค่ะ.";
+				close;
+			}
+			else if ( getd(".group"+ .@group +"limit") > 0 ) {
+				if ( getd(".group"+ .@group +"limit"+ .@dif +"["+ .@menu +"]") >= getd(".group"+ .@group +"limit") ) {
+					mes "ขออภัยคุณได้เรียก Monster ตัวนี้มาบ่อยแล้ว กรุณาเลือกตัวอื่นมั่งก็ดีนะคะ.";
+					close;
+				}
+				else if ( getd(".group"+ .@group +"limit"+ .@dif +"["+ .@menu +"]") + .@amount > getd(".group"+ .@group +"limit") ) {
+					mes "ขออภัย จำนวน Monster ที่คุณกรอกมากเกินกว่าที่จะดำเนินการได้. กรุณากรอกใหม่ให้น้อยลง.";
+					close;
+				}
+			}
+			else if ( getd(".group"+ .@group +"limit") < 0 ) {
+				if ( getd(".group"+ .@group +"limit"+ .@dif) >= ~getd(".group"+ .@group +"limit")+1 ) {
+					mes "ขออภัย คุณไม่สามารถเรียก Monster กลุ่มนี้มาได้มากกว่านี้อีกแล้ว.";
+					close;
+				}
+				else if ( getd(".group"+ .@group +"limit"+ .@dif) + .@amount > ~getd(".group"+ .@group +"limit")+1 ) {
+					mes "ขออภัย จำนวน Monster ที่คุณกรอกมากเกินกว่าที่จะดำเนินการได้. กรุณากรอกใหม่ให้น้อยลง.";
+					close;
+				}
+			}
+			mes "ข้าได้เรียก "+ .@amount +" "+ getmonsterinfo( getd(".group"+ .@group +"id["+ .@menu +"]"), 0) +".";
+			mes "เอาล่ะ มันมาแล้ว ไปหาตัวมันได้เลย!!";
+			close2;
+			if ( .floodcontrol && getmapmobs("this") > 0 ) end;
+			if ( getd(".group"+ .@group +"itemid") && getd(".group"+ .@group +"itemamount") ) {
+				if ( countitem( getd(".group"+ .@group +"itemid") ) < getd(".group"+ .@group +"itemamount") * .@amount ) end;
+				delitem getd(".group"+ .@group +"itemid"), getd(".group"+ .@group +"itemamount") * .@amount;
+			}
+			else if ( getd(".group"+ .@group +"cost") ) {
+				if ( zeny < getd(".group"+ .@group +"cost") * .@amount ) end;
+				set zeny, zeny - getd(".group"+ .@group +"cost") * .@amount;
+			}
+			if ( getd(".group"+ .@group +"limit") > 0 ) {
+				if ( getd(".group"+ .@group +"limit"+ .@dif +"["+ .@menu +"]") + .@amount > getd(".group"+ .@group +"limit") ) end;
+				setd ".group"+ .@group +"limit"+ .@dif +"["+ .@menu +"]", getd(".group"+ .@group +"limit"+ .@dif +"["+ .@menu +"]") + .@amount;
+			}
+			else if ( getd(".group"+ .@group +"limit") < 0 ) {
+				if ( getd(".group"+ .@group +"limit"+ .@dif) + .@amount > ~getd(".group"+ .@group +"limit")+1 ) end;
+				setd ".group"+ .@group +"limit"+ .@dif, getd(".group"+ .@group +"limit"+ .@dif) + .@amount;
+			}
+			monster "this", 0, 0, "--ja--", getd(".group"+ .@group +"id["+ .@menu +"]"), .@amount;
+			end;
+		case 11:
+			if ( getmapmobs("this") > 0 ) {
+				mes "[MVP Summoner]";
+				mes "I cannot offer this service when there are monsters around.";
+				close;
+			}
+			close2;
+			callshop "MVP room#branch", 0;
+			end;
+		case 12:
+			mes "[MVP Summoner]";
+			mes "คุณแน่ใจหรือว่าต้องการออกจากห้อง ?";
+			mes "หากคุณออกจากห้องเป็นเวลา "+ .nobodygiveup +" นาที, คุณจะถูกตัดสิทธิ์ในการเป็นเจ้าของห้อง.";
+			if ( select( "Yes:No") == 2 ) close;
+			warp .respawnmap$, .respawnx, .respawny;
+			end;
+		case 13:
+			mes "[MVP Summoner]";
+			getmapxy .@map$, .@x, .@y, 0;
+			if ( getmapusers(.@map$) > 1 ) {
+				mes "ยังคงมีผู้เล่นบางคนในห้องนี้. กรุณาตรวจสอบความเรียบร้อยก่อนใช้บริการ.";
+				close;
+			}
+			mes "คุณแน่ใจหรือว่าต้องการจะยอมแพ้และสละสิทธิ์เจ้าของห้องนี้ ?";
+			if ( .rentcost )
+				mes "ทางเราจะไม่คืนเงินใดๆทั้งสิ้นให้กับคุณ.";
+			next;
+			if ( select( "Yes:No" ) == 2 ) close;
+			warp .respawnmap$, .respawnx, .respawny;
+			set .remaintime[.@dif], -1;
+			end;
+	}
+	close;
+
+OnEnterMap:
+	set .@dif, strnpcinfo(2);
+	set .remind[.@dif], 0;
+	for ( set .@i, 1; .@i <= 9; set .@i, .@i +1 )
+		deletearray getd(".group"+ .@i +"limit"+ .@dif), getd(".group"+ .@i +"idsize");
+	set .nobodycounter[.@dif], 0;
+	getmapxy .@map$, .@x, .@y ,1;
+	set .starttime[.@dif], gettimetick(2);
+	do {
+		set .remaintime[.@dif], .timeout * 60 + .starttime[.@dif] - gettimetick(2);
+		set .@hour[.@dif], .remainTime[.@dif] / 3600 ;
+		set .@min[.@dif], .remainTime[.@dif] % 3600 / 60 ;
+		set .@sec[.@dif], .remainTime[.@dif] % 3600 % 60 ;
+		delwaitingroom strnpcinfo(0);
+		waitingroom "เหลือเวลา = "+( ( .@hour[.@dif] )?( .@hour[.@dif] +":"):"" )+( ( .@min[.@dif] < 10 )?"0"+ .@min[.@dif]: .@min[.@dif] )+":"+( ( .@sec[.@dif] < 10 )?"0"+ .@sec[.@dif]: .@sec[.@dif] ), 0;
+		if ( getmapusers(.@map$) )
+			set .nobodycounter[.@dif], 0;
+		else {
+			set .nobodycounter[.@dif], .nobodycounter[.@dif] +1 ;
+			if ( .nobodycounter[.@dif] > .nobodygiveup * 60 ) break;
+		}
+		sleep 995;
+	} while ( .remaintime[.@dif] > 1 );
+	set .remaintime[.@dif], 0;
+	delwaitingroom "MVP Summoner#"+ .@dif;
+	mapwarp .@map$, .respawnmap$, .respawnx, .respawny;
+	end;
+
+OnTimer100:
+	stopnpctimer;
+	npctalk "ขอบคุณท่านที่ใช้บริการ กรุณาเลือก Monster ที่ต้องการให้ทางเราเรียกมาให้.";
+	sleep 2000;
+	npctalk "จำกัดเวลาเพียงแค่ 60 นาทีเท่านั้นนะจ๊ะ หมดแล้วต้องไปลงทะเบียนใหม่นะจ๊ะ";
+	sleep 3000;
+	npctalk "เหล่า Monster พวกนั้น มันช่างโหดร้ายเหลือเกิน ท่านพอจะรับมือมันไหวมั้ย?.";
+	sleep 3000;
+	npctalk "จงระวังตัวให้มากๆ ล่ะ เพราะบอสแต่ละตัวอันตรายมากกกก!!";
+	sleep 3000;
+	npctalk "ขอให้โชคดีนะจ๊ะ ท่านผู้กล้าทั้งหลาย อย่าตายเสียก่อนล่ะ";
+	end;
+}
+
+//god_town,132,106,4	script	ห้องบอสส่วนตัว	622,{
+	mes "[ห้องบอสส่วนตัว]";
+	mes "คุณต้องมีเงินพกติดตัวไปเยอะๆ";
+	mes "เพราะจะเสียค่าเรียกบอสตัวละ 1M";
+	mes "เรียกได้ไม่จำกัด !!";
+	mes "กรุณาเลือกห้องที่คุณต้องการเช่า.";
+	if ( getvariableofnpc(.rentitemid, "MVP Summoner") && getvariableofnpc(.rentitemamount, "MVP Summoner") )
+		mes "คุณสามารถเช่าได้เป็นเวลา "+ getvariableofnpc(.timeout, "MVP Summoner") +" นาที ในราคา "+ getvariableofnpc(.rentitemamount, "MVP Summoner") +" "+ getitemname( getvariableofnpc(.rentitemid, "MVP Summoner") ) +".";
+	else if ( getvariableofnpc(.rentcost, "MVP Summoner") )
+		mes "คุณสามารถเช่าได้เป็นเวลา "+ getvariableofnpc(.timeout, "MVP Summoner") +" นาที ในราคา "+ callfunc("int__", getvariableofnpc(.rentcost, "MVP Summoner") ) +" zeny.";
+	else
+		mes "You can only use the room for only "+ getvariableofnpc(.timeout, "MVP Summoner") +" minutes.";
+	mes " ";
+	for ( set .@i, 1; .@i <= 8; set .@i, .@i +1 ) {
+		if ( getvariableofnpc(.remaintime[.@i],"MVP Summoner") ) {
+			switch ( .type[.@i] ) {
+				case 1: set .@color$, "^EE8800"; break;
+				case 2: set .@color$, "^70CC11"; break;
+				case 3: set .@color$, "^0000FF"; break;
+				default: set .@color$, "^000000";
+			}
+			mes "Room #"+ .@i +" = "+ .@color$ + .whoinuse$[.@i] +"^000000";
+		}
+	}
+	next;
+	set .@room, select("MVP Room 1 ["+ getmapusers("06guild_01") +"]",
+		"MVP Room 2 ["+ getmapusers("06guild_02") +"]",
+		"MVP Room 3 ["+ getmapusers("06guild_03") +"]",
+		"MVP Room 4 ["+ getmapusers("06guild_04") +"]",
+		"MVP Room 5 ["+ getmapusers("06guild_05") +"]",
+		"MVP Room 6 ["+ getmapusers("06guild_06") +"]",
+		"MVP Room 7 ["+ getmapusers("06guild_07") +"]",
+		"MVP Room 8 ["+ getmapusers("06guild_08") +"]");
+	if ( getvariableofnpc(.remaintime[.@room],"MVP Summoner") ) {
+		if ( .inuseid[.@room] == getcharid(.type[.@room]) ) {
+			if ( getvariableofnpc(.killmonster,"MVP Summoner") && getmapusers("06guild_0"+ .@room) == 0 )
+				killmonsterall "06guild_0"+ .@room;
+			warp "06guild_0"+ .@room, 0,0;
+			end;
+		} else {
+			mes "[Private MVP Room]";
+			switch ( .type[.@room] ) {
+				case 1: set .@color$, "^EE8800Party "; break;
+				case 2: set .@color$, "^70CC11Guild "; break;
+				case 3: set .@color$, "^0000FFPlayer ";
+			}
+			mes "This room is reserved for ";
+			mes .@color$ + .whoinuse$[.@room] +"^000000 .";
+			if ( getgmlevel() < getvariableofnpc(.gmlvlkick,"MVP Summoner") ) {
+				mes "Please select another.";
+				close;
+			}
+			mes " ";
+			mes "Currently there are "+ getmapusers("06guild_0"+ .@room) +" players";
+			mes "in that room.";
+			set .@remaintime, getvariableofnpc(.remaintime[.@room],"MVP Summoner");
+			mes "It still has "+( .@remaintime /60 )+"mn "+( .@remaintime %60 )+"s left.";
+			set .@nobodycounter, getvariableofnpc(.nobodycounter[.@room],"MVP Summoner");
+			if ( .@nobodycounter )
+				mes "And have left empty for "+( .@nobodycounter /60 )+"mn "+( .@nobodycounter %60 )+"s.";
+			mes "Kick them ?";
+			next;
+			if ( select ( "No:Yes" ) == 1 ) close;
+			set getvariableofnpc(.remaintime[.@room],"MVP Summoner"), -1;
+			mes "[Private MVP Room]";
+			mes "Room#"+ .@room +" is empty now.";
+			close;
+		}
+	}
+	mes "[Private MVP Room]";
+	if ( getvariableofnpc(.rentitemid, "MVP Summoner") && getvariableofnpc(.rentitemamount, "MVP Summoner") ) {
+		if ( countitem(getvariableofnpc(.rentitemid, "MVP Summoner")) < getvariableofnpc(.rentitemamount, "MVP Summoner") ) {
+			mes "คุณมี "+ getitemname( getvariableofnpc(.rentitemid, "MVP Summoner") ) +" ไม่เพียงพอในการเช่าห้อง.";
+			close;
+		}
+	}
+	else if ( getvariableofnpc(.rentcost, "MVP Summoner") ) {
+		if ( zeny < getvariableofnpc(.rentcost, "MVP Summoner") ) {
+			mes "You don't have enough zeny to rent a room.";
+			close;
+		}
+	}
+	mes "คุณต้องการเช่าห้องประเภทใด ...";
+	next;
+	set .@type, select("สำหรับปาร์ตี้ของฉัน", "สำหรับสมาชิกกิลด์ของฉัน", "สำหรับส่วนตัว" );
+	if ( getcharid(.@type) == 0 ) {
+		mes "[Private MVP Room]";
+		mes "ขออภัย คุณไม่ใช่เจ้าของ"+( (.@type == 1)?"Party":"Guild" )+".";
+		close;
+	}
+	else if ( getvariableofnpc(.rentitemid, "MVP Summoner") && getvariableofnpc(.rentitemamount, "MVP Summoner") ) {
+		if ( countitem(getvariableofnpc(.rentitemid, "MVP Summoner")) < getvariableofnpc(.rentitemamount, "MVP Summoner") ) {
+			mes "คุณมี  "+ getitemname( getvariableofnpc(.rentitemid, "MVP Summoner") ) +" ไม่เพียงพอในการเช่าห้อง.";
+			close;
+		}
+	}
+	else if ( getvariableofnpc(.remaintime[.@room],"MVP Summoner") ) {
+		mes "[Private MVP Room]";
+		mes "ขออภัย ห้องที่คุณเลือกไม่ว่าง กรุณาเลือกห้องอื่น.";
+		close;
+	}
+	for ( set .@i, 1; .@i <= 8; set .@i, .@i +1 ) {
+		if ( getvariableofnpc(.remaintime[.@i],"MVP Summoner") && .@type == .type[.@i] && getcharid(.@type) == .inuseid[.@i] ) {
+			mes "[Private MVP Room]";
+			mes "คุณได้เช่าห้อง Room#"+ .@i +". กรุณาใช้ห้องของคุณแทน.";
+			close;
+		}
+	}
+	set .type[.@room], .@type;
+	set .inuseid[.@room], getcharid(.@type);
+	set .whoinuse$[.@room], strcharinfo( (.@type == 3)?0:.@type );
+	if ( getvariableofnpc(.rentitemid, "MVP Summoner") && getvariableofnpc(.rentitemamount, "MVP Summoner") ) {
+		if ( countitem(getvariableofnpc(.rentitemid, "MVP Summoner")) < getvariableofnpc(.rentitemamount, "MVP Summoner") ) end;
+		delitem getvariableofnpc(.rentitemid, "MVP Summoner"), getvariableofnpc(.rentitemamount, "MVP Summoner");
+	}
+	else if ( getvariableofnpc(.rentcost, "MVP Summoner") ) {
+		if ( zeny < getvariableofnpc(.rentcost, "MVP Summoner") ) end;
+		set zeny, zeny - getvariableofnpc(.rentcost, "MVP Summoner");
+	}
+	warp "06guild_0"+ .@room, 0,0;
+	killmonsterall "06guild_0"+ .@room;
+	donpcevent "MVP Summoner#"+ .@room +"::OnEnterMap";
+OnInit:
+waitingroom "ห้องเช่าบอสส่วนตัว",0;
+	end;
+}
+
+06guild_01,49,49,4	duplicate(MVP Summoner)	MVP Summoner#1	116
+06guild_02,49,49,4	duplicate(MVP Summoner)	MVP Summoner#2	116
+06guild_03,49,49,4	duplicate(MVP Summoner)	MVP Summoner#3	116
+06guild_04,49,49,4	duplicate(MVP Summoner)	MVP Summoner#4	116
+06guild_05,49,49,4	duplicate(MVP Summoner)	MVP Summoner#5	116
+06guild_06,49,49,4	duplicate(MVP Summoner)	MVP Summoner#6	116
+06guild_07,49,49,4	duplicate(MVP Summoner)	MVP Summoner#7	116
+06guild_08,49,49,4	duplicate(MVP Summoner)	MVP Summoner#8	116
+
+//god_town,116,119,4	duplicate(ห้องบอสส่วนตัว)	ห้องบอสส่วนตัว	969
+
+06guild_01	mapflag	nowarpto
+06guild_02	mapflag	nowarpto
+06guild_03	mapflag	nowarpto
+06guild_04	mapflag	nowarpto
+06guild_05	mapflag	nowarpto
+06guild_06	mapflag	nowarpto
+06guild_07	mapflag	nowarpto
+06guild_08	mapflag	nowarpto
+06guild_01	mapflag	nomemo
+06guild_02	mapflag	nomemo
+06guild_03	mapflag	nomemo
+06guild_04	mapflag	nomemo
+06guild_05	mapflag	nomemo
+06guild_06	mapflag	nomemo
+06guild_07	mapflag	nomemo
+06guild_08	mapflag	nomemo
+06guild_01	mapflag	noteleport
+06guild_02	mapflag	noteleport
+06guild_03	mapflag	noteleport
+06guild_04	mapflag	noteleport
+06guild_05	mapflag	noteleport
+06guild_06	mapflag	noteleport
+06guild_07	mapflag	noteleport
+06guild_08	mapflag	noteleport
+06guild_01	mapflag	nosave	SavePoint
+06guild_02	mapflag	nosave	SavePoint
+06guild_03	mapflag	nosave	SavePoint
+06guild_04	mapflag	nosave	SavePoint
+06guild_05	mapflag	nosave	SavePoint
+06guild_06	mapflag	nosave	SavePoint
+06guild_07	mapflag	nosave	SavePoint
+06guild_08	mapflag	nosave	SavePoint
+06guild_01	mapflag	nopenalty
+06guild_02	mapflag	nopenalty
+06guild_03	mapflag	nopenalty
+06guild_04	mapflag	nopenalty
+06guild_05	mapflag	nopenalty
+06guild_06	mapflag	nopenalty
+06guild_07	mapflag	nopenalty
+06guild_08	mapflag	nopenalty

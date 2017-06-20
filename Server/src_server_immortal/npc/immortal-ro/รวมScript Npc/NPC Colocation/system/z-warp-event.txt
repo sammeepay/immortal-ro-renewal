@@ -1,0 +1,131 @@
+pvp_n_8-2	mapflag	nomemo
+pvp_n_8-2	mapflag	noteleport
+pvp_n_8-2	mapflag	nosave
+pvp_n_8-2	mapflag	nobranch
+pvp_n_8-2	mapflag	nopenalty
+pvp_n_8-2	mapflag	notrade
+pvp_n_8-2	mapflag	nowarp
+pvp_n_8-2	mapflag	nobaseexp
+pvp_n_8-2	mapflag	nojobexp
+pvp_n_8-2	mapflag	nowarpto
+pvp_n_8-2	mapflag	nodrop
+pvp_n_8-2	mapflag	novending
+pvp_n_8-2	mapflag	noexppenalty
+pvp_n_8-2	mapflag	noloot
+
+pvp_n_2-2	mapflag	nomemo
+pvp_n_2-2	mapflag	noteleport
+pvp_n_2-2	mapflag	nosave
+pvp_n_2-2	mapflag	nobranch
+pvp_n_2-2	mapflag	nopenalty
+pvp_n_2-2	mapflag	notrade
+pvp_n_2-2	mapflag	nowarp
+pvp_n_2-2	mapflag	nobaseexp
+pvp_n_2-2	mapflag	nojobexp
+pvp_n_2-2	mapflag	nowarpto
+pvp_n_2-2	mapflag	nodrop
+pvp_n_2-2	mapflag	novending
+pvp_n_2-2	mapflag	noexppenalty
+pvp_n_2-2	mapflag	noloot
+
+pvp_n_4-2	mapflag	nomemo
+pvp_n_4-2	mapflag	noteleport
+pvp_n_4-2	mapflag	nosave
+pvp_n_4-2	mapflag	nobranch
+pvp_n_4-2	mapflag	nopenalty
+pvp_n_4-2	mapflag	notrade
+pvp_n_4-2	mapflag	nowarp
+pvp_n_4-2	mapflag	nobaseexp
+pvp_n_4-2	mapflag	nojobexp
+pvp_n_4-2	mapflag	nowarpto
+pvp_n_4-2	mapflag	nodrop
+pvp_n_4-2	mapflag	novending
+pvp_n_4-2	mapflag	noexppenalty
+pvp_n_4-2	mapflag	noloot
+
+//-----------------------------------------------------------------------------------------------------------
+
+-	script	warpevent::warpevent	0,{
+
+	mes "[GvG & PvP Express]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ต้องการไป GvG หรือ PvP ครับ";
+	next;
+	switch( select( "^009933•^000000 ไป GvG:^009933•^000000 ^3355FFPVP Ulimit^000000[ ^3355FF" + getmapusers("pvp_y_8-2") + " " + $@mapuser$ + "]:^FF0000•^000000 ^3355FFPVP ไม่เกิน 400^000000[ ^3355FF" + getmapusers("pvp_y_2-2") + " " + $@mapuser$ + "]:^FF0000•^000000 ^3355FFPVP เบบี้^000000[ ^3355FF" + getmapusers("pvp_y_4-2") + " " + $@mapuser$ + "]:^FF0000•^000000 ยกเลิก" ) ){
+		case 1:
+			mes "เรียบร้อยครับ ยินดีให้บริการ";
+			warp "homes1",51,44;
+			break;
+		case 2:
+			announce "PVP Room : คุณ "+strcharinfo(0)+" ได้เข้าสู่ห้อง PvP Unlimit แล้ว !! ใครเจ๋งเข้ามาฆ่าที",0,0x00BB00;
+			warp "pvp_y_8-2",0,0;
+			break;
+		case 3:
+if(readparam(13) > 400) goto no;
+if(readparam(14) > 400) goto no;
+if(readparam(15) > 400) goto no;
+if(readparam(16) > 400) goto no;
+if(readparam(17) > 400) goto no;
+if(readparam(18) > 400) goto no;
+			announce "PVP Room : คุณ "+strcharinfo(0)+" ได้เข้าสู่ห้อง PvP 400 แล้ว !! ใครเจ๋งเข้ามาฆ่าที",0,0x00BB00;
+			warp "pvp_y_2-2",0,0;
+			break;
+		case 4:			
+if ((Class==4023) || (Class==4024) || (Class==4025) || (Class==4026) || (Class==4027) || (Class==4028) || (Class==4029) || (Class==4030) || (Class==4031) || (Class==4032) || (Class==4033) || (Class==4034) || (Class==4035) || (Class==4036) || (Class==4037) || (Class==4038) || (Class==4039) || (Class==4040) || (Class==4041) || (Class==4042) || (Class==4043) || (Class==4044) || (Class==4045))  goto Lbaby;
+mes "[ PVP ]";
+mes "สำหรับอาชีพเบบี้เท่านั้น";
+close;
+Lbaby:
+			announce "PVP Room : คุณ "+strcharinfo(0)+" ได้เข้าสู่ห้อง PvP เบบี้ แล้ว !! ใครเจ๋งเข้ามาฆ่าที",0,0x00BB00;
+			warp "pvp_y_4-2",0,0;
+
+		case 5:
+			mes "[GvG & PvP Express]";
+			mes "ยินดีให้บริการครับ";
+			break;
+no:
+mes "PVP";
+mes "เจ้ามี Status เกินกว่ากำหนด";
+close;
+	}
+	
+OnInit:
+set $@mapuser$,"^000000User^000000";	// ???????? ????????????
+	end;
+}
+
+//-----------------------------------------------------------------------------------------------------------
+
+-	script	DeathMatch	-1,{
+OnPCDieEvent:
+	if (strcharinfo(3) != "guild_vs4") end;
+	sleep2 100;
+	atcommand strcharinfo(0)+"@alive";
+	sc_start 30,600000,10;
+	sc_start 32,600000,10;
+	percentheal 100,100; 
+	warp "guild_vs4",0,0;
+	specialeffect2 582;
+	end;
+}
+
+//guild_vs4	mapflag	PvP
+guild_vs4	mapflag	pvp_noguild
+guild_vs4	mapflag	pvp_noparty
+guild_vs4	mapflag	nodrop
+
+//-----------------------------------------------------------------------------------------------------------
+/*
+-	script	DeathMatch#2	-1,{
+OnPCDieEvent:
+	if (strcharinfo(3) != "pvp_y_8-2") end;
+	sleep2 100;
+	atcommand strcharinfo(0)+"@alive";
+	sc_start 30,600000,10;
+	sc_start 32,600000,10;
+	percentheal 100,100; 
+	warp "pvp_y_8-2",0,0;
+	specialeffect2 582;
+	end;
+}*/
+//pvp_y_8-2	mapflag	nodrop

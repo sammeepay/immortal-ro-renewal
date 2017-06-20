@@ -1,0 +1,783 @@
+//=============================================================
+//			-             mOnster studiO Scripts               -
+//				www.monsterstudio.in.th
+//#############################################################
+
+-	script	mvp	-1,{
+mes "^0000FF[Warp MVP-หาเงิน]^000000";
+mes "^FF0000เรารู้ทุกที่ที่มี MVP^000000";
+mes "^FF0000เรารู้ที่ๆหาเงินไวโคตร^000000";
+mes "^FF0000เจ้าเลือกเลยต้องการจะไปไหน^000000";
+next;
+menu "^3355FFMap รวมบอสเก่า^000000[ ^3355FF" + getmapusers("pvp_y_3-3") + " " + $@mapuser$ + "]",mvp3,"^3355FFMap รวมบอสใหม่^000000[ ^3355FF" + getmapusers("pvp_y_3-2") + " " + $@mapuser$ + "]",mvp4,"^3355FFไปหาเงิน^000000",vip,"^3355FFล่าบอสเก่า^000000",mvp1,"^3355FFล่าบอสใหม่^000000",goboss;
+
+vip:
+menu "^00BB00Money Zone 1 ^000000[ ^3355FF" + getmapusers("plora") + " " + $@mapuser$ + "]",vip1,"^00BB00Money Zone 2 ^000000[ ^3355FF" + getmapusers("plora1") + " " + $@mapuser$ + "]",vip2;
+
+vip1:
+warp "plora",129,171;
+close;
+
+vip2:
+warp "plora1",129,171;
+close;
+
+gd:
+menu "^00BB00กิลด์ดัน ย่อน^000000",gd1,"^00BB00กิลด์ดัน กิฟ^000000",gd2,"^00BB00กิลด์ดัน พรอน^000000",gd3,"^00BB00กิลด์ดัน อาเบอต้า^000000",gd4;
+
+gd1:
+warp "gld_dun01",120,57;
+close;
+
+gd2:
+warp "gld_dun04",110,27;
+close;
+
+gd3:
+warp "gld_dun03",39,176;
+close;
+
+gd4:
+warp "gld_dun02",155,162;
+close;
+
+mvp1:
+menu "Baphomet ( MVP )",bapho1,"Dark Lord ( MVP )",dark,"Doppelganger( MVP )",doppel,"Drake( MVP )",drak,"Eddga( MVP )",edd,"Garm",garm,"Golden Bug( MVP )",gold,"Maya( MVP )",maya,"Mistress( MVP )",mist,"Moonligh( MVP )",moon,"Orc Lord( MVP )",orcl,"Orc Hero( MVP )",orch,"Osiris( MVP )",osir,"Phreeon( MVP )",phre,"Stromy Knight( MVP )",strom,"Turtle Genera( MVP )",turtle,"Lord of the Dead( MVP )",lord,"Dracula( MVP )",dra,"Evil Snake Lord( MVP )",evill,"Samurai Specter( MVP )",samu,"Amon Ra( MVP )",amon,"Tao Gunka( MVP )",tao,"RSX-0806( MVP )",rsx,"Vesper( MVP )",ves,"Lady Tanee( MVP )",lady,"Pharaoh( MVP )",phar,"Satan Morroc( MVP )",satan,"บอสมังกร( MVP )",satan1;
+mvp2:
+menu "Ancient_Tree",arac,"Barorl",corp,"Cursedknight",guar,"Cyberbot",supe,"Dark_Lady",crow,"Darkeddga",king,"Detale1",levi,"Deviling2",mer,"Dragon_Lord",hell,"Dragon_Yellow",kraken,"Entweihen",queen,"Giantjuggernaut",ichth,"Golem",sphinx,"Hight_Mermaid",tutan,"Jinn",godring,"Moonlight_Baby",asmodeus,"Shining_Int",boitata,"Warg",destroyer,"Were_Wolf",dragonk,"Frozen_Corpse",z1,"Dancer_Michel",z2,"Master_Foe",z3,"Mermaid_Little",z4,"Requi",z5,"Ghost_Book",z6,"Nephthys",z7,"Pirate_Ghost",z8,"Predator",z9,"Flat_Salamander",z10,"Gentle_Sting",z11,"Spicy_Dragon",z12,"Standing_Salamander",z13,"Wing_Salamander",z14,"Sea_Tiger",z15,"Torpedo_Fish",z16,"Ichthyosaur",z17,"Addax",z18,"Aposis",z19;
+mvp3:
+warp "pvp_y_3-3",0,0;
+close;
+mvp4:
+warp "pvp_y_3-2",0,0;
+close;
+goboss:
+menu 	"^FF0000•^000000 Addax",Addax,
+	"^FF0000•^000000 Aposis",Aposis,
+	"^FF0000•^000000 Arachne",Arachne,
+	"^FF0000•^000000 Dark Eddga",Dark_Eddga,
+	"^FF0000•^000000 Detale",Detale,
+	"^FF0000•^000000 Dragon Yellow",Dragon_Yellow,
+	"^FF0000•^000000 High Orc Lord",High_Orc_Lord,
+	"^FF0000•^000000 Hollow Poring",Hollow_Poring,
+	"^FF0000•^000000 Moonlight Baby",Moonlight_Baby,
+	"^FF0000•^000000 Skoll Wolf",Skoll_Wolf,
+	"^FF0000•^000000 Spicy Dragon",Spicy_Dragon,
+	"^FF0000•^000000 Tristan",Tristan,
+	"^FF0000•^000000 Black Baphomet",Black_Baphomet,
+	"^FF0000•^000000 Black Infrit",Black_Infrit,
+	"^FF0000•^000000 Cyan Garm",Cyan_Garm,
+	"^FF0000•^000000 Ctan Valkyrie Randgris",Ctan_Valkyrie_Randgris,
+	"^FF0000•^000000 Fabilsag",Fabilsag,
+	"^FF0000•^000000 Gold Baphomet",Gold_Baphomet,
+	"^FF0000•^000000 Gold Valkyrie Randgris",Gold_Valkyrie_Randgris,
+	"^FF0000•^000000 Green Baphomet",Green_Baphomet,
+	"^FF0000•^000000 Green Valkyrie Randgris",Green_Valkyrie_Randgris,
+	"^FF0000•^000000 Okto",Okto,
+	"^FF0000•^000000 Red Baphomet",Red_Baphomet,
+	"^FF0000•^000000 Red Valkyrie Randgris",Red_Valkyrie_Randgris,
+	"^FF0000•^000000 Sea Hyena",Sea_Hyena,
+	"^FF0000•^000000 Tutankhamen",Tutankhamen,
+	"^FF0000•^000000 White Valkyrie Randgris",White_Valkyrie_Randgris,
+	"^FF0000•^000000 Zayon",Zayon,
+	"^FF0000•^000000 Corpehand",Corpehand,
+	"^FF0000•^000000 Lord of Deathz",Lord_of_Deathz,
+	"^FF0000•^000000 Dark Lady",Dark_Lady,
+	"^FF0000•^000000 Thequeena Malthea",Thequeena_Malthea,
+	"^FF0000•^000000 Leviathan",Leviathan,
+	"^FF0000•^000000 Dark Knight",Dark_Knight,
+	"^FF0000•^000000 Whiter",Whiter,
+	"^FF0000•^000000 Siremaid",Siremaid;
+	//"^FF0000•^000000 Moonlight Lady",Moonlight_Lady;
+
+arac:
+warp "gon_dun02",0,0;
+close;
+
+corp:
+warp "in_sphinx4",0,0;
+close;
+
+guar:
+warp "gl_step",0,0;
+close;
+
+supe:
+warp "gl_cas02",0,0;
+close;
+
+crow:
+warp "ice_dun02",0,0;
+close;
+
+king:
+warp "mjo_dun03",0,0;
+close;
+
+levi:
+warp "abyss_03",0,0;
+close;
+
+mer:
+warp "gef_dun01",0,0;
+close;
+
+dragonk:
+warp "beach_dun3",0,0;
+close;
+
+destroyer:
+warp "xmas_dun02",0,0;
+close;
+
+boitata:
+warp "mjo_dun02",0,0;
+close;
+
+asmodeus:
+warp "pay_dun03",0,0;
+close;
+
+godring:
+warp "juperos_02",0,0;
+close;
+
+tutan:
+warp "iz_dun02",0,0;
+close;
+
+sphinx:
+warp "in_sphinx2",0,0;
+close;
+
+ichth:
+warp "lhz_dun02",0,0;
+close;
+
+queen:
+warp "gl_prison",0,0;
+close;
+
+kraken:
+warp "abyss_01",0,0;
+close;
+
+hell:
+warp "abyss_02",0,0;
+close;
+
+z1:
+warp "nif_fild02",0,0;
+close;
+
+z2:
+warp "gon_dun01",0,0;
+close;
+
+z3:
+warp "mjolnir_08",0,0;
+close;
+
+z4:
+warp "gefenia03",0,0;
+close;
+
+z5:
+warp "ama_dun02",0,0;
+close;
+
+z6:
+warp "orcsdun02",0,0;
+close;
+
+z7:
+warp "beach_dun3",0,0;
+close;
+
+z8:
+warp "pay_fild11",0,0;
+close;
+
+z9:
+warp "kh_dun02",0,0;
+close;
+
+z10:
+warp "mjo_dun01",0,0;
+close;
+
+z11:
+warp "izu_dun03",0,0;
+close;
+
+z12:
+warp "mag_dun02",0,0;
+close;
+
+z13:
+warp "moc_fild17",0,0;
+close;
+
+z14:
+warp "tha_t01",0,0;
+close;
+
+z15:
+warp "prt_fild07",0,0;
+close;
+
+z16:
+warp "pay_dun02",0,0;
+close;
+
+z17:
+warp "iz_dun04",0,0;
+close;
+
+z18:
+warp "moc_fild06",0,0;
+close;
+
+z19:
+warp "kh_dun01",0,0;
+close;
+
+//บอสเก่า
+ifrit:
+warp "thor_v03",207,221;
+close;
+zmey:
+warp "mosk_dun03",207,221;
+close;
+phar:
+warp "in_sphinx5",120,212;
+close;
+beel:
+warp "abbey03",120,212;
+close;
+bapho1:
+warp "prt_maze03",69,100;
+close;
+bapho2:
+warp "gl_cas02",133,58;
+close;
+dark:
+warp "gl_chyard",193,29;
+close;
+doppel:
+
+warp "gef_dun02",150,201;
+close;
+drak:
+
+warp "treasure02",58,73;
+close;
+edd:
+
+warp "pay_fild11",171,82;
+close;
+garm:
+
+warp "xmas_fild01",217,163;
+close;
+gold:
+
+warp "prt_sewb4",45,106;
+close;
+maya:
+
+warp "anthell02",113,118;
+close;
+mist:
+
+warp "mjolnir_05",328,67;
+close;
+moon:
+
+warp "pay_dun04",141,141;
+close;
+orcl:
+
+warp "gef_fild14",129,151;
+close;
+orch:
+
+warp "gef_fild14",362,348;
+close;
+osir:
+
+warp "moc_pryd04",192,98;
+close;
+phre:
+
+warp "moc_fild15",137,205;
+close;
+strom:
+
+warp "xmas_dun02",14,112;
+close;
+turtle:
+
+warp "tur_dun04",177,161;
+close;
+lord:
+
+warp "niflheim",104,152;
+close;
+dra:
+
+warp "gef_dun01",188,104;
+close;
+evill:
+
+warp "gon_dun03",140,222;
+close;
+samu:
+
+warp "ama_dun03",198,204;
+close;
+amon:
+
+warp "moc_pryd06",102,85;
+close;
+tao:
+
+warp "beach_dun",186,12;
+close;
+rsx:
+
+warp "ein_dun02",173,149;
+close;
+whit:
+
+warp "lou_dun03",231,114;
+close;
+egn:
+
+warp "lhz_dun02",150,150;
+close;
+ves:
+
+warp "jupe_core",157,84;
+close;
+lady:
+
+warp "ayo_dun02",150,90;
+close;
+det:
+
+warp "abyss_03",108,52;
+close;
+kiel:
+
+warp "kh_dun02",20,57;
+close;
+valk:
+
+warp "odin_tem03",202,285;
+close;
+gloo:
+
+warp "ra_san05",165,206;
+close;
+ktu:
+
+warp "ice_dun03",247,54;
+close;
+atr1:
+
+warp "ra_fild02",353,221;
+close;
+atr2:
+
+warp "ra_fild03",336,289;
+close;
+atr3:
+
+warp "ra_fild04",207,133;
+close;
+atr4:
+
+warp "ve_fild01",56,200;
+close;
+atr5:
+warp "ve_fild02",196,370;
+close;
+
+satan:
+warp "moc_fild22",0,0;
+close;
+
+satan1:
+warp "abyss_03",0,0;
+close;
+
+Addax:
+	set lastmap$,"ars_fild01"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild01",0,0; 
+	end;
+
+Aposis:
+	set lastmap$,"ars_fild02"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild02",0,0; 
+	end;
+
+Arachne:
+	set lastmap$,"ars_fild03"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild03",0,0; 
+	end;
+
+Dark_Eddga:
+	set lastmap$,"ars_fild04"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild04",0,0; 
+	end;
+
+Detale:
+	set lastmap$,"ars_fild05"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild05",0,0; 
+	end;
+
+Dragon_Yellow:
+	set lastmap$,"ars_fild09"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild09",0,0; 
+	end;
+
+High_Orc_Lord:
+	set lastmap$,"ars_fild10"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild10",0,0; 
+	end;
+
+Hollow_Poring:
+	set lastmap$,"ars_fild11"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild11",0,0; 
+	end;
+
+Moonlight_Baby:
+	set lastmap$,"ars_fild12"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild12",0,0; 
+	end;
+
+Skoll_Wolf:
+	set lastmap$,"ars_fild39"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild39",0,0; 
+	end;
+
+Spicy_Dragon:
+	set lastmap$,"ars_fild41"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild41",0,0; 
+	end;
+
+Tristan:
+	set lastmap$,"ars_fild43"; 
+	set lastx,231; 
+	set lasty,101; 
+	warp "ars_fild43",0,0; 
+	end;
+
+// ---- Added by howcolo 20-07-2010
+
+Black_Baphomet:
+	set lastmap$,"ars_fild31"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild31",0,0; 
+	end;
+Black_Infrit:
+	set lastmap$,"ars_fild32"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild32",0,0; 
+	end;
+Cyan_Garm:
+	set lastmap$,"ars_fild37"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild37",0,0; 
+	end;
+Ctan_Valkyrie_Randgris:
+	set lastmap$,"ars_fild47"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild47",0,0; 
+	end;
+Fabilsag:
+	set lastmap$,"ars_fild49"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ars_fild49",0,0; 
+	end;
+Gold_Baphomet:
+	set lastmap$,"gefenia04"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "gefenia04",0,0; 
+	end;
+Gold_Valkyrie_Randgris:
+	set lastmap$,"odin_tem01"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "odin_tem01",0,0; 
+	end;
+Green_Baphomet:
+	set lastmap$,"prt_fild03"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "prt_fild03",0,0; 
+	end;
+Green_Valkyrie_Randgris:
+	set lastmap$,"odin_tem02"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "odin_tem02",0,0; 
+	end;
+Okto:
+	set lastmap$,"nyd_dun01"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "nyd_dun01",0,0; 
+	end;
+Red_Baphomet:
+	set lastmap$,"moc_fild20"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "moc_fild20",0,0; 
+	end;
+Red_Valkyrie_Randgris:
+	set lastmap$,"mosk_fild02"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "mosk_fild02",0,0; 
+	end;
+Sea_Hyena:
+	set lastmap$,"bra_fild01"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "bra_fild01",0,0; 
+	end;
+Tutankhamen:
+	set lastmap$,"in_shinx5"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "in_shinx5",0,0; 
+	end;
+White_Valkyrie_Randgris:
+	set lastmap$,"mjo_dun03"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "mjo_dun03",0,0; 
+	end;
+Zayon:
+	set lastmap$,"ve_fild04"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ve_fild04",0,0; 
+	end;
+Corpehand:
+	set lastmap$,"ra_fild12"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ra_fild12",0,0; 
+	end;
+Lord_of_Deathz:
+	set lastmap$,"ein_fild02"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ein_fild02",0,0; 
+	end;
+Dark_Lady:
+	set lastmap$,"ve_fild03"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "ve_fild03",0,0; 
+	end;
+Thequeena_Malthea:
+	set lastmap$,"man_fild02"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "man_fild02",0,0; 
+	end;
+Leviathan:
+	set lastmap$,"spl_fild03"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "spl_fild03",0,0; 
+	end;
+Dark_Knight:
+	set lastmap$,"mosk_dun01"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "mosk_dun01",0,0; 
+	end;
+Whiter:
+	set lastmap$,"spl_fild02"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "spl_fild02",0,0; 
+	end;
+Siremaid:
+	set lastmap$,"um_fild02"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "um_fild02",0,0; 
+	end;
+Moonlight_Lady:
+	set lastmap$,"nyd_dun01"; 
+	set lastx,0; 
+	set lasty,0; 
+	warp "nyd_dun01",0,0; 
+	end;
+
+OnInit:
+	waitingroom "::หาตัง&ล่าบอส::", 0;
+set $@mapuser$,"^000000User^000000";	// ???????? ????????????
+	end;
+}
+
+
+
+
+c5,157,124,4	duplicate(mvp)	Warp Mvp#1	997
+disco1,111,79,4	duplicate(mvp)	Warp Mvp#2	997
+homeb1,17,57,4	duplicate(mvp)	Warp Mvp#3	997
+homeb2,17,57,4	duplicate(mvp)	Warp Mvp#4	997
+homeb3,17,57,4	duplicate(mvp)	Warp Mvp#5	997
+homeb4,17,57,4	duplicate(mvp)	Warp Mvp#6	997
+
+pvp_y_3-3.gat,0,0,0,0	monster	Osiris	1038,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Baphomet	1039,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Doppelganger	1046,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Mistress	1059,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Golden Thief Bug	1086,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Orc Hero	1087,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Angeling	1096,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Drake	1112,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Eddga	1115,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Ghostring	1120,1,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Maya	1147,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Moonlight Flower	1150,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Pharaoh	1157,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Phreeoni	1159,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Orc Lord	1190,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Stormy Knight	1251,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Garm	1252,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Dark Lord	1272,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Turtle General	1312,1,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Lord of the Dead	1373,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Arc Angeling	1388,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Dracula	1389,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Evil Snake Lord	1418,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Samurai Specter	1492,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Amon Ra	1511,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Deviling	1582,1,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Tao Gunka	1583,1,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	RSX-0806	1623,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	White Lady	1630,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Egnigem Cenia	1658,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Vesper	1685,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Lady Tanee	1688,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Thanatos Phantom	1708,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Detardeurus	1719,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Kiel D-01	1734,1,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Valkyrie Randgris	1751,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Gloom Under Night	1768,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Ktullanux	1779,2,10000,10000,1
+pvp_y_3-3.gat,0,0,0,0	monster	Atros	1785,2,10000,10000,1
+
+
+pvp_y_3-2,0,0,0,0	monster	Addax	2600,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Aposis	2601,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Arachne	2602,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Dark Edgga	2603,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Detale	2604,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Dragon Yellow	2605,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	High Orc Lord	2606,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Hollow Poring	2607,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Moonlight Baby	2608,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Skoll Wolf	2609,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Spicy Dragon	2610,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Tristan	2611,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Black_Baphometr	2613,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Black_Infrit	2614,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Cyan Garm	2615,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Ctan Valkyrie Randgris	2616,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Fabilsag	2617,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Gold Baphomet	2618,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Gold Valkyrie Randgris	2619,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Green Baphomet	2621,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Green Valkyrie Randgris	2622,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Okto	2624,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Red Baphomet	2626,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Red Valkyrie Randgris	2627,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Sea Hyena	2628,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Tutankhamen	2629,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	White Valkyrie Randgris	2630,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Zayon	2631,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Corpehand	2632,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Lord of Deathz	2633,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Dark Lady	2634,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Thequeena Malthea	2635,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Leviathan	2636,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Dark Knight	2637,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Whiter	2638,1,10000,10000,1
+pvp_y_3-2,0,0,0,0	monster	Siremaid	2639,1,10000,10000,1
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+//god_town,129,103,4	script	รับแลกTCG	795,{
+mes "TCG อันมีค่า ลองเลือกดูละกัน ";
+mes "TCG แลกดอกเหลือง หรือ TCG แลก 2 M";
+next;
+mes "เจ้าต้องการแลกอะไร";
+menu "1 TCG แลก ดอกเหลือง 10",VH,"1 TCG ขายได้ 2 M",VA,"cAnc|e",Can;
+
+VH:
+mes "เจ้าแน่ใจละหรอ";
+next;
+if(countitem(7227)<1) goto nv;
+mes "แลกดอกเหลือง ";
+next;
+delitem 7227,1;
+getitem 607,10;
+mes "แลกเปลี่ยนเรียบร้อยแล้ว";
+close;
+
+VA:
+mes "เจ้าแน่ใจละหรอ";
+next;
+if(countitem(7227)<1){close;end;}
+delitem 7227,1;
+set Zeny,Zeny+2000000;
+mes "^FF0000[ รับแลกการ์ดจุติ ]^000000";
+mes "แลกเปลี่ยนเรียบร้อยแล้ว";
+close;
+
+Can:
+mes "ไม่แลกแล้วมาทำไม ไปให้พ้น ลำคาร";
+Cancle:
+close;
+OnInit:
+	waitingroom "::รับซื้อ TCG::", 0;
+	end;
+
+}

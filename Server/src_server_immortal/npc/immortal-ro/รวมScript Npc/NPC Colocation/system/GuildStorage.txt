@@ -1,0 +1,589 @@
+homeb1,19,57,4	script	Guild Storage#01	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb2,19,57,4	script	Guild Storage#02	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb3,19,57,4	script	Guild Storage#03	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb4,19,57,4	script	Guild Storage#04	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb5,19,57,4	script	Guild Storage#05	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb6,19,57,4	script	Guild Storage#06	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb7,19,57,4	script	Guild Storage#07	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb8,19,57,4	script	Guild Storage#08	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb9,19,57,4	script	Guild Storage#09	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}
+
+homeb10,19,57,4	script	Guild Storage#10	415,{
+
+set .@npcname$,"[Guild Storage]";
+set @GID,getcharid(2);
+
+mes .@npcname$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่คุณต้องการครับ";
+next;
+menu "^009933•^000000 เปิดคลังกิลด์",-,"^FF0000•^000000 เปลี่ยนรหัสคลังกิลด์",change,"^FF0000•^000000 ยกเลิก",ende;
+
+mes .@npcname$;
+mes "กรุณาใส่รหัสคลังกิลด์ครับ";
+input .@GuildPW;
+if ( getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto open;
+if ( getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto wrong;
+close;
+
+open:
+if(guildopenstorage0 == 1) goto wait;
+guildopenstorage();
+close;
+
+wait:
+mes .@npcname$;
+mes "สมาชิกท่านอื่นใช้คลังกิลด์อยู่ครับ";
+close;
+
+wrong:
+mes "";
+mes "ท่านใส่รหัสคลังกิลด์ผิด";
+close;
+
+passwort:
+if(@GID == 0) goto L_NoGuild;
+if(strcharinfo(0) == getguildmaster(@GID)) goto change;
+mes .@npcname$;
+mes "หัวกิลด์เท่านั้นที่เปลี่ยนรหัสได้ครับ";
+close;
+
+change:
+mes .@npcname$;
+mes "โปรดใส่รหัสที่คุณต้องการครับ :";
+input .@GuildPW;
+setd "$GuildPW_"+getcharid(2),.@GuildPW;
+mes "รหัสใหม่คือ ^0000FF"+.@GuildPW+"^000000 ครับ";
+close;
+
+L_NoGuild:
+mes .@npcname$;
+mes "คุณไม่ใช่สมาชิกกิลด์นี้ครับ";
+close;
+
+ende:
+mes .@npcname$;
+mes "ยินดีให้บริการครับ";
+close;
+}

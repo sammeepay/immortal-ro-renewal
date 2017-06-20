@@ -1,0 +1,48 @@
+//morocc2,144,75,4	script	Super Novice	899,{
+if(class == 0) goto O_No;
+if(class != 0) goto O_Menu;
+O_Menu:
+mes "[Super Novice] npc ตัวนี้เหมาะสำหรับผู้ที่ลบตัวละครไม่ได้";
+mes "ใช้ ^0000FFRED POINT 5ea^000000 ในการเปลี่ยนเจ้าเป็น ^0000FFNovice^000000 ใหม่!!!";
+next;
+menu "ไม่ต้องการ",no,"ข้าต้องการ",yes;
+yes:
+next;
+mes "[Super Novice]";
+mes "ข้าของ Check ก่อนน่ะ";
+next;
+mes "[Super Novice]";
+mes "กำลังตรวจสอบ......";
+sleep2 2000;
+if(countitem(501)<5) goto O_have;
+delitem 501,5;
+jobchange 0;
+atcommand strcharinfo(0) + "@lvup -99";
+atcommand strcharinfo(0) + "@joblvup -99";
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+specialeffect2(411);
+next;
+mes "[Super Novice]";
+mes "เจ้าได้สิ่งที่เจ้าต้องการแล้ว...";
+close;
+
+O_have:
+mes " ^0000FFเจ้ามีของไม่ครบ หามาครบแล้วมาหาข้าใหม่";
+close;
+
+no:
+close;
+
+O_No:
+mes "[Super Novice]";
+mes "เจ้าเป็น Novice อยู่แล้วหนิ...";
+close;
+
+OnInit: 
+waitingroom "กลับเป็น`Novice อีกครั้ง",0; 
+end; 
+
+
+}

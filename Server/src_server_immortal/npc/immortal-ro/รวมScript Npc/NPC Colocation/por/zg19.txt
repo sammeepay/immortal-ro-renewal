@@ -1,0 +1,337 @@
+//////////////////////// จุติระยะใกล
+-	script	Jutilvs	-1,{
+end;
+OnJuti:
+mes "[^80FF00 เทพจุติ^000000]";
+mes "ต้อง LV มากกว่า 99 เท่านั้น";
+mes "ท่านต้องการจะจุติหรือไม่";
+next;
+menu "จุติฟรีจ๊ะ",Fre,"เก่งแล้วไม่ต้อง",Lnno;
+
+Fre:
+if(baselevel > 98){
+set BaseLevel,BaseLevel + -97;
+set jutifree,jutifree+1;
+mes "[^80FF00 เทพจุติ^000000]";
+mes "ท่านจุติเรียบร้อยแล้ว";
+close;
+end;
+}
+Lno:
+mes "[^80FF00 เทพจุติ^000000]";
+mes "เลเวลไม่ถึง 99 กดมาไมไม่รู้เรื่องเลย";
+close;
+Lnno:
+mes "[^80FF00 เทพจุติ^000000]";
+mes "ว่างมากไงกดเล่นอะหะ";
+close;
+}
+
+-	script	Jutijobs	-1,{
+end;
+OnJutiJob:
+mes "[^80FF00 เทพจุติ^000000]";
+mes "ท่านต้องการจะจุติหรือไม่";
+mes "ท่านจุติจ๊อบไปแล้ว "+JutiSKPoint+" ครั้ง";
+next;
+menu "จุติจ๊อป",Jok,"ไม่ล่ะ",Lno;
+
+Jok:
+set $JutiPoint,$JutiPoint+1;
+mes "[^80FF00 เทพจุติ^000000]";
+mes "งั้นข้าจะบอกเงื่อนไขนะขอรับ";
+mes "การจุติเจ้าจะต้องจ๊อป 40 เท่านั้น";
+mes "จุติไปเพียง 5 เลเวล";
+next;
+menu "ข้าพร้อมสำหรับการจุติแล้ว",Jyes,"ไม่ล่ะ",Lno;
+end;
+
+Jyes:
+if(joblevel < 40) goto lvno;
+mes "[^80FF00 เทพจุติ^000000]";
+mes "อืม... เจ้าหาของมาได้แล้วหรือนี่";
+mes "เด๋วข้าจะทำให้เจ้าเดี๋ยวนี่แหละ";
+next;
+set JutiSKPoint,JutiSKPoint+1;
+set JobLevel,JobLevel + -5;
+close;
+end;
+
+
+F_nozeny:
+	mes "^CC0000[เทพจุติ]^000000";
+	mes "^CC3366คุณมีเงินหรือของไม่ครบนิ ?^000000";
+	close; 
+
+lvno:
+mes "[^80FF00 เทพจุติ^000000]";
+mes "เจ้าเลเวล ไม่ถึง 99 นี่นา";
+mes "ไปซะ ไปให้พ้น";
+close;
+
+
+Lno:
+mes "[^80FF00 เทพจุติ^000000]";
+mes "งั้นคราวหลังมาใหม่ล่ะกันนะ";
+close;
+}
+
+///////////////////////////////////////////////
+
+c5,160,131,4	script	เทพจุติ	811,{
+set .@juti_free,15; // ต้องการให้จุติฟรีกี่ครั้งก็ปรับที่นี่
+set .@juti_tcg,15; // จำนวน TCG ที่ต้องใช้ ต่อ 1 รอบ
+set .@juti_fee,2000000; // จำนวนเงินที่ต้องใช้ต่อ 1 รอบ
+
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "^3355FFท่านต้องการจะจุติหรือไม่^000000";
+mes "^00BB00จุติฟรี 15 รอบนะ^000000";
+next;
+menu "^00BB00จุติใช้อะไรบ้าง ^000000",Lot,"^3355FFจุติจ๊อป^000000",Jok,"^FF0000ข้าพร้อมสำหรับการจุติแล้ว^000000",Lyes,"ไม่ล่ะ",Lno;
+
+check:
+next;
+query_sql "SELECT COUNT(*) FROM `juti_rank` WHERE `account_id` = " + getcharid(3),@created_row;
+if (@created_row == 0){
+	query_sql "INSERT INTO `juti_rank` VALUES (" + getcharid(3) + ",0)";
+}
+query_sql "SELECT `point` FROM `juti_rank` WHERE `account_id` = " + getcharid(3),@digpoint;
+
+Lot:
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "เจ้าจะต้องเตรียมของดังนี้";
+mes "จุติเลเวล : 15 TCG Zeny 2M";
+mes "จุติจ้อบ : 20 TCG";
+mes "จุติจ้อบ1ครั้งจะได้ Point 1 แต้ม";
+mes "ถ้าเจ้าหาครบแล้วให้มาหาข้านะ";
+close;
+
+Lyes:
+if (juti_amount < .@juti_free) goto Lfree;
+if (countitem(7227) < .@juti_tcg) goto Inoo;
+if(baselevel < 99) goto lvno;
+if (Zeny < .@juti_fee) goto zno;
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "อืม... เดี๋ยวข้าจะทำให้เจ้าเดี๋ยวนี่แหละ";
+next;
+delitem 7227,.@juti_tcg;
+set Zeny, Zeny - .@juti_fee;
+set BaseLevel,BaseLevel - 98;
+set juti_amount,juti_amount+1;
+query_sql "INSERT INTO `char` SET `account_id`='"+getcharid(3)+"', `point`=0";
+query_sql "SELECT `point_juti` FROM `char`  WHERE `account_id` = " + getcharid(3),@digpoint;
+query_sql "UPDATE `char` SET `point_juti`=(`point_juti` + 1) WHERE `account_id`='"+getcharid(3)+"'";
+query_sql "SELECT `point_juti1` FROM `char`  WHERE `account_id` = " + getcharid(3),@digpoint;
+query_sql "UPDATE `char` SET `point_juti1`=(`point_juti1` + 1) WHERE `char_id`='"+getcharid(0)+"'";
+Announce "เทพจุติ : ท่าน [ " + strcharinfo(0) + " ] ได้ทำการจุติเลเวลแล้ว !!",16;
+next;
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "เจ้าไปได้แล้ว";
+close;
+
+Lfree:
+if(baselevel < 99) goto lvno;
+set BaseLevel,BaseLevel - 98;
+set juti_amount,juti_amount+1;
+Announce "เทพจุติ : ท่าน [ " + strcharinfo(0) + " ] ได้ทำการจุติเลเวลแล้ว !!",16;
+next;
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "เจ้าไปได้แล้ว";
+close;
+
+Jok:
+mes "[^80FF00 เทพจุติ^000000]";
+mes "งั้นข้าจะบอกเงื่อนไขนะขอรับ";
+mes "การจุติจะเจ้าจะต้องจ๊อป  50 เท่านั้น";
+mes "ใช้การ์ด TCG 20 ใบ ";
+mes "จุติไปเพียง 5 จ๊อบเลเวล";
+next;
+menu "ข้าพร้อมสำหรับการจุติแล้ว",Jyes,"ไม่ล่ะ",Lno;
+end;
+
+Jyes:
+if (countitem(7227) < 20) goto Ino;
+if(joblevel < 0 ) goto lvno;
+mes "[^80FF00 เทพจุติ^000000]";
+mes "อืม... เจ้าหาของมาได้แล้วหรือนี่";
+mes "เด๋วข้าจะทำให้เจ้าเดี๋ยวนี่แหละ";
+next;
+delitem 7227,20;
+set JobLevel,JobLevel + -5;
+close;
+end;
+
+Inoo:
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "เจ้า ยังหาของมาไม่ครบนี่น่าข้าต้องการ TCG 15 ใบ";
+mes "ไปซะ ไปให้พ้น";
+close;
+
+Ino:
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "เจ้า ยังหาของมาไม่ครบนี่น่าข้าต้องการ TCG 20 ใบ";
+mes "ไปซะ ไปให้พ้น";
+close;
+
+
+lvno:
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "เจ้าเลเวล ไม่ถึง 99 นี่นา";
+mes "ไปซะ ไปให้พ้น";
+close;
+
+
+zno:
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "เจ้ามีเงินไม่ถึงนี่น่า";
+mes "ไปซะ ไปให้พ้น";
+close;
+
+Lno:
+mes "[^FF0000 เทพจุติ ^000000]";
+mes "งั้นคราวหลังมาใหม่ล่ะกันนะ";
+close;
+
+OnInit:
+waitingroom "   >>  จุติ  <<",0;
+end;
+}
+
+//=============================================================
+//			-             mOnster studiO Scripts               -
+//				www.monsterstudio.in.th
+//#############################################################
+
+morocc,0,0,0	script	Ranking1	-1,{
+	end;
+
+OnWhisperGlobal:
+	if (@whispervar0$ == "") end;
+	set @npc$,"[Ranking]";
+	set .@command$,@whispervar0$;
+	if ( (getgmlevel() >= 99) && (.@command$ == "Admin") ) {
+		mes @npc$;
+		mes "ระบบจัดการคะแนน";
+		next;
+		switch (select("- Reset คะแนน PVP","- Reset คะแนน MVP","- Reset คะแนน EMP","- Reset คะแนน REP")) {
+		case 1:
+			query_sql "UPDATE `char` SET `point_pvp`='0'";
+			mes @npc$;
+			mes "Reset คะแนน PVP";
+			mes "เรียบร้อยแล้ว";
+			close;
+		break;
+		case 2:
+			query_sql "UPDATE `char` SET `point_mvp`='0'";
+			mes @npc$;
+			mes "Reset คะแนน MVP";
+			mes "เรียบร้อยแล้ว";
+			close;
+		break;
+		case 3:
+			query_sql "UPDATE `char` SET `point_emp`='0'";
+			mes @npc$;
+			mes "Reset คะแนน EMP";
+			mes "เรียบร้อยแล้ว";
+			close;
+		break;
+		case 4:
+			query_sql "UPDATE `login` SET `point_rep`='0'";
+			mes @npc$;
+			mes "Reset คะแนน REP";
+			mes "เรียบร้อยแล้ว";
+			close;
+		break;
+		}
+	} else if ( (.@command$ == "pvp") || (.@command$ == "PVP") ) {
+OnShow_PVP:
+		query_sql "SELECT `name`,`point_pvp` FROM `char` ORDER BY `point_pvp` DESC LIMIT 10",.@name$,.@point;
+		dispbottom "======================= PVP RANKING =======================";
+		for (set .@i,0; .@i < 10; set .@i,.@i+1) {
+			if (.@point[.@i] == 0) set .@name$[.@i],"None";
+			dispbottom "["+(.@i+1)+"]  "+.@name$[.@i]+" : คะแนน " +.@point[.@i]+"";
+		}
+		dispbottom "---------------------------------------------------------";
+		query_sql "SELECT `point_pvp` FROM `char` WHERE `char_id`='"+getcharid(0)+"'",.@cpoint;
+		dispbottom "คุณมีคะแนน : "+.@cpoint;
+		dispbottom "========================================================";
+	} else if ( (.@command$ == "mvp") || (.@command$ == "MVP") ) {
+OnShow_MVP:
+		query_sql "SELECT `name`,`point_mvp` FROM `char` ORDER BY `point_mvp` DESC LIMIT 10",.@name$,.@point;
+		dispbottom "======================= MVP RANKING =======================";
+		for (set .@i,0; .@i < 10; set .@i,.@i+1) {
+			if (.@point[.@i] == 0) set .@name$[.@i],"None";
+			dispbottom "["+(.@i+1)+"]  "+.@name$[.@i]+" : คะแนน " +.@point[.@i]+"";
+		}
+		dispbottom "---------------------------------------------------------";
+		query_sql "SELECT `point_mvp` FROM `char` WHERE `char_id`='"+getcharid(0)+"'",.@cpoint;
+		dispbottom "คุณมีคะแนน : "+.@cpoint;
+		dispbottom "========================================================";
+	} else if ( (.@command$ == "emp") || (.@command$ == "EMP") ) {
+OnShow_EMP:
+		query_sql "SELECT `name`,`point_emp` FROM `char` ORDER BY `point_emp` DESC LIMIT 10",.@name$,.@point;
+		dispbottom "======================= EMP RANKING =======================";
+		for (set .@i,0; .@i < 10; set .@i,.@i+1) {
+			if (.@point[.@i] == 0) set .@name$[.@i],"None";
+			dispbottom "["+(.@i+1)+"]  "+.@name$[.@i]+" : คะแนน " +.@point[.@i]+"";
+		}
+		dispbottom "---------------------------------------------------------";
+		query_sql "SELECT `point_emp` FROM `char` WHERE `char_id`='"+getcharid(0)+"'",.@cpoint;
+		dispbottom "คุณมีคะแนน : "+.@cpoint;
+		dispbottom "========================================================";
+	} else if ( (.@command$ == "rep") || (.@command$ == "REP") ) {
+OnShow_REP:
+		query_sql "SELECT `name`,`point_juti1` FROM `char` ORDER BY `point_juti1` DESC LIMIT 10",.@name$,.@point;
+		dispbottom "======================= JUTI RANKING =======================";
+		for (set .@i,0; .@i < 10; set .@i,.@i+1) {
+			if (.@point[.@i] == 0) set .@name$[.@i],"None";
+			dispbottom "["+(.@i+1)+"]  "+.@name$[.@i]+" : คะแนน " +.@point[.@i]+"";
+		}
+		dispbottom "---------------------------------------------------------";
+		query_sql "SELECT `point_juti1` FROM `char` WHERE `char_id`='"+getcharid(0)+"'",.@cpoint;
+		dispbottom "คุณมีคะแนน : "+.@cpoint;
+		dispbottom "========================================================";
+	}
+	end;
+}
+
+-	script	Rankingms1	-1,{
+	set @npc$,"^00BFFF[ ผู้บันทึกคะแนน ]^000000";
+	mes @npc$;
+	mes "สวัสดีค่ะ อิฉั้นเป็นผู้แสดงอันดับจุติ";
+	mes "ของ Server ค่ะ";
+	mes "ต้องการตรวจสอบไหม ";
+	next;
+	switch (select("^990000- Juti Ranking^000000","^FFCC00- ไม่ดูดูกว่า^000000")) {
+	case 1:
+mes "[^80FF00 ข้อแลกเปลี่ยน^000000]";
+mes "ข้าต้องการ TCG 1 ea ในการดู";
+next;
+if (countitem(7227) < 1) goto Ino;
+delitem 7227,1;
+
+		mes @npc$;
+		mes "แสดงข้อมูลเรียบร้อยแล้ว";
+		close2;
+		doevent "Ranking1::OnShow_REP";
+	break;
+	case 2:
+mes "[^FF0000 จัดอันดับ Juti ^000000]";
+mes "งั้นคราวหลังมาใหม่ล่ะกันนะ";
+close;
+	break;
+	}
+	end;
+Ino:
+mes "[^FF0000 จัดอันดับ Juti ^000000]";
+mes "เจ้า ยังหาของมาไม่ครบนี่น่าข้าต้องการ TCG 1 ใบ";
+mes "ไปซะ ไปให้พ้น";
+close;
+
+OnInit:
+	waitingroom "   Ranking Juti",0;
+	end;
+}
+
+c5,170,146,5	duplicate(Rankingms1)	จัดอันดับจุติ#01	973
+

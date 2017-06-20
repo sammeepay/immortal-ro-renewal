@@ -1,0 +1,10 @@
+-	script	WarpSavePoints::Warper	-1,{
+mes "[ ^FF0000SavePoint^000000 ]";
+mes "^FF0000คุณต้องการกลับจุดเซฟหรือไม่^000000... ??";
+next;
+menu "- ^FF0000ต้องการ^000000",-,"- ^6600FFไม่ต้องการ^000000",closed;
+warp "SavePoint",0,0;
+close;
+closed:
+close;
+}

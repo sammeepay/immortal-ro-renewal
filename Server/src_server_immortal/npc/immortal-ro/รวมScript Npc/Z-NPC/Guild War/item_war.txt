@@ -1,0 +1,162 @@
+
+-	script	System_GuildWainner	-1,{
+end;
+
+OnInit:
+disablenpc "G1";
+disablenpc "G2";
+disablenpc "G3";
+disablenpc "G4";
+disablenpc "G5";
+disablenpc "G6";
+disablenpc "G7";
+disablenpc "G8";
+disablenpc "G9";
+disablenpc "G10";
+disablenpc "G11";
+disablenpc "G12";
+end;
+
+OnAgitEnd:
+enablenpc "G1";
+enablenpc "G2";
+enablenpc "G3";
+enablenpc "G4";
+enablenpc "G5";
+enablenpc "G6";
+enablenpc "G7";
+enablenpc "G8";
+enablenpc "G9";
+enablenpc "G10";
+enablenpc "G11";
+enablenpc "G12";
+end;
+
+OnAgitStart:
+disablenpc "G1";
+disablenpc "G2";
+disablenpc "G3";
+disablenpc "G4";
+disablenpc "G5";
+disablenpc "G6";
+disablenpc "G7";
+disablenpc "G8";
+disablenpc "G9";
+disablenpc "G10";
+disablenpc "G11";
+disablenpc "G12";
+end;
+}
+
+function	script	FunGuildPoint	{
+getitem 29023,1;
+return 0;
+}
+
+morocc,119,52,4	script	Skoegul::G1	888,{
+set @GID,getcastledata("prtg_cas04",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G1";
+close;
+}
+
+morocc,122,52,4	script	Nuenberg::G2	888,{
+set @GID,getcastledata("aldeg_cas03",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G2";
+close;
+}
+
+morocc,125,52,4	script	Fadhgridh::G3	888,{
+set @GID,getcastledata("prtg_cas03",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G3";
+close;
+}
+
+morocc,128,52,4	script	Kriemhild::G4	888,{
+set @GID,getcastledata("prtg_cas01",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G4";
+close;
+}
+
+morocc,131,52,4	script	Bright Arbor::G5	888,{
+set @GID,getcastledata("payg_cas01",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G5";
+close;
+}
+
+morocc,134,52,4	script	Sacred Altar::G6	888,{
+set @GID,getcastledata("payg_cas04",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G6";
+close;
+}
+
+morocc,137,52,4	script	Holy Shadow::G7	888,{
+set @GID,getcastledata("payg_cas03",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G7";
+close;
+}
+
+morocc,140,52,4	script	Bergel::G8	888,{
+set @GID,getcastledata("gefg_cas04",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G8";
+close;
+}
+
+morocc,143,52,4	script	Repherion::G9	888,{
+set @GID,getcastledata("gefg_cas01",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G9";
+close;
+}
+
+morocc,146,52,4	script	Eeyolbriggar::G10	888,{
+set @GID,getcastledata("gefg_cas02",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G10";
+close;
+}
+
+morocc,149,52,4	script	Rothenburg::G11	888,{
+set @GID,getcastledata("aldeg_cas05",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G11";
+close;
+}
+
+morocc,152,52,4	script	Wuerzburg::G12	888,{
+set @GID,getcastledata("aldeg_cas04",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G12";
+close;
+}

@@ -1,0 +1,184 @@
+-	script	Upgrade::cardremove	-1,{
+
+set @cardbatzeny1,500000; //ค่าถอดการ์ด
+set @cardbatzeny2,100000; //ค่าบริการเพิ่มต่อการ์ดแต่ละใบ
+
+set @failbatrate1,0; //อัตรา การ์ด และ Item เสียหาย ทั้งคู่
+set @failbatrate2,4; //เสียหายอย่างใดอย่างหนึ่ง
+set @failbatrate3,10; //ไม่สามารถถอดได้ แต่ Item ไม่เสียหาย
+set @failbatrate4,@failbatrate1+@failbatrate2+@failbatrate3; //ไม่สามารถถอดได้ แต่ Item ไม่เสียหาย
+
+UPGRADEROOT:
+mes "[Card Remove]";
+mes "สวัสดีค่ะ ยินดีให้บริการค่ะ";
+mes "บริการถอดการ์ดค่ะ";
+next;
+mes "[Card Remove]";
+mes "ค่าบริการครั้งล่ะ "+ @cardbatzeny1 +" Zeny";
+mes "ค่าถอดการ์ดใบละ "+ @cardbatzeny2 +" Zeny";
+mes "คุณต้องการถอดการ์ดมั้ยค่ะ";
+next;
+menu "^FF0000•^000000 ต้องการ",REMOVEMENU,"^FF0000•^000000 ยกเลิก",CLOSEOUT;
+
+REMOVEMENU:
+mes "[Card Remove]";
+mes "คุณต้องการถอดการ์ดส่วนไหนค่ะ";
+next;
+menu "ยกเลิก",CLOSEOUT,
+getequipname(1),SLOT1,
+getequipname(2),SLOT2,
+getequipname(3),SLOT3,
+getequipname(4),SLOT4,
+getequipname(5),SLOT5,
+getequipname(6),SLOT6,
+getequipname(7),SLOT7,
+getequipname(8),SLOT8,
+getequipname(9),SLOT9,
+getequipname(10),SLOT10;
+
+SLOT1:
+set @part,1;
+goto CARDNUMCHECK;
+
+SLOT2:
+set @part,2;
+goto CARDNUMCHECK;
+
+SLOT3:
+set @part,3;
+goto CARDNUMCHECK;
+
+SLOT4:
+set @part,4;
+goto CARDNUMCHECK;
+
+SLOT5:
+set @part,5;
+goto CARDNUMCHECK;
+
+SLOT6:
+set @part,6;
+goto CARDNUMCHECK;
+
+SLOT7:
+set @part,7;
+goto CARDNUMCHECK;
+
+SLOT8:
+set @part,8;
+goto CARDNUMCHECK;
+
+SLOT9:
+set @part,9;
+goto CARDNUMCHECK;
+
+SLOT10:
+set @part,10;
+goto CARDNUMCHECK;
+
+CARDNUMCHECK:
+if(getequipcardcnt(@part) == 0) goto DENYCARDCOUNT;
+set @cardcount,getequipcardcnt(@part);
+set @cardbatzenyall, (@cardbatzeny2 * @cardcount) + @cardbatzeny1;
+mes "[Card Remove]";
+mes "มีการ์ด [ " + @cardcount + " ] ใบ";
+mes "รวมค่าบริการ "+ @cardbatzenyall +" zeny";
+mes "คุณต้องยืนยันที่จะถอดการ์ดค่ะ";
+next;
+menu "^FF0000•^000000 ยืนยัน",REMOVECARDWARNING,"^FF0000•^000000 ยกเลิก",CLOSEOUT;
+
+REMOVECARDWARNING:
+mes "[Card Remove]";
+mes "อัตราการล้มเหลวค่ะ";
+mes "การ์ด & Item ยังอยู่ ["+ @failbatrate3 +"] %";
+mes "การ์ด & Item หายไป ["+ @failbatrate1 +"] %";
+mes "การ์ด หรือ Item หายไป ["+ @failbatrate2 +"] %";
+mes "รวมอัตราการล้มเหลว ["+ @failbatrate4 +"] %";
+mes "คุณต้องยืนยันที่จะถอดการ์ดค่ะ";
+next;
+menu "^FF0000•^000000 ยืนยัน",-,"^FF0000•^000000 ยกเลิก",CLOSEOUT;
+
+mes "[Card Remove]";
+mes "กรุณาเลือกดังต่อไปนี้ค่ะ";
+next;
+menu "^FF0000•^000000 ข้าจะเลือกให้ Item ยังคงอยู่",PRIORITYITEM,
+"^FF0000•^000000 ข้าเลือกให้ Card ยังคงอยู่",PRIORITYCARD;
+
+PRIORITYITEM:
+set @failtype,1;
+goto REMOVECARD;
+
+PRIORITYCARD:
+set @failtype,2;
+goto REMOVECARD;
+
+REMOVECARD:
+mes "[Card Remove]";
+mes "กำลังจะถอดการ์ดแล้วนะค่ะ";
+next;
+if((zeny < @cardbatzenyall)) goto DENYMATERIAL;
+set zeny,zeny - @cardbatzenyall;
+
+set @failchance,rand(100);
+set @failbatratecal1,@failbatrate1;
+set @failbatratecal2,@failbatrate1+@failbatrate2;
+set @failbatratecal3,@failbatrate1+@failbatrate2+@failbatrate3;
+
+if(@failchance < @failbatratecal1) goto FAILREMOVECARD0;
+if((@failchance < @failbatratecal2) && (@failtype == 1)) goto FAILREMOVECARD1;
+if((@failchance < @failbatratecal2) && (@failtype == 2)) goto FAILREMOVECARD2;
+if(@failchance < @failbatratecal3) goto FAILREMOVECARD3;
+
+successremovecards @part;
+mes "[Card Remove]";
+mes "เรียบร้อยแล้วค่ะ ยินดีให้บริการ";
+close;
+
+FAILREMOVECARD0:
+failedremovecards @part,0;
+mes "[Card Remove]";
+mes "ล้มเหลวค่ะ";
+mes "Item และ การ์ดหายไปค่ะ";
+close;
+
+FAILREMOVECARD1:
+failedremovecards @part,1;
+mes "[Card Remove]";
+mes "ล้มเหลวค่ะ";
+mes "การ์ดหายไป แต่ Item ยังอยู่ค่ะ";
+close;
+
+FAILREMOVECARD2:
+failedremovecards @part,2;
+mes "[Card Remove]";
+mes "ล้มเหลวค่ะ";
+mes "Item หายไป แต่การ์ดยังอยู่ค่ะ";
+close;
+
+FAILREMOVECARD3:
+failedremovecards @part,3;
+mes "[Card Remove]";
+mes "ล้มเหลวค่ะ";
+mes "Item และ การ์ดยังอยู่ค่ะ";
+close;
+
+DENYCARDCOUNT:
+mes "[Card Remove]";
+mes "Item นี้ไม่มีการ์ดค่ะ";
+close;
+
+DENYMATERIAL:
+mes "[Card Remove]";
+mes "คุณไม่มีค่าบริการค่ะ";
+close;
+
+CLOSEOUT:
+mes "[Card Remove]";
+mes "ยินดีให้บริการค่ะ";
+close;
+OnInit:
+waitingroom "::ถอดการ์ด::",0;
+End;
+}
+
+c5,124,78,4	duplicate(cardremove)	Card Remove#01	750

@@ -1,0 +1,253 @@
+pvp_n_8-5.gat,87,113,6	script	Baphomet	1039,{
+mes "[^FF0000Baphomet^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild01.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild01.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìBaphometî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild01.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Baphomet^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Baphomet",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,93,113,6	script	Thanatos	1708,{
+mes "[^FF0000Thanatos^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild02.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild02.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìThanatosî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild02.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Thanatos^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Thanatos",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,96,119,6	script	Ktullanux	1779,{
+mes "[^FF0000Ktullanux^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild03.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild03.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìKtullanuxî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild03.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Ktullanux^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Ktullanux",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,106,113,4	script	Kiel-d01	1734,{
+mes "[^FF0000Kiel-d01^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild04.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild04.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìKiel-d01î ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild04.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Kiel-d01^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Kiel-d01",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,112,113,3	script	Lord Knight	1646,{
+mes "[^FF0000Lord Knight^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild05.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild05.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìLord Knightî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild05.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Lord Knight^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Lord Knight",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,103,119,4	script	Groom Under Knight	1768,{
+mes "[^FF0000Groom Under Knight^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild06.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild06.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìGroom Under Knightî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild06.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Groom Under Knight^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Groom Under Knight",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,90,119,5	script	Assassin Cross	1647,{
+mes "[^FF0000Assassin Cross^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild07.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild07.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìAssassin Crossî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild07.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Assassin Cross^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Assassin Cross",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,109,119,3	script	Whitesmith	1648,{
+mes "[^FF0000Whitesmith^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild08.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild08.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìWhitesmithî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild08.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Whitesmith^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Whitesmith",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,90,107,5	script	High Priest	1649,{
+mes "[^FF0000High Priest^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild09.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild09.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìHigh Priestî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild09.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000High Priest^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "High Priest",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,109,107,3	script	Sniper	1650,{
+mes "[^FF0000Sniper^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild10.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild10.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìSniperî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild10.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Sniper^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Sniper",0;
+end;
+}
+
+//==================================================================
+
+pvp_n_8-5.gat,99,107,4	script	Valkyrie	1751,{
+mes "[^FF0000Valkyrie^000000]";
+mes "^FFCCFF§ÿ≥‰¡Ë¡’∑“ß‡≈◊Õ°!!!^000000";
+menu "^CC0000[ ÕÕ°µ“¡≈Ë“!!! ] ["+getmapusers("prt_fild11.gat")+"/5]^000000",map1;
+map1:
+if (getmapusers("prt_fild11.gat")==5) goto Error;
+announce "§ÿ≥ ["+strcharinfo(0)+"] ‰¥È‰ª≈Ë“ ìValkyrieî ·≈È«§Ë–",0,0xFF9966;
+specialeffect2(587);
+warp "prt_fild11.gat",0,0;
+close;
+
+Error:
+mes "[^FF0000Valkyrie^000000]";
+mes "^FFCCFF§π‡µÁ¡!!!^000000";
+
+OnInit:
+Waitingroom "Valkyrie",0;
+end;
+}
+
+//==================================================================
+
+prt_fild01,0,0,0,0	monster	Baphomet	1039,1,7200000,3600000,0
+prt_fild02,0,0,0,0	monster	Thanatos	1708,1,7200000,3600000,0
+prt_fild03,0,0,0,0	monster	Ktullanux	1779,1,7200000,3600000,0
+prt_fild04,0,0,0,0	monster	Kiel-d01	1734,1,7200000,3600000,0
+prt_fild05,0,0,0,0	monster	Lord Knight	1646,1,7200000,3600000,0
+prt_fild06,0,0,0,0	monster	Gloom Under Knight	1768,1,7200000,3600000,0
+prt_fild07,0,0,0,0	monster	Assassin Cross	1647,1,7200000,3600000,0
+prt_fild08,0,0,0,0	monster	Whitesmith	1648,1,7200000,3600000,0
+prt_fild09,0,0,0,0	monster	High Priest	1649,1,7200000,3600000,0
+prt_fild10,0,0,0,0	monster	Sniper	1650,1,7200000,3600000,0
+prt_fild11,0,0,0,0	monster	Valkyrie	1751,1,7200000,3600000,0

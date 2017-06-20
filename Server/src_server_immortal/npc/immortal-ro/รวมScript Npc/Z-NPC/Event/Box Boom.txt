@@ -1,0 +1,250 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+///----------- แก้ไข ข้อมูลต่างๆ ----------------\\\
+-	script	SettingBoxBoom	-1,{
+Oninit:
+set $MapBB$,"force_1-1";		//--- ชื่อแมป  ( ไม่แนะนำให้แก้ไข )
+set $ibb,29000;			//-- ของรางวัล รหัส
+set $abb,300;				//-- จำนวนของรางวัล
+end;
+
+///------------ เวลากิจกรรม ----------\\\
+OnClock0035:
+OnClock0535:
+OnClock1035:
+OnClock1535:
+OnClock2035:
+initnpctimer "TimerBox";
+end;
+}
+
+-	script	BoxBoom	-1,{
+if(getgmlevel() >= 90) goto Gm;
+Main:
+mes "[Box BOoM]";
+mes "กิจกรรม สุดโหดแห่งปี";
+mes "^FF0000Box BOoM !!^000000";
+next;
+if($@BoxStart == 1) goto Start;
+menu "^000080รายละเอียด",read,"ไม่มีไร",exit;
+
+Start:
+menu "^006611เข้าร่วมกิจกรรม",-,"^000080รายละเอียด",read,"ไม่มีไร",exit;
+if($@BoxStart == 0) close;
+warp "force_1-1",98,99;
+close;
+
+read:
+mes "[Box BOoM]";
+mes "กิจกรรมนี้จะให้ ผู้เล่น";
+mes "มานั่งเปิดกล่อง";
+mes "เพื่อลุ้นว่า";
+mes "กล่องไหน มีสมบัติ";
+mes "หรือ กล่องไหน ติดระเบิด";
+next;
+mes "[Box BOoM]";
+mes "มันคงลุ้นน่าดู";
+mes "เพราะมันมี C4 ที่";
+mes "พร้อมจะทำให้ ผู้เข้าร่วมกิจกรรมทุกคน ตาย !!";
+next;
+mes "[Box BOoM]";
+mes "แนะนำว่า พก ดวงไปเยอะๆ ^^ ";
+mes " พร้อมแล้วไปกันเลย";
+
+close;
+
+Gm:
+mes "[Box BOoM]";
+mes "ท่าน GM Master ไม่ทราบว่าต้องการทำอะไร";
+next;
+menu "ไม่มีอะไร",Main,"^006611เปิดกิจกรรม",Open,"^FF0000ปิดกิจกรรม",Cancel;
+Open:
+menu "^FF0000ยกเลิก",exit,"^006611ตกลง",-;
+if($@BoxStart == 1){ mes "^006611ขณะนี้ กิจกรรมเปิดไว้อยู่แล้ว"; close; }
+if(getmapusers(""+$MapBB$+"") >= 1){ mes "^006611ขณะนี้ กิจกรรมเปิดไว้อยู่แล้ว"; close; }
+initnpctimer "TimerBox";
+mes "เรียบร้อยแล้ว !!!";
+close;
+
+Cancel:
+menu "^FF0000ยกเลิก",exit,"^006611ตกลง",-;
+if($@BoxStart == 0){ mes "^FF0000ขณะนี้ กิจกรรมปิดไว้อยู่แล้ว"; close; }
+killmonsterall ""+$MapBB$+"";
+mapwarp ""+$MapBB$+"","morocc",0,0;
+stopnpctimer "TimerBox";
+mes "เรียบร้อยแล้ว !!!";
+close;
+
+exit:
+close;
+
+OnInit:
+waitingroom "-> B o x b O o m",0;
+end;
+}
+
+-	script	TimerBox	-1,{
+
+OnTimer1000:
+set $@BoxStart,1;
+announce " !!! ... กิจกรรม [Box BOom] เริ่มขึ้นแล้ว ... !!!",0,0x0DFF0D;
+end;
+
+OnTimer5000:
+announce " !!! ... กิจกรรม [Box BOom] มีเวลาเข้าร่วมกิจกรรม 3 นาที ... !!!",0,0x0DFF0D;
+end;
+
+OnTimer65000:
+announce " !!! ... กิจกรรม [Box BOom] มีเวลาเข้าร่วมกิจกรรม 2 นาที ... !!!",0,0x0DFF0D;
+end;
+
+OnTimer125000:
+announce " !!! ... กิจกรรม [Box BOom] มีเวลาเข้าร่วมกิจกรรม 1 นาที ... !!!",0,0x0DFF0D;
+end;
+
+OnTimer185000:
+set $@BoxStart,0;
+announce " !!! ... กิจกรรม [Box BOom] ปิดรับผู้เล่นแล้ว ... !!!",0,0x0DFF0D;
+end;
+
+
+OnTimer190000:
+if(getmapusers(""+$MapBB$+"") < 1) goto notplayer;
+mapannounce ""+$MapBB$+"","[Box BOom] : มีเวลาเตรียมตัว 30 วินาที ตกลง กันดีๆ นะไม่งั้น ตู้มม ทั้งแมป  ",0,0x0DFF0D;
+end;
+
+OnTimer195000:
+mapannounce ""+$MapBB$+"","[Box BOom] : จะมีกล่องระเบิดทั้งหมด 50 กล่อง , มีกล่อง C4 5 กล่อง , มีสมบัติ 10 กล่อง",0,0x0DFF0D;
+end;
+
+OnTimer200000:
+mapannounce ""+$MapBB$+"","[Box BOom] : หากเปิดได้ C4 จะทำให้ ตายยกแมป !!!",0,0x0DFF0D;
+end;
+
+OnTimer220000:
+mapannounce ""+$MapBB$+"","[Box BOom] : เอาละ .. หมดเวลาเตรียมตัวแล้ว !!",0,0x0DFF0D;
+end;
+
+OnTimer225000:
+stopnpctimer;
+callfunc "boxboom";
+end;
+
+notplayer:
+announce " !!! ... กิจกรรม [Box BOom] ไม่มีผู้เข้าร่วมกิจกรรม กิจกรรมถูกยกเลิก ... !!!",0,0x0DFF0D;
+stopnpctimer;
+mapwarp ""+$MapBB$+"","morocc",0,0;
+end;
+}
+
+function	script	boxboom	{
+mapannounce ""+$MapBB$+"","[Box BOom] : กล่อง มรณะ ได้ปรากฏขึ้นมาแล้ว !!! ",0,0x0DFF0D;
+sleep2 3000;
+mapannounce ""+$MapBB$+"","[Box BOom] : โปรดคิดก่อนจะเปิดแต่ละกล่อง !!!",0,0x0DFF0D;
+
+areamonster ""+$MapBB$+"",88,111,111,88,"B O X B O O M",1334,50,"BOXOPEN::OnOpen_Boom";
+areamonster ""+$MapBB$+"",88,111,111,88,"B O X B O O M",1334,5,"BOXOPEN::OnOpen_C4";
+areamonster ""+$MapBB$+"",88,111,111,88,"B O X B O O M",1334,10,"BOXOPEN::OnOpen_Ok";
+return;
+}
+
+-	script	BOXOPEN	-1,{
+
+OnOpen_Boom:
+set .@Rate,rand(100);
+if(.@Rate < 10) goto Chock;
+mapannounce ""+$MapBB$+"","[Box BOom] : * "+strcharinfo(0)+" * เปิดเจอระเบิด ถูกส่งกลับบ้านเกิด !!!",0,0x0DFF0D;
+specialeffect2 183;
+sleep2 1000;
+if(getmapusers(""+$MapBB$+"") <= 1) goto lastplayer;
+warp "SavePoint",0,0;
+end;
+
+Chock:
+mapannounce ""+$MapBB$+"","[Box BOom] : * "+strcharinfo(0)+" * เปิดเจอระเบิด เฮ้อ รอดไป ระเบิดด้าน !!!",0,0x0DFF0D;
+specialeffect2 147;
+warp "SavePoint",0,0;
+end;
+
+OnOpen_C4:
+mapannounce ""+$MapBB$+"","[Box BOom] : * "+strcharinfo(0)+" * เปิดเจอระเบิด C4 แย่ละ !!!",0,0x0DFF0D;
+donpcevent "LandEffect1::OnBoom";
+donpcevent "LandEffect2::OnBoom";
+donpcevent "LandEffect3::OnBoom";
+donpcevent "LandEffect4::OnBoom";
+donpcevent "LandEffect5::OnBoom";
+killmonsterall ""+$MapBB$+"";
+sleep2 2000;
+mapannounce ""+$MapBB$+"","[Box BOom] : หว๊ออออ C4 ระเบิด ตาย ยกแมป !!!",0,0x0DFF0D;
+killmonsterall ""+$MapBB$+"";
+mapwarp ""+$MapBB$+"","morocc",0,0;
+end;
+
+OnOpen_Ok:
+mapannounce ""+$MapBB$+"","[Box BOom] : * "+strcharinfo(0)+" * เป็นผู้โชคดีเปิดเจอ กล่อง สมบัติ !!!",0,0x0DFF0D;
+getitem $ibb,$abb;
+dispbottom "คุณได้รับ "+$ibb+" 300 Poring Coin.";
+end;
+
+lastplayer:
+sleep2 1000;
+announce " !!! ... กิจกรรม [Box BOom] จบลงแล้ว ... !!!",0,0x0DFF0D;
+killmonsterall ""+$MapBB$+"";
+warp "SavePoint",0,0;
+mapwarp ""+$MapBB$+"","morocc",0,0;
+end;
+}
+
+force_1-1,91,108,4	script	LandEffect1	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+force_1-1,108,108,4	script	LandEffect2	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+force_1-1,108,92,4	script	LandEffect3	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+force_1-1,91,92,4	script	LandEffect4	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+force_1-1,99,100,4	script	LandEffect5	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+
+}
+
+///------ MAP FLAG ---------\\\
+force_1-1	mapflag	noreturn
+force_1-1	mapflag	noteleport
+force_1-1	mapflag	nowarp
+force_1-1	mapflag	nowarpto
+force_1-1	mapflag	notrade
+force_1-1	mapflag	nodrop
+force_1-1	mapflag	noskill
+force_1-1	mapflag	noloot
+force_1-1	mapflag	nobranch
+
+
+morocc,201,66,5	duplicate(BoxBoom)	Box BOoM	857

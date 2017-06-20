@@ -1,0 +1,762 @@
+-	script	WeaponLV4::WP4	-1,{
+if ($@ActiveSv == 0) end;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "ว่าไง " + strcharinfo(0) +" สบายดีรึ??";
+mes "ช่วงนี้ เควสที่ทางระบบวางไว้มันค่อนข้างจะเยอะน่ะ";
+mes "แต่จะให้ เจ้าไปเดินท่องหามันเอง มันก็ยาวไปหน่อย";
+mes "ทั้งบางเควสยังยากมากด้วย เพราะยังเป็นภาษาอังกฤษอยู่";
+next;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "ทาง ฝ่ายปกครองสถาบัน จึงให้ข้ามาลงที่นี่";
+mes "เพื่อจะให้เจ้าทำเควสอาวุธ ระดับที่ 4 ได้";
+mes "โดยอาวุธที่ทำนี้ ใช้ข้อมูลตามจริง ยกเว้นก็เสียแต่ว่า ย่อเควสลงมา";
+mes "ถ้าสนใจล่ะก็มาดูกันเถอะว่ามันมีอะไรบ้าง";
+ssM_Menu:
+next;
+menu
+"- Brionac",brionac,
+"- Berserk",berserk,
+"- Brocca",brocca,
+"- Byeollungum",byeollungum,
+"- Caesar’s Sword",caesar,
+"- Combat Knife",combat,
+"- Dragon Slayer",dragon,
+"- Exorciser",exorciser,
+"- Edge",edge,
+"- Excalibur",excalibur,
+"- Guillotine",guillotine,
+"- Great Axe",great,
+"- Grand Cross",grand,
+"- Immaterial Sword",immaterial,
+"- Longinus’s Spear",longinus,
+"- Mailbreaker",mailbreaker,
+"- Quadrille",quadrille,
+"- Rudra Bow",rudra,
+"- Slash",slash,
+"- Sabbath",sabbath,
+"- Slaughter",slaughter,
+"- Swordbreaker",swordbreaker,
+"- Tjungkuletti",tjungkuletti,
+"- Tirfing",tirfing,
+"- ยกเลิก",Cancel;
+
+brionac:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Phlogopite 30ea^000000";
+mes "^FF0000Pyroxene 30ea^000000";
+mes "^FF0000Rose Quartz 30ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7290)<30 || countitem(7296)<30 || countitem(7293)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7290, 30;
+delitem 7296, 30;
+delitem 7293, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1470, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Brionac สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+berserk:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Muscovite 30 ea^000000";
+mes "^FF0000Rose Quartz 30 ea^000000";
+mes "^FF0000Peridot 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7292)<30 || countitem(7293)<30 || countitem(7289)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7292, 30;
+delitem 7293, 30;
+delitem 7289, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1816, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Berserk สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+brocca:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Biotite 30 ea^000000";
+mes "^FF0000Agate 30 ea^000000";
+mes "^FF0000Citrin 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7297)<30 || countitem(7291)<30 || countitem(7295)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7297, 30;
+delitem 7291, 30;
+delitem 7295, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1415, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Brocca สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+byeollungum:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Muscovite 30 ea^000000";
+mes "^FF0000Agate 30 ea^000000";
+mes "^FF0000Citrin 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7292)<30 || countitem(7291)<30 || countitem(7295)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7292, 30;
+delitem 7291, 30;
+delitem 7295, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1415, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Byeollungum สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+caesar:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Phlogopite 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7290)<30 || countitem(969)<10 || countitem(999)<50 || countitem(714)<10) goto ssM_Menu;
+delitem 7290, 30;
+delitem 969, 10;
+delitem 999, 50;
+delitem 714, 10;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1134, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Caesar's Sword สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+combat:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Muscovite 30 ea^000000";
+mes "^FF0000Agate 30 ea^000000";
+mes "^FF0000Citrin 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7292)<30 || countitem(7291)<30 || countitem(7295)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7292, 30;
+delitem 7291, 30;
+delitem 7295, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1228, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Combat Knife สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+dragon:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Citrin 30 ea^000000";
+mes "^FF0000Pyroxene 30 ea^000000";
+mes "^FF0000Phlogopite 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7295)<30 || countitem(7296)<30 || countitem(7290)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7295, 30;
+delitem 7296, 30;
+delitem 7290, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1166, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Dragon Slayer สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+exorciser:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Pyroxene 30 ea^000000";
+mes "^FF0000Turquoise 30 ea^000000";
+mes "^FF0000Phlogopite 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7296)<30 || countitem(7294)<30 || countitem(7290)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7294, 30;
+delitem 7296, 30;
+delitem 7290, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1233, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Exorciser สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+edge:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Turquoise 30 ea^000000";
+mes "^FF0000Biotite 30 ea^000000";
+mes "^FF0000Rose Quartz 30 ea  ^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7294)<30 || countitem(7297)<30 || countitem(7293)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7294, 30;
+delitem 7297, 30;
+delitem 7293, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1132, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Edge สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+
+excalibur:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Turquoise 30 ea^000000";
+mes "^FF0000Biotite 30 ea^000000";
+mes "^FF0000Rose Quartz 30 ea  ^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7294)<30 || countitem(7297)<30 || countitem(7293)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7294, 30;
+delitem 7297, 30;
+delitem 7293, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1137, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Excalibur สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+guillotine:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Peridot 30 ea^000000";
+mes "^FF0000Turquoise 30 ea^000000";
+mes "^FF0000Agate 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7289)<30 || countitem(7294)<30 || countitem(7291)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7289, 30;
+delitem 7297, 30;
+delitem 7291, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1369, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Guillotine สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+great:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Peridot 30 ea^000000";
+mes "^FF0000Turquoise 30 ea^000000";
+mes "^FF0000Agate 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7289)<30 || countitem(7294)<30 || countitem(7291)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7289, 30;
+delitem 7297, 30;
+delitem 7291, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1364, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Great Axe สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+grand:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Pyroxene 30 ea^000000";
+mes "^FF0000Turquoise 30 ea^000000";
+mes "^FF0000Phlogopite 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7296)<30 || countitem(7294)<30 || countitem(7290)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7296, 30;
+delitem 7297, 30;
+delitem 7290, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1528, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Grand Cross สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+immaterial:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Citrin 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7295)<30 || countitem(969)<10 || countitem(999)<50 || countitem(714)<10) goto ssM_Menu;
+delitem 7295, 30;
+delitem 969, 10;
+delitem 999, 50;
+delitem 714, 10;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1141, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Immaterial Sword สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+longinus:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Phlogopite 30ea^000000";
+mes "^FF0000Pyroxene 30ea^000000";
+mes "^FF0000Rose Quartz 30ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7290)<30 || countitem(7296)<30 || countitem(7293)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7290, 30;
+delitem 7296, 30;
+delitem 7293, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1469, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Longinus สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+mailbreaker:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Muscovite 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7292)<30 || countitem(969)<10 || countitem(999)<50 || countitem(714)<10) goto ssM_Menu;
+delitem 7292, 30;
+delitem 714, 10;
+delitem 969, 10;
+delitem 999, 50;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1225, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Mailbreaker สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+quadrille:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Agate 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7291)<30 || countitem(969)<10 || countitem(999)<50 || countitem(714)<10) goto ssM_Menu;
+delitem 7291, 30;
+delitem 969, 10;
+delitem 999, 50;
+delitem 714, 10;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1527, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Quadrille สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+rudra:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Muscovite 30 ea^000000";
+mes "^FF0000Peridot 30 ea^000000";
+mes "^FF0000Rose Quartz 30ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7292)<30 || countitem(7289)<30 || countitem(7293)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7292, 30;
+delitem 7289, 30;
+delitem 7293, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1720, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Rudra Bow สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+slash:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Turquoise 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7294)<30 || countitem(999)<50 || countitem(714)<10 || countitem(969)<10) goto ssM_Menu;
+delitem 7294, 30;
+delitem 999, 50;
+delitem 714, 10;
+delitem 969, 20;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1526, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Slash สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+sabbath:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Rose Quartz 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7293)<30 || countitem(999)<50 || countitem(714)<10 || countitem(969)<10) goto ssM_Menu;
+delitem 7293, 30;
+delitem 999, 50;
+delitem 714, 10;
+delitem 969, 20;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1365, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Sabbath สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+slaughter:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Pyroxene 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7296)<30 || countitem(999)<50 || countitem(714)<10 || countitem(969)<10) goto ssM_Menu;
+delitem 7296, 30;
+delitem 999, 50;
+delitem 714, 10;
+delitem 969, 20;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1367, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Slaughter สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+swordbreaker:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Pyroxene 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7297)<30 || countitem(999)<50 || countitem(714)<10 || countitem(969)<10) goto ssM_Menu;
+delitem 7297, 30;
+delitem 999, 50;
+delitem 714, 10;
+delitem 969, 20;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1224, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Swordbreaker สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+tjungkuletti:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Hammer of Blacksmith 2 ea^000000";
+mes "^FF0000Emperium Anvil 1 ea^000000";
+mes "^FF0000Illusion Flower 1 ea^000000";
+mes "^FF0000Gold 20 ea^000000";
+mes "^FF0000Biotite 30 ea^000000";
+mes "^FF0000Agate 30 ea^000000";
+mes "^FF0000Citrin 30 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(1005)<2 || countitem(989)<1 || countitem(710)<1 || countitem(969)<20 || countitem(7297)<30 || countitem(7291)<30 || countitem(7295)<30) goto ssM_Menu;
+delitem 1005, 2;
+delitem 989, 1;
+delitem 710, 1;
+delitem 969, 20;
+delitem 7297, 30;
+delitem 7291, 30;
+delitem 7295, 30;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1416, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Tjungkuletti สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+tirfing:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "โอเจ้าสนใจอาวุธชิ้นนี้งั้นรึ?? งั้นมาดูส่วนผสมของมันกันดีกว่า";
+mes "^FF0000Peridot 30 ea^000000";
+mes "^FF0000Gold 10 ea^000000";
+mes "^FF0000Steel 50 ea^000000";
+mes "^FF0000Emperium 10 ea^000000";
+next;
+menu "- สร้างให้ข้าสักชิ้น",-,"- ไม่เอาละ",Cancel;
+
+if (countitem(7289)<30 || countitem(999)<50 || countitem(714)<10 || countitem(969)<10) goto ssM_Menu;
+delitem 7289, 30;
+delitem 999, 50;
+delitem 714, 10;
+delitem 969, 20;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เอาล่ะเก่งมาก เจ้ามีของมาครบ";
+mes "รอสักครู่นะ ข้าขอเวลาสักแปปในการสร้าง";
+next;
+getitem 1139, 1;
+mes "[ ^FF0000Margistel^000000 ]";
+mes "เสร็จเรียบร้อยแล้วล่ะ นำไปใช้ดีดีล่ะ ถ้าจะให้ข้าสร้างอะไรอีกก็กลับมาได้ทุกเมื่อนะ สหายน้อย";
+announce "Weapon Lv 4 : คุณ " + strcharinfo(0) +" ได้ทำการผสม Tirfing สำเร็จเป็นที่เรียบร้อยแล้ว",3;
+emotion e_thx;
+close;
+
+Cancel:
+mes "[ ^FF0000Margistel^000000 ]";
+mes "มีโอกาส เราค่อยกลับมาคุยกันอีกทีแล้วกัน";
+close;
+}

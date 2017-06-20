@@ -1,0 +1,124 @@
+c5,134,141,4	script	บริการรีเซ็ตพิเศษ	512,{
+mes "[^0000FFบริการรีเซ็ตพิเศษ^000000]";
+next;
+menu "^FF3355ลบ สเตตัส ทีละ 100^000000",status100,"^FF3355รีเซต สกิลทั้งหมด^000000",L1,"Quit",Lcancel;
+
+
+status100:
+mes "[^0000FF[บริการลบสเตตัส^000000]";
+next;
+	menu 	"ลบ STR ออก 100",str,
+		"ลบ AGI ออก 100",agi,
+		"ลบ VIT ออก 100",vit,
+		"ลบ INT ออก 100",int,
+		"ลบ DEX ออก 100",dex,
+		"ลบ Luk ออก 100",luk;
+
+str:
+	mes "[ หนูน้อยจอมรีเซ็ต ]";
+	mes "ท่านต้องการ ลบ STR ออก 100";
+	menu "ใช่",str1,"ไม่ใช่",no;
+
+str1:
+atcommand strcharinfo(0)+"@str -100";
+atcommand strcharinfo(0)+"@stpoint 1000";
+close;
+
+
+agi:
+	mes "[ หนูน้อยจอมรีเซ็ต ]";
+	mes "ท่านต้องการ ลบ AGI ออก 100";
+	menu "ใช่",agi1,"ไม่ใช่",no;
+
+agi1:
+atcommand strcharinfo(0)+"@agi -100";
+atcommand strcharinfo(0)+"@stpoint 1000";
+close;
+
+vit:
+	mes "[ หนูน้อยจอมรีเซ็ต ]";
+	mes "ท่านต้องการ ลบ VIT ออก 100";
+	menu "ใช่",vit1,"ไม่ใช่",no;
+
+vit1:
+atcommand strcharinfo(0)+"@vit -100";
+atcommand strcharinfo(0)+"@stpoint 1000";
+close;
+
+int:
+	mes "[ หนูน้อยจอมรีเซ็ต ]";
+	mes "ท่านต้องการ ลบ INT ออก 100";
+	menu "ใช่",int1,"ไม่ใช่",no;
+
+int1:
+atcommand strcharinfo(0)+"@int -100";
+atcommand strcharinfo(0)+"@stpoint 1000";
+close;
+
+dex:
+	mes "[ หนูน้อยจอมรีเซ็ต ]";
+	mes "ท่านต้องการ ลบ DEX ออก 100";
+	menu "ใช่",dex1,"ไม่ใช่",no;
+
+dex1:
+atcommand strcharinfo(0)+"@dex -100";
+atcommand strcharinfo(0)+"@stpoint 1000";
+close;
+
+luk:
+	mes "[ หนูน้อยจอมรีเซ็ต ]";
+	mes "ท่านต้องการ ลบ LUK ออก 100";
+	menu "ใช่",luk1,"ไม่ใช่",no;
+
+luk1:
+atcommand strcharinfo(0)+"@luk -100";
+atcommand strcharinfo(0)+"@stpoint 1000";
+close;
+
+
+nost:
+	mes "[ หนูน้อยจอมรีเซ็ต ]";
+	mes "Stats ของทานไม่ถึง 100 ไม่สามารถรีได้";
+	close;
+
+
+no:
+	mes "[ หนูน้อยจอมรีเซ็ต ]";
+	mes "ใว้พบกันใหม่";
+	close;
+	
+Ino:
+mes "[^FF0000 บริการ รีเซท ^000000]";
+mes "ไปซะ ไปให้พ้น";
+close;
+
+
+L1:
+mes "[^0000FFศาสตราจารย์ K^000000]";
+mes "รอแปบ ข้ากำลังเดินเครื่อง";
+resetskill;
+close;
+L2:
+mes "[^0000FFศาสตราจารย์ K^000000]";
+mes "ท่านนี่โชคดีจริง ๆ ";
+resetstatus;
+close;
+L3:
+mes "[^0000FFศาสตราจารย์ K^000000]";
+mes "ท่านนี้รวยจริง ๆ";
+resetskill;
+resetstatus;
+close;
+Lcancel:
+mes "[^0000FFศาสตราจารย์ K^000000]";
+mes "ดีมาก ..หวังว่าเจ้าคงกลับมาหาข้าใหม่นะ.";
+close;
+NeedZenys:
+mes "[^0000FFศาสตราจารย์ K^000000]";
+mes "ท่านมีเงินไม่พอ ไปเก็บเงินใหม่เถอะ.";
+close;
+OnInit: 
+waitingroom "บริการรีเซ็ตพิเศษ",0; 
+end;
+
+}

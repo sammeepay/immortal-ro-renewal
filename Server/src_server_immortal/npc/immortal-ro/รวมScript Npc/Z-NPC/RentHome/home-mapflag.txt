@@ -1,0 +1,265 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+home01	mapflag	noicewall
+home01	mapflag	nomemo
+home01	mapflag	noteleport
+home01	mapflag	loadevent
+
+home02	mapflag	noicewall
+home02	mapflag	nomemo
+home02	mapflag	noteleport
+home02	mapflag	loadevent
+
+home03	mapflag	noicewall
+home03	mapflag	nomemo
+home03	mapflag	noteleport
+home03	mapflag	loadevent
+
+home04	mapflag	noicewall
+home04	mapflag	nomemo
+home04	mapflag	noteleport
+home04	mapflag	loadevent
+
+home05	mapflag	noicewall
+home05	mapflag	nomemo
+home05	mapflag	noteleport
+home05	mapflag	loadevent
+
+home06	mapflag	noicewall
+home06	mapflag	nomemo
+home06	mapflag	noteleport
+home06	mapflag	loadevent
+
+home07	mapflag	noicewall
+home07	mapflag	nomemo
+home07	mapflag	noteleport
+home07	mapflag	loadevent
+
+home08	mapflag	noicewall
+home08	mapflag	nomemo
+home08	mapflag	noteleport
+home08	mapflag	loadevent
+
+home09	mapflag	noicewall
+home09	mapflag	nomemo
+home09	mapflag	noteleport
+home09	mapflag	loadevent
+
+home10	mapflag	noicewall
+home10	mapflag	nomemo
+home10	mapflag	noteleport
+home10	mapflag	loadevent
+
+home11	mapflag	noicewall
+home11	mapflag	nomemo
+home11	mapflag	noteleport
+home11	mapflag	loadevent
+
+home12	mapflag	noicewall
+home12	mapflag	nomemo
+home12	mapflag	noteleport
+home12	mapflag	loadevent
+
+home13	mapflag	noicewall
+home13	mapflag	nomemo
+home13	mapflag	noteleport
+home13	mapflag	loadevent
+
+home14	mapflag	noicewall
+home14	mapflag	nomemo
+home14	mapflag	noteleport
+home14	mapflag	loadevent
+
+home15	mapflag	noicewall
+home15	mapflag	nomemo
+home15	mapflag	noteleport
+home15	mapflag	loadevent
+
+home16	mapflag	noicewall
+home16	mapflag	nomemo
+home16	mapflag	noteleport
+home16	mapflag	loadevent
+
+home17	mapflag	noicewall
+home17	mapflag	nomemo
+home17	mapflag	noteleport
+home17	mapflag	loadevent
+
+home18	mapflag	noicewall
+home18	mapflag	nomemo
+home18	mapflag	noteleport
+home18	mapflag	loadevent
+
+home19	mapflag	noicewall
+home19	mapflag	nomemo
+home19	mapflag	noteleport
+home19	mapflag	loadevent
+
+home20	mapflag	noicewall
+home20	mapflag	nomemo
+home20	mapflag	noteleport
+home20	mapflag	loadevent
+
+home21	mapflag	noicewall
+home21	mapflag	nomemo
+home21	mapflag	noteleport
+home21	mapflag	loadevent
+
+home22	mapflag	noicewall
+home22	mapflag	nomemo
+home22	mapflag	noteleport
+home22	mapflag	loadevent
+
+
+home23	mapflag	noicewall
+home23	mapflag	nomemo
+home23	mapflag	noteleport
+home23	mapflag	loadevent
+
+home24	mapflag	noicewall
+home24	mapflag	nomemo
+home24	mapflag	noteleport
+home24	mapflag	loadevent
+
+home25	mapflag	noicewall
+home25	mapflag	nomemo
+home25	mapflag	noteleport
+home25	mapflag	loadevent
+
+home26	mapflag	noicewall
+home26	mapflag	nomemo
+home26	mapflag	noteleport
+home26	mapflag	loadevent
+
+home27	mapflag	noicewall
+home27	mapflag	nomemo
+home27	mapflag	noteleport
+home27	mapflag	loadevent
+
+home28	mapflag	noicewall
+home28	mapflag	nomemo
+home28	mapflag	noteleport
+home28	mapflag	loadevent
+
+home29	mapflag	noicewall
+home29	mapflag	nomemo
+home29	mapflag	noteleport
+home29	mapflag	loadevent
+
+home30	mapflag	noicewall
+home30	mapflag	nomemo
+home30	mapflag	noteleport
+home30	mapflag	loadevent
+
+home31	mapflag	noicewall
+home31	mapflag	nomemo
+home31	mapflag	noteleport
+home31	mapflag	loadevent
+
+home32	mapflag	noicewall
+home32	mapflag	nomemo
+home32	mapflag	noteleport
+home32	mapflag	loadevent
+
+home33	mapflag	noicewall
+home33	mapflag	nomemo
+home33	mapflag	noteleport
+home33	mapflag	loadevent
+
+home34	mapflag	noicewall
+home34	mapflag	nomemo
+home34	mapflag	noteleport
+home34	mapflag	loadevent
+
+home35	mapflag	noicewall
+home35	mapflag	nomemo
+home35	mapflag	noteleport
+home35	mapflag	loadevent
+
+home36	mapflag	noicewall
+home36	mapflag	nomemo
+home36	mapflag	noteleport
+home36	mapflag	loadevent
+
+home37	mapflag	noicewall
+home37	mapflag	nomemo
+home37	mapflag	noteleport
+home37	mapflag	loadevent
+
+home38	mapflag	noicewall
+home38	mapflag	nomemo
+home38	mapflag	noteleport
+home38	mapflag	loadevent
+
+home39	mapflag	noicewall
+home39	mapflag	nomemo
+home39	mapflag	noteleport
+home39	mapflag	loadevent
+
+home40	mapflag	noicewall
+home40	mapflag	nomemo
+home40	mapflag	noteleport
+home40	mapflag	loadevent
+
+home41	mapflag	noicewall
+home41	mapflag	nomemo
+home41	mapflag	noteleport
+home41	mapflag	loadevent
+
+home42	mapflag	noicewall
+home42	mapflag	nomemo
+home42	mapflag	noteleport
+home42	mapflag	loadevent
+
+home43	mapflag	noicewall
+home43	mapflag	nomemo
+home43	mapflag	noteleport
+home43	mapflag	loadevent
+
+home44	mapflag	noicewall
+home44	mapflag	nomemo
+home44	mapflag	noteleport
+home44	mapflag	loadevent
+
+home45	mapflag	noicewall
+home45	mapflag	nomemo
+home45	mapflag	noteleport
+home45	mapflag	loadevent
+
+home46	mapflag	noicewall
+home46	mapflag	nomemo
+home46	mapflag	noteleport
+home46	mapflag	loadevent
+
+home47	mapflag	noicewall
+home47	mapflag	nomemo
+home47	mapflag	noteleport
+home47	mapflag	loadevent
+
+home48	mapflag	noicewall
+home48	mapflag	nomemo
+home48	mapflag	noteleport
+home48	mapflag	loadevent
+
+home49	mapflag	noicewall
+home49	mapflag	nomemo
+home49	mapflag	noteleport
+home49	mapflag	loadevent
+
+home50	mapflag	noicewall
+home50	mapflag	nomemo
+home50	mapflag	noteleport
+home50	mapflag	loadevent
+
+home51	mapflag	noicewall
+home51	mapflag	nomemo
+home51	mapflag	noteleport
+home51	mapflag	loadevent
+
+home52	mapflag	noicewall
+home52	mapflag	nomemo
+home52	mapflag	noteleport
+home52	mapflag	loadevent

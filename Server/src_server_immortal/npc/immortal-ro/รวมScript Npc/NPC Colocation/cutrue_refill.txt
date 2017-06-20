@@ -1,0 +1,73 @@
+-	script	cutrue_refill	-1,{
+
+//--- ตรวจสอบการเติมเงินตอนล็อคอินหรือเลือกตัวละครเข้ามา
+OnPCLoginEvent:
+query_sql "select SUM(refill_amount) as sum_refill_amount from cutrue where account_id='"+getcharid(3)+"' and refill='NO'",.@sum_refill_amount;
+
+if (.@sum_refill_amount>0) {
+set #CASHPOINTS,(#CASHPOINTS + .@sum_refill_amount);
+query_sql "update cutrue set refill='YES' where account_id='"+getcharid(3)+"' and refill='NO'";
+dispbottom "คุณได้รับ CASH จำนวน "+.@sum_refill_amount+" cash";
+close;
+}
+end;
+
+}
+
+
+morocc.gat,0,0,5	script	cutrue_refill_auto	 111,{
+
+//--- ตรวจสอบการเติมเงินทุกๆ 10 วินาที
+//--- หากต้องการแก้ไขเวลาก็ได้ครับ  1 วิ =  1000  อยากแก้เป็น ทุก 30 วิก็แก้เป็น  OnTimer30000:
+OnTimer10000:
+query_sql "select id,account_id,refill_amount from cutrue where refill='NO' and refill_amount>0",.id,.account_id,.refill_amount;
+sleep2 500;
+if (getarraysize(.id) > 0) {
+	for (set .i,0; .i < getarraysize(.id); set .i,.i+1) {	
+		if(attachrid(.account_id[.i])==1) {      
+      query_sql "select refill from cutrue where id='"+.id[.i]+"'",.check_refill$;
+      if(.check_refill$=="NO") {
+        dispbottom "คุณได้รับ CASH จำนวน " +.refill_amount[.i]+" Cash";
+        set #CASHPOINTS,(#CASHPOINTS + .refill_amount[.i]);
+        query_sql "update cutrue set refill='YES' where id='"+.id[.i]+"'";
+       }
+		}
+		detachrid;
+	}
+}
+deletearray .id,getarraysize(.id);	
+deletearray .account_id,getarraysize(.account_id);
+deletearray .refill_amount,getarraysize(.refill_amount);
+
+//--- ส่วนให้โบนัส
+query_sql "select id,account_id,item_id,item_name,item_amount from cutrue_item_bonus where bonus_refill='NO' and item_amount>0",.idb,.account_idb,.item_id,.item_name$,.item_amount;
+sleep2 500;
+if (getarraysize(.idb) > 0) {
+	for (set .j,0; .j < getarraysize(.idb); set .j,.j+1) {	
+		if(attachrid(.account_idb[.j])==1) {      
+      query_sql "select bonus_refill from cutrue_item_bonus where id='"+.idb[.j]+"'",.check_refill$;      
+      if(.check_refill$=="NO") {
+        dispbottom "คุณได้รับ Bonus Item : "+.item_name$[.j]+" จำนวน "+.item_amount[.j]+" ชิ้น";
+        getitem .item_id[.j],.item_amount[.j];
+        query_sql "update cutrue_item_bonus set bonus_refill='YES' where id='"+.idb[.j]+"'";
+       }
+		}
+		detachrid;
+	}
+}
+deletearray .id,getarraysize(.idb);	
+deletearray .account_id,getarraysize(.account_idb);
+deletearray .item_id$,getarraysize(.item_id$);
+deletearray .item_name$,getarraysize(.item_name$);
+deletearray .item_amount,getarraysize(.item_amount);
+
+setnpctimer 0;
+startnpctimer;
+end;
+
+OnInit:
+initnpctimer;
+startnpctimer;
+end;
+
+}

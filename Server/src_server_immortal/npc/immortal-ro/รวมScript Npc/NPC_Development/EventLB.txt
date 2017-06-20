@@ -1,0 +1,302 @@
+//===================================================================
+// NPC : Lucky Box
+// Design By : Gjz
+// Contact : gusjungs_s@hotmail.com
+//===================================================================
+
+-	script	LuckyGuard::LGB	924,{
+set $@name_Lucky$,"Lucky Guard";
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "สวัสดี ^000080คุณ "+strcharinfo(0)+"^000000";
+mes "ยินดีต้อนรับสู่กิจกรรม ^FF0000Lucky Box^000000";
+mes "คุณต้องการให้ข้าช่วยอะไรไหม?";
+next;
+menu "^0000FF๐ ลงทะเบียนเข้าร่วมกิจกรรม^000000 ["+getmapusers("new_1-1.gat")+"] ",L_Menu1,"๐ อ่านรายละเอียดการรร่วมสนุก",L_Menu2;
+
+L_Menu1:
+if($close == 0) goto L_Error1;
+if (getmapusers("new_1-1.gat")==50) goto L_Error2;
+if (BaseLevel<98) goto L_Error3;
+if (Zeny<1000000) goto L_Error4;
+set Zeny,Zeny - 1000000;
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "การลงทะเบียเสร็จสิน";
+mes "จากนี้คุณจะถูกส่งไปยัง";
+mes "^FF0000Lucky Room^000000";
+mes "เพื่อร่วมสนุก ขอให้โชคดีครับ";
+next;
+percentheal 100,100;
+warp "new_1-1.gat",0,0;
+announce "[ Lucky Box ] : "+strcharinfo(0)+" ได้เข้าสู่ Lucky Box แล้ว",8;
+end;
+
+L_Menu2:
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "^FF0000กติกาทั้งหมดมีดังนี้^000000";
+mes "1. คุณต้องมีเลเวล^8000FFไม่ต่ำกว่า 98^000000";
+mes "2. คุณต้องเสียเงินค่าลงทะเบียน ^8000FF1M^000000";
+mes "3. กิจกรรมจะมีขึ้น ^8000FFในเวลา^000000 ^8000FFท้ายชั่วโมง^000000 ของทุกวัน";
+mes "4. กิจกรรมในทุก ๆ รอบจะรับผู้ร่วมสนุกแค่ ^8000FF50^000000 คน เท่านั้น";
+next;
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "^0000FFรายละเอียดทั่วไป^000000";
+mes "แต่ละรอบจะมีกล่อง ^FF0000Lucky Box^000000 อยู่เป็นจำนวนมาก";
+mes "กล่องทุกกล่องจะมีของรางวัลให้ และถ้าหาก";
+mes "คุณโชคดีอาจได้รับ ^FF00001 TCG Card^000000";
+mes "ซึ่งจะมีเพียงแค่ 10 กล่องเท่านั้น ที่ได้รับ 1TCG";
+mes "แต่ที่สำคัญคุณมีเวลาในการร่วมสนุกเพียงแค่ 5 นาที เท่านั้น";
+next;
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "ขอให้ท่านสนุก และโชคดีกับกิจกรรมนี้นะ";
+close;
+
+L_Error1:
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "^FF0000ขณะนี้ปิดรับผู้ร่วมกิจกรรมแล้ว^000000";
+mes "^FF0000และจะเปิดเอง ในเวลา ^000000";
+mes "01.50 น."; 
+mes "02.50 น."; 
+mes "03.50 น."; 
+mes "04.50 น."; 
+mes "05.50 น."; 
+mes "06.50 น."; 
+mes "07.50 น."; 
+mes "08.50 น."; 
+mes "09.50 น."; 
+mes "10.50 น."; 
+mes "11.50 น."; 
+mes "12.50 น."; 
+mes "13.50 น."; 
+mes "14.50 น."; 
+mes "15.50 น."; 
+mes "16.50 น."; 
+mes "17.50 น."; 
+mes "18.50 น."; 
+mes "19.50 น."; 
+mes "20.50 น."; 
+mes "21.50 น."; 
+mes "22.50 น."; 
+mes "23.50 น."; 
+mes "00.50 น."; 
+close;
+
+L_Error2:
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "^FF0000เสียใจด้วยขณะนี้มีผู้ร่วมกิจกรรมครบแล้ว^000000";
+mes "^FF0000กรุณากลับมาใหม่อีกครั้งในรอบหน้าครับ^000000";
+close;
+
+L_Error3:
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "^FF0000กรุณาตรวจสอบเลเวลของคุณอีกครั้ง^000000";
+mes "^FF0000กรุณากลับมาใหม่อีกครั้งเมื่อท่านพร้อม^000000";
+close;
+
+L_Error4:
+mes "[^0000FF "+$@name_Lucky$+" ^000000]";
+mes "^FF0000คุณมีเงินไม่พอสำหรับค่าลงทะเบียน^000000";
+mes "^FF0000กรุณากลับมาใหม่อีกครั้งเมื่อท่านพร้อม^000000";
+close;
+OnInit: 
+waitingroom "Lucky Box",0; 
+end;
+}
+
+new_1-1.gat,42,42,7	script	L_B1	-1,{
+OnClock0150:
+OnClock0250:
+OnClock0350:
+OnClock0450:
+OnClock0550:
+OnClock0650:
+OnClock0750:
+OnClock0850:
+OnClock0950:
+OnClock1050:
+OnClock1150:
+OnClock1250:
+OnClock1350:
+OnClock1450:
+OnClock1550:
+OnClock1650:
+OnClock1750:
+OnClock1850:
+OnClock1950:
+OnClock2050:
+OnClock2150:
+OnClock2250:
+OnClock2350:
+OnClock0050:
+announce "Lucky Guard : กิจกรรม Lucky Box จะเริ่มภายใน 3 นาที",8,0xFF8409;
+set $close,1;
+sleep2 600;
+announce "ผู้ต้องการร่วมสนุกทั้งหลายจงเตรียมพร้อม และลงทะเบียนได้ที่ NPC Lucky Guard ครับ",8,0xFF8409;
+disablenpc "Exit Guard";
+initnpctimer;
+killmonsterall "new_1-1.gat";
+end;
+}
+
+new_1-1.gat,42,41,7	script	L_B2	-1,{
+OnClock0153:
+OnClock0253:
+OnClock0353:
+OnClock0453:
+OnClock0553:
+OnClock0653:
+OnClock0753:
+OnClock0853:
+OnClock0953:
+OnClock1053:
+OnClock1153:
+OnClock1253:
+OnClock1353:
+OnClock1453:
+OnClock1553:
+OnClock1653:
+OnClock1753:
+OnClock1853:
+OnClock1953:
+OnClock2053:
+OnClock2153:
+OnClock2253:
+OnClock2353:
+OnClock2453:
+Announce "Lucky Guard : กิจกรรม Lucky Box ได้เริ่ม ณ บัดนี้",8,0xFF8409;
+set $close,0;
+sleep2 600;
+announce "Lucky Guard : คุณมีเวลาในการร่วมสนุกเพียงแค่ 5 นาทีเท่านั้น ขอให้ท่านสนุก และโชคดี",0,0x6FB7FF;
+initnpctimer "Cek";
+set $@Luckyevent1,10;
+set $@Luckyevent2,0;
+monster "new_1-1.gat",0,0,"Lucky Box",1324,10,"L_B2::Onboxdead";
+monster "new_1-1.gat",0,0,"Lucky Box",1325,290,"L_B2::Onboxdead2";
+end;
+
+Onboxdead:
+set $@Luckyevent2,$@Luckyevent2+1;
+if ($@Luckyevent2!=$@Luckyevent1) announce "คุณ" + strcharinfo(0) + " ได้ค้นพบ Lucky Box กล่องที่ "+$@Luckyevent2+"/"+$@Luckyevent1+" แล้ว",0,0x6FB7FF;
+getitem 7227,1;
+if ($@Luckyevent2>=$@Luckyevent1) enablenpc "Exit Guard";
+if ($@Luckyevent2>=$@Luckyevent1) announce "Lucky Guard : กิจกรรม Lucky Box ได้จบลงแล้ว และพบกันใหม่รอบหน้าครับ",8,0xFF8409;
+if ($@Luckyevent2>=$@Luckyevent1) killmonsterall "new_1-1.gat";
+end;
+
+Onboxdead2:
+getitem 7420,5;
+end;
+
+OnClock0158:
+OnClock0258:
+OnClock0358:
+OnClock0458:
+OnClock0558:
+OnClock0658:
+OnClock0758:
+OnClock0858:
+OnClock0958:
+OnClock1058:
+OnClock1158:
+OnClock1258:
+OnClock1358:
+OnClock1458:
+OnClock1558:
+OnClock1658:
+OnClock1758:
+OnClock1858:
+OnClock1958:
+OnClock2058:
+OnClock2158:
+OnClock2258:
+OnClock2358:
+OnClock2458:
+announce "Lucky Guard : กิจกรรม Lucky Box ได้หมดเวลาแล้วครับ",0,0x6FB7FF;
+enablenpc "Exit Guard";
+killmonsterall "new_1-1.gat";
+sleep2 600;
+announce "Lucky Guard : ขอแสดงความยินดีกับผู้โชคดี และเสียใจกับผู้ผิดหวังด้วยครับ",0,0x6FB7FF;
+sleep2 600;
+announce "Lucky Guard : ขอบคุณที่ร่วมสนุกกับเรา โอกาศหน้าขอเชิญร่วมสนุกกันใหม่นะครับ",0,0x6FB7FF;
+end;
+
+}
+
+new_1-1.gat,133,112,4	script	ExitGuard#1	708,{
+mes "[^0000FF Exit Guard^000000 ]";
+mes "นี่คือทางออกของกิจกรรม Lucky Box";
+mes "ขอบคุณที่ร่วมสนุกกับเรา";
+next;
+warp "rachel",130,110;
+close;
+}
+
+new_1-1.gat,55,111,4	script	ExitGuard#2	708,{
+mes "[^0000FF Exit Guard^000000 ]";
+mes "นี่คือทางออกของกิจกรรม Lucky Box";
+mes "ขอบคุณที่ร่วมสนุกกับเรา";
+next;
+warp "rachel",130,110;
+close;
+}
+
+new_1-1.gat,145,112,4	script	warp#1	111,{
+warp "new_1-1",164,112;
+close;
+OnInit: 
+waitingroom "ขึ้นบนปราสาท!!",0; 
+end;
+}
+
+new_1-1.gat,164,112,4	script	warp#2	111,{
+warp "new_1-1",145,112;
+close;
+OnInit: 
+waitingroom "ลงปราสาท!!",0; 
+end;
+}
+
+new_1-1.gat,175,94,4	script	warp#3	111,{
+warp "new_1-1",176,89;
+close;
+OnInit: 
+waitingroom "กระโดดข้ามไป!!",0; 
+end;
+}
+
+new_1-1.gat,176,89,4	script	warp#4	111,{
+warp "new_1-1",175,94;
+close;
+OnInit: 
+waitingroom "กระโดดข้ามกลับ!!",0; 
+end;
+}
+
+new_1-1.gat,167,129,4	script	warp#5	111,{
+warp "new_1-1",167,134;
+close;
+OnInit: 
+waitingroom "กระโดดข้ามไป!!",0; 
+end;
+}
+
+new_1-1.gat,167,135,4	script	warp#6	111,{
+warp "new_1-1",167,129;
+close;
+OnInit: 
+waitingroom "กระโดดข้ามกลับ!!",0; 
+end;
+}
+
+// -- Mapflags 
+new_1-1.gat	mapflag	nowarp
+new_1-1.gat	mapflag	nowarpto
+new_1-1.gat	mapflag	noteleport
+new_1-1.gat	mapflag	nomemo
+new_1-1.gat	mapflag	nobranch
+new_1-1.gat	mapflag	nopenalty
+new_1-1.gat	mapflag	noskill
+new_1-1.gat	mapflag	noloot
+new_1-1.gat	mapflag	nodrop
+// -- End of Mapflags 
+
+morocc.gat,168,153,4	duplicate(LGB)	Lucky Box	1645

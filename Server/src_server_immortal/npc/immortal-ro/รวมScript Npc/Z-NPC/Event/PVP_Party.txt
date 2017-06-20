@@ -1,0 +1,181 @@
+//==============================================================\\
+//==================== Script By.SiamAthena ====================\\
+//====================  Share Port Server   ====================\\
+//==============================================================\\
+
+-	script	prtvsprt	-1,{
+
+	mes "[ "+strnpcinfo(1)+" ]";
+	if ( $@PVP7_EVENT == 0 ) { // รอรับสมัคร
+		mes "เจ้าต้องการลงแข่งขันไหมล่ะ ?";
+		mes "เพียงแค่เจ้ามี Party จำนวน "+$@PVP7_SET[3]+" คน";
+		if ( $@PVP7_SET[0] > 0 )
+			mes "ค่าลงทะเบียน "+$@PVP7_SET[0]+" zeny";
+		if ( $@PVP7_SET[1] > 500 && $@PVP7_SET[2] > 0 )
+			mes "และ "+getitemname($@PVP7_SET[1])+"  "+$@PVP7_SET[2]+" ea";
+		next;
+		if ( select ( "• ข้าขอสมัครเข้าแข่งขัน:• ไม่ล่ะ ขอเตรียม Party ก่อน" ) == 1 ) {
+			mes "[ "+strnpcinfo(1)+" ]";
+			if ( getcharid(1) ) {
+				if ( getpartyleader(getcharid(1),2) == getcharid(0) ) {
+					if ( ( $@PVP7_SET[0] > 0 && Zeny > $@PVP7_SET[0] ) || $@PVP7_SET[0] <= 0 ) {
+						if ( ( $@PVP7_SET[1] > 500 && countitem($@PVP7_SET[1]) >= $@PVP7_SET[2] ) || $@PVP7_SET[1] <= 500 ) {
+							getpartymember getcharid(1);
+							if ( $@partymembercount == $@PVP7_SET[3] ) {
+								if ( $@PVP7_P1[0] == 0 ) {
+									mes "ลงทะเบียนเรียบร้อยแล้ว !!";
+									setarray $@PVP7_P1[0],1,getcharid(1);
+									if ( $@PVP7_SET[0] > 0 )
+										set Zeny,Zeny-$@PVP7_SET[0];
+									if ( $@PVP7_SET[1] > 500 )
+										delitem $@PVP7_SET[1],$@PVP7_SET[2];
+								} else if ( $@PVP7_P2[0] == 0 ) {
+									if ( $@PVP7_P1[1] != getcharid(1) ) {
+										mes "ลงทะเบียนเรียบร้อยแล้ว !!";
+										setarray $@PVP7_P2[0],1,getcharid(1);
+										if ( $@PVP7_SET[0] > 0 )
+											set Zeny,Zeny-$@PVP7_SET[0];
+										if ( $@PVP7_SET[1] > 500 )
+											delitem $@PVP7_SET[1],$@PVP7_SET[2];
+										set $@PVP7_EVENT,1;
+										initnpctimer;
+									} else
+										mes "คุณลงสมัครไปแล้วน่ะ";
+								} else
+									mes "เสียใจด้วย รับสมัครครบแล้ว";
+							} else
+								mes "ต้องมีคนใน Party "+$@PVP7_SET[3]+" คนนะ";
+						} else
+							mes "คุณมี "+getitemname($@PVP7_SET[1])+" น้อยเกินไป";
+					} else
+						mes "คุณเตรียมเงินมาไม่พอลงทะเบียน";
+				} else
+					mes "คุณไม่ใช่หัวหน้า Party";
+			} else
+				mes "คุณไม่มี Party น่ะ";
+		}
+	} else if ( $@PVP7_EVENT == 1 ) { // รอเข้าแข่งขัน
+		if ( $@PVP7_P1[1] == getcharid(1) ) {
+			if ( getpartyleader(getcharid(1),2) == getcharid(0) ) {
+				getpartymember getcharid(1);
+				if ( $@partymembercount == $@PVP7_SET[3] ) {
+					set $@PVP7_P1[2],1;
+					announce "Party "+getpartyname(getcharid(1))+" ได้เข้าห้องแข่งขัน PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3],0;
+					warpparty "guild_vs2-1",0,0,getcharid(1);
+				} else
+					mes "ต้องมีคนใน Party "+$@PVP7_SET[3]+" คนนะ";
+			} else
+				mes "ไปตามหัวหน้า Party เจ้ามาสิ";
+		} else if ( $@PVP7_P2[1] == getcharid(1) ) {
+			if ( getpartyleader(getcharid(1),2) == getcharid(0) ) {
+				getpartymember getcharid(1);
+				if ( $@partymembercount == $@PVP7_SET[3] ) {
+					set $@PVP7_P2[2],1;
+					announce "Party "+getpartyname(getcharid(1))+" ได้เข้าห้องแข่งขัน PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3],0;
+					warpparty "guild_vs2-1",0,0,getcharid(1);
+				} else
+					mes "ต้องมีคนใน Party "+$@PVP7_SET[3]+" คนนะ";
+			} else
+				mes "ไปตามหัวหน้า Party เจ้ามาสิ";
+		} else
+			mes "ข้ากำลังรอหัวหน้า Party ทั้ง 2 คนอยู่..";
+		if ( $@PVP7_P1[2] && $@PVP7_P2[2] ) {
+			set $@PVP7_EVENT,2;
+			announce "PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3]+" ได้ผู้เข้าแข่งขันครบทั้ง 2 Party แล้ว !!",0;
+		}
+	} else if ( $@PVP7_EVENT == 2 ) // แข่งขัน
+		mes "กำลังแข่งขันอยู่น่ะ";
+	else if ( $@PVP7_EVENT == 3 ) { // รับรางวัล
+		if ( $@PVP7_WIN == getcharid(1) && $@PVP7_WIN > 0 ) {
+			if ( getpartyleader(getcharid(1),2) == getcharid(0) ) {
+				callfunc "PVP7_RESET";
+				getitem $@PVP7_SET[1],$@PVP7_SET[2]*2;
+			} else
+				mes "ไปตามหัวหน้า Party เจ้ามารับรางวัลสิ";
+		} else if ( $@PVP7_WIN > 0 )
+			mes "ข้ารอ Party "+getpartyname($@PVP7_WIN);
+		else
+			mes "มีอะไรรึ ?";
+	}
+	close;
+	
+OnTimer1000:
+	announce "การแข่งขัน PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3]+" จะเริ่มในอีก 1 นาที",0;
+	end;
+OnTimer61000:
+	if ( $@PVP7_EVENT == 2 ) {
+		PvpOn "guild_vs2-1";
+		announce "การแข่งขัน PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3]+" ได้เริ่มขึ้นแล้ว !!",0;
+	} else {
+		stopnpctimer;
+		callfunc "PVP7_RESET";
+		announce "การแข่งขัน PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3]+" ถูกยกเลิก เนื่องจากผู้สมัครไม่เข้าห้องแข่งขัน",0;
+	}
+	end;
+OnTimer70000:	OnTimer80000:	OnTimer90000:	OnTimer100000:	OnTimer110000:	OnTimer120000:
+OnTimer130000:	OnTimer140000:	OnTimer150000:	OnTimer160000:	OnTimer170000:	OnTimer180000:
+OnTimer190000:	OnTimer200000:	OnTimer210000:	OnTimer2200000:	OnTimer230000:	OnTimer240000:
+	set $@PVP7_P1[3],0;
+	getpartymember $@PVP7_P1[1];
+	for ( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 ) {
+		getmapxy( .@map$, .@x, .@y, 0, $@partymembername$[.@i] );
+		if ( .@map$ == "guild_vs2-1" )
+			set $@PVP7_P1[3],$@PVP7_P1[3]+1;
+	}
+	set $@PVP7_P2[3],0;
+	getpartymember $@PVP7_P2[1];
+	for ( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 ) {
+		getmapxy( .@map$, .@x, .@y, 0, $@partymembername$[.@i] );
+		if ( .@map$ == "guild_vs2-1" )
+			set $@PVP7_P2[3],$@PVP7_P2[3]+1;
+	}	
+	if ( $@PVP7_P1[3] == 0 && $@PVP7_P2[3] > 0 ) {
+		stopnpctimer;
+		set $@PVP7_EVENT,3;
+		maprespawnguildid "guild_vs2-1",0,7;
+		set $@PVP7_WIN,$@PVP7_P2[1];
+		announce "การแข่งขัน PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3]+" Party ที่ชนะคือ "+getpartyname($@PVP7_P2[1]),0;
+	} else if ( $@PVP7_P2[3] == 0 && $@PVP7_P1[3] > 0 ) {
+		stopnpctimer;
+		set $@PVP7_EVENT,3;
+		maprespawnguildid "guild_vs2-1",0,7;
+		set $@PVP7_WIN,$@PVP7_P1[1];
+		announce "การแข่งขัน PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3]+" Party ที่ชนะคือ "+getpartyname($@PVP7_P1[1]),0;
+	} else if ( $@PVP7_P1[3] == 0 && $@PVP7_P2[3] == 0 ) {
+OnTimer250000:
+		stopnpctimer;
+		callfunc "PVP7_RESET";
+		announce "การแข่งขัน PVP "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3]+" ผลออกมาเสมอกัน !!",0;
+	} else
+		mapannounce "guild_vs2-1","เหลืออยู่ "+getmapusers("guild_vs2-1")+" คน  [ "+$@PVP7_P1[3]+"-"+$@PVP7_P2[3]+" ]",bc_map;
+	end;
+	
+OnPCDieEvent:
+OnPCLogOutEvent:	
+	getmapxy( .@map$, .@x, .@y, 0 );
+	if ( .@map$ == "guild_vs2-1" )
+		warp "SavePoint",0,0;
+	end;
+	
+OnInit:
+	setarray $@PVP7_SET[0]
+	, 100000// ค่าลงทะเบียนต่อ Party
+	, 29000	// Item ที่ใช้พนัน
+	, 10	// จำนวน Item ที่พนัน
+	, 7	// จำนวนคนแต่ละ Party
+	;
+	//waitingroom "Party PvP  "+$@PVP7_SET[3]+"-"+$@PVP7_SET[3],0;
+	end;
+}
+
+function	script	PVP7_RESET	{
+	PvpOff "guild_vs2-1";
+	set $@PVP7_WIN,0;
+	set $@PVP7_EVENT,0;
+	maprespawnguildid "guild_vs2-1",0,7;
+	deletearray $@PVP7_P1[0],getarraysize($@PVP7_P1);
+	deletearray $@PVP7_P2[0],getarraysize($@PVP7_P2);
+	return;
+}
+
+morocc,155,116,5	duplicate(prtvsprt)	Party VS Party#1	753

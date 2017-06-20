@@ -1,0 +1,50 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+gld_dun04,0,0,0,0	monster	Amon Ra	1511,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Atroce	1785,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Bacsojin	1630,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Baphomet	1039,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Beelzebub	1874,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Dark Lord	1272,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Detale	1719,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Doppelganger	1046,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Dracula	1389,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Drake	1112,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Eddga	1115,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Evil Snake Lord	1418,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Fallen Bishop	1871,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Garm	1252,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Gloom Under Night	1768,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Golden Thief Bug	1086,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Gopinich	1885,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Ifrit	1832,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Incantation Samurai	1492,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Kiel D-01	1734,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Stormy Knight	1251,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Ktullanux	1779,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Lady Tanee	1688,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Lord of Death	1373,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Maya	1147,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Mistress	1059,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Moonlight Flower 	1150,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Orc Hero	1087,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Orc Lord	1190,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Osiris	1038,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Pharaoh	1157,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Phreeoni	1159,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	RSX 0806	1623,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Tao Gunka	1583,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Thanatos	1708,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Turtle General	1312,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Valkyrie Randgris	1751,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Vesper	1685,1,10800000,0,0
+gld_dun04,0,0,0,0	monster	Thanatos	1708,1,10800000,0,0

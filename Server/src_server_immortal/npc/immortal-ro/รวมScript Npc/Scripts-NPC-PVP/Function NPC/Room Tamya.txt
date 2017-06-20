@@ -1,0 +1,66 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	NPC0-18::NPC18	-1,{
+mes "[ พนักงานวาป ]";
+mes "^FF6633พิ้นที่ใช้ในการทำยาเท่านั้น^000000";
+mes "^FF0099สนใจอยากจะทำยาก็เข้ามาได้เลย^000000";
+next;
+menu "[^F00000ห้องใช้ในการผสมยา^000000]["+getmapusers("turbo_room")+"]",map1;
+map1:
+warp "turbo_room",100,100;
+close;
+Lcancel:
+
+close;
+OnInit: 
+waitingroom "   ห้องทำยา",0;
+end;
+}
+
+turbo_room,100,99,4	script	กลับเมือง	777,{
+mes "[ พนักงานวาป ]";
+menu "- กลับเมือง",map1,"- ยกเลิก",map2;
+
+map1:
+warp "rtc_ro",98,81;
+close;
+Lcancel:
+
+map2:
+close;
+
+OnInit: 
+waitingroom "   กลับเมือง",0;
+end;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

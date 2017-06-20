@@ -1,0 +1,29 @@
+-	script	AntiGM	-1,{
+OnPCLoginEvent:
+	if (getgmlevel() > 60){
+		setarray .@gmaccs[0],2000000,2000001,2000002;
+		set .count,0;
+		
+		for (set .i,0; .i < getarraysize(.@gmaccs); set .i,.i+1) {
+			if (getcharid(3) == .@gmaccs[.i]){
+			set .count,count+1;
+			}
+		}
+	if(.count>=1){
+		//announce "[ System ] : " + strcharinfo(0) + " GM Login Success",bc_self;
+		atcommand "@hide";
+		atcommand "@speed 1";
+		set .count,0;
+	}
+	
+	else{
+	atcommand "@block "+strcharinfo(0);
+	announce "[ System ] : ตัวละครที่ชื่อ [ " + strcharinfo(0) + " ] ได้ทำการ Hack ระบบ ให้ตัวเองเป็น GM",8;
+	announce "[ System ] : กรณีนี้ เป็นตัวอย่างให้กับทุกท่าน ที่คิดจะโกงเรา ขอให้สนุกกับ Server ของเรา",8;
+	atcommand "@kick "+strcharinfo(0);
+	set .count,0;
+	}
+
+	}	
+	end;
+}

@@ -1,0 +1,3801 @@
+alberta,115,62,6	script	Kafra Express#6	791,{
+	callfunc "S_Kafra","alberta",117,57;
+}
+aldebaran,139,116,3	script	Kafra Express#7	791,{
+	callfunc "S_Kafra","aldebaran",143,109;
+}
+amatsu,111,151,3	script	Kafra Express#8	791,{
+	callfunc "S_Kafra","amatsu",111,91;
+}
+ayothaya,215,173,5	script	Kafra Express#9	791,{
+	callfunc "S_Kafra","ayothaya",218,173;
+}
+comodo,186,153,3	script	Kafra Express#10	791,{
+	callfunc "S_Kafra","comodo",189,153;
+}
+einbech,175,127,3	script	Kafra Express#11	791,{
+	callfunc "S_Kafra","einbech",174,129;
+}
+einbroch,237,205,3	script	Kafra Express#12	791,{
+	callfunc "S_Kafra","einbroch",232,202;
+}
+geffen,124,66,3	script	Kafra Express#13	791,{
+	callfunc "S_Kafra","geffen",120,63;
+}
+gonryun,161,121,3	script	Kafra Express#14	791,{
+	callfunc "S_Kafra","gonryun",159,118;
+}
+hugel,94,150,3	script	Kafra Express#15	791,{
+	callfunc "S_Kafra","hugel",96,156;
+}
+izlude,123,114,3	script	Kafra Express#16	791,{
+	callfunc "S_Kafra","izlude",128,90;
+}
+jawaii,198,292,3	script	Kafra Express#17	791,{
+	callfunc "S_Kafra","jawaii",129,265;
+}
+lighthalzen,162,100,4	script	Kafra Express#18	791,{
+	callfunc "S_Kafra","lighthalzen",159,97;
+}
+louyang,210,104,5	script	Kafra Express#19	791,{
+	callfunc "S_Kafra","louyang",218,102;
+}
+xmas,142,136,3	script	Kafra Express#20	791,{
+	callfunc "S_Kafra","xmas",148,132;
+}
+payon,179,103,3	script	Kafra Express#22	791,{
+	callfunc "S_Kafra","payon",182,99;
+}
+prontera,156,186,3	script	Kafra Express#23	791,{
+	callfunc "S_Kafra","prontera",156,188;
+}
+rachel,129,144,5	script	Kafra Express#24	791,{
+	callfunc "S_Kafra","rachel",132,140;
+}
+umbala,126,134,3	script	Kafra Express#25	791,{
+	callfunc "S_Kafra","umbala",125,128;
+}
+veins,210,128,3	script	Kafra Express#26	791,{
+	callfunc "S_Kafra","veins",207,124;
+}
+yuno,152,187,5	script	Kafra Express#27	791,{
+	callfunc "S_Kafra","yuno",158,182;
+}
+moscovia,218,196,5	script	Kafra Express#28	791,{
+	callfunc "S_Kafra","moscovia",224,196;
+}
+morocc,159,262,3	script	Kafra Express#30	791,{
+	callfunc "S_Kafra","morocc",39,168;
+}
+hu_in01,247,306,3	script	Kafra Express#31	791,{
+	callfunc "S_Kafra","hu_in01",239,314;
+}
+morocc,159,97,3	script	Kafra Express#32	791,{
+	callfunc "S_Kafra","morocc",39,168;
+}
+thor_camp,200,222,3	script	Kafra Express#36	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+splendide,199,147,3	script	Kafra Express#37	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+niflheim,193,188,3	script	Kafra Express#38	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+nameless_n,73,196,3	script	Kafra Express#39	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+mid_camp,220,238,3	script	Kafra Express#40	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+manuk,269,199,3	script	Kafra Express#41	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+prt_monk,222,97,3	script	Kafra Express#42	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+brasilis,194,184,3	script	Kafra Express#43	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+dicastes01,197,227,3	script	Kafra Express#44	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+dicastes02,114,163,3	script	Kafra Express#45	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+alb_ship,115,103,3	script	Kafra Express#69	791,{
+	callfunc "S_Kafra","oasis",159,44;
+}
+ra_temple,181,189,3	script	Kafraz#70	791,{
+	callfunc "S_Kafra","prontera",156,188;
+}
+malangdo,137,267,3	script	Kafraz#71	791,{
+	callfunc "S_Kafra","prontera",156,188;
+}
+dewata,194,184,3	script	Kafraz#72	791,{
+	callfunc "S_Kafra","prontera",156,188;
+}
+
+
+function	script	S_Kafra	{
+	cutin "kh_ellisia",2;
+	npctalk "หากต้องการเก็บของ เช่าของ ประกาศ หรือ สกิลเสริมใหม่ มาทางนี้เลย นะค๊า~~*";
+	emotion 22;
+	mes "[ Kafra ]";
+	mes "^0000FF{ขณะนี้มีคนออนไลน์ ^FF0000"+$@PLAYER+"^0000FF คน}^000000";
+	mes "วันนี้วันที่ :^FF0000 "+ gettimestr("%d/%m/%y",19) +"^000000";
+	mes "เวลา :^FF0000 "+ gettimestr("%H:%M",19) +"^000000";	
+	mes "^CCFFCC.^000000";
+	mes " ยินดีต้อนรับสู่บริษัท Kafra";
+	mes " เราจะอยู่กับท่านทุกที่ที่ท่านไปถึง";
+	mes " มีอะไรที่เราช่วยท่านได้บ้าง?";
+	mes "^2BE82Eโดย. ^0000FFiBerry-RO^000000";
+	next;
+	menu	"^FF0000•^000000 วาป",K_warp,
+		"^FF0000•^000000 PVP ^006611["+getmapusers("pvp_y_1-2")+"]^000080 ["+getmapusers("pvp_y_7-2")+"]^0000FF ["+getmapusers("pvp_y_7-5")+"]",wpvp,
+		"^FF0000•^000000 ^FF8409กิลวอ^000000 ^006611["+getmapusers("prtg_cas04")+"]^000080 ["+getmapusers("payg_cas04")+"]^0000FF ["+getmapusers("aldeg_cas02")+"] ["+getmapusers("gefg_cas05")+"]",K_bosx,
+		"^FF0000•^000000 เซฟ",K_save,
+		"^FF0000•^000000 เก็บของ",K_storage,
+		"^FF0000•^000000 บริการ เช่าต่างๆ",AA3,
+		"^FF0000•^000000 บริการ Reset Status & Skills",AA1,
+		"^FF0000•^000000 บริการ Skill เสริม",AA2,
+//		"^FF0000•^000000 บริการ AllSkill และอื่นๆ",s8,
+//		"^FF0000•^000000 About Guild ( เกี่ยวกับกิวล์ )",k4,
+//		"^FF0000•^000000 อัพเลเวล Guild",lvguild,
+		"^FF0000•^000000 ทดสอบอาวุธ ^008080 ["+getmapusers ("pvp_n_3-5")+"]",teehx,
+//		"^FF0000•^000000 ห้องทำยา^008080 ["+getmapusers ("turbo_room")+"]",mpr,
+//		"^FF0000•^000000 บริการประกาศ",k1,
+//		"^FF0000•^000000 ข้อมูลเซิฟเวอร์",S11,
+//		"^FF0000•^000000 ส่อง item ทั้งหมดในครั้งเดียว",item1,
+//		"^FF0000•^000000 บริการประกาศแบบจีเอ็ม",pagas,
+//		"^FF0000•^000000 Bug Report Service ( บริการแจ้งปัญหา )",k2,
+//		"^FF0000•^000000 Card Remove Service ( บริการถอดการ์ด )",k9,
+		"^FF0000•^000000 Bank Service ( บริการทางการเงิน และ อื่นๆ )",k11,
+//		"^FF0000•^000000 Gender Conversion Service ( บริการแปลงเพศ )",k10,
+//		"^FF0000•^000000 ตรวจสอบคะแนนสะสม",sM_ResChk,
+		"^FF0000•^000000 ระบบ Autotrade",at1,
+//		"^FF0000•^000000 บริการซื้อ Status",ss7,
+		"^FF0000•^000000 บริการถอดการ์ด",rc7,
+		"^FF0000•^000000 บริการซ่อมไอเท็ม",rew7,
+		"^009933•^000000 ยกเลิก",K_cancle;
+
+rew7:
+	mes "[NPC Repair]";
+	mes "ยินดีต้อนรับสู่บริการ ซ่อมอุปกรณ์";
+	mes "ข้าคือนักซ่อมอุปกรณ์มือ 1 เชียวนะ";
+next;
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+	mes "ข้าคือช่างซ่อมอาวุธ";
+	mes "นำอาวุธที่เสียหายมาให้ข้าซ่อมได้";
+	mes "จะซ่อมอันใหนบอกมาได้เลย";
+	mes "ซ่อมได้ ก็จะซ่อมให้";
+set @broken1,getbrokenid(1);
+set @broken2,getbrokenid(2);
+set @broken3,getbrokenid(3);
+set @broken4,getbrokenid(4);
+set @broken5,getbrokenid(5);
+set @broken6,getbrokenid(6);
+set @broken7,getbrokenid(7);
+set @broken8,getbrokenid(8);
+set @broken9,getbrokenid(9);
+set @broken10,getbrokenid(10);
+next;
+if(@broken1==NULL) goto L_CANCEL_3;
+menu getitemname(@broken1),REPAIR1,getitemname(@broken2),REPAIR2,getitemname(@broken3),REPAIR3,getitemname(@broken4),REPAIR4,getitemname(@broken5),REPAIR5,
+getitemname(@broken6),REPAIR6,getitemname(@broken7),REPAIR7,getitemname(@broken8),REPAIR8,getitemname(@broken9),REPAIR9,
+getitemname(@broken10),REPAIR10;
+
+REPAIR1:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+	mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+	mes "เจ้าต้องเสียค่าซ่อม ^000FF0100,000 z^000000";
+	mes "ต้องการซ่อมหรือไม่?";
+next;
+	menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 100000) goto L_CANCEL_1;
+set Zeny,Zeny-100000;
+repair(1);
+goto L_CLOSE;
+REPAIR2:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม ^0000FF" + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(2);
+goto L_CLOSE;
+REPAIR3:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+	mes "เจ้าต้องการซ่อม ^0000FF" + getitemname(@broken1) + ".^000000";
+	mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+	mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(3);
+goto L_CLOSE;
+REPAIR4:
+mes "[Smith Repairman]";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(4);
+goto L_CLOSE;
+REPAIR5:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(5);
+goto L_CLOSE;
+REPAIR6:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(6);
+goto L_CLOSE;
+REPAIR7:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม ^0000FF5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(7);
+goto L_CLOSE;
+REPAIR8:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(8);
+goto L_CLOSE;
+REPAIR9:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม ^0000FF5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(9);
+goto L_CLOSE;
+REPAIR10:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม ^0000FF5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(10);
+goto L_CLOSE;
+
+L_CANCEL_1:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "^FF0000ตรวจสอบเงินด้วยมีถึง 5,000ไหม^000000";
+goto L_CLOSE;
+L_CANCEL_2:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "^FF0000มาหาข้าได้..เมื่อเจ้าต้องการ^000000";
+goto L_CLOSE;
+L_CANCEL_3:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+	mes "^FF0000ดูเหมือนเจ้าไม่มีอาวุธเสียหายเลยนะ...^000000";
+goto L_CLOSE;
+L_CLOSE:
+close;
+//OnInit: 
+//waitingroom "[บริการซ่อมไอเทม]", 0; 
+//end; 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rc7:
+	mes "[NPC BareCard]";	
+	mes "ยินดีต้อนรับสู่บริการ ถอดการ์ด";
+	mes "เรื่องการถอดการ์ดออกจากไอเทมข้าคืออันดับ 1";
+	mes "^0000FF{•ขณะนี้มีคนออนไลน์ ^FF0000"+$@PLAYER+"^0000FF คน•}^000000";
+	mes "๛•วันนี้วันที่ :^FF0000 "+ gettimestr("%d/%m/%y",19) +"^000000";
+	mes "๛•เวลา :^FF0000 "+ gettimestr("%H:%M",19) +"^000000";	
+	mes "^CCFFCC.^000000";
+	mes "โดย. ^0000FFGM_iBerry^000000";
+
+set @cardbatzeny1,50000; //ค่าถอดการ์ด
+set @cardbatzeny2,25000; //ค่าบริการเพิ่มต่อการ์ดแต่ละใบ
+set @cardbatzeny3,1; // จำนวน Star Crumb
+set @cardbatzeny4,1; // จำนวน Yellow Gemstone
+
+set @failbatrate1,1; //อัตรา การ์ด และ Item เสียหาย ทั้งคู่
+set @failbatrate2,4; //เสียหายอย่างใดอย่างหนึ่ง
+set @failbatrate3,10; //ไม่สามารถถอดได้ แต่ Item ไม่เสียหาย
+set @failbatrate4,@failbatrate1+@failbatrate2+@failbatrate3; //ไม่สามารถถอดได้ แต่ Item ไม่เสียหาย
+//สรุปคือ โอกาสผิดพลาดเท่ากับ 15%
+
+UPGRADEROOT:
+
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "ข้ามีบริการใหม่";
+	mes "ที่จะถอดการ์ดออกจากอาวุธ";
+	mes "และชุดเกราะของเจ้า";
+next;
+
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "ค่าบริการ ^0000FF[ "+ @cardbatzeny1 +" ] zeny^000000";
+	mes "และค่าถอดการ์ดใบละ^0000FF [ "+ @cardbatzeny2 +" ] zeny^000000";
+	mes "ต้องใช้^0000FF Star Crumb [ "+ @cardbatzeny3 +" ] อัน^000000";
+	mes "และ ^0000FFYellow Gems [ "+ @cardbatzeny4 +" ] อันด้วย^000000";
+	mes "ท่านสนใจที่จะใช้บริการไหม";
+next;
+menu "^0000FF๐^000000 ตกลง",REMOVEMENU,"^0000FF๐^FF0000 ยกเลิก^000000",CLOSEOUT;
+
+REMOVEMENU:
+
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "เอาล่ะ ท่านต้องการถอดการ์ดจากส่วนไหน";
+next;
+menu "^0000FF๐^FF0000 ยกเลิก^000000",CLOSEOUT,
+getequipname(1),SLOT1,
+getequipname(2),SLOT2,
+getequipname(3),SLOT3,
+getequipname(4),SLOT4,
+getequipname(5),SLOT5,
+getequipname(6),SLOT6,
+getequipname(7),SLOT7,
+getequipname(8),SLOT8,
+getequipname(9),SLOT9,
+getequipname(10),SLOT10;
+
+SLOT1:
+set @part,1;
+goto CARDNUMCHECK;
+
+SLOT2:
+set @part,2;
+goto CARDNUMCHECK;
+
+SLOT3:
+set @part,3;
+goto CARDNUMCHECK;
+
+SLOT4:
+set @part,4;
+goto CARDNUMCHECK;
+
+SLOT5:
+set @part,5;
+goto CARDNUMCHECK;
+
+SLOT6:
+set @part,6;
+goto CARDNUMCHECK;
+
+SLOT7:
+set @part,7;
+goto CARDNUMCHECK;
+
+SLOT8:
+set @part,8;
+goto CARDNUMCHECK;
+
+SLOT9:
+set @part,9;
+goto CARDNUMCHECK;
+
+SLOT10:
+set @part,10;
+goto CARDNUMCHECK;
+
+CARDNUMCHECK:
+if(getequipcardcnt(@part) == 0) goto DENYCARDCOUNT;
+set @cardcount,getequipcardcnt(@part);
+set @cardbatzenyall, (@cardbatzeny2 * @cardcount) + @cardbatzeny1;
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "ของชิ้นนี้มีการ์ดจำนวน^0000FF [ " + @cardcount + " ] ใบ^000000";
+	mes "รวมค่าบริการ^0000FF [ "+ @cardbatzenyall +" ] zeny^000000";
+	mes "ต้องใช้ ^0000FFStar Crumb [ "+ @cardbatzeny3 +" ] อัน^000000";
+	mes "และ^0000FF Yellow Gems [ "+ @cardbatzeny4 +" ] อัน^000000";
+	mes "ท่านยังยืนยันจะทำต่อไปหรือไม่";
+next;
+menu "^0000FF๐^000000 ตกลง",REMOVECARDWARNING,"^0000FF๐^FF0000 ยกเลิก^000000",CLOSEOUT;
+
+REMOVECARDWARNING:
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "การทำครั้งนี้ มีโอกาสพลาดด้วยคือ";
+	mes "เสียหายทั้ง การ์ดและ Item^0000FF [ "+ @failbatrate1 +" ] %^000000";
+	mes "เสียหายอย่างใดอย่างหนึ่ง ^0000FF[ "+ @failbatrate2 +" ] %^000000";
+	mes "และเพียงแค่ถอดการ์ดไม่ได้ ^0000FF[ "+ @failbatrate3 +" ] %^000000";
+	mes "รวมโอกาสผิดพลาดทั้งหมด ^0000FF[ "+ @failbatrate4 +" ] %^000000";
+	mes "ท่านยังยืนยันหรือไม่";
+next;
+menu "^0000FF๐^000000 ตกลง",-,"^0000FF๐^FF0000 ยกเลิก^000000",CLOSEOUT;
+
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "ท่านต้องเลือกว่า เสียหายบางอย่าง";
+	mes "ท่านจะให้ของชิ้นไหน ไม่เสียหาย";
+next;
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+menu "^0000FF๐^000000 ถ้าเลือกได้ ข้าจะเลือกให้ Item ยังคงอยู่",PRIORITYITEM,
+"^0000FF๐^000000 ถ้าเลือกได้ ข้าเลือกให้ Card ยังคงอยู่",PRIORITYCARD;
+
+PRIORITYITEM:
+set @failtype,1;
+goto REMOVECARD;
+
+PRIORITYCARD:
+set @failtype,2;
+goto REMOVECARD;
+
+REMOVECARD:
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "เอาล่ะ เราจะเริ่มกันแล้วนะ";
+next;
+if((zeny < @cardbatzenyall) || (countitem(1000) < @cardbatzeny3) || (countitem(715) < @cardbatzeny4)) goto DENYMATERIAL;
+set zeny,zeny - @cardbatzenyall;
+delitem 1000,@cardbatzeny3;
+delitem 715,@cardbatzeny4;
+
+set @failchance,rand(100);
+set @failbatratecal1,@failbatrate1;
+set @failbatratecal2,@failbatrate1+@failbatrate2;
+set @failbatratecal3,@failbatrate1+@failbatrate2+@failbatrate3;
+
+if(@failchance < @failbatratecal1) goto FAILREMOVECARD0;
+if((@failchance < @failbatratecal2) && (@failtype == 1)) goto FAILREMOVECARD1;
+if((@failchance < @failbatratecal2) && (@failtype == 2)) goto FAILREMOVECARD2;
+if(@failchance < @failbatratecal3) goto FAILREMOVECARD3;
+
+successremovecards @part;
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "วู้ว...การถอดการ์ดสำเร็จ ";
+	mes "ขอแสดงความยินดีด้วย";
+close;
+
+FAILREMOVECARD0:
+failedremovecards @part,0;
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "โอ้.พระเจ้า การถอดการ์ดผิดพลาด";
+	mes "ท่านเสียทั้งไอเท่มและการ์ด";
+	mes "ข้าเสียใจด้วย";
+close;
+
+FAILREMOVECARD1:
+failedremovecards @part,1;
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "โอ้.พระเจ้า การถอดการ์ดผิดพลาด";
+	mes "ท่านเสีย Card ไป";
+	mes "แต่ Item ของท่านยังคงอยู่";
+close;
+
+FAILREMOVECARD2:
+failedremovecards @part,2;
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "โอ้.พระเจ้า การถอดการ์ดผิดพลาด";
+	mes "ท่านเสีย Item ไป";
+	mes "แต่ Card ของท่านยังคงอยู่";
+close;
+
+FAILREMOVECARD3:
+failedremovecards @part,3;
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "โอ้.พระเจ้า การถอดการ์ดผิดพลาด";
+	mes "โชคดีที่ Item และ Card ไม่เสียหาย";
+close;
+
+DENYCARDCOUNT:
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "ของชิ้นนี้ไม่มีการ์ดติดมา...";
+	mes "เจ้าคิดจะทำอะไรน่ะ";
+close;
+
+DENYMATERIAL:
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "เจ้ามีของไม่ครบตามที่ข้าต้องการ";
+close;
+
+CLOSEOUT:
+	mes "[NPC BareCard]";
+	mes "^CCFFCC.^000000";
+	mes "ไม่เป็นไร ยังรอเจ้าอยู่เหมือนเดิมนะ";
+close;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ss7:
+mes "^FF8000 [Status Seller]^000000";
+mes "สวัสดี ท่านต้องการอัพ Status อะไรละ ";
+next;
+mes "[^FF0000 W A R N I N G ! ! ! ^000000]";
+mes "หากท่านอัพ Agi จนมากเกินไป อาจทำให้ อัตรา hit เป็น 1";
+mes "แล้วทำให้ตีไม่โดน";
+mes "แนะนำให้ไป Reset Status แล้วกลับมาอัพใหม่";
+next;
+mes "^FF0000 ["+strcharinfo(0)+"]^000000";
+mes "ข้าต้องการอัพ.......";
+menu "Str",Lstr,"Agi",Lagi,"Vit",Lvit,"Dex",Ldex,"Luk",Lluk,"Int",Lint,"ข้าไม่มีเงินอะ",Lnomoney;
+
+Lstr:
+mes "[Status Seller]";
+mes "การอัพ Str ข้าต้องการ ^FF8000 Jellopy 100^000000 ea + เงิน ^00FF0050M^000000 นะ";
+mes "ว่าไงละ???";
+menu "ข้ายืนยันการอัพ",Lupstrcheck,"ข้าไม่เอาแล้ว",Lcancels;
+
+Lupstrcheck:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าขอดูของที่จำเป็นสิ";
+if (Zeny<50000000) goto L_noenough;
+if (countitem(909)<100) goto L_noenough;
+if (Zeny>=50000000) goto L_passstr;
+if (countitem(909)>=100) goto L_passstr;
+
+
+L_passstr:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าจะอัพละนะ";
+atcommand strcharinfo(0)+"@str 999";
+delitem 909,100;
+set Zeny,Zeny -50000000;
+mes "ดูแล้วท่านแกร่งขึ้นมากนะ ^^";
+close;
+
+
+Lagi:
+mes "^FF8000 [Status Seller]^000000";
+mes "การอัพ Agi ข้าต้องการ ^FF8000 Jellopy 100 ^000000 ea + เงิน ^00FF0050M^000000 นะ";
+mes "ว่าไงละ???";
+menu "ข้ายืนยันการอัพ",Lupstrcheck,"ข้าไม่เอาแล้ว",Lcancel;
+
+Lupagicheck:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าขอดูของที่จำเป็นสิ";
+if (Zeny<50000000) goto L_noenough;
+if (countitem(909)<100) goto L_noenough;
+if (Zeny>=50000000) goto L_passagi;
+if (countitem(909)>=100) goto L_passagi;
+
+L_passagi:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าจะอัพละนะ";
+atcommand strcharinfo(0)+"@agi 999";
+delitem 909,100;
+set Zeny,Zeny -50000000;
+mes "ดูแล้วท่านแกร่งขึ้นมากนะ ^^";
+close;
+
+Lvit:
+mes "^FF8000 [Status Seller]^000000";
+mes "การอัพ Vit ข้าต้องการ ^FF8000 Jellopy 100^000000 ea + เงิน ^00FF0050M^000000นะ";
+mes "ว่าไงละ???";
+menu "ข้ายืนยันการอัพ",Lupvitcheck,"ข้าไม่เอาแล้ว",Lcancel;
+
+Lupvitcheck:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าขอดูของที่จำเป็นสิ";
+if (Zeny<50000000) goto L_noenough;
+if (countitem(909)<100) goto L_noenough;
+if (Zeny>=50000000) goto L_passvit;
+if (countitem(909)>=100) goto L_passvit;
+
+L_passvit:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าจะอัพละนะ";
+atcommand strcharinfo(0)+"@vit 999";
+delitem 909,100;
+set Zeny,Zeny -50000000;
+mes "ดูแล้วท่านแกร่งขึ้นมากนะ ^^";
+close;
+
+Ldex:
+mes "^FF8000 [Status Seller]^000000";
+mes "การอัพ Dex ข้าต้องการ ^FF8000 Jellopy 100 ^000000ea + เงิน ^00FF0050M^000000นะ";
+mes "ว่าไงละ???";
+menu "ข้ายืนยันการอัพ",Lupdexcheck,"ข้าไม่เอาแล้ว",Lcancel;
+
+Lupdexcheck:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าขอดูของที่จำเป็นสิ";
+if (Zeny<50000000) goto L_noenough;
+if (countitem(909)<100) goto L_noenough;
+if (Zeny>=50000000) goto L_passdex;
+if (countitem(909)>=100) goto L_passdex;
+
+L_passdex:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าจะอัพละนะ";
+atcommand strcharinfo(0)+"@dex 999";
+delitem 909,100;
+set Zeny,Zeny -50000000;
+mes "ดูแล้วท่านแกร่งขึ้นมากนะ ^^";
+close;
+
+Lluk:
+mes "^FF8000 [Status Seller]^000000";
+mes "การอัพ Luk ข้าต้องการ ^FF8000 Jellopy 100 ^000000ea + เงิน ^00FF0050M^000000นะ";
+mes "ว่าไงละ???";
+menu "ข้ายืนยันการอัพ",Luplukcheck,"ข้าไม่เอาแล้ว",Lcancel;
+
+Luplukcheck:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าขอดูของที่จำเป็นสิ";
+if (Zeny<50000000) goto L_noenough;
+if (countitem(909)<100) goto L_noenough;
+if (Zeny>=50000000) goto L_passluk;
+if (countitem(909)>=100) goto L_passluk;
+
+L_passluk:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าจะอัพละนะ";
+atcommand strcharinfo(0)+"@luk 999";
+delitem 909,100;
+set Zeny,Zeny -50000000;
+mes "ดูแล้วท่านแกร่งขึ้นมากนะ ^^";
+close;
+
+Lint:
+mes "^FF8000 [Status Seller]^000000";
+mes "การอัพ Int ข้าต้องการ ^FF8000 Jellopy 100 ^000000ea + เงิน ^00FF0050M^000000นะ";
+mes "ว่าไงละ???";
+menu "ข้ายืนยันการอัพ",Lupintcheck,"ข้าไม่เอาแล้ว",Lcancel;
+
+Lupintcheck:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าขอดูของที่จำเป็นสิ";
+if (Zeny<50000000) goto L_noenough;
+if (countitem(909)<100) goto L_noenough;
+if (Zeny>=50000000) goto L_passint;
+if (countitem(909)>=100) goto L_passint;
+
+L_passint:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นข้าจะอัพละนะ";
+atcommand strcharinfo(0)+"@int 999";
+delitem 909,100;
+set Zeny,Zeny -50000000;
+mes "ดูแล้วท่านแกร่งขึ้นมากนะ ^^";
+close;
+
+Lnomoney:
+mes "^FF8000 [Status Seller]^000000";
+mes "งั้นท่านมีเงินเมื่อไร ก้มาได้นะ";
+close;
+
+L_noenough:
+mes "^FF8000 [Status Seller]^000000";
+mes "ท่านมีของไม่ครบนิ";
+close;
+
+Lcancels:
+mes "^FF8000 [Status Seller]^000000";
+mes "ลาก่อน";
+close;
+end; 
+
+//======================================================================================================
+at1:
+set @mench,0;
+set @sklvl,getskilllv(41);
+if (@sklvl<1) goto no_vending;
+if (sp<30) goto no_vending1;
+if (checkcart()!=1) goto no_vending2;
+mes "[ ระบบ Autotrade ]";
+mes "เหมาะสำหรับ ID ธรรมดา";
+mes "สำหรับอาชีพพ่อค้าเท่านั้น";
+mes "ถ้าไม่อยากเสียตังฟรีโปรดกดยกเลิก";
+mes "ท่านต้องการใช้ระบบ Autorade";
+mes "ท่านโปรดเลือก ราย ชม. ที่ต้องการ";
+next;
+menu "20 นาที ฟรี !!",A_FREE,"1 ชม. เป็นเงิน 200k",A_200k,"5 ชม. เป็นเงิน 800k",A_800k,"10 ชม. เป็นเงิน 1.5m",A_15m,"24 ชม. เป็นเงิน 2m",A_2m,"Unlimit เป็นเงิน 5m",A_5m,"ยกเลิกการใช้บริการ",-;
+
+close;
+end;
+
+A_200k:
+set @mench,1;
+if (Zeny < 200000) goto NeedZenys;
+Announce "ท่าน "+strcharinfo(0)+" ได้เลือกใช้งาน Autotrade แบบรายชั่วโมง เป็นเวลา 1 ชม.",bc_self,0x66CCFF;
+set Zeny,zeny-200000;
+goto Start_time;
+end;
+
+A_800k:
+set @mench,2;
+if (Zeny < 800000) goto NeedZenys;
+Announce "ท่าน "+strcharinfo(0)+" ได้เลือกใช้งาน Autotrade แบบรายชั่วโมง เป็นเวลา 5 ชม.",bc_self,0x66CCFF;
+set Zeny,zeny-800000;
+goto Start_time;
+end;
+
+A_15m:
+if (Zeny < 1500000) goto NeedZenys;
+set @mench,3;
+Announce "ท่าน "+strcharinfo(0)+" ได้เลือกใช้งาน Autotrade แบบรายชั่วโมง เป็นเวลา 10 ชม.",bc_self,0x66CCFF;
+set Zeny,zeny-1500000;
+goto Start_time;
+end;
+
+A_2m:
+if (Zeny < 2000000) goto NeedZenys;
+set @mench,4;
+Announce "ท่าน "+strcharinfo(0)+" ได้เลือกใช้งาน Autotrade แบบรายชั่วโมง เป็นเวลา 24 ชม.",bc_self,0x66CCFF;
+set Zeny,zeny-2000000;
+goto Start_time;
+end;
+
+A_FREE:
+set @mench,5;
+Announce "ท่าน "+strcharinfo(0)+" ได้เลือกใช้งาน Autotrade แบบรายนาที เป็นเวลา 20 นาที Free !!",bc_self,0x66CCFF;
+goto Start_time;
+end;
+
+A_5m:
+if (Zeny < 5000000) goto NeedZenys;
+set @mench,6;
+Announce "ท่าน "+strcharinfo(0)+" ได้เลือกใช้งาน Autotrade แบบ Unlimit ใช้ได้ชั่วโครต",bc_self,0x66CCFF;
+set Zeny,zeny-5000000;
+goto Start_time;
+end;
+
+Start_time:
+mes "[ ระบบ Autotrade ]";
+mes "เงื่อนไขด้านล่างโปรดอ่าน";
+mes "โปรดตั้งร้านให้เสร็จก่อนในเวลา 5 นาที";
+mes "ก่อนจะครบ 5 นาที ท่านจะตั้งที่ไหนก็ได้";
+mes "หลังหมด 5 นาที เราจะทำการ";
+mes "Autotrade โดยอัตโนมัติ";
+mes "Waiting . . . . . .";
+//set @GIDS, getcharid(3,strcharinfo(0));
+//unitskilluseid @GIDS,41,@sklvl;
+initnpctimer "vending",1;
+setnpctimer 0,"vending";
+stopnpctimer "vending";
+startnpctimer "vending";
+close;
+end;
+
+no_vending:
+dispbottom "คุณไม่มี skill vending";
+close;
+end;
+no_vending1:
+dispbottom "คุณมี SP ไม่ถึง 30";
+close;
+end;
+no_vending2:
+dispbottom "คุณไม่มี รถเข็น";
+close;
+end;
+NeedZenys:
+dispbottom "คุณมีเงินไม่พอ";
+close;
+end;
+
+
+OnTimer60000:
+//OnTimer10000:
+Announce "ท่าน "+strcharinfo(0)+" เหลือเวลา ในการตั้งร้าน อีก 4 นาที",bc_self,0x66CCFF;
+end;
+OnTimer120000:
+//OnTimer20000:
+Announce "ท่าน "+strcharinfo(0)+" เหลือเวลา ในการตั้งร้าน อีก 3 นาที",bc_self,0x66CCFF;
+end;
+OnTimer180000:
+//OnTimer30000:
+Announce "ท่าน "+strcharinfo(0)+" เหลือเวลา ในการตั้งร้าน อีก 2 นาที",bc_self,0x66CCFF;
+end;
+OnTimer240000:
+//OnTimer40000:
+Announce "ท่าน "+strcharinfo(0)+" เหลือเวลา ในการตั้งร้าน อีก 1 นาที",bc_self,0x66CCFF;
+end;
+OnTimer270000:
+//OnTimer40000:
+Announce "ท่าน "+strcharinfo(0)+" เหลือเวลา 30 วินาทีสุดท้าย !!",bc_self,0x66CCFF;
+end;
+OnTimer300000:
+//OnTimer20000:
+atcommand "@autotrade";
+if (@mench==6) {
+stopnpctimer "vending";
+detachnpctimer "vending";
+}
+end;
+OnTimer3600000:
+//OnTimer30000:
+if (@mench==1) {
+atcommand "@kick "+strcharinfo(0);
+stopnpctimer "vending";
+detachnpctimer "vending";
+}
+end;
+//OnTimer180000:
+OnTimer18000000:
+if (@mench==2) {
+stopnpctimer "vending";
+detachnpctimer "vending";
+atcommand "@kick "+strcharinfo(0);
+}
+end;
+OnTimer36000000:
+if (@mench==3) {
+stopnpctimer "vending";
+detachnpctimer "vending";
+atcommand ":@kick "+strcharinfo(0);
+}
+end;
+OnTimer86400000:
+if (@mench==4) {
+stopnpctimer "vending";
+detachnpctimer "vending";
+atcommand "@kick "+strcharinfo(0);
+}
+end;
+OnTimer1200000:
+if (@mench==5) {
+stopnpctimer "vending";
+detachnpctimer "vending";
+atcommand "@kick "+strcharinfo(0);
+}
+stopnpctimer "vending";
+detachnpctimer "vending";
+end;
+
+//=====================================================================
+
+item1:
+mes "[ Kafra Identifier]";
+mes "สวัสดี ข้าคือพนักงานส่อง item ทั้งหมดในครั้งเดียว";
+mes "เจ้าต้องการส่อง item ทั้งหมดใช่หรือไม่";
+next;
+getinventorylist;
+announce "[พนักงานตรวจสอบไอเท็ม] ข้าจะช่วยเจ้าส่อง Item ทั้งหมดที่มี ฮา ฮ่า ฮ๊า.",19,0xFFCC00;
+for(set @i, 0; @i < @inventorylist_count; set @i, @i + 1) {
+if (@inventorylist_identify[@i] == 1) continue;
+delitem2 @inventorylist_id[@i],1,0,0,0,0,0,0,0;
+getitem @inventorylist_id[@i],1;
+}
+
+
+S11:
+mes "[ Infomation ]";
+mes "สวัสดี มีอะไรให้ช่วยมั๊ย ?";
+next;
+switch  (select("- อัตราค่าประสบการณ์:- เก็บเลเวลยังไง:- หาเงินยังไง:- อัตราการตีบวกเท่าไหร่:- กิลวอร์เมื่อไหร่:- รางวัลกิลวอร์:- ทำยา Assassin ยังไง:- ทำยา Alchemist ยังไง:- เวลาบอสเกิด:- ช่องทางการบริจาค:- ไม่มีอะไร"))
+{
+case 1:
+mes "[ Infomation ]";
+mes "ตามนี้เลยจ้า";
+mes "BaseExp = ^FF0000"+$@exprate$+"^000000";
+mes "JobExp  = ^FF0000"+$@jobrate$+"^000000";
+break;
+case 2:
+mes "[ Infomation ]";
+mes "เก็บเลเวลแบบ Server หลัก";
+mes "ตัวอย่าง";
+mes "Lv 1~20 AntHell";
+mes "Lv 21~40 Payon Dungeon";
+mes "Lv 41~60 Pyramid Dungeon";
+mes "Lv 61~80 Glast Heim";
+mes "Lv 81~99 Bio Loboratory";
+break;
+case 3:
+mes "[ Infomation ]";
+mes "สถานที่หลักในการหาเงิน";
+mes "Fields -> Payon Forests -> Payon Forests 4 <pay_fild04>";
+mes "สถานที่ต่างๆในการหาเงิน";
+mes "Dungeon -> Glast Helm -> Underground Prison 1 / 2";
+mes "Dungeon -> Anthell -> ชั้น 1 / ชั้น 2";
+mes "และสถานที่อื่นๆอีกครับ !!";
+break;
+case 4:
+mes "[ Infomation ]";
+mes "Armor";
+mes "100,100,100,100, 60, 40, 40, 20, 20, 10";
+next;
+mes "[ Infomation ]";
+mes "Lv.1 Weapons";
+mes "100,100,100,100,100,100,100, 60, 40, 20";
+next;
+mes "[ Infomation ]";
+mes "Lv.2 Weapons";
+mes "100,100,100,100,100,100, 60, 40, 20, 20";
+next;
+mes "[ Infomation ]";
+mes "Lv.3 Weapons";
+mes "100,100,100,100,100, 60, 50, 20, 20, 20";
+next;
+mes "[ Infomation ]";
+mes "Lv.4 Weapons";
+mes "100,100,100,100, 60, 40, 40, 20, 20, 10";
+break;
+case 5:
+mes "[ Infomation ]";
+mes " วอทุกวัน จันทร์ถึงอาทิตย์ ";
+mes "      [ เวลา ]";
+mes " 20.00น. - 21.00น. ";
+break;
+case 6:
+mes "[ Infomation ]";
+mes "^FF9900:: รางวัลบ้านทุกหลังจะได้รับ ::^000000";
+mes "1. เงิน 36 M";
+mes "2. ยาปา 10 กล่อง / ยาแอส 10 กล่อง / ไม้บอส 5 อัน.";
+mes "3. TCG Card 50 อัน.";
+break;
+case 7:
+mes "[ Infomation ]";
+mes "ส่วนผสมที่ใช้";
+mes "Berserk Potion = 1";
+mes "Karvodailnirol = 1";
+mes "Empty Bottle = 1";
+mes "Venom Canine = 1 [Boa]";
+mes "Cactus Needle = 1 [Muka]";
+mes "Bee Sting = 1 [Honet]";
+mes "Poison Spore = 1 [Poison Spore]";
+break;
+case 8:
+mes "[ Infomation ]";
+mes "เลือก ชนิดยาที่คณต้องการข้อมูล";
+switch (select( "- Bottle Grenade:- Acid Bottle:- Plant Bottle:- Marine Sphere Bottle:- Glistening Coat:- ไม่มีอะไร ใจมาก"))
+{
+case 1:
+mes "ส่วนผสมที่ใช้";
+mes "Bottle Grenade Creation";
+mes "Alcohol = 1";
+mes "Empty Bottle = 1";
+mes "Fabirc = 1 [Whisper]";
+break;
+case 2:
+mes "ส่วนผสมที่ใช้";
+mes "Acid Bottle Creation";
+mes "Empty Bottle = 1";
+mes "Immortal Heart = 1 [Verit]";
+break;
+case 3:
+mes "ส่วนผสมที่ใช้";
+mes "Plant Bottle Creation";
+mes "Empty Bottle = 1";
+mes "Maneater Blossom = 1 [Flora]";
+break;
+case 4:
+mes "ส่วนผสมที่ใช้";
+mes "Marine Sphere Creation";
+mes "Empty Bottle = 1";
+mes "Tendon = 1 [Marine Sphere]";
+mes "Detonator = 1 [Marine Sphere]";
+break;
+case 5:
+mes "ส่วนผสมที่ใช้";
+mes "Glistening Coat Creation";
+mes "Alcohol = 1";
+mes "Empty Bottle = 1";
+mes "Heart of Mermaid = 1 [Obeaune]";
+mes "Zenorcs Fang = 1 [Zenorc]";
+break;
+default:
+}
+break;
+case 9:
+mes "[ Infomation ]";
+mes "MVP ทุกตัว : เกิดตามเวลาจริง!!";
+mes "สำหรับแมพรวมบอส บอสตายแล้วเกิดเลย";
+break;
+case 10:
+mes "[ Infomation ]";
+mes "ขอบคุณมากที่มีน้ำใจ";
+mes "คิดถึงหัวข้อนี้น่ะจ๊ะ ";
+mes "ติดต่อ GM ได้เลยจ้า";
+mes "Email : "+$@S_Email$+"";
+mes "Tel : "+$@S_TEL$+"";
+mes "ขอบคุณจ้า ~*";
+break;
+case 11:
+break;
+}
+cutin "kafra_01",255;
+close;
+
+//=====================================================================================
+S8:
+mes "[Platinum Skill]";
+mes "สวัสดี, ยินดีต้อนรับ";
+mes "คุณต้องการเรียนทักษะเพิ่มหรือไม่ ?";
+next;
+switch(select("- ฉันต้องการเรียนทักษะเพิ่ม:- ฉันต้องการเรียนทักษะแบบใหม่:- ฉันต้องการสกิลครบทุกช่อง:- ฉันต้องการสเตตัสครบทุกช่อง:- ฉันต้องการเพิ่มน้ำหนัก:- ฉันต้องการ Restats:- ฉันต้องการ Reskill:- ไม่ละฉันเก่งอยู่แล้ว")){
+Case 1:
+skill 142,1,0; // First Aid
+if (BaseClass == Job_Novice) {
+skill 143,1,0; // Play Dead
+} else if (BaseClass == Job_Swordman) {
+skill 144,1,0; // Moving HP-Recovery
+skill 145,1,0; // Fatal Blow
+skill 146,1,0; // Auto Berserk
+} else if (BaseClass == Job_Mage) {
+skill 157,1,0; // Energy Coat
+} else if (BaseClass == Job_Archer) {
+skill 147,1,0; // Arrow Crafting
+skill 148,1,0; // Arrow Repel
+} else if (BaseClass == Job_Merchant) {
+skill 153,1,0; // Cart Revolution
+skill 154,1,0; // Change Cart
+skill 155,1,0; // Crazy Uproar
+} else if (BaseClass == Job_Thief) {
+skill 149,1,0; // Sand Attack
+skill 150,1,0; // Back Slide
+skill 151,1,0; // Find Stone
+skill 152,1,0; // Stone Fling
+} else if (BaseClass == Job_Acolyte) {
+skill 156,1,0; // Holy Light
+}
+if (BaseJob == Job_Knight || BaseJob == Job_Lord_Knight) {
+skill 1001,1,0; // Charge Attack
+} else if (BaseJob == Job_Crusader || BaseJob == Job_Paladin) {
+skill 1002,1,0; // Shrink
+} else if (BaseJob == Job_Wizard || BaseJob == Job_High_Wizard) {
+skill 1006,1,0; // Sight Blaster
+} else if (BaseJob == Job_Sage || BaseJob == Job_Professor) {
+skill 1007,1,0; // Create Elemental Converter
+skill 1008,1,0; // Elemental Change Water
+skill 1017,1,0; // Elemental Change Earth
+skill 1018,1,0; // Elemental Change Fire
+skill 1019,1,0; // Elemental Change Wind
+} else if (BaseJob == Job_Hunter || BaseJob == Job_Sniper) {
+skill 1009,1,0; // Phantasmic Arrow
+} else if (BaseJob == Job_Bard || BaseJob == Job_Clown) {
+skill 1010,1,0; // Pang Voice
+} else if (BaseJob == Job_Dancer || BaseJob == Job_Gypsy) {
+skill 1011,1,0; // Wink of Charm
+} else if (BaseJob == Job_Blacksmith || BaseJob == Job_Whitesmith) {
+skill 1012,1,0; // Unfair Trick
+skill 1013,1,0; // Greed
+} else if (BaseJob == Job_Alchemist || BaseJob == Job_Creator) {
+skill 238,1,0; // Bioethics
+} else if (BaseJob == Job_Assassin || BaseJob == Job_Assassin_Cross) {
+skill 1003,1,0; // Sonic Acceleration
+skill 1004,1,0; // Throw Venom Knife
+} else if (BaseJob == Job_Rogue || BaseJob == Job_Stalker) {
+skill 1005,1,0; // Close Confine
+} else if (BaseJob == Job_Priest || BaseJob == Job_High_Priest) {
+skill 1014,1,0; // Redemptio
+} else if (BaseJob == Job_Monk || BaseJob == Job_Champion) {
+skill 1015,1,0; // Ki Translation
+skill 1016,1,0; // Ki Explosion
+}
+break;
+Case 2:
+mes "[Platinum Skill]";
+mes "คุณต้องการเรียนทักษรไหนเพิ่มเติม ?";
+mes "โปรดเลือกเมนู...";
+next;
+switch(select("- เพิ่มน้ำหนัก:- ตั้งร้านรับไอเทม (Merchant):- ไม่ละฉันเก่งอยู่แล้ว")){
+Case 1:
+mes "[Platinum Skill]";
+if (countitem(7776) < 1){
+mes " ";
+mes "คุณไม่มี "+getitemname(7776)+"";
+mes "ที่ใช้เพิ่มน้ำหนัก";
+close;
+}
+mes "คุณต้องการเพิ่มน้ำหนักเลยหรือไม่ ?";
+mes "สามารถเพิ่มได้ทีละ 1 เลเวล เต็มเลเวล 10";
+mes "เลเวลละ 200 Weight";
+mes "ขณะนี้คุณมีสกิลน้ำหนักเลเวล : "+getskilllv(681)+"/10";
+if (select("- ใช่, เพิ่มน้ำหนักเลย:- ไม่เอาดีกว่า") == 2) close;
+next;
+mes "[Platinum Skill]";
+if (getskilllv(681) >= 10){
+mes " ";
+mes "คุณมีสกิลเลเวล 10 แล้ว";
+close;
+}
+delitem 7776,1;
+skill 681,(getskilllv(681)+1),0;
+mes "เรียนสกิล เพิ่มน้ำหนัก สำเร็จแล้ว";
+mes "ขณะนี้คุณมีสกิลน้ำหนักเลเวล : "+getskilllv(681)+"/10";
+mes "ขอบคุณที่ใช้บริการ";
+next;
+break;
+Case 2:
+mes "[Platinum Skill]";
+if (BaseClass != Job_Merchant){
+mes "คุณไม่ใช่สายอาชีพ Merchant (พ่อค้า หรือ แม่ค้า)";
+close;
+}
+if (getskilllv(41) < 1){
+mes " ";
+mes "คุณไม่มีสกิลตั้งร้านค้า";
+mes "โปรดอัพสกิล [Vending] หรือ คุณไม่มีสกิลนี้";
+close;
+}
+mes "คุณต้องการเรียนสกิลตั้งร้านรับไอเทมหรือไม่ ?";
+mes "สามารถตั้งได้สูงสุด 5 ชิ้น";
+mes "และใช้ "+getitemname(6377)+" เพื่อตั้งร้าน";
+mes "สามารถหาซื้อได้จากร้านค้าทั่วไป";
+if (select("- ใช่, เรียนสกิลตั้งร้านรับไอเทม:- ไม่เอาดีกว่า") == 2) close;
+next;
+mes "[Platinum Skill]";
+if (getskilllv(2535) >= 2){
+mes " ";
+mes "คุณได้เรียนสกิลนี้ไปแล้ว";
+close;
+}
+getitem 6377,100;
+skill 2535,2,0;
+mes "เรียนสกิล ตั้งร้านรับไอเทม สำเร็จแล้ว";
+mes "ขอบคุณที่ใช้บริการ...";
+next;
+break;
+Case 3:
+break;
+}
+Case 3:
+mes "[Platinum Skill]";
+mes "โอเค สำเร็จแล้ว !!";
+atcommand "@allskill";
+close;
+Case 4:
+mes "[Platinum Skill]";
+mes "โอเค สำเร็จแล้ว !!";
+atcommand "@allstats";
+close;
+Case 5:
+mes "[ GYM ]";
+mes "คุณต้องการ GYM เพิ่มน้ำหนัก หรือไม่ ?";
+next;
+menu "- ต้องการสิ",-,"- ไม่ต้องการ",closed;
+if (getskilllv(681) >= 10){
+mes "[ GYM ]";
+mes "คุณมีสกิลเลเวล 10 แล้ว";
+close;
+}
+mes "[ GYM ]";
+mes "เรียนสกิลเพิ่มน้ำหนัก สำเร็จ";
+skill 681,10,0;
+close;
+Case 6:
+mes "[Platinum Skill]";
+mes "Stats ถูก Reset";
+resetstatus;
+close;
+Case 7:
+mes "[Platinum Skill]";
+mes "Skill ถูก Reset";
+resetskill;
+close;
+Case 8:
+mes "[Platinum Skill]";
+mes "แล้วกลับมาใหม่นะ...";
+close;
+}
+mes "[Platinum Skill]";
+mes "คุณเรียนทักษะเสริมสำเร็จแล้ว ...";
+close;
+closed:
+close;
+mes "[คาฟ่าเซิร์ฟเวอร์]";
+mes "ขอบคุนที่ใช้บริการน่ะ";
+cutin "kafra_01",255;
+close;
+
+//=====================================================================================
+
+pagas:
+mes "[ประกาศ]";
+mes "อยากพูดไร พูดมาเลย.";
+next;
+menu "ประกาศ",bun;
+close;
+bun:
+mes "[ประกาศ]";
+mes "ท่านต้องการประข้อความอะไรเชิญเลือกเลยค่ะ";
+mes "เราคิดค่าบริการ 1000 Z เท่านั้น";
+next;
+if(Zeny<1000) goto NeedZenys;
+set Zeny,Zeny-1000;
+mes "[ประกาศ]";
+mes "กรุณากรอกข้อความที่คุณจะประกาศเลยค่ะ";
+next;
+input @message001$;
+announce "[ " + @message001$ + " ] [ โดยหัวเกรียน " + strcharinfo(0) + " ]",0;
+mes "[ประกาศ]";
+mes "ประกาศเรียบร้อยค่ะ";
+close;
+
+sM_ResChk:
+mes "[Kafra]";
+mes "คะแนนสะสมของท่านมี  ^0000ff"+RESRVPTS+"^000000 คะแนน";
+next;
+mes "[Kafra]";
+mes "ท่านสามารถแลกเปลี่ยนคะแนนสะสมเป็นสินค้าได้ที่สำนักงานใหญ่ Kafra Corperation";
+next;
+mes "[Kafra]";
+mes "โปรดใช้บริการของเราได้ตามอัธยาศัยและอย่าลืมไปรับสินค้าฟรีกับบริการพิเศษ";
+cutin "kafra_01",255;
+close;
+
+k4:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดเลือกทำรายการ"; 
+mes "จากเมนูด้านล่าง"; 
+next; 
+menu
+"- ที่เก็บของ Guild",gstorage,
+//"- ขอทราบเลขกิล",check,
+//"- สร้างกิวล์",CreateGuild,
+//"- อัพเลเววกิวล์",UpLvGuild,
+"- โอนหัวกิล",changegm,
+"Exit",Cancel; 
+
+check:
+mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000";
+mes "Guild Name : ^0000FF[ "+ GetGuildName(.@GID) + "]^000000";
+mes "Guild ID : ^0000FF[ "+getcharid(2)+" ]^000000";
+close;
+
+CreateGuild:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดใส่ชื่อกิวล์ที่ต้องการ";
+input @nameguild$;
+atcommand strcharinfo(0)+ "@guild "+@nameguild$+"";
+next;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่างเราจะอัพเลเววกิวล์";
+mes "ของท่านให้เลย แล้วพบกันใหม่";
+announce "ท่าน ["+strcharinfo(0)+"] ได้จัดตั้งกิวล์  ชื่อ  ["+@nameguild$+"`Guild] เรียบร้อยแล้วค่ะ.",0,0xFF00CC;
+atcommand strcharinfo(0) + "@guildlvlup 50";
+close;
+
+UpLvGuild:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "อัพเลเววกิวล์เสร็จสมบูรณ์";
+atcommand strcharinfo(0) + "@guildlvlup 50";
+close;
+
+changegm:
+mes "^FF0000[ ๏ Guild - Manager ๏ ]^000000";
+mes "โปรดกรอกชื่อของผู้เล่นที่ท่านต้องการโอนสถานะการเป็นหัวหน้า Guild ให้";
+mes "กรุณาอย่ากรอกชื่อผิด หรือ กรอกชื่อผู้เล่นที่ไม่ได้ออนไลน์อยู่";
+input @name$;
+next;
+announce "ท่านได้โอนสถานะหัวหน้า Guild ให้แก่ "+@name$+" เรียบร้อยแล้ว",19,0xDB2645;
+atcommand "@changegm "+@name$+"";
+close;
+
+gstorage:
+	set .@n$,"[^0000FFGuild Storage^000000]";
+	set @GID,getcharid(2);
+
+	mes .@n$;
+	mes "สวัสดี "+strcharinfo(0)+", ข้าคือผู้ดูแลคลังสินค้าของกิลด์";
+	mes "มีอะไรให้ข้าช่วยท่านมั้ย?";
+	next;
+	menu "เปิดคลังเก็บของกิลด์",-,"เปลี่ยนรหัสผ่าน",L_PW,"ยกเลิก",L_C;
+
+	if(@GID == 0) goto L_NG;
+
+	mes .@n$;
+	mes "โอเค, กรุณากรุณากรอกรหัสผ่าน:";
+	input .@GuildPW;
+	if(getd("$GuildPW_"+getcharid(2)) == .@GuildPW) goto L_O;
+	if(getd("$GuildPW_"+getcharid(2)) != .@GuildPW) goto L_W;
+	close;
+
+L_O:
+	if(guildopenstorage() == 1) goto L_WA;
+	guildopenstorage();
+	close;
+
+L_W:
+	mes .@n$;
+	mes "ท่านกรอกรหัสผ่านไม่ถูกต้อง!";
+	close;
+
+L_WA:
+	mes .@n$;
+	mes "ขออภัย กำลังมีผู้อื่นใช้คลังเก็บของกิลด์อยู่.";
+	mes "กรุณาลองเข้าใช้งานอีกครั้ง.";
+	close;
+
+L_PW:
+	if(@GID == 0) goto L_NG;
+	if(strcharinfo(0) == getguildmaster(@GID)) goto L_CH;
+	mes .@n$;
+	mes "ขออภัย การเปลี่ยนรหัสผ่านทำได้เฉพาะหัวหน้ากิลด์เท่านั้น!!.";
+	close;
+
+L_CH:
+	mes .@n$;
+	mes "ยินดีต้อนรับเข้าสู่ระบบ   เปลี่ยนรหัสผ่านคลังเก็บของกิลด์.";
+	mes "กรุณากรอกรหัสผ่าน  ใหม่ของคุณ:";
+	input .@GuildPW;
+	setd "$GuildPW_"+getcharid(2),.@GuildPW;
+	mes "โอเค, รหัสผ่านใหม่ของท่านคือ: ^0000FF"+.@GuildPW+"^000000.";
+	mes "กรุณา  จดจำรหัสผ่านที่คุณกรอกให้ขึ้นใจ!!!";
+	close;
+
+L_NG:
+	mes .@n$;
+	mes "ขออภัย, คุณไม่มีกิลด์ ทำให้ไม่สามารถใช้งานในส่วนนี้ได้.";
+	close;
+
+L_C:
+	mes .@n$;
+	mes "วันนี้อากาศดีจังเนอะ ท่านว่ามั้ย?.";
+	close;
+
+k2:
+if (getgmlevel() >= 90) goto GMMassage;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "^FF0000ถ้าท่านในคำที่ไม่สุภาพ";
+mes "หรือ หยาบคาย^000000";
+mes "ทางเซิฟเวอร์จะระงับ ID ของท่าน 7 วัน";
+next;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดลงทะเบียน";
+mes "หรือ อ่านข้อความ";
+next;
+menu 
+"- ลงทะเบียน",RegisterMsg,
+"- อ่านข้อความ",ReadMsg,
+"Exit",Cancel;
+
+
+
+RegisterMsg:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้ลงทะเบียนเรียบร้อยแล้ว";
+mes "โปรดใส่ข้อความลงในช่องว่าง";
+next;
+input .@msg$;
+set $lastnr2,$lastnr2+1;
+set $message$[$lastnr],"^0000ff"+$lastnr2+". "+strcharinfo(0)+":^000000 "+.@msg$+"";
+if ($lastnr >= 100) goto ordering;
+set $lastnr,$lastnr+1;
+set $acount,$acount+1;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านได้แจ้งมาว่า : ^0000ff"+.@msg$+"^000000";
+mes "ข้อความของท่านถูกบันทึกแล้ว";
+mes "^FF0000______________________^000000";
+goto ReadMsg;
+close;
+
+
+
+GMMassage:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการอ่านข้อความหรือไม่";
+next;
+menu
+"- อ่านข้อความ",ReadMsg,
+"- ไม่อ่านข้อความ",Cancel,
+"- ลบข้อความทั้งหมด",ClearMsg,
+"Exit",Cancel;
+
+
+
+ReadMsg:
+mes ""+$message$[.@z]+"";
+if ((.@z >= 99) || ($message$[.@z] == "")) close;
+mes "^00FF00______________________^000000";
+set .@z,.@z+1;
+goto ReadMsg;
+
+
+
+ordering:
+set $message$[.@x],""+$message$[.@x+1]+"";
+if ((.@x >= 99) || ($message$[.@x+1] == "")) goto ReadMsg;
+set .@x,.@x+1;
+goto ordering;
+
+
+
+ClearMsg:
+deletearray $message$,100;
+set $lastnr2,0;
+set $lastnr,0;
+set $acount,0;
+set .@x,0;
+set .@z,0;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ลบข้อความเสร็จสมบูรณ์";
+close;
+
+
+k9:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการถอดการ์ด";
+mes "ส่วนไหนของท่าน";
+next;
+menu	
+getequipname(1),SLOTS1,
+getequipname(2),SLOTS2,
+getequipname(3),SLOTS3,
+getequipname(4),SLOTS4,
+getequipname(5),SLOTS5,
+getequipname(6),SLOTS6,
+getequipname(7),SLOTS7,
+getequipname(8),SLOTS8,
+getequipname(9),SLOTS9,
+getequipname(10),SLOTS10,
+"Exit",Cancel;
+
+
+
+SLOTS1:
+set @part,1;
+goto remove;
+
+SLOTS2:
+set @part,2;
+goto remove;
+
+SLOTS3:
+set @part,3;
+goto remove;
+
+SLOTS4:
+set @part,4;
+goto remove;
+
+SLOTS5:
+set @part,5;
+goto remove;
+
+SLOTS6:
+set @part,6;
+goto remove;
+
+SLOTS7:
+set @part,7;
+goto remove;
+
+SLOTS8:
+set @part,8;
+goto remove;
+
+SLOTS9:
+set @part,9;
+goto remove;
+
+SLOTS10:
+set @part,10;
+goto remove;
+
+
+
+remove:
+if(getequipcardcnt(@part) == 0) goto DenyEquipment;
+successremovecards @part;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "การถอดการ์ด เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+DenyEquipment:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านไม่ได้ใส่อุปกรณ์";
+mes "หรือ อุปกรณ์ไม่มีการ์ด";
+close;
+
+k10:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านต้องการแปลงเพศ ตัวละคร";
+mes "ใช่ หรือ ไม่";
+next;
+menu
+"- ใช่",ChangeNow,
+"- ไม่ใช่",Cancel,
+"Exit",Cancel;
+
+
+
+ChangeNow: 
+changesex;
+close;
+
+
+k1:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "[ ประกาศ ]";
+mes "ท่านต้องการประกาศข้อความใช่มั้ยล่ะ ?";
+mes "เราคิดค่าประกาศแค่ 500k เท่านั้น";
+next;
+menu "^0DFF0Dประกาศข้อความสีเขียว^000000",green;
+
+green:
+if(Zeny<500000) goto none;
+set Zeny,Zeny-500000;
+mes "ท่านเลือกข้อความ ^0DFF0Dสีเขียว^000000";
+mes "จำไว้ทุกครั้งว่าก่อนจะพิมพ์อะไร ควรคำนึงถึงผลที่จะตามมา";
+next;
+mes "เพราะฉะนั้นกรุณาพิมพ์คำพูดให้สุภาพ และงดด่ากันผ่านทางประชาสัมพันธ์";
+next;
+input @message001$;
+announce "[ " + strcharinfo(0) + " ] [ " + @message001$ + " ]",0,0x0DFF0D;
+mes "ประกาศเรียบร้อยแล้วค่ะ";
+close;
+
+k11:
+set @cost,10000;
+mes "[ ^0061C1Kafra Service Banking^000000 ]";
+mes strcharinfo(0)+",ยินดีต้อนรับ เข้าสู่ บริการ ฝาก เงิน";
+mes "เราจะทำการเปิด สมุดธนาคาร ให้ท่านค่ะ";
+mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+next;
+menu 
+"- ฝากเงิน",Ldeposit,
+"- ถอนเงิน",Lwithdrawl,
+"- โอนเงิน ข้ามตัวละคร",TransferZ,
+"- โอนเกระโหลก ข้ามตัวละคร",TransferS,
+"Exit",Cancel;
+
+
+
+Ldeposit:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "อยากฝากเงินเท่าไรละ";
+next;
+if (@cost > 0) goto Ldepocost;
+goto Ldepocont;
+
+    Ldepocost:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "คิดค่าบริการ " + @cost + " Zeny";
+        next;
+        goto Ldepocont;
+
+Ldepocont:
+    input @deposit;
+    if (@deposit < 10000) goto Lrealamount;
+    if (@deposit > Zeny) goto Lneedzeny;
+    if (@deposit > (Zeny - @cost)) goto Lneedzeny2;
+    set Zeny,Zeny - @deposit;
+    set Zeny,Zeny - @cost;
+    set #bankstorage,#bankstorage + @deposit;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ขอบคุณที่ใช้บริการ กองเงินของคุณ ถูกฝากไว้เรียบร้อยแล้งว";
+    mes " ";
+    mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+    close;
+
+Lwithdrawl:
+    if (#bankstorage <= 0) goto notinbank;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณจะถอนเงินใช่ไหม";
+    next;
+    if (@cost > 0) goto Lwithcost;
+    goto Lwithcont;
+
+    Lwithcost:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "ค่าบริการ จำนวน " + @cost + " Zeny ";
+        next;
+        goto Lwithcont;
+
+Lwithcont:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ยอดเงินคงเหลือ ^FF0000" + #bankstorage + "^000000 Zeny";
+    next;
+    input @withdrawl;
+    if (@withdrawl < 10000) goto Lrealamount;
+    if (@withdrawl > #bankstorage) goto Lneedzeny3;
+    if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) goto Lcostask;
+    if (@cost > Zeny) goto Lneedzeny2;
+    goto Lwithcont2;
+
+    Lcostask:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "คุณจะถอนเงินใช่ไหม";
+        next;
+        menu 
+	"- ใช่ตกลง",Lwithtake,
+	"- ไม่ละ",Lcancel2;
+
+    Lwithtake:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+        mes "Ok";
+        set @withdrawl,@withdrawl - @cost;
+        set #bankstorage,#bankstorage - @cost;
+        set @cost,0;
+        next;
+        goto Lwithcont2;
+
+Lwithcont2:
+    set Zeny,Zeny - @cost;
+    set Zeny,Zeny + @withdrawl;
+    set #bankstorage,#bankstorage - @withdrawl;
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "การถอนเงินเสร็จสมบูรณ์";
+    close;
+
+Lrealamount:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "กรุณาใส่ จำนวน เงิน ให้มากกว่านี้ ห้ามต่ำกว่า 10,000 Zeny";
+    close;
+
+Lneedzeny:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณไม่มีเงินที่ จะฝากเข้า ธนาคาร";
+    close;
+
+Lneedzeny2:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ยอดคงเหลือของคุณ ไม่พอกับจำนวนเงินที่คุณจะ ถอน";
+    close;
+
+Lneedzeny3:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "คุณไม่มีเงินเลยใน ระบบ";
+    close;
+
+Lcancel2:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "ขอขอบคุณที่ใช้บริการ";
+    close;
+
+notinbank:
+    mes "[ ^0061C1Kafra Service^000000 ]";
+    mes "เจ้ายังไม่ได้เปิดบัญชี";
+    close;
+
+
+
+TransferZ:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ยินดีต้อนรับสู่บริการ โอนเงินข้ามตัวละคร";
+	mes "คุณสามารถ ส่งผ่านเงินไปยังตัวละครของคุณตัวอื่นได้ค่ะ";
+	mes "^FF0000เงินที่โอนจะไม่เกี่ยวกับเงินในบัญชีของท่าน^000000";
+	next;
+	if($bank_money!=0 && $bank_password!=0) goto L_Hold;
+	menu
+	"- ตกลง",L_Yes,
+	"- ไม่ล่ะ ขอบคุณ",Cancel,
+	"Exit",Cancel;
+
+
+
+L_Yes:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ใส่จำนวนเงินที่ต้องการลงไปเลย";
+	next;
+	input @money;
+	if(@money>zeny) goto L_Yes;
+	if(@money==0) goto L_No;
+	set $bank_money,@money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ใส่รหัสเพื่อป้องกันเงินของเจ้า";
+	mes "^FF0000ใส่เป็นตัวเลขน้ะ^000000";
+	next;
+	input @password;
+	if(@password==0) goto L_Yes;
+	set $bank_password,@password;
+	set zeny,zeny-@money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "มาใช้บริการบ่อยๆล่ะ";
+	close;
+
+
+
+L_Hold:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	emotion 2;
+	mes "มีคนใช้บริการนี้แล้วค่ะ";
+	mes "คุณมี Password";
+	mes "ที่ใช้รับเงินไหมคะ";
+	next;
+	emotion 3;
+	menu
+	"- มี",L_Yeah,
+	"- ไม่มี",Cancel,
+	"Exit",Cancel;
+
+
+
+L_Yeah:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	emotion 1;
+	mes "กรุณากรอก Password ที่จะโอนเงินค่ะ";
+	next;
+	input @password;
+	if(@password!=$bank_password) goto L_Bye;
+	set zeny,zeny+$bank_money;
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "ขอบคุณที่ใช้บริการค่ะ";
+	emotion 0;
+	set $bank_money,0;
+	set $bank_password,0;
+	close;
+
+
+
+L_Bye:
+        mes "[ ^0061C1Kafra Service^000000 ]";
+	mes "เสียใจด้วยค่ะ password ไม่ถูกต้อง";
+	mes "ลองพยายามอีกครั้งค่ะ";
+	close;
+
+
+
+TransferS:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ยินดีต้อนรับเข้าสู่บริการ"; 
+mes "โอนกระโหลก ข้ามตัวละคร";
+mes "ท่านสามารถโอนกระโหลกของท่าน"; 
+mes "ไปยังตัวละครตัวอื่นได้";
+mes "โดยผ่านบริการของเราค่ะ";
+next;
+if($bank_skull != 0 && $skull_password != 0) goto Hold;
+menu 
+"- ตกลง",BSYes,
+"- ไม่ล่ะ ขอบคุณ",Cancel,
+"Exit",Cancel;
+
+
+
+BSYes:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "โปรดใส่จำนวน กระโหลกค่ะ";
+next;
+input @skull;
+set $bank_skull,@skull;
+if(countitem(7420) < @skull) goto noskull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "กรุณากรอก Password เพื่อป้องกันค่ะ";
+mes "Password จะต้องมี 4 ตัว และเป็นเลข [1-9] เท่านั้นค่ะ ";
+next;
+input @Spassword;
+if(@Spassword == 0) goto BSYes;
+set $skull_password,@Spassword;
+delitem 7420,@skull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขอบคุณที่ใช้บริการค่ะ";
+close;
+
+
+
+Hold:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "มีคนใช้บริการนี้แล้วค่ะ";
+mes "คุณมี Password";
+mes "ที่ใช้รับกระโหลกไหมคะ";
+next;
+menu
+"- มี",SYeah,
+"- ไม่มี",Cancel,
+"Exit",Cancel;
+
+
+
+SYeah:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "กรุณากรอก Password ค่ะ";
+next;
+input @Spassword;
+if(@Spassword != $skull_password) goto PWError;
+getitem 7420,$bank_skull;
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ขอบคุณที่ใช้บริการค่ะ";
+set $bank_skull,0;
+set $skull_password,0;
+close;
+
+
+
+PWError:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "เสียใจด้วยค่ะ password ไม่ถูกต้อง";
+close;
+
+
+
+noskull:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "ท่านมี ระโหลกไม่พอ";
+close;
+
+
+
+Cancel:
+mes "[ ^0061C1Kafra Service^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+
+
+wpvp:
+warp "turbo_e_16.gat",297,161;
+close;
+
+mpr:
+warp "turbo_room",99,111;
+close;
+
+//test:
+//warp "in_hunter",99,104;
+//close;
+
+K_bosx:
+mes "[Warper]";
+mes "เมื่องกิลวอแสนสวยตามมุมต่างๆ ทั่วโลก";
+mes "แล้วท่านต้องการไปเมืองใด ?";
+menu 	"-> Prontera Guildwar",bosxt1,
+	"-> Payon Guildwar",bosxt2,
+	"-> Aldebaran Guildwar",bosxt3,
+	"-> Geffen Guildwar",bosxt4;
+	close;
+
+bosxt1:	warp "prt_gld.gat",114,239;	goto W_save;	close;
+bosxt2:	warp "pay_gld.gat",140,167;	goto W_save;	close;
+bosxt3:	warp "alde_gld.gat",95,246;	goto W_save;	close;
+bosxt4:	warp "gef_fild13.gat",247,56;	goto W_save;	close;
+
+K_warp:
+	cutin "ra_bishop",2;
+	mes "^f7f7f7________^000000กรุณาเลือกเมนูที่คุณต้องการ";
+	mes "^f7f7f7________^000000ท่านสามารถใช้คำสั่ง ^FF0000@load^000000";
+	mes "^f7f7f7________^000000เพื่อกลับไปยังจุดเซฟ ค่ะ";
+	menu "-> ^6666FFไปยังจุดวาปล่าสุด^000000(^FF0000"+youlastwarp$+"^000000)",last,"-> เมืองหลวง",town,"-> ดันเจี้ยน",dungeon,"-> ฟีลด์",field,"-> ห้องรวมบอส",bossrm,"-> ไปตลาดขายของ",markt,"-> ยกเลิก",W_cancle;
+last:
+	if (youlastwarp$ == "") { dispbottom "คุณยังไม่มีการจดจำวาปล่าสุด"; close; }
+	warp ""+youlastwarp$+"",youlastwarp_x,youlastwarp_y;
+	close;
+
+W_cancle:
+close2;
+cutin "", 255;
+end;
+
+markt:
+warp "turbo_room",100,80;
+end;
+
+bossrm:
+mes "^FF0000[Boss Room]^000000";
+mes "แผนที่ : Boss Room";
+mes "ผู้เล่น : "+getmapusers("home_gld")+"";
+set .@select,select("- เข้าสู่ Boss Room","- ยัง, ข้าขอเตรียมตัวก่อน");
+if (.@select == 1)
+warp "home_gld",0,0;
+if (.@select == 2)
+close;
+close;
+
+town:
+mes "[Warper]";
+mes "เมื่องแสนสวยตามมุมต่างๆ ทั่วโลก";
+mes "แล้วท่านต้องการไปเมืองใด ?";
+menu
+	"-> Prontera [พรอนเทร่า]",wprontera,
+	//"-> ^008B00Oasis Town^000000 [เมืองหลวงโอเอซิส] [ "  + getmapusers("oasis.gat") + " ]",woasis,
+	"-> Alberta [อัลเบอต้า]",walberta,
+	"-> Aldebaran [อัลเดอบารัน]",waldebaran,
+	//"-> ^FF0000Aerallynn^000000 [แอลลารีน]",waerallynn,
+	"-> Amatsu [อะมัสสึ]",wamatsu,
+	//"-> ^008B00Anpan T^000000 [อันปัน]",wanpant,
+	//"-> ^008B00Anpan New^000000 [อันปันใหม่]",wanpannew,
+	"-> Ayothaya [อโยธยา]",wayot,
+	//"-> Ball [สนามฟุตบอล]", wball2,
+	//"-> BG Room [ห้องลับ]", wbgroom,
+	//"-> BG Station [สถานี]", wbgstation,
+	//"-> ^FF0000Bossz Town^000000 [บอส ทาวน์]",wbossztown,
+	"-> Brasilis [บราซิลิส]", wbrasilis,
+	"-> ^FF0000Capitolina Abbey^000000 [แอ็บเบย์]",wcap,
+	//"-> ^008B00CB Town^000000 [ซีบีทาวน์]",wcbtown,
+	//"-> ^FF0000Chess^000000 [หมากรุก]",wchess01,
+	//"-> Coliseum [สนามโคลิเซี่ยม]", wcoliseum,
+	"-> Comodo [โคโมโด]",wcomodo,
+	//"-> ^FF0000CRM bevent^000000 [เมืองใหม่]",wcrmbevent,
+	//"-> Crystilia [คริสติลเรีย]",wcrystilia,
+	"-> ^008B00Dewata^000000 [ดีวาท่า]",wdewata,
+	"-> ^FF0000Dicastes 01^000000 [ไดเคส 1]",wdicastes01,
+	"-> ^FF0000Dicastes 02^000000 [ไดเคส 2]",wdicastes02,
+	//"-> ^FF0000Dreamworld^000000 [สวนสนุก]",wdreamworld,
+	"-> Einbech [เอนบีช]",weinbech,
+	"-> Einbroch [เอนบรอช]",weinbroch,
+	//"-> Ex Town [เมืองในอดีต]",wextown,
+	//"-> Fairy Town [เมืองสวรรค์]",wfairy,
+	//"-> ^008B00Few Town^000000 [ฟิว ทาวน์]",wfewtown,
+	//"-> Fireflies [เมืองใหม่]",wfireflies,
+	//"-> ^008B00Fortress^000000 [ปร้อมปราการ]",wfortress,
+	"-> Geffen [กิฟเฟ่น]",wgeffen,
+	"-> Gonryun [กันริว]",wgonryun,
+	//"-> ^008B00Hallow^000000 [ฮอลโล่ว]",whallow,
+	//"-> Hellfire [เฮลไฟเยอร์]",whellfire,
+	//"-> ^008B00Home Town^000000 [บ้านเกิด]",whome,
+	"-> Hugel [ฮูเกล]",whugel,
+	//"-> ^008B00illu Town^000000 [อีลูทาวน์]",willutown,
+	"-> Izlude [อิสซูส]",wizlude,
+	//"-> I4M Town [เมืองใหม่]",wi4m,
+	"-> Jawaii Island [เกาะฮาวาย]",wjawaii,
+	"-> Lighthalzen [ไล้ท์ทาเซ็น]",wlighthalzen,
+	//"-> ^FF0000Like Game^000000 [ไล้ท์เกมส์]",wlikegame,
+	"-> Louyang [รั่วหยาง]",wlouyang,
+	//"-> Loykrathong [เมืองลอยกระทง]",wloykrathong,
+	"-> Lutie [ลูไทด์]",wxmas,
+	"-> Manuk [มูนัค]",wmanuk,
+	//"-> ^008B00Mora^000000 [มอร่า]",wmora,
+	"-> ^008B00Malangdo^000000 [มอรันโด้]",wmalangdo,
+	"-> ^FF0000Midgarts Expedition Camp^000000 [ค่ายมิดกาส]",wmidcamp,
+	//"-> Min RO [มิน RO]",wminro,
+	//"-> ^008B00Min Town^000000 [มินทาวน์]",wmintown,
+	//"-> ^FF0000Mocnews^000000 [ม็อคนิว]",wmocnews,
+	"-> ^008B00Morroc^000000 [มอร๊อค]",wmorroc,
+	//"-> MoroccMZ [เมืองใหม่]",wmoroccmz,
+	//"-> Morocc News Fild [เมืองใหม่]",wmofild01,
+	//"-> ^008B00Mornanie^000000 [มอนานี่]",wmornanie,
+	//"-> ^FF0000Morroxi^000000 [มอร็อคซี่]",wmorroxi,
+	//"-> ^FF0000Morocc Edit^000000 [มอร็อคใหม่]",wmoroccedit,
+	"-> Moscovia [มอสโคเวีย]",wmoscovia,
+	//"-> New Town [เมืองใหม่]",wn1,
+	"-> Nameless Island [เกาะเนมเลส]",wnameless,
+	"-> Niflheim [นิฟเฮ็ม]",wniflheim,
+	//"-> Pangya [ปังย่า]",wpangya,
+	"-> Payon [พาย่อน]",wpayon,
+	"-> Rachel [ราเชล]",wafeltz,
+	//"-> Silicon [ซิลิคอน]",wsilicon,
+	//"-> Spin Town [สปินทาวน์]",wspintown,
+	"-> Splendide [สเป็นได]",wsplendide,
+	"-> Thor Camp [ทอร์]",wthorcamp,
+	//"-> ^008B00Tourney^000000 [เทอร์นี่]",wtourney01,
+	//"-> ^008B00Ts4 Town^000000 [ทีเอส4]",wts4town,
+	"-> Umbala [อัมบราล่า]",wumbala,
+	"-> Veins [เวนิส]",wveins,
+	//"-> ^008B00Velika Town^000000 [เวริก้า]",wvelika,
+	//"-> Petera [พีเทร่า]",wpetera,
+	//"-> PVP [พีวีพี]",wpvp01,
+	//"-> Posh City [เมืองพอช]",wposhcity,
+	//"-> Posh City II [เมืองพอช2]",wposhcity2,
+	//"-> New Mocc [มอร็อคใหม่จ้า]",wnewmoc,
+	//"-> MVP [บอส]",wmvp,
+	"-> Yuno [จูโน่]",wyuno;
+
+field:
+menu 	"-> Amatsu Fields",wamafild,
+	"-> Ayothaya Fields",wayofild,
+	"-> Brasilis Fields",wbra,
+	"-> Biforst Fields",wbiffild,
+	"-> Comodo Fields",wcmdfild,
+	"-> Dew Fields",wdewfild,
+	"-> Dic Fields",wdicfild,
+	"-> Einbroch Fields",weinfild,
+	"-> Geffen Fields",wgeffild,
+	"-> Gonryun Fields",wgonfild,
+	"-> Hugel Fields",whufild,
+	"-> Lighthalzen Fields",wlhzfild,
+	"-> Louyang Field",wloufild,
+	"-> Lutie Field",wxmasfild,
+	"-> Manuk Fields",wman,
+	"-> Moskovia Fields",wmosk,
+	"-> Mjolnir Fields",wmjolnir,
+	"-> Niflheim Fields",wniffild,
+	"-> Odin Temple",wodint,
+	"-> Payon Forests",wpayfor,
+	"-> Prontera Fields",wprtfild,
+	"-> Rachel Fields",warunfild,
+	"-> ^FF0000Morocc Fields^000000",wmocfild,
+	"-> ^FF0000Splendide Fields^000000",wsplen,
+	"-> Umbala Fields",wumfild,
+	"-> Veins Fields",wveinsfild,
+	"-> Yuno Fields",wyunofild;
+
+dungeon:
+mes "[Warper]";
+mes "Dungeon สุดโหด O_o เตรียมตัวให้พร้อมละ";
+mes "แล้วท่านต้องการไปที่ใด ?";
+menu 	"-> Abbey, Cursed Monastery [แอ็บเบย์]",wabbey,
+	"-> Abyss Lakes [มังกร ดันเจี้ยน]",wabyss,
+	"-> Amatsu Dungeon [อะมัสสึ]",ama,
+	"-> Anthell [มด]",ant,
+	"-> Ayothaya Dungeons [อโยธยา ดันเจี้ยน]",wayodun,
+	"-> Beach Dungeon [บีช ดันเจี้ยน]",beach,
+	"-> Brasilis's Dungeon [บาซิลิส]",wbradun,
+	"-> Byalan Dungeon [บาบีรัน]",byalan,
+	"-> Clock Tower [นากา]",clock,
+	"-> Coal Mines [เหมือง]",coal,
+	"-> Culverts [ท่อแมลงสาบ]",culvert,
+	"-> Dew Dungeon [ดิว ดัน]",dew,
+	"-> Dic Dungeon [ดิก ดัน]",dic,
+	"-> Einbroch Dungeons [เอนบรอช ดันเจี้ยน]",weindun,
+	//"-> Endless Tower [หอคอย 100 ชั้น]",endless,
+	"-> Gefenia [กิฟเฟ่นเนีย]",gefenia,
+	"-> Geffen Dungeon [กิฟเฟ่น ดันเจี้ยน]",geffen,
+	"-> Glast Heim [กาสเฮ็ม]",glast,
+	"-> Gonryun Dungeon [กันริว ดันเจี้ยน]",gon,
+	"-> Hidden Dungeon [ฮิดเด้น ดันเจี้ยน]",hidden,
+	"-> Ice Dungeon [ไอซ์ ดันเจี้ยน]",iced,
+	"-> Juperos Dungeons [จูเพอรัส ดันเจี้ยน]",wjuper,
+	"-> Kiel Dungeons [เคล ดันเจี้ยน]",wkieldun,
+	"-> Lighthalzen [โคลน ดันเจี้ยน]",wlhzdun,
+	"-> Louyang Dungeons [ดันเจี้ยน]",wloudun,
+	"-> Magma Dungeon [แม็กม่า ดันเจี้ยน]",magma,
+	"-> Nydhogg's Dungeon [นิดฮอค ดันเจี้ยน]",dnyd,
+	"-> Orc Dungeon [ออค ดันเจี้ยน]",orc,
+	"-> Payon Dungeon [พาย่อน ดันเจี้ยน]",payon,
+	"-> Pyramids [ปิระมิด ดันเจี้ยน]",pyramids,
+	"-> Rachel Sanctuary [ดันราเชล]",rachels,
+	//"-> Sealed Shrine [ซีล ชาย]",sealed,
+	"-> Sphinx [สฟิ้ง]",sphinx,
+	"-> Sunken Ship [เรือล่ม]",sunken,
+	"-> Thanatos Tower [หอคอย ทานาทอส]",wthat,
+	"-> Thor Volcano [ดันทอร์]",wthor,
+	"-> Toy Factory [ของเล่น]",toy,
+	"-> Turtle Dungeon [เกาะเต่า ดันเจี้ยน]",turtle,
+	"-> Umbala Dungeons [อัลบราล่า ดันเจี้ยน]",wumdun,
+	"-> Moscovia Dungeons [มอสโคเวีย]",dmosk,
+	"-> Izude Dungeon [อิสซุสดัน]",diz;
+
+//-------------------------------
+//          Fields
+//-------------------------------
+
+wmosk:
+menu 	"Moskovia Field 1",moskfild1,
+	"Moskovia Field 2",moskfild2;
+
+
+warunfild:
+menu 	"Rachel Field 1",drunfild1,
+	"Rachel Field 2",drunfild2,
+	"Rachel Field 3",drunfild3,
+	"Rachel Field 4",drunfild4,
+	"Rachel Field 5",drunfild5,
+	"Rachel Field 6",drunfild6,
+	"Rachel Field 7",drunfild7,
+	"Rachel Field 8",drunfild8,
+	"Rachel Field 9",drunfild9,
+	"Rachel Field 10",drunfild10,
+	"Rachel Field 11",drunfild11,
+	"Rachel Field 12",drunfild12,
+	"Rachel Field 13",drunfild13;
+
+wgeffild:
+menu 	"Geffen Field 0",dgeffild00,
+	"Geffen Field 1",dgeffild01,
+	"Geffen Field 2",dgeffild02,
+	"Geffen Field 3",dgeffild03,
+	"Geffen Field 4",dgeffild04,
+	"Geffen Field 5",dgeffild05,
+	"Geffen Field 6",dgeffild06,
+	"Geffen Field 7",dgeffild07,
+	"Geffen Field 8",dgeffild08,
+	"Geffen Field 9",dgeffild09,
+	"Geffen Field 10",dgeffild10,
+	"Geffen Field 11",dgeffild11,
+	"Geffen Field 12",dgeffild12,
+	"Geffen Field 13",dgeffild13,
+	"Geffen Field 14",dgeffild14;
+
+wmjolnir:
+menu 	"Mjolnir Field 1",dmjolnir1,
+	"Mjolnir Field 2",dmjolnir2,
+	"Mjolnir Field 3",dmjolnir3,
+	"Mjolnir Field 4",dmjolnir4,
+	"Mjolnir Field 5",dmjolnir5,
+	"Mjolnir Field 6",dmjolnir6,
+	"Mjolnir Field 7",dmjolnir7,
+	"Mjolnir Field 8",dmjolnir8,
+	"Mjolnir Field 9",dmjolnir9,
+	"Mjolnir Field 10",dmjolnir10,
+	"Mjolnir Field 11",dmjolnir11,
+	"Mjolnir Field 12",dmjolnir12;
+
+wmocfild:
+menu 	"Morocc Field 1",dmocfild1,
+	"Morocc Field 2",dmocfild2,
+	"Morocc Field 3",dmocfild3,
+	"Morocc Field 4",dmocfild4,
+	"Morocc Field 5",dmocfild5,
+	"Morocc Field 6",dmocfild6,
+	"Morocc Field 7",dmocfild7,
+	"Morocc Field 8",dmocfild8,
+	"Morocc Field 9",dmocfild9,
+	"Morocc Field 10",dmocfild10,
+	"Morocc Field 11",dmocfild11,
+	"Morocc Field 12",dmocfild12,
+	"Morocc Field 13",dmocfild13,
+	"Morocc Field 14",dmocfild14,
+	"Morocc Field 15",dmocfild15,
+	"Morocc Field 16",dmocfild16,
+	"Morocc Field 17",dmocfild17,
+	"Morocc Field 18",dmocfild18,
+	"Morocc Field 19",dmocfild19,
+	"Satan Morocc Field 20",dmocfild20,
+	"Satan Morocc Field 21",dmocfild21,
+	"Satan Morocc Field 22",dmocfild22,
+	"Satan Morocc Field 22b",dmocfild22b;
+
+wpayfor:
+menu 	"Payon Forest 1",dpayfild1,
+	"Payon Forest 2",dpayfild2,
+	"Payon Forest 3",dpayfild3,
+	"Payon Forest 4",dpayfild4,
+	"Payon Forest 5",dpayfild5,
+	"Payon Forest 6",dpayfild6,
+	"Payon Forest 7",dpayfild7,
+	"Payon Forest 8",dpayfild8,
+	"Payon Forest 9",dpayfild9,
+	"Payon Forest 10",dpayfild10,
+	"Payon Forest 11",dpayfild11;
+
+wprtfild:
+menu 	"Prontera Field 1",dprtfild1,
+	"Prontera Field 2",dprtfild2,
+	"Prontera Field 3",dprtfild3,
+	"Prontera Field 4",dprtfild4,
+	"Prontera Field 5",dprtfild5,
+	"Prontera Field 6",dprtfild6,
+	"Prontera Field 7",dprtfild7,
+	"Prontera Field 8",dprtfild8,
+	"Prontera Field 9",dprtfild9,
+	"Prontera Field 10",dprtfild10,
+	"Prontera Field 11",dprtfild11;
+
+wxmasfild:
+menu 	"Lutie Field 1",dxmasfild1;
+
+wcmdfild:
+menu 	"Comodo Field 1",dcmdfild1,
+	"Comodo Field 2",dcmdfild2,
+	"Comodo Field 3",dcmdfild3,
+	"Comodo Field 4",dcmdfild4,
+	"Comodo Field 5",dcmdfild5,
+	"Comodo Field 6",dcmdfild6,
+	"Comodo Field 7",dcmdfild7,
+	"Comodo Field 8",dcmdfild8,
+	"Comodo Field 9",dcmdfild9;
+
+wyunofild:
+menu 	"Yuno Field 1",dyunofild1,
+	"Yuno Field 2",dyunofild2,
+	"Yuno Field 3",dyunofild3,
+	"Yuno Field 4",dyunofild4,
+	"Yuno Field 5",dyunofild5,
+	"Yuno Field 6",dyunofild6,
+	"Yuno Field 7",dyunofild7,
+	"Yuno Field 8",dyunofild8,
+	"Yuno Field 9",dyunofild9,
+	"Yuno Field 10",dyunofild10,
+	"Yuno Field 11",dyunofild11,
+	"Yuno Field 12",dyunofild12;
+
+wamafild:
+menu 	"Amatsu Field 1",damafild1;
+
+wgonfild:
+menu 	"Gonryun Field 1",dgonfild1;
+
+wumfild:
+menu 	"Umbala Field 1",dumfild1,
+	"Umbala Field 2",dumfild2,
+	"Umbala Field 3",dumfild3,
+	"Umbala Field 4",dumfild4;
+
+wniffild:
+menu 	"Niflheim Field 1",dniffild1,
+	"Niflheim Field 2",dniffild2;
+
+wodint:
+menu 	"Odin Temple 1",wodtemp1,
+	"Odin Temple 2",wodtemp2,
+	"Odin Temple 3",wodtemp3;
+
+wloufild:
+menu 	"Louyang Field 1",dloufild1;
+
+wayofild:
+menu 	"Ayothaya Field 1",dayofild1,
+	"Ayothaya Field 2",dayofild2;
+
+weinfild:
+menu 	"Einbroch Field 1",deinfild1,
+	"Einbroch Field 2",deinfild2,
+	"Einbroch Field 3",deinfild3,
+	"Einbroch Field 4",deinfild4,
+	"Einbroch Field 5",deinfild5,
+	"Einbroch Field 6",deinfild6,
+	"Einbroch Field 7",deinfild7,
+	"Einbroch Field 8",deinfild8,
+	"Einbroch Field 9",deinfild9,
+	"Einbroch Field 10",deinfild10;
+
+wlhzfild:
+menu 	"Lighthalzen Field 1",dlhzfild1,
+	"Lighthalzen Field 2",dlhzfild2,
+	"Lighthalzen Field 3",dlhzfild3;
+
+whufild:
+menu 	"Hugel Field 1",dhufild1,
+	"Hugel Field 2",dhufild2,
+	"Hugel Field 3",dhufild3,
+	"Hugel Field 4",dhufild4,
+	"Hugel Field 5",dhufild5,
+	"Hugel Field 6",dhufild6,
+	"Hugel Field 7",dhufild7;
+
+wveinsfild:
+menu	"Veins Field 1",dvfild1,
+	"Veins Field 2",dvfild2,
+	"Veins Field 3",dvfild3,
+	"Veins Field 4",dvfild4,
+	"Veins Field 5",dvfild5,
+	"Veins Field 6",dvfild6,
+	"Veins Field 7",dvfild7;
+
+wsplen:
+menu 	"Splendide Field 1",dsplenfild1,
+	"Splendide Field 2",dsplenfild2,
+	"Splendide Field 3",dsplenfild3;
+
+wman:
+menu 	"Manuk Field 1",dmanfild1,
+	"Manuk Field 2",dmanfild2,
+	"Manuk Field 3",dmanfild3;
+
+wbra:
+menu 	"Brasilis Field 1",dbrafild1;
+
+wbiffild:
+menu 	"Biforst Field 1",dbiffild1,
+	"Biforst Field 2",dbiffild2;
+
+wdewfild:
+menu 	"Dew Field 1",ddewfild1,
+	"Dew in",ddewin;
+
+wdicfild:
+menu 	"Dic Field 1",ddicfild1,
+	"Dic Field 2",ddicfild2;
+
+//-------------------------------
+//          Dungeons
+//-------------------------------
+
+wjuper:
+menu 	"Level 1",djuperos1,
+	"Level 2",djuperos3,
+	"Core",djuperos2;
+
+wumdun:
+menu 	"Carpenter's Shop in the Tree",dumdun1,
+	"Passage to a Foreign World",dumdun2,
+	"Hvergermil's Fountain",dyggdrasil1;
+
+wloudun:
+menu 	"The Royal Tomb",dloudun1,
+	"Inside the Royal Tomb",dloudun2,
+	"Suei Long Gon",dloudun3;
+
+wayodun:
+menu 	"Ancient Shrine Maze",dayodun1,
+	"Inside Ancient Shrine",dayodun2;
+
+weindun:
+menu 	"Level 1",deindun1,
+	"Level 2",deindun2;
+
+wlhzdun:
+menu 	"Level 1",dlhzdun1,
+	"Level 2",dlhzdun2,
+	"Level 3",dlhzdun3;
+
+wabyss:
+menu 	"Level 1",dabyss1,
+	"Level 2",dabyss2,
+	"Level 3",dabyss3;
+
+wthat:
+menu 	"Level 1",dthat1,
+	"Level 2",dthat2,
+	"Level 3",dthat3,
+	"Level 4",dthat4,
+	"Level 5",dthat5,
+	"Level 6",dthat6,
+	"Level 7",dthat7,
+	"Level 8",dthat8,
+	"Level 9",dthat9,
+	"Level 10",dthat10,
+	"Level 11",dthat11,
+	"Level 12",dthat12,
+	"Level Boss",dthat13;
+
+wkieldun:
+menu 	"Level 1",dkieldun1,
+	"Level 2",dkieldun2;
+
+ant:
+menu 	"Level 1",danthell1,
+	"Level 2",danthell2;
+
+beach:
+menu 	"Level 1",dbeach1,
+	"Level 2",dbeach2,
+	"Level 3",dbeach3;
+
+byalan:
+menu 	"Level 1",dbyalan1,
+	"Level 2",dbyalan2,
+	"Level 3",dbyalan3,
+	"Level 4",dbyalan4,
+	"Level 5",dbyalan5;
+clock:
+menu 	"Level 1",dclock1,
+	"Level 2",dclock2,
+	"Level 3",dclock3,
+	"Level 4",dclock4,
+	"Basement 1",dalde1,
+	"Basement 2",dalde2,
+	"Basement 3",dalde3,
+	"Basement 4",dalde4;
+
+coal:
+menu 	"Level 1",dcoal1,
+	"Level 2",dcoal2,
+	"Level 3",dcoal3;
+
+culvert:
+menu 	"Level 1",dculvert1,
+	"Level 2",dculvert2,
+	"Level 3",dculvert3,
+	"Level 4",dculvert4;
+
+geffen:
+menu 	"Level 1",dgeffen1,
+	"Level 2",dgeffen2,
+	"Level 3",dgeffen3,
+	"Level 4",dgeffen4;
+
+glast:
+menu 	"Entrance",dglastent,
+	"Castle 1",dglastcast1,
+	"Castle 2",dglastcast2,
+	"Chivalry 1",dglastchiv1,
+	"Chivalry 2",dglastchiv2,
+	"Churchyard",dglastyard,
+	"Culvert 1",dglastcul1,
+	"Culvert 2",dglastcul1,
+	"Culvert 3",dglastcul3,
+	"Culvert 4",dglastcul4,
+	"St.Abbey",dglastchur,
+	"Staircase Dungeon",dglaststep,
+	"Underground Cave 1",dglastcave1,
+	"Underground Cave 2",dglastcave2,
+	"Underground Prison 1",dglastpris1,
+	"Underground Prison 2",dglastpris2;
+
+hidden:
+menu 	"Level 1",dhidden1,
+	"Level 2",dhidden2,
+	"Level 3",dhidden3;
+
+iced:
+menu 	"Level 1",diced1,
+	"Level 2",diced2,
+	"Level 3",diced3;
+
+magma:
+menu 	"Level 1",dmagma1,
+	"Level 2",dmagma2;
+
+orc:
+menu 	"Level 1",dorc1,
+	"Level 2",dorc2;
+
+payon:
+menu 	"Level 1",dpayon1,
+	"Level 2",dpayon2,
+	"Level 3",dpayon3,
+	"Level 4",dpayon4,
+	"Level 5",dpayon5;
+
+pyramids:
+menu 	"Level 1",dpyramids1,
+	"Level 2",dpyramids2,
+	"Level 3",dpyramids3,
+	"Level 4",dpyramids4,
+	"Basement 1",dpyramidsb1,
+	"Basement 2",dpyramidsb2;
+
+sphinx:
+menu 	"Level 1",dsphinx1,
+	"Level 2",dsphinx2,
+	"Level 3",dsphinx3,
+	"Level 4",dsphinx4,
+	"Level 5",dsphinx5;
+
+sunken:
+menu 	"Level 1",dsunken1,
+	"Level 2",dsunken2;
+
+toy:
+menu 	"Level 1",dtoy1,
+	"Level 2",dtoy2;
+
+turtle:
+menu 	"Entrance",dturtleent,
+	"Level 1",dturtle1,
+	"Level 2",dturtle2,
+	"Level 3",dturtle3;
+
+ama:
+menu 	"Level 1",dama1,
+	"Level 2",dama2,
+	"Level 3",dama3;
+
+gon:
+menu 	"Level 1",dgon1,
+	"Level 2",dgon2,
+	"Level 3",dgon3;
+
+gefenia:
+menu 	"Level 1",dgefenia1,
+	"Level 2",dgefenia2,
+	"Level 3",dgefenia3,
+	"Level 4",dgefenia4;
+
+wthor:
+menu	"Level 1",dthor1,
+	"Level 2",dthor2,
+	"Level 3",dthor3;
+
+rachels:
+menu 	"Level 1",drachel1,
+	"Level 2",drachel2,
+	"Level 3",drachel3,
+	"Level 4",drachel4,		
+	"Level 5",drachel5;
+
+wabbey:
+menu	"Level 1",dabbey1,
+	"Level 2",dabbey2,
+	"Level 3",dabbey3;
+
+wbradun:
+menu 	"At the Dusk - 01",dbradun1,
+	"At the Dusk - 02",dbradun2;
+
+endless:
+menu 	"Level 1",dendless1,
+	"Level 2",dendless2,
+	"Level 3",dendless3,
+	"Level 4",dendless4,
+	"Level 5",dendless5,		
+	"Level 6",dendless6;
+
+sealed:
+menu 	"Saint Capitolina Abbey - Father Patrick",dsealed1;
+
+
+dnyd:
+menu 	"Nydhogg's Dungeon - nyd_dun01",dnyd1,
+	"Nydhogg's Dungeon - nyd_dun02",dnyd2,
+	"Nydhogg's Nest - 1@nyd",dnyd3,
+	"Nydhogg's Nest - 2@nyd",dnyd4;
+
+dmosk:
+menu	"Level 1",dmosk1,
+	"Level 2",dmosk2,
+	"Level 3",dmosk3;
+
+teehx:
+	mes "ห้องทดสอบอาวุธ";
+	mes "ไปเลยไหมล๊า . . . ";
+	next;
+	menu "ไปเลยสิ",teehk;
+
+diz:
+menu	"Level 5",diz5;
+
+dew:
+menu	"Level 1",dew1,
+	"Level 2",dew2;
+
+dic:
+menu	"Level 1",dic1,
+	"Level 2",dic2,
+	"dic in",dicin;
+
+//-------------------------------
+//        Dungeon Warps
+//-------------------------------
+
+dkieldun1:	warp "kh_dun01.gat",28,226;	goto W_save;	close;
+dkieldun2:	warp "kh_dun02.gat",41,198;	goto W_save;	close;
+djuperos1:	warp "juperos_01.gat",53,247;	goto W_save;	close;
+djuperos3:	warp "juperos_02.gat",37,63;	goto W_save;	close;
+djuperos2:	warp "jupe_core.gat",150,285;	goto W_save;	close;
+dumdun1:	warp "um_dun01.gat",42,31;	goto W_save;	close;
+dumdun2:	warp "um_dun01.gat",48,30;	goto W_save;	close;
+dloudun1:	warp "lou_dun01.gat",218,196;	goto W_save;	close;
+dloudun2:	warp "lou_dun02.gat",282,20;	goto W_save;	close;
+dloudun3:	warp "lou_dun03.gat",165,38;	goto W_save;	close;
+dayodun1:	warp "ayo_dun01.gat",275,19;	goto W_save;	close;
+dayodun2:	warp "ayo_dun02.gat",24,26;	goto W_save;	close;
+dbradun1:	warp "bra_dun01.gat",87,47;	goto W_save;	close;
+dbradun2:	warp "bra_dun02.gat",261,258;	goto W_save;	close;
+deindun1:	warp "ein_dun01.gat",22,14;	goto W_save;	close;
+deindun2:	warp "ein_dun02.gat",292,290;	goto W_save;	close;
+dlhzdun1:	warp "lhz_dun01.gat",150,288;	goto W_save;	close;
+dlhzdun2:	warp "lhz_dun02.gat",150,18;	goto W_save;	close;
+dlhzdun3:	warp "lhz_dun03.gat",140,132;	goto W_save;	close;
+dlhzdun4:	warp "lhz_dun04.gat",134,234;	goto W_save;	close;
+dabyss1:	warp "abyss_01.gat",261,271;	goto W_save;	close;
+dabyss2:	warp "abyss_02.gat",275,270;	goto W_save;	close;
+dabyss3:	warp "abyss_03.gat",116,27;	goto W_save;	close;
+dthat1:		warp "tha_t01.gat",150,39;	goto W_save;	close;
+dthat2:		warp "tha_t02.gat",150,136;	goto W_save;	close;
+dthat3:		warp "tha_t03.gat",220,158;	goto W_save;	close;
+dthat4:		warp "tha_t04.gat",59,143;	goto W_save;	close;
+dthat5:		warp "tha_t05.gat",62,11;	goto W_save;	close;
+dthat6:		warp "tha_t06.gat",89,221;	goto W_save;	close;
+dthat7:		warp "tha_t07.gat",35,166;	goto W_save;	close;
+dthat8:		warp "tha_t08.gat",93,148;	goto W_save;	close;
+dthat9:		warp "tha_t09.gat",29,107;	goto W_save;	close;
+dthat10:	warp "tha_t10.gat",159,138;	goto W_save;	close;
+dthat11:	warp "tha_t11.gat",19,20;	goto W_save;	close;
+dthat12:	warp "tha_t12.gat",130,52;	goto W_save;	close;
+dthat13:	warp "thana_boss.gat",135,124;	goto W_save;	close;
+danthell1:	warp "anthell01.gat",35,262;	goto W_save;	close;
+danthell2:	warp "anthell02.gat",168,170;	goto W_save;	close;
+dbeach1:	warp "beach_dun.gat",266,67;	goto W_save;	close;
+dbeach2:	warp "beach_dun2.gat",255,244;	goto W_save;	close;
+dbeach3:	warp "beach_dun3.gat",23,260;	goto W_save;	close;
+dbyalan1:	warp "iz_dun00.gat",168,168;	goto W_save;	close;
+dbyalan2:	warp "iz_dun01.gat",253,252;	goto W_save;	close;
+dbyalan3:	warp "iz_dun02.gat",236,204;	goto W_save;	close;
+dbyalan4:	warp "iz_dun03.gat",32,63;	goto W_save;	close;
+dbyalan5:	warp "iz_dun04.gat",26,27;	goto W_save;	close;
+dalde1:		warp "alde_dun01.gat",297,25;	goto W_save;	close;
+dalde2:		warp "alde_dun02.gat",127,169;	goto W_save;	close;
+dalde3:		warp "alde_dun03.gat",277,178;	goto W_save;	close;
+dalde4:		warp "alde_dun04.gat",268,74;	goto W_save;	close;
+dclock1:	warp "c_tower1.gat",199,159;	goto W_save;	close;
+dclock2:	warp "c_tower2.gat",148,283;	goto W_save;	close;
+dclock3:	warp "c_tower3.gat",65,147;	goto W_save;	close;
+dclock4:	warp "c_tower4.gat",56,155;	goto W_save;	close;
+dcoal1:		warp "mjo_dun01.gat",52,17;	goto W_save;	close;
+dcoal2:		warp "mjo_dun02.gat",381,343;	goto W_save;	close;
+dcoal3:		warp "mjo_dun03.gat",302,262;	goto W_save;	close;
+dculvert1:	warp "prt_sewb1.gat",131,247;	goto W_save;	close;
+dculvert2:	warp "prt_sewb2.gat",19,19;	goto W_save;	close;
+dculvert3:	warp "prt_sewb3.gat",180,169;	goto W_save;	close;
+dculvert4:	warp "prt_sewb4.gat",100,92;	goto W_save;	close;
+dgeffen1:	warp "gef_dun00.gat",104,99;	goto W_save;	close;
+dgeffen2:	warp "gef_dun01.gat",115,236;	goto W_save;	close;
+dgeffen3:	warp "gef_dun02.gat",106,132;	goto W_save;	close;
+dgeffen4:	warp "gef_dun03.gat",203,200;	goto W_save;	close;
+dglastent:	warp "glast_01.gat",375,304;	goto W_save;	close;
+dglastcast1:	warp "gl_cas01.gat",199,29;	goto W_save;	close;
+dglastcast2:	warp "gl_cas02.gat",104,25;	goto W_save;	close;
+dglastchiv1:	warp "gl_knt01.gat",150,15;	goto W_save;	close;
+dglastchiv2:	warp "gl_knt02.gat",157,287;	goto W_save;	close;
+dglastyard:	warp "gl_chyard.gat",147,15;	goto W_save;	close;
+dglastcul1:	warp "gl_sew01.gat",258,255;	goto W_save;	close;
+dglastcul2:	warp "gl_sew02.gat",108,291;	goto W_save;	close;
+dglastcul3:	warp "gl_sew03.gat",171,283;	goto W_save;	close;
+dglastcul4:	warp "gl_sew04.gat",68,277;	goto W_save;	close;
+dglastchur:	warp "gl_church.gat",156,7;	goto W_save;	close;
+dglaststep:	warp "gl_step.gat",12,7;	goto W_save;	close;
+dglastcave1:	warp "gl_dun01.gat",133,271;	goto W_save;	close;
+dglastcave2:	warp "gl_dun02.gat",224,274;	goto W_save;	close;
+dglastpris1:	warp "gl_prison.gat",14,70;	goto W_save;	close;
+dglastpris2:	warp "gl_prison1.gat",150,14;	goto W_save;	close;
+dhidden1:	warp "prt_maze01.gat",176,7;	goto W_save;	close;
+dhidden2:	warp "prt_maze02.gat",94,9;	goto W_save;	close;
+dhidden3:	warp "prt_maze03.gat",23,8;	goto W_save;	close;
+diced1:		warp "ice_dun01.gat",157,14;	goto W_save;	close;
+diced2:		warp "ice_dun02.gat",151,155;	goto W_save;	close;
+diced3:		warp "ice_dun03.gat",149,22;	goto W_save;	close;
+dmagma1:	warp "mag_dun01.gat",126,68;	goto W_save;	close;
+dmagma2:	warp "mag_dun02.gat",47,30;	goto W_save;	close;
+dorc1:		warp "orcsdun01.gat",32,170;	goto W_save;	close;
+dorc2:		warp "orcsdun02.gat",21,185;	goto W_save;	close;
+dpayon1:	warp "pay_dun00.gat",21,183;	goto W_save;	close;
+dpayon2:	warp "pay_dun01.gat",19,33;	goto W_save;	close;
+dpayon3:	warp "pay_dun02.gat",19,63;	goto W_save;	close;
+dpayon4:	warp "pay_dun03.gat",155,159;	goto W_save;	close;
+dpayon5:	warp "pay_dun04.gat",201,204;	goto W_save;	close;
+dpyramids1:	warp "moc_pryd01.gat",192,9;	goto W_save;	close;
+dpyramids2:	warp "moc_pryd02.gat",10,192;	goto W_save;	close;
+dpyramids3:	warp "moc_pryd03.gat",100,92;	goto W_save;	close;
+dpyramids4:	warp "moc_pryd04.gat",181,11;	goto W_save;	close;
+dpyramidsb1:	warp "moc_pryd05.gat",94,96;	goto W_save;	close;
+dpyramidsb2:	warp "moc_pryd06.gat",192,8;	goto W_save;	close;
+dsphinx1:	warp "in_sphinx1.gat",288,9;	goto W_save;	close;
+dsphinx2:	warp "in_sphinx2.gat",149,81;	goto W_save;	close;
+dsphinx3:	warp "in_sphinx3.gat",210,54;	goto W_save;	close;
+dsphinx4:	warp "in_sphinx4.gat",10,222;	goto W_save;	close;
+dsphinx5:	warp "in_sphinx5.gat",100,99;	goto W_save;	close;
+dsunken1:	warp "treasure01.gat",69,24;	goto W_save;	close;
+dsunken2:	warp "treasure02.gat",102,27;	goto W_save;	close;
+dtoy1:		warp "xmas_dun01.gat",205,15;	goto W_save;	close;
+dtoy2:		warp "xmas_dun02.gat",129,133;	goto W_save;	close;
+dturtleent:	warp "tur_dun01.gat",154,49;	goto W_save;	close;
+dturtle1:	warp "tur_dun02.gat",148,261;	goto W_save;	close;
+dturtle2:	warp "tur_dun03.gat",132,189;	goto W_save;	close;
+dturtle3:	warp "tur_dun04.gat",100,192;	goto W_save;	close;
+dama1:		warp "ama_dun01.gat",228,11;	goto W_save;	close;
+dama2:		warp "ama_dun02.gat",34,41;	goto W_save;	close;
+dama3:		warp "ama_dun03.gat",119,14;	goto W_save;	close;
+dgon1:		warp "gon_dun01.gat",153,53;	goto W_save;	close;
+dgon2:		warp "gon_dun02.gat",28,113;	goto W_save;	close;
+dgon3:		warp "gon_dun03.gat",68,16;	goto W_save;	close;
+dgefenia1:	warp "gefenia01.gat",40,103;	goto W_save;	close;
+dgefenia2:	warp "gefenia02.gat",203,34;	goto W_save;	close;
+dgefenia3:	warp "gefenia03.gat",266,168;	goto W_save;	close;
+dgefenia4:	warp "gefenia04.gat",130,272;	goto W_save;	close;
+dgldun1:	warp "gld_dun01.gat",119,93;	goto W_save;	close;
+dgldun2:	warp "gld_dun02.gat",39,161;	goto W_save;	close;
+dgldun3:	warp "gld_dun03.gat",50,44;	goto W_save;	close;
+dgldun4:	warp "gld_dun04.gat",116,45;	goto W_save;	close;
+casino:		warp "cmd_in02.gat",179,129;	goto W_save;	close;
+dthor1:		warp "thor_v01.gat",21,228;	goto W_save;	close;
+dthor2:		warp "thor_v02.gat",75,205;	goto W_save;	close;
+dthor3:		warp "thor_v03.gat",34,272;	goto W_save;	close;
+drachel1:	warp "ra_san01.gat",140,11;	goto W_save;	close;
+drachel2:	warp "ra_san02.gat",32,21;	goto W_save;	close;
+drachel3:	warp "ra_san03.gat",12,149;	goto W_save;	close;
+drachel4:	warp "ra_san04.gat",204,218;	goto W_save;	close;
+drachel5:	warp "ra_san05.gat",150,9;	goto W_save;	close;
+dabbey1:	warp "abbey01.gat",51,14;	goto W_save;	close;
+dabbey2:	warp "abbey02.gat",150,11;	goto W_save;	close;
+dabbey3:	warp "abbey03.gat",120,10;	goto W_save;	close;
+dsealed1:	warp "monk_test.gat",306,143;	goto W_save;	close;
+dendless1:	warp "1@tower.gat",0,0;	goto W_save;	close;
+dendless2:	warp "2@tower.gat",0,0;	goto W_save;	close;
+dendless3:	warp "3@tower.gat",0,0;	goto W_save;	close;
+dendless4:	warp "4@tower.gat",0,0;	goto W_save;	close;
+dendless5:	warp "5@tower.gat",0,0;	goto W_save;	close;
+dendless6:	warp "6@tower.gat",31,11;	goto W_save;	close;
+dnyd1:	warp "nyd_dun01",61,239;	goto W_save;	close;
+dnyd2:	warp "nyd_dun02",60,271;	goto W_save;	close;
+dnyd3:	warp "1@nyd",168,205;	goto W_save;	close;
+dnyd4:	warp "2@nyd",199,17;	goto W_save;	close;
+dmosk1:	warp "mosk_dun01.gat",190,46;	goto W_save;	close;
+dmosk2:	warp "mosk_dun02.gat",163,31;	goto W_save;	close;
+dmosk3:	warp "mosk_dun03.gat",242,167;	goto W_save;	close;
+teehk:	warp "pvp_n_3-5.gat",0,0;	goto W_save;	close;
+diz5:	warp "iz_dun05.gat",140,87;	goto W_save;	close;
+dew1:	warp "dew_dun01.gat",147,84;	goto W_save;	close;
+dew2:	warp "dew_dun02.gat",176,118;	goto W_save;	close;
+dic1:	warp "dic_dun01.gat",362,45;	goto W_save;	close;
+dic2:	warp "dic_dun02.gat",102,114;	goto W_save;	close;
+dicin:	warp "dic_in01.gat",300,253;	goto W_save;	close;
+end;
+
+//-------------------------------
+//         Field Warps
+//-------------------------------
+
+moskfild1:	warp "mosk_fild01.gat",105,115;	goto W_save;	close;
+moskfild2:	warp "mosk_fild02.gat",87,248;	goto W_save;	close;
+
+drunfild1:	warp "ra_fild01.gat",192,162;	goto W_save;	close;
+drunfild2:	warp "ra_fild02.gat",235,166;	goto W_save;	close;
+drunfild3:	warp "ra_fild03.gat",202,206;	goto W_save;	close;
+drunfild4:	warp "ra_fild04.gat",202,208;	goto W_save;	close;
+drunfild5:	warp "ra_fild05.gat",225,202;	goto W_save;	close;
+drunfild6:	warp "ra_fild06.gat",202,214;	goto W_save;	close;
+drunfild7:	warp "ra_fild07.gat",263,196;	goto W_save;	close;
+drunfild8:	warp "ra_fild08.gat",217,201;	goto W_save;	close;
+drunfild9:	warp "ra_fild09.gat",87,121;	goto W_save;	close;
+drunfild10:	warp "ra_fild10.gat",277,181;	goto W_save;	close;
+drunfild11:	warp "ra_fild11.gat",221,185;	goto W_save;	close;
+drunfild12:	warp "ra_fild12.gat",175,200;	goto W_save;	close;
+drunfild13:	warp "ra_fild13.gat",174,197;	goto W_save;	close;
+dgeffild00:	warp "gef_fild00.gat",46,199;	goto W_save;	close;
+dgeffild01:	warp "gef_fild01.gat",213,204;	goto W_save;	close;
+dgeffild02:	warp "gef_fild02.gat",195,212;	goto W_save;	close;
+dgeffild03:	warp "gef_fild03.gat",257,192;	goto W_save;	close;
+dgeffild04:	warp "gef_fild04.gat",188,171;	goto W_save;	close;
+dgeffild05:	warp "gef_fild05.gat",166,263;	goto W_save;	close;
+dgeffild06:	warp "gef_fild06.gat",248,158;	goto W_save;	close;
+dgeffild07:	warp "gef_fild07.gat",195,191;	goto W_save;	close;
+dgeffild08:	warp "gef_fild08.gat",186,183;	goto W_save;	close;
+dgeffild09:	warp "gef_fild09.gat",221,117;	goto W_save;	close;
+dgeffild10:	warp "gef_fild10.gat",178,218;	goto W_save;	close;
+dgeffild11:	warp "gef_fild11.gat",136,328;	goto W_save;	close;
+dgeffild12:	warp "gef_fild12.gat",240,181;	goto W_save;	close;
+dgeffild13:	warp "gef_fild13.gat",235,235;	goto W_save;	close;
+dgeffild14:	warp "gef_fild14.gat",211,185;	goto W_save;	close;
+dmjolnir1:	warp "mjolnir_01.gat",204,120;	goto W_save;	close;
+dmjolnir2:	warp "mjolnir_02.gat",175,193;	goto W_save;	close;
+dmjolnir3:	warp "mjolnir_03.gat",208,213;	goto W_save;	close;
+dmjolnir4:	warp "mjolnir_04.gat",179,180;	goto W_save;	close;
+dmjolnir5:	warp "mjolnir_05.gat",181,240;	goto W_save;	close;
+dmjolnir6:	warp "mjolnir_06.gat",195,270;	goto W_save;	close;
+dmjolnir7:	warp "mjolnir_07.gat",235,202;	goto W_save;	close;
+dmjolnir8:	warp "mjolnir_08.gat",188,215;	goto W_save;	close;
+dmjolnir9:	warp "mjolnir_09.gat",205,144;	goto W_save;	close;
+dmjolnir10:	warp "mjolnir_10.gat",245,223;	goto W_save;	close;
+dmjolnir11:	warp "mjolnir_11.gat",180,206;	goto W_save;	close;
+dmjolnir12:	warp "mjolnir_12.gat",196,208;	goto W_save;	close;
+dmocfild1:	warp "moc_fild01.gat",219,205;	goto W_save;	close;
+dmocfild2:	warp "moc_fild02.gat",177,206;	goto W_save;	close;
+dmocfild3:	warp "moc_fild03.gat",194,182;	goto W_save;	close;
+dmocfild4:	warp "moc_fild04.gat",184,217;	goto W_save;	close;
+dmocfild5:	warp "moc_fild05.gat",203,213;	goto W_save;	close;
+dmocfild6:	warp "moc_fild06.gat",213,208;	goto W_save;	close;
+dmocfild7:	warp "moc_fild07.gat",224,170;	goto W_save;	close;
+dmocfild8:	warp "moc_fild08.gat",229,177;	goto W_save;	close;
+dmocfild9:	warp "moc_fild09.gat",195,198;	goto W_save;	close;
+dmocfild10:	warp "moc_fild10.gat",209,168;	goto W_save;	close;
+dmocfild11:	warp "moc_fild11.gat",198,216;	goto W_save;	close;
+dmocfild12:	warp "moc_fild12.gat",156,187;	goto W_save;	close;
+dmocfild13:	warp "moc_fild13.gat",185,263;	goto W_save;	close;
+dmocfild14:	warp "moc_fild14.gat",209,219;	goto W_save;	close;
+dmocfild15:	warp "moc_fild15.gat",223,188;	goto W_save;	close;
+dmocfild16:	warp "moc_fild16.gat",206,228;	goto W_save;	close;
+dmocfild17:	warp "moc_fild17.gat",208,238;	goto W_save;	close;
+dmocfild18:	warp "moc_fild18.gat",209,223;	goto W_save;	close;
+dmocfild19:	warp "moc_fild19.gat",85,97;	goto W_save;	close;
+dmocfild20:	warp "moc_fild20.gat",249,203;	goto W_save;	close;
+dmocfild21:	warp "moc_fild21.gat",174,226;	goto W_save;	close;
+dmocfild22:	warp "moc_fild22.gat",222,200;	goto W_save;	close;
+dmocfild22b:	warp "moc_fild22b.gat",222,200;	goto W_save;	close;
+dpayfild1:	warp "pay_fild01.gat",158,206;	goto W_save;	close;
+dpayfild2:	warp "pay_fild02.gat",151,219;	goto W_save;	close;
+dpayfild3:	warp "pay_fild03.gat",205,148;	goto W_save;	close;
+dpayfild4:	warp "pay_fild04.gat",186,247;	goto W_save;	close;
+dpayfild5:	warp "pay_fild05.gat",134,204;	goto W_save;	close;
+dpayfild6:	warp "pay_fild06.gat",193,235;	goto W_save;	close;
+dpayfild7:	warp "pay_fild07.gat",200,177;	goto W_save;	close;
+dpayfild8:	warp "pay_fild08.gat",137,189;	goto W_save;	close;
+dpayfild9:	warp "pay_fild09.gat",201,224;	goto W_save;	close;
+dpayfild10:	warp "pay_fild10.gat",160,205;	goto W_save;	close;
+dpayfild11:	warp "pay_fild11.gat",194,150;	goto W_save;	close;
+dprtfild0:	warp "prt_fild00.gat",184,235;	goto W_save;	close;
+dprtfild1:	warp "prt_fild01.gat",190,206;	goto W_save;	close;
+dprtfild2:	warp "prt_fild02.gat",240,206;	goto W_save;	close;
+dprtfild3:	warp "prt_fild03.gat",190,143;	goto W_save;	close;
+dprtfild4:	warp "prt_fild04.gat",307,252;	goto W_save;	close;
+dprtfild5:	warp "prt_fild05.gat",239,213;	goto W_save;	close;
+dprtfild6:	warp "prt_fild06.gat",185,188;	goto W_save;	close;
+dprtfild7:	warp "prt_fild07.gat",193,194;	goto W_save;	close;
+dprtfild8:	warp "prt_fild08.gat",187,218;	goto W_save;	close;
+dprtfild9:	warp "prt_fild09.gat",210,183;	goto W_save;	close;
+dprtfild10:	warp "prt_fild10.gat",195,149;	goto W_save;	close;
+dprtfild11:	warp "prt_fild11.gat",198,164;	goto W_save;	close;
+dxmasfild1:	warp "xmas_fild01.gat",115,145;	goto W_save;	close;
+dcmdfild1:	warp "cmd_fild01.gat",180,178;	goto W_save;	close;
+dcmdfild2:	warp "cmd_fild02.gat",231,160;	goto W_save;	close;
+dcmdfild3:	warp "cmd_fild03.gat",191,172;	goto W_save;	close;
+dcmdfild4:	warp "cmd_fild04.gat",228,194;	goto W_save;	close;
+dcmdfild5:	warp "cmd_fild05.gat",224,203;	goto W_save;	close;
+dcmdfild6:	warp "cmd_fild06.gat",190,223;	goto W_save;	close;
+dcmdfild7:	warp "cmd_fild07.gat",234,177;	goto W_save;	close;
+dcmdfild8:	warp "cmd_fild08.gat",194,175;	goto W_save;	close;
+dcmdfild9:	warp "cmd_fild09.gat",172,172;	goto W_save;	close;
+dyunofild1:	warp "yuno_fild01.gat",189,224;	goto W_save;	close;
+dyunofild2:	warp "yuno_fild02.gat",192,207;	goto W_save;	close;
+dyunofild3:	warp "yuno_fild03.gat",221,157;	goto W_save;	close;
+dyunofild4:	warp "yuno_fild04.gat",226,199;	goto W_save;	close;
+dyunofild5:	warp "yuno_fild05.gat",223,177;	goto W_save;	close;
+dyunofild6:	warp "yuno_fild06.gat",187,232;	goto W_save;	close;
+dyunofild7:	warp "yuno_fild07.gat",231,174;	goto W_save;	close;
+dyunofild8:	warp "yuno_fild08.gat",196,203;	goto W_save;	close;
+dyunofild9:	warp "yuno_fild09.gat",183,214;	goto W_save;	close;
+dyunofild10:	warp "yuno_fild10.gat",200,124;	goto W_save;	close;
+dyunofild11:	warp "yuno_fild11.gat",195,226;	goto W_save;	close;
+dyunofild12:	warp "yuno_fild12.gat",210,304;	goto W_save;	close;
+damafild1:	warp "ama_fild01.gat",190,197;	goto W_save;	close;
+dgonfild1:	warp "gon_fild01.gat",220,227;	goto W_save;	close;
+dumfild1:	warp "um_fild01.gat",217,206;	goto W_save;	close;
+dumfild2:	warp "um_fild02.gat",223,221;	goto W_save;	close;
+dumfild3:	warp "um_fild03.gat",237,215;	goto W_save;	close;
+dumfild4:	warp "um_fild04.gat",202,197;	goto W_save;	close;
+dniffild1:	warp "nif_fild01.gat",215,229;	goto W_save;	close;
+dniffild2:	warp "nif_fild02.gat",167,234;	goto W_save;	close;
+dyggdrasil1:	warp "yggdrasil01.gat",204,78;	goto W_save;	close;
+dloufild1:	warp "lou_fild01.gat",229,187;	goto W_save;	close;
+dayofild1:	warp "ayo_fild01.gat",173,134;	goto W_save;	close;
+dayofild2:	warp "ayo_fild02.gat",212,150;	goto W_save;	close;
+deinfild1:	warp "ein_fild01.gat",142,225;	goto W_save;	close;
+deinfild2:	warp "ein_fild02.gat",182,141;	goto W_save;	close;
+deinfild3:	warp "ein_fild03.gat",187,228;	goto W_save;	close;
+deinfild4:	warp "ein_fild04.gat",185,173;	goto W_save;	close;
+deinfild5:	warp "ein_fild05.gat",216,173;	goto W_save;	close;
+deinfild6:	warp "ein_fild06.gat",195,148;	goto W_save;	close;
+deinfild7:	warp "ein_fild07.gat",272,220;	goto W_save;	close;
+deinfild8:	warp "ein_fild08.gat",173,214;	goto W_save;	close;
+deinfild9:	warp "ein_fild09.gat",207,174;	goto W_save;	close;
+deinfild10:	warp "ein_fild10.gat",196,200;	goto W_save;	close;
+dlhzfild1:	warp "lhz_fild01.gat",240,179;	goto W_save;	close;
+dlhzfild2:	warp "lhz_fild02.gat",185,235;	goto W_save;	close;
+dlhzfild3:	warp "lhz_fild03.gat",240,226;	goto W_save;	close;
+dhufild1:	warp "hu_fild01.gat",268,101;	goto W_save;	close;
+dhufild2:	warp "hu_fild02.gat",222,193;	goto W_save;	close;
+dhufild3:	warp "hu_fild03.gat",232,185;	goto W_save;	close;
+dhufild4:	warp "hu_fild04.gat",252,189;	goto W_save;	close;
+dhufild5:	warp "hu_fild05.gat",196,106;	goto W_save;	close;
+dhufild6:	warp "hu_fild06.gat",216,220;	goto W_save;	close;
+dhufild7:	warp "hu_fild07.gat",227,197;	goto W_save;	close;
+wodtemp1:	warp "odin_tem01.gat",298,167;	goto W_save;	close;
+wodtemp2:	warp "odin_tem02.gat",224,149;	goto W_save;	close;
+wodtemp3:	warp "odin_tem03.gat",266,280;	goto W_save;	close;
+dvfild1:	warp "ve_fild01",186,175;	goto W_save;	close;
+dvfild2:	warp "ve_fild02",196,370;	goto W_save;	close;
+dvfild3:	warp "ve_fild03",222,45;	goto W_save;	close;
+dvfild4:	warp "ve_fild04",51,250;	goto W_save;	close;
+dvfild5:	warp "ve_fild05",202,324;	goto W_save;	close;
+dvfild6:	warp "ve_fild06",150,223;	goto W_save;	close;
+dvfild7:	warp "ve_fild07",149,307;	goto W_save;	close;
+darudun01:	warp "arug_dun01",199,195;	goto W_save;	close;
+dschdun01:	warp "schg_dun01",200,124;	goto W_save;	close;
+dsplenfild1:	warp "spl_fild01",289,32;	goto W_save;	close;
+dsplenfild2:	warp "spl_fild02",12,241;	goto W_save;	close;
+dsplenfild3:	warp "spl_fild03",306,375;	goto W_save;	close;
+dmanfild1:	warp "man_fild01",35,236;	goto W_save;	close;
+dmanfild2:	warp "man_fild02",35,262;	goto W_save;	close;
+dmanfild3:	warp "man_fild03",84,365;	goto W_save;	close;
+dbrafild1:	warp "bra_fild01",74,32;	goto W_save;	close;
+dbiffild1:	warp "bif_fild01",111,90;	goto W_save;	close;
+dbiffild2:	warp "bif_fild02",298,326;	goto W_save;	close;
+ddewfild1:	warp "dew_fild01",269,97;	goto W_save;	close;
+ddewin:	warp "dew_in01",21,43;	goto W_save;	close;
+ddicfild1:	warp "dic_fild01",150,275;	goto W_save;	close;
+ddicfild2:	warp "dic_fild02",72,368;	goto W_save;	close;
+
+//-------------------------------
+//          Town Warps
+//-------------------------------
+
+walberta:	warp "alberta.gat",117,51;	goto W_save;	close;
+waldebaran:	warp "aldebaran.gat",140,111;	goto W_save;	close;
+wamatsu:	warp "amatsu.gat",112,144;	goto W_save;	close;
+wayot:	warp "ayothaya.gat",217,166;	goto W_save;	close;
+wcomodo:	warp "comodo.gat",190,145;	goto W_save;	close;
+weinbech:	warp "einbech.gat",176,121;	goto W_save;	close;
+weinbroch:	warp "einbroch.gat",232,195;	goto W_save;	close;
+wgeffen:	warp "geffen.gat",120,58;	goto W_save;	close;
+wgonryun:	warp "gonryun.gat",160,115;	goto W_save;	close;
+whugel:	warp "hugel.gat",96,145;	goto W_save;	close;
+wizlude:	warp "izlude.gat",128,101;	goto W_save;	close;
+wjawaii:	warp "jawaii.gat",204,287;	goto W_save;	close;
+wlighthalzen:	warp "lighthalzen.gat",159,92;	goto W_save;	close;
+wlouyang:	warp "louyang.gat",218,97;	goto W_save;	close;
+wxmas:	warp "xmas.gat",148,126;	goto W_save;	close;
+wmorroc:	warp "morocc.gat",159,87;	goto W_save;	close;
+wmoscovia:	warp "moscovia.gat",223,194;	goto W_save;	close;
+wnameless:	warp "nameless_n.gat",72,191;	goto W_save;	close;
+wniflheim:	warp "niflheim.gat",201,175;	goto W_save;	close;
+wpayon:	warp "payon.gat",172,92;	goto W_save;	close;
+wprontera:	warp "prontera.gat",155,182;	goto W_save;	close;
+wafeltz:	warp "rachel.gat",133,138;	goto W_save;	close;
+wthorcamp:	warp "thor_camp.gat",203,219;	goto W_save;	close;
+wumbala:	warp "umbala.gat",122,136;	goto W_save;	close;
+wveins:	warp "veins.gat",205,117;	goto W_save;	close;
+wyuno:	warp "yuno.gat",157,181;	goto W_save;	close;
+wmidcamp:	warp "mid_camp.gat",221,232;	goto W_save;	close;
+wmanuk:	warp "manuk.gat",274,195;	goto W_save;	close;
+wsplendide:	warp "splendide.gat",200,153;	goto W_save;	close;
+wbrasilis:	warp "brasilis.gat",196,180;	goto W_save;	close;
+wmalangdo:	warp "malangdo.gat",136,261;	goto W_save;	close;
+wdewata:	warp "dewata.gat",200,176;	goto W_save;	close;
+wmora:	warp "mora.gat",107,97;	goto W_save;	close;
+wcap:	warp "prt_monk",227,90;	goto W_save;	close;
+woasis:	warp "oasis.gat",164,91;	goto W_save;	close;
+wdicastes01:	warp "dicastes01.gat",198,223;	goto W_save;	close;
+wdicastes02:	warp "dicastes02.gat",118,151;	goto W_save;	close;
+whallow:	warp "hallow01.gat",106,113;	goto W_save;	close;
+wvelika:	warp "velika_town.gat",159,112;	goto W_save;	close;
+wmorroxi:	warp "mor_roxi.gat",160,102;	goto W_save;	close;
+wmocnews:	warp "moc_news.gat",159,101;	goto W_save;	close;
+waerallynn:	warp "aerallynn.gat",166,219;	goto W_save;	close;
+wmoroccedit:	warp "moroccedit.gat",159,98;	goto W_save;	close;
+wlikegame:	warp "like_game.gat",128,150;	goto W_save;	close;
+wbossztown:	warp "bossz_town.gat",196,170;	goto W_save;	close;
+wcbtown:	warp "cb_town.gat",99,111;	goto W_save;	close;
+wmintown:	warp "min_town.gat",81,87;	goto W_save;	close;
+willutown:	warp "illu_town.gat",157,100;	goto W_save;	close;
+wcrmbevent:	warp "CR_mbevent.gat",36,44;	goto W_save;	close;
+wfortress:	warp "fortress.gat",47,110;	goto W_save;	close;
+wchess01:	warp "chess01.gat",40,42;	goto W_save;	close;
+wdreamworld:	warp "dreamworld.gat",65,38;	goto W_save;	close;
+wball2:	warp "ball2.gat",60,54;	goto W_save;	close;
+wminro:	warp "min_ro.gat",66,105;	goto W_save;	close;
+wanpant:	warp "anpan_t.gat",98,151;	goto W_save;	close;
+wanpannew:	warp "anpan_new.gat",160,100;	goto W_save;	close;
+wtourney01:	warp "tourney_01.gat",186,78;	goto W_save;	close;
+wts4town:	warp "ts4_town.gat",110,110;	goto W_save;	close;
+whome:	warp "home.gat",49,51;	goto W_save;	close;
+wfewtown:	warp "few_town.gat",200,200;	goto W_save;	close;
+wpangya:	warp "pangya.gat",39,50;	goto W_save;	close;
+wloykrathong:	warp "loykrathong.gat",68,95;	goto W_save;	close;
+wn1:	warp "n1.gat",120,135;	goto W_save;	close;
+wcoliseum:	warp "coliseum.gat",102,153;	goto W_save;	close;
+wmoroccmz:	warp "moroccmz.gat",158,101;	goto W_save;	close;
+wmofild01:	warp "mo_fild01.gat",148,68;	goto W_save;	close;
+wmornanie:	warp "mornanie.gat",106,159;	goto W_save;	close;
+whellfire:	warp "hellfire.gat",151,377;	goto W_save;	close;
+wsilicon:	warp "silicon.gat",112,129;	goto W_save;	close;
+wspintown:	warp "spin_town.gat",99,125;	goto W_save;	close;
+wfairy:	warp "Fairy.gat",142,139;	goto W_save;	close;
+wbgroom:	warp "bgroom.gat",54,42;	goto W_save;	close;
+wbgstation:	warp "bgstation.gat",50,45;	goto W_save;	close;
+wextown:	warp "ex_town.gat",159,97;	goto W_save;	close;
+wfireflies:	warp "fireflies.gat",182,169;	goto W_save;	close;
+wpetera:	warp "petera.gat",155,182;	goto W_save;	close;
+wpvp01:	warp "pvp01.gat",50,61;	goto W_save;	close;
+wposhcity:	warp "Posh-City.gat",160,98;	goto W_save;	close;
+wposhcity2:	warp "Posh-City2.gat",157,54;	goto W_save;	close;
+wnewmoc:	warp "new_moc.gat",159,249;	goto W_save;	close;
+wmvp:	warp "mvp.gat",91,24;	goto W_save;	close;
+wi4m:	warp "I4m_02.gat",159,232;	goto W_save;	close;
+wcrystilia:	warp "Crystilia.gat",68,79;	goto W_save;	close;
+
+W_save:
+	getmapxy @mapname$,@mapx,@mapy,0,strcharinfo(0);
+	set youlastwarp$,@mapname$;
+	set youlastwarp_x,@mapx;
+	set youlastwarp_y,@mapy;
+	dispbottom "ทำการบันทึก จุดวาป..";
+	close;
+	end;
+
+K_save:
+	mes "[ Kafra Express ]";
+	mes " ท่านได้ทำการเซฟเรียบร้อยแล้ว";
+	mes " ขอบคุณที่ใช้บริการ Kafra Express";
+	atcommand strcharinfo(0) + "@save";
+	close2;
+	emotion e_thx;
+	cutin "", 255;
+	end;
+
+K_save1:
+	callfunc "repairmain1"," Repairman ";
+	end;
+	
+K_storage:
+	if (Zeny < 150) {
+		mes "[ Kafra Express ]";
+		mes " ท่านมีเงินไม่พอ";
+		close2;
+		cutin "", 255;
+		end;
+	}
+	set Zeny,Zeny-150;
+	mes "[ Kafra Express ]";
+	mes " เราจะเปิดที่เก็บของให้ท่าน";
+	mes " ขอบคุณที่ใช้บริการ Kafra Express";
+	close2;
+	openstorage;
+	emotion e_thx;
+	cutin "", 255;
+	end;
+
+//================================================================================================================\\
+	AA3:	//"เช่านก&รถ",AA3,
+		mes "[หมวดเช่าอุปกรณ์เสริม]";
+		mes "ท่านจะมาเช่าสัตว์เลี้ยง&รถเข็นหรอ";
+		mes "ต้องใช้เงิน 2000 Z นะคะ";
+		next;
+		if(Zeny < 2000) goto EZ;
+		set Zeny, Zeny - 2000;
+		mes "[หมวดเช่าอุปกรณ์เสริม]";
+		mes "โปรดเลือกบริการ.";
+		menu
+		"เช่าเป็ด,มังกร",B1,
+		"เช่าเหยี่ยว",B3,
+		"เช่ารถเข็น",B4,
+		"เช่าหุ่นยนต์",B5,
+		"Dragon",B6,
+		"Gryphon",B7,
+		"Magic Gear",B8,
+		"Warg",B9;
+		B1:
+			mes "สวัสดี";
+			mes "เช่าเป็ด.";
+			if(getskilllv(63) == 0) goto ES;
+			setriding;
+			mes "ขอบคุณแล้วเจอกันวันหลัง.";
+			close2;
+			emotion 15;
+			//goto L_EXIT;
+			end;
+		B3:
+			mes "สวัสดี";
+			mes "เช่าเหยี่ยว.";
+			if(getskilllv(127)==0) goto ES;
+			setfalcon;
+			mes "ขอบคุณแล้วเจอกันวันหลัง.";
+			close2;
+			emotion 15;
+			//goto L_EXIT;
+			end;
+		B4:
+			mes "สวัสดี";
+			mes "เช่ารถเข็น.";
+			if(getskilllv(39)==0) goto ES;
+			setcart;
+			mes "ขอบคุณแล้วเจอกันวันหลัง.";
+			close2;
+			emotion 15;
+			//goto L_EXIT;
+			end;
+		B5:
+			mes "สวัสดี";
+			mes "เช่าหุ่นยนต์.";
+			if(getskilllv(2255)==0) goto ES;
+			setriding;
+			mes "ขอบคุณแล้วเจอกันวันหลัง.";
+			close2;
+			emotion 15;
+			//goto L_EXIT;
+			end;
+		B6:
+			if (BaseJob != Job_Swordman && BaseClass == Job_Swordman && checkriding() == 0 && getskilllv("RK_DRAGONTRAINING")>0) {
+			mes "[ ^FF0000Rental^000000 ]";
+			mes "กรุณาเลือกสีที่คุณชอบ ?";
+			menu "- Green",greenp,"- Black",blackp,"- White",whitep,"- Blue",bluep,"- Red",redp,"- Close",-;
+			close;
+			greenp: atcommand "@mount 1"; close;
+			blackp: atcommand "@mount 2"; close;
+			whitep: atcommand "@mount 3"; close;
+			bluep: atcommand "@mount 4"; close;
+			redp: atcommand "@mount 5"; close;
+			}else{
+			mes "[ ^FF0000Rental^000000 ]";
+			mes "ขอโทษทีคุณไม่มีสกิวของสายอาชีพนี้";
+			close;
+			}
+B7:
+if (BaseJob != Job_Swordman && BaseClass == Job_Swordman && checkriding() == 0 && getskilllv("KN_RIDING")>0 && Class == 4073 || Class == 4066) {
+setriding;
+close;
+}else{
+mes "[ ^FF0000Rental^000000 ]";
+mes "ขอโทษทีคุณไม่มีสกิวของสายอาชีพนี้";
+close;
+}
+B8:
+if (BaseJob != Job_Merchant && BaseClass == Job_Merchant && checkriding() == 0 && getskilllv("NC_MADOLICENCE")>0 && Class == 4064 || Class == 4058) {
+atcommand "@mount";
+close;
+}else{
+mes "[ ^FF0000Rental^000000 ]";
+mes "ขอโทษทีคุณไม่มีสกิวของสายอาชีพนี้";
+close;
+}
+B9:
+if (Class == 4056 || Class == 4062 && getskilllv("RA_WUGMASTERY")==1) {
+setriding;
+close;
+}else{
+mes "[ ^FF0000Rental^000000 ]";
+mes "ขอโทษทีคุณไม่มีสกิวของสายอาชีพนี้";
+close;
+}
+		ES:
+			mes "ท่านไม่ได้อัพ  Skill ที่สามารถใช้อุปกรณ์เสริมต่างๆๆ ได้ค่ะ";
+			close2;
+			goto L_EXIT;
+			end;
+		EZ:
+			mes "ท่านมีเงินไม่พอค่าใช้จ่ายที่ท่านต้องเสีย 2000 Z ค่ะ";
+			close2;
+			//goto L_EXIT;
+			end;
+
+//================================================================================================================\\
+	AA1:	//"ReStatus&Skills",AA1,
+		if(class > 4049) goto Nojob;
+mes "[ Kafra ]";
+mes "สวัสดีค่ะ";
+mes "ที่ท่านมาใช้บริการของข้า  ท่านต้องการ ^bb00bbReset^000000 อะไรล่ะ:";
+mes "1) 100,000z Status reset";
+mes "2) 100,000z Skills reset";
+mes "3) 150,000z Status/skills reset";
+next;
+menu "^3355FFSkill and Stat Service^000000",L0,"^FF3355Reset Skills^000000",L1,"^FF3355Reset Stats^000000",L2,"^FF3355Reset Skills and Stats^000000",L3,"Quit",lcancel;
+L0:
+mes "[ Kafra ]";
+mes "โปรดเก็บไอเทมทั้งหมดในตัวคุณไว้ใน Kafra ^3355FF0^000000.";
+mes "เพราะว่าพอรีเซ็ตน้ำหนักของคุณจะเหลือ0.";
+mes "ข้อมูล, ^3355FFNovice จะไม่สามารถใช้บริการได้^000000.";
+close;
+L1:
+if (Zeny<100000) goto NeedZenys;
+mes "[ Kafra ]";
+mes "รอสักครู่";
+set Zeny, Zeny-100000;
+resetskill;
+close;
+L2:
+if (Zeny<100000) goto NeedZenys;
+mes "[ Kafra ]";
+mes "ได้แล้ว!!";
+set Zeny,Zeny-100000;
+resetstatus;
+close;
+L3:
+if (Zeny<150000) goto NeedZenys;
+mes "[ Kafra ]";
+mes "อิอิอิ";
+set Zeny, Zeny-150000;
+resetskill;
+resetstatus;
+close;
+
+Lcancel:
+mes "[ Kafra ]";
+mes "บ๊าย บายคร๊า  แล้วกลับมาใช้บริการของข้าอีกนะ";
+cutin "kafra_01",255;
+close;
+//================================================================================================================\\
+AA2:	//"ทำSkillsเควส (Skillเสริม)",AA2,
+	mes "[Platinum Skill NPC]";
+	mes "ข้าสามารถเรียนรู้ Skill เควส หรือ Skill เสริม จากข้าได้";
+	mes "ค่าใช้จ่ายในการเรียนรู้ 50,000 Z  ตกลงไหมละ";
+	next;
+	if (Zeny<50000) { mes "ท่านมีเงินไม่พอ";  close; }
+	set Zeny,Zeny-50000;
+	menu "Yes",Lgetskills,"No",Lnogetskills;
+Lgetskills:
+	if ((Class==0) || (Class==4001)) goto Lskillsnovice;
+	if ((Class==1) || (Class==7) || (Class==14) || (Class==13) || (Class==21) || (Class==4002) || (Class==4008) || (Class==4014) || (Class==4022) || (Class==4015)) goto Lskillsswordie;
+	if ((Class==2) || (Class==9) || (Class==16) || (Class==4003) || (Class==4010) || (Class==4017)) goto Lskillsmage;
+	if ((Class==3) || (Class==11) || (Class==19) || (Class==20) || (Class==4004) || (Class==4012) || (Class==4020) || (Class==4021)) goto Lskillsarcher;
+	if ((Class==4) || (Class==8) || (Class==15) || (Class==4005) || (Class==4009) || (Class==4016)) goto Lskillsaco;
+	if ((Class==5) || (Class==10) || (Class==18) || (Class==4006) || (Class==4011) || (Class==4019)) goto Lskillsmerchie;
+	if ((Class==6) || (Class==12) || (Class==17) || (Class==4007) || (Class==4013) || (Class==4018)) goto Lskillsthief;
+	goto LskillsEND;
+Lskillsnovice:
+	skill 142,1,0;
+	skill 143,1,0;
+	goto LskillsEND;
+Lskillsswordie:
+	skill 142,1,0;
+	skill 144,1,0;
+	skill 145,1,0;
+	skill 146,1,0;
+	goto LskillsEND;
+Lskillsmage:
+	skill 142,1,0;
+	skill 157,1,0;
+	goto LskillsEND;
+Lskillsarcher:
+	skill 142,1,0;
+	skill 147,1,0;
+	skill 148,1,0;
+	goto LskillsEND;
+Lskillsaco:
+	skill 142,1,0;
+	skill 156,10,0;
+	goto LskillsEND;
+Lskillsmerchie:
+	skill 142,1,0;
+	skill 153,1,0;
+	skill 154,1,0;
+	skill 155,1,0;
+	goto LskillsEND;
+Lskillsthief:
+	skill 142,1,0;
+	skill 149,1,0;
+	skill 150,1,0;
+	skill 151,1,0;
+	skill 152,1,0;
+	goto LskillsEND;
+LskillsEND:
+if (Class == 7) goto KNI;
+if (Class == 4008) goto KNI;
+if (Class == 14) goto CUS;
+if (Class == 4015) goto CUS;
+if (Class == 17) goto ROG;
+if (Class == 4018) goto ROG;
+if (Class == 12) goto AS;
+if (Class == 4013) goto AS;
+if (Class == 9) goto WIZ;
+if (Class == 4010) goto WIZ;
+if (Class == 16) goto SAG;
+if (Class == 4017) goto SAG;
+if (Class == 11) goto HUN;
+if (Class == 4012) goto HUN;
+if (Class == 19) goto BAR;
+if (Class == 4020) goto BAR;
+if (Class == 20) goto DAN;
+if (Class == 4021) goto DAN;
+if (Class == 10) goto BLACK;
+if (Class == 4011) goto BLACK;
+if (Class == 8) goto PRI;
+if (Class == 4009) goto PRI;
+if (Class == 15) goto MONK;
+if (Class == 4016) goto MONK;
+if (Class == 18) goto ALC;
+if (Class == 4019) goto ALC;
+
+KNI:
+skill 1001,1,0;
+goto EXITYTR;
+
+CUS:
+skill 1002,1,0;
+goto EXITYTR;
+
+AS:
+skill 1003,1,0;
+skill 1004,1,0;
+goto EXITYTR;
+
+ROG:
+skill 1005,1,0;
+goto EXITYTR;
+
+WIZ:
+skill 1006,1,0;
+goto EXITYTR;
+
+SAG:
+skill 1007,1,0;
+skill 1008,1,0;
+skill 1017,1,0;
+skill 1018,1,0;
+skill 1019,1,0;
+goto EXITYTR;
+
+HUN:
+skill 1009,1,0;
+goto EXITYTR;
+
+BAR:
+skill 1010,1,0;
+goto EXITYTR;
+
+DAN:
+skill 1011,1,0;
+goto EXITYTR;
+
+BLACK:
+skill 1012,1,0;
+skill 1013,1,0;
+goto EXITYTR;
+
+PRI:
+skill 1014,1,0;
+goto EXITYTR;
+
+MONK:
+skill 1015,1,0;
+skill 1016,1,0;
+goto EXITYTR;
+
+ALC:
+skill 238,1,0;
+goto EXITYTR;
+
+EXITYTR:
+	mes "ตอนนี้ท่านได้เรียนรู้ Skill ที่ข้าสอนให้เจ้าแล้วละ.";
+	next;
+	goto LskillsEND2;
+LskillsEND2:
+	mes "[Platinum Skill NPC]";
+	mes "ไว้เจอกันวันหลัง ลาก่อน บาย.....";
+	close2;
+	goto K_cancle;
+	end;
+Lnogetskills:
+	mes "[Platinum Skill NPC]";
+	mes "ท่านได้เรียนรู้ Skill ที่ข้าสอนไปแล้ว.";
+	close2;
+	goto K_cancle;
+	end;
+
+lvguild:
+	mes "[ Guild ]";
+	mes "ข้าสามารถเพิ่ม Lv Guild ให้ท่านได้";
+	mes "และช้าก็จะเสกเลเวลกิลด์ให้ท่านได้ 50 เลเวล";
+	mes "ท่านสนใจมั้ยละ ";
+	next;
+	menu "Up Lv Guild",G_guild,"ไม่ล่ะ ข้าไม่ต้องการ",G_cancle;
+G_guild:
+	mes "[ Guild ]";
+	mes "ไม่ต้องห่วง !!";
+	mes "ท่านจะได้เลเวล Guild แน่นอน";
+	mes "รับไปเลย !! 50 เลเวลกิลด์";
+	atcommand strcharinfo(0) + "@guildlvlup 50";
+	close;
+G_cancle:
+	mes "[ Guild ]";
+	mes "ไม่เอาเลเวลกิลด์ก็เรื่องของนาย !!";
+	close;
+
+K_cancle:
+	mes "[ Kafra Express ]";
+	mes " ทีมงาน Kafra พร้อมมอบ";
+	mes " บริการที่ดีที่สุดแด่ท่านเสมอ";
+	mes " โอกาสหน้าเชิญใหม่ค่ะ";
+	close2;
+	cutin "", 255;
+	end;
+}
+
+function	script	repairmain1	{
+	set .@repairprice,5000;
+	mes "["+getarg(0)+"]";
+	mes "ข้าคือช่างซ่อมอาวุธ นำอาวุธที่เสียหายมาให้ข้าซ่อมได้";
+	mes "จะซ่อมอันใหนบอกมา ซ่อมได้ จะซ่อมให้";
+	next;
+	switch(select("ข้าต้องการซ่อม...:ข้ายังไม่ต้องการซ่อมในตอนนี้!!")) {
+	case 1:
+		set .@checkitem,1;
+		while (1) {
+			if (getbrokenid(.@checkitem) == 0) {
+				break;
+			}
+			set .@checkitem,.@checkitem+1;
+		}
+		set .@checkitem,.@checkitem-1;
+		if (!.@checkitem) {
+			mes "["+getarg(0)+"]";
+			mes "ดูเหมือนท่านจะไม่มีอุปกรณ์อะไรที่เสียหายเลยนะ!";
+			close;
+		}
+		mes "["+getarg(0)+"]";
+		mes "อืม...";
+		mes "ดูเหมือนว่า...";
+		mes "ท่านจะมีอุปกณ์ " + .@checkitem + " ชิ้น ที่เสียหายอยู่";
+		mes "หากท่านต้องการที่จะซ่อมทั้งหมด~";
+		next;
+		set .@totalcost,.@repairprice*.@checkitem;
+		mes "["+getarg(0)+"]";
+		mes "ข้าคิดราคาเพียง 5000 เซนี ต่อชิ้นเท่านั้น รวมราคาทั้งหมด " + .@totalcost + " เซนี! ท่านต้องการที่จะซ่อมทั้งหมดเลยมั๊ย?";
+		next;
+		switch(select("ตกลง:ยกเลิก")) {
+		case 1:
+			if (Zeny < .@totalcost) {
+				mes "["+getarg(0)+"]";
+				mes "ว้า...";
+				mes "ข้าคิดว่าท่านควรจะตรวจสอบเงินของท่านเสียก่อนนะ!!!!";
+				close;
+			}
+			set .@checkitem2,1;
+			while (1) {
+				if (getbrokenid(.@checkitem2) == 0) {
+					break;
+				}
+				set .@checkitem2,.@checkitem2+1;
+			}
+			set .@checkitem2,.@checkitem2-1;
+			if (.@checkitem == .@checkitem2) {
+				set zeny,zeny-.@totalcost;
+				while (.@checkitem) {
+					repair(.@checkitem);
+					set .@checkitem,.@checkitem-1;
+				}
+				mes "["+getarg(0)+"]";
+				mes "อ่า.. เรียบร้อยแล้ว คราวหน้าคราวหลังท่านก็ทำอะไรระวังๆหน่อย ข้าช่วยท่านไม่ได้ทุกครั้งหลอกนะ";
+				close;
+			}
+			else {
+				mes "["+getarg(0)+"]";
+				mes "Mmm? Something's wrong. Wait... Equip the items you need to repair and then come back to me.";
+				close;
+			}
+		case 2:
+			mes "["+getarg(0)+"]";
+			mes "มาหาข้าได้..เมื่อเจ้าต้องการ";
+			close;
+		}
+	case 2:
+		mes "["+getarg(0)+"]";
+		mes "มาหาข้าได้..เมื่อเจ้าต้องการ";
+		close;
+	}
+}
+
+
+//=============================================
+turbo_e_16,303,168,4	script	Deathmath7	512,{
+mes "[Deathmath]";
+mes "^FF0000คำแนะนำ^000000";
+mes "ในนี้ท่านจะฟื้นคืนชีพและ";
+mes "มีบัฟไห้อัตโนมัติ หลังจากที่คุณฟื้น";
+mes "^FF0000เวลาจะออกไห้กดเลือกตัวละคร หรือใช้คำสั่ง @load^000000";
+next;
+menu "^ff0000•^006611 ^000000[^ff0000PvP Room Deathmath ^0066111^000000] ^006611Online^000080 "+getmapusers ("pvp_y_1-2")+"^000080 คน",Lot,"ไม่ล่ะ",Lno;
+Lot:
+next;
+warp "pvp_n_8-3.gat",0,0;
+close;
+
+Lno:
+mes ".......";
+close;
+OnInit:
+	waitingroom "PvP Deathmath ตายเกิด",0;
+	end;
+}
+
+//--------------------------------------
+//---------PVP Assassin Vs Assassin -----------------------
+turbo_e_16,297,168,4	script	Assassin Cross	105,{
+
+sc_end SC_ASSUMPTIO;
+sc_end SC_POEMBRAGI;
+sc_end SC_APPLEIDUN;
+sc_end SC_ASSNCROS;
+sc_end SC_IMPOSITIO;
+sc_end KYRIE;
+
+mes "^FF0000Assassin Vs Assassin^000000";
+if (BaseJob != Job_Assassin) goto L_nojobassassin;
+menu "Assassin Cross ["+getmapusers("pvp_n_2-3")+"]",map1;
+
+map1:
+if (BaseJob == Job_Assassin) {
+if (getmapusers("pvp_n_2-3") < 1000) warp "pvp_n_2-3",0,0;
+}
+close;
+
+L_nojobassassin:
+close;
+
+OnInit: 
+waitingroom "Assassin Cross",0; 
+end;
+
+end;
+}
+
+//===========================================================
+
+turbo_e_16,303,163,4	script	Champion	105,{
+
+sc_end SC_ASSUMPTIO;
+sc_end SC_POEMBRAGI;
+sc_end SC_APPLEIDUN;
+sc_end SC_ASSNCROS;
+sc_end SC_IMPOSITIO;
+sc_end KYRIE;
+
+mes "^FF0000Champion Vs Champion^000000";
+if(BaseJob != Job_Monk) goto L_nojobchampion;
+menu "Champion ["+getmapusers("pvp_n_2-3")+"]",map1;
+
+map1:
+if (BaseJob == Job_Monk) {
+if (getmapusers("pvp_n_2-3") < 1000) warp "pvp_n_2-3",0,0;
+}
+close;
+
+L_nojobchampion:
+close;
+
+OnInit: 
+waitingroom "Champion",0; 
+end;
+
+end;
+}
+
+//===========================================================
+turbo_e_16,303,158,4	script	Scholar Champion	105,{
+
+sc_end SC_ASSUMPTIO;
+sc_end SC_POEMBRAGI;
+sc_end SC_APPLEIDUN;
+sc_end SC_ASSNCROS;
+sc_end SC_IMPOSITIO;
+sc_end KYRIE;
+
+mes "^FF00002-2 Scholar Champion^000000";
+if (BaseJob == Job_Sage || BaseJob == Job_Monk) {
+menu "เข้าห้อง ["+getmapusers("pvp_n_3-3")+"]",map1;
+
+map1:
+if (getmapusers("pvp_n_3-3") < 1000) warp "pvp_n_3-3",0,0;
+close;
+}
+
+if (BaseJob != Job_Sage || BaseJob != Job_Monk) goto L_nojob;
+
+L_nojob:
+close;
+
+OnInit: 
+waitingroom "Scholar Champion",0;
+end;
+
+end;
+}
+
+//--------------------------------------
+//---------PVP1----GVG-------------------
+//- Powerzees
+//- Fix Bug ดัดแปลง สคริป icez``
+
+//---PVP---//
+turbo_e_16,292,168,5	script	PVPx	466,{
+mes "PVP";
+mes "เลือก สถานที่ ได้เลยจ้า";
+mes "ขอให้โชคดีนะ";
+next;
+mes "PVP";
+mes "กรุณาเลือกห้อง";
+menu "^ff0000•^006611Izlude["+getmapusers("pvp_y_7-2")+"]",map1,
+"^ff0000•^006611Morocc["+getmapusers("pvp_y_7-5")+"]",map2,
+"^ff0000•^006611Prontera["+getmapusers("pvp_y_8-1")+"]",map7,
+"^ff0000•^006611Payon["+getmapusers("pvp_y_8-3")+"]",map8,
+"^ff0000•^006611Tierra1["+getmapusers("bat_a01")+"]",map3,
+"^ff0000•^006611Tierra2["+getmapusers("bat_a02")+"]",map4,
+"^ff0000•^006611Frebeus1["+getmapusers("bat_b01")+"]",map5,
+"^ff0000•^006611Frebeus2["+getmapusers("bat_b02")+"]",map6,
+"^ff0000•^006611 [^ff0000PvP Room ^0066111-1^000000] ^006611Online "+getmapusers ("pvp_y_3-2")+"^000080 คน",r11;
+
+map1:
+warp "pvp_y_7-2",0,0;
+close;
+
+map2:
+warp "pvp_y_7-5",0,0;
+close;
+
+map3:
+warp "bat_a01",0,0;
+close;
+
+map4:
+warp "bat_a02",0,0;
+close;
+
+map5:
+warp "bat_b01",0,0;
+close;
+
+map6:
+warp "bat_b02",0,0;
+close;
+
+map7:
+warp "pvp_y_8-1",0,0;
+close;
+
+map8:
+warp "pvp_y_8-3",0,0;
+close;
+
+r11:
+if(getmapusers("pvp_y_3-2") >= 2) { dispbottom "• ไม่สามารถเข้าไปได้เนื่องจาก ห้องนี้เป็นห้อง 1-1 และมีคนครบแล้ว •"; end; }
+warp "pvp_y_3-2",0,0;
+close;
+
+}
+
+pvp_n_3-5.gat,87,111,0,0	monster	หินกิลด์	1288,1,0,0,0
+pvp_n_3-5.gat,99,111,0,0	monster	หินกิลด์2	1288,1,0,0,0
+pvp_n_3-5.gat,112,111,0,0	monster	หินกิลด์3	1288,1,0,0,0
+pvp_n_3-5.gat,112,100,0,0	monster	หินกิลด์4	1288,1,0,0,0
+pvp_n_3-5.gat,99,100,0,0	monster	หินกิลด์5	1288,1,0,0,0
+pvp_n_3-5.gat,87,100,0,0	monster	หินกิลด์6	1288,1,0,0,0
+pvp_n_3-5.gat,87,89,0,0	monster	หินกิลด์7	1288,1,0,0,0
+pvp_n_3-5.gat,99,89,0,0	monster	หินกิลด์8	1288,1,0,0,0
+pvp_n_3-5.gat,111,89,0,0	monster	หินกิลด์9	1288,1,0,0,0
+
+//===================================================================================================================\\
+
+-	script	BuffLvUpOn7	-1,{
+	end;
+
+OnPCBaseLvUpEvent:
+	set .@time, 10;	// เวลาบัฟ (นาที)
+		sc_start SC_BLESSING, .@time*60*1000, 10;
+		sc_start SC_INCREASEAGI, .@time*60*1000, 10;
+		sc_start 29, .@time*60*1000, 10;
+    sc_start 35, .@time*60*1000, 10;
+    sc_start 41, .@time*60*1000, 10;
+    sc_start 115, .@time*60*1000, 10;
+
+		sc_end SC_Poison;
+    sc_end SC_Freeze;
+    sc_end SC_Sleep;
+    sc_end SC_Stan;
+    sc_end SC_Stone;
+    sc_end SC_Silence;
+    sc_end SC_Blind;
+    sc_end SC_Bleeding;
+    sc_end SC_Confusion;
+    sc_end SC_Curse;
+    sc_end SC_Hallucination; 
+    percentheal 100,100;
+    
+    specialeffect EF_SANCTUARY;
+		specialeffect2 EF_INCAGILITY;
+		specialeffect2 EF_BLESSING;
+		specialeffect2 568;
+    specialeffect2 410;
+    specialeffect2 215;
+
+	end;
+}
+
+
+//===================================================================
+
+new_zone01,0,0,0	script	ev_clock	111,{
+	
+OnPCLoginEvent:
+	Announce "{ ยินดีต้อนรับคุณ { " + strcharinfo(0) + " } Online } ",8;
+	end;
+OnPCLogoutEvent:
+	Announce "{ คุณ { " + strcharinfo(0) + " } ได้ออกจากเกมส์เรียบร้อยแล้ว } ",8;
+	end;
+OnClock0759:
+	Announce "Server: โปรดเตรียมตัวเคารพธงชาติ ใน อีก1นาทีนี้",8;
+	end;
+OnClock0800:
+	Announce "Server: ประเทศไทยรวมเลือดเนื้อชาติเชื้อไทย เป็นประชารัฐ ไผทของไทยทุกส่วน อยู่ดำรงคงไว้ได้ทั้งมวล ด้วยไทยล้วนหมาย รักสามัคคี ไทยนี้รักสงบ แต่ถึงรบไม่ขลาด เอกราชจะไม่ให้ใครข่มขี่ สละเลือดทุกหยาดเป็นชาติพลี เถลิงประเทศชาติไทยทวี มีชัย ชโย ",8;
+	end;
+OnClock1759:
+	Announce "Server: โปรดเตรียมตัวเคารพธงชาติ ใน อีก1นาทีนี้",8;
+	end;
+OnClock1800:
+	Announce "Server: ประเทศไทยรวมเลือดเนื้อชาติเชื้อไทย เป็นประชารัฐ ไผทของไทยทุกส่วน อยู่ดำรงคงไว้ได้ทั้งมวล ด้วยไทยล้วนหมาย รักสามัคคี ไทยนี้รักสงบ แต่ถึงรบไม่ขลาด เอกราชจะไม่ให้ใครข่มขี่ สละเลือดทุกหยาดเป็นชาติพลี เถลิงประเทศชาติไทยทวี มีชัย ชโย ",8;
+	end;
+OnClock2000:
+	Announce "The War of Emperium ได้เริ่มต้นขึ้นแล้ว",8;
+	end;
+OnClock2040:
+	Announce "~ เหลือเวลา กิลด์วอ อีก 20 นาที  ~ ",8;
+	end;
+OnClock2050:
+	Announce "~ เหลือเวลา กิลด์วอ อีก 10 นาที ~ ",8;
+	end;
+OnClock2055:
+	Announce "~ เหลือเวลา กิลด์วอ อีก 5 นาที ~ ",8;
+	end;
+OnClock2056:
+	Announce "~ อีก 4 นาทีจะหมดวอแล้ว ~ ",8;
+	end;
+OnClock2057:
+	Announce "~ อีก 3 นาทีจะหมดวอแล้ว ~ ",8;
+	end;
+OnClock2058:
+	Announce "~ อีก 2 นาทีจะหมดวอแล้ว ~ ",8;
+	end;
+OnClock2059:
+	Announce "~ อีก 1 นาทีจะหมดวอแล้ว ~ ",8;
+	end;
+OnClock2100:
+	Announce "The War of Emperium ได้หมดเวลาลงแล้ว ยินดีด้วยกับกิลดิ์ที่ได้บ้านนะคะ มารับของหน้าธงกิลด้วยจ้า ส่วนกิลด์ที่ไม่ได้บ้านก็อย่าเสียใจ คราวหน้าลองใหม่ค่ะ ",8;
+	end;
+OnMinute01:
+	Announce "Server: ยินดีต้อนรับสู่ผู้เล่นทุกท่านสู่ ` iBerry~RO V.4 PVP GVG`* ไม่ซัฟ ไม่โกง ไม่เส้น ไม่บอท โปร่งใส เสถียรภาพ มั่นคง ถาวร ร่วมสร้างสรรค์สังคมเกมส์ที่นี่กับเรา.",8;
+	end;
+OnMinute08:
+	Announce "Server: Guild War มีทุกวัน จันทร์-อาทิตย์ เวลา 20:00น. ถึง 21:00  และทางไปกิลวอ คุยกับ npc kafra ได้เลย กิลด์ที่ได้บ้าน หลังจบวอจะมี npcแจกของรางวัล อยู่กลางเมืองเลย",8;
+	end;
+OnMinute32:
+	Announce "Server: การใช้ Program/ Bot/หรือสิ่งต่างๆในการช่วยเล่น เอาเปรียบผู้เล่นคนอื่น โทษคือ Ban IP ถาวร โดยไม่มีข้อยกเว้นใดๆทั้งสิ้น",8;
+	end;
+OnMinute52:
+	Announce "Server: ขณะนี้เซิฟเวอร์ของเรามีไอเท็ม กิจกรรม ที่อัพเดทเยอะมากมาย เพื่อที่จะเห็นของใหม่กรุณาโหลด TRO แพทช์ล่าสุดด้วยนะคะ",8;
+	end;
+}
+
+
+//========== Boards =====================================================
+
+morocc.gat,185,194,6	script	Welcome#b1	413,{
+close;
+OnInit:
+waitingroom "Zone กิจกรรม",0;
+end;
+}
+
+prontera,206,110,6	script	Welcome#b2	111,{
+close;
+OnInit:
+waitingroom "Zoneโพริ่งสล็อต ==>>",0;
+end;
+}
+
+prontera,161,117,6	script	Welcome#b3	111,{
+close;
+OnInit:
+waitingroom "Zoneโพริ่งสล็อต ==>>",0;
+end;
+}
+
+
+///////// Timer /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//=========== Timer NPC =======================================================================\\
+//=========== Credit Website "Itwebzone (http://www.itwebzone.com/forum/index.php?showtopic=28887)" =====\\
+//=========== Credit attawit (พัฒนา Script) ===========================================================\\
+//=========== Credit2 Stargames (Script ตั้งห้องบอกเวลา) ================================================\\
+
+prontera.gat,158,195,8	script	Timer	111,{
+mes "[Timer]";
+if (gettime(4)==0) mes "วัน อาทิตย์ ที่ "+gettime(5)+"";
+if (gettime(4)==1) mes "วัน จันทร์ ที่ "+gettime(5)+"";
+if (gettime(4)==2) mes "วัน อังคาร ที่ "+gettime(5)+"";
+if (gettime(4)==3) mes "วัน พุธ ที่ "+gettime(5)+"";
+if (gettime(4)==4) mes "วัน พฤหัสบดี ที่ "+gettime(5)+"";
+if (gettime(4)==5) mes "วัน ศุกร์ ที่ "+gettime(5)+"";
+if (gettime(4)==6) mes "วัน เสาร์ ที่ "+gettime(5)+"";
+if (gettime(6)==1) mes "เดือน มกราคม";
+if (gettime(6)==2) mes "เดือน กุมภาพันธ์";
+if (gettime(6)==3) mes "เดือน มีนาคม";
+if (gettime(6)==4) mes "เดือน เมษายน";
+if (gettime(6)==5) mes "เดือน พฤษภาคม";
+if (gettime(6)==6) mes "เดือน มิถุนายน";
+if (gettime(6)==7) mes "เดือน กรกฎาคม";
+if (gettime(6)==8) mes "เดือน สิงหาคม";
+if (gettime(6)==9) mes "เดือน กันยายน";
+if (gettime(6)==10) mes "เดือน ตุลาคม";
+if (gettime(6)==11) mes "เดือน พฤศจิกายน";
+if (gettime(6)==12) mes "เดือน ธันวาคม";
+if(gettime(7)) set @year_time,gettime(7)+543;
+mes "ปี " + @year_time + "";
+mes "เวลา: "+gettime(3)+":"+gettime(2)+":"+gettime(1)+" น.";
+mes "เวลารวม "+gettime(3)+":"+gettime(2)+":"+gettime(1)+" "+gettime(5)+"-"+gettime(6)+"-"+@year_time+"";
+close;
+end;
+
+OnTimer1000:
+setnpctimer 0;
+startnpctimer;
+delwaitingroom "Timer";
+waitingroom "ขณะนี้: "+gettime(3)+":"+gettime(2)+":"+gettime(1)+" น.",0;
+end;
+
+OnInit:
+initnpctimer;
+waitingroom "ขณะนี้: "+gettime(3)+":"+gettime(2)+":"+gettime(1)+" น.",0;
+end;
+}

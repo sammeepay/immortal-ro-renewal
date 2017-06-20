@@ -1,0 +1,240 @@
+//===================================================================
+// NPC : Poring Catcher
+// Design By : Gjz
+// Modify By : I n C e - E x c e l l e n t
+// Contact : gusjungs_s@hotmail.com
+//===================================================================
+
+job_wiz.gat	mapflag	nobranch
+job_wiz.gat	mapflag	noicewall
+job_wiz.gat	mapflag	noreturn
+job_wiz.gat	mapflag	nomemo
+job_wiz.gat	mapflag	nosave	SavePoint
+job_wiz.gat	mapflag	noteleport
+job_wiz.gat	mapflag	nodrop
+job_wiz.gat	mapflag	nowarp
+job_wiz.gat	mapflag	nowarpto
+job_wiz.gat	mapflag	noskill
+
+-	script	poring_end	-1,{
+OnClock0140:
+OnClock0240:
+OnClock0340:
+OnClock0440:
+OnClock0540:
+OnClock0640:
+OnClock0740:
+OnClock0840:
+OnClock0940:
+OnClock1040:
+OnClock1140:
+OnClock1240:
+OnClock1340:
+OnClock1440:
+OnClock1540:
+OnClock1640:
+OnClock1740:
+OnClock1840:
+OnClock1940:
+OnClock2040:
+OnClock2140:
+OnClock2240:
+OnClock2340:
+OnClock0040:
+stopnpctimer;
+set $pstart,0;
+killmonster "job_wiz.gat","All";
+mapwarp "job_wiz.gat","rachel.gat",130,110;
+announce "PoringCatcher : กิจกรรมได้จบลงแล้ว !!!",0,0x0DFF0D;
+end;
+}
+
+-	script	poring_event	-1,{
+OnClock0130:
+OnClock0230:
+OnClock0330:
+OnClock0430:
+OnClock0530:
+OnClock0630:
+OnClock0730:
+OnClock0830:
+OnClock0930:
+OnClock1030:
+OnClock1130:
+OnClock1230:
+OnClock1330:
+OnClock1430:
+OnClock1530:
+OnClock1630:
+OnClock1730:
+OnClock1830:
+OnClock1930:
+OnClock2030:
+OnClock2130:
+OnClock2230:
+OnClock2330:
+OnClock0030:
+killmonster "job_wiz.gat","All";
+announce "PoringCatcher : กิจกรรมจะเริ่มในอีก 1 นาที กรุณาเตรียมพร้อม !",0,0x0DFF0D;
+initnpctimer;
+end;
+OnTimer60000:
+announce "PoringCatcher : กิจกรรมได้เริ่มต้นขึ้นแล้ว คุณมีเวลา 10 นาทีในการเล่นกิจกรรม",0,0x0DFF0D;
+stopnpctimer;
+setnpctimer 0;
+callfunc "OnEventPoringCatcher";
+sleep2 200;
+stopnpctimer;
+setnpctimer 0;
+end;
+}
+
+function	script	OnEventPoringCatcher	{
+OnEventPorC:
+//initnpctimer;
+set $pstart,1;
+callfunc "Poringsummoner";
+end;
+}
+
+-	script	PoringCatcher::PorC	909,{
+OnTouch:
+if (!$pstart)
+{
+mes "^FF0000[ ตารางเวลากิจกรรม ]^000000";
+mes "01.30 น."; 
+mes "02.30 น."; 
+mes "03.30 น."; 
+mes "04.30 น."; 
+mes "05.30 น."; 
+mes "06.30 น."; 
+mes "07.30 น."; 
+mes "08.30 น."; 
+mes "09.30 น."; 
+mes "10.30 น."; 
+mes "11.30 น."; 
+mes "12.30 น."; 
+mes "13.30 น."; 
+mes "14.30 น."; 
+mes "15.30 น."; 
+mes "16.30 น."; 
+mes "17.30 น."; 
+mes "18.30 น."; 
+mes "19.30 น."; 
+mes "20.30 น."; 
+mes "21.30 น."; 
+mes "22.30 น."; 
+mes "23.30 น."; 
+mes "00.30 น."; 
+close;
+}
+mes "[ Poringcatcher ]";
+mes "สวัสดี [ "+strcharinfo(0)+" ] คุณต้องการอะไร ?";
+next;
+switch(select("เข้าร่วมกิจกรรม ["+getmapusers("job_wiz.gat")+"]","คำแนะนำ","ไม่มีอะไร"))
+{
+case 1:
+if(getmapusers("job_wiz.gat") >= 30 )
+{
+mes "[ Poringcatcher ]";
+mes "ขออภัยคนครบแล้วครับ"; 
+break;
+}
+mes "[ Poringcatcher ]";
+mes "ไปกันเลย   !";
+next;
+announce "[ "+strcharinfo(0)+" ] : ได้เข้าไปยัง กิจกรรม Poring Catcher แล้วครับ",0,0x0DFF0D;
+warp "job_wiz.gat",115,96;
+break;
+
+case 2:
+mes "[ Poringcatcher ]";
+mes "นี่คือ กิจกรรมตามหา Poring ซึ่งจะมี 1เดียวใน 100ตัว";
+mes "เมื่อคุณพบ Poring จงฆ่ามันซะ และจะได้รับ TCG card 3ea.";
+mes "ถ้าคุณทำพลาด ฆ่ามอนเตอร์ตัวอื่น คุณจะออกจากการแข่งขันทันที";
+mes "มอนเตอร์จะเกิดเรื่อยๆจนครบ 10 นาที";
+next;
+mes "^FF0000[ ตารางเวลากิจกรรม ]^000000";
+mes "01.30 น."; 
+mes "02.30 น."; 
+mes "03.30 น."; 
+mes "04.30 น."; 
+mes "05.30 น."; 
+mes "06.30 น."; 
+mes "07.30 น."; 
+mes "08.30 น."; 
+mes "09.30 น."; 
+mes "10.30 น."; 
+mes "11.30 น."; 
+mes "12.30 น."; 
+mes "13.30 น."; 
+mes "14.30 น."; 
+mes "15.30 น."; 
+mes "16.30 น."; 
+mes "17.30 น."; 
+mes "18.30 น."; 
+mes "19.30 น."; 
+mes "20.30 น."; 
+mes "21.30 น."; 
+mes "22.30 น."; 
+mes "23.30 น."; 
+mes "00.30 น."; 
+break;
+
+case 3:
+mes "[ Poringcatcher ]";
+mes "โชคดี สำลีแปะหัว ฮ่าๆ";
+break;
+}
+close;
+
+OnInit:
+set $pstart,0;
+waitingroom "Poring Catcher",0;
+end;
+}
+
+function	script	Poringsummoner	{
+OnSummonPoringCatcher:
+monster "job_wiz.gat",115,99,"Pouring",1002,15,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Proing",1002,12,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Poirng",1002,15,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Poing",1002,15,"poringlose::OnMobKilled";
+monster "job_wiz.gat",116,99,"I'm not a Poring",1002,8,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Poring",1113,5,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Poring",1062,5,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Poring",1002,1,"poringwin::OnMobKilled";
+monster "job_wiz.gat",116,99,"Gnirop",1002,4,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Por|ng",1002,12,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Por1ng",1002,15,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Porong",1002,11,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"P0ring",1002,12,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"P@ring",1002,12,"poringlose::OnMobKilled";
+monster "job_wiz.gat",115,99,"Porng",1002,5,"poringlose::OnMobKilled";
+end;
+}
+
+-	script	poringwin	-1,{
+OnMobKilled:
+dispbottom "Event : คุณได้รับ  Skull 500 ea .";
+dispbottom "Event : ขอแสดงความดีใจด้วย";
+getitem 7420,500;
+killmonster "job_wiz.gat","All";
+announce "[ "+strcharinfo(0)+" ] : พบ Poring แล้ว กำลังเริ่มรอบต่อไป !!!",0,0x0DFF0D;
+callfunc "Poringsummoner";
+end;
+}
+
+-	script	poringlose	-1,{
+OnMobKilled:
+dispbottom "Event : ว้า !!!, คุณแพ้แล้ว ";
+percentheal -100,-100;
+sleep2 200;
+atcommand strcharinfo(0)+"@alive";
+warp "rachel.gat",129,133;
+end;
+}
+
+
+
+rachel.gat,139,144,4	duplicate(PorC)	Poring Catcher	1643

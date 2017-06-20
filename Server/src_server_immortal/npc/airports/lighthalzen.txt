@@ -1,0 +1,88 @@
+//===== rAthena Script ======================================= 
+//= Lighthalzen Airport Staff
+//===== By: ================================================== 
+//= L0ne_W0lf, Muad_Dib
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Lighthalzen Airport Staff
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//============================================================ 
+
+lhz_airport,143,43,5	script	Airport Staff#lhz_air1a::lhz_airport1	90,{
+	mes "[Airport Staff]";
+	mes "ยินดีต้อนรับสู่!!";
+	mes "Lighthalzen แอร์พอร์ท";
+	mes "เราให้บริการเที่ยวบิน";
+	mes "ตลอด 24 ช.ม. สำหรับผู้คน";
+	mes "ต้องการเดินทางไปยังเมือง";
+	mes "Einbroch,Juno และ Hugel";
+	next;
+	if (select("ขึ้นเรือเหาะ:ยกเลิก") == 1) {
+		mes "[Airport Staff]";
+		mes "ค่าบริการคือ";
+		mes "1,200 zeny แต่เรา";
+		mes "จะไม่เก็บค่าบริการถ้าคุณมี";
+		mes "Free Ticket for Airship";
+		mes "คุณตกลงที่จะใช้บริการไหม?";
+		next;
+		if (select("ใช่:ไม่") == 1) {
+			if (countitem(7311) > 0) {
+				delitem 7311,1; //Free_Flying_Ship_Ticket
+				warp "lhz_airport",148,51;
+				end;
+			}
+			if (Zeny >= 1200) {
+				set Zeny, Zeny - 1200;
+				warp "lhz_airport",148,51;
+				end;
+			}
+			mes "[Airship Staff]";
+			mes "ขออภัยแต่คุณมี Zeny ไม่พอ";
+			mes "ค่าบริการคือ 1200 Zeny";
+			mes "กรุณากลับมาใหม่ภายหลัง";
+			close;
+		}
+	}
+	mes "[Airport Staff]";
+	mes "ขอบคุณที่ใช้บริการ";
+	mes "ขอให้เดินทางปลอดถัย~";
+	close;
+}
+
+lhz_airport,158,43,5	duplicate(lhz_airport1)	Airship Staff#lhz_air1b	90
+lhz_airport,126,43,5	duplicate(lhz_airport1)	Airship Staff#lhz_air1c	90
+
+lhz_airport,143,49,3	script	Arrival Staff#lhz_air2a::lhz_airport2	90,{
+	mes "[Arrival Staff]";
+	mes "ยินดีต้อนรับสู่!!";
+	mes "Lighthalzen แอร์พอร์ท";
+	mes "หากคุณมาจากเที่ยวบิน";
+	mes "ให้ฉันนำคุณไปยังอาคารผู้โดยสารหลัก";
+	mes "หรือหากคุณจะขึ้นเรือเหาะ เมืองต่อไปคือ";
+	mes "Einbroch,Juno และ Hugel";
+	next;
+	if (select("ออกไปยังอาคารผู้โดยสารหลัก:ยกเลิก") == 1) {
+		mes "[Arrival Staff]";
+		mes "หากคุณไปที่อาคารผู้โดยสาร";
+		mes "แล้วอยากกลับมาขึ้นเรือเหาะ";
+		mes "คุณต้องจ่ายค่าบริการใหม่";
+		mes "อยากไปอาคารผู้โดยสารหลักไหม?";
+		next;
+		if (select("ใช่:ไม่") == 1) {
+			warp "lhz_airport",142,40;
+			end;
+		}
+	}
+	mes "[Arrival Staff]";
+	mes "ขอบคุณที่ใช้บริการ";
+	mes "ฉันหวังว่าคุณจะมี";
+	mes "ความสุขที่ได้บินกับเรา";
+	close;
+}
+
+lhz_airport,126,51,3	duplicate(lhz_airport2)	Arrival Staff#lhz_air2b	90
+lhz_airport,158,50,3	duplicate(lhz_airport2)	Arrival Staff#lhz_air2c	90

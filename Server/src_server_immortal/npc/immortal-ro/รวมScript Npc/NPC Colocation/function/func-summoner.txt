@@ -1,0 +1,314 @@
+function	script	F_Summoner	{
+
+//OnClock1900:	//start time for Tues(2), Thurs(4)
+//OnClock2000:	//end time for Tues(2), Thurs(4)
+
+//if((gettime(4)==2) && (gettime(3)>=19 && gettime(3)<20) ||
+//   (gettime(4)==4) && (gettime(3)>=19 && gettime(3)<20) ||
+//   (gettime(4)==6) && (gettime(3)>=19 && gettime(3)<20) ||
+//   (gettime(4)==0) && (gettime(3)>=19 && gettime(3)<20)) goto L_GVG;
+
+if((gettime(4)==2) && (gettime(3)>=19 && gettime(3)<20)) goto L_GVG;
+if((gettime(4)==4) && (gettime(3)>=19 && gettime(3)<20)) goto L_GVG;
+if((gettime(4)==6) && (gettime(3)>=19 && gettime(3)<20)) goto L_GVG;
+if((gettime(4)==0) && (gettime(3)>=19 && gettime(3)<20)) goto L_GVG;
+
+mes "[ ???? ]";
+mes "ÇèÒä§ . . , à¨éÒä´é·Ó¡ÒÃ»ÅØ¡";
+mes "»ÕÈÒ¨ªÑèÇÃéÒÂ ÍÍ¡ÁÒ¨Ò¡";
+mes "ÅÙ¡á¡éÇÇÔ­­Ò³ . . .";
+
+next;
+mes "[ ???? ]";
+mes "»ÕÈÒ¨µ¹¹Ñé¹¨Ğà»ç¹ ¢Í§à¨éÒ";
+mes "à¨éÒÊÒÁÒÃ¶·Õè¨Ğ¹Óä»ãªéä´éµÒÁã¨";
+set @mysum,rand(1,35);
+next;
+
+if(@mysum==1) goto Sum1;
+if(@mysum==2) goto Sum2;
+if(@mysum==3) goto Sum3;
+if(@mysum==4) goto Sum4;
+if(@mysum==5) goto Sum5;
+if(@mysum==6) goto Sum6;
+if(@mysum==7) goto Sum7;
+if(@mysum==8) goto Sum8;
+if(@mysum==9) goto Sum9;
+if(@mysum==10) goto Sum10;
+if(@mysum==11) goto Sum11;
+if(@mysum==12) goto Sum12;
+if(@mysum==13) goto Sum13;
+if(@mysum==14) goto Sum14;
+if(@mysum==15) goto Sum15;
+if(@mysum==16) goto Sum16;
+if(@mysum==17) goto Sum17;
+if(@mysum==18) goto Sum18;
+if(@mysum==19) goto Sum19;
+if(@mysum==20) goto Sum20;
+if(@mysum==21) goto Sum21;
+if(@mysum==22) goto Sum22;
+if(@mysum==23) goto Sum23;
+if(@mysum==24) goto Sum24;
+if(@mysum==25) goto Sum25;
+if(@mysum==26) goto Sum26;
+if(@mysum==27) goto Sum27;
+if(@mysum==28) goto Sum28;
+if(@mysum==29) goto Sum29;
+if(@mysum==30) goto Sum30;
+if(@mysum==31) goto Sum31;
+if(@mysum==32) goto Sum32;
+if(@mysum==33) goto Sum33;
+if(@mysum==34) goto Sum34;
+if(@mysum==35) goto Sum35;
+
+Sum1:
+mes "[ Baphomet ]";
+mes "¡ÇêÒ¡¡¡¡ . . . ";
+atcommand strcharinfo(0) +"@summon 1039";
+
+close;
+
+Sum2:
+mes "[ Osiris ]";
+mes "ÎÕè æ . . . .";
+atcommand strcharinfo(0) +"@summon 1038";
+
+close;
+
+Sum3:
+mes "[ Doppelganger ]";
+mes "âÎèæ ~ ÁÒáÅéÇÎĞÁÒáÅéÇ ";
+atcommand strcharinfo(0) +"@summon 1046";
+
+close;
+
+Sum4:
+mes "[ Mistress ]";
+mes "¨Øéºæ ~ ÁÒáÅéÇÎĞÁÒáÅéÇ ";
+atcommand strcharinfo(0) +"@summon 1059";
+
+close;
+
+Sum5:
+mes "[ Golden Thief Bug ]";
+mes "ºØë§ ~ ÁÒáÅéÇÎĞÁÒáÅéÇ ";
+atcommand strcharinfo(0) +"@summon 1086";
+
+close;
+
+Sum6:
+mes "[ Orc Hero ]";
+mes "ºØë§ ~ ÁÒáÅéÇÎĞÁÒáÅéÇ ";
+atcommand strcharinfo(0) +"@summon 1087";
+
+close;
+
+Sum7:
+mes "[ Angeling ]";
+mes "ÍÙê´ æ ~ ÁÕäÂ§Ğ àÃÕÂ¡ÁÒäÁ = =";
+atcommand strcharinfo(0) +"@summon 1096";
+
+close;
+
+Sum8:
+mes "[ Drake ]";
+mes "áºÃĞ æ â·É·ÕèãËéÃÍ¹êÒ";
+atcommand strcharinfo(0) +"@summon 1112";
+
+close;
+
+Sum9:
+mes "[ Eddga ]";
+mes "ÁÒáÅéÇ¨éÒ ÁÒáÅéÇ";
+atcommand strcharinfo(0) +"@summon 1115";
+
+close;
+
+Sum10:
+mes "[ Ghostring ]";
+mes "ÁÒáÅéÇ§Ñº ÁÒáÅéÇ";
+atcommand strcharinfo(0) +"@summon 1120";
+
+close;
+
+Sum11:
+mes "[ Maya ]";
+mes "ÃÒªÔ¹Õ ¼ÙéÂÔè§ãË­èÁÒáÅéÇ";
+atcommand strcharinfo(0) +"@summon 1147";
+
+close;
+
+Sum12:
+mes "[ Moonlight Flower ]";
+mes "µÔê§µèÍ§ µÍ¹¹Õé¡ÕèâÁ§áÅéÇà¹ÕèÂ";
+atcommand strcharinfo(0) +"@summon 1150";
+
+close;
+
+Sum13:
+mes "[ Pharaoh ]";
+mes "ÇêÒ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
+atcommand strcharinfo(0) +"@summon 1157";
+
+close;
+
+Sum14:
+mes "[ Phreeoni ]";
+mes "¾ÕèàÃÕÂ¡¹ÙëÁÒ·ÒÁÁÑÂà¹ÕèÂ . . ?";
+atcommand strcharinfo(0) +"@summon 1159";
+
+close;
+
+Sum15:
+mes "[ Orc Lord ]";
+mes "¹Ô¹¹Ô¹ ÁÒáÅéÇ¤Ñº·èÒ¹";
+atcommand strcharinfo(0) +"@summon 1190";
+
+close;
+
+Sum16:
+mes "[ Stormy Knight ]";
+mes "¡ÃÔê´´´´´´´´´´´´´´´´´";
+atcommand strcharinfo(0) +"@summon 1251";
+
+close;
+
+Sum17:
+mes "[ Garm ]";
+mes ". . . . . ???";
+atcommand strcharinfo(0) +"@summon 1252";
+
+close;
+
+Sum18:
+mes "[ Dark Lord ]";
+mes ". . . . . ¼ÁâË´¹Ğ¤Ñº";
+atcommand strcharinfo(0) +"@summon 1272";
+
+close;
+
+Sum19:
+mes "[ Turtle General ]";
+mes ". . . . . âË´¹Ğ ÃÙé»èÒÇ";
+atcommand strcharinfo(0) +"@summon 1312";
+
+close;
+
+Sum20:
+mes "[ Lord of the Dead ]";
+mes "ÎÕèæ . . .";
+atcommand strcharinfo(0) +"@summon 1373";
+
+close;
+
+Sum21:
+mes "[ Arc Angeling ]";
+mes "ÎÕèæ . . .";
+atcommand strcharinfo(0) +"@summon 1388";
+
+close;
+
+Sum22:
+mes "[ Dracula ]";
+mes "¡Ô¹àÅ×Í´ÁÑ¹«ĞàÅÂ»èĞà¨éÒ¹ÒÂ . . .";
+atcommand strcharinfo(0) +"@summon 1389";
+
+close;
+
+Sum23:
+mes "[ Evil Snake Lord ]";
+mes "à´ëÇ©¡µÒáµ¡àÃÕÂ¡¨Ñ§ . . .";
+atcommand strcharinfo(0) +"@summon 1418";
+
+close;
+
+Sum24:
+mes "[ Samurai Specter ]";
+mes "¿Ñ¹áËÅ¡á¨¡àºÍÃìÇéÍÂ . . .";
+atcommand strcharinfo(0) +"@summon 1492";
+
+close;
+
+Sum25:
+mes "[ Amon Ra ]";
+mes "àÁà·âÍà¡ÃÕÂ¹áµ¡ . . .";
+atcommand strcharinfo(0) +"@summon 1511";
+
+close;
+
+Sum26:
+mes "[ Deviling ]";
+mes "ÁÒ¨Ò¡à§ÒÁ×´ÇéÍÂ . . .";
+atcommand strcharinfo(0) +"@summon 1582";
+
+close;
+
+Sum27:
+mes "[ Tao Gunka ]";
+mes "¤¹ä·ÂÃØè¹ãË­è´Ù´éÇÂ. . .";
+atcommand strcharinfo(0) +"@summon 1583";
+
+close;
+
+Sum28:
+mes "[ RSX-0806 ]";
+mes "ÊØ´ÂÍ´âÃºÍ·µÕáÁÃè§àÊÕÂËÅÑ¡. . .";
+atcommand strcharinfo(0) +"@summon 1623";
+
+close;
+
+Sum29:
+mes "[ White Lady ]";
+mes "ÊØ´ÊÇÂÁÒÅĞ¨éĞ. . .";
+atcommand strcharinfo(0) +"@summon 1630";
+
+close;
+
+Sum30:
+mes "[ Egnigem Cenia ]";
+mes "àËç¹ÊÇÂæ¿Ñ¹àÊÕÂËÅÑ¡ËÁ´¹Ğ¨éĞ. . .";
+atcommand strcharinfo(0) +"@summon 1658";
+
+close;
+
+Sum31:
+mes "[ Vesper ]";
+mes "à´ç¡ª¡ÃèÇ§àÅÂàÃÕÂ¡¨Ñ§. . .";
+atcommand strcharinfo(0) +"@summon 1685";
+
+close;
+
+Sum32:
+mes "[ Lady Tanee ]";
+mes "à´ç¡ª¡ÃèÇ§àÅÂàÃÕÂ¡¨Ñ§. . .";
+atcommand strcharinfo(0) +"@summon 1688";
+
+close;
+
+Sum33:
+mes "[ Thanatos Phantom ]";
+mes "ÍÑÈÇÔ¹à¨ä´Episode One. . .";
+atcommand strcharinfo(0) +"@summon 1708";
+
+close;
+
+Sum34:
+mes "[ Detardeurus ]";
+mes "à¼ÒÁÑ¹ãËé»èÒÃÒº·ĞÅÇ§ÁÑ¹ãËé·ĞÅØÍÂèÒ§äÁèËÂØ´ÂÑé§. . .";
+atcommand strcharinfo(0) +"@summon 1719";
+
+close;
+
+Sum35:
+mes "[ Valkyrie Randgris ]";
+mes "ÍÑÈÇÔ¹ÁÒ¨Ò¡ÊÇÃÃ¤ì¨ĞÁÒÅ§·Ñ¹á¡àÍ§. . .";
+atcommand strcharinfo(0) +"@summon 1751";
+
+close;
+
+LGVG:
+
+mes "[ ???? ]";
+mes "äÁèÊÒÁÒÃ¶ãªé§Ò¹ä´éã¹ªèÇ§àÇÅÒ¡ÔÅÇÍÃì";
+close;
+}

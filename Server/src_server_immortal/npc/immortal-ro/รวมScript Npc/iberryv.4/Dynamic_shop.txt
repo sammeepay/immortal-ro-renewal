@@ -1,0 +1,125 @@
+prontera,162,172,4	script	TheEnd Coin::EvGirl	910,{
+	goto L_Main;
+OnInit:
+	set $donation_name2$,"Dynamic Shop";
+	goto L_Load;
+L_Main:
+	mes "["+$donation_name2$+"]";
+	mes "สวัสดี ท่าน [ ^FF0000" + strcharinfo(0) + "^000000 ]";
+	mes "ท่านมีเหรียญทั้งหมด [ ^FF0000"+countitem(671)+"^000000 ] เหรียญ";
+	mes "^FF0000DC ไม่มีผล ต่อราคา Item เมื่อซื้อ^000000";
+	mes "^0000FFTheEnd Coin ได้จาก Monster ทั่วไป^000000";
+	next;
+	switch(select("-เข้าร้าน Dynamic Shop:-จบการสนทนา")) {
+		case 1:
+			close2;
+			callshop "Event_Shop",1;
+			end;
+		case 2:
+			close;
+}
+
+L_Load:
+	if(npcshopattach("Event_Shop") == 0) {
+		//debugmes "[Dynamic NPC] Failed attaching shop!";
+	} else {
+		//debugmes "[Dynamic NPC] Event Shop succesfully attached!";
+	}
+	end;
+
+OnBuyItem:
+	for (set @i,0; @i < getarraysize(@bought_nameid); set @i,@i+1) {
+		if (@bought_quantity[@i] <= 0) {
+			debugmes "[Dynamic Shop] คุณขาย Item น้อยกว่า 0 "+getcharid(0)+" ("+@bought_nameid[@i]+")";
+			dispbottom "[Dynamic Shop] คุณซื้อ Item น้อยกว่า 0";
+			close;
+		}
+		set @cost,callfunc("EventID2Price",@bought_nameid[@i]);
+		if ((@cost*@bought_quantity[@i]) > countitem(671)) {
+			dispbottom "[Dynamic Shop] คุณมี TheEnd Coin ไม่พอ ตอนนี้คุณมีทั้งหมด ("+countitem(671)+") เหรียญ";
+		} else {
+			delitem 671,@cost*@bought_quantity[@i];
+			getitem @bought_nameid[@i],@bought_quantity[@i];
+			dispbottom "[Dynamic Shop] คุณซื้อ  "+getitemname(@bought_nameid)+" ทั้งหมด "+@bought_quantity[@i]+" เป็นเงิน "+@cost*@bought_quantity[@i]+" เหรียญ";
+		}		
+	}
+	deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+	deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+	close;
+}
+function	script	EventID2Price	{
+	/////////////////// Item Etc /////////////////////
+	if(getarg(0) == 19000) return 20;
+	if(getarg(0) == 19001) return 20;
+	if(getarg(0) == 19002) return 100;
+	if(getarg(0) == 19003) return 100;
+	if(getarg(0) == 19004) return 100;
+	if(getarg(0) == 7615) return 100;
+	if(getarg(0) == 985) return 1;
+	if(getarg(0) == 984) return 1;
+	if(getarg(0) == 7619) return 300;
+	if(getarg(0) == 7620) return 300;
+	if(getarg(0) >= 4105 && getarg(0) <= 4141) return 150;
+	if(getarg(0) == 7142) return 1;
+	if(getarg(0) == 607) return 1;
+	if(getarg(0) == 617) return 10;
+	if(getarg(0) >= 12916 && getarg(0) <= 12922) return 100;
+	if(getarg(0) >= 12202 && getarg(0) <= 12203) return 10;
+	if(getarg(0) >= 12204 && getarg(0) <= 12205) return 10;
+	if(getarg(0) >= 12206 && getarg(0) <= 12207) return 10;
+	/////////////////// Item Hat /////////////////////
+	if(getarg(0) == 5150) return 5000;
+	if(getarg(0) == 5056) return 3000;
+	if(getarg(0) == 5243) return 3000;
+	if(getarg(0) == 5022) return 3000;
+	if(getarg(0) == 5171) return 2000;
+	/////////////////// Item Pet /////////////////////
+	if(getarg(0) == 9001) return 10;
+	if(getarg(0) == 9002) return 10;
+	if(getarg(0) == 9003) return 10;
+	if(getarg(0) == 9004) return 10;
+	if(getarg(0) == 9005) return 10;
+	if(getarg(0) == 9006) return 10;
+	if(getarg(0) == 9007) return 10;
+	if(getarg(0) == 9008) return 10;
+	if(getarg(0) == 9009) return 10;
+	if(getarg(0) == 9010) return 10;
+	if(getarg(0) == 9011) return 10;
+	if(getarg(0) == 9012) return 10;
+	if(getarg(0) == 9013) return 10;
+	if(getarg(0) == 9015) return 10;
+	if(getarg(0) == 9016) return 10;
+	if(getarg(0) == 9017) return 10;
+	if(getarg(0) == 9018) return 10;
+	if(getarg(0) == 9019) return 10;
+	if(getarg(0) == 9020) return 10;
+	if(getarg(0) == 9021) return 10;
+	if(getarg(0) == 9022) return 10;
+	if(getarg(0) == 9023) return 10;
+	if(getarg(0) == 9024) return 10;
+	if(getarg(0) == 9025) return 10;
+	if(getarg(0) >= 9026 && getarg(0) <= 9027) return 20;
+	if(getarg(0) >= 9028 && getarg(0) <= 9030) return 300;
+	if(getarg(0) == 9031) return 50;
+	if(getarg(0) == 9032) return 20;
+	if(getarg(0) == 9033) return 20;
+	if(getarg(0) == 9034) return 20;
+	if(getarg(0) == 9035) return 50;
+	if(getarg(0) == 9036) return 50;
+	if(getarg(0) == 9037) return 50;
+	/////////////////// Item Mics /////////////////////
+	if(getarg(0) == 2357) return 2000;
+	if(getarg(0) == 2524) return 2000;
+	if(getarg(0) == 2421) return 2000;
+	if(getarg(0) == 2115) return 2000;
+	if(getarg(0) == 1230) return 10000;
+	if(getarg(0) == 1169) return 3000;
+	if(getarg(0) == 1265) return 3000;
+	if(getarg(0) == 1415) return 3000;
+	if(getarg(0) == 4174) return 12000;
+	if(getarg(0) == 4142) return 12000;
+	if(getarg(0) == 4143) return 12000;	
+	if(getarg(0) == 4146) return 12000;
+	if(getarg(0) == 5102) return 1000;
+}
+-	shop	Event_Shop	-1,7615:1000,985:1000,984:1000,7619:3000,7620:3000,4105:1500,4141:1500,7142:1000,607:10000,617:10000,12916:1000,12922:1000,12202:1000,12203:1000,12204:1000,12205:1000,12206:1000,12207:1000,5150:50000,5056:30000,5243:30000,5022:30000,5171:200000,9001:1000,9002:1000,9003:1000,9004:1000,9005:1000,9006:1000,9007:1000,9008:1000,9009:1000,9010:1000,9011:1000,9012:1000,9013:1000,9015:1000,9016:1000,9017:1000,9018:1000,9019:1000,9020:1000,9021:1000,9022:1000,9023:1000,9024:1000,9025:1000,9026:2000,9027:2000,9028:3000,9030:3000,9031:5000,9032:2000,9033:2000,9034:2000,9035:5000,9036:5000,9037:5000,5102:1000,2357:2000,2524:2000,2421:2000,2115:200000,1169:3000,1265:3000,1415:3000,1230:10000,4174:12000,4142:12000,4143:12000,4146:12000

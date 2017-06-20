@@ -1,0 +1,1750 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+morocc,169,105,5	script	พนักงานบ้านเช่า::rhome	465,{
+
+	set .@npcname$,"[ พนักงานเช่าบ้าน ]";
+
+	while( getgmlevel() >=99 ){
+		mes .@npcname$;
+		mes "สวัสดีค่ะท่าน GM";
+		mes "การกำหนดค่าปัจจุบัน";
+		mes "สำหรับการเช่าบ้านคือ";
+		mes $renthomeitem[0]?"^0000FF"+getitemname($renthomeitem[0])+" "+$renthomeitem[1] +" ea^000000":"^FF0000ยังไม่กำหนดไอเทม^000000";
+		mes $renthomedate?"เป็นเวลา ^0000FF"+$renthomedate+" วัน^000000":"^FF0000ยังไม่กำหนดจำนวนวัน^000000";
+		mes "ท่านต้องการทำอะไร";
+		next;
+		switch(select( "• เมนูผู้เล่น","• กำหนดไอเทมสำหรับเช่าบ้าน","• กำหนดจำนวนวันเช่า","• รีเซทบ้านเช่า","• ออก"))
+		{
+		case 1:	
+			mes .@npcname$;
+			mes "จะพาไปเดี๋ยวนี้ค่ะ";
+			next;
+			break;
+		case 2:
+			mes .@npcname$;
+			mes "ระบุรหัสของไอเทม";
+			mes "หากใส่ 0 คือ ปิดการเช่าบ้าน";
+			mes "หากใส่รหัสมั่ว คือ ปิดการเช่าบ้าน";
+			next;
+			input $renthomeitem[0];
+			if ( getitemname($renthomeitem[0])=="null")
+			{
+				set $renthomeitem[0],0;
+				continue;
+			}
+			mes .@npcname$;
+			mes "ระบุจำนวนของไอเทม";
+			mes "^0000FF"+getitemname($renthomeitem[0])+"^000000";
+			mes "หากใส่ 0 คือ ปิดการเช่าบ้าน";
+			next;
+			input $renthomeitem[1];
+			if ( !$renthomeitem[1])
+			{
+				set $renthomeitem[0],0;
+				set $renthomeitem[1],0;
+			}
+			continue;
+		case 3:
+			mes .@npcname$;
+			mes "ระบุจำนวนวัน สำหรับการเช่า";
+			mes "หากใส่ 0 คือ ปิดการเช่าบ้าน";
+			next;
+			while(1) {
+				input $renthomedate,0,91;
+				if ($renthomedate == 0) {
+					mes .@npcname$;
+					mes "การกำหนดถูกยกเลิก";
+					mes "การเช่าบ้านปิดตัวลง";
+					set $renthomedate,0;
+					next;
+					break;
+				} else if ($renthomedate < 1 || $renthomedate > 90) {
+					mes .@npcname$;
+					mes "คุณตั้งได้แค่ 1-90 วันเท่านั้น";
+					next;
+				} else {
+					break;
+				}
+			}
+			continue;
+		case 4:
+			mes .@npcname$;
+			mes "กรุณาเลือกบ้านที่จะทำการรีเซท";
+			next;
+			switch(select("• บ้านเช่าหลังที่ 1 [ ^FF0000"+getguildname($home_Guildid1)+"^000000 ]:• บ้านเช่าหลังที่ 2 [ ^FF0000"+getguildname($home_Guildid2)+"^000000 ]:• บ้านเช่าหลังที่ 3 [ ^FF0000"+getguildname($home_Guildid3)+"^000000 ]:• บ้านเช่าหลังที่ 4 [ ^FF0000"+getguildname($home_Guildid4)+"^000000 ]:• บ้านเช่าหลังที่ 5 [ ^FF0000"+getguildname($home_Guildid5)+"^000000 ]:• บ้านเช่าหลังที่ 6 [ ^FF0000"+getguildname($home_Guildid6)+"^000000 ]:• บ้านเช่าหลังที่ 7 [ ^FF0000"+getguildname($home_Guildid7)+"^000000 ]:• บ้านเช่าหลังที่ 8 [ ^FF0000"+getguildname($home_Guildid8)+"^000000 ]:• บ้านเช่าหลังที่ 9 [ ^FF0000"+getguildname($home_Guildid9)+"^000000 ]:• บ้านเช่าหลังที่ 10 [ ^FF0000"+getguildname($home_Guildid10)+"^000000 ]:• บ้านเช่าหลังที่ 11 [ ^FF0000"+getguildname($home_Guildid11)+"^000000 ]:• บ้านเช่าหลังที่ 12 [ ^FF0000"+getguildname($home_Guildid12)+"^000000 ]:• บ้านเช่าหลังที่ 13 [ ^FF0000"+getguildname($home_Guildid13)+"^000000 ]:• บ้านเช่าหลังที่ 14 [ ^FF0000"+getguildname($home_Guildid14)+"^000000 ]:• บ้านเช่าหลังที่ 15 [ ^FF0000"+getguildname($home_Guildid15)+"^000000 ]:• บ้านเช่าหลังที่ 16 [ ^FF0000"+getguildname($home_Guildid16)+"^000000 ]:• บ้านเช่าหลังที่ 17 [ ^FF0000"+getguildname($home_Guildid17)+"^000000 ]:• บ้านเช่าหลังที่ 18 [ ^FF0000"+getguildname($home_Guildid18)+"^000000 ]:• บ้านเช่าหลังที่ 19 [ ^FF0000"+getguildname($home_Guildid19)+"^000000 ]:• บ้านเช่าหลังที่ 20 [ ^FF0000"+getguildname($home_Guildid20)+"^000000 ]:• บ้านเช่าหลังที่ 21 [ ^FF0000"+getguildname($home_Guildid21)+"^000000 ]:• บ้านเช่าหลังที่ 22 [ ^FF0000"+getguildname($home_Guildid22)+"^000000 ]:• บ้านเช่าหลังที่ 23 [ ^FF0000"+getguildname($home_Guildid23)+"^000000 ]:• บ้านเช่าหลังที่ 24 [ ^FF0000"+getguildname($home_Guildid24)+"^000000 ]:• บ้านเช่าหลังที่ 25 [ ^FF0000"+getguildname($home_Guildid25)+"^000000 ]:• บ้านเช่าหลังที่ 26 [ ^FF0000"+getguildname($home_Guildid26)+"^000000 ]:• บ้านเช่าหลังที่ 27 [ ^FF0000"+getguildname($home_Guildid27)+"^000000 ]:• บ้านเช่าหลังที่ 28 [ ^FF0000"+getguildname($home_Guildid28)+"^000000 ]:• บ้านเช่าหลังที่ 29 [ ^FF0000"+getguildname($home_Guildid29)+"^000000 ]:• บ้านเช่าหลังที่ 30 [ ^FF0000"+getguildname($home_Guildid30)+"^000000 ]:• บ้านเช่าหลังที่ 31 [ ^FF0000"+getguildname($home_Guildid31)+"^000000 ]:• บ้านเช่าหลังที่ 32 [ ^FF0000"+getguildname($home_Guildid32)+"^000000 ]:• บ้านเช่าหลังที่ 33 [ ^FF0000"+getguildname($home_Guildid33)+"^000000 ]:• บ้านเช่าหลังที่ 34 [ ^FF0000"+getguildname($home_Guildid34)+"^000000 ]:• บ้านเช่าหลังที่ 35 [ ^FF0000"+getguildname($home_Guildid35)+"^000000 ]:• บ้านเช่าหลังที่ 36 [ ^FF0000"+getguildname($home_Guildid36)+"^000000 ]:• บ้านเช่าหลังที่ 37 [ ^FF0000"+getguildname($home_Guildid37)+"^000000 ]:• บ้านเช่าหลังที่ 38 [ ^FF0000"+getguildname($home_Guildid38)+"^000000 ]:• บ้านเช่าหลังที่ 39 [ ^FF0000"+getguildname($home_Guildid39)+"^000000 ]:• บ้านเช่าหลังที่ 40 [ ^FF0000"+getguildname($home_Guildid40)+"^000000 ]:• บ้านเช่าหลังที่ 41 [ ^FF0000"+getguildname($home_Guildid41)+"^000000 ]:• บ้านเช่าหลังที่ 42 [ ^FF0000"+getguildname($home_Guildid42)+"^000000 ]:• บ้านเช่าหลังที่ 43 [ ^FF0000"+getguildname($home_Guildid43)+"^000000 ]:• บ้านเช่าหลังที่ 44 [ ^FF0000"+getguildname($home_Guildid44)+"^000000 ]:• บ้านเช่าหลังที่ 45 [ ^FF0000"+getguildname($home_Guildid45)+"^000000 ]:• บ้านเช่าหลังที่ 46 [ ^FF0000"+getguildname($home_Guildid46)+"^000000 ]:• บ้านเช่าหลังที่ 17 [ ^FF0000"+getguildname($home_Guildid47)+"^000000 ]:• บ้านเช่าหลังที่ 48 [ ^FF0000"+getguildname($home_Guildid48)+"^000000 ]:• บ้านเช่าหลังที่ 49 [ ^FF0000"+getguildname($home_Guildid49)+"^000000 ]:• บ้านเช่าหลังที่ 50 [ ^FF0000"+getguildname($home_Guildid50)+"^000000 ]:• บ้านเช่าหลังที่ 51 [ ^FF0000"+getguildname($home_Guildid51)+"^000000 ]:• บ้านเช่าหลังที่ 52 [ ^FF0000"+getguildname($home_Guildid52)+"^000000 ]:• รีเซททุกหลัง")) {
+
+			case 1:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid1 +"'");
+				set $home_Guildid1,0;
+				set $rentcheck[1],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 1 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 1 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 2:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid2 +"'");
+				set $home_Guildid2,0;
+				set $rentcheck[2],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 2 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 2 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 3:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid3 +"'");
+				set $home_Guildid3,0;
+				set $rentcheck[3],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 3 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 3 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 4:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid4 +"'");
+				set $home_Guildid4,0;
+				set $rentcheck[4],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 4 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 4 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 5:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid5 +"'");
+				set $home_Guildid5,0;
+				set $rentcheck[5],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 5 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 5 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 6:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid6 +"'");
+				set $home_Guildid6,0;
+				set $rentcheck[6],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 6 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 6 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 7:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid7 +"'");
+				set $home_Guildid7,0;
+				set $rentcheck[7],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 7 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 7 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 8:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid8 +"'");
+				set $home_Guildid8,0;
+				set $rentcheck[8],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 8 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 8 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 9:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid9 +"'");
+				set $home_Guildid9,0;
+				set $rentcheck[9],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 9 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 9 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 10:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid10 +"'");
+				set $home_Guildid10,0;
+				set $rentcheck[10],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 10 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 10 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 11:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid11 +"'");
+				set $home_Guildid11,0;
+				set $rentcheck[11],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 11 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 11 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 12:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid12 +"'");
+				set $home_Guildid12,0;
+				set $rentcheck[12],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 12 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 12 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 13:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid13 +"'");
+				set $home_Guildid13,0;
+				set $rentcheck[13],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 13 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 13 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 14:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid14 +"'");
+				set $home_Guildid14,0;
+				set $rentcheck[14],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 14 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 14 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 15:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid15 +"'");
+				set $home_Guildid15,0;
+				set $rentcheck[15],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 15 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 15 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 16:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid16 +"'");
+				set $home_Guildid16,0;
+				set $rentcheck[16],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 16 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 16 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 17:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid17 +"'");
+				set $home_Guildid17,0;
+				set $rentcheck[17],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 17 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 17 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 18:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid18 +"'");
+				set $home_Guildid18,0;
+				set $rentcheck[18],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 18 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 18 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 19:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid19 +"'");
+				set $home_Guildid19,0;
+				set $rentcheck[19],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 19 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 19 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 20:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid20 +"'");
+				set $home_Guildid20,0;
+				set $rentcheck[20],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 20 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 20 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 21:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid21 +"'");
+				set $home_Guildid21,0;
+				set $rentcheck[21],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 21 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 21 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 22:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid22 +"'");
+				set $home_Guildid22,0;
+				set $rentcheck[22],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 22 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 22 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 23:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid23 +"'");
+				set $home_Guildid23,0;
+				set $rentcheck[23],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 23 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 23 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 24:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid24 +"'");
+				set $home_Guildid24,0;
+				set $rentcheck[24],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 24 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 24 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 25:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid25 +"'");
+				set $home_Guildid25,0;
+				set $rentcheck[25],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 25 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 25 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 26:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid26 +"'");
+				set $home_Guildid26,0;
+				set $rentcheck[26],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 26 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 26 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 27:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid27 +"'");
+				set $home_Guildid27,0;
+				set $rentcheck[27],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 27 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 27 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 28:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid28 +"'");
+				set $home_Guildid28,0;
+				set $rentcheck[28],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 28 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 28 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 29:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid29 +"'");
+				set $home_Guildid29,0;
+				set $rentcheck[29],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 29 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 29 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 30:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid30 +"'");
+				set $home_Guildid30,0;
+				set $rentcheck[30],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 30 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 30 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 31:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid31 +"'");
+				set $home_Guildid31,0;
+				set $rentcheck[31],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 31 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 31 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 32:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid32 +"'");
+				set $home_Guildid32,0;
+				set $rentcheck[32],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 32 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 32 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 33:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid33 +"'");
+				set $home_Guildid33,0;
+				set $rentcheck[33],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 33 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 33 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 34:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid34 +"'");
+				set $home_Guildid34,0;
+				set $rentcheck[34],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 34 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 34 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 35:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid35 +"'");
+				set $home_Guildid35,0;
+				set $rentcheck[35],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 35 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 35 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 36:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid36 +"'");
+				set $home_Guildid36,0;
+				set $rentcheck[36],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 36 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 36 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 37:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid37 +"'");
+				set $home_Guildid37,0;
+				set $rentcheck[37],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 37 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 37 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 38:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid38 +"'");
+				set $home_Guildid38,0;
+				set $rentcheck[38],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 38 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 38 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 39:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid39 +"'");
+				set $home_Guildid39,0;
+				set $rentcheck[39],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 39 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 39 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 40:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid40 +"'");
+				set $home_Guildid40,0;
+				set $rentcheck[40],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 40 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 40 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 41:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid41 +"'");
+				set $home_Guildid41,0;
+				set $rentcheck[41],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 41 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 41 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 42:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid42 +"'");
+				set $home_Guildid42,0;
+				set $rentcheck[42],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 42 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 42 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 43:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid43 +"'");
+				set $home_Guildid43,0;
+				set $rentcheck[43],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 43 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 43 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 44:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid44 +"'");
+				set $home_Guildid44,0;
+				set $rentcheck[44],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 44 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 44 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 45:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid45 +"'");
+				set $home_Guildid45,0;
+				set $rentcheck[45],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 45 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 45 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 46:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid46 +"'");
+				set $home_Guildid46,0;
+				set $rentcheck[46],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 46 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 46 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 47:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid47 +"'");
+				set $home_Guildid47,0;
+				set $rentcheck[47],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 47 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 47 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 48:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid48 +"'");
+				set $home_Guildid48,0;
+				set $rentcheck[48],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 48 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 48 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 49:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid49 +"'");
+				set $home_Guildid49,0;
+				set $rentcheck[49],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 49 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 49 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 50:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid50 +"'");
+				set $home_Guildid50,0;
+				set $rentcheck[50],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 50 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 50 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 51:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid50 +"'");
+				set $home_Guildid51,0;
+				set $rentcheck[51],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 51 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 51 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 52:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0' where `guild_id` = '"+ $home_Guildid50 +"'");
+				set $home_Guildid52,0;
+				set $rentcheck[52],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าที่ 52 เรียบร้อยแล้ว";
+				announce "บ้านเช่าหลังที่ 52 ถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			case 53:
+				query_sql ("update `guild` set `rent_date` = '0',`rent_hour` = '0',`rent_minute` = '0'");
+				set $home_Guildid1,0;
+				set $home_Guildid2,0;
+				set $home_Guildid3,0;
+				set $home_Guildid4,0;
+				set $home_Guildid5,0;
+				set $home_Guildid6,0;
+				set $home_Guildid7,0;
+				set $home_Guildid8,0;
+				set $home_Guildid9,0;
+				set $home_Guildid10,0;
+				set $home_Guildid11,0;
+				set $home_Guildid12,0;
+				set $home_Guildid13,0;
+				set $home_Guildid14,0;
+				set $home_Guildid15,0;
+				set $home_Guildid16,0;
+				set $home_Guildid17,0;
+				set $home_Guildid18,0;
+				set $home_Guildid19,0;
+				set $home_Guildid20,0;
+				set $home_Guildid21,0;
+				set $home_Guildid22,0;
+				set $home_Guildid23,0;
+				set $home_Guildid24,0;
+				set $home_Guildid25,0;
+				set $home_Guildid26,0;
+				set $home_Guildid27,0;
+				set $home_Guildid28,0;
+				set $home_Guildid29,0;
+				set $home_Guildid30,0;
+				set $home_Guildid31,0;
+				set $home_Guildid32,0;
+				set $home_Guildid33,0;
+				set $home_Guildid34,0;
+				set $home_Guildid35,0;
+				set $home_Guildid36,0;
+				set $home_Guildid37,0;
+				set $home_Guildid38,0;
+				set $home_Guildid39,0;
+				set $home_Guildid40,0;
+				set $home_Guildid41,0;
+				set $home_Guildid42,0;
+				set $home_Guildid43,0;
+				set $home_Guildid44,0;
+				set $home_Guildid45,0;
+				set $home_Guildid46,0;
+				set $home_Guildid47,0;
+				set $home_Guildid48,0;
+				set $home_Guildid49,0;
+				set $home_Guildid50,0;
+				set $home_Guildid51,0;
+				set $home_Guildid52,0;
+				set $rentcheck[1],0;
+				set $rentcheck[2],0;
+				set $rentcheck[3],0;
+				set $rentcheck[4],0;
+				set $rentcheck[5],0;
+				set $rentcheck[6],0;
+				set $rentcheck[7],0;
+				set $rentcheck[8],0;
+				set $rentcheck[9],0;
+				set $rentcheck[10],0;
+				set $rentcheck[11],0;
+				set $rentcheck[12],0;
+				set $rentcheck[13],0;
+				set $rentcheck[14],0;
+				set $rentcheck[15],0;
+				set $rentcheck[16],0;
+				set $rentcheck[17],0;
+				set $rentcheck[18],0;
+				set $rentcheck[19],0;
+				set $rentcheck[20],0;
+				set $rentcheck[21],0;
+				set $rentcheck[22],0;
+				set $rentcheck[23],0;
+				set $rentcheck[24],0;
+				set $rentcheck[25],0;
+				set $rentcheck[26],0;
+				set $rentcheck[27],0;
+				set $rentcheck[28],0;
+				set $rentcheck[29],0;
+				set $rentcheck[30],0;
+				set $rentcheck[31],0;
+				set $rentcheck[32],0;
+				set $rentcheck[33],0;
+				set $rentcheck[34],0;
+				set $rentcheck[35],0;
+				set $rentcheck[36],0;
+				set $rentcheck[37],0;
+				set $rentcheck[38],0;
+				set $rentcheck[39],0;
+				set $rentcheck[40],0;
+				set $rentcheck[41],0;
+				set $rentcheck[42],0;
+				set $rentcheck[43],0;
+				set $rentcheck[44],0;
+				set $rentcheck[45],0;
+				set $rentcheck[46],0;
+				set $rentcheck[47],0;
+				set $rentcheck[48],0;
+				set $rentcheck[49],0;
+				set $rentcheck[50],0;
+				set $rentcheck[51],0;
+				set $rentcheck[52],0;
+				mes .@npcname$;
+				mes "รีเซทบ้านเช่าทุกหลังเรียบร้อยแล้ว";
+				announce "บ้านเช่าทุกหลังถูกรีเซทโดย GM",bc_all,0xFFFF33;
+				close;
+			}
+			break;
+		case 5:
+			mes .@npcname$;
+			mes "บ๊าย บาย ค่ะ";
+			close;
+		}
+		break;
+	}
+
+	if (!($renthomeitem[0] && $renthomedate))
+	{
+		mes .@npcname$;
+		mes "^0000FFขณะนี้บ้านปิดการให้เช่า^000000";
+		mes "^0000FFกรุณาติดต่อ GM^000000";
+		close;
+	}
+	while(1){
+		mes .@npcname$;
+		mes "ข้าคือผู้ให้บริการบ้านเช่า";
+		mes "ท่านต้องการทำอะไร";
+		next;
+		switch (select("• ตรวจสอบบ้านว่าง","• ตรวจสอบอัตราการเช่า","• ทำการเช่าบ้าน","• ไม่มีอะไรจ้า"))
+		{
+		case 1:
+			mes .@npcname$;
+			mes $home_Guildid1?"- บ้านที่ 1 [ ^FF0000"+getguildname($home_Guildid1)+"^000000 ]":"- บ้านที่ 1 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid2?"- บ้านที่ 2 [ ^FF0000"+getguildname($home_Guildid2)+"^000000 ]":"- บ้านที่ 2 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid3?"- บ้านที่ 3 [ ^FF0000"+getguildname($home_Guildid3)+"^000000 ]":"- บ้านที่ 3 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid4?"- บ้านที่ 4 [ ^FF0000"+getguildname($home_Guildid4)+"^000000 ]":"- บ้านที่ 4 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid5?"- บ้านที่ 5 [ ^FF0000"+getguildname($home_Guildid5)+"^000000 ]":"- บ้านที่ 5 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid6?"- บ้านที่ 6 [ ^FF0000"+getguildname($home_Guildid6)+"^000000 ]":"- บ้านที่ 6 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid7?"- บ้านที่ 7 [ ^FF0000"+getguildname($home_Guildid7)+"^000000 ]":"- บ้านที่ 7 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid8?"- บ้านที่ 8 [ ^FF0000"+getguildname($home_Guildid8)+"^000000 ]":"- บ้านที่ 8 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid9?"- บ้านที่ 9 [ ^FF0000"+getguildname($home_Guildid9)+"^000000 ]":"- บ้านที่ 9 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid10?"- บ้านที่ 10 [ ^FF0000"+getguildname($home_Guildid10)+"^000000 ]":"- บ้านที่ 10 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid11?"- บ้านที่ 11 [ ^FF0000"+getguildname($home_Guildid11)+"^000000 ]":"- บ้านที่ 11 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid12?"- บ้านที่ 12 [ ^FF0000"+getguildname($home_Guildid12)+"^000000 ]":"- บ้านที่ 12 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid13?"- บ้านที่ 13 [ ^FF0000"+getguildname($home_Guildid13)+"^000000 ]":"- บ้านที่ 13 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid14?"- บ้านที่ 14 [ ^FF0000"+getguildname($home_Guildid14)+"^000000 ]":"- บ้านที่ 14 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid15?"- บ้านที่ 15 [ ^FF0000"+getguildname($home_Guildid15)+"^000000 ]":"- บ้านที่ 15 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid16?"- บ้านที่ 16 [ ^FF0000"+getguildname($home_Guildid16)+"^000000 ]":"- บ้านที่ 16 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid17?"- บ้านที่ 17 [ ^FF0000"+getguildname($home_Guildid17)+"^000000 ]":"- บ้านที่ 17 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid18?"- บ้านที่ 18 [ ^FF0000"+getguildname($home_Guildid18)+"^000000 ]":"- บ้านที่ 18 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid19?"- บ้านที่ 19 [ ^FF0000"+getguildname($home_Guildid19)+"^000000 ]":"- บ้านที่ 19 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid20?"- บ้านที่ 20 [ ^FF0000"+getguildname($home_Guildid20)+"^000000 ]":"- บ้านที่ 20 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid21?"- บ้านที่ 21 [ ^FF0000"+getguildname($home_Guildid21)+"^000000 ]":"- บ้านที่ 21 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid22?"- บ้านที่ 22 [ ^FF0000"+getguildname($home_Guildid22)+"^000000 ]":"- บ้านที่ 22 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid23?"- บ้านที่ 23 [ ^FF0000"+getguildname($home_Guildid23)+"^000000 ]":"- บ้านที่ 23 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid24?"- บ้านที่ 24 [ ^FF0000"+getguildname($home_Guildid24)+"^000000 ]":"- บ้านที่ 24 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid25?"- บ้านที่ 25 [ ^FF0000"+getguildname($home_Guildid25)+"^000000 ]":"- บ้านที่ 25 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid26?"- บ้านที่ 26 [ ^FF0000"+getguildname($home_Guildid26)+"^000000 ]":"- บ้านที่ 26 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid27?"- บ้านที่ 27 [ ^FF0000"+getguildname($home_Guildid27)+"^000000 ]":"- บ้านที่ 27 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid28?"- บ้านที่ 28 [ ^FF0000"+getguildname($home_Guildid28)+"^000000 ]":"- บ้านที่ 28 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid29?"- บ้านที่ 29 [ ^FF0000"+getguildname($home_Guildid29)+"^000000 ]":"- บ้านที่ 29 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid30?"- บ้านที่ 30 [ ^FF0000"+getguildname($home_Guildid30)+"^000000 ]":"- บ้านที่ 30 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid31?"- บ้านที่ 31 [ ^FF0000"+getguildname($home_Guildid31)+"^000000 ]":"- บ้านที่ 31 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid32?"- บ้านที่ 32 [ ^FF0000"+getguildname($home_Guildid32)+"^000000 ]":"- บ้านที่ 32 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid33?"- บ้านที่ 33 [ ^FF0000"+getguildname($home_Guildid33)+"^000000 ]":"- บ้านที่ 33 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid34?"- บ้านที่ 34 [ ^FF0000"+getguildname($home_Guildid34)+"^000000 ]":"- บ้านที่ 34 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid35?"- บ้านที่ 35 [ ^FF0000"+getguildname($home_Guildid35)+"^000000 ]":"- บ้านที่ 35 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid36?"- บ้านที่ 36 [ ^FF0000"+getguildname($home_Guildid36)+"^000000 ]":"- บ้านที่ 36 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid37?"- บ้านที่ 37 [ ^FF0000"+getguildname($home_Guildid37)+"^000000 ]":"- บ้านที่ 37 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid38?"- บ้านที่ 38 [ ^FF0000"+getguildname($home_Guildid38)+"^000000 ]":"- บ้านที่ 38 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid39?"- บ้านที่ 39 [ ^FF0000"+getguildname($home_Guildid39)+"^000000 ]":"- บ้านที่ 39 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid40?"- บ้านที่ 40 [ ^FF0000"+getguildname($home_Guildid40)+"^000000 ]":"- บ้านที่ 40 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid41?"- บ้านที่ 41 [ ^FF0000"+getguildname($home_Guildid41)+"^000000 ]":"- บ้านที่ 41 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid42?"- บ้านที่ 42 [ ^FF0000"+getguildname($home_Guildid42)+"^000000 ]":"- บ้านที่ 42 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid43?"- บ้านที่ 43 [ ^FF0000"+getguildname($home_Guildid43)+"^000000 ]":"- บ้านที่ 43 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid44?"- บ้านที่ 44 [ ^FF0000"+getguildname($home_Guildid44)+"^000000 ]":"- บ้านที่ 44 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid45?"- บ้านที่ 45 [ ^FF0000"+getguildname($home_Guildid45)+"^000000 ]":"- บ้านที่ 45 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid46?"- บ้านที่ 46 [ ^FF0000"+getguildname($home_Guildid46)+"^000000 ]":"- บ้านที่ 46 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid47?"- บ้านที่ 47 [ ^FF0000"+getguildname($home_Guildid47)+"^000000 ]":"- บ้านที่ 47 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid48?"- บ้านที่ 48 [ ^FF0000"+getguildname($home_Guildid48)+"^000000 ]":"- บ้านที่ 48 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid49?"- บ้านที่ 49 [ ^FF0000"+getguildname($home_Guildid49)+"^000000 ]":"- บ้านที่ 49 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid50?"- บ้านที่ 50 [ ^FF0000"+getguildname($home_Guildid50)+"^000000 ]":"- บ้านที่ 50 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid51?"- บ้านที่ 51 [ ^FF0000"+getguildname($home_Guildid51)+"^000000 ]":"- บ้านที่ 51 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			mes $home_Guildid52?"- บ้านที่ 52 [ ^FF0000"+getguildname($home_Guildid52)+"^000000 ]":"- บ้านที่ 52 [ ^0000FFยังไม่มีผู้เช่า^000000 ]";
+			next;
+			continue;
+			break;
+		case 2:
+			mes .@npcname$;
+			mes "บ้านเช่าราคาแสนประหยัด";
+			mes getitemname($renthomeitem[@i]) +" จำนวน "+$renthomeitem[@i+1] +" ea";
+			mes "สามารถเช่าได้ "+$renthomedate+" วัน";
+			next;
+			continue;
+			break;
+		case 3:
+			mes .@npcname$;
+			set @GID,getcharid(2);
+			query_sql ("select `rent_date` from `guild` where guild_id = "+ @GID +" ",@rentguild);
+			if (@rentguild > 0) {
+				mes "Guild ของท่านมีบ้านเช่าแล้ว";
+				mes "ท่านไม่สามารถเช่าได้จนกว่า";
+				mes "บ้านหลังเดิมจะหมดเวลา";
+				break;
+			}
+			if (strcharinfo(0) == getguildmaster(@GID)) 
+			{
+				mes "กรุณาตรวจสอบบ้านเช่าก่อน";
+				mes "ว่าท่านต้องการเช่าหลังไหน";
+				mes "ระบบจะทำการหัก "+getitemname($renthomeitem[@i]);
+				mes "ทันทีที่ทำการกด ตกลง";
+				next;
+				if(select("ตกลง:ยกเลิก")-1)
+				{
+					mes .@npcname$;
+					mes "พร้อมเมื่อไรก็มาใหม่นะ";
+					break;
+				} else {
+					mes .@npcname$;
+					mes "กรุณารอสักครู่ ระบบกำลัง";
+					mes "ตรวจสอบ "+getitemname($renthomeitem[@i]);
+					sleep2 3000;
+					mes " ";
+					if(countitem($renthomeitem[@i]) < $renthomeitem[@i+1])
+					{
+						mes "ท่านมี "+getitemname($renthomeitem[@i])+" ไม่ครบ";
+						mes "ไปหา "+getitemname($renthomeitem[@i])+" มาให้ครบก่อน..";
+						break;
+					} else {
+						mes "ท่านมี "+getitemname($renthomeitem[@i])+" ครบแล้ว";
+						next;
+						mes .@npcname$;
+						delitem $renthomeitem[@i],$renthomeitem[@i+1];
+						mes "กรุณาเลือกบ้านเช่าหลังที่ต้องการ";
+						next;
+						switch (select(
+							"• เช่าหลังที่ 1",
+							"• เช่าหลังที่ 2",
+							"• เช่าหลังที่ 3",
+							"• เช่าหลังที่ 4",
+							"• เช่าหลังที่ 5",
+							"• เช่าหลังที่ 6",
+							"• เช่าหลังที่ 7",
+							"• เช่าหลังที่ 8",
+							"• เช่าหลังที่ 9",
+							"• เช่าหลังที่ 10",
+							"• เช่าหลังที่ 11",
+							"• เช่าหลังที่ 12",
+							"• เช่าหลังที่ 13",
+							"• เช่าหลังที่ 14",
+							"• เช่าหลังที่ 15",
+							"• เช่าหลังที่ 16",
+							"• เช่าหลังที่ 17",
+							"• เช่าหลังที่ 18",
+							"• เช่าหลังที่ 19",
+							"• เช่าหลังที่ 20",
+							"• เช่าหลังที่ 21",
+							"• เช่าหลังที่ 22",
+							"• เช่าหลังที่ 23",
+							"• เช่าหลังที่ 24",
+							"• เช่าหลังที่ 25",
+							"• เช่าหลังที่ 26",
+							"• เช่าหลังที่ 27",
+							"• เช่าหลังที่ 28",
+							"• เช่าหลังที่ 29",
+							"• เช่าหลังที่ 30",
+							"• เช่าหลังที่ 31",
+							"• เช่าหลังที่ 32",
+							"• เช่าหลังที่ 33",
+							"• เช่าหลังที่ 34",
+							"• เช่าหลังที่ 35",
+							"• เช่าหลังที่ 36",
+							"• เช่าหลังที่ 37",
+							"• เช่าหลังที่ 38",
+							"• เช่าหลังที่ 39",
+							"• เช่าหลังที่ 40",
+							"• เช่าหลังที่ 41",
+							"• เช่าหลังที่ 42",
+							"• เช่าหลังที่ 43",
+							"• เช่าหลังที่ 44",
+							"• เช่าหลังที่ 45",
+							"• เช่าหลังที่ 46",
+							"• เช่าหลังที่ 47",
+							"• เช่าหลังที่ 48",
+							"• เช่าหลังที่ 49",
+							"• เช่าหลังที่ 50",
+							"• เช่าหลังที่ 51",
+							"• เช่าหลังที่ 52"))
+						{
+						case 1:
+							mes .@npcname$;
+							if($home_Guildid1) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid1 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,1;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id1,getcharid(2);
+								set $rentcheck[1],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 1::OnReOwner1";
+								announce "บ้านเช่าหลังที่ 1 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 2:
+							mes .@npcname$;
+							if($home_Guildid2) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid2 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,2;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id2,getcharid(2);
+								set $rentcheck[2],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 2::OnReOwner2";
+								announce "บ้านเช่าหลังที่ 2 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 3:
+							mes .@npcname$;
+							if($home_Guildid3) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid3 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,3;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id3,getcharid(2);
+								set $rentcheck[3],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 3::OnReOwner3";
+								announce "บ้านเช่าหลังที่ 3 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 4:
+							mes .@npcname$;
+							if($home_Guildid4) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid4 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,4;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id4,getcharid(2);
+								set $rentcheck[4],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 4::OnReOwner4";
+								announce "บ้านเช่าหลังที่ 4 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 5:
+							mes .@npcname$;
+							if($home_Guildid5) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid5 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,5;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id5,getcharid(2);
+								set $rentcheck[5],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 5::OnReOwner5";
+								announce "บ้านเช่าหลังที่ 5 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 6:
+							mes .@npcname$;
+							if($home_Guildid6) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid6 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,6;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id6,getcharid(2);
+								set $rentcheck[6],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 6::OnReOwner6";
+								announce "บ้านเช่าหลังที่ 6 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 7:
+							mes .@npcname$;
+							if($home_Guildid7) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid7 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,7;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id7,getcharid(2);
+								set $rentcheck[7],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 7::OnReOwner7";
+								announce "บ้านเช่าหลังที่ 7 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 8:
+							mes .@npcname$;
+							if($home_Guildid8) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid8 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,8;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id8,getcharid(2);
+								set $rentcheck[8],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 8::OnReOwner8";
+								announce "บ้านเช่าหลังที่ 8 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 9:
+							mes .@npcname$;
+							if($home_Guildid9) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid9 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,9;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id9,getcharid(2);
+								set $rentcheck[9],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 9::OnReOwner9";
+								announce "บ้านเช่าหลังที่ 9 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 10:
+							mes .@npcname$;
+							if($home_Guildid10) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid10 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,10;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id10,getcharid(2);
+								set $rentcheck[10],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 10::OnReOwner10";
+								announce "บ้านเช่าหลังที่ 10 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 11:
+							mes .@npcname$;
+							if($home_Guildid11) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid11 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,11;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id11,getcharid(2);
+								set $rentcheck[11],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 11::OnReOwner11";
+								announce "บ้านเช่าหลังที่ 11 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 12:
+							mes .@npcname$;
+							if($home_Guildid12) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid12 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,12;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id12,getcharid(2);
+								set $rentcheck[12],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 12::OnReOwner12";
+								announce "บ้านเช่าหลังที่ 12 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 13:
+							mes .@npcname$;
+							if($home_Guildid13) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid13 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,13;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id13,getcharid(2);
+								set $rentcheck[13],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 13::OnReOwner13";
+								announce "บ้านเช่าหลังที่ 13 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 14:
+							mes .@npcname$;
+							if($home_Guildid14) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid14 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,14;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id14,getcharid(2);
+								set $rentcheck[14],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 14::OnReOwner14";
+								announce "บ้านเช่าหลังที่ 14 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 15:
+							mes .@npcname$;
+							if($home_Guildid15) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid15 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,15;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id15,getcharid(2);
+								set $rentcheck[15],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 15::OnReOwner15";
+								announce "บ้านเช่าหลังที่ 15 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 16:
+							mes .@npcname$;
+							if($home_Guildid16) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid16 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,16;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id16,getcharid(2);
+								set $rentcheck[16],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 16::OnReOwner16";
+								announce "บ้านเช่าหลังที่ 16 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 17:
+							mes .@npcname$;
+							if($home_Guildid17) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid17 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,17;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id17,getcharid(2);
+								set $rentcheck[17],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 17::OnReOwner17";
+								announce "บ้านเช่าหลังที่ 17 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 18:
+							mes .@npcname$;
+							if($home_Guildid18) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid18 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,18;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id18,getcharid(2);
+								set $rentcheck[18],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 18::OnReOwner18";
+								announce "บ้านเช่าหลังที่ 18 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 19:
+							mes .@npcname$;
+							if($home_Guildid19) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid19 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,19;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id19,getcharid(2);
+								set $rentcheck[19],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 19::OnReOwner19";
+								announce "บ้านเช่าหลังที่ 19 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 20:
+							mes .@npcname$;
+							if($home_Guildid20) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid20 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,20;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id20,getcharid(2);
+								set $rentcheck[20],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 20::OnReOwner20";
+								announce "บ้านเช่าหลังที่ 20 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 21:
+							mes .@npcname$;
+							if($home_Guildid21) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid21 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,21;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id21,getcharid(2);
+								set $rentcheck[21],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 21::OnReOwner21";
+								announce "บ้านเช่าหลังที่ 21 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 22:
+							mes .@npcname$;
+							if($home_Guildid22) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid22 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,22;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id22,getcharid(2);
+								set $rentcheck[22],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 22::OnReOwner22";
+								announce "บ้านเช่าหลังที่ 22 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 23:
+							mes .@npcname$;
+							if($home_Guildid23) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid23 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,23;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id23,getcharid(2);
+								set $rentcheck[23],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 23::OnReOwner23";
+								announce "บ้านเช่าหลังที่ 23 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 24:
+							mes .@npcname$;
+							if($home_Guildid24) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid24 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,24;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id24,getcharid(2);
+								set $rentcheck[24],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 24::OnReOwner24";
+								announce "บ้านเช่าหลังที่ 24 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 25:
+							mes .@npcname$;
+							if($home_Guildid25) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid25 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,25;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id25,getcharid(2);
+								set $rentcheck[25],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 25::OnReOwner25";
+								announce "บ้านเช่าหลังที่ 25 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 26:
+							mes .@npcname$;
+							if($home_Guildid26) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid26 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,26;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id26,getcharid(2);
+								set $rentcheck[26],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 26::OnReOwner26";
+								announce "บ้านเช่าหลังที่ 26 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 27:
+							mes .@npcname$;
+							if($home_Guildid27) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid27 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,27;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id27,getcharid(2);
+								set $rentcheck[27],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 27::OnReOwner27";
+								announce "บ้านเช่าหลังที่ 27 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 28:
+							mes .@npcname$;
+							if($home_Guildid28) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid28 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,28;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id28,getcharid(2);
+								set $rentcheck[28],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 28::OnReOwner21";
+								announce "บ้านเช่าหลังที่ 28 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 29:
+							mes .@npcname$;
+							if($home_Guildid29) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid29 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,29;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id29,getcharid(2);
+								set $rentcheck[29],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 29::OnReOwner29";
+								announce "บ้านเช่าหลังที่ 29 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 30:
+							mes .@npcname$;
+							if($home_Guildid30) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid30 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,30;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id30,getcharid(2);
+								set $rentcheck[30],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 30::OnReOwner30";
+								announce "บ้านเช่าหลังที่ 30 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 31:
+							mes .@npcname$;
+							if($home_Guildid31) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid31 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,31;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id31,getcharid(2);
+								set $rentcheck[31],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 31::OnReOwner31";
+								announce "บ้านเช่าหลังที่ 31 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 32:
+							mes .@npcname$;
+							if($home_Guildid32) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid32 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,32;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id32,getcharid(2);
+								set $rentcheck[32],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 32::OnReOwner32";
+								announce "บ้านเช่าหลังที่ 32 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 33:
+							mes .@npcname$;
+							if($home_Guildid33) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid33 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,33;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id33,getcharid(2);
+								set $rentcheck[33],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 33::OnReOwner33";
+								announce "บ้านเช่าหลังที่ 33 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 34:
+							mes .@npcname$;
+							if($home_Guildid34) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid34 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,34;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id34,getcharid(2);
+								set $rentcheck[34],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 34::OnReOwner34";
+								announce "บ้านเช่าหลังที่ 34 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 35:
+							mes .@npcname$;
+							if($home_Guildid35) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid35 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,35;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id35,getcharid(2);
+								set $rentcheck[35],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 35::OnReOwner35";
+								announce "บ้านเช่าหลังที่ 35 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 36:
+							mes .@npcname$;
+							if($home_Guildid36) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid36 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,36;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id36,getcharid(2);
+								set $rentcheck[36],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 36::OnReOwner36";
+								announce "บ้านเช่าหลังที่ 36 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 37:
+							mes .@npcname$;
+							if($home_Guildid37) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid37 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,37;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id37,getcharid(2);
+								set $rentcheck[37],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 37::OnReOwner37";
+								announce "บ้านเช่าหลังที่ 37 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 38:
+							mes .@npcname$;
+							if($home_Guildid38) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid38 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,38;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id38,getcharid(2);
+								set $rentcheck[38],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 38::OnReOwner38";
+								announce "บ้านเช่าหลังที่ 38 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 39:
+							mes .@npcname$;
+							if($home_Guildid39) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid39 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,39;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id39,getcharid(2);
+								set $rentcheck[39],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 39::OnReOwner39";
+								announce "บ้านเช่าหลังที่ 39 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 40:
+							mes .@npcname$;
+							if($home_Guildid40) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid40 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,40;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id40,getcharid(2);
+								set $rentcheck[40],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 40::OnReOwner40";
+								announce "บ้านเช่าหลังที่ 40 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 41:
+							mes .@npcname$;
+							if($home_Guildid41) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid41 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,41;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id41,getcharid(2);
+								set $rentcheck[41],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 41::OnReOwner41";
+								announce "บ้านเช่าหลังที่ 41 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 42:
+							mes .@npcname$;
+							if($home_Guildid42) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid42 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,42;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id42,getcharid(2);
+								set $rentcheck[42],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 42::OnReOwner42";
+								announce "บ้านเช่าหลังที่ 42 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 43:
+							mes .@npcname$;
+							if($home_Guildid43) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid43 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,43;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id43,getcharid(2);
+								set $rentcheck[43],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 43::OnReOwner43";
+								announce "บ้านเช่าหลังที่ 43 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 44:
+							mes .@npcname$;
+							if($home_Guildid44) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid44 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,44;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id44,getcharid(2);
+								set $rentcheck[44],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 44::OnReOwner44";
+								announce "บ้านเช่าหลังที่ 44 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 45:
+							mes .@npcname$;
+							if($home_Guildid45) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid45 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,45;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id45,getcharid(2);
+								set $rentcheck[45],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 45::OnReOwner45";
+								announce "บ้านเช่าหลังที่ 45 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 46:
+							mes .@npcname$;
+							if($home_Guildid46) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid46 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,46;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id46,getcharid(2);
+								set $rentcheck[46],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 46::OnReOwner46";
+								announce "บ้านเช่าหลังที่ 46 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 47:
+							mes .@npcname$;
+							if($home_Guildid47) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid47 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,47;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id47,getcharid(2);
+								set $rentcheck[47],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 47::OnReOwner47";
+								announce "บ้านเช่าหลังที่ 47 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 48:
+							mes .@npcname$;
+							if($home_Guildid48) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid48 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,48;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id48,getcharid(2);
+								set $rentcheck[48],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 48::OnReOwner48";
+								announce "บ้านเช่าหลังที่ 48 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 49:
+							mes .@npcname$;
+							if($home_Guildid49) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid49 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,49;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id49,getcharid(2);
+								set $rentcheck[49],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 49::OnReOwner49";
+								announce "บ้านเช่าหลังที่ 49 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 50:
+							mes .@npcname$;
+							if($home_Guildid50) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid50 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,50;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id50,getcharid(2);
+								set $rentcheck[50],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 50::OnReOwner50";
+								announce "บ้านเช่าหลังที่ 50 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 51:
+							mes .@npcname$;
+							if($home_Guildid51) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid51 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,51;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id51,getcharid(2);
+								set $rentcheck[51],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 51::OnReOwner51";
+								announce "บ้านเช่าหลังที่ 51 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						case 52:
+							mes .@npcname$;
+							if($home_Guildid52) {
+								mes "- บ้านหลังนี้มี Guild เช่าอยู่แล้ว";
+							} else if($home_Guildid52 == getcharid(2)) {
+								mes "- บ้านหลังนี้ Guild คุณเช่าอยู่นี่";
+							} else {
+								set .@temp_menu,52;
+								setd "$home_Guildid"+.@temp_menu,getcharid(2);
+								mes "- การเช่าบ้านเรียบร้อยแล้ว";
+								mes "- ขอบคุณที่ใช้บริการ";
+								set $renter_id52,getcharid(2);
+								set $rentcheck[52],getcharid(2);
+								query_sql ("update `guild` set `rent_date` = '"+$renthomedate+"',`rent_hour` = '"+gettime(3)+"',`rent_minute` = '"+gettime(2)+"'  where `guild_id` = '"+ getcharid(2) +"'");
+								donpcevent "บ้านที่ 52::OnReOwner52";
+								announce "บ้านเช่าหลังที่ 52 ถูกเช่าโดย Guild "+strcharinfo(2),bc_all,0xFFFF33;
+							}
+							break;
+						}
+						break;
+					}
+					break;
+				}
+				break;
+			}
+			mes "ไม่สามารถดำเนินการให้ได้";
+			mes "เนื่องจากสาเหตุดังต่อไปนี้";
+			mes " ";
+			mes " - ท่านไม่มี Guild";
+			mes " - ท่านไม่ใช่ Guild Master";
+			break;
+		default:
+			mes .@npcname$;
+			mes "สนใจจะเช่าเมื่อไรก็มาใหม่นะ"; 
+			break;
+		}
+		break;
+	}
+	close;
+
+	OnInit:
+	set $pstart,0;
+	waitingroom "   [ บริการบ้านเช่า ]",0;
+	end;
+}

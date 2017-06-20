@@ -1,0 +1,386 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	addslot	-1,{
+
+	mes "[Seiyablem]";
+	mes "ฉันคือวิศวกรที่สามารถเพิ่ม Slot ให้กับอาวุธและชุดเกราะคุณได้.";
+	mes "ฉันทำไห้ไม่ฟรีหรอกนะ และอีกอย่างใช่ว่าจะสำเร็จเสมอไป มันก็ยังมีสิทธิ์ล้มเหลวได้.";
+	next;
+	mes "[Seiyablem]";
+	mes "มันอาจจะดูเหมือนง่ายนะ แต่ที่จริงแล้วมันมีความซับซ้อนมาก.";
+	mes "ถ้าคุณสนใจในบริการของเรา ก็ไปลุยกันได้เลย.";
+	next;
+	switch( select( "เพิ่ม Slot ให้กับอาวุธ","เพิ่ม Slot ให้กับชุดเกราะ","ข้อมูลการเพิ่ม Slot","Cancel" ) )
+	{
+		case 1:
+			mes "[Seiyablem]";
+			mes "คุณต้องการเพิ่ม slot ให้กับอาวุธของคุณงั้นหรือ?";
+			mes "ฉันมีให้เลือกหลายประเภทตามระดับความยาก, ระดับ C ไม่ยากเท่าไหร่แต่ระดับ S เรียกได้ว่ายากเลยทีเดียว.";
+			mes "คุณต้องการให้ฉันเพิ่ม slot ในระดับไหน?";
+			set @sockettype,1;
+			next;
+			switch( select( "ระดับ C","ระดับ B","ระดับ A","ระดับ S" ) )
+			{
+				case 1:
+					mes "[Seiyablem]";
+					mes "ระดับ C งั้นหรอ?";
+					mes "ตอนนี้ ฉันสามารถทำให้คุณได้ แต่มันมีหลากหลายรายการ กรุณาเลือกมา 1 รายการจากอาวุธที่ฉันสามารถเพิ่ม slot ให้ได้.";
+					next;
+					switch( select( "Trident","Rope","Violin","Book of Billows","Book of Mother Earth","Book of the Blazing Sun","Book of Gust of Wind" ) )
+					{
+						case 1: callfunc "Func_Socket1",1,1460,1461,40,66,200,1010,10; break;
+						case 2: callfunc "Func_Socket1",1,1950,1951,40,66,200,1010,10; break;
+						case 3: callfunc "Func_Socket1",1,1901,1902,40,66,200,1010,10; break;
+						case 4: callfunc "Func_Socket1",1,1553,1568,40,66,200,1010,10; break;
+						case 5: callfunc "Func_Socket1",1,1554,1569,40,66,200,1010,10; break;
+						case 6: callfunc "Func_Socket1",1,1555,1570,40,66,200,1010,10; break;
+						case 7: callfunc "Func_Socket1",1,1556,1571,40,66,200,1010,10; break;
+					}
+				break;
+				
+				case 2:
+					mes "[Seiyablem]";
+					mes "ระดับ B หรอ?";
+					mes "งั้นหรอ เอาแบบนี้ใช่ป่ะ มันเสี่ยงกว่าระดับที่ผ่านมานะ.";
+					mes "กรุณาเลือก อาวุธที่คุณจะให้เราเพิ่ม Slot ให้ 1 ชิ้น.";
+					next;
+					switch( select( "Chain","Gladius","Gakkung Bow","Pike","Haedonggum","Lute","Wire","Waghnakh","Arbalest Bow","Orcish Axe","Scimitar","Spike" ) )
+					{
+						case 1: callfunc "Func_Socket1",1,1519,1520,40,61,300,1010,10; break;
+						case 2: callfunc "Func_Socket1",2,1219,1220,40,61,300,984,1,999,5; break;
+						case 3: callfunc "Func_Socket1",2,1714,1716,40,61,300,984,2,999,5; break;
+						case 4: callfunc "Func_Socket1",1,1407,1408,40,61,300,1010,10; break;
+						case 5: callfunc "Func_Socket1",2,1123,1128,40,61,300,984,2,999,5; break;
+						case 6: callfunc "Func_Socket1",1,1905,1906,40,61,300,1011,10; break;
+						case 7: callfunc "Func_Socket1",1,1954,1955,40,61,300,1011,10; break;
+						case 8: callfunc "Func_Socket1",1,1801,1802,40,61,300,1010,10; break;
+						case 9: callfunc "Func_Socket1",2,1713,1715,40,61,300,984,2,999,5; break;
+						case 10: callfunc "Func_Socket1",1,1304,1309,40,61,200,984,1; break;
+						case 11: callfunc "Func_Socket1",1,1113,1114,40,61,200,984,1; break;
+						case 12: callfunc "Func_Socket1",1,1523,1538,40,61,300,984,1; break;
+					}
+				break;
+				
+				case 3:
+					mes "[Seiyablem]";
+					mes "โอ้วววว..ระดับ A.";
+					mes "มันมีความเสี่ยงสูงมากนะ!";
+					mes "ถ้าคุณพร้อมที่จะเสี่ยง ก็เลือกอาวุธที่คุณจะเพิ่ม Slot มา 1 รายการ";
+					next;
+					switch( select( "Hunter Bow","Survivor's Rod(INT)","Zweihander","Flamberge","Infiltrator","Ballista","Stunner","Berserk","Claymore","Dragon Killer","Katar of Frozen Icicle","Katar of Quaking","Katar of Raging Blaze","Katar of Piercing Wind","Golden Mace","Oriental Lute","Queen's Whip","Phantom Spear","Schweizersabel" ) )
+					{
+						case 1: callfunc "Func_Socket1",2,1718,1726,40,61,500,984,2,999,10; break;
+						case 2: callfunc "Func_Socket1",2,1619,1620,40,61,500,984,2,999,10; break;
+						case 3: callfunc "Func_Socket1",2,1168,1171,40,61,800,984,5,999,10; break;
+						case 4: callfunc "Func_Socket1",2,1129,1149,40,61,500,984,2,999,10; break;
+						case 5: callfunc "Func_Socket1",2,1261,1266,40,61,700,984,5,999,10; break;
+						case 6: callfunc "Func_Socket1",2,1722,1727,40,61,500,984,5,999,10; break;
+						case 7: callfunc "Func_Socket1",2,1522,1532,40,61,700,984,2,999,10; break;
+						case 8: callfunc "Func_Socket1",2,1814,1816,40,61,700,984,5,999,10; break;
+						case 9: callfunc "Func_Socket1",2,1163,1172,40,61,700,984,5,999,10; break;
+						case 10: callfunc "Func_Socket1",1,13001,13030,40,61,500,984,2; break;
+						case 11: callfunc "Func_Socket1",1,1256,1275,40,61,500,984,2; break;
+						case 12: callfunc "Func_Socket1",1,1257,1276,40,61,500,984,2; break;
+						case 13: callfunc "Func_Socket1",1,1258,1277,40,61,500,984,2; break;
+						case 14: callfunc "Func_Socket1",1,1259,1278,40,61,500,984,2; break;
+						case 15: callfunc "Func_Socket1",1,1524,1539,40,61,500,984,2; break;
+						case 16: callfunc "Func_Socket1",1,1918,1922,40,61,500,984,2; break;
+						case 17: callfunc "Func_Socket1",1,1970,1976,40,61,500,984,2; break;
+						case 18: callfunc "Func_Socket1",1,1477,1479,40,61,500,984,2; break;
+						case 19: callfunc "Func_Socket1",1,1167,1178,40,61,500,984,2; break;
+					}
+				break;
+				
+				case 4:
+					mes "[Seiyablem]";
+					mes "ว้าาาาาาาาาาา";
+					mes "ระดับ S งั้นหรอ!!!";
+					mes "มันคงเป็นเรื่องมหัศจรรย์มาก ถ้าหากมันทำสำเร็จ.";
+					mes "โอเค...ถ้าคุณพร้อม ก็เลือกรายการอาวุธมา 1 รายการ";
+					next;
+					switch( select( "Gungnir","Poison Knife","Ice Pick","Sucsamad","Ginnungagap","Cutlas","Crescent Scythe","Survivor's Rod(DEX)","Zephyrus","Mailbreaker","Swordbreaker","Assassin Dagger","Grand Cross","Executioner" ) )
+					{
+						case 1: callfunc "Func_Socket1",2,1413,1418,40,51,1000,984,5,999,10; break;
+						case 2: callfunc "Func_Socket1",2,1239,13016,40,51,1000,984,5,999,10; break;
+						case 3: callfunc "Func_Socket1",2,1230,13017,40,51,2000,984,5,999,10; break;
+						case 4: callfunc "Func_Socket1",2,1236,13018,40,51,1000,984,5,999,10; break;
+						case 5: callfunc "Func_Socket1",2,13002,13019,40,51,1000,984,5,999,10; break;
+						case 6: callfunc "Func_Socket1",2,1135,13400,40,51,1000,984,5,999,10; break;
+						case 7: callfunc "Func_Socket1",2,1466,1476,40,51,1000,984,5,999,10; break;
+						case 8: callfunc "Func_Socket1",2,1617,1618,40,51,2000,984,5,999,10; break;
+						case 9: callfunc "Func_Socket1",2,1468,1481,40,51,1000,984,5,999,10; break;
+						case 10: callfunc "Func_Socket1",2,1225,13032,40,51,1000,984,5,999,10; break;
+						case 11: callfunc "Func_Socket1",2,1224,13031,40,51,1000,984,5,999,10; break;
+						case 12: callfunc "Func_Socket1",2,1232,13033,40,51,1000,984,5,999,10; break;
+						case 13: callfunc "Func_Socket1",2,1528,1540,40,51,1000,984,5,999,10; break;
+						case 14: callfunc "Func_Socket1",2,1169,1179,40,51,1000,984,5,999,10; break;
+					}
+				break;
+			}
+		break;
+		
+		case 2:
+			mes "[Seiyablem]";
+			mes "คุณเลือกที่จะเพิ่ม Slot ให้กับชุดเกราะงั้นหรือ";
+			mes "แน่นอน ไม่มีปัญหา.";
+			mes "ชุดเกราะที่จะให้เพิ่ม Slot ให้ มันมี 4 ระดับตามความยากนะ";
+			mes "ระดับ C ไม่ยากเท่าไหร่แต่ระดับ S ยากพอสมควร.";
+			mes "คุณต้องการจะเพิ่ม Slot ที่ระดับไหน";
+			set @sockettype,2;
+			next;
+			switch( select( "ระดับ C","ระดับ B","ระดับ A","ระดับ S" ) )
+			{
+				case 1:
+					mes "[Seiyablem]";
+					mes "ชุดเกราะระดับ C...ไม่มีปัญหา";
+					mes "มันคงดูเหมาะสม.";
+					mes "เลือกชุดเกราะที่คุณต้องการจะเพิ่ม Slot";
+					next;
+					switch( select( "Mantle","Coat","Circlet","Biretta","Sunflower","Ph.D Hat","Big Ribbon","Boys Cap" ) )
+					{
+						case 1: callfunc "Func_Socket1",1,2307,2308,40,66,200,999,3; break;
+						case 2: callfunc "Func_Socket1",1,2309,2310,40,66,200,999,3; break;
+						case 3: callfunc "Func_Socket1",1,2232,2233,40,66,200,999,3; break;
+						case 4: callfunc "Func_Socket1",1,2216,2217,40,66,200,999,3; break;
+						case 5: callfunc "Func_Socket1",1,2253,5351,40,66,200,999,3; break;
+						case 6: callfunc "Func_Socket1",1,5012,5347,40,66,200,999,3; break;
+						case 7: callfunc "Func_Socket1",1,2244,5348,40,66,200,999,5; break;
+						case 8: callfunc "Func_Socket1",1,5016,5349,40,66,200,999,5; break;
+					}
+				break;
+				
+				case 2:
+					mes "[Seiyablem]";
+					mes "คุณเลือกที่ความเสี่ยงระดับ B งั้นหรอ.";
+					mes "ได้.แล้วคุณต้องการเพิ่ม Slot ชิ้นไหนละ";
+					next;
+					switch( select( "Mirror Shield","Chain Mail","Saint Robe","Silk Robe","Boots","Shoes","Muffler","Guard","Buckler","Shield","Bongun Hat","Skull Ring","High Heels" ) )
+					{
+						case 1:  callfunc "Func_Socket1",1,2107,2108,40,61,250,999,5; break;
+						case 2:  callfunc "Func_Socket1",1,2314,2315,40,61,250,999,5; break;
+						case 3:  callfunc "Func_Socket1",1,2325,2326,40,61,300,999,5; break;
+						case 4:  callfunc "Func_Socket1",1,2321,2322,40,61,300,999,5; break;
+						case 5:  callfunc "Func_Socket1",1,2405,2406,40,61,300,999,5; break;
+						case 6:  callfunc "Func_Socket1",1,2403,2404,40,61,300,999,5; break;
+						case 7:  callfunc "Func_Socket1",1,2503,2504,40,61,300,999,5; break;
+						case 8:  callfunc "Func_Socket1",1,2101,2102,40,61,300,999,5; break;
+						case 9:  callfunc "Func_Socket1",1,2103,2104,40,61,300,999,5; break;
+						case 10: callfunc "Func_Socket1",1,2105,2106,40,61,250,999,5; break;
+						case 11: callfunc "Func_Socket1",1,5046,5168,40,61,250,999,5; break;
+						case 12: callfunc "Func_Socket1",1,2609,2715,40,61,300,999,5; break;
+						case 13: callfunc "Func_Socket1",1,2409,2432,40,61,300,999,5; break;
+					}
+				break;
+				
+				case 3:
+					mes "[Seiyablem]";
+					mes "โอ้โห...ระดับ A";
+					mes "ความเสี่ยงมันสูงอยู่นะ!";
+					mes "เอาเถอะ เลือกชุดเกราะที่คุณต้องการจะเพิ่ม Slot มาเลย";
+					next;
+					switch( select( "Gemmed Sallet","Bucket Hat","Memory Book","Tights","Legion Plate Armor","Full Plate","Thief Clothes","Greaves","Coif","Manteau","Helm","Ninja Suit","Orc Helm","Ancient Cape","Monk Hat","Golden Gear","Brooch","Munak Hat","Pirate Bandana","Black Leather Boots" ) )
+					{
+						case 1:  callfunc "Func_Socket1",1,2230,2231,40,61,400,985,1; break;
+						case 2:  callfunc "Func_Socket1",1,5114,5120,40,61,400,985,1; break;
+						case 3:  callfunc "Func_Socket1",1,2109,2121,40,61,400,985,1; break;
+						case 4:  callfunc "Func_Socket1",1,2330,2331,40,61,400,985,1; break;
+						case 5:  callfunc "Func_Socket1",1,2341,2342,40,61,400,985,1; break;
+						case 6:  callfunc "Func_Socket1",1,2316,2317,40,61,400,985,1; break;
+						case 7:  callfunc "Func_Socket1",1,2335,2336,40,61,400,985,1; break;
+						case 8:  callfunc "Func_Socket1",1,2411,2412,40,61,400,985,1; break;
+						case 9:  callfunc "Func_Socket1",1,5092,5093,40,61,400,985,1; break;
+						case 10: callfunc "Func_Socket1",1,2505,2506,40,61,400,985,1; break;
+						case 11: callfunc "Func_Socket1",1,2228,2229,40,61,400,985,1; break;
+						case 12: callfunc "Func_Socket1",1,2337,2359,40,61,400,985,1; break;
+						case 13: callfunc "Func_Socket1",1,2299,5157,40,61,400,985,1; break;
+						case 14: callfunc "Func_Socket1",1,2507,2525,40,61,400,985,1; break;
+						case 15: callfunc "Func_Socket1",1,2251,5158,40,61,400,985,1; break;
+						case 16: callfunc "Func_Socket1",1,2246,5159,40,61,400,985,1; break;
+						case 17: callfunc "Func_Socket1",1,2605,2625,40,61,400,985,1; break;
+						case 18: callfunc "Func_Socket1",1,2264,5167,40,61,300,985,1; break;
+						case 19: callfunc "Func_Socket1",1,2287,5350,40,61,500,985,1; break;
+						case 20: callfunc "Func_Socket1",1,2425,2434,40,61,500,985,1; break;
+					}
+				break;
+				
+				case 4:
+					mes "[Seiyablem]";
+					mes "อืม...ระดับ S";
+					mes "คุณแน่ใจแล้วหรือที่จะเลือกความเสี่ยงในระดับนี้";
+					mes "เอาเถอะนะ ฉันจะพยามทำมันให้ดีที่สุด เลือกชุดเกราะที่คุณต้องการมา 1 ชิ้น";
+					next;
+					switch( select( "Majestic Goat","Spiky Band","Bone Helm","Corsair","Crown","Tiara","Sphinx Hat","Robe of Cast","Earring","Ring","Bow Thimble","Mage Coat","Holy Robe","Sacred Mission","Undershirt","Pantie" ) )
+					{
+						case 1:  callfunc "Func_Socket1",1,2256,5160,40,51,2000,985,2; break;
+						case 2:  callfunc "Func_Socket1",1,2258,5161,40,51,2000,985,2; break;
+						case 3:  callfunc "Func_Socket1",1,5017,5162,40,51,2000,985,2; break;
+						case 4:  callfunc "Func_Socket1",1,5019,5163,40,51,2000,985,2; break;
+						case 5:  callfunc "Func_Socket1",1,2235,5165,40,51,2000,985,2; break;
+						case 6:  callfunc "Func_Socket1",1,2234,5164,40,51,2000,985,2; break;
+						case 7:  callfunc "Func_Socket1",1,5053,5166,40,51,1000,985,2; break;
+						case 8:  callfunc "Func_Socket1",1,2343,2360,40,51,1000,985,2; break;
+						case 9:  callfunc "Func_Socket1",1,2602,2622,40,51,1000,985,2; break;
+						case 10: callfunc "Func_Socket1",1,2601,2621,40,51,1000,985,2; break;
+						case 11: callfunc "Func_Socket1",1,2619,2671,40,51,1000,985,2; break;
+						case 12: callfunc "Func_Socket1",1,2334,2372,40,51,1000,985,1; break;
+						case 13: callfunc "Func_Socket1",1,2327,2373,40,51,1000,985,1; break;
+						case 14: callfunc "Func_Socket1",1,2111,2128,40,51,1000,985,1; break;
+						case 15: callfunc "Func_Socket1",1,2522,2523,40,51,1000,985,1; break;
+						case 16: callfunc "Func_Socket1",1,2339,2371,40,51,1000,985,1; break;
+					}
+				break;
+			}
+		break;
+		
+		case 3:
+			mes "[Seiyablem]";
+			mes "เยี่ยม.อันที่จริงฉันไม่ค่อยมีศิลปะ ในการเพิ่ม Slot สักเท่าไหร่";
+			mes "มันเป็นกระบวนการที่ซับซ้อน และส่งผลกระทบมากมาย.";
+			mes "ฉันจะบอกอะไรให้นะ";
+			next;
+			mes "[Seiyablem]";
+			mes "ในบางเมือง, มันจะมีความสำเร็จตามระดับของอุปกรณ์ ที่มีความยากง่ายในการหา.";
+			mes "ในเมืองอื่นๆ มักจะทำตรงข้ามกับความเป็นจริง.";
+			mes "มันไม่ได้มีความพิเศษอะไรเลย ไอการเพิ่ม Slot เนี่ย";
+			next;
+			mes "[Seiyablem]";
+			mes "โอ้ว..เกือบลืม ยังมีสิ่งสำคัญอีกสิ่งทีคุณควรจะรู้.";
+			mes "ถ้าคุณให้ฉันเพิ่ม Slot ในอุปกรณ์บางอย่าง, คุณต้องเช๊คให้แน่ใจว่าคุณไม่ได้สวมใส่มันอยู่.";
+			next;
+			mes "[Seiyablem]";
+			mes "นี่คือตัวอย่าง:ถ้าคุณมี +7 Manteau และ Manteau ที่แสนจะธรรมดา อยู่ในช่องสวมใส่ของคุณ, ฉันจะสุ่มเลือกใน 2 ชิ้นนี้มาทำการเพิ่ม Slot.";
+			mes "ฉะนั้น จำไว้ ระวังให้ดี ถ้าฉันสุ่มเอา +7 ของคุณมา อย่ามาโทษฉันละกัน เพราะฉันเตือนแล้ว.";
+			next;
+			mes "[Seiyablem]";
+			mes "อีกรอบนะ, ^FF0000โปรดระวังอุปกรณ์ที่คุณต้องการให้เพิ่ม Slot ดูให้แน่ใจว่า ถอดแล้วหรือยัง^000000.";
+			mes "อุปกรณ์ที่มีชื่อเดียวกันกับสิ่งที่คุณจะเพิ่ม Slot ควรเก็บของเหล่านั้นไว้ในช่องเก็บของใน Kafra, เก็บมันซะ";
+			close;
+			
+		case 4:
+			mes "[Seiyablem]";
+			mes "มันใช้ไม่ยากหรอกนะ.";
+			mes "ถ้าเมื่อไหร่ที่คุณต้องการที่จะให้ฉันเพิ่ม Slot ให้ละก็, ก็กลับมาหาฉันนี่...เข้าใจไหม?.";
+			mes "บ๊าบ บาย.....";
+			close;
+	}
+
+}
+				
+function	script	Func_Socket1	{
+
+	mes "[Seiyablem]";
+	mes "คุณต้องการให้ฉันเพิ่ม Slot ใน " +getitemname(getarg(1))+ "?";
+	if (getarg(0) == 1)
+	{
+		if(getarg(5) > 999) mes "โปรดนำ สิ่งที่ฉันต้องการเหล่านี้ ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "s^000000,  มาให้ฉัน และเงินอีกจำนวน^FF0000 " +getarg(5) / 1000+",000,000 zeny^000000 ในการใช้บริการ.";
+		else mes "โปรดนำ สิ่งที่ฉันต้องการเหล่านี้ ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "s^000000, มาให้ฉัน และเงินอีกจำนวน^FF0000 " +getarg(5)+",000 zeny^000000 ในการใช้บริการ.";
+	}
+	else if (getarg(0) == 2)
+	{
+		if(getarg(5) > 999) mes "โปรดนำ สิ่งที่ฉันต้องการเหล่านี้ ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ " " +getitemname(getarg(8))+ "^000000 มาให้ฉัน และเงินอีกจำนวน^FF0000 " +getarg(5) / 1000+",000,000 zeny^000000 ในการขอรับบริการ.";
+		else mes "โปรดนำ สิ่งที่ฉันต้องการเหล่านี้ ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ " " +getitemname(getarg(8))+ "^000000 มาให้ฉัน และเงินอีกจำนวน^FF0000 " +getarg(5)+",000 zeny^000000 ในการขอรับบริการ.";
+	}
+	mes "อ่า..และโปรดอย่าลืม " +getitemname(getarg(1))+ "!";
+	next;
+
+	if(@sockettype == 1)
+	{
+		mes "[Seiyablem]";
+		mes "ฉันจะพยายามเพิ่ม Slot ให้ หากคุณจำเป็น แต่คุณต้องมี Item ชิ้นนั้นมาและเงินอีกจำนวนหนึ่ง.";
+		mes "อย่างไรก็ตาม, คุณควรจะรู้ไว้ว่าหากคุณไม่นำสิ่งที่ฉันต้องการมา ฉันก็จะไม่ทำการอัพเกรดอุปกรณ์ให้คุณ.";
+		mes "ดังนั้น, ฉันจึงอยากจะเตือนคุณด้วยความยุธติธรรม";
+		next;
+		mes "[Seiyablem]";
+		mes "หากการเพิ่ม Slot ในครั้งนี้ล้มเหลว, แล้ว ^FF0000อาวุธ^000000, ^FF0000และการ์ดทีใส่อยู่ข้างในจะถูกทำลายไปพร้อมกัน^000000.";
+		mes "คุณยังต้องการที่จะพยายามเพิ่ม Slot หรือไม่";
+		next;
+	}
+	else if(@sockettype == 2)
+	{
+		mes "[Seiyablem]";
+		mes "ถ้าคุณมีวัสดุที่ฉันต้องการ, และเงินในค่าแรงของฉัน และชุดเกราะ, ผมก็พร้อมที่จะเพิ่ม Slot ให้กับคุณ.";
+		mes "แต่ก่อนที่, ฉันต้องขอเตือนคุณก่อนเรื่องของความเสี่ยงในการเพิ่ม Slot.";
+		next;
+		mes "[Seiyablem]";
+		mes "ถ้าหากการเพิ่ม Slot ครั้งนี้ล้มเหลว, แล้ว ^FF0000ชุดเกราะ^000000, ^FF0000ที่มันอัพเกรดมา^000000 ^FF0000และการ์ดที่ใส่อยู่ จะถูกทำลายไปพร้อมกัน^000000.";
+		mes "คุณยังต้องการที่จะพยายามเพิ่ม Slot หรือไม่";
+		next;
+	}
+
+	if ( select("ฉันพร้อมที่จะเพิ่ม Slot แล้ว","Cancel") == 2 )
+	{
+		mes "[Seiyablem]";
+		mes "บางทีคุณอาจจะต้องการเวลาในการคิดใช่ไหมละ, หืม?";
+		mes "เอาเถอะ..ฉันเข้าใจ.";
+		mes "มันอาจะดูเหมือนสนุกแต่มันไม่ปลอดภัยใช่ไหมละ";
+		close;
+	}
+
+	switch(getarg(0))
+	{
+		case 1:		
+			if((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (!countitem(getarg(1))))
+			{
+				mes "[Seiyablem]";
+				mes "ฉันต้องการสมาธิในการเพิ่ม Slot, แต่คุณไม่ควรพลาดสิ่งต่างๆ.";
+				mes "คุณต้องแน่ใจว่าคุณมี Item ที่จะให้เพิม, มีแร่และวัสดุครบ สุดท้ายก็ค่าแรงของฉันครบ";
+				close;
+			}
+			break;
+	
+		case 2:
+			if((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (countitem(getarg(8)) < getarg(9)) || (!countitem(getarg(1))))
+			{
+				mes "[Seiyablem]";
+				mes "ฉันต้องการสมาธิในการเพิ่ม Slot, แต่คุณไม่ควรพลาดสิ่งต่างๆ.";
+				mes "คุณต้องแน่ใจว่าคุณมี Item ที่จะให้เพิม, มีแร่และวัสดุครบ สุดท้ายก็ค่าแรงของฉันครบ";
+				close;
+			}
+			break;
+	}
+	
+	mes "[Seiyablem]";
+	mes "เอาเถอะ!เรามาเริ่มกันดีกว่า";
+	mes "คุณภาวนาให้มันสำเร็จเถอะนะ.";
+	next;
+	set .@socketrand,rand(1,100);
+	if((.@socketrand > getarg(3)) && (.@socketrand < getarg(4)))
+	{
+		if(getarg(4) == 51) specialeffect 90;
+		else specialeffect 83;
+		mes "[Seiyablem]";
+		mes "เยี่ยม, มันสำเร็จและผ่านไปด้วยดี";
+		mes "ยินดีด้วยกับความสำเร็จครั้งนี้ ! ";
+		delitem getarg(1),1;
+		delitem getarg(6),getarg(7);
+		if(getarg(0) == 2) delitem getarg(8),getarg(9);
+		set Zeny,Zeny - getarg(5)*1000;
+		getitem getarg(2),1;
+		next;
+		mes "[Seiyablem]";
+		mes "แล้วพบกันใหม่ ไอเพื่อนซี้";
+		close;
+	}
+	else
+	{
+		specialeffect 108;
+		mes "[Seiyablem]";
+		mes "หวาาาาาาาาา...ขอโทษที มันไม่สำเร็จ.";
+		mes "อย่างไรก็ตาม, ฉันจะทำตัวเป็นเหมือนไม่รู้ไม่เห็นอะไรเลยละกัน.";
+		mes "นี่คือโชคชะตาของคุณ, และเป็นสิ่งที่พระเจ้ากำหนดมาแล้ว, เข้าใจไหม?";
+		mes "ครั้งหน้าเรามาพยายามกันใหม่นะ.";
+		delitem getarg(1),1;
+		delitem getarg(6),getarg(7);
+		if(getarg(0) == 2) delitem getarg(8),getarg(9);
+		set Zeny,Zeny - getarg(5)*1000;
+		next;
+		mes "[Seiyablem]";
+		mes "ฉันหวังว่า รอบหน้า คุณจะโชคดีนะ";
+		close;
+	}
+}
+
+morocc,123,84,5	duplicate(addslot)	เจาะ Slot ไอเท็ม	712

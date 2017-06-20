@@ -1,0 +1,247 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	jobmaster	-1,{
+
+mes "กรุณาเลือกอาชีพที่คุณต้องการเปลี่ยน";
+next;
+menu "เปลี่ยน Class Novice",classnovice,"เปลี่ยน Class 1",class1,"เปลี่ยน Class 2",class2,"เปลี่ยน Hi-Class",hicass,"เปลี่ยน Class Baby",classbaby,"เปลี่ยน Class New",classnew;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+classnovice:
+if(class !=0) goto cancelwa;
+menu "Super Novice",sn,"Hi Novice",hn,"Novice",novice;
+
+sn: jobchange 23;
+goto spn;
+hn: jobchange 4001;
+goto allskill;
+novice: jobchange 0;
+goto allskill;
+close;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class1:
+if(class !=0) goto cancelwa;
+menu "Class 1",cs1,"Hi-Class 1",hc1;
+next;
+
+cs1:
+menu "Swordman",sm1,"Mage",mg1,"Thief",tf1,"Merchant",mc1,"Acolyte",ay1,"Archer",ac1;
+sm1:
+ jobchange 1;
+goto chiew;
+mg1: jobchange 2;
+goto chiew;
+tf1: jobchange 6;
+goto chiew;
+mc1: jobchange 5;
+goto chiew;
+ay1: jobchange 4;
+goto chiew;
+ac1: jobchange 3;
+goto chiew;
+
+hc1:
+menu "Hi Swordman",hsm1,"Hi Mage",hmg1,"Hi Thief",htf1,"Hi Merchant",hmc1,"Hi Acolyte",hay1,"Hi Archer",hac1;
+hsm1: jobchange 4002;
+goto chiew;
+hmg1: jobchange 4003;
+goto chiew;
+htf1: jobchange 4007;
+goto chiew;
+hmc1: jobchange 4006;
+goto chiew;
+hay1: jobchange 4005;
+goto chiew;
+hac1: jobchange 4004;
+goto chiew;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class2:
+if(class !=0) goto cancelwa;
+menu "Knight",kg01,"Crusader",csd01,"Wizard",wz01,"Sage",sg01,"Hunter",ht01,"Bard",bd01,"Dancer",dc01,"Priest",pri01,"Monk",mk01,"Backsmith",bsm01,"Alchemist",acm01,"Rogue",rg01;
+
+kg01: jobchange 13;
+goto chiew;
+csd01: jobchange 14;
+goto chiew;
+wz01: jobchange 9;
+goto chiew;
+sg01: jobchange 16;
+goto chiew;
+ht01: jobchange 11;
+goto chiew;
+bd01: jobchange 19;
+goto chiew;
+dc01: jobchange 20;
+goto chiew;
+pri01: jobchange 8;
+goto chiew;
+mk01: jobchange 15;
+goto chiew;
+bsm01: jobchange 10;
+goto chiew;
+acm01: jobchange 18;
+goto chiew;
+rg01: jobchange 17;
+goto chiew;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+hicass:
+if(class !=0) goto cancelwa;
+menu "Lord Knight",lord,"Sniper",sni,"Paladin",pala,"High Priest",highp,"Assassin Cross",ac,"Champion",cp,"High Wizard",hw,"Stalker",sk,"Scholar",sl,"Master Smith",ms,"Biochermist",bc,"Minstrel",mt,"Gypsy",gp;
+
+lord: jobchange 4008;
+goto chiew;
+sni: jobchange 4012;
+goto chiew;
+pala: jobchange 4015;
+goto chiew;
+highp: jobchange 4009;
+goto chiew;
+ac: jobchange 4013;
+goto chiew;
+cp: jobchange 4016;
+goto chiew;
+hw: jobchange 4010;
+goto chiew;
+sk: jobchange 4018;
+goto chiew;
+sl: jobchange 4017;
+goto chiew;
+ms: jobchange 4011;
+goto chiew;
+bc: jobchange 4019;
+goto chiew;
+mt: jobchange 4020;
+goto chiew;
+gp: jobchange 4021;
+goto chiew;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+classbaby:
+if(class !=0) goto cancelwa;
+menu "Baby Novice Class",bnc1,"Baby Class 1",bc11,"Baby Class 2",bc22;
+
+bnc1:
+menu "Baby Novice",bbn01,"Baby SuperNovice",bbsn01;
+
+bbn01: jobchange 4023;
+goto chiew;
+bbsn01: jobchange 4045;
+goto chiew;
+
+bc11:
+menu "Baby Swordman",bbsm1,"Baby Mage",bbmg1,"Baby Thief",bbt1,"Baby Merchant",bbm1,"Baby Acolyte",bba1,"Baby Archer",bba001;
+
+bbsm1: jobchange 4024;
+goto chiew;
+bbmg1: jobchange 4025;
+goto chiew;
+bbt1: jobchange 4029;
+goto chiew;
+bbm1: jobchange 4028;
+goto chiew;
+bba1: jobchange 4027;
+goto chiew;
+bba001: jobchange 4026;
+goto chiew;
+
+bc22:
+menu "Baby Knight",bbk2,"Baby Crusader",bbc2,"Baby Wizard",bbw2,"Baby Sage",bbs2,"Baby Hunter",bbh2,"Baby Bard",bbb2,"Baby Dancer",bbd2,"Baby Priest",bbp2,"Baby Monk",bbm,"Baby Blacksmith",bbbs2,"Baby Alchemist",bba2,"Baby Assassin",bbaa2,"Baby Rogue",bbr2;
+
+bbk2: jobchange 4036;
+goto chiew;
+bbc2: jobchange 4037;
+goto chiew;
+bbw2: jobchange 4032;
+goto chiew;
+bbs2: jobchange 4039;
+goto chiew;
+bbh2: jobchange 4034;
+goto chiew;
+bbb2: jobchange 4042;
+goto chiew;
+bbd2: jobchange 4043;
+goto chiew;
+bbp2: jobchange 4031;
+goto chiew;
+bbm: jobchange 4038;
+goto chiew;
+bbbs2: jobchange 4033;
+goto chiew;
+bba2: jobchange 4041;
+goto chiew;
+bbaa2: jobchange 4035;
+goto chiew;
+bbr2: jobchange 4040;
+goto chiew;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+classnew:
+if(class !=0) goto cancelwa;
+menu "Taekwon",tk2,"Star Gladiator",stg2,"Soul Linker",slk2,"Gunslinger",gsg2,"Ninja",nja2;
+
+tk2: jobchange 4046;
+goto chiew;
+stg2: jobchange 4047;
+goto chiew;
+slk2: jobchange 4049;
+goto chiew;
+gsg2: jobchange 24;
+goto chiew;
+nja2: jobchange 25;
+goto chiew;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+cancel:
+close;
+
+chiew:
+atcommand strcharinfo(0)+"@lvup 99";
+atcommand strcharinfo(0)+"@joblvup 70";
+atcommand strcharinfo(0)+"@allskill";
+
+resetstatus;
+close;
+
+allskill:
+atcommand strcharinfo(0)+"@lvup 99";
+atcommand strcharinfo(0)+"@joblvup 70";
+atcommand strcharinfo(0)+"@allskill";
+
+resetstatus;
+close;
+
+spn:
+atcommand strcharinfo(0)+"@lvup 99";
+atcommand strcharinfo(0)+"@joblvup 69";
+atcommand strcharinfo(0)+"@allskill";
+
+resetstatus;
+close;
+
+cancelwa:
+mes "เปลี่ยนไปแล้วไอ้สาด";
+close;
+
+OnInit:
+waitingroom "   เปลี่ยนอาชีพ",0; 
+end;
+}

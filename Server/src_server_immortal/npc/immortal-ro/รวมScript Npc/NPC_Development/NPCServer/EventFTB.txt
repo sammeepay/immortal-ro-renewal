@@ -1,0 +1,183 @@
+//===================================================================
+// NPC : Find the best
+// Design By : Unknow Credit
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,139,140,4	script	Find the best	1663,{
+set @countman,5; // ปรับจำนวนคนเข้ารวม
+set #check,0;
+mes "[ ^00CC00~• Manager •~^000000 ]";
+mes"Find the best PvP";
+mes"เป็นสุดยอดการประลอง";
+mes"เพื่อที่จะหาผู้ชนะเพียงผู้เดียว";
+mes"ผู้ที่ชนะจะได้รับรางวัล";
+mes"ได้แก่ Skull 500 ea.";
+mes"_________________________________";
+mes"ท่านต้องการเข้าร่วมลงทะเบียนไหมล่ะ";
+next;
+menu 
+"- ลงทะเบียนเข้าร่วมการประลอง",ok,
+"Exit",cancel;
+
+
+
+ok:
+if ( $@startman == 1 ) goto playing;
+mes "[ ^00CC00~• Manager •~^000000 ]";
+set regisman,1;
+mes"เอาล่ะลงทะเบียนเรียบร้อย";
+mes"งั้นเราไปกันเลย";
+next;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Find the best PvP ” แล้วค่ะ ผู้ใดที่มีความประสงค์จะเข้าร่วมกิจกรรม รีบสมัครด่วน เพราะจำกัดจำนวนแค่ 5 คนเท่านั้น",0,0x99FF99;
+percentheal 100,100;
+warp "job_hunte.gat",175,25;
+specialeffect2(587);
+close;
+
+
+
+cancel:
+mes "[ ^00CC00~• Manager •~^000000 ]";
+mes"แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "Find The Best",0;
+end;
+}
+
+
+
+job_hunte.gat,175,30,4	script	Manager	109,{
+if ( $@startman == 1 ) goto start;
+set @playerman, getmapusers("job_hunte.gat");
+if ( @playerman < @countman ) goto little;
+mes "[ ^00CC00~• Manager •~^000000 ]";
+mes "ตอนนี้ผู้เล่นครบแล้ว ท่านต้องการเปิดระบบหรือไม่";
+next;
+menu 
+"- เปิดระบบเดี๋ยวนี้",open,
+"Exit",cancel;
+
+
+
+open:
+disablenpc "fight";
+set $@startman,1;
+set $@wincountman, getmapusers("job_hunte.gat");
+announce " ผู้เล่น [ " + strcharinfo(0) + " ] ได้เปิดการแข่งขัน Find the best PvP แล้วค่ะ หลังจากนี้ จะไม่มีผู้เล่นใดเข้ามาเพิ่มเติมได้อีก.",8;
+addtimer 150000,"event::on";
+mes "[ ^00CC00~• Manager •~^000000 ]";
+mes "ระบบได้ถูกเปิดแล้ว";
+mes "จะไม่มีผู้เล่นใดเข้ามาเพิ่มเติมได้อีก";
+mes "สำหรับท่านที่เป็นผู้เปิดระบบ";
+mes "เราจะส่งท่านเข้าไปในห้องคนแรก";
+next;
+set $@checkman, $@checkman + 1;
+set regisman,0;
+warp "pvp_n_1-5.gat",0,0;
+specialeffect2(587);
+close;
+
+
+
+start:
+mes "[ ^00CC00~• Manager •~^000000 ]";
+mes "การแข่งขันได้เริ่มต้นขึ้นแล้ว";
+mes "ท่านพร้อมที่จะเข้าร่วมเลยหรือไม่";
+next;
+menu 
+"- พร้อม",sure,
+"- ไม่พร้อม",cancel,
+"Exit",cancel;
+
+
+
+sure:
+if ( $@checkman == $@wincountman ) goto late;
+set $@checkman, $@checkman + 1;
+set regisman,0;
+warp "pvp_n_1-5.gat",0,0;
+specialeffect2(587);
+close;
+
+
+
+late:
+mes "[ ^00CC00~• Manager •~^000000 ]";
+mes "เสียใจด้วย ท่านมาช้าเกินไป";
+mes "ผู้เข้าแข่งขันเต็มแล้ว กรุณารอรอบหน้า";
+next;
+warp "rachel.gat",130,110;
+close;
+
+
+
+little:
+mes "[ ^00CC00~• Manager •~^000000 ]";
+mes "ที่นี่คือห้องเตรียมตัว ท่านต้องรอ";
+mes "จนกว่ามีผู้เล่นมากกว่า [ "  + @countman +  " ] คน";
+mes "จึงสามารถเปิดให้เข้าแข่งขันกันได้";
+mes "ขณะนี้ผู้เล่นยังไม่ครบ";
+mes "ตามจำนวนที่จำนวนที่กำหนด";
+mes "มีผู้เล่นเพียง [ " + @playerman + " ] คน";
+mes "กรุณารอให้ครบก่อน จึงเปิดการแข่งขัน";
+close;
+
+
+
+cancel:
+mes "[ ^00CC00~• Manager •~^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "Open Competition",0;
+end;
+}
+
+
+
+-	script	event	-1,{
+on:
+enablenpc "fight";
+end;
+}
+
+
+
+pvp_n_1-5.gat,99,100,4	script	Warden::fight	768,{
+if (getmapusers("pvp_n_1-5.gat") == 1 ) goto winner;
+mes "[ ^00CC00~• Warden •~^000000 ]";
+mes "ผู้เล่นที่เลือกคนสุดท้ายเท่านั้น";
+mes "ที่จะสามารถรับรางวัลได้";
+mes "และตอนนี้มีผู้เล่นอยู่เหลือ [ " + getmapusers("pvp_n_1-5.gat") + " ] คน";
+close;
+
+
+
+winner:
+mes "[ ^00CC00~• Warden •~^000000 ]";
+mes "ขอแสดงความยินดีด้วย";
+mes "ท่านคือผู้เล่นคนสุดท้ายที่เหลืออยู่";
+mes "ท่านจะได้รับของรางวัล";
+mes "ได้แก่ Skull 500 ea.";
+next;
+mes "[ ^00CC00~• Warden •~^000000 ]";
+mes "ทางเราจะส่งท่านกลับสู่จุด Save";
+mes "พร้อมของรางวัลของท่าน";
+next;
+announce "Manager : ผู้เล่น [ " + strcharinfo(0) + " ] ได้ชนะการแข่งขัน Find the best PvP ได้รับ Skull 500 ea.",0,0x00FFFF;
+getitem 7420,300;
+set $@wincountman,0;
+set $@checkman,0;
+set $@startman,0;
+warp "rachel.gat",130,110;
+close;
+}

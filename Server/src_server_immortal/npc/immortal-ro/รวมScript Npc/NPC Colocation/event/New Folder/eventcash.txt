@@ -1,0 +1,57 @@
+//morocc2,154,136,6	script	Event Diamond	984,{
+mes "[Event Diamond]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "Diamond แลก Cash ได้นะครับ";
+next;
+menu "^009933•^000000 แลก Cash",okskull,"^FF0000•^000000 ยกเลิก",Cancel;
+
+okskull:
+mes "[Event Diamond]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "ท่านจะแลกจำนวนเท่าไหร่ครับ";
+menu "^009933•^000000 10 Cash",okskull1,"^009933•^000000 30 Cash",okskull2,"^009933•^000000 50 Cash",okskull3,"^FF0000•^000000 ยกเลิก",Cancel;
+
+okskull1:
+if (countitem(6051) < 30) goto Ino1;
+delitem 6051,30;
+getitem 20050,10;
+goto ok;
+
+okskull2:
+if (countitem(6051) < 90) goto Ino2;
+delitem 6051,90;
+getitem 20050,30;
+goto ok;
+
+okskull3:
+if (countitem(6051) < 150) goto Ino3;
+delitem 6051,150;
+getitem 20050,50;
+goto ok;
+
+Ino1:
+mes "ต้องมี ^FF0000Diamond 30 ea^000000 ครับ";
+close;
+
+Ino2:
+mes "ต้องมี ^FF0000Diamond 90 ea^000000 ครับ";
+close;
+
+Ino3:
+mes "ต้องมี ^FF0000Diamond 150 ea^000000 ครับ";
+close;
+
+ok:
+mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+close;
+
+Cancel:
+mes "[Event Diamond]";
+mes "ยินดีให้บริการครับ";
+close;
+
+OnInit:
+	waitingroom " ๐ Event Diamond ๐ ", 0;
+	end;
+
+}

@@ -1,0 +1,18 @@
+-	script	vending_conf_npc	-1,{
+set .@item_id, 7227;
+set .@name$, "[ ^FF0000Vending Manager^000000 ]";
+mes .@name$;
+mes "สวัสดีค่ะ ~";
+mes "นี่คือระบบจัดการการตั้งร้าน";
+mes "กรุณาเลือกประเภท";
+mes "การตั้งร้านที่ต้องการ";
+next;
+set VENDING_MODE,select("ใช้ ^FF0000Zeny^000000 เป็นเงื่อนไขการซื้อ","ใช้ ^0000FF" + getitemname(.@item_id) + "^000000 เป็นเงื่อนไขการซื้อ");
+set VENDING_ITEM_REQ, (VENDING_MODE?.@item_id:0);
+set VENDING_SAVED_MODE, VENDING_MODE;
+unitskilluseid getcharid(3),"MC_VENDING",getskilllv("MC_VENDING");
+close2;
+sleep2 100;
+set VENDING_MODE, 0;
+end;
+}

@@ -1,0 +1,39 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+yuno,278,112,3	script	WarpGuild#54	45,1,1,{	// วาปหน้าบ้าน ปล.ให้ปิดวาปเก่าทิ้งก่อน
+if (getgdskilllv(getcharid(2),10004) > 4) { dispbottom "กิลด์ของคุณไม่สามารถเข้าได้ เนื่องจากเกิน 22 คน"; end; }
+query_sql "SELECT `guild_vs` FROM `guild_vs_guild`  WHERE `guild_id` = 9",.@guild1;
+query_sql "SELECT `guild_vs` FROM `guild_vs_guild`  WHERE `guild_id` = 10",.@guild2;
+set @GID,getcharid(2);
+if(@GID==0) goto NoGuild;
+if(.@guild1==getcharid(2) || .@guild2==getcharid(2)) goto GuildMaster;
+mes "^0000FFGuild VS Guild^000000";
+mes "^0000FFท่านไม่ใช่กิลด์ที่ลงทะเบียนกับ GM^000000";
+close;
+
+GuildMaster:
+warp "guildvs05",252,271;	// เมื่อเข้าวาปหน้าบ้านแล้วจะมาที่นี่
+end;
+
+NoGuild:
+mes "กิลด์ของท่านยังไม่ได้ลงทะเบียน";
+mes "^0000FFGuild VS Guild^000000";
+close;
+end;
+}
+
+guildvs05,259,212,0	warp	guildvs05-1	1,1,guildvs05,72,240
+guildvs05,75,240,0	warp	guildvs05-2	1,5,guildvs05,256,212
+guildvs05,232,189,0	warp	guildvs05-3	1,1,guildvs05,74,261
+guildvs05,78,261,0	warp	guildvs05-4	1,1,guildvs05,236,189
+guildvs05,229,208,0	warp	guildvs05-5	1,1,guildvs05,70,282
+guildvs05,74,282,0	warp	guildvs05-6	1,1,guildvs05,225,208
+guildvs05,7,261,0	warp	guildvs05-7	1,1,guildvs05,55,30
+guildvs05,59,30,0	warp	guildvs05-8	1,1,guildvs05,11,261
+guildvs05,28,31,0	warp	guildvs05-9	1,1,guildvs05,251,42
+guildvs05,254,45,0	warp	guildvs05-10	1,1,guildvs05,24,31
+//----- พิกัดเมือเดินออกจากบ้าน
+guildvs05,252,275,0	warp	pay10-5	1,1,yuno,278,105

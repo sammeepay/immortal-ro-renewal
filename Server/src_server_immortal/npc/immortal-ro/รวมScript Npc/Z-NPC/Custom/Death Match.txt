@@ -1,0 +1,57 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	Death Match	-1,{
+OnInIt:
+	set .time, 10;
+	setarray .map$, 
+		"pvp_y_1-2",
+		"leagepvp01",
+		"pvp_n_2-5",
+		"pvp_n_4-5",
+		"pvp_n_3-3";
+	end;
+	
+OnPCDieEvent:
+	getmapxy( .@map$, .@x, .@y, 0 );
+	for ( set .@i, 0; .@i < getarraysize(.map$); set .@i, .@i+1 ) {
+		if ( .@map$ == .map$[.@i] ) {
+			sleep2 1000;
+			atcommand "@alive";
+			atcommand "@repairall";
+			percentheal 100,100;//Heal 1
+			sc_end SC_Poison;
+			sc_end SC_Freeze;
+			sc_end SC_Sleep;
+			sc_end SC_Stan;
+			sc_end SC_Stone;
+			sc_end SC_Silence;
+			sc_end SC_Blind;
+			sc_end SC_Bleeding;
+			sc_end SC_Confusion;
+			sc_end SC_Curse;
+			sc_end SC_Hallucination;
+			sc_start SC_STRFood, 1200000, 5;
+			sc_start SC_AGIFood, 1200000, 5;
+			sc_start SC_VITFood, 1200000, 5;
+			sc_start SC_INTFood, 1200000, 5;
+			sc_start SC_DEXFood, 1200000, 5;
+			sc_start SC_LUKFood, 1200000, 5;
+			sc_start SC_BLESSING,1200000,10;
+			sc_start SC_INCREASEAGI,1200000,10;
+			percentheal 100,100;
+			warp .map$[.@i], 0, 0;
+			break;
+		}
+	}
+	close;
+}
+
+
+-	script	message	-1,{
+OnPCDieEvent:
+message strcharinfo(0),"ตูตายอีกแล้ว!!";
+emotion e_omg,2;
+}

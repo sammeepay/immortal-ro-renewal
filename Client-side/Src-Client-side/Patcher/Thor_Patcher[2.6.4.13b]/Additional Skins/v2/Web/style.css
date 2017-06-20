@@ -1,0 +1,113 @@
+<style type="text/css">{  }
+	/* link */
+A:link {text-decoration:none; color:#333333}
+A:visited {text-decoration:none; color:#333333}
+A:active {text-decoration:none}
+A:hover {text-decoration:none; color:#666666}
+
+A:link.quick {text-decoration:none; color:#003300}
+A:visited.quick {text-decoration:none; color:#003300}
+A:active.quick {text-decoration:none}
+A:hover.quick {text-decoration:none; color:#FF7D00}
+
+A:link.notice {text-decoration:none; color:#003300}
+A:visited.notice {text-decoration:none; color:#003300}
+A:active.notice {text-decoration:none color:#003300}
+A:hover.notice {text-decoration:none; color:#003399}
+
+A:link.news {text-decoration:none; color:#003300}
+A:visited.news {text-decoration:none; color:#003300}
+A:active.news {text-decoration:none color:#003300}
+A:hover.news {text-decoration:none; color:#666600}
+
+A:link.community {text-decoration:none; color:#666666}
+A:visited.community {text-decoration:none; color:#666666}
+A:active.community {text-decoration:none color:#666666}
+A:hover.community {text-decoration:none; color:#660066}
+
+A:link.community_notice {text-decoration:none; color:#FB2EFB}
+A:visited.community_notice {text-decoration:none; color:#FB2EFB}
+A:active.community_notice {text-decoration:none color:#FB2EFB}
+A:hover.community_notice{text-decoration:none; color:#FB2EFB}
+
+A:link.help {text-decoration:none; color:#666666}
+A:visited.help {text-decoration:none; color:#666666}
+A:active.help {text-decoration:none color:#666666}
+A:hover.help {text-decoration:none; color:#009999}
+
+A:link.help_notice {text-decoration:none; color:#009999}
+A:visited.help_notice {text-decoration:none; color:#009999}
+A:active.help_notice {text-decoration:none color:#009999}
+A:hover.help_notice{text-decoration:none; color:#009999}
+
+A:link.community1{text-decoration:none; color:#666666}
+A:visited.community1 {text-decoration:none; color:#666666}
+A:active.community1 {text-decoration:none color:#FA05F9}
+A:hover.community1{text-decoration:none; color:#660066}
+
+A:link.roshop {text-decoration:none; color:#666666}
+A:visited.roshop {text-decoration:none; color:#666666}
+A:active.roshop {text-decoration:none color:#666666}
+A:hover.roshop {text-decoration:none; color:#FF6699}
+
+A:link.roshop_1 {text-decoration:none; color:#FF6699}
+A:visited.roshop_1{text-decoration:none; color:#FF6699}
+A:active.roshop_1 {text-decoration:none color:#FF6699}
+A:hover.roshop_1 {text-decoration:none; color:#FF6699}
+
+A:link.mobile {text-decoration:none; color:#666666}
+A:visited.mobile {text-decoration:none; color:#666666}
+A:active.mobile {text-decoration:none color:#666666}
+A:hover.mobile {text-decoration:none; color:#999900}
+
+A:link.mobile_a{text-decoration:none; color:#000000}
+A:visited.mobile_a{text-decoration:none; color:#000000}
+A:active.mobile_a{text-decoration:none color:#000000}
+A:hover.mobile_a {text-decoration:none; color:#996633}
+
+
+A:link.location {text-decoration:none;}
+A:visited.location {text-decoration:none;}
+A:active.location{text-decoration:none}
+A:hover.location{text-decoration:underline;}
+
+
+A:link.event {text-decoration:none; color:#666666}
+A:visited.event {text-decoration:none; color:#666666}
+A:active.event {text-decoration:none color:#666666}
+A:hover.event {text-decoration:none; color:#3300CC}
+
+A:link.event_notice {text-decoration:none; color:#6600FF}
+A:visited.event_notice {text-decoration:none; color:#6600FF}
+A:active.event_notice {text-decoration:none color:#6600FF}
+A:hover.event_notice{text-decoration:none; color:#6600FF}
+
+A:link.ragnarok {text-decoration:none; color:#666666}
+A:visited.ragnarok {text-decoration:none; color:#666666}
+A:active.ragnarok {text-decoration:none color:#666666}
+A:hover.ragnarok {text-decoration:none; color:#009900}
+
+A:link.rbo {text-decoration:none; color:#666666}
+A:visited.rbo {text-decoration:none; color:#666666}
+A:active.rbo {text-decoration:none color:#666666}
+A:hover.rbo {text-decoration:none; color:#FF6600}
+
+
+A:link.animation{text-decoration:none; color:#666666}
+A:visited.animation {text-decoration:none; color:#666666}
+A:active.animation {text-decoration:none color:#666666}
+A:hover.animation {text-decoration:none; color:#86761B}
+
+
+            /* normal text */
+td {font-family: "µ¸À½", "Arial"; font-size: 9pt; line-height: 140%; color: #666666;TEXT-ALIGN: justify;}
+.quick {font-family: "±¼¸²"; font-size: 8pt; line-height: 140%; color: #333333;}
+.kor8 {font-family: "±¼¸²", "Arial"; font-size: 8pt; line-height: 140%; color: #666666;TEXT-ALIGN: justify;}
+
+
+.input { font-family: "µ¸À½", "Arial"; font-size: 9pt; BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #666666 1px solid; BORDER-LEFT: #666666 1px solid; BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; COLOR: #666666}
+.input_login {  font-family: "Verdana"; font-size: 8pt; BACKGROUND-COLOR: #FFFFCC; BORDER-BOTTOM: #666666 1px solid; BORDER-LEFT: #666666 1px solid; BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; COLOR: #666666}
+
+.ro_big {font-size: 18px;	line-height: 130%;	color: #666666;	}
+-->
+</STYLE>

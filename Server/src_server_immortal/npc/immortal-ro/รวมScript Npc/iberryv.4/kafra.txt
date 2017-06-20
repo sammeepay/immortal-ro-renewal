@@ -1,0 +1,2292 @@
+prontera,162,186,4	script	Kafra Support	933,{
+
+cutin "kh_ellisia",2;
+npctalk "หากต้องการเปลี่ยนสีชุด รวมแร่ ระบบออฟชั่น มาทางนี้เลย นะค๊า";
+emotion 22;
+mes "^FF0000Kafra Support^000000";
+mes "สวัสดีท่าน ^800000"+strcharinfo(0)+"^000000";
+mes "^0000FFขณะนี้วันที่ : "+ gettimestr("%d/%m/%y",19) +" เวลา : "+ gettimestr("%H:%M",19) +"^000000";
+mes "...ที่นี่เป็นลานสารพัด...";
+mes "^FF0000อ่านรายละเอียดด้านล่างนี่เลย^000000";
+next;
+menu
+"^FF0000•^000000 เปลี่ยนสีชุด ทรงผม สีผม",true1,
+"^FF0000•^000000 ระบบออฟชั่น",main,
+"^FF0000•^000000 บริการแลก TCG = Points",dpoints,
+"^FF0000•^000000 ช่วยเหลือผู้เล่น",psp7,
+"^FF0000•^000000 บริการ รวมแร่ Elu & Ori",er7,
+"^009933•^000000 ออก",Lend;
+
+
+er7:
+yes:
+mes "[ นักรวมแร่ ]";
+mes "^FF0080เจ้าต้องการรวมแร่อะไรละ^000000";
+mes "Rough Oridecon 5 ea = 1 Ori";
+mes "Rough Elunium 5 ea = 1 Elu";
+
+menu "Rough Oridecon",Food1,
+"Rough Elunium",Food2,
+
+next;
+
+Food1:
+mes "[ นักรวมแร่ ]";
+mes "เจ้าต้องการแลกอะไรบอกข้ามา !!";
+set @input, 0;
+	input @input;
+	next;
+	if(countitem(756)<@input*5) goto O_have;
+	if(@input < 1 ) goto yes;
+	if(@input > 30000 ) goto no;
+delitem 756,@input*5;
+getitem 984,@input;
+mes "[ Mixed Foods ]";
+mes "อ่ะเอาไปสิ ของที่เจ้าต้องการ";
+close;
+
+Food2:
+mes "[ นักรวมแร่ ]";
+mes "เจ้าต้องการแลกอะไรบอกข้ามา !!";
+set @input, 0;
+	input @input;
+	next;
+	if(countitem(757)<@input*5) goto O_have;
+	if(@input < 1 ) goto yes;
+	if(@input > 30000 ) goto no;
+delitem 757,@input*5;
+getitem 985,@input;
+mes "[ Mixed Foods ]";
+mes "อ่ะเอาไปสิ ของที่เจ้าต้องการ";
+close;
+
+
+
+O_have:
+mes "[ นักรวมแร่ ]";
+mes "เจ้ามีของไม่ครบ ไปหาใหม่ไป";
+close;
+
+NO:
+close;
+
+
+//=======================================================================================================\\
+
+psp7:
+mes "[ ^0000FFSupportPlayer^000000 ]";
+mes "สวัสดีท่าน ^800000"+strcharinfo(0)+"^000000";
+mes "^0000FFขณะนี้วันที่ : "+ gettimestr("%d/%m/%y",19) +" เวลา : "+ gettimestr("%H:%M",19) +"^000000";
+mes "...ที่นี่เป็นลานสารพัด...";
+mes "^FF0000อ่านรายละเอียดด้านล่างนี่เลย^000000";
+next;
+menu
+"^FF0000•^000000 วิธีการเติม True Money",true19,
+"^009933•^000000 ส่งตัวละครกลับจุดเซฟ",Lmoveto_save,
+"^009933•^000000 เปลี่ยนรหัสผ่าน",Lchange_pass,
+"^009933•^000000 Reset การแต่งกาย",Lreset_stylist,
+"^FF0000•^000000 เปลี่ยน E-Mail",L_EMAIL,
+//"^FF0000•^000000 ตรวจสอบ Status ตัวละคร",L_infocharecter,
+//"^FF0000•^000000 ตรวจสอบข้อมูลไอเท็ม",c3,
+//"^FF0000•^000000 ตรวจสอบสเตตัสผู้เล่น",c2,
+//"^FF0000•^000000 ตรวจสอบไอเท็มผู้เล่น",c4,
+//"^FF0000•^000000 ตรวจสอบช่องเก็บของผู้เล่น",c5,
+//"^FF0000•^000000 ตรวจสอบรถเข็นผู้เล่น",c6,
+"^FF0000•^000000 ตรวจสอบผู้เล่นออนไลน์",c7,
+"^FF0000•^000000 ตรวจสอบวันและเวลา",c8,
+"^FF0000•^000000 ข้อมูลลานสารพัด",Help,
+"^FF0000•^000000 อัตราการตีบวก",B4,
+//"^FF0000•^000000 โซนทำเควส",B5,
+//"^FF0000•^000000 โซนกิจกรรม",B1,
+//"^FF0000•^000000 โซนเกมส์",B2,
+"^FF0000•^000000 ออก",Lend;
+
+true19:
+mes "สวัสดี มีอะไรให้ช่วยมั๊ย ?";
+next;
+menu "^0033FFวิธีการเติม Cash^000000",q1,"^FFCC66เติมเท่าไร+แถมเท่าไร^000000",q2,"^FF6600ติดต่อ GM SERVER^000000",q3,"ไม่มีอะไร ใจมาก",qEnd;
+
+q1:
+mes "^FF3300[ True Money เท่านั้น ]^000000";
+mes "^660000เติมผ่านหน้า Pacht หรือ Web site^000000";
+mes "^0066CCTrue Money เติมเงิน ออนไลน์^000000";
+mes "^0000FFใส่ ID Game ให้ถูกต้อง^000000";
+mes "^FF66CCใส่ Pass ตัวให้ถูกต้อง^000000";
+mes "^6600CCใส่รหัสบัตร 14 ตัวให้ถูกต้อง^000000";
+mes "^66CC66หลังจากเติมเสร็จ 5 - 10 นาที^000000";
+mes "^66CC66แต้มจะเข้าตัวเองไม่ต้องออก เกมส์^000000";
+close;
+
+q2:
+mes "^FF6600เติม 50 ได้รับ^000000 ^FF0000 60 ^000000";
+mes "^FF6600เติม 90 ได้รับ^000000 ^FF0000 110 ^000000";
+mes "^FF6600เติม 150 ได้รับ^000000 ^FF0000 195 ^000000";
+mes "^FF6600เติม 300 ได้รับ^000000 ^FF0000 405 ^000000";
+mes "^FF6600เติม 500 ได้รับ^000000 ^FF0000 700 ^000000";
+mes "^FF6600เติม 1000 ได้รับ^000000 ^FF0000 1450 ^000000";
+close;
+
+q3:
+mes "^CC33FFgmiberry@hotmail.com^000000";
+mes "^CC33FFเบอร์โทรศัพท์จะเพิ่มทีหลัง^000000";
+qEnd:
+close;
+
+
+Help:
+mes "[ ^FF0000ลานสารพัด^000000 ] ";
+mes " ^FF0000ได้ถูกสร้างขึ้นโดย GM_iBerry^000000 ";
+mes " ^FF0000เพื่ออำนวยความสะดวกของผู้เล่น^000000 ";
+mes " ^FF0000หากพบปัญหาหรือข้อสงสัยอะไรต่างๆให้ติดต่อ GM โดยทันที^000000 ";
+mes " ";
+mes "[ ^FF0000ด้วยความหวังดี : GM_iBerry^000000 ] ";
+close;
+
+B1:
+next;
+mes "[ ^FF0000โซนกิจกรรม^000000 ] ";
+mes "^808080 [ยินดีต้อนรับ] : "+strcharinfo(0)+"^000000";
+mes "เป็นโซนกิจกรรมของเซิร์ฟเวอร์";
+mes "- ได้สร้างโซนนี้ขึ้นเพื่อ";
+mes "- ให้ผู้เล่นได้เข้าร่วมกิจกรรม";
+mes "- และเล่นกันอย่างสนุกสนาน";
+mes " ";
+mes "^FF0000 [ มีกิจกรรมทั้งหมด 9 กิจกรรม ] ^000000";
+mes "  ";
+mes "ขอบคุณที่ช่วยอ่านข้อมูลนี้";
+mes "สนุกสนานกันให้เต็มที่ ";
+goto nclose;
+
+B2:
+next;
+mes "[ ^FF0000โซนเกมส์^000000 ] ";
+mes "^808080 [ยินดีต้อนรับ] : "+strcharinfo(0)+"^000000";
+mes "- เป็นโซนเล่นเกมส์ของเซิร์ฟเวอร์";
+mes "- ได้สร้างโซนนี้ขึ้นเพื่อ";
+mes "- ให้ผู้เล่นได้เข้าเล่นเกมส์";
+mes "- และเล่นกันอย่างสนุกสนาน";
+mes " ";
+mes "^FF0000 [ มีเกมส์ทั้งหมด 5 เกมส์ ] ^000000";
+mes "  ";
+mes "ขอบคุณที่ช่วยอ่านข้อมูลนี้";
+mes "สนุกสนานกันให้เต็มที่ ";
+goto nclose;
+
+B4:
+next;
+mes "[ ^FF0000โซนตีบวก^000000 ] ";
+mes "^808080 [ยินดีต้อนรับ] : "+strcharinfo(0)+"^000000";
+mes "- เป็นโซนตีบวกของเซิร์ฟเวอร์";
+mes " ...โปรดอ่านรายละเอียด... ";
+next;
+mes "^FF0000อัตราการตีบวกไอเท็ม^000000";
+mes "[ Infomation ]";
+mes "Armor";
+mes "100,100,100,100, 60, 40, 40, 20, 20, 10";
+next;
+mes "^FF0000อัตราการตีบวกไอเท็ม^000000";
+mes "[ Infomation ]";
+mes "Lv.1 Weapons";
+mes "100,100,100,100,100,100,100, 60, 40, 20";
+next;
+mes "^FF0000อัตราการตีบวกไอเท็ม^000000";
+mes "[ Infomation ]";
+mes "Lv.2 Weapons";
+mes "100,100,100,100,100,100, 60, 40, 20, 20";
+next;
+mes "^FF0000อัตราการตีบวกไอเท็ม^000000";
+mes "[ Infomation ]";
+mes "Lv.3 Weapons";
+mes "100,100,100,100,100, 60, 50, 20, 20, 20";
+next;
+mes "^FF0000อัตราการตีบวกไอเท็ม^000000";
+mes "[ Infomation ]";
+mes "Lv.4 Weapons";
+mes "100,100,100,100, 60, 40, 40, 20, 20, 10";
+next;
+mes "^FF0000ยังมี  NPC อื่นๆอีกด้วย !!^000000";
+mes "^3300FFขอบคุณที่ช่วยอ่านข้อมูลนี้^000000";
+goto nclose;
+
+B5:
+next;
+mes " [ ^FF0000โซนทำเควส^000000 ] ";
+mes "^808080 [ยินดีต้อนรับ] : "+strcharinfo(0)+"^000000";
+mes "- เป็นโซนทำเควสของเซิร์ฟเวอร์";
+mes "- ได้สร้างโซนนี้ขึ้นเพื่อ";
+mes "- ให้ผู้เล่นได้เข้าร่วมทำเควส";
+mes "- และเล่นกันอย่างสนุกสนาน";
+mes " ";
+mes "^FF0000 [ NPC เควสมีทั้งหมด 6 ตัว ] ^000000";
+next;
+mes "[ ^FF0000ขอบคุณที่ช่วยอ่านข้อมูลนี้^000000 ] ";
+mes "^3300FFสนุกสนานกันให้เต็มที่^000000";
+goto nclose;
+
+nclose:
+close;
+end;
+
+
+c2:
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"โปรดใส่ชื่อที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+sleep2 500;
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดู Status ได้จากด้านล่างค่ะ";
+charCommand strcharinfo(0)+"#stats "+$NamePlayer$+"";
+close;
+
+
+
+c3:
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"โปรดใส่ชื่อหรือรหัส Item ที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $ItemCode$;
+if($ItemCode$ == "0") goto Cancel;
+sleep2 500;
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดูข้อมูลItem ได้จากด้านล่างค่ะ";
+atcommand strcharinfo(0)+"@iteminfo "+$ItemCode$+"";
+close;
+
+
+
+c4:
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"โปรดใส่ชื่อที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+sleep2 500;
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดู Item ได้จากด้านล่างค่ะ";
+charCommand strcharinfo(0)+"#itemlist "+$NamePlayer$+"";
+close;
+
+
+
+c5:
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"โปรดใส่ชื่อที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+sleep2 500;
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดู Item ได้จากด้านล่างค่ะ";
+charCommand strcharinfo(0)+"#storagelist "+$NamePlayer$+"";
+close;
+
+
+
+c6:
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"โปรดใส่ชื่อที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+sleep2 500;
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดู Item ได้จากด้านล่างค่ะ";
+charCommand strcharinfo(0)+"#cartlist "+$NamePlayer$+"";
+close;
+
+
+
+c7:
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"Please wait !";
+mes"กำลังตรวจสอบ....";
+sleep2 500;
+mes"________________________________";
+mes"ตรวจสอบได้สำเร็จ";
+mes"ดูรายชื่อได้จากด้านล่างนะคะ";
+atcommand "@who";  //strcharinfo(0)+
+close;
+
+
+
+c8:
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes "ขณะนี้เวลา";
+mes ""+ gettime(3) +"^3355FF นาฬิกา ^000000";
+mes ""+ gettime(2) +"^3355FF นาที  ^000000";
+mes ""+ gettime(1) +"^3355FF วินาที  ^000000";
+next;
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+set $@month,gettime(6);
+set $@year,gettime(7)+543;
+if (gettime(4)==0) set $@day$,"อาทิตย์";
+if (gettime(4)==1) set $@day$,"จันทร์";
+if (gettime(4)==2) set $@day$,"อังคาร";
+if (gettime(4)==4) set $@day$,"พุธ";
+if (gettime(4)==5) set $@day$,"พฤหัส";
+if (gettime(4)==6) set $@day$,"เสาร์";
+if ($@month == 1) set $@month2$,"มกราคม";
+if ($@month == 2) set $@month2$,"กุมภาพันธ์";
+if ($@month == 3) set $@month2$,"มีนาคม";
+if ($@month == 4) set $@month2$,"เมษายน";
+if ($@month == 5) set $@month2$,"พฤษภาคม";
+if ($@month == 6) set $@month2$,"มิถุนายน";
+if ($@month == 7) set $@month2$,"กรกฎาคม";
+if ($@month == 8) set $@month2$,"สิงหาคม";
+if ($@month == 9) set $@month2$,"กันยายน";
+if ($@month == 10) set $@month2$,"ตุลาคม";
+if ($@month == 11) set $@month2$,"พฤศจิกายน";
+if ($@month == 12) set $@month2$,"ธันวาคม";
+mes "^3355FFวัน"+$@day$+"ที่^000000    " + gettime(5) + "";
+mes "^3355FFเดือน^000000    " + $@month2$ + "";
+mes "^3355FFปี ค.ศ.^000000    " + gettime(7) + "";
+mes "^3355FFปี พ.ศ.^000000    " + $@year + "";
+next;
+set $@second$,gettime(1);
+set $@days2$,gettimestr("%d-%m-%y %H:%M:",19);
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes "^3355FFรวมแล้วขณะนี้เวลา^000000 "+$@days2$+""+$@second$+" ";
+close;
+
+offline:
+mes"^FF0000[ ~• ผู้ตรวจสอบข้อมูล •~ ]^000000 ";
+mes"ขออภัยค่ะ ผู้เล่นที่ท่านตรวจสอบ";
+mes"ไม่ได้ Online ในขณะนี้";
+close;
+
+L_infocharecter:
+	mes @npc$;
+	mes "ระบุชื่อตัวละคร";
+	mes "ที่ต้องการดูข้อมูล";
+	input @name$,1,25;
+	query_sql "SELECT COUNT(*) FROM `char` WHERE `name`='"+@name$+"'",@count;
+	mes "==============";
+	if (@count < 1) {
+		mes "ไม่พบข้อมูลตัวละคร";
+		mes "ชื่อ : ^0000FF"+@name$+"^000000";
+		next;
+		if (select("- ค้นหาใหม่","- ยกเลิกการใช้บริการ") == 1) {
+			goto L_infocharecter;
+		} else {
+			goto L_Cancel;
+		}
+	} else {
+		query_sql "SELECT `online` FROM `char` WHERE `name`='"+@name$+"'",@online;
+		if (@online == 0) {
+			mes "ตัวละครชื่อ : ^0000FF"+@name$+"^000000";
+			mes "Status : ^FF0000Offline^000000";
+			mes "ไม่สามารถดูข้อมูลได้";
+			close;
+		}
+		mes "พบข้อมูลตัวละคร";
+		mes "ชื่อ : ^0000FF"+@name$+"^000000";
+		next;
+		info_List:
+		mes @npc$;
+		mes "ข้อมูลของ : ^0000FF"+@name$+"^000000";
+		switch (select("- สเตตัสตัวละคร","- ไอเทมในตัว","- ไอเทมในคลัง","- ไอเทมในรถเข็น","- เปลี่ยนตัวละคร","- ยกเลิกการใช้บริการ")) {
+		case 1:
+			charcommand "#stats "+@name$;
+			mes "==============";
+			mes "ดำเนินการเรียบร้อยแล้ว";
+			next;
+			goto info_List;
+		break;
+		case 2:
+			charcommand "#itemlist "+@name$;
+			mes "==============";
+			mes "ดำเนินการเรียบร้อยแล้ว";
+			next;
+			goto info_List;
+		break;
+		case 3:
+			charcommand "#storagelist "+@name$;
+			mes "==============";
+			mes "ดำเนินการเรียบร้อยแล้ว";
+			next;
+			goto info_List;
+		break;
+		case 4:
+			charcommand "#cartlist "+@name$;
+			mes "==============";
+			mes "ดำเนินการเรียบร้อยแล้ว";
+			next;
+			goto info_List;
+		break;
+		case 5:
+			next;
+			goto L_infocharecter;
+		break;
+		case 6:
+			next;
+			goto L_Cancel;
+		break;
+		}
+	}
+
+L_Cancel:
+	mes @npc$;
+	mes "ขอบคุณที่ใช้บริการ....";
+	close;
+
+
+Lmoveto_save:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "อธิบาย : ระบบนี้มีไว้เพือส่งตัวละครที่ติดบั๊กกลับจุดเซฟ";
+next;
+menu "- ยืนยันการใช้งาน",Lmoveto_save_st,"- ออก",Lend;
+
+Lmoveto_save_st:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ ID ของตัวละครที่ติดบั๊ก";
+input @select_id$;
+next;
+query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+@select_id$+"'",@accyou;
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ชื่อตัวละครที่จะส่งกลับจุดเซฟ";
+mes "[หมายเหตุ]";
+mes " - จะต้องใส่ชื่อให้ตรงกับตัวละคร";
+mes " - ตัวละครนั้นจะต้องไม่ Online";
+input @select_name$;
+next;
+query_sql "SELECT `name`,`account_id` FROM `char` WHERE `name`='"+@select_name$+"'",@name$,@accid;
+
+if (@name$ != @select_name$){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ไม่มีชื่อนี้ในระบบ";
+next;
+goto Lend;
+}
+
+if (@accid != @accyou){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ตัวละคร "+@select_name$+"";
+mes "ไม่สามารถสั่งการได้";
+mes "เพราะไม่ได้อยู่ใน";
+mes "ID : "+@select_id$+"";
+next;
+goto Lend;
+}
+
+query_sql "SELECT `online` FROM `char` WHERE `name`='"+@select_name$+"'",@stat;
+
+if (@stat != 0){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ตัวละครนี้ Online อยู่";
+next;
+goto Lend;
+}
+
+query_sql "SELECT `save_map`,`save_x`,`save_y` FROM `char` WHERE `name`='"+@select_name$+"'",@mapname_save$,@mapx_save,@mapy_save;
+
+query_sql "UPDATE `char` SET `last_map`='"+@mapname_save$+"',`last_x`='"+@mapx_save+"',`last_y`='"+@mapy_save+"' WHERE `name`='"+@select_name$+"'";
+
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "[รายการดำเนินงาน]";
+mes "ID : "+@select_id$+"";
+mes "ชื่อ : "+@select_name$+" ";
+mes "ส่งกลับมาที่ : "+@mapname_save$+"";
+mes ".... เสร็จสิ้นการทำงาน ....";
+next;
+goto Lend;
+
+//=========================================================
+
+Lchange_pass:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "อธิบาย : ระบบนี้อำนวยความสะดวกในการ เปลี่ยนพาส";
+next;
+menu "- ยืนยันการใช้งาน",Lchange_pass_st,"- ออก",Lend;
+
+Lchange_pass_st:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ ID ของท่าน...";
+input @select_id$;
+next;
+query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+@select_id$+"'",@accyou;
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ Password เดิม..";
+input @select_pass_old$;
+next;
+query_sql "SELECT `user_pass` FROM `login` WHERE `account_id`='"+@accyou+"'",@passyou$;
+
+if (@passyou$ != @select_pass_old$) {
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000คุณใส่ Password เดิมไม่ถูกต้อง";
+next;
+goto Lend;
+}
+
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ Password ใหม่..";
+mes "หมายเหตุ : 4 ตัวขึ้นไป";
+input @select_pass_new1$;
+next;
+if (getstrlen(@select_pass_new1$) < 4) {
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000คุณใส่ Password 4 ตัวขึ้นไป";
+next;
+goto Lend;
+}
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ Password อีกครั้ง";
+mes "หมายเหตุ : 4 ตัวขึ้นไป";
+input @select_pass_new2$;
+next;
+
+if (@select_pass_new1$ != @select_pass_new2$) {
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000คุณใส่ Password ใหม่ไม่เหมือนกัน";
+next;
+goto Lend;
+}
+
+query_sql "UPDATE `login` SET `user_pass`='"+@select_pass_new1$+"' WHERE `account_id`='"+@accyou+"'";
+
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "[รายการดำเนินงาน]";
+mes "ID : "+@select_id$+"";
+mes "Pass เดิม : "+@select_pass_old$+" ";
+mes "Pass ใหม่ : "+@select_pass_new1$+" ";
+mes ".... เสร็จสิ้นการทำงาน ....";
+next;
+goto Lend;
+
+
+//=========================================================
+
+Lreset_stylist:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "อธิบาย : ระบบนี้เมือไว้เพือแก้บั๊กสีเครื่องแต่งตัวรวมถึงทรงผม";
+next;
+menu "- ยืนยันการใช้งาน",Lreset_stylist_st,"- ออก",Lend;
+
+Lreset_stylist_st:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ ID ของตัวละครที่ต้องการ";
+input @select_id$;
+next;
+query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+@select_id$+"'",@accyou;
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ชื่อตัวละครที่จะดำเนินงาน";
+mes "[หมายเหตุ]";
+mes " - จะต้องใส่ชื่อให้ตรงกับตัวละคร";
+mes " - ตัวละครนั้นจะต้องไม่ Online";
+input @select_name$;
+next;
+
+if (@name$ != @select_name$){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ไม่มีชื่อนี้ในระบบ";
+next;
+goto Lend;
+}
+
+query_sql "SELECT `name`,`account_id` FROM `char` WHERE `name`='"+@select_name$+"'",@name$,@accid;
+
+if (@accid != @accyou){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ตัวละคร "+@select_name$+"";
+mes "ไม่สามารถสั่งการได้";
+mes "เพราะไม่ได้อยู่ใน";
+mes "ID : "+@select_id$+"";
+next;
+goto Lend;
+}
+
+query_sql "SELECT `online` FROM `char` WHERE `name`='"+@select_name$+"'",@stat;
+
+if (@stat != 0){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ตัวละครนี้ Online อยู่";
+next;
+goto Lend;
+}
+
+query_sql "UPDATE `char` SET `hair`='0',`hair_color`='0',`clothes_color`='0' WHERE `name`='"+@select_name$+"'";
+
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "[รายการดำเนินงาน]";
+mes "ID : "+@select_id$+"";
+mes "ชื่อ : "+@select_name$+" ";
+mes "ดำเนินการ รีเซตทรงผมสีต่างๆ";
+mes ".... เสร็จสิ้นการทำงาน ....";
+next;
+goto Lend;
+
+L_newe:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "คุณต้องการเปลี่ยน E-mail ใหม่หรือไม่...";
+menu "- ต้องการ",L_EMAIL,"- ไม่ละ",Lend;
+
+L_EMAIL:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ E-mail เก่าค่ะ.";
+input .@oldemail$;
+query_sql "SELECT (SELECT `email` FROM `login` WHERE `account_id` = "+getcharid(3)+") = '"+escape_sql(.@oldemail$)+"'", .@emailcheck;
+if(!.@emailcheck){
+mes "Email ไม่ถูกต้องค่ะ.";
+next;
+goto L_newe;
+}
+mes "กรุณาใส่ E-mail ที่จะเปลี่ยน.";
+input .@newemail1$;
+if(.@oldemail$ == .@newemail1$){
+mes "E-mail ซ้ำอันเก่าค่ะ!";
+next;
+goto L_newe;
+}
+mes "กรุณาใส่ E-mail อีกครั้งค่ะ.";
+input .@newemail2$;
+if(.@newemail1$ != .@newemail2$){
+mes "E-mail ไม่ตรงกันค่ะ.";
+next;
+goto L_newe;
+}
+query_sql "UPDATE `login` SET `email` = '"+escape_sql(.@newemail1$)+"' WHERE `account_id` = "+getcharid(3);
+logmes "Email address changed from "+.@oldemail$+" to "+.@newemail1$+".";
+mes "E-mail เปลี่ยนเรียบร้อยค่ะ.";
+next;
+goto Lend;
+
+Lend:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "ขอให้สนุกกับการเล่นเกมนะคะ";
+close;
+
+
+
+
+//========= NPC : TCG Deal Cash Service ==========================================================
+//_____________________________________________________________________________
+//*****************************************************************************
+//////////////////////////*************************************************แลกพ๊อย
+//morocc,152,96,4	script	cashpoint#1::Changepoint	845,{
+dpoints:
+	mes "[NPC  ChangePoint]";
+	mes "^0000FF{•ขณะนี้มีคนออนไลน์ ^FF0000"+$@PLAYER+"^0000FF คน•}^000000";
+	mes "๛•วันนี้วันที่ :^FF0000 "+ gettimestr("%d/%m/%y",19) +"^000000";
+	mes "๛•เวลา :^FF0000 "+ gettimestr("%H:%M",19) +"^000000";	
+	mes "^CCFFCC.^000000";
+	mes "ยินดีต้อนรับสู่บริการ ChangePoint";
+	mes "โดย. ^0000FFGMServer^000000";
+next;
+	mes "[NPC  ChangePoint]";
+	mes "สวัสดีคุณ..^FF0000" + strcharinfo(0) +"^000000";
+	mes "ข้าคือ NPC แลก ^0000FF Points^000000";
+	mes "^CCFFFF.^000000";
+	mes "^0000FF[ใบจุติ]^000000 1 ใบ แลกได้ ^FF00001^000000  Points";
+	mes "^0000FF[คูปอง]^000000 1 ใบ แลกได้  ^FF00005^000000  Points";
+	mes "เจ้าต้องการแลกไหม?";
+
+next;
+switch(select(
+	"๐ แลก^0000FF [ใบจุติ] ^000000เป็น Point:๐ แลก^0000FF [คูปอง] ^000000เป็น Point:๐ ^FF0000ยกเลิก^000000:๐ แลกเปลี่ยน^0000FF [Ultimate Coin] ^000000")) {
+
+////////////////////////////////*************************************แลกจุติเป็นพ๊อย
+case 1:
+mes "[NPC แลก  Points]";
+mes "^CCFFFF.^000000";
+mes "ระบุจำนวน^0000FF ใบจุติ^000000";
+mes "ที่ต้องการแลกเป็น ^0000FF Points^000000";
+mes "^CCFFFF.^000000";
+mes "ระบุ ^FF00000^000000 เพื่อ ยกเลิก";
+
+ret1:
+next;
+input .@cpoint;
+	if(!.@cpoint) goto L_canc;
+	if(countitem(7227)<(.@cpoint)) {
+	mes "[NPC แลก  Points]";
+	mes "จำนวน^FF0000 ใบจุติ^000000 ของคุณ";
+	mes "มีจำนวนไม่ถึง ^FF0000"+.@cpoint+"^000000ใบ";
+	mes "โปรดระบุจำนวนใหม่.";		
+	goto ret1;
+	}
+set @changeitem,1;
+mes "[NPC แลก  Points]";
+mes "^CCFFFF.^000000";
+mes "ชื่อตัวละคร ^0000FF"+strcharinfo(0)+"^000000";
+mes "จำนวนใบจุติที่จะแลก ^0000FF"+.@cpoint+"^000000 ใบ";
+mes "จำนวน  Point ที่จะได้ ^0000FF"+.@cpoint+"^000000 Point";
+if(!isloggedin(getcharid(3,strcharinfo(0))))
+	mes "สถานะของตัวละคร: ^FF0000Offline^000000";
+	else mes "สถานะของตัวละคร: ^009900Online^000000";
+	next;
+	if(select("^0000FF๐^FF0000 ยกลิก^000000:^0000FF๐^0000FF ตกลง^000000")==2) {
+	if (!isloggedin(getcharid(3,strcharinfo(0)))) goto L_confirmdonate2;
+	else goto L_confirmdonate;
+	}
+	close;
+
+
+
+////////////////////////////////*************************************แลกคูปองเป็นพ๊อย
+case 2:
+mes "[NPC แลก  Points]";
+mes "^CCFFFF.^000000";
+mes "ระบุจำนวน^0000FF คูปอง^000000";
+mes "ที่ต้องการแลกเป็น ^0000FF Points^000000";
+mes "^CCFFFF.^000000";
+mes "ระบุ ^FF00000^000000 เพื่อ ยกเลิก";
+ret2:
+next;
+input .@cpoint;
+	if(!.@cpoint) goto L_canc;
+	if(countitem(7239)<(.@cpoint)) {
+	mes "[NPC แลก  Points]";
+	mes "จำนวน^FF0000 คูปอง^000000 ของคุณ";
+	mes "มีจำนวนไม่ถึง ^FF0000"+.@cpoint+"^000000ใบ";
+	mes "โปรดระบุจำนวนใหม่.";		
+	goto ret2;
+	}
+set @changeitem,2;
+mes "[NPC แลก  Points]";
+mes "^CCFFFF.^000000";
+mes "ชื่อตัวละคร ^FF0000"+strcharinfo(0)+"^000000";
+mes "จำนวนคูปองที่จะแลก ^0000FF"+.@cpoint+"^000000 ใบ";
+mes "จำนวน  Point ที่จะได้ ^0000FF"+.@cpoint*5+"^000000 Point";
+if(!isloggedin(getcharid(3,strcharinfo(0))))
+	mes "สถานะของตัวละคร: ^FF0000Offline^000000";
+	else mes "สถานะของตัวละคร: ^009900Online^000000";
+	next;
+	if(select("^0000FF๐^FF0000 ยกเลิก^000000:^0000FF๐^0000FF ตกลง^000000")==2) {
+	if (!isloggedin(getcharid(3,strcharinfo(0)))) goto L_confirmdonate2;
+	else goto L_confirmdonate;
+	}
+	close;
+
+////////////////////////////////*************************************ยกเลิกการแลกของ
+case 3:
+goto L_canc;
+close;
+
+////////////////////////////////*************************
+L_canc:
+	mes "[NPC แลก  Points]";
+	mes "^CCFFFF.^000000";
+	mes "^CCFFFF.^000000";
+	mes "^FF0000การบริการ ได้ถูกยกเลิก.^000000";
+	mes "^0000FFขอบคุณที่แวะมาให้บริการค่ะ^000000";
+	close;
+////////////////////////////////*************************
+L_ok:
+	mes "^CCFFFF.^000000";
+	mes "^009900การบริการ ได้เสร็จสิ้นแล้วค่ะ.^000000";
+	close;
+////////////////////////////////*************************
+case 4:
+
+//======================= Customization Area ========================================
+setarray .coins[0],673,671,674,677,675; //bronze,gold,mithril,platinum,silver accordingly
+setarray .coinvalue[0],1000000,50000000,150000000,300000000,25000000; //bronze,gold,mithril,platinum,silver accordingly
+set .maxzeny,1000000000; // Maximum Zeny allowed to trade or maximum on server
+set .minzeny,1000000; // Minimum Zeny required to trade
+//======================= Do Not Edit Below =========================================
+set .name$,"^FF0000[Ultimate Coin Exchange]^000000"; // NPC Name
+set .plname$,"^0000FF["+strcharinfo(0)+"]^000000"; // Interacting Player Name
+set .coinmenu$,"^d5be8bBronze Coins^000000:^88969bSilver Coins^000000:^ccc252Gold Coins^000000:^88969bMithril Coins^000000:^b7b7b7Platinum Coins^000000:Nevermind."; //Menu for converting coin -> zeny
+set .zenymenu1$,"^d5be8bBronze Coins^000000:^88969bSilver Coins^000000:^ccc252Gold Coins^000000:^88969bMithril Coins^000000:^b7b7b7Platinum Coins^000000:Choose Coins!:Nevermind."; //1st Menu for converting zeny -> coins
+set .1stmenu$,"^00FFFFCoins to Zeny.^000000:^FFFF00Zeny to Coins.^000000";
+//===================================================================================
+
+	mes .name$;
+	mes "Hello! How are you today?";
+	next;
+	mes .plname$;
+	mes "I am just fine, thank you!";
+	next;
+	mes .name$;
+	mes "Would you like to exchange some things today?";
+	next;
+	if (select("...Yes:...No") == 2) close;
+	mes .name$;
+	mes "Very good. Please choose your exchange option.";
+	next;
+	switch(select(.1stmenu$)) {
+		case 1:
+			mes .name$;
+			mes "I see that you have:";
+			mes "^b7b7b7"+countitem(.coins[3])+" "+getitemname(.coins[3])+"s^000000,";
+			mes "^88969b"+countitem(.coins[2])+" "+getitemname(.coins[2])+"s^000000,";
+			mes "^ccc252"+countitem(.coins[1])+" "+getitemname(.coins[1])+"s^000000,";
+			mes "^88969b"+countitem(.coins[4])+" "+getitemname(.coins[4])+"s^000000,";
+			mes "And ^d5be8b"+countitem(.coins[0])+" "+getitemname(.coins[0])+"s^000000.";
+			next;
+			if ( countitem(.coins[3]) < 1 && countitem(.coins[2]) < 1 && countitem(.coins[1]) < 1 && countitem(.coins[4]) < 1 && countitem(.coins[0]) < 1 ) { 
+			mes .name$;
+			mes "You do not have enough coins to exchange.";
+			close;
+			}
+			mes .name$;
+			mes "Would you like to exchange some coins?";
+			next;
+			mes "^FF0000=========================^000000";
+			mes "^b7b7b7"+getitemname(.coins[3])+"s^000000 = "+.coinvalue[3]+"";
+			mes "^88969b"+getitemname(.coins[2])+"s^000000= "+.coinvalue[2]+"";
+			mes "^ccc252"+getitemname(.coins[1])+"s^000000= "+.coinvalue[1]+"";
+			mes "^88969b"+getitemname(.coins[4])+"s^000000= "+.coinvalue[4]+"";
+			mes "And ^d5be8b"+getitemname(.coins[0])+"s^000000= "+.coinvalue[0]+"";
+			mes "^FF0000=========================^000000";
+			next;
+			switch(select(.coinmenu$)) {
+				case 1:
+					callsub h_coin2zeny,.coins[0],.coinvalue[0];
+				case 2:
+					callsub h_coin2zeny,.coins[4],.coinvalue[4];
+				case 3:
+					callsub h_coin2zeny,.coins[1],.coinvalue[1];
+				case 4:
+					callsub h_coin2zeny,.coins[2],.coinvalue[2];
+				case 5:
+					callsub h_coin2zeny,.coins[3],.coinvalue[3];
+				case 6:
+					close;
+			}
+		case 2:
+			if ( Zeny < .minzeny ) {
+			mes .name$;
+			mes "You are too poor to exchange zeny. You must have at least ^ff0000"+ .minzeny +"^000000.";
+			close;
+			}
+			mes .name$;
+			mes "Oh my, you have a lot of zeny there.";
+			next;
+			mes "It seems you have ^FF0000"+ Zeny +" zeny^000000.";
+			next;
+			mes .plname$;
+			mes "Yes, I would like to exchange some of it today.";
+			next;
+			mes .name$;
+			mes "Perfect. Which would you like to exchange today?";
+			next;
+			callsub h_zenylist;
+			next;
+			switch(select(.zenymenu1$)) {
+				case 1:
+					next;
+					set Zeny,Zeny-(@bzenyc * .coinvalue[0]);
+					getitem .coins[0],@bzenyc;
+					mes .name$;
+					mes "Have a nice day.";
+					close;
+				case 2:
+					set Zeny,Zeny-(@szenyc * .coinvalue[4]);
+					getitem .coins[4],@szenyc;
+					mes .name$;
+					mes "Have a nice day.";
+					close;
+				case 3:
+					set Zeny,Zeny-(@gzenyc * .coinvalue[1]);
+					getitem .coins[1],@gzenyc;
+					mes .name$;
+					mes "Have a nice day.";
+					close;
+				case 4:
+					set Zeny,Zeny-(@mzenyc * .coinvalue[2]);
+					getitem .coins[2],@mzenyc;
+					mes .name$;
+					mes "Have a nice day.";
+					close;
+				case 5:
+					set Zeny,Zeny-(@pzenyc * .coinvalue[3]);
+					getitem .coins[3],@pzenyc;
+					mes .name$;
+					mes "Have a nice day.";
+					close;
+				case 6:
+					callsub h_zeny2coinchoose;
+				case 7:
+					close;
+			}
+	}
+	end;
+
+
+h_coin2zeny:
+	next;
+	mes .name$;
+	mes "How many ^0000FF"+getitemname(getarg(0))+"^000000 did you wish to exchange with me?";
+	next;
+	input @swapamount;
+	set @exchangevalue,@swapamount * getarg(1);
+	if ( (@swapamount > countitem( getarg(0) )) || (@swapamount < 1) || (countitem( getarg(0) ) < 1) ) {
+	emotion 23;
+	mes .name$;
+	mes "You do not have enough to exchange with.";
+	close;
+	}
+	if ( @exchangevalue > (.maxzeny - Zeny) ) {
+	mes .name$;
+	mes "You have too much zeny. If you exchange this much, you will go over the limit. Please store some zeny.";
+	close;
+	}
+	delitem getarg(0),@swapamount;
+	set Zeny,Zeny + @exchangevalue;
+	specialeffect2 632;
+	mes .name$;
+	mes "Have a great day.";
+	close;
+
+
+h_zenylist:
+	set @pzenyc, Zeny / .coinvalue[3];
+	set @mzenyc, Zeny / .coinvalue[2];
+	set @gzenyc, Zeny / .coinvalue[1];
+	set @szenyc, Zeny / .coinvalue[4];
+	set @bzenyc, Zeny / .coinvalue[0];
+	mes .name$;
+	mes "^FF0000=========================^000000";
+	mes "I can currently offer you each of the following:";
+	mes "^b7b7b7"+@pzenyc+" "+getitemname(.coins[3])+"s^000000,";
+	mes "^88969b"+@mzenyc+" "+getitemname(.coins[2])+"s^000000,";
+	mes "^ccc252"+@gzenyc+" "+getitemname(.coins[1])+"s^000000,";
+	mes "^88969b"+@szenyc+" "+getitemname(.coins[4])+"s^000000,";
+	mes "And ^d5be8b"+@bzenyc+" "+getitemname(.coins[0])+"s^000000.";
+	mes "Or you can choose what coins you want.";
+	mes "^FF0000=========================^000000";
+	return;
+
+h_zeny2coinchoose:
+	next;
+	mes .name$;
+	mes "Very good choice. You wish to choose the coins to exchange?";
+	next;
+	goto L_platswap;
+
+L_platswap:
+	mes .name$;
+	mes "Please tell me how many platinum coins to exchange.";
+	mes "^FF0000"+ getitemname(.coins[3]) +" = "+ .coinvalue[3] +".";
+	next;
+	input @platswap1;
+	if ( (@platswap1 > (Zeny / .coinvalue[3])) ) {
+	next;
+	emotion 23;
+	mes .name$;
+	mes "You do not have enough to exchange with.";
+	next;
+	goto L_platswap;
+	}
+	set @platzenyamount,@platswap1;
+	goto L_mithswap;
+	
+L_mithswap:
+	mes .name$;
+	mes "Please tell me how many mithril coins to exchange.";
+	mes "^FF0000"+ getitemname(.coins[2]) +" = "+ .coinvalue[2] +".";
+	mes "=========================";
+	mes "Current:";
+	mes ""+@platswap1+" "+getitemname(.coins[3])+".";
+	mes "=========================";
+	next;
+	input @mithswap1;
+	if ( (@mithswap1 > (Zeny / .coinvalue[2])) ) {
+	next;
+	emotion 23;
+	mes .name$;
+	mes "You do not have enough to exchange with.";
+	next;
+	goto L_mithswap;
+	}
+	if ( (@mithswap1 * .coinvalue[2]) > (Zeny - (@platswap1 * .coinvalue[3])) ) {
+	next;
+	mes .name$;
+	mes "You will not have enough to exchange that many after exchanging the coins.";
+	next;
+	goto L_mithswap;
+	}
+	set @mithzenyamount,@mithswap1;
+	goto L_goldswap;
+	
+L_goldswap:
+	mes .name$;
+	mes "Please tell me how many golds to swap.";
+	mes "^FF0000"+ getitemname(.coins[1]) +" = "+ .coinvalue[1] +".";
+	mes "=========================";
+	mes "Current:";
+	mes ""+@platswap1+" "+getitemname(.coins[3])+".";
+	mes ""+@mithswap1+" "+getitemname(.coins[2])+".";
+	mes "=========================";
+	next;
+	input @goldswap1;
+	if ( (@goldswap1 > (Zeny / .coinvalue[1])) ) {
+	next;
+	emotion 23;
+	mes .name$;
+	mes "You do not have enough to exchange with.";
+	next;
+	goto L_goldswap;
+	}
+	if ( (@goldswap1 * .coinvalue[1]) > (Zeny - ((@platswap1 * .coinvalue[3]) + (@mithswap1 * .coinvalue[2]))) ) {
+	next;
+	mes .name$;
+	mes "You will not have enough to exchange that many after exchanging the coins.";
+	next;
+	goto L_goldswap;
+	}
+	set @goldzenyamount,@goldswap1;
+	goto L_silvswap;
+	
+L_silvswap:
+	mes .name$;
+	mes "Please tell me how many silvers to swap.";
+	mes "^FF0000"+ getitemname(.coins[4]) +" = "+ .coinvalue[4] +".";
+	mes "=========================";
+	mes "Current:";
+	mes ""+@platswap1+" "+getitemname(.coins[3])+".";
+	mes ""+@mithswap1+" "+getitemname(.coins[2])+".";
+	mes ""+@goldswap1+" "+getitemname(.coins[1])+".";
+	mes "=========================";
+	next;
+	input @silvswap1;
+	if ( (@silvswap1 > (Zeny / .coinvalue[4])) ) {
+	next;
+	emotion 23;
+	mes .name$;
+	mes "You do not have enough to exchange with.";
+	next;
+	goto L_silvswap;
+	}
+	if ( (@silvswap1 * .coinvalue[4]) > (Zeny - ((@platswap1 * .coinvalue[3]) + (@mithswap1 * .coinvalue[2]) + (@goldswap1 * .coinvalue[1]))) ) {
+	next;
+	mes .name$;
+	mes "You will not have enough to exchange that many after exchanging the coins.";
+	next;
+	goto L_silvswap;
+	}
+	set @silvzenyamount,@silvswap1;
+	goto L_bronswap;
+	
+L_bronswap:
+	mes .name$;
+	mes "Please tell me how many bronze to swap.";
+	mes "^FF0000"+ getitemname(.coins[0]) +" = "+ .coinvalue[0] +".";
+	mes "=========================";
+	mes "Current:";
+	mes ""+@platswap1+" "+getitemname(.coins[3])+".";
+	mes ""+@mithswap1+" "+getitemname(.coins[2])+".";
+	mes ""+@goldswap1+" "+getitemname(.coins[1])+".";
+	mes ""+@silvswap1+" "+getitemname(.coins[4])+".";
+	mes "=========================";
+	next;
+	input @bronswap1;
+	if ( (@bronswap1 > (Zeny / .coinvalue[0])) ) {
+	next;
+	emotion 23;
+	mes .name$;
+	mes "You do not have enough to exchange with.";
+	next;
+	goto L_bronswap;
+	}
+	if ( (@bronswap1 * .coinvalue[0]) > (Zeny - ((@platswap1 * .coinvalue[3]) + (@mithswap1 * .coinvalue[2]) + (@goldswap1 * .coinvalue[1]) + (@silvswap1 * .coinvalue[4]))) ) {
+	next;
+	mes .name$;
+	mes "You will not have enough to exchange that many after exchanging the coins.";
+	next;
+	goto L_silvswap;
+	}
+	set @bronzenyamount,@bronswap1;
+	next;
+	mes .name$;
+	mes "So before I exchange with your decision... you want:";
+	mes "^b7b7b7"+@platswap1+" "+getitemname(.coins[3])+"s^000000,";
+	mes "^88969b"+@mithswap1+" "+getitemname(.coins[2])+"s^000000,";
+	mes "^ccc252"+@goldswap1+" "+getitemname(.coins[1])+"s^000000,";
+	mes "^88969b"+@silvswap1+" "+getitemname(.coins[4])+"s^000000,";
+	mes "And ^d5be8b"+@bronswap1+" "+getitemname(.coins[0])+"s^000000.";
+	mes "Is this correct?";
+	next;
+	if (select("Yes.:No.") == 2) {
+	mes .name$;
+	mes "Very well. Please choose again.";
+	next;
+	goto h_zeny2coinchoose;
+	}
+	next;
+	set Zeny,Zeny - (@platzenyamount * .coinvalue[3]);
+	set Zeny,Zeny - (@mithzenyamount * .coinvalue[2]);
+	set Zeny,Zeny - (@goldzenyamount * .coinvalue[1]);
+	set Zeny,Zeny - (@silvzenyamount * .coinvalue[4]);
+	set Zeny,Zeny - (@bronzenyamount * .coinvalue[0]);
+	getitem .coins[3],@platzenyamount;
+	getitem .coins[2],@mithzenyamount;
+	getitem .coins[1],@goldzenyamount;
+	getitem .coins[4],@silvzenyamount;
+	getitem .coins[0],@bronzenyamount;
+	specialeffect2 460;
+	mes .plname$;
+	mes "-With some form of magic he sticks the coins in your pockets without even seeing him move-";
+	next;
+	mes .name$;
+	mes "There you go. Have a nice day.";
+	close;
+}
+
+////////////////////////////////*************************
+L_confirmdonate:
+if(!isloggedin(getcharid(3,strcharinfo(0)))) { 
+dispbottom "การ เพิ่ม  Points ล้มเหลว เนื่องจากผู้เล่นดังกล่าวไม่ได้ทำการเชื่อมต่อ.";
+close; 
+}
+if (@changeitem == 1) {
+mes "[NPC แลก  Points]";
+mes "^CCFFFF.^000000";
+mes "กำลังเพิ่ม ^0000FF Points^000000";
+mes "ให้คุณ ^0000FF"+strcharinfo(0)+"^000000";
+mes "จำนวน ^0000FF"+.@cpoint+" Points.^000000";
+atcommand "@cash  "+.@cpoint+"";
+delitem  7227,(.@cpoint);
+dispbottom "------------------------------------------------------------------------";
+dispbottom "การ เพิ่ม  Point ถึงผู้เล่น "+strcharinfo(0)+" จำนวน "+.@cpoint+" Points เป็นผลสำเร็จ.";
+announce "คุณได้รับ  Point จำนวน "+.@cpoint+" Point รวมเป็น "+#CASHPOINTS+" Point.",bc_self,0x08F8C6;
+goto postcash;
+}
+if (@changeitem == 2) {
+mes "[NPC แลก  Points]";
+mes "^CCFFFF.^000000";
+mes "กำลังเพิ่ม ^0000FF Points^000000";
+mes "ให้คุณ ^0000FF"+strcharinfo(0)+"^000000";
+mes "จำนวน^0000FF "+.@cpoint*5+" Points.^000000";
+atcommand "@cash  "+.@cpoint*5+"";
+delitem  7239,(.@cpoint);
+dispbottom "------------------------------------------------------------------------";
+dispbottom "การ เพิ่ม  Point ถึงผู้เล่น "+strcharinfo(0)+" จำนวน "+.@cpoint*5+" Points เป็นผลสำเร็จ.";
+announce "คุณได้รับ  Point จำนวน "+.@cpoint*5+" Point รวมเป็น "+#CASHPOINTS+" Point.",bc_self,0x08F8C6;
+goto postcash;
+}
+
+postcash:
+set @RID, getcharid(3,strcharinfo(0));
+attachrid(@RID);
+dispbottom "ขณะนี้คุณมี "+#CASHPOINTS+"  Points.";
+dispbottom "------------------------------------------------------------------------";
+goto L_ok;
+close;
+////////////////////////////////*************************
+L_confirmdonate2:
+if (isloggedin(getcharid(3,strcharinfo(0))) ) goto L_confirmdonate;
+if (getarraysize($dnames1$) == 128 ) {
+ // there might be a chance when too many players don't want to claim prize
+	deletearray $dnames1$[0],1;
+	deletearray $dpoints[0],1;
+	}
+	set $dnames1$[getarraysize($dnames1$)],strcharinfo(0);
+	set $dpoints[getarraysize($dpoints)],.@cpoint;
+	mes $@npc$;
+	mes "เพิ่ม ^FF0000 Points^000000 ให้คุณ ^0000FF"+strcharinfo(0)+"^000000 จำนวน "+.@cpoint+" Points.";
+close;
+//OnInit:
+//waitingroom "<(::แลก Cash::)>",0;
+//end;
+
+
+//========= NPC : Beautician ==========================================================
+true1:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดเลือกรายการ";
+mes "จากเมนูด้านล่างค่ะ";
+next;
+menu
+"- เปลี่ยน สีชุดตัวละคร",ClothColor,
+"- เปลี่ยน ทรงผมตัวละคร",HairStyle,
+"- เปลี่ยน สีผมตัวละคร",HairColor,
+//"- แปลงเพศตัวละคร",ChangeS,
+//"- เปลี่ยน ชุดอาชีพตัวละคร",Ccloth,
+//"- ลด | เพิ่ม ขนาด ตัวละคร",Size,
+//"- แปลงร่าง | คืนร่าง ตัวละคร",DisguiseM,
+"Exit",Cancel;
+
+Size:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดเลือกแบบ";
+mes "ในการเลือกขนาดตัวละคร";
+mes "ที่ท่านต้องการค่ะ";
+next;
+menu 
+"- แบบใส่ตัวเลข",Form1,
+"- แบบธรรมดา",Form2,
+"Exit",Cancel;
+
+
+Form1:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดใส่ขนาดที่ต้องการ ค่ะ";
+mes "ใส่ 1 = ขนาดเล็ก";
+mes "ใส่ 2 = ขนาดใหญ่";
+mes "ใส่ 3 = ขนาดปกติ";
+mes "^FF0000ใส่ได้เฉพาะ 1 - 3 เท่านั้นค่ะ^000000";
+next;
+input @SizePlayer;
+if(@SizePlayer < 1) || (@SizePlayer > 3) goto ErrorForm;
+dispbottom "การเปลี่ยนขนาดตัวละครเสร็จสมบูรณ์ ขณะนี้ขนาดของตัวละครของท่าน จะเปลี่ยนไปตามที่ท่านเลือก";
+atcommand strcharinfo(0)+"@size "+@SizePlayer+"";
+close;
+
+
+ErrorForm:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "^FF0000ใส่ได้เฉพาะ 1 - 3 เท่านั้นค่ะ^000000";
+next;
+menu 
+"- กลับไปยังเมนูเดิม",Form1,
+"- เลือกแบบ ธรรมดา",Form2,
+"- ออกจากการเปลี่ยนขนาดตัวละคร",Cancel,
+"Exit",Cancel;
+
+
+
+Form2:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดเลือกขนาดตัวละคร";
+mes "ที่ท่านต้องการค่ะ";
+next;
+menu 
+"- ขนาด เล็ก",SizeS,
+"- ขนาด ใหญ่",SizeB,
+"- ขนาด ปกติ",SizeN,
+"Exit",Cancel;
+
+
+
+SizeS:
+dispbottom "การเปลี่ยนขนาดตัวละครเสร็จสมบูรณ์ ขณะนี้ ขนาดของตัวละครคือ ขนาดเล็ก";
+atcommand strcharinfo(0)+"@size 1";
+close;
+
+
+
+SizeB:
+dispbottom "การเปลี่ยนขนาดตัวละครเสร็จสมบูรณ์ ขณะนี้ ขนาดของตัวละครคือ ขนาดใหญ่";
+atcommand strcharinfo(0)+"@size 2";
+close;
+
+
+
+SizeN:
+dispbottom "การเปลี่ยนขนาดตัวละครเสร็จสมบูรณ์ ขณะนี้ ขนาดของตัวละครคือ ขนาดปกติ";
+atcommand strcharinfo(0)+"@size 0";
+close;
+
+
+
+DisguiseM:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "Welcome to Disguise Service"; 
+mes "โปรดเลือกรายการ";
+mes "จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"- แปลงร่างเป็นมอนเตอร์",ChangeM,
+"- คืนร่างเดิม",Rollback,
+"Exit",Cancel; 
+
+
+
+ChangeM: 
+set .@disguise,1000;
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดเลือกแบบ ในการเลือกแบบมอนเตอร์";
+next;
+menu 
+"- เลือกแบบ ดูมอนเตอร์ไปเรื่อยๆ",ChooseM,
+"- เลือกแบบ ใส่รหัสมอนเตอร์",PutCode,
+"Exit",Cancel; 
+
+
+ChooseM:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "นี่คือมอนเตอร์รหัสที่ ^FF0000"+.@disguise+"^000000";
+next;
+switch(select("- ต่อไป","- ย้อนกลับ","- หยุด","- เลือกแบบ ใส่รหัสมอนเตอร์","Exit")) {
+
+
+case 1:
+set .@disguise,.@disguise+1;
+goto CMA;
+close;
+
+
+CMA:
+disguise .@disguise;
+goto ChooseM;
+close;
+
+
+case 2:
+if(.@disguise <= 1001) goto Depleted;
+set .@disguise,.@disguise-1;
+goto CMA2;
+close;
+
+
+CMA2:
+disguise .@disguise;
+goto ChooseM;
+close;
+
+
+case 3:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "คุณได้เปลี่ยนเป็นมอนเตอร์";
+mes "รหัสที่ ^FF0000"+.@disguise+"^000000 เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+close;
+
+
+case 4:
+goto PutCode;
+close;
+
+
+case 5:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+}
+
+PutCode:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดใส่รหัสมอนเตอร์"; 
+mes "หรือ ชื่อของมอนเตอร์"; 
+mes "หรือใส่ 0 เพื่อยกเลิก ใส่ 1";
+mes "เพื่อเลือกแบบเรื่อยๆค่ะ";
+next;
+input mc$;
+if( mc$ == "0") goto Cancel;
+if( mc$ == "1") goto CMA;
+mes "[ ^FF8000Beautician^000000 ]";
+mes "คุณได้เปลี่ยนเป็นมอนเตอร์";
+mes "รหัสที่ ^FF0000"+mc$+"^000000 เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+atcommand strcharinfo(0)+"@disguise "+mc$+"";
+close;
+
+
+Rollback:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "การคืนร่างเสร็จสมบูรณ์"; 
+atcommand strcharinfo(0)+"@undisguise";
+close;
+
+
+ChangeS:
+mes "[พนักงงานแปลงเพศ]";
+mes "ต้องการเปลี่ยนเพศงั้นหรือ?"; 
+mes "การแปลงเพศต้องทำการผ่าตัดอวัยวะเพศของท่าน"; 
+mes "อาจจะทำให้ท่านเสื่อมสมรรถภาพทางเพศได้";
+next;
+mes "[พนักงงานแปลงเพศ]";
+mes "และต้องใช้เงินทุนสูงถึง 10,000,000 Zeny ในการแปลงเพศแต่ละครั้ง";
+mes "ไม่แพงใช่ไหมละ ";
+next;
+menu "จัดไปอย่าให้เสีย",Z1,"ไม่เอาล่ะ แพง",Z2; 
+
+Z1:
+if(Zeny<10000000) goto QQ71;
+set Zeny, Zeny - 10000000; 
+changesex; 
+mes "[พนักงงานแปลงเพศ]";
+mes "เอาละ, นี่ไง!"; 
+mes "ดูดีมาก, และใช้ได้ซะด้วยสิ ^^!"; 
+close;
+
+QQ71:
+mes "[พนักงงานแปลงเพศ]";
+mes "ดูเหมือนเจ้าจะมีเงินไม่พอที่จะใช้บริการนี้ได้นะ...";
+next;
+mes "โปรดกลับมาใหม่เมื่อเจ้ามีเงินพร้อม!";
+close;
+
+Z2: 
+mes "[พนักงงานแปลงเพศ]";
+mes "ข้าไม่ได้บังคับเจ้านี่นา"; 
+next;
+mes "เปลี่ยนใจเมื่อไหร่ค่อยกลับมาหาข้าละกัน !";
+close;
+end;
+
+
+Ccloth:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "ท่านต้องการ ชุดอาชีพไหนล่ะ";
+next;
+menu 
+"- Novice",L0,
+"- Sword",L1,
+"- Magician",L2,
+"- Archer",L3,
+"- Acolyte",L4,
+"- Merchant",L5,
+"- Thief",L6,
+"- Knight",L7,
+"- Priest",L8,
+"- Wizard",L9,
+"- Blacksmith",L10,
+"- Hunter",L11,
+"- Assassin",L12,
+"- Crusader",L14,
+"- Monk",L15,
+"- Sage",L16,
+"- Rogue",L17,
+"- Alchem",L18,
+"- Bard",L19,
+"- Dancer",L20,
+"- SuperNovice",L23,
+"- Lord Knight",L4008,
+"- High Priest",L4009,
+"- High Wizard",L4010,
+"- Master Smith",L4011,
+"- Sniper",L4012,
+"- Assasin Cross",L4013,
+"- Paladin",L4015,
+"- Champion",L4016,
+"- Scholar",L4017,
+"- Stalker",L4018,
+"- Biochemist",L4019,
+"- Minstrel",L4020,
+"- Gypsy",L4021,
+"- Ninja",L25,
+"- Gunslinger",L24,
+"- Taekwon",L4046,
+"- Star Gladiator",L4048,
+"Exit",Cancel;
+
+
+L0:
+changebase 0;
+close;
+
+L1:
+changebase 1;
+close;
+
+L2:
+changebase 2;
+close;
+
+L3:
+changebase 3;
+close;
+
+L4:
+changebase 4;
+close;
+
+L5:
+changebase 5;
+close;
+
+L6:
+changebase 6;
+close;
+
+L7:
+changebase 7;
+close;
+
+L8:
+changebase 8;
+close;
+
+L9:
+changebase 9;
+close;
+
+L10:
+changebase 10;
+close;
+
+L11:
+changebase 11;
+close;
+
+L12:
+changebase 12;
+close;
+
+L14:
+changebase 14;
+close;
+
+L15:
+changebase 15;
+close;
+
+L16:
+changebase 16;
+close;
+
+L17:
+changebase 17;
+close;
+
+L18:
+changebase 18;
+close;
+
+L19:
+changebase 19;
+close;
+
+L20:
+changebase 20;
+close;
+
+L23:
+changebase 23;
+close;
+
+L4008:
+changebase 4008;
+close;
+
+L4009:
+changebase 4009;
+close;
+
+L4010:
+changebase 4010;
+close;
+
+L4011:
+changebase 4011;
+close;
+
+L4012:
+changebase 4012;
+close;
+
+L4013:
+changebase 4013;
+close;
+
+L4015:
+changebase 4015;
+close;
+
+L4016:
+changebase 4016;
+close;
+
+L4017:
+changebase 4017;
+close;
+
+L4018:
+changebase 4018;
+close;
+
+L4019:
+changebase 4019;
+close;
+
+L4020:
+changebase 4020;
+close;
+
+L4021:
+changebase 4021;
+close;
+
+L4046:
+setlook 7,0;
+changebase 4046;
+close;
+
+L4048:
+setlook 7,0;
+changebase 4048;
+close;
+
+L24:
+setlook 7,0;
+changebase 24;
+close;
+
+L25:
+setlook 7,0;
+changebase 25;
+
+
+ClothColor:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดเลือกแบบ ในการเลือกสีชุด";
+next;
+menu 
+"- เลือกแบบ ดูสีชุดไปเรื่อยๆ",CCC,
+"- เลือกแบบ ใส่รหัสสีชุด",PCC,
+"Exit",Cancel; 
+
+
+CCC:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "นี่คือสีชุดแบบที่ ^FF0000"+@Clothes+"^000000";
+next;
+switch(select("- ต่อไป","- ย้อนกลับ","- หยุด","- เลือกแบบ ใส่รหัสสีชุด","**Exit**")) {
+
+
+case 1:
+if(@Clothes == 553) goto Depleted;
+set @Clothes,@Clothes+1;
+goto CCCN;
+
+
+CCCN:
+setlook 7,@Clothes; 
+goto CCC;
+end;
+
+
+case 2:
+if(@Clothes <= 0) goto Depleted;
+set @Clothes,@Clothes-1;
+goto CCB;
+end;
+
+
+CCB:
+setlook 7,@Clothes; 
+goto CCC;
+end;
+
+
+case 3:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "คุณได้เปลี่ยนสีชุด";
+mes "แบบที่ ^FF0000"+@Clothes+"^000000 เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+close;
+
+
+case 4:
+goto PCC;
+close;
+
+
+case 5:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+}
+
+
+PCC:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดใส่แบบสีชุด"; 
+next;
+input @Clothes;
+if(@Clothes > 553) goto Depleted;
+mes "[ ^FF8000Beautician^000000 ]";
+mes "คุณได้เปลี่ยนสีชุด";
+mes "แบบที่ ^FF0000"+@Clothes+"^000000 เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+setlook 7,@Clothes;
+close;
+
+
+HairStyle:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดเลือกแบบ ในการเลือกแบบทรงผม";
+next;
+menu 
+"- เลือกแบบ ดูแบบทรงผมไปเรื่อยๆ",CHS,
+"- เลือกแบบ ใส่แบบทรงผม",PHS,
+"^Exit^",Cancel; 
+
+
+CHS:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "นี่คือทรงผมแบบที่ ^FF0000"+@HairStyle+"^000000";
+next;
+switch(select("- ต่อไป","- ย้อนกลับ","- หยุด","- เลือกแบบ ใส่แบบทรงผม","Exitz")) {
+
+
+case 1:
+if(@HairStyle == 67) goto Depleted;
+set @HairStyle,@HairStyle+1;
+goto CHSN;
+
+
+
+CHSN:
+setlook 1,@HairStyle; 
+goto CHS;
+close;
+
+
+case 2:
+if(@HairStyle <= 0) goto Depleted;
+set @HairStyle,@HairStyle-1;
+goto HSB;
+close;
+
+
+HSB:
+setlook 1,@HairStyle; 
+goto CHS;
+close;
+
+case 3:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "คุณได้เปลี่ยนทรงผม";
+mes "แบบที่ ^FF0000"+@HairStyle+"^000000 เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+close;
+
+case 4:
+goto PHS;
+close;
+
+case 5:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+}
+
+PHS:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดใส่แบบทรงผม"; 
+next;
+input @HairStyle;
+if(@HairStyle > 67) goto Depleted;
+mes "[ ^FF8000Beautician^000000 ]";
+mes "คุณได้เปลี่ยนทรงผม";
+mes "แบบที่ ^FF0000"+@HairStyle+"^000000 เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+setlook 1,@HairStyle;
+close;
+
+
+HairColor:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดเลือกแบบ ในการเลือกสีผม";
+next;
+menu 
+"- เลือกแบบ ดูสีผมไปเรื่อยๆ",CHC,
+"- เลือกแบบ ใส่รหัสสีผม",PHC,
+"Exitx",Cancel; 
+
+
+CHC:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "นี่คือสีผมรหัสที่ ^FF0000"+@HairColor+"^000000";
+next;
+switch(select("- ต่อไป","- ย้อนกลับ","- หยุด","- เลือกแบบ ใส่รหัสสีผม","Exit")) {
+
+
+case 1:
+if(@HairColor == 251) goto Depleted;
+set @HairColor,@HairColor+1;
+goto CHCN;
+
+
+CHCN:
+setlook 6,@HairColor; 
+goto CHC;
+end;
+
+case 2:
+if(@HairColor <= 0) goto Depleted;
+set @HairColor,@HairColor-1;
+goto HCB;
+close;
+
+HCB:
+setlook 6,@HairColor; 
+goto CHC;
+close;
+
+case 3:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "คุณได้เปลี่ยนสีผม";
+mes "รหัสที่ ^FF0000"+@HairColor+"^000000 เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+close;
+
+case 4:
+goto PHC;
+end;
+
+case 5:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+}
+
+PHC:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "โปรดใส่รหัสสีผม"; 
+next;
+input @HairColor;
+if(@HairColor > 251) goto Depleted;
+mes "[ ^FF8000Beautician^000000 ]";
+mes "คุณได้เปลี่ยนสีผม";
+mes "รหัสที่ ^FF0000"+@HairColor+"^000000 เสร็จสมบูรณ์";
+mes "แล้วพบกันใหม่";
+setlook 6,@HairColor;
+close;
+
+Depleted:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "แบบหมดแล้วค่ะ";
+close;
+
+Cancel:
+mes "[ ^FF8000Beautician^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+
+
+//OnInit:
+//waitingroom "Body|Beauty|Other",0;
+//end;
+
+
+
+//—>===============================================================<—\\
+//—>Modifier By : Security Service
+//—>===============================================================<—\\
+//—>Script NPC : Refine Option Item
+//—>===============================================================<—\\
+//—>Ver: 1.00 New !!
+//—>Update : เพิ่มระบบออฟชั่นได้ทุกส่วนในNPCตัวเดียว                                                      New !! 
+//—>Update :                                                                                                              New !!
+//—>===============================================================<—\\
+
+//morocc,113,76,4	script	Modifier Option	848,{
+main:
+//—>===============================================================<—\\
+set .@security$,"[^FF0000:: OptionItem ::^000000]";
+//—>===============================================================<—\\
+
+//mes .@security$;
+mes "^800000ยินดีต้อนรับสู่ระบบใหม่^000000";
+mes "ระบบ Option Item Version : 1.00";
+mes "By : Security Services";
+next;
+switch (select("^FF0000•^000000 Option Item","^FF0000•^000000 Cancel")) {
+		case 1:
+menu "^FF0000•^000000 ARMOR",ArmorOp,
+"^FF0000•^000000 SHOES",ShoesOp,
+"^FF0000•^000000 GARMENT",GarmentOp,
+"^FF0000•^000000 Cancel",Can;
+close;
+		case 2:
+			//mes .@security$;
+			mes "หากเปลี่ยนใจเมื่อไหร่ก็มาใช้บริการได้ทุกเมื่อนะ ^^";
+			close;
+}
+Can:
+//mes .@security$;
+mes "หากเปลี่ยนใจเมื่อไหร่ก็มาใช้บริการได้ทุกเมื่อนะ ^^";
+close;
+
+
+ShoesOp:
+next;
+//set .@security$, "[^0000FFOptionShoes^000000]";
+//mes .@security$;
+mes "ยินดีต้อนรับเข้าสู่ระบบหลอม";
+mes "ในการหลอมแต่ล่ะครั้งต้องใช้";
+mes " "+.CASH+" Cash สำหรับ^0000FFShoes^000000เท่านั้น";
+next;
+switch (select("^FF0000•^000000 SHOES","^FF0000•^000000 รายละเอียดShoes","^FF0000•^000000 Cancel")) {
+		case 1:
+		//mes .@security$;
+if (#CASHPOINTS<5) {
+	mes "ท่านมีCashไม่พอ";
+	close;
+}
+mes "เลือกระดับ Shoes ที่ต้องการ";
+mes "^FF0000มีโอกาศ 10% ที่อุปกรณ์จะถูกทำลาย^000000";
+next;
+switch (select("^FF0000•^000000 Shoes Lv.1:^FF0000•^000000 Shoes Lv.2:^FF0000•^000000 Shoes Lv.3")) {
+	case 1:
+		set .@j, 7;
+		break;
+
+	case 2:
+		set .@j, 8;
+		break;
+
+	case 3:
+		set .@j, 9;
+		break;
+}
+for (set .@c, 0; .@c < getarraysize(getd(".ids" + .@j)); set .@c, .@c + 1)
+	if (isequipped(getd(".ids" + .@j + "[" + .@c +"]")) == 1)
+		set .@s, .@c;
+//mes .@security$;
+if (!.@s) {
+	if (atoi(getequipname(EQI_SHOES)) == -1)
+		mes "ท่านไม่ได้สวมใส่อุปกรณ์";
+	else
+		mes "ท่านสวมใส่ ^FF0000" + getequipname(EQI_SHOES) + "^000000, แต่มันหลอมไม่ได้หรือว่าท่านอาจจะเลือกระดับผิด";
+	close;
+}
+mes "ท่านสวมใส่ ^FF0000[" + getitemname(getd(".ids" + .@j + "[" + .@s +"]")) + "]^000000";
+next;
+mes .@security$;
+mes "ขอให้โชคดี";
+next;
+set #CASHPOINTS, #CASHPOINTS - .CASH;
+specialeffect 101;
+specialeffect2 9;
+progressbar "ffff00",1;
+set .@itemid, getequipid(EQI_SHOES);
+delitem .@itemid,1;
+set .@rand, rand(1000);
+mes .@security$;
+if (.@rand >= 0 && .@rand < 100) { // Break 10%
+	specialeffect2 306;
+	mes "การหลอมล้มเหลว";
+	mes "ขอโทษด้วยที่ข้าทำมันพลาด...";
+	close;
+} else if (.@rand >= 100 && .@rand < 500) // +1 40%
+	setarray .@level[0],4700,4710,4720,4730,4740,4750;
+else if (.@rand >= 500 && .@rand < 800) // +2 30%
+	setarray .@level[0],4701,4711,4721,4731,4741,4751;
+else if (.@rand >= 800 && .@rand < 950) // +3 15%
+	setarray .@level[0],4702,4712,4722,4732,4742,4752;
+else if (.@rand >= 950 && .@rand < 1000) // +5 5%
+	setarray .@level[0],4704,4714,4724,4734,4744,4754;
+set .@runa, .@level[rand(getarraysize(.@level))];
+specialeffect2 305;
+getitem2 .@itemid, 1, 1, 0, 0, 0, 0, 0, .@runa;
+mes "^408000 Option Item Success ^000000";
+close;
+			case 2:
+	//mes .@security$;
+	mes "หลอมเสื้อได้ 3 ระดับด้วยกัน";
+	mes "^FF0000Armor Lv.1^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids7); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids7[.@c + 1]) + "";
+	next;
+	mes .@nombre$;
+	mes "^FF0000Armor Lv.2^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids8); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids8[.@c + 1]) + "";
+	next;
+	mes .@nombre$;
+	mes "^FF0000Armor Lv.3^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids9); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids9[.@c + 1]) + "";
+	close;
+			case 3:
+			//mes .@security$;
+			mes "แล้วมาใช้บริการเราเมื่อคุณพร้อม";
+			end;
+}
+
+
+GarmentOp:
+next;
+//set .@security$, "[^0000FFOptionGarment^000000]";
+//mes .@security$;
+mes "ยินดีต้อนรับเข้าสู่ระบบหลอม";
+mes "ในการหลอมแต่ล่ะครั้งต้องใช้";
+mes " ^FF0000"+.CASH+"^000000 Cash สำหรับ^0000FFGarment^000000เท่านั้น";
+next;
+switch (select("^FF0000•^000000 GARMENT","^FF0000•^000000 รายละเอียดGarment","^FF0000•^000000 Cancel")) {
+		case 1:
+		//mes .@security$;
+if (#CASHPOINTS<5) {
+	mes "ท่านมีCashไม่พอ";
+	close;
+}
+mes "เลือกระดับ Garment ที่ต้องการ";
+mes "^FF0000มีโอกาศ 10% ที่อุปกรณ์จะถูกทำลาย^000000";
+next;
+switch (select("^FF0000•^000000 Garment Lv.1:^FF0000•^000000 Garment Lv.2:^FF0000•^000000 Garment Lv.3")) {
+	case 1:
+		set .@j, 4;
+		break;
+
+	case 2:
+		set .@j, 5;
+		break;
+
+	case 3:
+		set .@j, 6;
+		break;
+}
+for (set .@c, 0; .@c < getarraysize(getd(".ids" + .@j)); set .@c, .@c + 1)
+	if (isequipped(getd(".ids" + .@j + "[" + .@c +"]")) == 1)
+		set .@s, .@c;
+mes .@security$;
+if (!.@s) {
+	if (atoi(getequipname(EQI_GARMENT)) == -1)
+		mes "ท่านไม่ได้สวมใส่อุปกรณ์";
+	else
+		mes "ท่านสวมใส่ ^FF0000" + getequipname(EQI_GARMENT) + "^000000, แต่มันหลอมไม่ได้หรือว่าท่านอาจจะเลือกระดับผิด";
+	close;
+}
+mes "ท่านสวมใส่ ^FF0000[" + getitemname(getd(".ids" + .@j + "[" + .@s +"]")) + "]^000000";
+next;
+//mes .@security$;
+mes "ขอให้โชคดี";
+next;
+set #CASHPOINTS, #CASHPOINTS - .CASH;
+specialeffect 101;
+specialeffect2 9;
+progressbar "ffff00",1;
+set .@itemid, getequipid(EQI_GARMENT);
+delitem .@itemid,1;
+set .@rand, rand(1000);
+mes .@security$;
+if (.@rand >= 0 && .@rand < 100) { // Break 10%
+	specialeffect2 306;
+	mes "การหลอมล้มเหลว";
+	mes "ขอโทษด้วยที่ข้าทำมันพลาด...";
+	close;
+} else if (.@rand >= 100 && .@rand < 500) // +1 40%
+	setarray .@level[0],4700,4710,4720,4730,4740,4750;
+else if (.@rand >= 500 && .@rand < 800) // +2 30%
+	setarray .@level[0],4701,4711,4721,4731,4741,4751;
+else if (.@rand >= 800 && .@rand < 950) // +3 15%
+	setarray .@level[0],4702,4712,4722,4732,4742,4752;
+else if (.@rand >= 950 && .@rand < 1000) // +5 5%
+	setarray .@level[0],4704,4714,4724,4734,4744,4754;
+set .@runa, .@level[rand(getarraysize(.@level))];
+specialeffect2 305;
+getitem2 .@itemid, 1, 1, 0, 0, 0, 0, 0, .@runa;
+mes "^408000 Option Item Success ^000000";
+close;
+			case 2:
+	mes .@security$;
+	mes "หลอมเสื้อได้ 3 ระดับด้วยกัน";
+	mes "^FF0000Armor Lv.1^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids4); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids4[.@c + 1]) + "";
+	next;
+	mes .@nombre$;
+	mes "^FF0000Armor Lv.2^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids5); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids5[.@c + 1]) + "";
+	next;
+	mes .@nombre$;
+	mes "^FF0000Armor Lv.3^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids6); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids6[.@c + 1]) + "";
+	close;
+			case 3:
+			//mes .@security$;
+			mes "แล้วมาใช้บริการเราเมื่อคุณพร้อม";
+			close;
+}
+
+
+ArmorOp:
+next;
+set .@security$, "[^0000FFOptionArmor^000000]";
+//mes .@security$;
+mes "ยินดีต้อนรับเข้าสู่ระบบหลอม";
+mes "ในการหลอมแต่ล่ะครั้งต้องใช้";
+mes " ^FF0000"+.CASH+"^000000 Cash สำหรับ^0000FFArmor^000000เท่านั้น";
+next;
+switch (select("^FF0000•^000000 ARMOR","^FF0000•^000000 รายละเอียดArmor","^FF0000•^000000 Cancel")) {
+		case 1:
+		//mes .@security$;
+if (#CASHPOINTS<5) {
+	mes "ท่านมีCashไม่พอ";
+	close;
+}
+mes "เลือกระดับ Armor ที่ต้องการ";
+mes "^FF0000มีโอกาศ 10% ที่อุปกรณ์จะถูกทำลาย^000000";
+next;
+switch (select("^FF0000•^000000 Armor Lv.1:^FF0000•^000000 Armor Lv.2:^FF0000•^000000 Armor Lv.3")) {
+	case 1:
+		set .@j, 1;
+		break;
+
+	case 2:
+		set .@j, 2;
+		break;
+
+	case 3:
+		set .@j, 3;
+		break;
+}
+for (set .@c, 0; .@c < getarraysize(getd(".ids" + .@j)); set .@c, .@c + 1)
+	if (isequipped(getd(".ids" + .@j + "[" + .@c +"]")) == 1)
+		set .@s, .@c;
+//mes .@security$;
+if (!.@s) {
+	if (atoi(getequipname(EQI_ARMOR)) == -1)
+		mes "ท่านไม่ได้สวมใส่อุปกรณ์";
+	else
+		mes "ท่านสวมใส่ ^FF0000" + getequipname(EQI_ARMOR) + "^000000, แต่มันหลอมไม่ได้หรือว่าท่านอาจจะเลือกระดับผิด";
+	close;
+}
+mes "ท่านสวมใส่ ^FF0000[" + getitemname(getd(".ids" + .@j + "[" + .@s +"]")) + "]^000000";
+next;
+mes "ขอให้โชคดี";
+next;
+set #CASHPOINTS, #CASHPOINTS - .CASH;
+specialeffect 101;
+specialeffect2 9;
+progressbar "ffff00",1;
+set .@itemid, getequipid(EQI_ARMOR);
+delitem .@itemid,1;
+set .@rand, rand(1000);
+//mes .@security$;
+if (.@rand >= 0 && .@rand < 100) { // Break 10%
+	specialeffect2 306;
+	mes "การหลอมล้มเหลว";
+	mes "ขอโทษด้วยที่ข้าทำมันพลาด...";
+	close;
+} else if (.@rand >= 100 && .@rand < 500) // +1 40%
+	setarray .@level[0],4700,4710,4720,4730,4740,4750;
+else if (.@rand >= 500 && .@rand < 800) // +2 30%
+	setarray .@level[0],4701,4711,4721,4731,4741,4751;
+else if (.@rand >= 800 && .@rand < 950) // +3 15%
+	setarray .@level[0],4702,4712,4722,4732,4742,4752;
+else if (.@rand >= 950 && .@rand < 1000) // +5 5%
+	setarray .@level[0],4704,4714,4724,4734,4744,4754;
+set .@runa, .@level[rand(getarraysize(.@level))];
+specialeffect2 305;
+getitem2 .@itemid, 1, 1, 0, 0, 0, 0, 0, .@runa;
+mes "^408000 Option Item Success ^000000";
+close;
+			case 2:
+	mes .@security$;
+	mes "หลอมเสื้อได้ 3 ระดับด้วยกัน";
+	mes "^FF0000Armor Lv.1^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids1); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids1[.@c + 1]) + "";
+	next;
+	mes .@nombre$;
+	mes "^FF0000Armor Lv.2^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids2); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids2[.@c + 1]) + "";
+	next;
+	mes .@nombre$;
+	mes "^FF0000Armor Lv.3^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids3); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids3[.@c + 1]) + "";
+	close;
+			case 3:
+			//mes .@security$;
+			mes "แล้วมาใช้บริการเราเมื่อคุณพร้อม";
+			close;
+}
+
+OnInit:
+//Armor
+setarray .ids1[1],2315,
+				2320, 
+				2317,  
+				2342, 
+				2359, 
+				2313,
+				2326, 
+				2322,  
+				2331, 
+				2371, 
+				2336,
+				2319;
+setarray .ids2[1],2355, 
+				2354,
+				2389, 
+				2366, 
+				2373, 
+				2353, 
+				2390, 
+				2388, 
+				2318, 
+				2372, 
+				2364, 
+				2365,
+				2360,
+				2387,
+				2349, 
+				2351,
+				2345, 
+				2347; 
+setarray .ids3[1],2386, 
+				2375, 
+				2374, 
+				2399,
+				2391, 
+				2367, 
+				2357,
+				2378, 
+				2376,
+				2381, 
+				2377, 
+				2394,
+				2380, 
+				2382, 
+				2379;
+//End Armor -- 
+
+//Garment
+setarray .ids4[1],2507,
+				2513, 
+				2506, 
+				2504, 
+				2512, 
+				2514, 
+				2530, 
+				2536;
+setarray .ids5[1],2521, 
+				2527, 
+				2553, 
+				2515, 
+				2542, 
+				2544, 
+				2545, 
+				2509, 
+				2523, 
+				2528; 
+setarray .ids6[1],2538, 
+				2539, 
+				2537, 
+				2549, 
+				2532,
+				2554, 
+				2531, 
+				2524;
+//End Garment
+
+//Shoes
+setarray .ids7[1],2420,
+				2406, 
+				2412, 
+				2416, 
+				2404;
+setarray .ids8[1],2434, 
+				2417, 
+				2419, 
+				2422, 
+				2432, 
+				2440, 
+				2424, 
+				2418, 
+				2450; 
+setarray .ids9[1],2435, 
+				2436, 
+				2433, 
+				2444, 
+				2421,
+				2423;
+set .CASH,5;
+
+}

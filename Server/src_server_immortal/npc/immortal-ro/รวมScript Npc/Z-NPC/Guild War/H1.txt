@@ -1,0 +1,39 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+yuno,157,321,3	script	WarpGuild#50	45,1,1,{	// วาปหน้าบ้าน ปล.ให้ปิดวาปเก่าทิ้งก่อน
+query_sql "SELECT `guild_vs` FROM `guild_vs_guild`  WHERE `guild_id` = 1",.@guild1;
+query_sql "SELECT `guild_vs` FROM `guild_vs_guild`  WHERE `guild_id` = 2",.@guild2;
+set @GID,getcharid(2);
+if(@GID==0) goto NoGuild;
+if(.@guild1==getcharid(2) || .@guild2==getcharid(2)) goto GuildMaster;
+mes "^0000FFGuild VS Guild^000000";
+mes "^0000FFท่านไม่ใช่กิลด์ที่ลงทะเบียนกับ GM^000000";
+close;
+
+GuildMaster:
+warp "guildvs01",252,271;	// เมื่อเข้าวาปหน้าบ้านแล้วจะมาที่นี่
+end;
+
+NoGuild:
+mes "กิลด์ของท่านยังไม่ได้ลงทะเบียน";
+mes "^0000FFGuild VS Guild^000000";
+close;
+end;
+}
+
+
+guildvs01,259,212,0	warp	guildvs01-1	1,1,guildvs01,72,240
+guildvs01,75,240,0	warp	guildvs01-2	1,5,guildvs01,256,212
+guildvs01,232,189,0	warp	guildvs01-3	1,1,guildvs01,74,261
+guildvs01,78,261,0	warp	guildvs01-4	1,1,guildvs01,236,189
+guildvs01,229,208,0	warp	guildvs01-5	1,1,guildvs01,70,282
+guildvs01,74,282,0	warp	guildvs01-6	1,1,guildvs01,225,208
+guildvs01,7,261,0	warp	guildvs01-7	1,1,guildvs01,55,30
+guildvs01,59,30,0	warp	guildvs01-8	1,1,guildvs01,11,261
+guildvs01,28,31,0	warp	guildvs01-9	1,1,guildvs01,251,42
+guildvs01,254,45,0	warp	guildvs01-10	1,1,guildvs01,24,31
+//----- พิกัดเมือเดินออกจากบ้าน
+guildvs01,252,275,0	warp	pay10-1	1,1,yuno,157,317

@@ -1,0 +1,447 @@
+/*
+	Script : Buff (2.0)
+	Release : 2012/04/17
+	By : ReadyGo
+	From : ro-basic.com
+	
+	Description : ให้ AB Heal มีดีเลย์ในการใช้งานป้องกันการกดรัวๆ
+	Comment:
+		v2.0	- เพิ่มแถบร่ายสกิล
+*/
+morocc,283,212,3	script	เติมเลือดและแจก AB	719,3,3,{
+	npctalk "อยู่รอบๆ ตัวข้าสิ แล้วพลังเจ้าจะฟื้นฟู";
+	emotion 22;
+	set .@time, 60;	// เวลาบัฟ (นาที)
+	set .@delay, 5;	// ดีเลย์การใช้งาน (วินาที)
+	set .@cast, 1;	// ระยะเวลาร่าย (วินาที)
+	
+	if ( gettimetick(2)-@delay_heal < .@delay )
+	dispbottom "[Buff] โปรดรออีก "+(.@delay-(gettimetick(2)-@delay_heal))+" วินาที";
+	else {
+	progressbar "0x007000", .@cast;
+	set @delay_heal, gettimetick(2);
+	sc_start 29, .@time*60*1000, 10;
+	sc_start 35, .@time*60*1000, 10;
+	sc_start 41, .@time*60*1000, 10;
+
+
+
+if (getgmlevel() >= 99) goto L_aspd2;// ส่วนของท่าน GM
+
+L_aspd0:   //  ของผู้เล่นทั่วไป
+sc_start SC_STRFood, 1000000,4;
+sc_start SC_AGIFood, 1000000,4;
+sc_start SC_VITFood, 1000000,4;
+sc_start SC_INTFood, 1000000,4;
+sc_start SC_DEXFood, 1000000,4;
+sc_start SC_LUKFood, 1000000,4;
+sc_start SC_BLESSING,1000000,10;
+sc_start SC_INCREASEAGI,1000000,10;
+sc_start 29,1000000,10; //แอง
+sc_start 41,1000000,5; //กอเรีย
+sc_start 40,1000000,5; // MAGNIFICAT เร่ง
+specialeffect2 507;
+specialeffect2 42;
+specialeffect2 37;
+specialeffect2 313;
+specialeffect2 150;
+specialeffect2 635;
+specialeffect2 17;
+specialeffect2 375;
+specialeffect2 8;
+specialeffect EF_SANCTUARY;
+sc_end SC_Poison;
+sc_end SC_Freeze;
+sc_end SC_Sleep;
+sc_end SC_Stan;
+sc_end SC_Stun;
+sc_end SC_ORCISH;
+sc_end SC_Stone;
+sc_end SC_Silence;
+sc_end SC_Blind;
+sc_end SC_Bleeding;
+sc_end SC_Confusion;
+sc_end SC_Curse;
+sc_end SC_Hallucination;
+sc_end SC_DPOISON;
+skilleffect 29,0;
+percentheal 100,100;
+end;
+
+L_aspd1:   //  ของผู้เล่นทั่วไป
+sc_start SC_STRFood, 1000000,4;
+sc_start SC_AGIFood, 1000000,4;
+sc_start SC_VITFood, 1000000,4;
+sc_start SC_INTFood, 1000000,4;
+sc_start SC_DEXFood, 1000000,4;
+sc_start SC_LUKFood, 1000000,4;
+sc_start SC_BLESSING,1000000,10;
+sc_start SC_INCREASEAGI,1000000,10;
+sc_start 29,1000000,10; //แอง
+sc_start 41,1000000,5; //กอเรีย
+sc_start 40,1000000,5; // MAGNIFICAT เร่ง
+specialeffect2 507;
+specialeffect2 42;
+specialeffect2 37;
+specialeffect2 313;
+specialeffect2 150;
+specialeffect2 635;
+specialeffect2 17;
+specialeffect2 375;
+specialeffect2 8;
+specialeffect EF_SANCTUARY;
+sc_end SC_Poison;
+sc_end SC_Freeze;
+sc_end SC_Sleep;
+sc_end SC_Stan;
+sc_end SC_Stun;
+sc_end SC_ORCISH;
+sc_end SC_Stone;
+sc_end SC_Silence;
+sc_end SC_Blind;
+sc_end SC_Bleeding;
+sc_end SC_Confusion;
+sc_end SC_Curse;
+sc_end SC_Hallucination;
+sc_end SC_DPOISON;
+skilleffect 29,0;
+percentheal 100,100;
+end;
+
+L_aspd2:   //  ของ GM
+// Internet Cafe
+//sc_start 188,6000000,6;
+//sc_start 189,6000000,6;
+//sc_start 190,6000000,6;
+//sc_start 191,6000000,6;
+//sc_start 192,6000000,6;
+//sc_start 193,6000000,6;
+//sc_start 200,6000000,24;
+//sc_start 201,6000000,24;
+//sc_start 30,600000,10;
+//sc_start 32,600000,10;
+//sc_start 332,600000,5;
+sc_start4 SC_POEMBRAGI,3600000,10,80,300,10; //บากิ
+sc_start4 SC_SERVICE4U,3600000,10,50,50,10;  //แด้นซ์
+sc_start SC_STRFood, 3600000,10;
+sc_start SC_AGIFood, 3600000,10;
+sc_start SC_VITFood, 3600000,10;
+sc_start SC_INTFood, 3600000,10;
+sc_start SC_DEXFood, 3600000,10;
+sc_start SC_LUKFood, 3600000,10;
+sc_start SC_BLESSING,3600000,10;
+sc_start SC_SpeedUp1,3600000,0; //วิ่งเร็ว
+sc_start SC_ATKPOTION,3600000,50; //+atk
+sc_start SC_MATKPOTION,3600000,50; //+matk
+sc_start SC_INCREASEAGI,3600000,10;
+sc_start SC_MELTDOWN,3600000,5;
+sc_start SC_WINDWALK,3600000,5;
+sc_start SC_ENDURE,3600000,10;
+sc_start 29,3600000,10; //แอง
+sc_start SC_IMPOSITIO,3600000,5;
+sc_start 41,3600000,5; //กอเรีย
+sc_start 34,3600000,1; //พิษ
+sc_start 121,3600000,10; //วินวอค
+sc_start 39,3600000,10; //ไครี่
+sc_start 120,3600000,10; // Falconeye
+sc_start 119,3600000,5; //EDP
+sc_start 36,3600000,10; // SUFFRAGIUM ร่ายไว
+sc_start 115,3600000,5; // ASSUMPTIO ถึก
+sc_start 40,3600000,5; // MAGNIFICAT เร่ง
+sc_start 44,3600000,5; // WEAPONPERFECTION เพิ่มโจมตี 100% อาวุธ
+sc_start 46,3600000,5; //MAXIMIZEPOWER โจมตีแรงที่สุด
+sc_start 72,3600000,5; // WEAPON เคลือบอาวุธ
+sc_start 73,3600000,5; // SHIELD เคลือบโล่
+sc_start 74,3600000,5; // ARMOR เคลือบชุดเกราะ
+sc_start 75,3600000,5; // HELM เคลือบส่วนหัว
+sc_start SC_HitFood,36000000,30;
+sc_start SC_FleeFood,3600000,30;
+sc_start SC_BATKFood,3600000,10;
+sc_start SC_MATKFood,3600000,10;
+sc_start SC_TRUESIGHT,3600000,5;
+sc_start SC_AUTOGUARD,3600000,10;
+sc_start SC_AURABLADE,3600000,5;
+sc_start SC_EDP,3600000,5;
+sc_start SC_KAITE,3600000,7;
+sc_start SC_KAUPE,3600000,3;
+sc_start SC_KAAHI,3600000,7;
+sc_start SC_KAIZEL,3600000,7;
+sc_start SC_CONCENTRATION,3600000,5;
+sc_start SC_CONCENTRATE,3600000,10;
+sc_start SC_ADRENALINE2,3600000,1;
+sc_start SC_OVERTHRUST,3600000,5;
+sc_start SC_LOUD,3600000,1;
+sc_start SC_ENERGYCOAT,3600000,1;
+sc_start 257,3600000,5;
+sc_start 258,3600000,5;
+sc_start SC_ASPDPOTION2,3600000,0;
+sc_start SC_SPIRIT,3600000,5;  //บัพโซลิ้ง
+sc_start SC_EXPBOOST,3600000,100;
+sc_start SC_ITEMBOOST,3600000,100;
+sc_start4 SC_ASSASSINCROSS,3600000,10,30,30,0;
+atcommand "@repairall";
+specialeffect2 507;
+specialeffect2 42;
+specialeffect2 37;
+specialeffect2 313;
+specialeffect2 150;
+specialeffect2 635;
+specialeffect2 8;
+specialeffect2 636;
+specialeffect2 17;
+specialeffect2 375;
+specialeffect2 410;
+specialeffect EF_SANCTUARY;
+sc_end SC_Poison;
+sc_end SC_Freeze;
+sc_end SC_Sleep;
+sc_end SC_Stan;
+sc_end SC_Stun;
+sc_end SC_ORCISH;
+sc_end SC_Stone;
+sc_end SC_Silence;
+sc_end SC_Blind;
+sc_end SC_Bleeding;
+sc_end SC_Confusion;
+sc_end SC_Curse;
+sc_end SC_Hallucination;
+sc_end SC_DPOISON;
+sc_end SC_EXPBOOST; // EXP คูณ 2
+skilleffect 29,0;
+percentheal 100,100;
+dispbottom "คุณได้อยู่ในสถานะ ( A Poem of Bragi & Service for You ) เป็นเวลา 1 ชั่วโมง  และช่วงเวลา Guild Wars บัฟจะมีสกิลเคลือบให้ด้วย";
+end;
+
+OnInIt:
+getmapxy( .@map$, .@x, .@y, 1 );
+while ( 1 ) {
+specialeffect EF_SANCTUARY;
+areapercentheal .@map$, .@x-3, .@y-3, .@x+3, .@y+3, 100, 100;
+sleep 5000;
+
+//end;
+//OnInit:
+//waitingroom "บัพจร้าอย่าลืมกดนะ",0;
+//end;
+}
+}
+}
+
+function	script	Buff Free	{
+	set .@time, 10;	// เวลาบัฟ (นาที) //  Time Buffer Player
+	set .@time2, 320;	// เวลาบัฟ (นาที) //  Time Buffer GM
+	set .@delay, 20;	// ดีเลย์การใช้งาน (วินาที)
+	set .@cast, 3;	// ระยะเวลาร่าย (วินาที)
+  set .@n$,	"[^FF80FF  ผู้วิเศษ^000000]";
+  if (getgmlevel() >= 99) goto  GM_Buffer;
+  
+	if ( gettimetick(2)-@delay_heal < .@delay )
+	
+				dispbottom "[Buff] โปรดรออีก "+(.@delay-(gettimetick(2)-@delay_heal))+" วินาที";
+	else {
+		progressbar "0x007000", .@cast;
+		set @delay_heal, gettimetick(2);
+		
+	sc_start 29, .@time*60*1000, 10;		
+	sc_start 30, .@time*60*1000, 10;
+	sc_start 32, .@time*60*1000, 10;
+	sc_start 35, .@time*60*1000, 10;
+	sc_start 41, .@time*60*1000, 10;
+    
+	sc_end SC_Poison;
+	sc_end SC_Freeze;
+	sc_end SC_Sleep;
+	sc_end SC_Stan;
+	sc_end SC_Stone;
+	sc_end SC_Silence;
+	sc_end SC_Blind;
+	sc_end SC_Bleeding;
+	sc_end SC_Confusion;
+	sc_end SC_Curse;
+	sc_end SC_Hallucination; 
+    
+	specialeffect2 509;
+	specialeffect2 91;
+	specialeffect2 410;
+	specialeffect 509;
+		specialeffect2 EF_INCAGILITY;
+		specialeffect2 EF_BLESSING;
+		specialeffect EF_SANCTUARY;
+		end;
+		
+		GM_Buffer:  // Buffer GM ระยะเวลา 5 Hrs.
+			if ( gettimetick(2)-@delay_heal < .@delay )
+				dispbottom "[Buff] โปรดรออีก "+(.@delay-(gettimetick(2)-@delay_heal))+" วินาที";
+	else {
+		progressbar "0x007000", .@cast;
+		set @delay_heal, gettimetick(2);
+		
+	sc_start 29, .@time2*60*1000, 10; //Anglus
+	sc_start 30, .@time2*60*1000, 10; //Blessing
+	sc_start 32, .@time2*60*1000, 10; //Increase_AGI 
+	sc_start 34, .@time2*60*1000, 10; //พิษ
+	sc_start 35, .@time2*60*1000, 10; //Imsitio
+	sc_start 36, .@time2*60*1000, 10; // SUFFRAGIUM ร่ายไว
+	sc_start 39, .@time2*60*1000, 10; //ไครี่
+	sc_start 40, .@time2*60*1000, 10; // MAGNIFICAT เร่ง
+	sc_start 41, .@time2*60*1000, 10; //Gloria
+	sc_start 44, .@time2*60*1000, 10; // WEAPONPERFECTION เพิ่มโจมตี 100% อาวุธ
+	sc_start 46, .@time2*60*1000, 10; //MAXIMIZEPOWER โจมตีแรงที่สุด
+	sc_start 72, .@time2*60*1000, 10; // WEAPON เคลือบอาวุธ
+	sc_start 73, .@time2*60*1000, 10; // SHIELD เคลือบโล่
+	sc_start 74, .@time2*60*1000, 10; // ARMOR เคลือบชุดเกราะ
+	sc_start 75, .@time2*60*1000, 10; // HELM เคลือบส่วนหัว
+	sc_start 115, .@time2*60*1000, 10; // ASSUMPTIO ถึก
+	sc_start 119, .@time2*60*1000, 10; //EDP
+	sc_start 120, .@time2*60*1000, 10; // Falconeye
+	sc_start 121, .@time2*60*1000, 10; //WINDWALK
+	sc_start 175, .@time2*60*1000, 10; //POEMBRAGI
+	sc_start 187, .@time2*60*1000, 10; //SERVICE4U
+	sc_start 203, .@time2*60*1000, 10; //STR FOOD
+	sc_start 204, .@time2*60*1000, 10; //AGI FOOD
+	sc_start 205, .@time2*60*1000, 10; //VIT FOOD
+	sc_start 206, .@time2*60*1000, 10; //INT FOOD
+	sc_start 207, .@time2*60*1000, 10; //DEX FOOD
+	sc_start 208, .@time2*60*1000, 10; //LUK FOOD
+	sc_start 209, .@time2*60*1000, 10; //HIT FOOD
+	sc_start 210, .@time2*60*1000, 10; //FLEE FOOD
+	sc_start 211, .@time2*60*1000, 10; //BATK FOOD
+	sc_start 212, .@time2*60*1000, 10; //WATK FOOD
+	sc_start 213, .@time2*60*1000, 10; //MATK FOOD
+	sc_start 214, .@time2*60*1000, 10; //SCRESIST
+	sc_start 257, .@time2*60*1000, 10; //EXP BOOST
+	sc_start 258, .@time2*60*1000, 10; //ITEM BOOST
+	sc_start 292, .@time2*60*1000, 10; //Job EXP BOOST
+
+
+
+	sc_end SC_Poison;
+	sc_end SC_Freeze;
+	sc_end SC_Sleep;
+	sc_end SC_Stan;
+	sc_end SC_Stone;
+	sc_end SC_Silence;
+	sc_end SC_Blind;
+	sc_end SC_Bleeding;
+	sc_end SC_Confusion;
+	sc_end SC_Curse;
+	sc_end SC_Hallucination; 
+    
+	specialeffect2 509;
+	specialeffect2 91;
+	specialeffect2 410;
+	specialeffect 509;
+	specialeffect2 EF_INCAGILITY;
+	specialeffect2 EF_BLESSING;
+	specialeffect2 EF_SANCTUARY;
+	percentheal 999,999;
+	end;
+		}
+	}	
+}
+
+
+morocc,163,262,3	duplicate(เติมเลือดและแจก AB)	Buff#23	719,3,3,
+morocc,165,97,3	duplicate(เติมเลือดและแจก AB)	Buff#24	719,3,3,
+yuno,158,187,3	duplicate(เติมเลือดและแจก AB)	Buff#28	719,3,3,
+veins,204,128,3	duplicate(เติมเลือดและแจก AB)	Buff#29	719,3,3,
+umbala,119,131,3	duplicate(เติมเลือดและแจก AB)	Buff#30	719,3,3,
+thor_camp,203,222,3	duplicate(เติมเลือดและแจก AB)	Buff#31	719,3,3,
+splendide,202,147,3	duplicate(เติมเลือดและแจก AB)	Buff#32	719,3,3,
+rachel,127,144,3	duplicate(เติมเลือดและแจก AB)	Buff#33	719,3,3,
+prontera,153,186,3	duplicate(เติมเลือดและแจก AB)	Buff#34	719,3,3,
+payon,184,103,3	duplicate(เติมเลือดและแจก AB)	Buff#35	719,3,3,
+niflheim,196,188,3	duplicate(เติมเลือดและแจก AB)	Buff#36	719,3,3,
+nameless_n,75,196,3	duplicate(เติมเลือดและแจก AB)	Buff#37	719,3,3,
+moscovia,224,196,3	duplicate(เติมเลือดและแจก AB)	Buff#38	719,3,3,
+mid_camp,217,238,3	duplicate(เติมเลือดและแจก AB)	Buff#39	719,3,3,
+manuk,272,199,3	duplicate(เติมเลือดและแจก AB)	Buff#40	719,3,3,
+xmas,148,136,3	duplicate(เติมเลือดและแจก AB)	Buff#41	719,3,3,
+louyang,213,104,3	duplicate(เติมเลือดและแจก AB)	Buff#42	719,3,3,
+lighthalzen,159,100,3	duplicate(เติมเลือดและแจก AB)	Buff#43	719,3,3,
+jawaii,201,292,3	duplicate(เติมเลือดและแจก AB)	Buff#44	719,3,3,
+izlude,129,114,3	duplicate(เติมเลือดและแจก AB)	Buff#45	719,3,3,
+hugel,97,150,3	duplicate(เติมเลือดและแจก AB)	Buff#46	719,3,3,
+prt_monk,225,97,3	duplicate(เติมเลือดและแจก AB)	Buff#47	719,3,3,
+gonryun,158,121,3	duplicate(เติมเลือดและแจก AB)	Buff#48	719,3,3,
+geffen,118,66,3	duplicate(เติมเลือดและแจก AB)	Buff#49	719,3,3,
+einbroch,234,205,3	duplicate(เติมเลือดและแจก AB)	Buff#50	719,3,3,
+einbech,178,127,3	duplicate(เติมเลือดและแจก AB)	Buff#51	719,3,3,
+comodo,189,153,3	duplicate(เติมเลือดและแจก AB)	Buff#52	719,3,3,
+brasilis,197,184,3	duplicate(เติมเลือดและแจก AB)	Buff#53	719,3,3,
+ayothaya,218,173,3	duplicate(เติมเลือดและแจก AB)	Buff#54	719,3,3,
+amatsu,114,151,3	duplicate(เติมเลือดและแจก AB)	Buff#55	719,3,3,
+aldebaran,142,116,3	duplicate(เติมเลือดและแจก AB)	Buff#56	719,3,3,
+alberta,118,62,3	duplicate(เติมเลือดและแจก AB)	Buff#57	719,3,3,
+dicastes01,200,227,3	duplicate(เติมเลือดและแจก AB)	Buff#58	719,3,3,
+dicastes02,117,163,3	duplicate(เติมเลือดและแจก AB)	Buff#59	719,3,3,
+turbo_room,100,120,3	duplicate(เติมเลือดและแจก AB)	Buff#60	719,3,3,
+malangdo,134,267,3	duplicate(เติมเลือดและแจก AB)	Buff#74	719,3,3,
+alb_ship,118,103,3	duplicate(เติมเลือดและแจก AB)	Buff#84	719,3,3,
+ra_temple,184,189,3	duplicate(เติมเลือดและแจก AB)	Buff#110	719,3,3,
+Coliseum,106,118,3	duplicate(เติมเลือดและแจก AB)	Buff#111	719,3,3,
+dewata,197,184,3	duplicate(เติมเลือดและแจก AB)	Buff#112	719,3,3,
+
+
+
+//=========== Buff Spirit ============================================================================================================\\
+
+/*
+	Script : Buff Spirit (1.0)
+	Release : 2012/04/17
+	By : ReadyGo
+	From : ro-basic.com
+	
+	Description : ให้ Buff Spirit แต่ละอาชีพ
+*/
+prontera,159,190,4	script	Buff Spirit	940,{
+	set .@time, 30;	// เวลาบัฟ ( นาที )
+	
+	switch ( BaseJob ) {
+		case Job_Alchemist:	
+			set .@skill_id, 445;	break;
+		case Job_Monk: 	
+			set .@skill_id, 447;	break;
+		case Job_Star_Gladiator:
+		case Job_Star_Gladiator2:	
+			set .@skill_id, 448;	break;
+		case Job_Sage:	
+			set .@skill_id, 449;	break;
+		case Job_Crusader:
+		case Job_Crusader2:	
+			set .@skill_id, 450;	break;
+		case Job_SuperNovice:	
+			set .@skill_id, 451;	break;
+		case Job_Knight:
+		case Job_Knight2: 
+			set .@skill_id, 452;	break;
+		case Job_Wizard: 
+			set .@skill_id, 453;	break;
+		case Job_Priest: 
+			set .@skill_id, 454;	break;
+		case Job_Bard:
+		case Job_Dancer: 
+			set .@skill_id, 455;	break;
+		case Job_Rogue: 
+			set .@skill_id, 456;	break;
+		case Job_Assassin: 
+			set .@skill_id, 457;	break;
+		case Job_Blacksmith: 
+			set .@skill_id, 458;	break;
+		case Job_Hunter: 
+			set .@skill_id, 460;	break;
+		case Job_Soul_Linker:
+			set .@skill_id, 461;	break;
+		default:
+			if ( Upper == 1 ) 
+				set .@skill_id, 494;
+			else
+				dispbottom "["+strnpcinfo(0)+"]  รับ Spirit ได้เฉพาะอาชีพ Class 2 หรือ Hi-Class เท่านั้น !";
+			break;
+	}
+	if ( .@skill_id ) {
+		sc_start4 SC_SPIRIT, .@time*60*1000, 5, .@skill_id, 0, 0;
+		skilleffect .@skill_id, 0;
+	}
+	end;
+}

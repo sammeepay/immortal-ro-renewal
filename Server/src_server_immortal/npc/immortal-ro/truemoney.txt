@@ -1,0 +1,85 @@
+-	script	TMPAY	 -1,{
+
+OnInit:
+
+	//ตั้งค่าจำนวน CASHPOINT ที่จะได้รับ
+
+	//จำนวน CASHPOINT สำหรับบัตร 50 บาท
+	set .card_cash_amount[1],5000;
+	//จำนวน CASHPOINT สำหรับบัตร 90 บาท
+	set .card_cash_amount[2],9000;
+	//จำนวน CASHPOINT สำหรับบัตร 150 บาท
+	set .card_cash_amount[3],15000;
+	//จำนวน CASHPOINT สำหรับบัตร 300 บาท
+	set .card_cash_amount[4],30000;
+	//จำนวน CASHPOINT สำหรับบัตร 500 บาท
+	set .card_cash_amount[5],50000;
+	//จำนวน CASHPOINT สำหรับบัตร 1,000 บาท
+	set .card_cash_amount[6],100000;
+
+	//ตั้งค่า Item ID และจำนวน Item ที่จะได้รับ
+
+	//จำนวน Item ID และจำนวน Item สำหรับบัตร 50 บาท (ตั้งค่าเป็น 0 ทั้งคู่ หากไม่ต้องการแจก Item สำหรับบัตรราคานี้)
+	set .card_item_id[1],0;
+	set .card_item_amount[1],0;
+	//จำนวน Item ID และจำนวน Item สำหรับบัตร 90 บาท (ตั้งค่าเป็น 0 ทั้งคู่ หากไม่ต้องการแจก Item สำหรับบัตรราคานี้)
+	set .card_item_id[2],0;
+	set .card_item_amount[2],0;
+	//จำนวน Item ID และจำนวน Item สำหรับบัตร 150 บาท (ตั้งค่าเป็น 0 ทั้งคู่ หากไม่ต้องการแจก Item สำหรับบัตรราคานี้)
+	set .card_item_id[3],0;
+	set .card_item_amount[3],0;
+	//จำนวน Item ID และจำนวน Item สำหรับบัตร 300 บาท (ตั้งค่าเป็น 0 ทั้งคู่ หากไม่ต้องการแจก Item สำหรับบัตรราคานี้)
+	set .card_item_id[4],0;
+	set .card_item_amount[4],0;
+	//จำนวน Item ID และจำนวน Item สำหรับบัตร 500 บาท (ตั้งค่าเป็น 0 ทั้งคู่ หากไม่ต้องการแจก Item สำหรับบัตรราคานี้)
+	set .card_item_id[5],0;
+	set .card_item_amount[5],0;
+	//จำนวน Item ID และจำนวน Item สำหรับบัตร 1,000 บาท (ตั้งค่าเป็น 0 ทั้งคู่ หากไม่ต้องการแจก Item สำหรับบัตรราคานี้)
+	set .card_item_id[6],0;
+	set .card_item_amount[6],0;
+
+	//CASH BONUS (สะสมจำนวน Cash เพื่อรับ Bonus Item) - ไม่ใช่หน่วยเงินบาท
+
+	//จำนวน CASH BONUS สะสมที่จะได้รับรางวัล
+	set .cash_bonus_minimum,300;
+	//Item ที่จะได้รับหากลูกค้าเติมเงินสะสมถึงจำนวนที่กำหนด (ตั้งค่าเป็น 0 ทั้งคู่ หากไม่ต้องการแจก Item)
+	set .cash_bonus_item_id,0;
+	set .cash_bonus_item_amount,0;
+
+	while (1)
+	{
+		query_sql "SELECT `card_id`,`amount`,`user_id` FROM `truemoney` WHERE `status` = 1 ORDER BY RAND()",.card_id,.card_amount,.card_account_id;
+		sleep2 500;
+		if (getarraysize(.card_id) > 0) {
+			for (set .i,0; .i < getarraysize(.card_id); set .i,.i+1) {
+				if(.card_amount[.i] > 0 && attachrid(.card_account_id[.i]) == 1)
+				{
+					dispbottom "[Refill System] คุณได้รับ " + .card_cash_amount[.card_amount[.i]] + " Cash";
+					set #CASHPOINTS,(#CASHPOINTS + .card_cash_amount[.card_amount[.i]]);
+					set #CASHBONUS,(#CASHBONUS + .card_cash_amount[.card_amount[.i]]);
+					dispbottom "[Refill System] คุณมี Cash Bonus สะสม " + #CASHBONUS + " Cash";
+					if(.card_item_id[.card_amount[.i]] > 0 && .card_item_amount[.card_amount[.i]] > 0)
+					{
+						getitem .card_item_id[.card_amount[.i]],.card_item_amount[.card_amount[.i]];
+						dispbottom "[Refill System] คุณได้รับ Item " + getitemname(.card_item_id[.card_amount[.i]]) + " จำนวน " + .card_item_amount[.card_amount[.i]] + " ชิ้น";
+					}
+					if(#CASHBONUS >= .cash_bonus_minimum && .cash_bonus_item_id > 0 && .cash_bonus_item_amount > 0)
+					{
+						set #CASHBONUS,(#CASHBONUS - .cash_bonus_minimum);
+						getitem .cash_bonus_item_id,.cash_bonus_item_amount;
+						dispbottom "[Refill System] คุณได้รับ Bonus Item " + getitemname(.cash_bonus_item_id) + " จำนวน " + .cash_bonus_item_amount + " ชิ้น";
+						dispbottom "[Refill System] คุณมี Cash Bonus สะสม " + #CASHBONUS + " Cash";
+					}
+					query_sql "UPDATE `truemoney` SET `status` = 2 WHERE `card_id` = " + .card_id[.i];
+					detachrid;
+				}
+			}
+			deletearray .card_id[0],getarraysize(.card_id);
+			deletearray .card_amount[0],getarraysize(.card_amount);
+			deletearray .card_account_id[0],getarraysize(.card_account_id);
+		}
+		sleep 5000;
+	}
+	end;
+
+}

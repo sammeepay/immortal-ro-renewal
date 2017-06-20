@@ -1,0 +1,227 @@
+//===== eAthena Script ======================================= 
+//= Announce Color
+//===== By: ================================================== 
+//= The Best Of Region
+//===== Current Version: ===================================== 
+//= 1.0
+//============================================================ 
+-	script	color_system	-1,{
+OnWhisperGlobal:
+mes "[^9400D3Color System^000000]";
+//===== ความาสามารถของ Script: =========================================
+mes "- สามารถใช้งานโดยการพิมพ์ที่";
+mes "- ช่องกระซิบว่า Npc:[สีที่ต้องการ]";
+mes "- แล้วพิมพ์ข้อความที่ต้องการดลงไป";
+mes "- สามารถเลือกได้หลากสีสันมากมาย";
+mes "- สามารถใช้ร่วมกับระบบกรองคำพูดได้";
+close;
+//============================================================ 
+OnInit:
+set $@gmasterlevel,40;	//= ระดับต่ำที่สุดที่ Game Master สามารถใช้ได้
+set $@itemannounce,7420;	//= ถ้ามี Item ID ดังกล่าวก็จะสามารถใช้ระบบนี้ได้
+set $@itemamount,0;	//= ถ้ามี Item ตามจำนวนดังกล่าวก็จะสามารถใช้ระบบนี้ได้
+//============================================================ 
+}
+//-------------------------------------------------
+-	script	black::black	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0x333333;
+	end;
+}
+//-------------------------------------------------
+-	script	brown::brown	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0xCC6600;
+	end;
+}
+//-------------------------------------------------
+-	script	white::white	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0xFFFFFF;
+	end;
+}
+//-------------------------------------------------
+-	script	blue::blue	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0x3366FF;
+	end;
+}
+//-------------------------------------------------
+-	script	red::red	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0xFF0000;
+	end;
+}
+//-------------------------------------------------
+-	script	orange::orange	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0xFF6600;
+	end;
+}
+//-------------------------------------------------
+-	script	green::green	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0x00CC00;
+	end;
+}
+//-------------------------------------------------
+-	script	pink::pink	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0xCC33CC;
+	end;
+}
+//-------------------------------------------------
+-	script	purple::purple	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0,0x9933FF;
+	end;
+}
+//-------------------------------------------------
+-	script	yellow::yellow	-1,{
+OnWhisperGlobal:
+    if ((getgmlevel() < $@gmasterlevel) || (countitem($@itemannounce) < $@itemamount))	end;
+    if (getgmlevel() < $@gmasterlevel)	delitem $@itemannounce,$@itemamount;
+    announce "" + @whispervar0$ + "" ,0;
+	end;
+}
+//-------------------------------------------------
+-	duplicate(black)	ดำ	-1
+-	duplicate(white)	ขาว	-1
+-	duplicate(brown)	น้ำตาล	-1
+-	duplicate(blue)	น้ำเงิน	-1
+-	duplicate(red)	แดง	-1
+-	duplicate(orange)	ส้ม	-1
+-	duplicate(green)	เขียว	-1
+-	duplicate(pink)	ชมพู	-1
+-	duplicate(purple)	ม่วง	-1
+-	duplicate(yellow)	เหลือง	-1
+
+
+//-------------------------------------------------
+
+-	script	bc	-1,{
+OnWhisperGlobal:
+    if(getgmlevel() <98) goto notgm;
+announce "กรุณาเลือกสีที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+menu "^FFFFFFขาว^000000",white,
+"ดำ",white1,
+"^FF0000แดง^000000",white2,
+"^FF6600ส้ม^000000",white3,
+"^33FF33เขียวอ่อน^000000",white4,
+"^99FF99เขียวอ๊อนอ่อน^000000",white5,
+"^33CC00เขียวเข้ม^000000",white6,
+"^FFFFCCเหลืองอ่อน^000000",white7,
+"^993300น้ำตาล^000000",white8,
+"^CC6600น้ำตาลอ่อน^000000",white9,
+"^CC33CCม่วงชมพู^000000",white10,
+"^FFCCCCชมพู^000000",white11,
+"^33FFFFฟ้าแสด^000000",white12,
+"^3366FFน้ำเงิน^000000",white13,
+"^9999FFม่วงอ่อน^000000",white14,
+"^6600CCม่วงกลาง^000000",white15,
+"Cancle",white16;
+white:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0xFFFFFF;
+    close;
+white1:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x333333;
+    close;
+white2:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0xFF0000;
+    close;
+white3:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0xFF6600;
+    close;
+white4:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x33FF33;
+    close;
+white5:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x99FF99;
+    close;
+white6:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x33CC00;
+    close;
+white7:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0xFFFFCC;
+    close;
+white8:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x993300;
+    close;
+white9:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0xCC6600;
+    close;
+white10:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0xCC33CC;
+    close;
+white11:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0xFFCCCC;
+    close;
+white12:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x33FFFF;
+    close;
+white13:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x3366FF;
+    close;
+white14:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x9999FF;
+    close;
+white15:
+announce "กรุณาใส่ข้อความที่ท่านจะประกาศ" ,bc_self,0xFFFACD;
+    input @message$;
+    announce "" + @message$ + "" ,0,0x6600CC;
+    close;
+
+white16:
+close;
+notgm:
+announce "คุณไม่สามารถใช้งานในส่วนนี้ได้เนื่องจากคุณไม่ใช่ Game Master" ,bc_self,0xFFFACD;
+close;
+}

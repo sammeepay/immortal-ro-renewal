@@ -1,0 +1,8 @@
+-	script	Novending::NVD	-1,{
+mes "[ ^FF0000ห้ามตั้งร้านบริเวณนี้^000000 ]";
+mes "ถ้าพบเห็นจะแบนทันที";
+mes " ";
+mes "Email GM : "+$@S_Email$+"";
+mes "TEL : "+$@S_TEL$+"";
+close;
+}

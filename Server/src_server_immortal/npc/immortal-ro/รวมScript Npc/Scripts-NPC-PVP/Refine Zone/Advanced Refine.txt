@@ -1,0 +1,163 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+-	script	Advanced Refine	-1,{
+
+set $@ug$,"^000080[ Upgrader ]^000000";
+	mes $@ug$;
+	mes "ข้าสามารถ เพิ่มระดับให้กับ อาวุธและเกราะได้";
+	mes "หากใช้ Elu หรือ Ori เทพ โอกาสเพิ่มขึ้น 20%";
+	mes "เจ้าต้องการ Upgrade ส่วนไหนล่ะ";
+	next;
+	for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+	{
+		if( getequipisequiped(.@i) )
+			set .@menu$, .@menu$ + "-" + "^B000FF" + getequipname(.@i) + "^000000";
+		set .@menu$, .@menu$ + ":";
+	}
+	set @part,select(.@menu$);
+
+	if( !getequipisequiped(@part) )	{	mes $@ug$;	mes "เจ้าไม่ได้สวมใส่อะไรในส่วนนี้.";	close;	}
+	if( !getequipisenableref(@part) )	{	mes $@ug$;	mes "Equipment ชิ้นนี้ไม่สามารถ Upgrade ได้.";	close;	}
+	if( !getequipisidentify(@part) )	{	mes $@ug$;	mes "นำไปตรวจสอบก่อนนำมา Upgrade";	close;	}
+	if( getequiprefinerycnt(@part) >= 10 )	{	mes $@ug$;	mes "ไม่สามารถ Upgrade ไปมากกว่านี้ได้แล้ว .";	close;	}
+	
+	switch( getequipweaponlv(@part) ){
+		case 1: callsub S_RefineValidate,1,1010,50,@part,7; break;		// 7620
+		case 2: callsub S_RefineValidate,2,1011,200,@part,6; break;
+		case 3: callsub S_RefineValidate,3,984,5000,@part,5; break;
+		case 4: callsub S_RefineValidate,4,984,20000,@part,4; break;
+		default: callsub S_RefineValidate,0,985,2000,@part,4; break;		// 7619
+	}
+	if ( @safe >= 4 ) {
+		for( set .@u,0; .@u < @safe; set .@u,.@u+1 ) {
+		SuccessRefItem @part;
+		continue;
+		}
+	mes $@ug$;
+	mes "^7FFF00 Gang Gang Gang ^000000!! ";
+	mes "^7FFF00 Gang Gang Gang ^000000!! ";
+	mes "^7FFF00 Gang Gang Gang !! ^000000!! ";
+	next;
+	Emotion e_no1;
+	mes $@ug$;
+	mes "การ Upgrade ประสบความสำเร็จ";
+	mes "ถ้าต้องการ Upgrade อะไรอีกมาหาข้าได้ทุกเมื่อ";
+	close;	
+	}
+	mes $@ug$;
+	mes "ข้าจะเริ่มการ Upgrade ณ บัด Now.";
+	mes "โอกาสสำเร็จอยู่ที่ ^FF0000" + (getequippercentrefinery(@part)*@uprefine/10) + "^000000 %";
+	next;
+	if ( (@refineuse == 7620) || (@refineuse == 7619) ) { if( getequippercentrefinery(@part)*@uprefine/10 > rand(100))	{	goto S_success;	} else {	goto S_Fail;	}	}
+	if ( (@refineuse == 1010) || (@refineuse == 1011) || (@refineuse == 984) || (@refineuse == 985) ) { if( getequippercentrefinery(@part) > rand(100))	{	goto S_success;	} else {	goto S_Fail;	}	}
+
+	S_Fail:
+		mes $@ug$;
+		mes "^8B0000 Gang Gang Gang Bomb !! ^000000!! ";
+		FailedRefItem @part;
+		next;
+		Emotion e_omg;
+		mes $@ug$;
+		mes "การ Upgrade ล้มเหลว";
+		mes "คนเราย่อมมีการผิดพลาดกันได้จริงไหม?";
+		close;
+	S_success:
+		mes $@ug$;
+		mes "^7FFF00 Gang Gang Gang !! ^000000!! ";
+		SuccessRefItem @part;
+		next;
+		Emotion e_no1;
+		mes $@ug$;
+		mes "การ Upgrade ประสบความสำเร็จ";
+		mes "ถ้าต้องการ Upgrade อะไรอีกมาหาข้าได้ทุกเมื่อ";
+		close;
+
+S_RefineValidate:
+	set @uprefine,10;
+	if ( getequiprefinerycnt(@part) >= getarg(4) && ((getarg(1) == 1010) || (getarg(1) == 1011) || (getarg(1) == 984)) )	{	if( countitem(7620) > 0 ) {	set .@refinegod,7620;	goto S_Refinegod;	}	}
+	if ( getequiprefinerycnt(@part) >= getarg(4) && getarg(1) == 985 )	{	if( countitem(7619) > 0 ) {	set .@refinegod,7619;	goto S_Refinegod;	}	}
+	set @refineuse,getarg(1);
+	set .@zenyuse,getarg(2);
+goto S_RefineUp;
+
+S_Refinegod:
+	mes $@ug$;
+	mes "ท่านต้องการใช้ "+getitemname(getarg(1))+"";
+	mes "หรือใช้ "+getitemname(.@refinegod)+"";
+	mes "ในการ Upgrade ครั้งนี้ล่ะ ?";
+	if( select("^0033CC"+getitemname(getarg(1))+"^000000 ( ^FF0000"+getequippercentrefinery(@part)+" %^000000):^0033CC"+getitemname(.@refinegod)+"^000000 ( ^FF0000"+getequippercentrefinery(@part)*12/10+" %^000000)") == 1 )
+		{	set @refineuse,getarg(1);	set .@zenyuse,getarg(2);	goto S_RefineUp;	}
+		else {	set @refineuse,.@refinegod;	set .@zenyuse,getarg(2)*2;	set @uprefine,12;	goto S_RefineUp;	}
+
+S_RefineUp:
+	set @safe,1;
+	next;
+	if( getequiprefinerycnt(@part) == 0 )	{	
+		mes $@ug$;	
+		mes "ท่านต้องการ Upgrade ถึงจุด Safety เลยไหมล่ะ ?";
+		next;
+		switch(select("เอาเลยแบบนั้นประหยัดเวลาข้าได้เยอะ:ไม่ละ ข้าชอบ ตี+ ทีละขั้น")) {
+		case1:	set @safe,getarg(4);	goto S_Refine;
+		case2:	goto S_Refine;
+		}
+	}
+S_Refine:
+	mes $@ug$;
+	if (getarg(0))
+	mes "นี่คืออาวุธ Level " + getarg(0) + " ";
+	mes "ต้องการใช้ ^ff9999" + getitemname(@refineuse) + "^000000 "+(1*@safe)+" ea ";
+	mes "และใช้เงิน " + (.@zenyuse*@safe) + " Zeny";
+	mes "ต้องการดำเนินการต่อหรือไม่ ?";
+	next;
+	if( select("ดำเนินการต่อไป:ขอข้าไปสำรวจของก่อนละกัน") == 1 )
+	{
+		if( getequippercentrefinery(getarg(3)) < 100 )
+		{
+			mes $@ug$;
+			mes "ถ้าท่านต้องการ Upgrade ต่อ";
+			mes "มีโอกาสที่จะล้มเหลวได้ !!";
+			mes "^ff0000อาวุธเสียหายไม่สามารถใช้งานได้^000000";
+			mes "^ff0000Card ก็จะไม่สามารถใช้งานได้อีก^000000";
+			mes " ";
+			mes "ต้องการดำเนินการต่อไปหรือไม่ ?";
+			next;
+			if( select("ดำเนินการต่อไป:ข้าขอคิดดูก่อนละกัน") == 2 )
+			{
+				mes $@ug$;
+				mes "ไม่เป็นไรไว้โอกาสครั้งหน้า";
+				mes "ถ้าต้องการ Upgrade มาหาข้าละกัน";
+				close;
+			}
+		}
+		if( countitem(@refineuse) >= @safe && Zeny > .@zenyuse*@safe )
+		{
+			delitem @refineuse, @safe;
+			set Zeny, Zeny - (.@zenyuse*@safe);
+			return;
+		}
+		else
+		{
+			mes $@ug$;
+			mes "คุณมีเงินไม่พอตามที่กำหนดไว้";
+			mes "หรือไม่มี " + getitemname(@refineuse) + " "+@safe+" ea";
+			mes "กลับไปหามาให้ครบก่อน";
+			close;
+		}
+	}
+	else
+	{
+		mes $@ug$;
+		mes "เอาเถอะ ไม่ต้องรีบร้อนก็ได้";
+		mes "ครั้งหน้า ข้าก็ยังรอเจ้าอยู่";
+		close;
+	}
+end;
+}

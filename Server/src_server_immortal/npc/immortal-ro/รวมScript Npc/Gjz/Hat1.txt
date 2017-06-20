@@ -1,0 +1,3334 @@
+-	script	QuestHat1::QH1	-1,{
+if ($@ActiveSv == 0) end;
+mes "[ ^FF0000QuestHat1^000000 ]";
+mes "สวัสดี [^FF0000 " + strcharinfo(0) + " ^000000]";
+mes "ข้าคือผู้รวบรวมความรู้เกียวกับการทำหมวกทุกอย่าง";
+mes "ถ้าสนใจลองไปอ่านเขื่อนไขกัน";
+next;
+mes "[ ^FF0000QuestHat1^000000 ]";
+mes "เลือกหัวข้อ ที่เจ้าสนใจ";
+next;
+
+menu "A - E",Page1,"F - J",Page2,"K - O",Page3,"P - T",Page4,"Y - Z",Page5,"ยกเลิก",Cancle;
+
+Page1:
+menu 
+"- Advanced Mini Propeller",AdvancedMini,
+"- Alice Doll",alice,
+"- Alarm Mask",alarm,
+"- Angel Helm",AngelHelm,
+"- Antlers",Antlers,
+"- Australian Ftag Hat",Australian,
+"- A-yam",Ayam,
+"- Baby Pacifiler",Baby,
+"- Bao Bao",BaoBao,
+"- Baseball Cap",bsaeballcap,
+"- Beret",Beret,
+"- Beanie",FurryH,
+"- Binoculars",Binoculars,
+"- Black Cat's Hairband",BlackC,
+"- Blinker",Blinker,
+"- Blue Beanie",BBeanie,
+"- Blue Drooping Cat",BDrooping,
+"- Blue Hairband",BlueBan,
+"- Blue Mange Hat",Bmange,
+"- Blue Fish",FishF,
+"- Blush",Blush,
+"- Boys Cap",BoysCap,
+"- Brazil Event",brazil,
+"- Bride Mask",BrideM,
+"- Bunny Band",BunnyB,
+"- Bulb Band",LightbulbH,
+"- Cake Hat",CakeHat,
+"- Candle",Candle,
+"- Captain's Hat",Captain,
+"- Censor Bar",CensorB,
+"- Chef's Hat",ChefsHat,
+"- Cowboy's Hat",CowboyH,
+"- Crescent Hairpin",CrescentH,
+"- Cross Hat",CrossH,
+"- Crown of the Ancient Queen",CrownQ,
+"- Crown of the Mistress",CrownM,
+"- Crunch Toast",Crunchtos,
+"- Cyclop's Eye",cyclop,
+"- Decorative Golden Bell",LargenG,
+"- Deviruchi Hat",DeviruchiH,
+"- Deviling Hat",Devilinghat,
+"- Doctor Band",DoctorB,
+"- Dokebi's Wig",Dokebisw,
+"- Drooping Cat",drooping,
+"- Drooping Ninetails",droopingNiner,
+"- Ear Muffs",EarMuffs,
+"- Ears of the Angel",EarsA,
+"- Ears of the Devil",EarsD,
+"- Elephant Hat",Elephant,
+"- Expressionless Mask",expressionless,
+"- ยกเลิก",Cancle;
+
+Page2:
+menu 
+"- Fantastic Wig",Fantasticwig,
+"- Fashion Sunglasses",FashionS,
+"- Father's White Moustache",father,
+"- Feather Bonnet",FeatherB,
+"- Feather Beret",FeatherBe,
+"- Flower Hairpin",FlowHa,
+"- Flying Angel",Flyingangel,
+"- Geographer Decoration",Geograad,
+"- Giant Band Aid",Bandage,
+"- Golden Tiara",gTiara,
+"- Gray Beanie",GBeanie,
+"- Gray Deviruchi Hat",GrayDeviruchi,
+"- Gray Drooping Cat",GDrooping,
+"- Gray Mage Hat",gmage,
+"- Grief Fir Greed",HeartofM,
+"- Hahoe Mask", HahoeM,
+"- Happy Wig",Happywig,
+"- Headset",Headset,
+"- Heart Hairpin",HeartH,
+"- Helm of Darkness",HelmDarkness,
+"- Hot Blooded Headband",BurningB,
+"- Horn of Succubus",succubus,
+"- Horn of Incubus",incubus,
+"- Indian Headband",IndianH,
+"- Judge Hat",Judge,
+"- ยกเลิก",Cancle;
+
+Page3:
+menu 
+"- Kitsune Mask(Mask of Fox)",FoxM,
+"- Laurel Crown",Lanrcrow,
+"- Lazy Smokie",ARaccoon,
+"- Mage Hat",MageHat,
+"- Magic Eyes",MagEye,
+"- Magistrate Hat",MagistrateH,
+"- Maiden's Twin Ribbon",MaiTwRibb,
+"- Mask of Alarm",alarm,
+"- Magician Hat",MagicianH,
+"- Marvelous Wig",Marvelouswig,
+"- Mask of Goblin Leader",goblin,
+"- Miner's Helmet",MinersH,
+"- Model Training Hat",CampusH,
+"- Mr.Smile",MrSmile,
+"- Mushroom Hairband",MushroH,
+"- Mythical Lion Mask",MythicalLM,
+"- National Holiday Hat",Natihoha,
+"- Nest Hat",nest,
+"- Nun's Hat",nun,
+"- Note Headphones",NoteHead,
+"- Opera Phantom Mask",OPMask,
+"- Orc Hero Helm",OrcH,
+"- Oxygen Mask",OxygenM,
+"- ยกเลิก",Cancle;
+
+Page4:
+menu 
+"- Party Hat",PointyC,
+"- Parcel Hat",Handkerchief,
+"- Phantom Of Opera",POpera,
+"- Ph.D Hat",PhDHat,
+"- Pink Beanie",PBeanie,
+"- Pink Drooping Cat",PDrooping,
+"- Poring Tower",PoringTower,
+"- Posture Fix Hat",posture,
+"- Pretend Murdered",PretendM,
+"- Puppy Hat",puppyhay,
+"- Rabbit Ears(Black Bunny Band)",RabbitEars,
+"- Red Bonnet",redribb,
+"- Red Deviruchi Hat",RedDeviruchi,
+"- Rad Ribbon",BackR,
+"- Rad Mage Hat",rmage,
+"- Rainbow EggShell",ColoredE,
+"- Ribbon Hat",Ribbhat,
+"- Renown Detective's Cap",Renown,
+"- Sakkat",Sakkat,
+"- Sea Otter's Hat",SeaO,
+"- Silver Tiara",sTiara,
+"- Shiny Wig",Shinywig,
+"- Smokie Hat",SmokieH,
+"- Small Twin Ribbons",twin,
+"- Sombrero",Sombrero,
+"- Sohee's Bells",sohee,
+"- Soul Ring",Soulring,
+"- Spore Hat",SporeH,
+"- Stop Post",StopP,
+"- Straw Hat",StrawH,
+"- Striped Bandana",StripedB,
+"- Sunday Hat",SundayH,
+"- Teddybear Hat",BearHat,
+"- Transform Leaf",Transform,
+"- Tulip Hairpin",TulipH,
+"- ยกเลิก",Cancle;
+
+Page5:
+menu 
+"- Valkyrie Helm",ValkyrieH,
+"- Wandeing Minstre Hat",WandMins,
+"- Welding Mask",WeldingM,
+"- White Deviruchi Hat",WhiteDeviruchi,
+"- White Drooping Cat",WDrooping,
+"- White Mage Hat",wMange,
+"- White White Petal",whiPer,
+"- Winter Hat",Winhat,
+"- Wonder Nutshell",WondrN,
+"- X-Shaped Hairpin",Xsha,
+"- Yellow Drooping Cat",Ydrooping,
+"- Yellow Mage Hat",ymage,
+"- Zherlthsh Mask",Zherlthsh,
+"- ยกเลิก",Cancle;
+
+whiPer:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRomantic Flower 1 ea^000000";
+mes "- ^0000FFPomantic Leaf 1 ea^000000";
+mes "- ^0000FFWhite Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkwhiPer,"- ยกเลิก",Cancle;
+
+OkwhiPer:
+next;
+if(countitem(2269) < 1) goto NoHelm;
+if(countitem(2270) < 1) goto NoHelm;
+if(countitem(982) < 1) goto NoHelm;
+delitem 2269,1;
+delitem 2270,1;
+delitem 982,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5206,1;
+close;
+
+Natihoha:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFYarn 666 ea^000000";
+mes "- ^0000FFSoft Silk 40 ea^000000";
+mes "- ^0000FFSuarlet Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkNatihoha,"- ยกเลิก",Cancle;
+
+OkNatihoha:
+next;
+if(countitem(7038) < 666) goto NoHelm;
+if(countitem(7166) < 40) goto NoHelm;
+if(countitem(975) < 1) goto NoHelm;
+delitem 7038,666;
+delitem 7166,40;
+delitem 975,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5148,1;
+close;
+
+Winhat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFTiger Party 999 ea^000000";
+mes "- ^0000FFBlack Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkWinhat,"- ยกเลิก",Cancle;
+OkWinhat:
+next;
+if(countitem(7267) < 999) goto NoHelm;
+if(countitem(983) < 1) goto NoHelm;
+delitem 7267,999;
+delitem 983,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5115,1;
+close;
+
+MagEye:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWizard Hat 1 ea^000000";
+mes "- ^0000FFLittle Ghost Doll 20 ea^000000";
+mes "- ^0000FFSkull 999 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkMagEye,"- ยกเลิก",Cancle;
+OkMagEye:
+next;
+if(countitem(2252) < 1) goto NoHelm;
+if(countitem(7268) < 20) goto NoHelm;
+if(countitem(7005) < 999) goto NoHelm;
+delitem 2252,1;
+delitem 7268,20;
+delitem 7005,999;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5138,1;
+close;
+
+ymage:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMage Hat 1 ea^000000";
+mes "- ^0000FFLemon Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Okymage,"- ยกเลิก",Cancle;
+Okymage:
+next;
+if(countitem(5027) < 1) goto NoHelm;
+if(countitem(976) < 1) goto NoHelm;
+delitem 5027,1;
+delitem 976,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5242,1;
+close;
+
+gmage:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMage Hat 1 ea^000000";
+mes "- ^0000FFBlack Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Okgmage,"- ยกเลิก",Cancle;
+Okgmage:
+next;
+if(countitem(5027) < 1) goto NoHelm;
+if(countitem(983) < 1) goto NoHelm;
+delitem 5027,1;
+delitem 983,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5240,1;
+close;
+
+Bmange:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMage Hat 1 ea^000000";
+mes "- ^0000FFCobaltblue Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBmange,"- ยกเลิก",Cancle;
+OkBmange:
+next;
+if(countitem(5027) < 1) goto NoHelm;
+if(countitem(978) < 1) goto NoHelm;
+delitem 5027,1;
+delitem 978,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5241,1;
+close;
+
+wMange:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMage Hat 1 ea^000000";
+mes "- ^0000FFWhite Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkwMange,"- ยกเลิก",Cancle;
+OkwMange:
+next;
+if(countitem(5027) < 1) goto NoHelm;
+if(countitem(982) < 1) goto NoHelm;
+delitem 5027,1;
+delitem 982,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5239,1;
+close;
+
+rmage:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMage Hat 1 ea^000000";
+mes "- ^0000FFScarlet Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Okrmage,"- ยกเลิก",Cancle;
+Okrmage:
+next;
+if(countitem(5027) < 1) goto NoHelm;
+if(countitem(975) < 1) goto NoHelm;
+delitem 5027,1;
+delitem 975,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5238,1;
+close;
+
+GBeanie:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBeanie 1 ea^000000";
+mes "- ^0000FFBlack Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkGBeanie,"- ยกเลิก",Cancle;
+OkGBeanie:
+next;
+if(countitem(5076) < 1) goto NoHelm;
+if(countitem(983) < 1) goto NoHelm;
+delitem 5076,1;
+delitem 983,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5235,1;
+close;
+
+BBeanie:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBeanie 1 ea^000000";
+mes "- ^0000FFCobaltbiue Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBBeanie,"- ยกเลิก",Cancle;
+OkBBeanie:
+next;
+if(countitem(5076) < 1) goto NoHelm;
+if(countitem(978) < 1) goto NoHelm;
+delitem 5076,1;
+delitem 978,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5236,1;
+close;
+
+PBeanie:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBeanie 1 ea^000000";
+mes "- ^0000FFScarlet Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkPBeanie,"- ยกเลิก",Cancle;
+OkPBeanie:
+next;
+if(countitem(5076) < 1) goto NoHelm;
+if(countitem(975) < 1) goto NoHelm;
+delitem 5076,1;
+delitem 975,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5237,1;
+close;
+
+WDrooping:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDrooping Cat 1 ea^000000";
+mes "- ^0000FFWhite Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkWDrooping,"- ยกเลิก",Cancle;
+OkWDrooping:
+next;
+if(countitem(5058) < 1) goto NoHelm;
+if(countitem(982) < 1) goto NoHelm;
+delitem 5058,1;
+delitem 982,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5230,1;
+close;
+
+GDrooping:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDrooping Cat 1 ea^000000";
+mes "- ^0000FFBlack Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkGDrooping,"- ยกเลิก",Cancle;
+OkGDrooping:
+next;
+if(countitem(5058) < 1) goto NoHelm;
+if(countitem(983) < 1) goto NoHelm;
+delitem 5058,1;
+delitem 983,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5231,1;
+close;
+
+PDrooping:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDrooping Cat 1 ea^000000";
+mes "- ^0000FFScarlet Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkPDrooping,"- ยกเลิก",Cancle;
+OkPDrooping:
+next;
+if(countitem(5058) < 1) goto NoHelm;
+if(countitem(975) < 1) goto NoHelm;
+delitem 5058,1;
+delitem 975,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5232,1;
+close;
+
+BDrooping:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDrooping Cat 1 ea^000000";
+mes "- ^0000FFCobaltblue Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBDrooping,"- ยกเลิก",Cancle;
+OkBDrooping:
+next;
+if(countitem(5058) < 1) goto NoHelm;
+if(countitem(978) < 1) goto NoHelm;
+delitem 5058,1;
+delitem 978,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5233,1;
+close;
+
+Ydrooping:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDrooping Cat 1 ea^000000";
+mes "- ^0000FFLemon Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkYdrooping,"- ยกเลิก",Cancle;
+OkYdrooping:
+next;
+if(countitem(5058) < 1) goto NoHelm;
+if(countitem(976) < 1) goto NoHelm;
+delitem 5058,1;
+delitem 976,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5234,1;
+close;
+
+
+RedDeviruchi:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDeviruchi Hat 1 ea^000000";
+mes "- ^0000FFScarlet Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkRedDeviruchi,"- ยกเลิก",Cancle;
+OkRedDeviruchi:
+next;
+if(countitem(5038) < 1) goto NoHelm;
+if(countitem(975) < 1) goto NoHelm;
+delitem 5038,1;
+delitem 975,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5227,1;
+close;
+
+WhiteDeviruchi:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDeviruchi Hat 1 ea^000000";
+mes "- ^0000FFWhite Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkWhiteDeviruchi,"- ยกเลิก",Cancle;
+OkWhiteDeviruchi:
+next;
+if(countitem(5038) < 1) goto NoHelm;
+if(countitem(982) < 1) goto NoHelm;
+delitem 5038,1;
+delitem 982,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5228,1;
+close;
+
+GrayDeviruchi:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDeviruchi Hat 1 ea^000000";
+mes "- ^0000FFBlack Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkGrayDeviruchi,"- ยกเลิก",Cancle;
+OkGrayDeviruchi:
+next;
+if(countitem(5038) < 1) goto NoHelm;
+if(countitem(983) < 1) goto NoHelm;
+delitem 5038,1;
+delitem 983,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5229,1;
+close;
+
+nest:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFFeather 1000 ea^000000";
+mes "- ^0000FFWhite Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Oknest,"- ยกเลิก",Cancle;
+Oknest:
+next;
+if(countitem(949) < 1000) goto NoHelm;
+if(countitem(982) < 1) goto NoHelm;
+delitem 949,1000;
+delitem 982,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5183,1;
+close;
+
+
+Geograad:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSunflower 1 ea^000000";
+mes "- ^0000FFManeater Blossom 100 ea^000000";
+mes "- ^0000FFManeater Root 100 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkGeograad,"- ยกเลิก",Cancle;
+OkGeograad:
+next;
+if(countitem(2253) < 1) goto NoHelm;
+if(countitem(1032) < 100) goto NoHelm;
+if(countitem(1033) < 100) goto NoHelm;
+delitem 2253,1;
+delitem 1032,100;
+delitem 1033,100;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5186,1;
+close;
+
+
+redribb:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSunday Hat 1 ea^000000";
+mes "- ^0000FFGreen Lace 1 ea^000000";
+mes "- ^0000FFSilk Ribbon 1 ea^000000";
+mes "- ^0000FFScarlet Dyestuff^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Okredribb,"- ยกเลิก",Cancle;
+Okredribb:
+next;
+if(countitem(975) < 1) goto NoHelm;
+if(countitem(10007) < 1) goto NoHelm;
+if(countitem(10015) < 1) goto NoHelm;
+if(countitem(5032) < 1) goto NoHelm;
+delitem 975,1;
+delitem 10007,1;
+delitem 10015,1;
+delitem 5032,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5109,1;
+close;
+
+WandMins:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMage Hat 1 ea^000000";
+mes "- ^0000FFFeather Fo Birds 28 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkWandMins,"- ยกเลิก",Cancle;
+OkWandMins:
+next;
+if(countitem(5027) < 1) goto NoHelm;
+if(countitem(916) < 28) goto NoHelm;
+delitem 5027,1;
+delitem 916,28;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5188,1;
+close;
+
+
+Lanrcrow:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFPuppy Love 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkLanrcrow,"- ยกเลิก",Cancle;
+OkLanrcrow:
+next;
+if(countitem(5008) < 10) goto NoHelm;
+delitem 5008,10;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5185,1;
+close;
+
+
+Captain:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBoys Cap 1 ea^000000";
+mes "- ^0000FFGill 111 ea^000000";
+mes "- ^0000FFHeart of Mermaid 50 ea^000000";
+mes "- ^0000FF9999 Zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCaptain,"- ยกเลิก",Cancle;
+OkCaptain:
+next;
+if(countitem(5016) < 1) goto NoHelm;
+if(countitem(956) < 111) goto NoHelm;
+if(countitem(950) < 50) goto NoHelm;
+if(Zeny < 9999) goto NoMon;
+delitem 5016,1;
+delitem 956,111;
+delitem 950,50;
+set Zeny,zeny-9999;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5184,1;
+close;
+
+Ribbhat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMaiden's Twin Ribbon 1 ea^000000";
+mes "- ^0000FFMagician Hat 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkRibbhat,"- ยกเลิก",Cancle;
+OkRibbhat:
+next;
+if(countitem(5187) < 1) goto NoHelm;
+if(countitem(5045) < 1) goto NoHelm;
+delitem 5187,1;
+delitem 5045,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5211,1;
+close;
+
+Renown:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFFedora [1] 1 ea^000000";
+mes "- ^0000FFOld Card Album 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkRenown,"- ยกเลิก",Cancle;
+OkRenown:
+next;
+if(countitem(5120) < 1) goto NoHelm;
+if(countitem(616) < 10) goto NoHelm;
+delitem 5120,1;
+delitem 616,10;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5108,1;
+close;
+
+MaiTwRibb:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFFlower Hairpin 1 ea^000000";
+mes "- ^0000FFSwall Ribbons 1 ea^000000";
+mes "- ^0000FFRed Ribbon 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkMaiTwRibb,"- ยกเลิก",Cancle;
+OkMaiTwRibb:
+next;
+if(countitem(5061) < 1) goto NoHelm;
+if(countitem(5085) < 1) goto NoHelm;
+if(countitem(5083) < 1) goto NoHelm;
+delitem 5061,1;
+delitem 5085,1;
+delitem 5083,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5187,1;
+close;
+
+
+AdvancedMini:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMini Propeller 1 ea^000000";
+mes "- ^0000FFRed Bijou 100 ea^000000";
+mes "- ^0000FFBlue Bijou 100 ea^000000";
+mes "- ^0000FFYellow Bijou 100 ea^000000";
+mes "- ^0000FFPGreen Bijou 100 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkAdvancedMini,"- ยกเลิก",Cancle;
+OkAdvancedMini:
+next;
+if(countitem(2259) < 1) goto NoHelm;
+if(countitem(7445) < 100) goto NoHelm;
+if(countitem(7446) < 100) goto NoHelm;
+if(countitem(7447) < 100) goto NoHelm;
+if(countitem(7448) < 100) goto NoHelm;
+delitem 2259,1;
+delitem 7445,100;
+delitem 7446,100;
+delitem 7447,100;
+delitem 7448,100;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5226,1;
+close;
+
+
+puppyhay:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAnimal Skin 999 ea^000000";
+mes "- ^0000FFPuppet Doll 20 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Okpuppyhay,"- ยกเลิก",Cancle;
+Okpuppyhay:
+next;
+if(countitem(919) < 999) goto NoHelm;
+if(countitem(740) < 20) goto NoHelm;
+delitem 919,999;
+delitem 740,20;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5182,1;
+close;
+
+
+Devilinghat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFLittle Evil horn 222 ea^000000";
+mes "- ^0000FFLittle Evil Wing 666 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkDevilinghat,"- ยกเลิก",Cancle;
+OkDevilinghat:
+next;
+if(countitem(1038) < 222) goto NoHelm;
+if(countitem(1039) < 666) goto NoHelm;
+delitem 1038,222;
+delitem 1039,666;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5254,1;
+close;
+
+Australian:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBaseball Cap 1 ea^000000";
+mes "- ^0000FFMemory Bookmark 500 ea^000000";
+mes "- ^0000FFTrunk 1000 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkAustralian,"- ยกเลิก",Cancle;
+OkAustralian:
+next;
+if(countitem(5147) < 1) goto NoHelm;
+if(countitem(7015) < 500) goto NoHelm;
+if(countitem(1019) < 1000) goto NoHelm;
+delitem 5147,1;
+delitem 7015,500;
+delitem 1019,1000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5264,1;
+close;
+
+
+bsaeballcap:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFHat[] 1 ea^000000";
+mes "- ^0000FFCap[] 1 ea^000000";
+mes "- ^0000FFRed Bandana 1 ea^000000";
+mes "- ^0000FFWestern Grace 1 ea^000000";
+mes "- ^0000FFRomantic Gent 1 ea^000000";
+mes "- ^0000FFSweet Gent 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Okbsaeballcap,"- ยกเลิก",Cancle;
+Okbsaeballcap:
+next;
+if(countitem(2221) < 1) goto NoHelm;
+if(countitem(2227) < 1) goto NoHelm;
+if(countitem(2275) < 1) goto NoHelm;
+if(countitem(2248) < 1) goto NoHelm;
+if(countitem(2247) < 1) goto NoHelm;
+if(countitem(2245) < 1) goto NoHelm;
+delitem 2221,1;
+delitem 2227,1;
+delitem 2275,1;
+delitem 2248,1;
+delitem 2247,1;
+delitem 2245,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5147,1;
+close;
+
+PoringTower:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAngel wing 1 ea^000000";
+mes "- ^0000FFPoring Hat 1 ea^000000";
+mes "- ^0000FFPoring Card 1 ea^000000";
+mes "- ^0000FFPoring Doll 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkPoringTower,"- ยกเลิก",Cancle;
+OkPoringTower:
+next;
+if(countitem(2254) < 1) goto NoHelm;
+if(countitem(5035) < 1) goto NoHelm;
+if(countitem(741) < 1) goto NoHelm;
+if(countitem(4001) < 1) goto NoHelm;
+delitem 2254,1;
+delitem 5035,1;
+delitem 741,1;
+delitem 4001,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5255,1;
+close;
+
+Soulring:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFHalo 1 ea^000000";
+mes "- ^0000FFFake Angel's Wing 20 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkSoulring,"- ยกเลิก",Cancle;
+OkSoulring:
+next;
+if(countitem(2282) < 1) goto NoHelm;
+if(countitem(7104) < 20) goto NoHelm;
+delitem 2282,1;
+delitem 7104,20;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5257,1;
+close;
+
+
+droopingNiner:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFNine Tails 1999 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",okdroopingNiner,"- ยกเลิก",Cancle;
+OkdroopingNiner:
+next;
+if(countitem(1022) < 1999) goto NoHelm;
+delitem 1022,1999;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5252,1;
+close;
+
+RabbitEars:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBunny Band 1 ea^000000";
+mes "- ^0000FFBlack Dyestuffs 5 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkRabbitEars,"- ยกเลิก",Cancle;
+OkRabbitEars:
+next;
+if(countitem(2214) < 1) goto NoHelm;
+if(countitem(983) < 5) goto NoHelm;
+delitem 2214,1;
+delitem 983,5;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5213,1;
+close;
+
+
+
+sTiara:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSteel 10 ea^000000";
+mes "- ^0000FFSilver Ring 20 ea^000000";
+mes "- ^0000FFTiara 1 ea^000000";
+mes "- ^0000FFMother's Nightmare 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OksTiara,"- ยกเลิก",Cancle;
+OksTiara:
+next;
+if(countitem(999) < 10) goto NoHelm;
+if(countitem(2611) < 20) goto NoHelm;
+if(countitem(2234) < 1) goto NoHelm;
+if(countitem(7020) < 1) goto NoHelm;
+delitem 999,10;
+delitem 2611,20;
+delitem 2234,1;
+delitem 7020,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5149,1;
+close;
+
+gTiara:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSteel 10 ea^000000";
+mes "- ^0000FFGold Ring 20 ea^000000";
+mes "- ^0000FFTiara 1 ea^000000";
+mes "- ^0000FFMother's Nightmare 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkgTiara,"- ยกเลิก",Cancle;
+OkgTiara:
+next;
+if(countitem(999) < 10) goto NoHelm;
+if(countitem(2610) < 20) goto NoHelm;
+if(countitem(2234) < 1) goto NoHelm;
+if(countitem(7020) < 1) goto NoHelm;
+delitem 999,10;
+delitem 2610,20;
+delitem 2234,1;
+delitem 7020,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5179,1;
+close;
+
+
+HelmDarkness:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBlade of Darkness 999 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",okHelmDarkness,"- ยกเลิก",Cancle;
+OkHelmDarkness:
+next;
+if(countitem(7023) < 999) goto NoHelm;
+delitem 7023,999;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5181,1;
+close;
+
+NoteHead:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSteel 100 ea^000000";
+mes "- ^0000FFBlue Fish 1 ea^000000";
+mes "- ^0000FFBlue Hairband 1 ea^000000";
+mes "- ^0000FFHeadset 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkNoteHead,"- ยกเลิก",Cancle;
+OkNoteHead:
+next;
+if(countitem(999) < 100) goto NoHelm;
+if(countitem(5065) < 1) goto NoHelm;
+if(countitem(5052) < 1) goto NoHelm;
+if(countitem(5001) < 1) goto NoHelm;
+delitem 999,100;
+delitem 5065,1;
+delitem 5052,1;
+delitem 5001,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5151,1;
+close;
+
+Judge:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSakkat 1 ea^000000";
+mes "- ^0000FFZombie Card 1 ea^000000";
+mes "- ^0000FFBlack Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkJudge,"- ยกเลิก",Cancle;
+OkJudge:
+next;
+if(countitem(2280) < 1) goto NoHelm;
+if(countitem(4038) < 1) goto NoHelm;
+if(countitem(983) < 1) goto NoHelm;
+delitem 7270,1;
+delitem 4038,1;
+delitem 983,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5173,1;
+close;
+
+Elephant:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFPanda Hat 1 ea^000000";
+mes "- ^0000FFBlack Bear Skun 200 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkElephant,"- ยกเลิก",Cancle;
+OkElephant:
+next;
+if(countitem(5030) < 1) goto NoHelm;
+if(countitem(7161) < 200) goto NoHelm;
+delitem 5030,1;
+delitem 7161,200;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5146,1;
+close;
+
+
+
+
+
+Baby:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFNursing Bottle 1 ea^000000";
+mes "- ^0000FFNose Ring 1 ea^000000";
+mes "- ^0000FFPacifier 1 ea^000000";
+mes "- ^0000FFRoyal Jally 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBaby,"- ยกเลิก",Cancle;
+OkBaby:
+next;
+if(countitem(7270) < 1) goto NoHelm;
+if(countitem(941) < 1) goto NoHelm;
+if(countitem(10004) < 1) goto NoHelm;
+if(countitem(526) < 1) goto NoHelm;
+delitem 7270,1;
+delitem 941,1;
+delitem 10004,1;
+delitem 526,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5110,1;
+close;
+
+
+
+Crunchtos:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCheese 50 ea^000000";
+mes "- ^0000FFMilk 50 ea^000000";
+mes "- ^0000FFPiece of Cake 50 ea^000000";
+mes "- ^0000FFOld Frying Pan 50 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCrunchtos,"- ยกเลิก",Cancle;
+OkCrunchtos:
+next;
+if(countitem(548) < 50) goto NoHelm;
+if(countitem(519) < 50) goto NoHelm;
+if(countitem(539) < 50) goto NoHelm;
+if(countitem(7031) < 50) goto NoHelm;
+delitem 548,50;
+delitem 519,50;
+delitem 539,50;
+delitem 7031,50;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5107,1;
+close;
+
+
+Zherlthsh:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFDark Crystal Fragment 369 ea^000000";
+mes "- ^0000FFCat's Eye 1 ea^000000";
+mes "- ^0000FFForbidden Red Candle 1 ea^000000";
+mes "- ^0000FFWorm-out Magic Scroll 30 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkZherlthsh,"- ยกเลิก",Cancle;
+OkZherlthsh:
+next;
+if(countitem(7315) < 369) goto NoHelm;
+if(countitem(7263) < 1) goto NoHelm;
+if(countitem(660) < 1) goto NoHelm;
+if(countitem(7099) < 30) goto NoHelm;
+delitem 7315,369;
+delitem 7263,1;
+delitem 660,1;
+delitem 7099,30;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5121,1;
+close;
+
+
+
+
+
+
+
+
+Flyingangel:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAngel Wing 3 ea^000000";
+mes "- ^0000FFFake Angel's Wing 3000 ea^000000";
+mes "- ^0000FF5,500,000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFlyingangel,"- ยกเลิก",Cancle;
+OkFlyingangel:
+next;
+if(countitem(7104) < 3000) goto NoHelm;
+if(countitem(2254) < 3) goto NoHelm;
+if(Zeny < 5500000) goto NoMon;
+delitem 7104,3000;
+delitem 2254,3;
+set Zeny,zeny-5500000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5210,1;
+close;
+
+
+
+Fantasticwig:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWig 40 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFantasticwig,"- ยกเลิก",Cancle;
+OkFantasticwig:
+next;
+if(countitem(10005) < 40) goto NoHelm;
+delitem 10005,40;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5276,1;
+close;
+
+Happywig:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWig 40 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkHappywig,"- ยกเลิก",Cancle;
+OkHappywig:
+next;
+if(countitem(10005) < 40) goto NoHelm;
+delitem 10005,40;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5273,1;
+close;
+
+
+Shinywig:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWig 40 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkShinywig,"- ยกเลิก",Cancle;
+OkShinywig:
+next;
+if(countitem(10005) < 40) goto NoHelm;
+delitem 10005,40;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5274,1;
+close;
+
+Marvelouswig:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWig 40 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkMarvelouswig,"- ยกเลิก",Cancle;
+OkMarvelouswig:
+next;
+if(countitem(10005) < 40) goto NoHelm;
+delitem 10005,40;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5275,1;
+close;
+
+Dokebisw:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWig 20 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",OkDokebisw,"- ยกเลิก",Cancle;
+OkDokebisw:
+next;
+if(countitem(10005) < 20) goto NoHelm;
+delitem 10005,20;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5258,1;
+close;
+
+
+father:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFFeather 200 ea^000000";
+mes "- ^0000FFSoft Feather 100 ea^000000";
+mes "- ^0000FFFake Angel's Wing 50 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Okfather,"- ยกเลิก",Cancle;
+Okfather:
+next;
+if(countitem(7063) < 100) goto NoHelm;
+if(countitem(949) < 200) goto NoHelm;
+if(countitem(7104) < 50) goto NoHelm;
+delitem 7063,100;
+delitem 949,200;
+delitem 7104,50;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5155,1;
+close;
+
+
+
+
+brazil:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFJoker Jester 1 ea^000000";
+mes "- ^0000FFSilver Knife of Chastity 10 ea^000000";
+mes "- ^0000FFMoonlight Dagger 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+menu "- ข้ามีของมาแลกเปลี่ยน",Okbrazil,"- ยกเลิก",Cancle;
+Okbrazil:
+next;
+if(countitem(5003) < 1) goto NoHelm;
+if(countitem(638) < 10) goto NoHelm;
+if(countitem(1234) < 1) goto NoHelm;
+delitem 5003,1;
+delitem 638,10;
+delitem 1234,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5150,1;
+close;
+
+
+cyclop:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMorpheus's Hood 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okcyclop,"- ยกเลิก",Cancle;
+Okcyclop:
+if (countitem(5126)<1) goto NoHelm;
+delitem 5126,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5135,1;
+close;
+
+
+
+
+
+alice:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAlice's Apron 300 ea^000000";
+mes "- ^0000FF10,000,000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okalice,"- ยกเลิก",Cancle;
+Okalice:
+if (countitem(7047)<300) goto NoHelm;
+if (zeny < 10000000) goto NoMon;
+delitem 7047,300;
+set Zeny,zeny-10000000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5137,1;
+close;
+
+
+
+incubus:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FF500 Little Evil Horn^000000";
+mes "- ^0000FF80 Talon of Gryphon^000000";
+mes "- ^0000FF50,000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okincubus,"- ยกเลิก",Cancle;
+Okincubus:
+if(countitem(1038) < 500) goto NoHelm;
+if(countitem(7048) < 80) goto NoHelm;
+if(Zeny < 50000) goto NoMon;
+delitem 1038,500;
+delitem 7048,80;
+set Zeny,zeny-50000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5072,1;
+close;
+
+
+
+Beret:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFHat[] 1 ea^000000";
+mes "- ^0000FFCap[] 1 ea^000000";
+mes "- ^0000FFPoopoohat 1 ea^000000";
+mes "- ^0000FFDarkgreen Dyestuff 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okberet,"- ยกเลิก",Cancle;
+Okberet:
+if(countitem(2221) < 1) goto NoHelm;
+if(countitem(2227) < 1) goto NoHelm;
+if(countitem(2289) < 1) goto NoHelm;
+if(countitem(979) < 1) goto NoHelm;
+delitem 2221,1;
+delitem 2227,1;
+delitem 2289,1;
+delitem 979,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5172,1;
+close;
+
+
+
+
+// Angel Helm
+AngelHelm:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAngel Wing 1 ea^000000";
+mes "- ^0000FFHelm[1] 1 ea^000000";
+mes "- ^0000FFFang of Garm 5 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkAngelHelm,"- ยกเลิก",Cancle;
+OkAngelHelm:
+if(countitem(2254)<1) goto NoHelm;
+if(countitem(2229)<1) goto NoHelm;
+if(countitem(7036)<5) goto NoHelm;
+delitem 2254,1;
+delitem 2229,1;
+delitem 7036,5;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5025,1;
+close;
+
+
+//Pointy Cap(Anniversary Hat)
+PointyC:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSanta's Hat 1 ea^000000";
+mes "- ^0000FFSlick Paper 200 ea^000000";
+mes "- ^0000FFSharp Paper 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkPointyC,"- ยกเลิก",Cancle;
+OkPointyC:
+if(countitem(2236)<1) goto NoHelm;
+if(countitem(7111)<200) goto NoHelm;
+if(countitem(7112)<1) goto NoHelm;
+delitem 2236,1;
+delitem 7111,200;
+delitem 7112,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5060,1;
+close;
+//Annoyed Raccoon Hat
+ARaccoon:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAcorn 100 ea^000000";
+mes "- ^0000FFSea Otter Fur 100 ea^000000";
+mes "- ^0000FFRaccoon Leaf 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkARaccoon,"- ยกเลิก",Cancle;
+OkARaccoon:
+if(countitem(1026)<100) goto NoHelm;
+if(countitem(7065)<100) goto NoHelm;
+if(countitem(945)<10) goto NoHelm;
+delitem 1026,100;
+delitem 7065,100;
+delitem 945,10;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5084,1;
+close;
+// Antlers
+Antlers:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFEvil Horn 20 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkAntlers,"- ยกเลิก",Cancle;
+OkAntlers:
+if(countitem(923)<20) goto NoHelm;
+delitem 923,20;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2284,1;
+close;
+//Back Ribbon
+BackR:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBig Sis' Ribbon 1 ea^000000";
+mes "- ^0000FFRibbon[1] 1 ea^000000";
+mes "- ^0000FFSilk Ribbon 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBackR,"- ยกเลิก",Cancle;
+OkBackR:
+if(countitem(2244)<1) goto NoHelm;
+if(countitem(2209)<1) goto NoHelm;
+if(countitem(10007)<1) goto NoHelm;
+delitem 2244,1;
+delitem 2209,1;
+delitem 10007,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5083,1;
+close;
+// Bao Bao
+BaoBao:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSilk Ribbon 1 ea^000000";
+mes "- ^0000FFHeroic Emblem 50 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBaoBao,"- ยกเลิก",Cancle;
+OkBaoBao:
+if(countitem(10007)<1) goto NoHelm;
+if(countitem(968)<50) goto NoHelm;
+delitem 10007,1;
+delitem 968,50;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5042,1;
+close;
+//Bandage
+Bandage:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAlcohol 1 ea^000000";
+mes "- ^0000FFRotten Bandage 500 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBandage,"- ยกเลิก",Cancle;
+OkBandage:
+if(countitem(970)<1) goto NoHelm;
+if(countitem(930)<500) goto NoHelm;
+delitem 970,1;
+delitem 930,500;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5063,1;
+close;
+
+//Bear Hat
+BearHat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFPanda Hat 1 ea^000000";
+mes "- ^0000FFNeedle Packet 100 ea^000000";
+mes "- ^0000FFSpool 100 ea^000000";
+mes "- ^0000FFBlack Bear Skin 300 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBearHat,"- ยกเลิก",Cancle;
+OkBearHat:
+if(countitem(5030)<1) goto NoHelm;
+if(countitem(7213)<100) goto NoHelm;
+if(countitem(7217)<100) goto NoHelm;
+if(countitem(7161)<300) goto NoHelm;
+delitem 5030,1;
+delitem 7213,100;
+delitem 7217,100;
+delitem 7161,300;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5059,1;
+close;
+
+// Binoculars
+Binoculars:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFGeek Glasses 1 ea^000000";
+mes "- ^0000FFSteel 100 ea^000000";
+mes "- ^0000FFเงิน 50000 zeny";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBinoculars,"- ยกเลิก",Cancle;
+OkBinoculars:
+if(countitem(2243)<1) goto NoHelm;
+if(countitem(999)<100) goto NoHelm;
+if(Zeny<50000) goto NoMon;
+delitem 2243,1;
+delitem 999,100;
+set Zeny,zeny-50000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2296,1;
+close;
+
+//Black Cat's Hairband
+BlackC:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFKitty Band 1 ea^000000";
+mes "- ^0000FFFluff 200 ea^000000";
+mes "- ^0000FFBlack Dyestuffs 1 ea^000000";
+mes "- ^0000FF10000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBlackC,"- ยกเลิก",Cancle;
+OkBlackC:
+if(countitem(2213)<1) goto NoHelm;
+if(countitem(914)<200) goto NoHelm;
+if(countitem(983)<1) goto NoHelm;
+if(Zeny<10000) goto NoMon;
+delitem 2213,1;
+delitem 914,200;
+delitem 983,1;
+set Zeny,zeny-10000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5057,1;
+close;
+
+// Blinker
+Blinker:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRed Bandana 1 ea^000000";
+mes "- ^0000FFBandana 1 ea^000000";
+mes "- ^0000FFPearl 5 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBlinker,"- ยกเลิก",Cancle;
+OkBlinker:
+if(countitem(2275)<1) goto NoHelm;
+if(countitem(2211)<1) goto NoHelm;
+if(countitem(722)<5) goto NoHelm;
+delitem 2275,1;
+delitem 2211,1;
+delitem 722,5;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2295,1;
+close;
+
+
+
+// Blue Bandana
+BlueBan:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBandana 1 ea^000000";
+mes "- ^0000FFCobaltblue Dyestuffs 1 ea^000000";
+mes "- ^0000FFAnolian Skin 300 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBlueBan,"- ยกเลิก",Cancle;
+OkBlueBan:
+if(countitem(2211)<1) goto NoHelm;
+if(countitem(978)<1) goto NoHelm;
+if(countitem(7003)<300) goto NoHelm;
+delitem 2211,1;
+delitem 978,1;
+delitem 7003,300;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5052,1;
+close;
+
+// Blush
+Blush:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAlice's Apron 100 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBlush,"- ยกเลิก",Cancle;
+OkBlush:
+if(countitem(7047)<100) goto NoHelm;
+delitem 7047,100;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5040,1;
+close;
+
+
+// Boys Cap
+BoysCap:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFTiger's Footskins 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBoysCap,"- ยกเลิก",Cancle;
+OkBoysCap:
+if(countitem(1030)<10) goto NoHelm;
+delitem 1030,10;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5016,1;
+close;
+
+
+// Bunny Band
+BunnyB:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFFeather 100 ea^000000";
+mes "- ^0000FFFour Leaf Clover 1 ea^000000";
+mes "- ^0000FFPearl 1 ea^000000";
+mes "- ^0000FFKitty Band 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBunnyB,"- ยกเลิก",Cancle;
+OkBunnyB:
+if(countitem(949)<100) goto NoHelm;
+if(countitem(706)<1) goto NoHelm;
+if(countitem(722)<1) goto NoHelm;
+if(countitem(2213)<1) goto NoHelm;
+delitem 949,100;
+delitem 706,1;
+delitem 722,1;
+delitem 2213,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2214,1;
+close;
+
+
+//Burning Blood Bandana
+BurningB:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRed Muffler 300 ea^000000";
+mes "- ^0000FFBurning Heart 300 ea^000000";
+mes "- ^0000FFWhite Dyestuffs 1 ea^000000";
+mes "- ^0000FFBandana 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkBurningB,"- ยกเลิก",Cancle;
+OkBurningB:
+if(countitem(7216)<300) goto NoHelm;
+if(countitem(7097)<300) goto NoHelm;
+if(countitem(982)<1) goto NoHelm;
+if(countitem(2211)<1) goto NoHelm;
+delitem 7216,300;
+delitem 7097,300;
+delitem 982,1;
+delitem 2211,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5070,1;
+close;
+
+// Cake Hat
+CakeHat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCandy 10 ea^000000";
+mes "- ^0000FFCandy Cane 5 ea^000000";
+mes "- ^0000FFWell Baked Cookie 15 ea^000000";
+mes "- ^0000FFPiece of Cake 20 ea^000000";
+mes "- ^0000FFSteel 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCakeHat,"- ยกเลิก",Cancle;
+OkCakeHat:
+if(countitem(529)<10) goto NoHelm;
+if(countitem(530)<5) goto NoHelm;
+if(countitem(538)<15) goto NoHelm;
+if(countitem(539)<20) goto NoHelm;
+if(countitem(999)<10) goto NoHelm;
+delitem 529,10;
+delitem 530,5;
+delitem 538,15;
+delitem 539,20;
+delitem 999,10;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5024,1;
+close;
+
+
+//Campus Hat
+CampusH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFApple o' Archer 1 ea^000000";
+mes "- ^0000FFBook 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCampusH,"- ยกเลิก",Cancle;
+OkCampusH:
+if(countitem(2285)<1) goto NoHelm;
+if(countitem(1550)<1) goto NoHelm;
+delitem 2285,1;
+delitem 1550,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5073,1;
+close;
+
+
+// Candle
+Candle:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBomb Wick 1 ea^000000";
+mes "- ^0000FFRoyal Jelly 100 ea^000000";
+mes "- ^0000FFMatchstick 50 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCandle,"- ยกเลิก",Cancle;
+OkCandle:
+if(countitem(2279)<1) goto NoHelm;
+if(countitem(526)<100) goto NoHelm;
+if(countitem(7035)<50) goto NoHelm;
+delitem 2279,10;
+delitem 526,100;
+delitem 7035,50;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5028,1;
+close;
+
+
+// Chef's Hat
+ChefsHat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFPiece of Cake 120 ea^000000";
+mes "- ^0000FFDragon Scale 450 ea^000000";
+mes "- ^0000FFWhite Dyestuff 1 ea^000000";
+mes "- ^0000FFFeather 330 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkChefsHat,"- ยกเลิก",Cancle;
+OkChefsHat:
+if(countitem(539)<120) goto NoHelm;
+if(countitem(1036)<450) goto NoHelm;
+if(countitem(982)<1) goto NoHelm;
+if(countitem(949)<330) goto NoHelm;
+delitem 539,120;
+delitem 1036,450;
+delitem 982,1;
+delitem 949,330;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5026,1;
+close;
+
+
+// Colored Egg Shell
+ColoredE:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFEgg Shell 1 ea^000000";
+mes "- ^0000FFCobaltblue Dyestuff 1 ea^000000";
+mes "- ^0000FFClaw of Desert Wolf 50 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkColoredE,"- ยกเลิก",Cancle;
+OkColoredE:
+if(countitem(5015)<1) goto NoHelm;
+if(countitem(978)<1) goto NoHelm;
+if(countitem(7030)<50) goto NoHelm;
+delitem 5015,1;
+delitem 978,1; 
+delitem 7030,50;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5039,1;
+close;
+
+
+
+//Cowboy's Hat
+CowboyH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWestern Grace 1 ea^000000";
+mes "- ^0000FFClaw of Desert Wolf 108 ea^000000";
+mes "- ^0000FFSoft Blade of Grass 108 ea^000000";
+mes "- ^0000FFBurning Horseshoe 4 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCowboyH,"- ยกเลิก",Cancle;
+OkCowboyH:
+if(countitem(2248)<1) goto NoHelm;
+if(countitem(7030)<108) goto NoHelm;
+if(countitem(7194)<108) goto NoHelm;
+if(countitem(7120)<4) goto NoHelm;
+delitem 2248,1;
+delitem 7030,108;
+delitem 7194,108;
+delitem 7120,4;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5075,1;
+close;
+
+
+// Crescent Hairpin
+CrescentH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFHeart Hairpin 1 ea^000000";
+mes "- ^0000FFSteel 20 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCrescentH,"- ยกเลิก",Cancle;
+OkCrescentH:
+if(countitem(5041)<1) goto NoHelm;
+if(countitem(999)<20) goto NoHelm;
+delitem 5041,1;
+delitem 999,20;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5048,1;
+close;
+
+
+
+// Cross Hairband
+CrossH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRosary 1 ea^000000";
+mes "- ^0000FFDestroyed Armor 500 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCrossH,"- ยกเลิก",Cancle;
+OkCrossH:
+if(countitem(2608)<1) goto NoHelm;
+if(countitem(7069)<500) goto NoHelm;
+delitem 2608,1;
+delitem 7069,500;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5036,1;
+close;
+
+
+//Crown of the Ancient Queen
+CrownQ:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFQueen's Hair Ornament 1 ea^000000";
+mes "- ^0000FFEmperium 1 ea^000000";
+mes "- ^0000FFGold 3 ea^000000";
+mes "- ^0000FFเงิน 20000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCrownQ,"- ยกเลิก",Cancle;
+OkCrownQ:
+if(countitem(10006)<1) goto NoHelm;
+if(countitem(714)<1) goto NoHelm;
+if(countitem(969)<3) goto NoHelm;
+if(Zeny<20000) goto NoMon;
+delitem 10006,1;
+delitem 714,1;
+delitem 969,3;
+set Zeny,zeny-20000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5080,1;
+close;
+
+
+//Crown of the Mistress
+CrownM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCoronet 1 ea^000000";
+mes "- ^0000FFEmperium 1 ea^000000";
+mes "- ^0000FFGold 3 ea^000000";
+mes "- ^0000FFเงิน 20000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkCrownM,"- ยกเลิก",Cancle;
+OkCrownM:
+if(countitem(2249)<1) goto NoHelm;
+if(countitem(714)<1) goto NoHelm;
+if(countitem(969)<3) goto NoHelm;
+if(Zeny<20000) goto NoMon;
+delitem 2249,1;
+delitem 714,1;
+delitem 969,3;
+set Zeny,zeny-20000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5081,1;
+close;
+
+
+// Deviruchi Hat
+DeviruchiH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFLittle Evil Horn 600 ea^000000";
+mes "- ^0000FFTalon of Griffin 40 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkDeviruchiH,"- ยกเลิก",Cancle;
+OkDeviruchiH:
+if(countitem(1038)<600) goto NoHelm;
+if(countitem(7048)<40) goto NoHelm;
+delitem 1038,600;
+delitem 7048,40;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5038,1;
+close;
+
+// Doctor Band
+DoctorB:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRed Bandana 1 ea^000000";
+mes "- ^0000FFIron 500 ea^000000";
+mes "- ^0000FFCracked Diamond 1 ea^000000";
+mes "- ^0000FFเงิน 3500 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkDoctorB,"- ยกเลิก",Cancle;
+OkDoctorB:
+if(countitem(2285)<1) goto NoHelm;
+if(countitem(998)<50) goto NoHelm;
+if(countitem(733)<1) goto NoHelm;
+if(Zeny<3500) goto NoMon;
+delitem 2285,1;
+delitem 998,50;
+delitem 733,1;
+set Zeny,zeny-3500;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2273,1;
+close;
+
+
+// Ear Muffs
+EarMuffs:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFFeathers 200 ea^000000";
+mes "- ^0000FFCursed Ruby 1 ea^000000";
+mes "- ^0000FFHeadset 1 ea^000000";
+mes "- ^0000FFเงิน 5000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkEarMuffs,"- ยกเลิก",Cancle;
+OkEarMuffs:
+if(countitem(949)<200) goto NoHelm;
+if(countitem(724)<1) goto NoHelm;
+if(countitem(5001)<1) goto NoHelm;
+if(Zeny<5000) goto NoMon;
+delitem 949,200;
+delitem 724,1;
+delitem 5001,1;
+set Zeny,zeny-5000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2283,1;
+close;
+
+
+//Ears of the Angel
+EarsA:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAngel Wing 1 ea^000000";
+mes "- ^0000FFElven Ears 1 ea^000000";
+mes "- ^0000FFเงิน 20000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkEarsA,"- ยกเลิก",Cancle;
+OkEarsA:
+if(countitem(2254)<1) goto NoHelm;
+if(countitem(2286)<1) goto NoHelm;
+if(Zeny<20000) goto NoMon;
+delitem 2254,1; // บัค 20-06-2007
+delitem 2286,1;
+set Zeny,zeny-20000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5074,1;
+close;
+
+
+
+//Ears of the Devil
+EarsD:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFEvil Wing 1 ea^000000";
+mes "- ^0000FFElven Ears 1 ea^000000";
+mes "- ^0000FFเงิน 20000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkEarsD,"- ยกเลิก",Cancle;
+OkEarsD:
+if(countitem(2255)<1) goto NoHelm;
+if(countitem(2286)<1) goto NoHelm;
+if(Zeny<20000) goto NoMon;
+delitem 2255,1;
+delitem 2286,1;
+set Zeny,zeny-20000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5068,1;
+close;
+
+
+
+// Fashion Sunglasses
+FashionS:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFJack a Dandy 1 ea^000000";
+mes "- ^0000FFScarlet Dyestuffs 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFashionS,"- ยกเลิก",Cancle;
+OkFashionS:
+if(countitem(2271)<1) goto NoHelm;
+if(countitem(975)<5) goto NoHelm;
+delitem 2271,1;
+delitem 975,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5047,1;
+close;
+
+//Feather Beret
+FeatherBe:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBeret 1 ea^000000";
+mes "- ^0000FFSoft Feather 100 ea^000000";
+mes "- ^0000FFCobaltblue Dyestuff 5 ea^000000";
+mes "- ^0000FFเงิน 10000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFeatherBe,"- ยกเลิก",Cancle;
+OkFeatherBe:
+if(countitem(5172)<1) goto NoHelm;
+if(countitem(7063)<100) goto NoHelm;
+if(countitem(978)<5) goto NoHelm;
+if(Zeny<10000) goto NoMon;
+delitem 5172,1;
+delitem 7063,100;
+delitem 978,5;
+set Zeny,zeny-10000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5170,1;
+close;
+
+// Feather Bonnet
+FeatherB:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRomantic Gent 1 ea^000000";
+mes "- ^0000FFFeather of Birds 300 ea^000000";
+mes "- ^0000FFเงิน 5000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFeatherB,"- ยกเลิก",Cancle;
+OkFeatherB:
+if(countitem(2247)<1) goto NoHelm;
+if(countitem(916)<300) goto NoHelm;
+if(Zeny<5000) goto NoMon;
+delitem 2247,1;
+delitem 916,300;
+set Zeny,zeny-5000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5018,1;
+close;
+
+
+
+//Flower Hairpin
+FlowHa:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRomantic Flower 1 ea^000000";
+mes "- ^0000FFSteel 10 ea^000000";
+mes "- ^0000FFเงิน 20000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFlowHa,"- ยกเลิก",Cancle;
+OkFlowHa:
+if(countitem(2269)<1) goto NoHelm;
+if(countitem(999)<10) goto NoHelm;
+if(Zeny<20000) goto NoMon;
+delitem 2269,1;
+delitem 999,10;
+set Zeny,zeny-20000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5061,1;
+close;
+
+
+
+//Fox Mask
+FoxM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFNine Tails 999 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFoxM,"- ยกเลิก",Cancle;
+OkFoxM:
+if(countitem(1022)<999) goto NoHelm;
+delitem 1022,999;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5069,1;
+close;
+
+
+
+//Fresh Blueish Fish
+FishF: 
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRotten Fish 1 ea^000000";
+mes "- ^0000FFStinky Scale 300 ea^000000";
+mes "- ^0000FFSushi 50 ea^000000";
+mes "- ^0000FFFish Tail 1 ea^000000";
+mes "- ^0000FFSticky Mucus 100 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFishF,"- ยกเลิก",Cancle;
+OkFishF:
+if(countitem(624)<1) goto NoHelm;
+if(countitem(959)<300) goto NoHelm;
+if(countitem(551)<50) goto NoHelm;
+if(countitem(1023)<1) goto NoHelm;
+if(countitem(938)<100) goto NoHelm;
+delitem 624,1;
+delitem 959,300;
+delitem 551,50;
+delitem 1023,1;
+delitem 938,100;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5065,1;
+close;
+
+
+
+//Furry Hat
+FurryH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCap 1 ea^000000";
+mes "- ^0000FFYarn 500 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkFurryH,"- ยกเลิก",Cancle;
+OkFurryH:
+if(countitem(2226)<1) goto NoHelm;
+if(countitem(7038)<500) goto NoHelm;
+delitem 2226,1;
+delitem 7038,500;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5076,1;
+close;
+
+
+// Handkerchief
+Handkerchief:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFFabric 150 ea^000000";
+mes "- ^0000FFCobaltblue Dyestuff 1 ea^000000";
+mes "- ^0000FFResin 100 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkHandkerchief,"- ยกเลิก",Cancle;
+OkHandkerchief:
+if(countitem(1059)<150) goto NoHelm;
+if(countitem(978)<1) goto NoHelm;
+if(countitem(907)<100) goto NoHelm;
+delitem 1059,150;
+delitem 978,1;
+delitem 907,100;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5023,1;
+close;
+
+
+
+// Headset
+Headset:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSteel 40 ea^000000";
+mes "- ^0000FFOridecon 1 ea^000000";
+mes "- ^0000FFAlchol 1 ea^000000";
+mes "- ^0000FFCoal 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkHeadset,"- ยกเลิก",Cancle;
+OkHeadset:
+if(countitem(999)<40) goto NoHelm;
+if(countitem(984)<1) goto NoHelm;
+if(countitem(970)<1) goto NoHelm;
+if(countitem(1003)<1) goto NoHelm;
+delitem 999,40;
+delitem 984,1;
+delitem 970,1;
+delitem 1003,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5001,1;
+close;
+
+
+
+// Heart Hairpin
+HeartH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCoral Reef 1200 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkHeartH,"- ยกเลิก",Cancle;
+OkHeartH:
+if(countitem(7013)<1200) goto NoHelm;
+delitem 7013,1200;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5041,1;
+close;
+
+
+
+
+
+
+// Heart of Merchant
+HeartofM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCirclet[1] 1 ea^000000";
+mes "- ^0000FFGold 1 ea^000000";
+mes "- ^0000FFSteel 20 ea^000000";
+mes "- ^0000FFFeather 80 ea^000000";
+mes "- ^0000FFSticky Mucus 800 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkHeartofM,"- ยกเลิก",Cancle;
+OkHeartofM:
+if(countitem(2233)<1) goto NoHelm;
+if(countitem(969)<1) goto NoHelm;
+if(countitem(999)<20) goto NoHelm;
+if(countitem(949)<80) goto NoHelm;
+if(countitem(938)<800) goto NoHelm;
+delitem 2233,1;
+delitem 969,1;
+delitem 999,20;
+delitem 949,80;
+delitem 938,800;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5021,1;
+close;
+
+
+//Indian Headband
+IndianH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFStriped Bandana 1 ea^000000";
+mes "- ^0000FFPeco Feather 10 ea^000000";
+mes "- ^0000FFเงิน 10000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkIndianH,"- ยกเลิก",Cancle;
+OkIndianH:
+if(countitem(5049)<1) goto NoHelm;
+if(countitem(7101)<10) goto NoHelm;
+if(Zeny<10000) goto NoMon;
+delitem 5049,1;
+delitem 7101,10;
+set Zeny,zeny-10000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5071,1;
+close;
+
+
+
+//Largen Goldenbell
+LargenG:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFGolden Bell 1 ea^000000";
+mes "- ^0000FFEmperium 1 ea^000000";
+mes "- ^0000FFGold 3 ea^000000";
+mes "- ^0000FFเงิน 20000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkLargenG,"- ยกเลิก",Cancle;
+OkLargenG:
+if(countitem(10016)<1) goto NoHelm;
+if(countitem(714)<1) goto NoHelm;
+if(countitem(969)<3) goto NoHelm;
+if(Zeny<20000) goto NoMon;
+delitem 10016,1;
+delitem 714,1;
+delitem 969,3;
+set Zeny,zeny-20000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5091,1;
+close;
+
+
+
+// Lightbulb Hairband
+LightbulbH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCirclet[1] 1 ea^000000";
+mes "- ^0000FFGlass Bead 20 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkLightbulbH,"- ยกเลิก",Cancle;
+OkLightbulbH:
+if(countitem(2233)<1) goto NoHelm;
+if(countitem(746)<20) goto NoHelm;
+delitem 2233,1;
+delitem 746,20;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5034,1;
+close;
+
+
+
+
+// Mage Hat
+MageHat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWizard Hat 1 ea^000000";
+mes "- ^0000FFElder Willow Card 1 ea^000000";
+mes "- ^0000FFDragon Scale 400 ea^000000";
+mes "- ^0000FFMould Powder 50 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkMageHat,"- ยกเลิก",Cancle;
+OkMageHat:
+if(countitem(2252)<1) goto NoHelm;
+if(countitem(4052)<1) goto NoHelm;
+if(countitem(1036)<400) goto NoHelm;
+if(countitem(7001)<50) goto NoHelm;
+delitem 2252,1;
+delitem 4052,1;
+delitem 1036,400;
+delitem 7001,50;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5027,1;
+close;
+
+
+// Magician Hat
+MagicianH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWizard Hat 1 ea^000000";
+mes "- ^0000FFSolid Shell 1200 ea^000000";
+mes "- ^0000FFAncient Lips 450 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkMagiciH,"- ยกเลิก",Cancle;
+OkMagiciH:
+if(countitem(2252)<1) goto NoHelm;
+if(countitem(943)<1200) goto NoHelm;
+if(countitem(1054)<450) goto NoHelm;
+delitem 2252,1;
+delitem 943,90;
+delitem 1054,40;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5045,1;
+close;
+
+
+
+// Mine Helmet
+MinersH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSafety Helmet 1 ea^000000";
+mes "- ^0000FFCandle 1 ea^000000";
+mes "- ^0000FFCrystal Mirror 1 ea^000000";
+mes "- ^0000FFSteel 20 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkMinersH,"- ยกเลิก",Cancle;
+
+OkMinersH:
+if(countitem(5009)<1) goto NoHelm;
+if(countitem(5028)<1) goto NoHelm;
+if(countitem(747)<1) goto NoHelm;
+if(countitem(999)<20) goto NoHelm;
+delitem 5009,1;
+delitem 5028,1;
+delitem 747,1;
+delitem 999,20;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5031,1;
+close;
+
+
+
+
+// Mr. Smile
+MrSmile:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFJellopy 10 ea^000000";
+mes "- ^0000FFFluff 10 ea^000000";
+mes "- ^0000FFClover 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkMrSmile,"- ยกเลิก",Cancle;
+
+
+OkMrSmile:
+if(countitem(705)<1) goto NoHelm;
+if(countitem(909)<1) goto NoHelm;
+if(countitem(914)<1) goto NoHelm;
+delitem 705,10;
+delitem 909,10;
+delitem 914,10;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2278,1;
+close;
+
+
+
+
+//Mushroom Hairband
+MushroH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMushroom Spore 300 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkMushroH,"- ยกเลิก",Cancle;
+OkMushroH:
+if(countitem(921)<300) goto NoHelm;
+delitem 921,300;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5082,1;
+close;
+
+
+
+
+// Opera Phantom Mask
+OPMask:
+mes "ข้าต้องการของในการแลกเปลี่ยน"; 
+mes "- ^0000FFPhantom of Opera 1 ea^000000";
+mes "- ^0000FFHorrendous Hair 50 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkOPMask,"- ยกเลิก",Cancle;
+OkOPMask:
+if(countitem(2281)<1) goto NoHelm;
+if(countitem(1048)<50) goto NoHelm;
+delitem 2281,1;
+delitem 1048,50;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5043,1;
+close;
+
+
+
+
+//Orc Hero Helm
+OrcH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFOrc Helm 1 ea^000000";
+mes "- ^0000FFJellopy 1000 ea^000000";
+mes "- ^0000FFOrcish Voucher 1000 ea^000000";
+mes "- ^0000FFHeroic Emblem 100 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkOrcH,"- ยกเลิก",Cancle;
+OkOrcH:
+if(countitem(2299)<1) goto NoHelm;
+if(countitem(909)<1000) goto NoHelm;
+if(countitem(931)<1000) goto NoHelm;
+if(countitem(968)<100) goto NoHelm;
+delitem 2299,1;
+delitem 909,1000;
+delitem 931,1000;
+delitem 968,100;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5094,1;
+close;
+
+
+
+// Oxygen Mask
+OxygenM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFOra Ora 5 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkOxygenM,"- ยกเลิก",Cancle;
+
+OkOxygenM:
+if(countitem(701)<5) goto NoHelm;
+delitem 701,5;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5004,1;
+close;
+
+
+
+// Ph.D Hat
+PhDHat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFIllusion Flower 1 ea^000000";
+mes "- ^0000FFHinalle 1 ea^000000";
+mes "- ^0000FFAloe 1 ea^000000";
+mes "- ^0000FFMent 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkPhDHat,"- ยกเลิก",Cancle;
+
+
+
+OkPhDHat:
+if(countitem(710)<1) goto NoHelm;
+if(countitem(703)<1) goto NoHelm;
+if(countitem(704)<1) goto NoHelm;
+if(countitem(708)<1) goto NoHelm;
+delitem 710,1;
+delitem 703,1;
+delitem 704,1;
+delitem 708,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5012,1;
+close;
+
+
+
+
+
+// Phantom Of Opera
+POpera:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSteel 20 ea^000000";
+mes "- ^0000FFSinging Plant 1 ea^000000";
+mes "- ^0000FFเงิน 5000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkPOpera,"- ยกเลิก",Cancle;
+
+
+
+OkPOpera:
+if(countitem(999)<20) goto NoHelm;
+if(countitem(707)<1) goto NoHelm;
+if(Zeny<5000) goto NoMon;
+delitem 999,20;
+delitem 707,1;
+set Zeny,zeny-5000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2281,1;
+close;
+
+
+
+// Pretend Murdered
+PretendM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSkirt of Virgin 4 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkPretendM,"- ยกเลิก",Cancle;
+
+
+OkPretendM:
+if(countitem(1049)<4) goto NoHelm;
+delitem 1049,4;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2293,1;
+close;
+
+
+
+
+
+//Resting Cat
+RestingC:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCirclet[1] 1 ea^000000";
+mes "- ^0000FFBlack Dyestuffs 1 ea^000000";
+mes "- ^0000FFBlack Cat Doll 300 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkRestingC,"- ยกเลิก",Cancle;
+
+OkRestingC:
+if(countitem(2233)<1) goto NoHelm;
+if(countitem(983)<1) goto NoHelm;
+if(countitem(7206)<300) goto NoHelm;
+delitem 2233,1;
+delitem 983,1;
+delitem 7206,300;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5058,1;
+close;
+
+
+//Alarm Mask
+SadM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMr. Scream 1 ea^000000";
+mes "- ^0000FFNeedle of Alarm 3000 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkSadM,"- ยกเลิก",Cancle;
+
+OkSadM:
+if(countitem(2288)<1) goto NoHelm;
+if(countitem(1095)<3000) goto NoHelm;
+delitem 5049,1;
+delitem 7101,3000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5086,1;
+close;
+
+
+
+// Sakkat
+Sakkat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFTrunk 100 ea^000000";
+mes "- ^0000FFเงิน 8000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkSakkat,"- ยกเลิก",Cancle;
+
+OkSakkat:
+if(countitem(1019)<100) goto NoHelm;
+if(Zeny<8000) goto NoMon;
+delitem 1019,100;
+set Zeny,zeny-8000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2280,1;
+close;
+
+
+
+//Sea Otter's Hat
+SeaO:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAnnoyed Raccoon Hat 1 ea^000000";
+mes "- ^0000FFTransform Leaf 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkSeaO,"- ยกเลิก",Cancle;
+OkSeaO:
+if(countitem(5084)<1) goto NoHelm;
+if(countitem(5064)<1) goto NoHelm;
+delitem 5084,1;
+delitem 5064,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5078,1;
+close;
+
+
+// Smokie Hat
+SmokieH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFKitty Band 1 ea^000000";
+mes "- ^0000FFDragon Scale 20 ea^000000";
+mes "- ^0000FFTough Scalelike Stem 200 ea^000000";
+mes "- ^0000FFSea Otter Fur 300 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkSmokieH,"- ยกเลิก",Cancle;
+OkSmokieH:
+if(countitem(2213)<1) goto NoHelm;
+if(countitem(1036)<20) goto NoHelm;
+if(countitem(7012)<200) goto NoHelm;
+if(countitem(7065)<300) goto NoHelm;
+delitem 2213,1;
+delitem 1036,20;
+delitem 7012,200;
+delitem 7065,300;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5033,1;
+close;
+
+
+
+
+//Sombrero
+Sombrero:
+mes "ข้าต้องการของในการแลกเปลี่ยน"; 
+mes "- ^0000FFStraw Hat 1 ea^000000";
+mes "- ^0000FFCactus Needle 50 ea^000000";
+mes "- ^0000FFGuitar 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkSombrero,"- ยกเลิก",Cancle;
+OkSombrero:
+if(countitem(5062)<1) goto NoHelm;
+if(countitem(952)<50) goto NoHelm;
+if(countitem(1907)<1) goto NoHelm;
+delitem 5062,1;
+delitem 952,50;
+delitem 1907,1;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5067,1;
+close;
+
+
+
+
+// Spore Hat
+SporeH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFPoison Spore 850 ea^000000";
+mes "- ^0000FFBurnt Tree 300 ea^000000";
+mes "- ^0000FFTongue 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkSporeH,"- ยกเลิก",Cancle;
+OkSporeH:
+if(countitem(7033)<850) goto NoHelm;
+if(countitem(7068)<300) goto NoHelm;
+if(countitem(1015)<1) goto NoHelm;
+delitem 7033,850;
+delitem 7068,300;
+delitem 1015,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5029,1;
+close;
+
+
+
+// Stop Post
+StopP:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFTrunk 50 ea^000000";
+mes "- ^0000FFBlack Dyestuffs 1 ea^000000";
+mes "- ^0000FFเงิน 91100 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkStopP,"- ยกเลิก",Cancle;
+OkStopP:
+if(countitem(1019)<50) goto NoHelm;
+if(countitem(983)<1) goto NoHelm;
+if(Zeny<91100) goto NoMon;
+delitem 1019,50;
+delitem 983,1;
+set Zeny,zeny-91100;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2272,1;
+close;
+
+
+
+//Straw Hat
+StrawH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSakkat 1 ea^000000";
+mes "- ^0000FFTough Vines 300 ea^000000";
+mes "- ^0000FFBamboo Cut 300 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkStrawH,"- ยกเลิก",Cancle;
+OkStrawH:
+if(countitem(2280)<1) goto NoHelm;
+if(countitem(7197)<300) goto NoHelm;
+if(countitem(7150)<300) goto NoHelm;
+delitem 2280,1;
+delitem 7197,300;
+delitem 7150,300;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5062,1;
+close;
+
+
+// Striped Bandana
+StripedB:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWorn-out Prison Uniform 1500 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkStripedB,"- ยกเลิก",Cancle;
+OkStripedB:
+if(countitem(1099)<1500) goto NoHelm;
+delitem 1099,1500;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5049,1;
+close;
+
+
+
+// Sunday Hat
+SundayH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFHat[1] 1 ea^000000";
+mes "- ^0000FFCap[1] 1 ea^000000";
+mes "- ^0000FFFabric 250 ea^000000";
+mes "- ^0000FFSoft Feather 600 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkSundayH,"- ยกเลิก",Cancle;
+OkSundayH:
+if(countitem(2221)<1) goto NoHelm;
+if(countitem(2227)<1) goto NoHelm;
+if(countitem(1059)<250) goto NoHelm;
+if(countitem(7063)<600) goto NoHelm;
+delitem 2221,1;
+delitem 2227,1;
+delitem 1059,250;
+delitem 7063,600;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5032,1;
+close;
+
+
+
+
+//Transform Leaf
+Transform:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRaccoon Leaf 600 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkTransform,"- ยกเลิก",Cancle;
+OkTransform:
+if(countitem(945)<600) goto NoHelm;
+delitem 945,600;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5064,1;
+close;
+
+
+
+
+
+//Tulip Hairpin
+TulipH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMr. Smile 1 ea^000000";
+mes "- ^0000FFScarlet Dyestuffs 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkTulipH,"- ยกเลิก",Cancle;
+
+OkTulipH:
+if(countitem(2278)<1) goto NoHelm;
+if(countitem(975)<1) goto NoHelm;
+delitem 2278,1;
+delitem 975,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5077,1;
+close;
+
+
+
+
+
+// Welding Mask
+WeldingM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSteel 50 ea^000000";
+mes "- ^0000FFเงิน 5000 zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkWeldingM,"- ยกเลิก",Cancle;
+
+OkWeldingM:
+if(countitem(999)<50) goto NoHelm;
+if(Zeny<5000) goto NoMon;
+delitem 999,50;
+set Zeny,zeny-5000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 2292,1;
+close;
+
+
+
+
+
+// Wonder Nutshell
+WondrN:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFNut Shell 1 ea^000000";
+mes "- ^0000FFWing of Dragonfly 500 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkWondrN,"- ยกเลิก",Cancle;
+
+OkWondrN:
+if(countitem(5037)<1) goto NoHelm;
+if(countitem(7064)<500) goto NoHelm;
+delitem 5037,1;
+delitem 7064,500;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5050,1;
+close;
+
+
+
+//X-shaped Hairpin
+Xsha:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFStellar 1 ea^000000";
+mes "- ^0000FFEctoplasm 400 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",OkXsha,"- ยกเลิก",Cancle;
+
+OkXsha:
+if(countitem(2294)<1) goto NoHelm;
+if(countitem(7220)<400) goto NoHelm;
+delitem 2294,1;
+delitem 7220,400;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5079,1;
+close;
+
+
+
+
+
+//Black Cat Hairband
+cat:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFKitty Band 1 ea^000000";
+mes "- ^0000FFSoft Feather 200 ea^000000";
+mes "- ^0000FFBlack Dyestuffs 1 ea^000000";
+mes "- ^0000FFZeny  10000z^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okcat,"- ยกเลิก",Cancle;
+
+Okcat:
+if(countitem(2213)<1) goto NoHelm;
+if(countitem(7063)<200) goto NoHelm;
+if(countitem(983)<1) goto NoHelm;
+if(zeny<10000) goto NoMon;
+delitem 2213,1;
+delitem 7063,200;
+delitem 983,1;
+set Zeny,zeny-10000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5057,1;
+close;
+
+
+
+
+
+//Posture Fix Ha
+posture:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFApple of Archer 1 ea^000000";
+mes "- ^0000FFBook 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okposture,"- ยกเลิก",Cancle;
+
+Okposture:
+if(countitem(2285)<1) goto NoHelm;
+if(countitem(1550)<1) goto NoHelm;
+delitem 2285,1;
+delitem 1550,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5073,1;
+close;
+
+//Fresh Fish Hat
+fish: 
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRotten Fish 1 ea^000000";
+mes "- ^0000FFStinky Scale 300 ea^000000";
+mes "- ^0000FFSushi 50 ea^000000";
+mes "- ^0000FFFish Tail 1 ea^000000";
+mes "- ^0000FFSticky Mucus 100 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okfish,"- ยกเลิก",Cancle;
+Okfish:
+if(countitem(624)<1) goto NoHelm;
+if(countitem(959)<300) goto NoHelm;
+if(countitem(551)<50) goto NoHelm;
+if(countitem(1023)<1) goto NoHelm;
+if(countitem(938)<100) goto NoHelm;
+delitem 624,1;
+delitem 959,300;
+delitem 551,50;
+delitem 1023,1;
+delitem 938,100;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5065,1;
+close;
+
+//Drooping Cat
+drooping:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSlotted Circlet 1 ea^000000";
+mes "- ^0000FFBlack Dyestuffs 1 ea^000000";
+mes "- ^0000FFBlack Cat Doll 300 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",Okdrooping,"ข้าไม่มีของแลก",Cancle;
+Okdrooping:
+if(countitem(2233)<1) goto NoHelm;
+if(countitem(983)<1) goto NoHelm;
+if(countitem(7206)<300) goto NoHelm;
+delitem 2233,1;
+delitem 983,1;
+delitem 7206,300;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5058,1;
+close;
+
+//Sea Otter Hat
+otter:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFAnnoyed Raccoon Hat 1 ea^000000";
+mes "- ^0000FFTransform Leaf 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okotter,"- ยกเลิก",Cancle;
+
+Okotter:
+if(countitem(5084)<1) goto NoHelm;
+if(countitem(5064)<1) goto NoHelm;
+delitem 5084,1;
+delitem 5064,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5078,1;
+close;
+
+
+//Winter Cap
+wintere:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFCap 1 ea^000000";
+mes "- ^0000FFFur of Goat 500 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okwinter,"- ยกเลิก",Cancle;
+
+Okwinter:
+if(countitem(2226)<1) goto NoHelm;
+if(countitem(7107)<500) goto NoHelm;
+delitem 2226,1;
+delitem 7107,500;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5076,1;
+close;
+
+//Sohee's Bells
+sohee:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFGolden Bell 1 ea^000000";
+mes "- ^0000FFEmperium  1 ea^000000";
+mes "- ^0000FFGold 3 ea^000000";
+mes "- ^0000FFZeny 25000z^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Oksohee,"- ยกเลิก",Cancle;
+
+Oksohee:
+if(countitem(10016)<1) goto NoHelm;
+if(countitem(714)<1) goto NoHelm;
+if(countitem(969)<3) goto NoHelm;
+if(Zeny<25000) goto NoMon;
+delitem 10016,1;
+delitem 714,1;
+delitem 969,3;
+set Zeny,zeny-25000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5091,1;
+close;
+
+
+//Mask of Alarm
+alarm:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFClock Hand 3000 ea^000000";
+mes "- ^0000FFFlu Mask  1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okalarm,"- ยกเลิก",Cancle;
+
+Okalarm:
+if(countitem(1095)<3000) goto NoHelm;
+if(countitem(2218)<1) goto NoHelm;
+delitem 1095,3000;
+delitem 2218,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5086,1;
+close;
+
+
+//Indian Hairband
+indian:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFStriped Hairband 1 ea^000000";
+mes "- ^0000FFIndian Fillet 1 ea^000000";
+mes "- ^0000FFPeco's Feather 10 ea^000000";
+mes "- ^0000FFZeny10000z ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",Okindian,"ข้าไม่มีของแลก",Cancle;
+Okindian:
+if(countitem(5049)<1) goto NoHelm;
+if(countitem(5010)<1) goto NoHelm;
+if(countitem(7107)<10) goto NoHelm;
+if(Zeny<10000) goto NoHelm;
+delitem 5049,1;
+delitem 5010,1;
+delitem 7107,10;
+set Zeny,zeny-10000;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5071,1;
+close;
+
+
+
+//Small Twin Ribbons
+twin:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBig Ribbon 1 ea^000000";
+mes "- ^0000FFSilk Ribbon 1 ea^000000";
+mes "- ^0000FFX-Shaped Hairpin 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Oktwin,"- ยกเลิก",Cancle;
+Oktwin:
+if(countitem(2244)<1) goto NoHelm;
+if(countitem(5079)<10) goto NoHelm;
+if(countitem(10007)<1) goto NoHelm;
+delitem 2244,1;
+delitem 5079,1;
+delitem 10007,1;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5085,1;
+close;
+
+
+//Expressionless Mask
+expressionless:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFsteel 25 ea^000000";
+mes "- ^0000FFMask of Goblin Leader 1 ea^000000";
+mes "- ^0000FFZeny 50000z^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okexpressionless,"- ยกเลิก",Cancle;
+Okexpressionless:
+if(countitem(999)<25) goto NoHelm;
+if(countitem(5090)<1) goto NoHelm;
+if(Zeny<50000) goto NoMon;
+delitem 999,25;
+delitem 5090,1;
+set Zeny,zeny-50000;
+mes "OK การแลกเปลี่ยนเรียบร้อค่ะ";
+getitem 5087,1;
+close;
+
+
+//Mask of Goblin Leader
+goblin:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRed Bandana 1 ea^000000";
+mes "- ^0000FFScell 500 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Okgoblin,"- ยกเลิก",Cancle;
+Okgoblin:
+if(countitem(2275)<1) goto NoHelm;
+if(countitem(911)<500) goto NoHelm;
+delitem 2275,1;
+delitem 911,500;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5090,1;
+close;
+
+
+//Horn of Succubus
+succubus:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFWolf Claw 80 ea^000000";
+mes "- ^0000FFLittle Evil Horn 500 ea^000000";
+mes "- ^0000FFZeny 50000z ^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Oksuccubus,"- ยกเลิก",Cancle;
+Oksuccubus:
+if(countitem(1038)<500) goto NoHelm;
+if(countitem(920)<80) goto NoHelm;
+if(Zeny<50000) goto NoMon;
+delitem 1038,500;
+delitem 920,80;
+set Zeny,zeny-50000;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5066,1;
+close;
+
+//Nun's Hat
+nun:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFArmy Cap 1 ea^000000";
+mes "- ^0000FFBook 1 ea^000000";
+mes "- ^0000FFWedding Veil 1 ea^000000";
+mes "- ^0000FFFoolishness of Blind 2 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "- ข้ามีของมาแลกเปลี่ยน",Oknun,"- ยกเลิก",Cancle;
+Oknun:
+if(countitem(2261)<1) goto NoHelm;
+if(countitem(1550)<1) goto NoHelm;
+if(countitem(2206)<1) goto NoHelm;
+if(countitem(7021)<2) goto NoHelm;
+delitem 2261,1;
+delitem 1550,1;
+delitem 2206,1;
+delitem 7021,2;
+mes "OK การแลกเปลี่ยนเรียบร้อยค่ะ";
+getitem 5092,1;
+close;
+
+//Ayam
+Ayam:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRed, Green, Blue, Yellow Bijou อย่างละ 7 ea^000000";
+mes "- ^0000FFShining Scale 300 ea^000000";
+mes "- ^0000FFCracked Diamond 5 ea^000000";
+mes "- ^0000FFScalet Dyestuff 1 ea^000000";
+mes "- ^0000FFSoft Silk 50 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",OkAyam,"ข้าไม่มีของแลก",Cancle;
+OkAyam:
+if(countitem(7445)<7) goto NoHelm;
+if(countitem(7446)<7) goto NoHelm;
+if(countitem(7447)<7) goto NoHelm;
+if(countitem(7448)<7) goto NoHelm;
+if(countitem(954)<300) goto NoHelm;
+if(countitem(733)<5) goto NoHelm;
+if(countitem(975)<1) goto NoHelm;
+if(countitem(7166)<50) goto NoHelm;
+delitem 7445,7;
+delitem 7446,7;
+delitem 7447,7;
+delitem 7448,7;
+delitem 954,300;
+delitem 733,5;
+delitem 975,1;
+delitem 7166,50;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5174,1;
+close;
+
+//Bride Mask
+BrideM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFSkirt of Vergin 20 ea^000000";
+mes "- ^0000FFFabric 500 ea^000000";
+mes "- ^0000FFAncient Lips 2 ea^000000";
+mes "- ^0000FFSquid Ink 100 ea^000000";
+mes "- ^0000FFFour Leaf Clover 1 ea^000000";
+mes "- ^0000FFLog 500 ea^000000";
+mes "- ^0000FFElastic Band 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",OkBrideM,"ข้าไม่มีของแลก",Cancle;
+OkBrideM:
+if(countitem(1049)<20) goto NoHelm;
+if(countitem(1059)<500) goto NoHelm;
+if(countitem(12069)<2) goto NoHelm;
+if(countitem(1024)<100) goto NoHelm;
+if(countitem(706)<1) goto NoHelm;
+if(countitem(7201)<500) goto NoHelm;
+if(countitem(7200)<10) goto NoHelm;
+delitem 1049,20;
+delitem 1059,500;
+delitem 12069,2;
+delitem 1024,100;
+delitem 706,1;
+delitem 7201,500;
+delitem 7200,10;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5169,1;
+close;
+
+//Censor Bar
+CensorB:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBlack Dyestuff 1 ea^000000";
+mes "- ^0000FFSlick Paper 100 ea^000000";
+mes "- ^0000FFSticky Mucus 99 ea^000000";
+mes "- ^0000FF100,000 Zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",OkCensorB,"ข้าไม่มีของแลก",Cancle;
+OkCensorB:
+if(countitem(983)<1) goto NoHelm;
+if(countitem(7111)<100) goto NoHelm;
+if(countitem(938)<99) goto NoHelm;
+if(Zeny<100000) goto NoHelm;
+delitem 983,1;
+delitem 7111,100;
+delitem 938,99;
+set Zeny,zeny-100000;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5175,1;
+close;
+
+//Hahoe Mask
+HahoeM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFMemory Bookmark 20 ea^000000";
+mes "- ^0000FFCactus Needle 100 ea^000000";
+mes "- ^0000FFMane 100 ea^000000";
+mes "- ^0000FFFour Leaf Clover 1 ea^000000";
+mes "- ^0000FFLog 500 ea^000000";
+mes "- ^0000FFElastic Band 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",OkHahoeM,"ข้าไม่มีของแลก",Cancle;
+OkHahoeM:
+if(countitem(7015)<20) goto NoHelm;
+if(countitem(952)<100) goto NoHelm;
+if(countitem(1028)<100) goto NoHelm;
+if(countitem(706)<1) goto NoHelm;
+if(countitem(7201)<500) goto NoHelm;
+if(countitem(7200)<10) goto NoHelm;
+delitem 7015,20;
+delitem 952,100;
+delitem 1028,100;
+delitem 706,1;
+delitem 7201,500;
+delitem 7200,10;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5176,1;
+close;
+
+//Magistrate Hat
+MagistrateH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFRed, Green, Blue, Yellow Bijou อย่างละ 7 ea^000000";
+mes "- ^0000FFShining Scale 300 ea^000000";
+mes "- ^0000FFCracked Diamond 5 ea^000000";
+mes "- ^0000FFBlack Dyestuff 1 ea^000000";
+mes "- ^0000FFHat[1] 1 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",OkMagistrateH,"ข้าไม่มีของแลก",Cancle;
+OkMagistrateH:
+if(countitem(7445)<7) goto NoHelm;
+if(countitem(7446)<7) goto NoHelm;
+if(countitem(7447)<7) goto NoHelm;
+if(countitem(7448)<7) goto NoHelm;
+if(countitem(954)<300) goto NoHelm;
+if(countitem(733)<5) goto NoHelm;
+if(countitem(983)<1) goto NoHelm;
+if(countitem(2221)<1) goto NoHelm;
+delitem 7445,7;
+delitem 7446,7;
+delitem 7447,7;
+delitem 7448,7;
+delitem 954,300;
+delitem 733,5;
+delitem 983,1;
+delitem 2221,1;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5173,1;
+close;
+
+//Mythical Lion Mask
+MythicalLM:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFHorrendous Hairt 500 ea^000000";
+mes "- ^0000FFAncient Tooth 2 ea^000000";
+mes "- ^0000FFOrange Dyestuff 1 ea^000000";
+mes "- ^0000FFFour Leaf Clover 1 ea^000000";
+mes "- ^0000FFLog 500 ea^000000";
+mes "- ^0000FFElastic Band 10 ea^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",OkMythicalLM,"ข้าไม่มีของแลก",Cancle;
+OkMythicalLM:
+if(countitem(1048)<500) goto NoHelm;
+if(countitem(1053)<2) goto NoHelm;
+if(countitem(980)<1) goto NoHelm;
+if(countitem(706)<1) goto NoHelm;
+if(countitem(7201)<500) goto NoHelm;
+if(countitem(7200)<10) goto NoHelm;
+delitem 1048,500;
+delitem 1053,2;
+delitem 980,1;
+delitem 706,1;
+delitem 7201,500;
+delitem 7200,10;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5177,1;
+close;
+
+//Valkyrie Helm
+ValkyrieH:
+mes "ข้าต้องการของในการแลกเปลี่ยน";
+mes "- ^0000FFBloody Rune 1000 ea^000000";
+mes "- ^0000FFRune of Darkness 1000 ea^000000";
+mes "- ^0000FFSage Worm Card, Argiope Card, Dryad Card,^000000";
+mes "- ^0000FFWooden Golem Card, Bongun Card, Pirate Skel Card,^000000";
+mes "- ^0000FFMarduk Card, Hode Card, Elder Card,^000000";
+mes "- ^0000FFNightmare Terror Card, และ 10,000,000 Zeny^000000";
+mes "เจ้ามีของมาแลกเปลี่ยนหรือไม่";
+next;
+menu "ข้ามีของมาแลกเปลี่ยน",OkValkyrieH,"ข้าไม่มีของแลก",Cancle;
+OkValkyrieH:
+if(countitem(7511)<1000) goto NoHelm;
+if(countitem(7563)<1000) goto NoHelm;
+if(countitem(4219)<1) goto NoHelm;
+if(countitem(4114)<1) goto NoHelm;
+if(countitem(4177)<1) goto NoHelm;
+if(countitem(4259)<1) goto NoHelm;
+if(countitem(4212)<1) goto NoHelm;
+if(countitem(4073)<1) goto NoHelm;
+if(countitem(4112)<1) goto NoHelm;
+if(countitem(4081)<1) goto NoHelm;
+if(countitem(4251)<1) goto NoHelm;
+if(countitem(4166)<1) goto NoHelm;
+if(Zeny<10000000) goto NoHelm;
+delitem 7511,1000;
+delitem 7563,1000;
+delitem 4219,1;
+delitem 4114,1;
+delitem 4177,1;
+delitem 4259,1;
+delitem 4212,1;
+delitem 4073,1;
+delitem 4112,1;
+delitem 4081,1;
+delitem 4251,1;
+delitem 4166,1;
+set Zeny,zeny-10000000;
+mes "OK การแลกเปลี่ยนเรียบร้อย";
+getitem 5171,1;
+close;
+
+NoMon:
+mes "[ ^FF0000QuestHat1^000000 ]";
+mes "คุณมีเงินไม่พอ";
+mes "แล้วเจอกันใหม่";
+close;
+
+NoHelm:
+mes "[ ^FF0000QuestHat1^000000 ]";
+mes "คุณมีของไม่ครบ";
+mes "แล้วเจอกันใหม่";
+close;
+
+Cancle:
+mes "[ ^FF0000QuestHat1^000000 ]";
+mes "โชคดีนะ";
+mes "บาย";
+close;
+}

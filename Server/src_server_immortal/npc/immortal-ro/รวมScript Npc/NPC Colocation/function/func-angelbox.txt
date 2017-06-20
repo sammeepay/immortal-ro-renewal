@@ -1,0 +1,532 @@
+function	script	F_AngelBox	{
+mes "[ นางฟ้า ]";
+mes "สวัสดีจ้า คุณได้กดใช้กล่องนางฟ้า";
+mes "คุณมีสิทธิที่จะได้รับ Item พิเศษ";
+mes "ยินดีด้วยนะจ๊ะ ^O^";
+set @mybox,rand(1,201);
+next;
+
+if(@mybox==1) goto Box1;
+if(@mybox==2) goto Box2;
+if(@mybox==3) goto Box3;
+if(@mybox==4) goto Box4;
+if(@mybox==5) goto Box5;
+if(@mybox==6) goto Box6;
+if(@mybox==7) goto Box7;
+if(@mybox==8) goto Box8;
+if(@mybox==9) goto Box9;
+if(@mybox==10) goto Box10;
+if(@mybox==11) goto Box11;
+if(@mybox==12) goto Box12;
+if(@mybox==13) goto Box13;
+if(@mybox==14) goto Box14;
+if(@mybox==15) goto Box15;
+if(@mybox==16) goto Box16;
+if(@mybox==17) goto Box17;
+if(@mybox==18) goto Box18;
+if(@mybox==19) goto Box19;
+if(@mybox==20) goto Box20;
+if(@mybox==21) goto Box21;
+if(@mybox==22) goto Box22;
+if(@mybox==23) goto Box23;
+if(@mybox==24) goto Box24;
+if(@mybox==25) goto Box25;
+if(@mybox==26) goto Box26;
+if(@mybox==27) goto Box27;
+if(@mybox==28) goto Box28;
+if(@mybox==29) goto Box29;
+if(@mybox==30) goto Box30;
+if(@mybox==31) goto Box31;
+if(@mybox==32) goto Box32;
+if(@mybox==33) goto Box33;
+if(@mybox==34) goto Box34;
+if(@mybox==35) goto Box35;
+if(@mybox==36) goto Box36;
+if(@mybox==37) goto Box37;
+if(@mybox==38) goto Box38;
+if(@mybox==39) goto Box39;
+if(@mybox==40) goto Box40;
+if(@mybox==101) goto Box101;
+if(@mybox==102) goto Box102;
+if(@mybox==103) goto Box103;
+if(@mybox==104) goto Box104;
+if(@mybox==105) goto Box105;
+
+// Old Blue Box and Old Purple Box
+
+if(@mybox==41) goto Box4;
+if(@mybox==42) goto Box4;
+if(@mybox==43) goto Box4;
+if(@mybox==44) goto Box4;
+if(@mybox==45) goto Box4;
+if(@mybox==46) goto Box4;
+if(@mybox==47) goto Box4;
+if(@mybox==48) goto Box4;
+if(@mybox==49) goto Box4;
+if(@mybox==50) goto Box4;
+if(@mybox==51) goto Box6;
+if(@mybox==52) goto Box6;
+if(@mybox==53) goto Box6;
+if(@mybox==54) goto Box6;
+if(@mybox==55) goto Box6;
+if(@mybox==56) goto Box6;
+if(@mybox==57) goto Box6;
+if(@mybox==58) goto Box6;
+if(@mybox==59) goto Box6;
+if(@mybox==60) goto Box6;
+if(@mybox==61) goto Box4;
+if(@mybox==62) goto Box4;
+if(@mybox==63) goto Box4;
+if(@mybox==64) goto Box4;
+if(@mybox==65) goto Box4;
+if(@mybox==66) goto Box4;
+if(@mybox==67) goto Box4;
+if(@mybox==68) goto Box4;
+if(@mybox==69) goto Box4;
+if(@mybox==70) goto Box4;
+if(@mybox==71) goto Box6;
+if(@mybox==72) goto Box6;
+if(@mybox==73) goto Box6;
+if(@mybox==74) goto Box6;
+if(@mybox==75) goto Box6;
+if(@mybox==76) goto Box6;
+if(@mybox==77) goto Box6;
+if(@mybox==78) goto Box6;
+if(@mybox==79) goto Box6;
+if(@mybox==80) goto Box6;
+if(@mybox==81) goto Box4;
+if(@mybox==82) goto Box4;
+if(@mybox==83) goto Box4;
+if(@mybox==84) goto Box4;
+if(@mybox==85) goto Box4;
+if(@mybox==86) goto Box4;
+if(@mybox==87) goto Box4;
+if(@mybox==88) goto Box4;
+if(@mybox==89) goto Box4;
+if(@mybox==90) goto Box4;
+if(@mybox==91) goto Box6;
+if(@mybox==92) goto Box6;
+if(@mybox==93) goto Box6;
+if(@mybox==94) goto Box6;
+if(@mybox==95) goto Box6;
+if(@mybox==96) goto Box6;
+if(@mybox==97) goto Box6;
+if(@mybox==98) goto Box6;
+if(@mybox==99) goto Box6;
+if(@mybox==100) goto Box6;
+if(@mybox==106) goto Box4;
+if(@mybox==107) goto Box4;
+if(@mybox==108) goto Box4;
+if(@mybox==109) goto Box4;
+if(@mybox==110) goto Box2;
+if(@mybox==111) goto Box2;
+if(@mybox==112) goto Box2;
+if(@mybox==113) goto Box2;
+if(@mybox==114) goto Box2;
+if(@mybox==115) goto Box2;
+if(@mybox==116) goto Box4;
+if(@mybox==117) goto Box4;
+if(@mybox==118) goto Box4;
+if(@mybox==119) goto Box4;
+if(@mybox==120) goto Box4;
+if(@mybox==121) goto Box2;
+if(@mybox==122) goto Box2;
+if(@mybox==123) goto Box2;
+if(@mybox==124) goto Box2;
+if(@mybox==125) goto Box10;
+if(@mybox==126) goto Box10;
+if(@mybox==127) goto Box10;
+if(@mybox==128) goto Box10;
+if(@mybox==129) goto Box10;
+if(@mybox==130) goto Box10;
+if(@mybox==131) goto Box6;
+if(@mybox==132) goto Box4;
+if(@mybox==133) goto Box4;
+if(@mybox==134) goto Box4;
+if(@mybox==135) goto Box4;
+if(@mybox==136) goto Box4;
+if(@mybox==137) goto Box4;
+if(@mybox==138) goto Box4;
+if(@mybox==139) goto Box4;
+if(@mybox==140) goto Box4;
+if(@mybox==141) goto Box4;
+if(@mybox==142) goto Box4;
+if(@mybox==143) goto Box4;
+if(@mybox==144) goto Box4;
+if(@mybox==145) goto Box4;
+if(@mybox==146) goto Box4;
+if(@mybox==147) goto Box6;
+if(@mybox==148) goto Box6;
+if(@mybox==149) goto Box6;
+if(@mybox==150) goto Box6;
+if(@mybox==151) goto Box10;
+if(@mybox==152) goto Box10;
+if(@mybox==153) goto Box10;
+if(@mybox==154) goto Box10;
+if(@mybox==155) goto Box6;
+if(@mybox==156) goto Box6;
+if(@mybox==157) goto Box6;
+if(@mybox==158) goto Box4;
+if(@mybox==159) goto Box4;
+if(@mybox==160) goto Box4;
+if(@mybox==161) goto Box4;
+if(@mybox==162) goto Box4;
+if(@mybox==163) goto Box4;
+if(@mybox==164) goto Box4;
+if(@mybox==165) goto Box4;
+if(@mybox==166) goto Box10;
+if(@mybox==167) goto Box10;
+if(@mybox==168) goto Box10;
+if(@mybox==169) goto Box4;
+if(@mybox==170) goto Box4;
+if(@mybox==171) goto Box4;
+if(@mybox==172) goto Box4;
+if(@mybox==173) goto Box6;
+if(@mybox==174) goto Box6;
+if(@mybox==175) goto Box6;
+if(@mybox==176) goto Box6;
+if(@mybox==177) goto Box4;
+if(@mybox==178) goto Box2;
+if(@mybox==179) goto Box2;
+if(@mybox==180) goto Box2;
+if(@mybox==181) goto Box2;
+if(@mybox==182) goto Box2;
+if(@mybox==183) goto Box2;
+if(@mybox==184) goto Box6;
+if(@mybox==185) goto Box6;
+if(@mybox==186) goto Box2;
+if(@mybox==187) goto Box2;
+if(@mybox==188) goto Box2;
+if(@mybox==189) goto Box6;
+if(@mybox==190) goto Box10;
+if(@mybox==191) goto Box10;
+if(@mybox==192) goto Box10;
+if(@mybox==193) goto Box10;
+if(@mybox==194) goto Box10;
+if(@mybox==195) goto Box10;
+if(@mybox==196) goto Box10;
+if(@mybox==197) goto Box10;
+if(@mybox==198) goto Box10;
+if(@mybox==199) goto Box10;
+if(@mybox==200) goto Box10;
+if(@mybox==201) goto Box5002;
+
+Box5002:
+mes "[ นางฟ้า ]";
+mes "โห ได้ 5m เลยนะนั่น";
+set Zeny,zeny+5000000;
+close;
+
+Box1:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Machoman's Glasses 1 ea จ้า";
+getitem 5006,1;
+close;
+
+Box2:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "เอาเงินไป 20k";
+set Zeny,zeny+20000;
+close;
+
+Box3:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Yggdrasil Seed 10 ea จ้า";
+getitem 608,10;
+close;
+
+Box4:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Elunium 1 ea จ้า";
+getitem 985,1;
+close;
+
+Box5:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Old Card Album 1 ea จ้า";
+getitem 616,1;
+close;
+
+Box6:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Old Purple Box 1 ea จ้า";
+getitem 617,1;
+close;
+
+Box7:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Sheep Hat 1 ea จ้า";
+getitem 5133,1;
+close;
+
+Box8:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Party Hat 1 ea จ้า";
+getitem 5060,1;
+close;
+
+Box9:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Decorative Geographer 1 ea จ้า";
+getitem 5186,1;
+close;
+
+Box10:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Mastela Fruit 50 ea จ้า";
+getitem 522,50;
+close;
+
+Box11:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Laurel Crown 1 ea จ้า";
+getitem 5185,1;
+close;
+
+Box12:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Baseball Cap 1 ea จ้า";
+getitem 5147,1;
+close;
+
+Box13:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Nest Hat 1 ea จ้า";
+getitem 5183,1;
+close;
+
+Box14:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Raccoon Hat 1 ea จ้า";
+getitem 5033,1;
+close;
+
+Box15:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Lion Mask 1 ea จ้า";
+getitem 5130,1;
+close;
+
+Box16:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Kafra Card Box 1 ea จ้า";
+getitem 12909,1;
+close;
+
+Box17:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Giant Fly Wing Box 1 ea จ้า";
+getitem 12910,1;
+close;
+
+Box18:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Megaphone Box 1 ea จ้า";
+getitem 12919,1;
+close;
+
+Box19:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Bunny Band 1 ea จ้า";
+getitem 2214,1;
+close;
+
+Box20:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Kitty Band 1 ea จ้า";
+getitem 2213,1;
+close;
+
+Box21:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Cap 1 ea จ้า";
+getitem 2227,1;
+close;
+
+Box22:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Banana_Hat 1 ea จ้า";
+getitem 5116,1;
+close;
+
+Box23:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Panda Cap 1 ea จ้า";
+getitem 5030,1;
+close;
+
+Box24:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Pupa Card 1 ea จ้า";
+getitem 4003,1;
+close;
+
+Box25:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Thara Frog Card 1 ea จ้า";
+getitem 4058,1;
+close;
+
+Box26:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Romantic Flower 1 ea จ้า";
+getitem 2269,1;
+close;
+
+Box27:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Glove 1 ea จ้า";
+getitem 2624,1;
+close;
+
+Box28:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Formal_Suit 1 ea จ้า";
+getitem 2320,1;
+close;
+
+Box29:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Hae Dong Gum 1 ea จ้า";
+getitem 1128,1;
+close;
+
+Box30:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Fabre Card 1 ea จ้า";
+getitem 4002,1;
+close;
+
+Box31:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Zerom Card 1 ea จ้า";
+getitem 4064,1;
+close;
+
+Box32:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Pecopeco Card 1 ea จ้า";
+getitem 4031,1;
+close;
+
+Box33:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Evil Druid  Card 1 ea จ้า";
+getitem 4141,1;
+close;
+
+Box34:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Antique Firelock Card 1 ea จ้า";
+getitem 4160,1;
+close;
+
+Box35:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Apple Of Archer 1 ea จ้า";
+getitem 2285,1;
+close;
+
+Box36:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Poo Poo Hat 1 ea จ้า";
+getitem 2289,1;
+close;
+
+Box37:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Helm 1 ea จ้า";
+getitem 2229,1;
+close;
+
+Box38:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Circlet 1 ea จ้า";
+getitem 2233,1;
+close;
+
+Box39:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Ghost Bandana 1 ea จ้า";
+getitem 2274,1;
+close;
+
+Box40:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Pumpkin Hat 1 ea จ้า";
+getitem 5134,1;
+close;
+
+Box101:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Wandering Minstrel Hat 1 ea จ้า";
+getitem 5188,1;
+close;
+
+Box102:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Sales Banner 1 ea จ้า";
+getitem 5100,1;
+close;
+
+Box103:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Blush 1 ea จ้า";
+getitem 5040,1;
+
+Box104:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Grief for Greed 1 ea จ้า";
+getitem 5021,1;
+
+Box105:
+mes "[ นางฟ้า ]";
+mes "ยินดีด้วยนะจ๊ะ คุณได้รับ";
+mes "Candle 1 ea จ้า";
+getitem 5028,1;
+close;
+}

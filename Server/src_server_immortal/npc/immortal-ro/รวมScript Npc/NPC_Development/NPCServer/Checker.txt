@@ -1,0 +1,276 @@
+//===================================================================
+// NPC : Officer Checks ( Checker )
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,141,125,4	script	Checker	852,{
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"โปรดเลือกรายการตรวจสอบ";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu
+"^FF0000- [ Top Ten Killer ]^000000",c1,
+"- ตรวจสอบ Status",c2,
+"- ตรวจสอบ Item List",c3,
+"- ตรวจสอบ Storage List",c4,
+"- ตรวจสอบ Cart List",c5,
+"- ตรวจสอบ Item Info",c6,
+"- ตรวจสอบ Monster Info",c7,
+"- ตรวจสอบ Gm User",c8,
+"- ตรวจสอบ Player In The Server",c9,
+"- ตรวจสอบ Date & Time Server",c10,
+"Exit",Cancel;
+
+
+
+c1:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"อันดับที่ 1. [ ^FF0000"+$RankPoint01+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank01_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 2. [ ^FF0000"+$RankPoint02+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank02_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 3. [ ^FF0000"+$RankPoint03+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank03_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 4. [ ^FF0000"+$RankPoint04+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank04_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 5. [ ^FF0000"+$RankPoint05+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank05_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 6. [ ^FF0000"+$RankPoint06+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank06_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 7. [ ^FF0000"+$RankPoint07+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank07_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 8. [ ^FF0000"+$RankPoint08+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank08_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 9. [ ^FF0000"+$RankPoint09+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank09_Name$+"^000000";
+mes"__________________________________";
+mes"อันดับที่ 10. [ ^FF0000"+$RankPoint10+"^000000 ] Points   ได้แก่คุณ ^FF0000"+$Rank10_Name$+"^000000";
+mes"__________________________________";
+next;
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ขณะนี้คุณมี  [ ^FF0000"+KillPYPoint+"^000000 ] Points ค่ะ";
+close;
+
+
+
+c2:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"โปรดใส่ชื่อที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+sleep2 500;
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดูสเตตัส ได้จากด้านล่างค่ะ";
+charCommand strcharinfo(0)+"#stats "+$NamePlayer$+"";
+close;
+
+
+
+c3:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"โปรดใส่ชื่อที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+sleep2 500;
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดูไอเท็มได้จากด้านล่างค่ะ";
+charCommand strcharinfo(0)+"#itemlist "+$NamePlayer$+"";
+close;
+
+
+
+c4:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"โปรดใส่ชื่อที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+sleep2 500;
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดูไอเท็มได้จากด้านล่างค่ะ";
+charCommand strcharinfo(0)+"#storagelist "+$NamePlayer$+"";
+close;
+
+
+
+c5:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"โปรดใส่ชื่อที่ท่านต้องการตรวจสอบ";
+mes"ลงในช่องว่างค่ะ หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+sleep2 500;
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดูไอเท็มได้จากด้านล่างค่ะ";
+charCommand strcharinfo(0)+"#cartlist "+$NamePlayer$+"";
+close;
+
+
+
+c6:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"โปรดใส่ชื่อหรือรหัสไอเท็ม";
+mes"ที่ท่านต้องการตรวจสอบ ลงในช่องว่างค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $ItemCode$;
+if($ItemCode$ == "0") goto Cancel;
+sleep2 500;
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดูข้อมูลไอเท็มได้จากด้านล่างค่ะ";
+atcommand strcharinfo(0)+"@iteminfo "+$ItemCode$+"";
+close;
+
+
+
+c7:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"โปรดใส่ชื่อหรือรหัสมอนเตอร์";
+mes"ที่ท่านต้องการตรวจสอบ ลงในช่องว่างค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $MonCode$;
+if($MonCode$ == "0") goto Cancel;
+sleep2 500;
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดูข้อมูลมอนเตอร์ ได้จากด้านล่างค่ะ";
+atcommand strcharinfo(0)+"@mobinfo "+$MonCode$+"";
+close;
+
+
+
+c8:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ตรวจสอบได้สำเร็จ...";
+mes"สามารถดูรายชื่อได้จาก";
+atcommand strcharinfo(0)+"@whogm";
+close;
+
+
+
+c9:
+set @IICP,getmapusers("izlude_in.gat");
+set @RCP,getmapusers("rachel.gat");
+set @GP,getmapusers("gefg_cas05.gat");
+set @G1P,getmapusers("guild_vs1.gat");
+set @G2P,getmapusers("guild_vs2.gat");
+set @G3P,getmapusers("guild_vs3.gat");
+set @G4P,getmapusers("guild_vs4.gat");
+set @G5P,getmapusers("guild_vs5.gat");
+set @PP,getmapusers("pvp_n_1-5.gat");
+set @JSP,getmapusers("job_sage.gat");
+set @JHP,getmapusers("job_hunte.gat");
+set @JKP,getmapusers("job_knt.gat");
+set @JPP,getmapusers("job_prist.gat");
+set @JWP,getmapusers("job_wiz.gat");
+set @MP,getmapusers("moc_fild17.gat");
+set @P1P,getmapusers("pvp_y_1-1.gat");
+set @P2P,getmapusers("pvp_y_1-2.gat");
+set @P5P,getmapusers("pvp_y_1-5.gat");
+set @N1P,getmapusers("new_1-1.gat");
+set @O1P,getmapusers("ordeal_1-1.gat");
+set @F1P,getmapusers("force_1-3.gat");
+set @F2P,getmapusers("force_2-3.gat");
+set @PNP,getmapusers("pvp_n_8-5.gat");
+set @PFP1,getmapusers("prt_fild01.gat");
+set @PFP2,getmapusers("prt_fild02.gat");
+set @PFP3,getmapusers("prt_fild03.gat");
+set @PFP4,getmapusers("prt_fild04.gat");
+set @PFP5,getmapusers("prt_fild05.gat");
+set @PFP6,getmapusers("prt_fild06.gat");
+set @PFP7,getmapusers("prt_fild07.gat");
+set @PFP8,getmapusers("prt_fild08.gat");
+set @PFP9,getmapusers("prt_fild09.gat");
+set @PFP10,getmapusers("prt_fild10.gat");
+set @PFP11,getmapusers("prt_fild11.gat");
+
+set @ans,@IICP+@RCP+@JWP+@GP+@G1P+@G2P+@G3P+@G4P+@G5P+@PP+@JSP+@JHP+@JKP+@JPP+@MP+@P1P+@P2P+@P5P+
+@N1P+@O1P+@F1P+@F2P+@PNP+@PFP1+@PFP2+@PFP3+@PFP4+@PFP5+@PFP6+@PFP7+@PFP8+@PFP9+@PFP10+@PFP11 ;
+
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ขณะนี้ มีจำนวนผู้เล่นทั้งหมด";
+mes"จำนวน ^FF0000[ "+@ans+" ]^000000 คน";
+mes"_________________________________";
+mes"สามารถดูรายชื่อได้จาก";
+mes"Message Box ด้านล่างค่ะ";
+atcommand strcharinfo(0)+"@who";
+close;
+
+
+
+c10:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ขณะนี้เวลา";
+mes""+ gettime(3) +"^3355FF นาฬิกา ^000000";
+mes""+ gettime(2) +"^3355FF นาที  ^000000";
+mes""+ gettime(1) +"^3355FF วินาที  ^000000";
+next;
+mes"^FF0000[ ~• Checker •~ ]^000000";
+set $@month,gettime(6);
+set $@year,gettime(7)+543;
+if (gettime(4)==0) set $@day$,"อาทิตย์";
+if (gettime(4)==1) set $@day$,"จันทร์";
+if (gettime(4)==2) set $@day$,"อังคาร";
+if (gettime(4)==4) set $@day$,"พุธ";
+if (gettime(4)==5) set $@day$,"พฤหัส";
+if (gettime(4)==6) set $@day$,"เสาร์";
+if ($@month == 1) set $@month2$,"มกราคม";
+if ($@month == 2) set $@month2$,"กุมภาพันธ์";
+if ($@month == 3) set $@month2$,"มีนาคม";
+if ($@month == 4) set $@month2$,"เมษายน";
+if ($@month == 5) set $@month2$,"พฤษภาคม";
+if ($@month == 6) set $@month2$,"มิถุนายน";
+if ($@month == 7) set $@month2$,"กรกฎาคม";
+if ($@month == 8) set $@month2$,"สิงหาคม";
+if ($@month == 9) set $@month2$,"กันยายน";
+if ($@month == 10) set $@month2$,"ตุลาคม";
+if ($@month == 11) set $@month2$,"พฤศจิกายน";
+if ($@month == 12) set $@month2$,"ธันวาคม";
+mes"^3355FFวัน"+$@day$+"ที่^000000    " + gettime(5) + "";
+mes"^3355FFเดือน^000000    " + $@month2$ + "";
+mes"^3355FFปี ค.ศ.^000000    " + gettime(7) + "";
+mes"^3355FFปี พ.ศ.^000000    " + $@year + "";
+next;
+set $@second$,gettime(1);
+set $@days2$,gettimestr("%d-%m-%y %H:%M:",19);
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"^3355FFรวมแล้วขณะนี้เวลา^000000 "+$@days2$+""+$@second$+" ";
+close;
+
+
+
+Cancel:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"แล้วพบกันใหม่";
+close;
+
+
+
+offline:
+mes"^FF0000[ ~• Checker •~ ]^000000";
+mes"ขออภัยค่ะ ผู้เล่นที่ท่านตรวจสอบ";
+mes"ไม่ได้ออนไลท์ในขณะนี้";
+close;
+
+
+
+OnInit:
+Waitingroom "Checks Service",0;
+end;
+}

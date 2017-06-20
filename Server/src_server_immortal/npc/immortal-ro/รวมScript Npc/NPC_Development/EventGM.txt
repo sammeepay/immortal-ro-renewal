@@ -1,0 +1,231 @@
+//===================================================================
+// NPC : Memories Box
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+// -- Mapflags 
+pvp_y_1-1.gat	mapflag	noskill
+
+
+
+morocc.gat,0,0,0	script	GoldMinuteIn	-1,{
+end;
+OnInit:
+disablenpc "GoldMinuteWarp"; 
+end;
+}
+
+morocc.gat,168,146,0	warp	GoldMinuteWarp	2,2,pvp_y_1-1.gat,0,0
+
+pvp_y_1-1.gat,0,0,0	script	GME	111,{
+close;
+
+Start:
+announce "Gold Minute Event : ขณะนี้ Gold Minute Box ปรากฏตัว ณ เมือง Prontera City แล้วค่ะ [ ของราวัลคือ Item Random จากกล่อง ]",0,0xFF5555;
+monster "pvp_y_1-1.gat",0,0,"Gold Minute Box",1324,25,"GME::OnGMDie1";
+monster "pvp_y_1-1.gat",0,0,"Gold Minute Box",1325,250,"GME::OnGMDie2";
+pvpon "pvp_y_1-1.gat";
+enablenpc "GoldMinuteWarp";
+disablenpc "Gold Minute";
+end;
+
+
+
+OnGMDie1:
+callfunc "GM_Random1";  
+getitem @LuckyItem1[@LuckyRandom1], 1;
+atcommand strcharinfo(0)+ "@warp rachel 129 133";
+end;
+
+
+
+OnGMDie2:
+callfunc "GM_Random2";  
+getitem @LuckyItem2[@LuckyRandom2], 1;
+atcommand strcharinfo(0)+ "@warp rachel 129 133";
+end;
+
+
+
+Stop:
+announce "Gold Minute Event : ขณะนี้ กิจกรรม Gold Minute ได้จบลงแล้ว Gold Minute Box ทุกกล่องถูกทำลาย",0,0xFF5555;
+killmonsterall "pvp_y_1-1.gat";
+mapwarp "pvp_y_1-1.gat","rachel.gat",130,110;
+pvpoff "pvp_y_1-1.gat";
+disablenpc "GoldMinuteWarp";
+enablenpc "Gold Minute";
+end;
+
+OnTimeout:
+end;
+
+OnClock0140:
+OnClock0240:
+OnClock0340:
+OnClock0440:
+OnClock0540:
+OnClock0640:
+OnClock0740:
+OnClock0840:
+OnClock0940:
+OnClock1040:
+OnClock1140:
+OnClock1240:
+OnClock1340:
+OnClock1440:
+OnClock1540:
+OnClock1640:
+OnClock1740:
+OnClock1840:
+OnClock1940:
+OnClock2040:
+OnClock2140:
+OnClock2240:
+OnClock2340:
+OnClock0040:
+goto Start;
+end;
+
+OnClock0145:
+OnClock0245:
+OnClock0345:
+OnClock0445:
+OnClock0545:
+OnClock0645:
+OnClock0745:
+OnClock0845:
+OnClock0945:
+OnClock1045:
+OnClock1145:
+OnClock1245:
+OnClock1345:
+OnClock1445:
+OnClock1545:
+OnClock1645:
+OnClock1745:
+OnClock1845:
+OnClock1945:
+OnClock2045:
+OnClock2145:
+OnClock2245:
+OnClock2345:
+OnClock0045:
+goto Stop;
+end;
+}
+
+
+
+morocc.gat,168,147,4	script	Gold Minute	1644,{
+mes "[ ผู้จัดกิจกรรม ]";
+mes "เวลากิจกรรม";
+mes "01.40 น."; 
+mes "02.40 น."; 
+mes "03.40 น."; 
+mes "04.40 น."; 
+mes "05.40 น."; 
+mes "06.40 น."; 
+mes "07.40 น."; 
+mes "08.40 น."; 
+mes "09.40 น."; 
+mes "10.40 น."; 
+mes "11.40 น."; 
+mes "12.40 น."; 
+mes "13.40 น."; 
+mes "14.40 น."; 
+mes "15.40 น."; 
+mes "16.40 น."; 
+mes "17.40 น."; 
+mes "18.40 น."; 
+mes "19.40 น."; 
+mes "20.40 น."; 
+mes "21.40 น."; 
+mes "22.40 น."; 
+mes "23.40 น."; 
+mes "00.40 น."; 
+close;
+OnInit:
+waitingroom "Gold Minute",0;
+end;
+}
+
+
+
+function	script	GM_Random1	{
+set @LuckyRandom1, rand(35);
+set @LuckyItem1[1], 2115;
+set @LuckyItem1[2], 2421;
+set @LuckyItem1[3], 2524;
+set @LuckyItem1[4], 5171;
+set @LuckyItem1[5], 5256;
+set @LuckyItem1[6], 5022;
+set @LuckyItem1[7], 7227;
+set @LuckyItem1[8], 4121;
+set @LuckyItem1[9], 4146;
+set @LuckyItem1[10], 4142;
+set @LuckyItem1[11], 4047;
+set @LuckyItem1[12], 4123;
+set @LuckyItem1[13], 4132;
+set @LuckyItem1[14], 4054;
+set @LuckyItem1[15], 4144;
+set @LuckyItem1[16], 4128;
+set @LuckyItem1[17], 4137;
+set @LuckyItem1[18], 4131;
+set @LuckyItem1[19], 1231;
+set @LuckyItem1[20], 1261;
+set @LuckyItem1[21], 1161;
+set @LuckyItem1[22], 1530;
+set @LuckyItem1[23], 1720;
+set @LuckyItem1[24], 2410;
+set @LuckyItem1[25], 2629;
+set @LuckyItem1[26], 5022;
+set @LuckyItem1[27], 4145;
+set @LuckyItem1[28], 4147;
+set @LuckyItem1[29], 4148;
+set @LuckyItem1[30], 4399;
+set @LuckyItem1[31], 4135;
+set @LuckyItem1[32], 4143;
+set @LuckyItem1[33], 4302;
+set @LuckyItem1[34], 4342;
+set @LuckyItem1[35], 13017;
+return;
+}
+
+
+function	script	GM_Random2	{
+set @LuckyRandom2, rand(32);
+set @LuckyItem2[1], 7227;
+set @LuckyItem2[2], 607;
+set @LuckyItem2[3], 12016;
+set @LuckyItem2[4], 12116;
+set @LuckyItem2[5], 12115;
+set @LuckyItem2[6], 12117;
+set @LuckyItem2[7], 12114;
+set @LuckyItem2[8], 12120;
+set @LuckyItem2[9], 12121;
+set @LuckyItem2[10], 12118;
+set @LuckyItem2[11], 12119;
+set @LuckyItem2[12], 12075;
+set @LuckyItem2[13], 12080;
+set @LuckyItem2[14], 12085;
+set @LuckyItem2[15], 12090;
+set @LuckyItem2[16], 12095;
+set @LuckyItem2[17], 12100;
+set @LuckyItem2[18], 12027;
+set @LuckyItem2[19], 12034;
+set @LuckyItem2[20], 12029;
+set @LuckyItem2[21], 12030;
+set @LuckyItem2[22], 12031;
+set @LuckyItem2[23], 12032;
+set @LuckyItem2[24], 12033;
+set @LuckyItem2[25], 12219;
+set @LuckyItem2[26], 12218;
+set @LuckyItem2[27], 12217;
+set @LuckyItem2[28], 14512;
+set @LuckyItem2[29], 14513;
+set @LuckyItem2[30], 14514;
+set @LuckyItem2[31], 14515;
+set @LuckyItem2[32], 14516;
+return;
+}

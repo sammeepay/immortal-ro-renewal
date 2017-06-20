@@ -1,0 +1,267 @@
+//===================================================================
+// NPC : Teleport for InCe-WickeD Sv ( Only )
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,139,118,4	script	Warper	965,{
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"Welcome to Teleport Service";
+mes"โปรดเลือกสถานที่ ที่ต้องการไป";
+mes"จากเมนูด้านล่างค่ะ...";
+next;
+menu 
+"^CC00CC- [ Narmal PvP ] [ "+getmapusers("guild_vs3.gat")+" | 30 ]^000000",w1,
+"^0000FF- [ Duel PvP ( 1-1 ) ] [ "+getmapusers("guild_vs2.gat")+" | 2 ]^000000",w2,
+"^FF0000- [ Death Match PvP ] [ "+getmapusers("guild_vs5.gat")+" | 30 ]^000000",w3,
+"^00CC00- [ Guildwar ] [ "+getmapusers("gefg_cas05.gat")+" | 30 ]^000000",w4,
+"^FF9900- [ Test weapon ] [ "+getmapusers("job_sage.gat")+" | "+getmapusers("job_knt.gat")+" ]^000000",w5,
+"^FF00CC- [ Champion Room ] [ "+getmapusers("guild_vs4.gat")+" | 30 ]^000000",w6,
+"^993300- [ Activity Room ] [ "+getmapusers("pvp_n_8-5.gat")+" | 30 ]^000000",w7,
+"^999900- [ Control Room ( เฉพาะผู้มีสิทธิ์เท่านั้น ) ]^000000",w8,
+"Exit",cancel;
+
+w6:
+if (getmapusers("guild_vs4.gat") == 30) goto full;
+if (Class != 4016) goto full;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Champion PvP ” แล้วค่ะ",0,0xCC00CC;
+warp "guild_vs4.gat",0,0;
+percentheal 100,100;
+specialeffect2(587);
+close;
+
+w1:
+if (getmapusers("guild_vs3.gat") == 30) goto full;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Normal PvP ” แล้วค่ะ",0,0xCC00CC;
+warp "guild_vs3.gat",0,0;
+percentheal 100,100;
+specialeffect2(587);
+close;
+
+
+
+w2:
+if (getmapusers("guild_vs2.gat") == 2) goto full;
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"ท่านต้องการใช้ห้อง Duel PvP";
+mes"ใช่ หรือ ไม่";
+next;
+menu 
+"- ใช่",gotoduel,
+"- ไม่ใช่",cancel,
+"Exit",cancel;
+
+
+
+gotoduel:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"ถ้าท่านต้องการใช้มัน";
+mes"ข้าจะพาไปเดี๋ยวนี้";
+mes"_________________________________";
+mes"งั้นเราไปกันเลย !!!";
+next;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Duel PvP ( 1-1 ) ” แล้วค่ะ",0,0x0000FF;
+percentheal 100,100;
+enablenpc "Duel Master";
+pvpoff "guild_vs2.gat";
+warp "guild_vs2.gat",49,45;
+specialeffect2(587);
+close;
+
+
+
+w3:
+if (getmapusers("guild_vs5.gat") == 30) goto full;
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"ท่านต้องการเข้าร่วมกิจกรรม Death Match";
+mes"ใช่ หรือ ไม่";
+next;
+menu 
+"- ใช่",GotoDeathMatch,
+"- ไม่ใช่",cancel,
+"Exit",cancel;
+
+
+
+GotoDeathMatch:
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Death Match PvP ” แล้วค่ะ",0,0xFF0000;
+percentheal 100,100;
+warp "guild_vs5.gat",0,0;
+specialeffect2(587);
+close;
+
+
+
+w4:
+if (getmapusers("gefg_cas05.gat") == 30) goto full;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Guild War ” แล้วค่ะ",0,0x00CC00;
+percentheal 100,100;
+warp "gefg_cas05.gat",11,137;
+specialeffect2(587);
+close;
+
+
+
+w5:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"Welcome to Test weapon service";
+mes"ทางเรามีให้เลือก 2 แบบ";
+mes"แบบที่ 1 สามารถใช้ Skills ได้";
+mes"สามารถเข้าได้คนเดียว";
+mes"แบบที่ 2 ไม่สามารถใช้ Skills ได้";
+mes"สามารถเข้าได้หลายคน";
+mes"_________________________________";
+mes"โปรดเลือกห้องที่ท่านต้องการ";
+next;
+menu 
+"- Test Weapon Room 1 [ "+getmapusers("job_sage.gat")+" | 1 ]",R1,
+"- Test Weapon Room 2 [ "+getmapusers("job_knt.gat")+" | 30 ]",R2,
+"Exit",cancel;
+
+
+
+R1:
+if (getmapusers("job_sage.gat") == 1) goto full;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Test Weapon Room 1 ” แล้วค่ะ",0,0xFF9900;
+percentheal 100,100;
+warp "job_sage.gat",45,91;
+specialeffect2(587);
+close;
+
+
+
+R2:
+if (getmapusers("job_knt.gat") == 30) goto full;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Test Weapon Room 2 ” แล้วค่ะ",0,0xFF9900;
+percentheal 100,100;
+warp "job_knt.gat",143,54;
+specialeffect2(587);
+close;
+
+
+
+
+w7:
+if (getmapusers("pvp_n_8-5.gat") == 30) goto full;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Activity Room ” แล้วค่ะ",0,0x993300;
+percentheal 100,100;
+warp "pvp_n_8-5.gat",99,100;
+close;
+
+
+
+w8:
+set @gm,getgmlevel();
+if (@gm == 0) goto normalUser;
+if (@gm <= 90) goto SubUser;
+if (@gm >= 90) goto GMUser;
+
+
+
+GMUser:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"สวัสดีค่ะ [ "+strcharinfo(0)+" ]";
+mes"โปรดยืนยันการเข้าใช้ห้อง Control Room";
+next;
+menu 
+"ยืนยันการเข้าใช้",assure,
+"Exit",cancel;
+
+
+
+SubUser:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"สวัสดีค่ะ [ "+strcharinfo(0)+" ]";
+mes"ท่านจัดอยู่ในระดับ Moderator";
+mes"และ Moderator จะเข้าไปนั้น";
+mes"จะต้องมี Password ในการเข้า";
+mes"Password สามารถหาได้จาก Gm เท่านั้น";
+next;
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"โปรดใส่ Password ค่ะ";
+next;
+set $pass,159357;
+input @pwd;
+if (@pwd != $pass) goto miss;
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"โปรดยืนยันการเข้าใช้ห้อง Control Room";
+next;
+menu 
+"ยืนยันการเข้าใช้",assure,
+"Exit",cancel;
+
+
+
+assure:
+warp "izlude_in.gat",74,164;
+percentheal 100,100;
+close;
+
+
+
+miss:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"Password ผิดผลาด";
+close;
+
+
+
+normalUser:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"ขออภัยค่ะ Control Room เข้าได้เฉพาะ";
+mes"Administrator และ";
+mes"Moderator เท่านั้น";
+close;
+
+
+
+full:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"ขออภัยค่ะ";
+mes"ห้องที่ท่านเลือก เต็มแล้วในขณะนี้";
+close;
+
+
+
+playing:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"ตอนนี้มีผู้เล่นอื่นๆ กำลังทำกิจกรรมอยู่";
+mes"กรุณารอจนการแข่งขันจบก่อน";
+close;
+
+
+
+cancel:
+mes"[ ^FF0000~• Warper •~^000000 ]";
+mes"แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "Teleport Service",0;
+end;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//===================================================================
+// NPC : Warp for InCe-WickeD Sv ( Only )
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+job_hunte.gat,187,18,0	warp	Rachel1	1,1,rachel.gat,130,110
+job_sage.gat,56,87,0	warp	Rachel2	1,1,rachel.gat,130,110
+job_knt.gat,159,40,0	warp	Rachel3	1,1,rachel.gat,130,110
+job_knt.gat,128,40,0	warp	Rachel4	1,1,rachel.gat,130,110
+job_knt.gat,128,71,0	warp	Rachel5	1,1,rachel.gat,130,110
+job_knt.gat,159,71,0	warp	Rachel6	1,1,rachel.gat,130,110
+
+
+
+izlude_in.gat,74,159,0	warp	izludeIn	1,1,rachel.gat,130,110

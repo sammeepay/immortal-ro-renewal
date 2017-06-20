@@ -1,0 +1,39 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+pvp_y_room,62,85,4	script	Scholar Champion	105,{
+
+sc_end SC_ASSUMPTIO;
+sc_end SC_POEMBRAGI;
+sc_end SC_APPLEIDUN;
+sc_end SC_ASSNCROS;
+sc_end SC_IMPOSITIO;
+sc_end KYRIE;
+
+mes "^FF00002-2 Scholar Champion^000000";
+if (BaseJob == Job_Sage || BaseJob == Job_Monk) {
+menu "เข้าห้อง ["+getmapusers("pvp_n_3-3")+"]",map1;
+
+map1:
+if (getmapusers("pvp_n_3-3") < 1000) warp "pvp_n_3-3",0,0;
+close;
+}
+
+if (BaseJob != Job_Sage || BaseJob != Job_Monk) goto L_nojob;
+
+L_nojob:
+close;
+
+OnInit: 
+waitingroom "Scholar Champion",0;
+end;
+
+end;
+}

@@ -1,0 +1,331 @@
+-	script	KafraServices::KFSV	-1,{
+if ($@ActiveSv == 0) end;
+mes "[ Kafra ]";
+mes "ยินดีต้อนรับ : ^FF0000 "+strcharinfo(0)+" ^000000"; 
+mes "คุณต้องการให้ฉันช่วยอะไร ?";
+mes " ";
+next;
+menu 
+"- ^9966FFเซฟจุดเกิด^000000",saves,
+"- ^FF33FFเก็บของ^000000",Storages,
+"- ^003300เรียกลูกกิล / ปาร์ตี้^000000",recallgp,
+"- ^FF00CCอัพเลเวลกิล^000000",lvguild,
+"- ^008080สกิวเสริมใหม่^000000",Skills,
+"- ^992299เช่า^000000",Rents,
+"- ^FF0000Reset Status & Skill^000000 ",Resetss,
+"- ^9966FFCancel^000000",Lcancel;
+
+saves:
+mes "[ Kafra ]";
+mes "กรุณาเลือกจุดเซฟ...";
+mes "^FF0000Morocc Town^000000";
+next;
+menu "- จุดเซฟ 1 ( กลาง )",saves1,"- จุดเซฟ 2 ( ซ้าย )",saves2,"- จุดเซฟ 3 ( บน )",saves3,"- จุดเซฟ 4 ( ขวา )",saves4,"- ยกเลิก",Lcancel;
+
+saves1:
+mes "[ Kafra ]";
+mes "เซฟเรียบร้อยแล้ว...";
+savepoint "morocc",159,92;
+close2;
+warp "morocc",159,92;
+end;
+
+saves2:
+mes "[ Kafra ]";
+mes "เซฟเรียบร้อยแล้ว...";
+savepoint "morocc",47,171;
+close2;
+warp "morocc",47,171;
+end;
+
+saves3:
+mes "[ Kafra ]";
+mes "เซฟเรียบร้อยแล้ว...";
+savepoint "morocc",159,255;
+close2;
+warp "morocc",159,255;
+end;
+
+saves4:
+mes "[ Kafra ]";
+mes "เซฟเรียบร้อยแล้ว...";
+savepoint "morocc",287,209;
+close2;
+warp "morocc",287,209;
+end;
+
+recallgp:
+callfunc "recallguildparty";
+close;
+
+lvguild:
+mes "[ ^FF0000Guild^000000 ]";
+mes "Guild Levelup [ ^FF000050^000000 ] แล้ว...";
+atcommand strcharinfo(0) + "@guildlvlup 50";
+close;
+
+Storages:
+mes "[ ^FF0000Storage^000000 ]";
+mes "เปิดโกดังสำเร็จแล้ว...";
+close2;
+openstorage;
+end;
+
+Rents:
+mes "[ ^FF0000Rent^000000 ]";
+mes "คุณต้องการเช่าอะไร ?";
+next;
+menu "- เช่า รถเข็น",L_Cart,"- เช่า นก",L_Falcon,"- เช่า เป็ด",L_Peco,"- ยกเลิก",LCancel;
+
+L_Cart:
+if(Class == 5) goto L_Cart_Ok;
+if(Class == 10) goto L_Cart_Ok;
+if(Class == 18) goto L_Cart_Ok;
+if(Class == 23) goto L_Cart_Ok;
+if(Class == 4006) goto L_Cart_Ok;
+if(Class == 4011) goto L_Cart_Ok;
+if(Class == 4019) goto L_Cart_Ok;
+if(Class == 4028) goto L_Cart_Ok;
+if(Class == 4033) goto L_Cart_Ok;
+if(Class == 4041) goto L_Cart_Ok;
+if(Class == 4045) goto L_Cart_Ok;
+mes "[ ^FF0000Rent^000000 ]";
+mes "เสียใจด้วยท่าน [ " + strcharinfo(0) + " ] ไม่ใช่อาชีพ Merchants, Blacksmiths และ Alchimists ";
+close;
+
+L_Cart_Ok:
+setcart;
+close;
+
+L_Falcon:
+if(Class == 11) goto L_falc;
+if(Class == 4012) goto L_falc;
+if(Class == 4034) goto L_falc;
+mes "[ ^FF0000Rent^000000 ]";
+mes "เสียใจด้วยท่าน [ " + strcharinfo(0) + " ] ไม่ใช่อาชีพ Hunter ";
+close;
+
+L_falc:
+setfalcon;
+close;
+
+L_Peco:
+if (Class == 7) goto L_Peco_Ok;
+if (Class == 14) goto L_Peco_Ok;
+if (Class == 4008) goto L_Peco_Ok;
+if (Class == 4015) goto L_Peco_Ok;
+if (Class == 4030) goto L_Peco_Ok;
+if (Class == 4037) goto L_Peco_Ok;
+mes "[ ^FF0000Rent^000000 ]";
+mes "เสียใจด้วยท่าน [ " + strcharinfo(0) + " ] ไม่ใช่อาชีพ Knight and Crusader ";
+close;
+
+L_Peco_Ok:
+setriding;
+close;
+
+Resetss:
+mes "[ ^FF0000Reset^000000 ]";
+mes "สวัสดีที่มาใช้บริการท่านต้องการรีเซ็ตอะไร:";
+mes "1.) Status Reset Free!";
+mes "2.) Skill Reset Free!";
+mes "3.) Status&Skill Reset Free!";
+next;
+menu 
+"- ^3355FFReset Stats^000000",L_Status,
+"- ^3355FFReset Skill^000000",L_Skill,
+"- ^3355FFReset Stats&Skill^000000",L_StatusSkill,
+"- ^FF0000Exit^000000",Lcancel;
+
+L_Status:
+mes "[ ^FF0000Reset^000000 ]";
+mes "ได้แล้ว ทำการ ^FF0000รีเซ็ต^000000 เรียบร้อย";
+resetstatus;
+close;
+
+L_Skill:
+mes "[ ^FF0000Reset^000000 ]";
+mes "ได้แล้ว ทำการ ^FF0000รีเซ็ต^000000 เรียบร้อย";
+resetskill;
+close;
+
+L_StatusSkill:
+mes "[ ^FF0000Reset^000000 ]";
+mes "ได้แล้ว ทำการ ^FF0000รีเซ็ต^000000 เรียบร้อย";
+resetstatus;
+resetskill;
+close;
+
+Skills:
+mes "[ ^FF0000Skills^000000 ]";
+mes "ต้องการสกิวเสริมรึ";
+next;
+menu "- ใช่",Lgetskills,"- ไม่",Lcancel;
+
+Lgetskills:
+if (Class==Job_Knight) || (Class==Job_Lord_Knight) goto L_sKnight;
+if (Class==Job_Assassin) || (Class==Job_Assassin_Cross) goto L_sAssassin;
+if (Class==Job_Bard) || (Class==Job_Clown) goto L_sBard;
+if (Class==Job_Dancer) || (Class==Job_Gypsy) goto L_sDancer;
+if (Class==Job_Blacksmith) || (Class==Job_Whitesmith) goto L_sBlacksmithf;
+if (Class==Job_Crusader) || (Class==Job_Paladin) goto L_sCrusader;
+if (Class==Job_Hunter) || (Class==Job_Sniper) goto L_sHunter;
+if (Class==Job_Monk) || (Class==Job_Champion) goto L_sMonk;
+if (Class==Job_Priest) || (Class==Job_High_Priest) goto L_sPriest;
+if (Class==Job_Rogue) || (Class==Job_Stalker) goto L_sRogue;
+if (Class==Job_Sage) || (Class==Job_Professor) goto L_sSage;
+if (Class==Job_Wizard) || (Class==Job_High_Wizard) goto L_sWizard;
+if (BaseClass==Job_Novice) goto L_sSuperN;
+if (BaseClass==Job_Swordman) goto L_sSword;
+if (BaseClass==Job_Mage) goto L_sMage;
+if (BaseClass==Job_Archer) goto L_sArcher;
+if (BaseClass==Job_Acolyte) goto L_sAcolyte;
+if (BaseClass==Job_Merchant) goto L_sMerchant;
+if (BaseClass==Job_Thief) goto L_sThief;
+close;
+
+L_sKnight:
+skill 157,0,0;
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+skill 1001,1,0;
+close;
+
+L_sAssassin:
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+skill 1003,1,0;
+skill 1004,1,0;
+close;
+
+L_sBard:
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+skill 1010,1,0;
+close;
+
+L_sDancer:
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+skill 1011,1,0;
+close;
+
+L_sBlacksmithf:
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+skill 1013,1,0;
+skill 1012,1,0;
+close;
+
+L_sCrusader:
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+skill 1002,1,0;
+close;
+
+L_sHunter:
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+skill 1009,1,0;
+close;
+
+L_sMonk:
+skill 142,1,0;
+skill 156,1,0;
+skill 1015,1,0;
+skill 1016,1,0;
+close;
+
+L_sPriest:
+skill 142,1,0;
+skill 156,1,0;
+skill 1014,1,0;
+close;
+
+L_sRogue:
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+skill 1005,1,0;
+close;
+
+L_sSage:
+skill 142,1,0;
+skill 157,1,0;
+skill 1007,1,0;
+skill 1008,1,0;
+skill 1017,1,0;
+skill 1018,1,0;
+skill 1019,1,0;
+close;
+
+L_sWizard:
+skill 142,1,0;
+skill 157,1,0;
+skill 1006,1,0;
+close;
+
+
+L_sSuperN:
+if(BaseJob==0)
+skill 142,1,0;
+skill 143,1,0;
+close;
+
+L_sSword:
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+close;
+
+L_sMage:
+skill 142,1,0;
+skill 157,1,0;
+close;
+
+L_sArcher:
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+close;
+
+L_sAcolyte:
+skill 142,1,0;
+skill 156,1,0;
+close;
+
+L_sMerchant:
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+close;
+
+L_sThief:
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+close;
+
+LCancel:
+mes "[ Kafra ]";
+mes "...แล้วเจอกันใหม่...";
+close;
+}

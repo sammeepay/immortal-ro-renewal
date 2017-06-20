@@ -1,0 +1,197 @@
+//==================================================================
+//=======NPC Credit L-Carnitine Server============================
+//==================================================================
+prt_gld,0,0,0	script	SetPVPParty	-1,{
+	end;
+
+OnInit:
+	set $@P7Nnpc$,"[^CC99CCPVP Team 7-7^000000]";	//  กำหนดชื่อ NPC ที่ใช้จัดกิจกรรมถ้าเปลี่ยนชื่อ NPC ให้เปลี่ยนตรงนี้ด้วย
+	set $@P7item,7227;			//  กำหนดเลข item Poring Coin
+	set $@P7num,1;			//  กำหนดค่าลงทะเบียน Coin
+	set $@P7map$,"guild_vs2-1";		//  กำหนด Map ที่ใช้ PVP
+	set $@P7max,5;			//  กำหนดจำนวนคนของแต่ละ Party
+	set $@P7team1,0;
+	set $@P7team2,0;
+	set $@P7look,0;
+	set $@P7nK1,0;
+	set $@P7nK2,0;
+	end;
+
+OnPCKillEvent:
+	getmapxy(@P7mapname$,@P7mapx,@P7mapy,0,strcharinfo(0));
+	if (@P7mapname$ != $@P7map$) end;
+	if (($@P7look == 2) && ((getcharid(1) == $@P7team1) || (getcharid(1) == $@P7team2))) {
+		if (getcharid(1) == $@P7team1) {
+			set $@P7nK2,$@P7nK2 - 1;
+		} else if (getcharid(1) == $@P7team2) {
+			set $@P7nK1,$@P7nK1 - 1;
+		}
+		if (($@P7nK1 == 0) || ($@P7nK2 == 0)) {
+			if (getcharid(1) == $@P7team1) {
+				set $@P7win,1;
+			} else if (getcharid(1) == $@P7team2) {
+				set $@P7win,2;
+			}
+			set @num,($@P7num * 2);
+			announce "ผลการแข่งขัน PVP Team "+$@P7max+"-"+$@P7max+" Party ["+getpartyname(getcharid(1))+"] เป็นฝ่ายชนะ",0;
+			announce "["+strcharinfo(0)+"] ได้รับ TCG Card ทั้งหมดจำนวน "+@num+" ใบ คนอื่นๆใน Party ["+getpartyname(getcharid(1))+"] สามารถไปรับส่วนแบ่งได้ที่ ["+strcharinfo(0)+"]",0;
+			getitem $@P7item,@num;
+			set $@P7team1,0;
+			set $@P7team2,0;
+			set $@P7look,0;
+			set $@P7nK1,0;
+			set $@P7nK2,0;
+			warp "SavePoint",0,0;
+		}
+	}
+	end;
+
+OnPCDieEvent:
+	getmapxy(@P7mapname$,@P7mapx,@P7mapy,0,strcharinfo(0));
+	if (@P7mapname$ != $@P7map$) end;
+	if (($@P7look == 2) && ((getcharid(1) == $@P7team1) || (getcharid(1) == $@P7team2))) {
+		sleep2 4;
+		atcommand "@alive ";
+		warp "SavePoint",0,0;
+	}
+	end;
+
+OnPCLogoutEvent:
+	getmapxy(@P7mapname$,@P7mapx,@P7mapy,0,strcharinfo(0));
+	if (@P7mapname$ != $@P7map$) end;
+	if (($@P7look == 1) && ((getcharid(1) == $@P7team1) || (getcharid(1) == $@P7team2))) {
+		announce "ยกเลิกการแข่งยัน PVP Team "+$@P7max+"-"+$@P7max+" เนื่องจาก คุณ "+strcharinfo(0)+" Party "+getpartyname(getcharid(1))+" ได้ออกจากเกมส์",0;
+		set $@P7look,0;
+		set $@P7team1,0;
+		set $@P7team2,0;
+		set $@P7look,0;
+		set $@P7nK1,0;
+		set $@P7nK2,0;
+		stopnpctimer ""+$@P7Nnpc$+"";
+	}
+	end;
+}
+//======================================================================================================
+//  ถ้าเปลี่ยนชื่อ NPC ให้เปลี่ยนตัวแปรชื่อ $@P7Nnpc$ ตามด้วย
+prontera,141,182,4	script	PVP Team 7-7	461,{
+	set @npc$,"["+strnpcinfo(0)+"]";
+	set @pid,getcharid(1);
+	mes @npc$;
+	getpartymember(@pid);
+	set @pcount,$@partymembercount;
+	if ($@P7look == 2) {
+		mes "ขณะนี้มีการแข่งขันกันอยู่ไม่สามารถลงทะเบียนได้ กรุณารอสักครู่..";
+		close;
+	}
+	if (($@P7team1 != 0) && ($@P7team2 != 0)) {
+		mes "ขออภัย มีทีมสมัครลงแข่งขันไว้แล้ว กรุณารอรอบถัดไป";
+		close;
+	}
+	if (@pid == 0) {
+		mes "คุณไม่มีทีม ทางเราไม่สามารถดำเนินการให้ได้";
+		close;
+	}
+	if (getpartyleader(@pid,2) != getcharid(0)) {
+		mes "คุณไม่ใช่หัวหน้าทีม!";
+		close;
+	}
+	if (@pcount != $@P7max) {
+		mes "ทีมคุณต้องมีผู้ลงแข่งขันอย่างน้อย ^FF0000"+$@P7max+"^000000 คนขึ้นไป";
+		close;
+	}
+	if (($@P7team1 == getcharid(1)) || ($@P7team2 == getcharid(1))) {
+		mes "ทีมคุณลงทะเบียนไปแล้ว";
+		close;
+	}
+	if (($@P7team1 == 0) && ($@P7team2 == 0)) {
+		mes "ยังไม่มีทีมไหนลงทะเบียนแข่งขัน";
+	} else if ($@P7team1 == 1) {
+		mes "มีทีมชื่อ ^0000FF"+getpartyname($@P7team1)+"^000000 ลงทะเบียนแล้ว";
+	}
+	mes "คุณต้องการลงทะเบียนแข่งขัน PVP "+$@P7max+"-"+$@P7max+" หรือไม่ ?";
+	next;
+	menu "ลงทะเบียนแข่งขัน",P7_Register,"ไม่เอาดีกว่า",Cancel;
+
+P7_Register:
+	mes @npc$;
+	mes "ค่าลงทะเบียนจำนวน ^FF0000"+$@P7num+"^000000 Coin";
+	mes "ผลการตรวจสอบ";
+	if (countitem($@P7item) < $@P7num) {
+		mes "เสียใจด้วยคุณมี TCG Card ไม่พอในการลงทะเบียน";
+		close;
+	}
+	next;
+	set @menulist,select("ยืนยัน","ยกเลิก");
+	mes @npc$;
+	if (@menulist == 2) goto Cancel;
+	if ($@P7look == 1) {
+		mes "มีทีมแข่งขันครบแล้ว";
+	}
+	delitem $@P7item,$@P7num;
+	if ($@P7team1 == 0) {
+		set $@P7team1,getcharid(1);
+	} else {
+		set $@P7team2,getcharid(1);
+	}
+	mes "คุณทำการลงทะเบียนเรียบร้อยแล้ว";
+	if (($@P7team1 != 0) && ($@P7team2 != 0)) {
+		mes "กรุณาเตรียมตัวภายใน 1 นาที";
+		announce "Party ["+getpartyname(getcharid(1))+"] รับคำท้าประลองของ Party ["+getpartyname($@P7team1)+"] จะเริ่มในอีก 1 นาที",0;
+		set $@P7nK1,$@P7max;
+		set $@P7nK2,$@P7max;
+		initnpctimer;
+	} else {
+		set $@P7look,1;
+		announce "Party ["+getpartyname(getcharid(1))+"] ทำการประลอง PVP Team "+$@P7max+"-"+$@P7max+" ขอเชิญ Party อื่นๆเข้ามาร่วมแข่งขัน",0;
+		mes "กรุณาทีมคู่แข่งขันสักครู่";
+	}
+	close;
+	
+Cancel:
+	mes @npc$;
+	mes "ลาก่อน";
+	close;
+
+OnTimer55000:
+	announce "การแข่งขัน PVP Team "+$@P7max+"-"+$@P7max+" จะเริ่มในอีก 5 วินาที",0;
+	end;
+
+OnTimer56000:
+	announce "การแข่งขัน PVP Team "+$@P7max+"-"+$@P7max+" จะเริ่มในอีก 4 วินาที",0;
+	end;
+
+OnTime5r7000:
+	announce "การแข่งขัน PVP Team "+$@P7max+"-"+$@P7max+" จะเริ่มในอีก 3 วินาที",0;
+	end;
+
+OnTimer58000:
+	announce "การแข่งขัน PVP Team "+$@P7max+"-"+$@P7max+" จะเริ่มในอีก 2 วินาที",0;
+	end;
+
+OnTimer59000:
+	announce "การแข่งขัน PVP Team "+$@P7max+"-"+$@P7max+" จะเริ่มในอีก 1 วินาที",0;
+	end;
+
+OnTimer60000:
+	set $@P7look,2;
+	set .@P7t1,getpartyleader($@P7team1,2);
+	set .@P7t2,getpartyleader($@P7team2,2);
+	warpchar $@P7map$, 0, 0, .@P7t1;
+	warpchar $@P7map$, 0, 0, .@P7t2;
+
+	getpartymember $@P7team1;
+	set .@partymembercount, $@partymembercount;
+	copyarray .@partymembername$[0], $@partymembername$[0], .@partymembercount;
+	for(set .@i, 0; .@i < .@partymembercount; set .@i, .@i + 1) {
+		warpchar $@P7map$, 0, 0, getcharid(0, .@partymembername$[.@i]);
+	}
+
+	getpartymember $@P7team2;
+	set .@partymembercount, $@partymembercount;
+	copyarray .@partymembername$[0], $@partymembername$[0], .@partymembercount;
+	for(set .@i, 0; .@i < .@partymembercount; set .@i, .@i + 1) {
+		warpchar $@P7map$, 0, 0, getcharid(0, .@partymembername$[.@i]);
+	}
+	stopnpctimer;
+	end;
+}

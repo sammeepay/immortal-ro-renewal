@@ -1,0 +1,1850 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+// Script Init -->
+-	script	InitScriptET	-1,{
+OnInit:
+	setarray $@mobs99[1],1639,1634,1637,1635,1636,1638,1918,1920,1919,1921,1765,1754,1755,1634,1268,1219,1208,1829,1830,1639,1377,1657,1263,1638,1830,1656,1702,1703,1371;
+	setarray $@numb99[1],2,2,2,2,2,2,5,5,5,5,5,10,10,15,10,10,10,15,10,15,10,10,10,10,10,30,10,10,10;
+	disablenpc "NaghtSieger";
+	disablenpc "warptonaght1";
+	disablenpc "warptonaght2";
+	disablenpc "WarpToFloor";
+	disablenpc "WarpToFloor2";
+	disablenpc "ET_Exit";
+	disablenpc "ETBS";
+	for(set .i,2; .i<102; set .i,.i+1) { disablenpc "ET_Warp_"+.i+""; }
+	end;
+}
+
+// NPCs -->
+e_tower,83,110,3	script	Monemus	406,{
+	if(getgmlevel()>59)
+	{
+		mes "[Monemus]";
+		mes "สวัสดี ท่านผู้ดูแลระบบ";
+		mes "คุณต้องการทำอะไร";
+		next;
+		switch( select( "ปิด Endless Tower.","เปิด Endless Tower","ป่าว. ไม่มีไร" ) )
+		{
+			case 1:
+				mes "[Monemus]";
+				if(.team)
+					{
+						mes "ท่านต้องการที่จะปิด Endless Tower ใช่หรือไม่";
+						next;
+						switch( select( "ไม่ใช่.","ใช่." ) )
+						{
+							case 1:
+								close;
+
+							case 2:
+								mes "[Monemus]";
+						}
+					}
+				mes "โอเค, ข้าปิดให้ท่านแล้ว";
+				close2;
+				donpcevent "Monemus::OnTimer14410000";
+				end;
+
+			case 2:
+				mes "[Monemus]";
+				if(!getcharid(1)) { mes "ท่านต้องมี Party ก่อนนะ ถึงจะทำการเปิดได้"; close; }
+				if(.team)
+				{
+					mes "ท่านไม่สามารถเข้า tower ได้ ถ้ามีปาร์ตี้อยู่ในนั้นก่อนหน้าท่าน.";
+					close;
+				}
+				mes "Ok, ข้าเปิดให้ท่านแล้ว";
+				close2;
+				for( set .j,1; .j<7; set .j,.j+1) { killmonsterall ""+.j+"@tower"; }
+				set .team,getcharid(1);
+				set .intest,1;
+				donpcevent "Mobs_Spawns::OnRoom1";
+				donpcevent "Monemus::OnStart";
+				announce "Endless Tower. ได้ถูกเปิดแล้ว",bc_all;
+				close;
+			
+			case 3:
+				mes "[Monemus]";
+				mes "ตามสบายนะท่าน";
+				close;
+		}
+	}
+	if(.intest)
+	{
+		mes "[Monemus]";
+		mes "Sorry, a GM is currently testing the tower.";
+		close;
+	}
+	if(.team)
+	{
+		if(getpartyname(.team)=="null") { donpcevent "Monemus::OnTimer14410000"; end; }
+		if(getcharid(1)!=.team)
+		{
+			mes "[Monemus]";
+			mes "Sorry, the party "+getpartyname(.team)+" is already registered.";
+			mes "Their adventure started on:^0000FF "+.ET_GP_Init_DD+"-"+.ET_GP_Init_MM+"-"+.ET_GP_Init_AA+"^000000 at^0000FF "+.ET_GP_Init_H+":"+.ET_GP_Init_M+":"+.ET_GP_Init_S+"^000000.";
+			mes "Please try again later.";
+			next;
+			goto L_Quit;
+		}
+		for(set .i,0; .i<$ET_PartyCount; set .i,.i+1)
+		{
+			if(strcharinfo(0)==$ET_PartyMember$[.i])
+			{
+				if(getcharid(0)!=getpartyleader(.team,2))
+				{
+					mes "[Monemus]";
+					mes "I will open a portal that will warp you to the first floor.";
+					close2;
+					enablenpc "WarpToFloor";
+					end;
+				}
+				mes "[Monemus]";
+				mes "Do you want to leave or return inside ?";
+				next;
+				switch( select( "Leave.","Return." ) )
+				{
+					case 1:
+						mes "[Monemus]";
+						mes "So be it.";
+						close2;
+						donpcevent "Monemus::OnStop";
+						end;
+
+					case 2:
+						mes "[Monemus]";
+						mes "I will open a portal that will warp you to the first floor.";
+						close2;
+						enablenpc "WarpToFloor";
+						end;
+				}
+			}
+		}
+		mes "[Monemus]";
+		mes "You don't belong to the party that registered the first time.";
+		next;
+		goto L_Quit;
+	}
+	if(ET_Tower) goto L_Register;
+	mes "[Strange Stone]";
+	mes "What do you seek human, entering the lands of Naght Sieger ?";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Oh my... It talked...";
+	next;
+	mes "[Strange Stone]";
+	mes "I am Monemus, gate keeper of the Endless Tower.";
+	mes "I repeat my question, what do you seek here ?";
+	next;
+	switch( select( "What is that tower ?","Huh, nothing, I just want to go back home" ) )
+	{
+		case 1:
+			mes "[Monemus]";
+			mes "So, you want the knowledge.";
+			mes "As you wish, I will tell you the story of the Endless Tower.";
+			next;
+			mes "[Monemus]";
+			mes "The greedy demon, Nacht Sieger, is troubled because Entweihen Knothen, a middle-ranking demon, seeks the opportunity to kill him and usurp his position amongst the demons.";
+			next;
+			mes "[Monemus]";
+			mes "Entweihen Knothen has set up its base near Asgard, the empyrean, to gather his forces to attack Nacht Sieger.";
+			mes "To reinforce his army and efficiently command his soldiers, Entweihen Knothen has set up ranks for his soldiers.";
+			next;
+			mes "[Monemus]";
+			mes "The Endless Tower used to be a human building, but Entweihen Knothen seized the tower to use it as his army base camp in which his soldiers are camped on different levels according to their rank: the lowest ranking demons are positioned closer to the bottom of the tower, and the higher ranking demons are positioned near the top.";
+			next;
+			mes "[Monemus]";
+			mes "Entweihen Knothen resides at the top level where he can command his subordinates and oversee the tower.";
+			next;
+			mes "[Monemus]";
+			mes "After learning about Entweihen Knothen's ambition, the enraged Nacht Sieger used all of his power, and even entrusted drew upon that of his subordinates, to seal Knothen's tower with a thick fog that surrounded the island.";
+			next;
+			mes "[Monemus]";
+			mes "Although the tower was sealed from the outside, Nacht Sieger knows that he can be overwhelmed by the sheer number of the soldiers in Entweihen Knothen's forces.";
+			mes "All he can do is set up his base near the tower and observe.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "WOW, what a story !";
+			mes "So you're telling me that inside that tower, there's a bunch of monsters ?";
+			next;
+			mes "[Monemus]";
+			mes "I don't understand what you mean by \"bunch of monsters\". But beware, human, it might sound easy at first, but if you want to enter, you have to be prepared.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "So I can go inside ?";
+			next;
+			mes "[Monemus]";
+			mes "Yes. But don't forget I warned you.";
+			mes "Are you sure you want to enter ?";
+			next;
+			menu "Yeah, sounds interesting.",L_Register,"Well, I prefer not.",-;
+			mes "[Monemus]";
+			mes "In that case, I will send you back to where you come from.";
+			close2;
+			warp "alberta",218,77;
+			end;
+
+		case 2:
+			mes "[Monemus]";
+			mes "As you wish human, I will send you back to what you call home.";
+			close2;
+			warp "morocc.gat",184,70;
+			end;
+	}
+
+L_Register:
+	mes "[Monemus]";
+	mes "So "+strcharinfo(0)+", do you want to register your party and enter Endless Tower?";
+	next;
+	menu "Yes !",-,"No...",L_Quit;
+	if(!getcharid(1))
+	{
+		mes "[Monemus]";
+		mes "Sorry, you must in a party if you want to enter.";
+		next;
+		goto L_Quit;
+	}
+	if(getcharid(0)!=getpartyleader(getcharid(1),2))
+	{
+		mes "[Monemus]";
+		mes "Only the party leader can register.";
+		next;
+		goto L_Quit;
+	}
+	if(getcharid(0)==getpartyleader(getcharid(1),2) && gettimetick(2)-ET_Tower>$ET_Time)
+	{
+		if(getpartyname(getcharid(1))=="null")
+		{
+			mes "[Monemus]";
+			mes "Your party can't be named ^FF0000\"null\"^000000.";
+			mes "Please change it.";
+			close;
+		}
+		if(BaseLevel<50)
+		{
+			mes "[Monemus]";
+			mes "Sorry, you must be at least Base Level 50.";
+			next;
+			goto L_Quit;
+		}
+		set .team,getcharid(1);
+		getpartymember(getcharid(1));
+		set $ET_PartyCount,$@partymembercount;
+		copyarray $ET_PartyMember$[0],$@partymembername$[0],$ET_PartyCount;
+		if($ET_PartyCount<2)
+		{
+			mes "[Monemus]";
+			mes "You are alone, are you sure you want to go in ?";
+			mes "Know that you have a limit of 4 hours.";
+			mes "Similarly you will have to wait "+$ET_Time$+" after registering to participate again.";
+			next;
+			menu "Yes.",-,"No.",L_Quit2;
+			mes "[Monemus]";
+			mes "As you wish.";
+			mes "I will now open a portal for 5 minutes that will let you enter the tower.";
+			close2;
+			set ET_Tower, gettimetick(2);
+			announce "Endless Tower is now closed.",bc_all;
+			donpcevent "Mobs_Spawns::OnRoom1";
+			donpcevent "MapCheck::OnStart";
+			donpcevent "Monemus::OnStart";
+			end;
+		}
+		mes "[Monemus]";
+		mes "Know that you have a limit of 4 hours.";
+		mes "Also, be sure that all your party members are online and at least Base Level 50.";
+		mes "Similarly you will have to wait, you and your crew, "+$ET_Time$+" after registering to participate again.";
+		next;
+		mes "[Monemus]";
+		mes "Do you confirm the registration?";
+		next;
+		menu "Yes.",-,"No.",L_Quit2;
+		set .TL_ID,getcharid(3);
+		for(set .i,0; .i<$ET_PartyCount; set .i,.i+1)
+		{
+			attachrid(getcharid(3,$ET_PartyMember$[.i]));
+			if(!isloggedin(getcharid(3,$ET_PartyMember$[.i]),getcharid(0,$ET_PartyMember$[.i])))
+			{
+				attachrid(.TL_ID);
+				mes "[Monemus]";
+				mes "Some party members are not online.";
+				mes "Come back with everyone.";
+				next;
+				set .team,0;
+				goto L_Quit;
+			}
+			if(BaseLevel<50)
+			{
+				attachrid(.TL_ID);
+				mes "[Monemus]";
+				mes "Some party members don't have the Base Level required to enter Endless Tower.";
+				next;
+				set .team,0;
+				goto L_Quit;
+			}
+			if(gettimetick(2)-ET_Tower<$ET_Time)
+			{
+				attachrid(.TL_ID);
+				mes "[Monemus]";
+				mes "Some party members already participated ago less than "+$ET_Time$+".";
+				next;
+				set .team,0;
+				goto L_Quit;
+			}
+		}
+		for(set .i,0; .i<$ET_PartyCount; set .i,.i+1)
+		{
+			attachrid(getcharid(3,$ET_PartyMember$[.i]));
+			set ET_Tower, gettimetick(2);
+		}
+		attachrid(.TL_ID);
+		mes "[Monemus]";
+		mes "Your party is now registered.";
+		mes "I will now open a portal for 5 minutes that will let you enter the tower.";
+		close2;
+		announce "Endless Tower is now closed. The Party "+getpartyname(.team)+" start the adventure",bc_all;
+		donpcevent "Mobs_Spawns::OnRoom1";
+		donpcevent "MapCheck::OnStart";
+		donpcevent "Monemus::OnStart";
+		end;
+	}
+	mes "[Monemus]";
+	mes "Sorry, but you've already participated ago in less than "+$ET_Time$+".";
+	next;
+	goto L_Quit;
+
+L_Quit:
+	mes "[Monemus]";
+	mes "Do you want to go back ?";
+	switch( select( "Yes.","No." ) )
+	{
+		case 1:
+			close2;
+			warp "alberta",218,77;
+			end;
+
+		case 2:
+			close;
+	}
+
+L_Quit2:
+	set .team,0;
+	goto L_Quit;
+
+OnStart:
+	enablenpc "WarpToFloor2";
+	set .ET_GP_Init_DD,gettimestr("%d",21);        //Date
+    set .ET_GP_Init_MM,gettimestr("%m",21);        //Month
+    set .ET_GP_Init_AA,gettimestr("%Y",21);        //Year
+    set .ET_GP_Init_H,gettimestr("%H",21);        //Hours
+    set .ET_GP_Init_M,gettimestr("%M",21);        //Minutes
+    set .ET_GP_Init_S,gettimestr("%S",21);        //Seconds
+	initnpctimer;
+	end;
+
+OnTimer300000:
+	disablenpc "WarpToFloor2";
+	end;
+
+OnTimer3600000:
+	for( set .i,1; .i<7; set .i,.i+1)
+		{ mapannounce ""+.i+"@tower","3 Hours left.",bc_map; }
+	end;
+
+OnTimer7200000:
+	for( set .i,1; .i<7; set .i,.i+1)
+		{ mapannounce ""+.i+"@tower","2 Hours left.",bc_map; }
+	end;
+
+OnTimer10800000:
+	for( set .i,1; .i<7; set .i,.i+1)
+		{ mapannounce ""+.i+"@tower","1 Hour Left.",bc_map; }
+	end;
+
+OnTimer14400000:
+	for( set .i,1; .i<7; set .i,.i+1)
+		{ mapannounce .i+"@tower","The time limit is over. You will automatically be teleported to Alberta.",bc_map; }
+	end;
+	
+OnTimer14405000:
+	warpparty "alberta",218,77,.team;
+	end;
+
+OnTimer14410000:
+	announce "Endless Tower. ได้ถูกปิดแล้ว",bc_all;
+	set .team,0;
+	set .intest,0;
+	deletearray $ET_PartyMember$[0],$ET_PartyCount;
+	for( set .i,1; .i<7; set .i,.i+1) { killmonsterall ""+.i+"@tower"; }
+	for(set .k,2; .k<102; set .k,.k+1) { disablenpc "ET_Warp_"+.k+""; }
+	disablenpc "NaghtSieger";
+	disablenpc "warptonaght1";
+	disablenpc "warptonaght2";
+	disablenpc "WarpToFloor";
+	disablenpc "WarpToFloor2";
+	disablenpc "ET_Exit";
+	donpcevent "MapCheck::OnStop";
+	disablenpc "ETBS";
+	stopnpctimer;
+	end;
+
+OnStop:
+	warpparty "alberta",218,77,.team;
+	donpcevent "Monemus::OnTimer14410000";
+	end;
+
+OnStopTimer:
+	stopnpctimer;
+	end;
+}
+
+-	script	MapCheck	-1,{
+OnStart:
+	if(!getmapusers("1@tower") && !getmapusers("2@tower") && !getmapusers("3@tower") && !getmapusers("4@tower") && !getmapusers("5@tower") && !getmapusers("6@tower"))
+		{ set .noone,.noone+1; }
+	initnpctimer;
+	end;
+	
+OnTimer300000:
+	if(!getmapusers("1@tower") && !getmapusers("2@tower") && !getmapusers("3@tower") && !getmapusers("4@tower") && !getmapusers("5@tower") && !getmapusers("6@tower"))
+		{ set .noone,.noone+1; }
+	if(.noone==2)
+	{
+		donpcevent "Monemus::OnTimer14410000";
+		set .noone,0;
+		stopnpctimer;
+		end;
+	}
+	set .noone,0;
+	stopnpctimer;
+	donpcevent "MapCheck::OnStart";
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+}
+
+-	script	ET_End	-1,{
+OnEnd:
+	enablenpc "ET_Exit";
+	initnpctimer;
+	mapannounce "6@tower","You have 5 minutes to leave the place.",bc_map;
+	end;
+
+OnTimer300000:
+	if(getmapusers("6@tower")) { donpcevent "Monemus::OnStop"; }
+	donpcevent "Monemus::OnTimer14410000";
+	stopnpctimer;
+	end;
+}
+
+alberta,214,77,5	script	Old Sailor	709,{
+	mes "[Old Sailor]";
+	if(ET_Tower)
+	{
+		mes "Oh, you again !";
+		mes "You want to go there ?";
+		next;
+		switch( select( "Yes !","No." ) )
+		{
+			case 1:
+				mes "[Old Sailor]";
+				mes "Hoist the flag !!";
+				close2;
+				warp "e_tower",74,110;
+				end;
+
+			case 2:
+				close;
+		}
+	}
+	mes "Hi there ! Are you in Alberta because of that odd tower ?";
+	next;
+	switch( select( "What tower ?","No, just passing by.") )
+	{
+		case 1:
+			mes "[Old Sailor]";
+			mes "WHAT ?";
+			mes "You don't know about that tower ?";
+			mes "Let me tell you a story.";
+			next;
+			switch( select( "Please.","No thanks, I have something to do.") )
+			{
+				case 1:
+					mes "[Old Sailor]";
+					mes "The Alberta sailors used to talk about an unexplored seaway covered by a fog so thick, no fleet could navigate through it.";
+					next;
+					mes "[Old Sailor]";
+					mes "Many people were curious about what was beyond the fog, and there were many theories and guesses, but nothing came from the ocean beyond the fog, and those that braved that foggy seaway never returned.";
+					next;
+					mes "[Old Sailor]";
+					mes "Once Satan Morroc resurrected, that thick ocean fog suddenly dissipated.";
+					mes "It was rumored that the impact from Satan Morroc's revival caused the fog to disappear, but the sailors were too excited to question the fog's sudden disappearance: now that the fog was no longer an obstacle, they could steer their ships to brave that frontier ocean.";
+					next;
+					mes "[Old Sailor]";
+					mes "In the center of the waters at the end of that seaway, they discovered an island on which an enormous tower was built.";
+					mes "There was nothing special about the island itself, but the tower was so tall that it seemed to scrape the very sky.";
+					next;
+					mes "[Old Sailor]";
+					mes "The explorers wondered about why the tower was built, far from known civilization.";
+					mes "When was it constructed, and who built it?";
+					next;
+					mes "[Old Sailor]";
+					mes "The answers were probably inside that tower, but they found that the inside of it was infested by fearsome monsters that were too powerful for them to confront.";
+					mes "It was impossible for them enter the tower without throwing away their lives.";
+					next;
+					mes "[Old Sailor]";
+					mes "News of the mysterious tower quickly spread throughout the Rune Midgard Continent, and everyone across the land was soon talking about it.";
+					mes "The Rune Midgard's Government decided to start official expedition recruitment, inviting adventurers from all over the kingdom to find the answers behind the mystery of the tower.";
+					next;
+					mes "[Old Sailor]";
+					mes "The mysterious tower in the middle of the ocean has now been revealed. Are there any adventurers in the world that are strong enough to conquer it?";
+					next;
+					mes "[Old Sailor]";
+					mes "So, still not interested in the tower ?";
+					next;
+					switch( select( "You bet I am !","Not Really...") )
+					{
+						case 1:
+							mes "[Old Sailor]";
+							mes "If you're that interested, I can bring you there.";
+							mes "But I won't wait for you, because of the danger.";
+							mes "As soon as I land, I come back here, OK ?";
+							next;
+							switch( select( "Don't worry.","Argh... Another time maybe..." ) )
+							{
+								case 1:
+									mes "[Old Sailor]";
+									mes "All right ! Hoist the flag !!";
+									close2;
+									warp "e_tower",74,110;
+									end;
+
+								case 2:
+									mes "[Old Sailor]";
+									mes "Well, you know where I am.";
+									close;
+							}
+
+						case 2:
+							mes "[Old Sailor]";
+							mes "You don't know what you miss.";
+							mes "Well then, maybe next time.";
+							close;
+					}
+
+				case 2:
+					mes "[Old Sailor]";
+					mes "humpf, youngsters these days...";
+					close;
+			}
+
+		case 2:
+			mes "[Old Sailor]";
+			mes "Have a nice day !";
+			mes "And if you're ever interested of that tower, come to see me.";
+			mes "'ll be glad to tell you more about it.";
+			close;
+	}
+}
+
+6@tower,32,100,1	warp	warptonaght1	1,1,6@tower,156,68
+6@tower,156,66,1	warp	warptonaght2	1,1,6@tower,32,98
+
+6@tower,149,140,5	script	Old Blacksmith::ETBS	813,{
+	mes "[Old Blacksmith]";
+	if(getcharid(0)==getpartyleader(getcharid(1),2))
+	{
+		mes "Wow, I can't believe it !";
+		mes "You sent Naght Sieger back in Hell and I'm now free.";
+		mes "I owe you a big one !";
+		next;
+		mes "[Old Blacksmith]";
+		mes "To show you how grateful I am, I will forge you a great weapon.";
+		mes "But, first, I need Naght Sieger's Twin Blades, both of them.";
+		mes "Do you have them ?";
+		next;
+		switch( select( "Yes !","Sorry, I don't." ) )
+		{
+			case 1:
+				mes "[Old Blacksmith]";
+				if(!countitem(13412) && !countitem(13413))
+				{
+					mes "I tried to be grateful, and you dare mocking me.";
+					mes "I don't need this ! Now that I'm free, I'm leaving right now.";
+					close2;
+					disablenpc "ETBS";
+					end;
+				}
+				mes "Great ! I'll make you an incredible one.";
+				mes "But I have to warn you, only Paladin and Lord Knight can use it since it's a Two Handed Sword.";
+				mes "Are you sure you want me to forge it ?";
+				next;
+				switch( select( "Yes, do it !","Hum... not yet." ) )
+				{
+					case 1:
+						mes "[Old Blacksmith]";
+						mes "All right, let's do it !!";
+						next;
+						delitem 13412,1;
+						delitem 13413,1;
+						mes "[Old Blacksmith]";
+						mes "Done !! Here you are.";
+						sleep2 1000;
+						getitem 1185,1;
+						mes "Well, now that I'm free, I'm leaving thois dreadful place.";
+						mes "Thanks again and farewell.";
+						close2;
+						disablenpc "ETBS";
+						end;
+
+					case 2:
+						mes "[Old Blacksmith]";
+						mes "If that's what you want.";
+						mes "Farewell, I leave this place now.";
+						close2;
+						disablenpc "ETBS";
+						end;
+				}
+			case 2:
+				mes "[Old Blacksmith]";
+				mes "Too bad, but maybe we will meet again.";
+				mes "Goodbye my friend.";
+				close2;
+				disablenpc "ETBS";
+				end;
+		}
+	}
+	mes "Ooooh ! You made it this far !!";
+	mes "You must be powerful.";
+	close;
+}
+
+6@tower,32,88,4	script	Naght Sieger::NaghtSieger	1956,{
+}
+
+-	script	Naght_Sieger	-1,{
+OnMyMobDead:
+	killmonsterall "6@tower";
+	announce "Party "+getpartyname(getvariableofnpc(.team,"Monemus"))+" defeated Naght Sieger.",bc_all,0x0080FF;
+	donpcevent "Monemus::OnStopTimer";
+	enablenpc "ETBS";
+	donpcevent "ET_End::OnEnd";
+	mapannounce "6@tower","Five minutes remaining before being warped to Alberta.",bc_map;
+	end;
+
+OnStart:
+	enablenpc "NaghtSieger";
+	initnpctimer;
+
+OnTimer4000:
+	mapannounce "6@tower","Fear my wrath, humans, for having dared to enter my lands.",bc_map,0xFF0000;
+	end;
+
+OnTimer8000:
+	mapannounce "6@tower","Come to me, that I will make you regret your recklessness.",bc_map,0xFF0000;
+	end;
+
+OnTimer12000:
+	donpcevent "Mobs_Spawns::OnRoom102";
+	disablenpc "NaghtSieger";
+	enablenpc "warptonaght1";
+	enablenpc "warptonaght2";
+	stopnpctimer;
+	end;
+}
+
+-	script	MobDeath	-1,{
+OnMyMobDead:
+	if($@room<27) { set .map$,"1@tower"; }
+	if($@room<52 && $@room>26) { set .map$,"2@tower"; }
+	if($@room<77 && $@room>51) { set .map$,"3@tower"; }
+	if($@room<101 && $@room>76) { set .map$,"4@tower"; }
+	set $@mobs,$@mobs-1;
+	if($@mobs>0) { mapannounce ""+.map$+"",""+$@mobs+" monsters left.",bc_map; }
+	if($@room==101) { killmonsterall "5@tower"; }
+	if($@mobs==0) { mapannounce ""+.map$+"","Floor cleared.",bc_map; donpcevent "RoomCleaned::OnComplete"; }
+	end;
+}
+
+1@tower,46,363,4	script	Eternal Torch	802,{
+	if(getcharid(0)==getpartyleader(getvariableofnpc(.team,"Monemus"),2))
+	{
+		if(countitem(6000)>0)
+		{
+			mes "[Eternal Torch]";
+			mes "How do you want to use Dark Ash?";
+			next;
+			switch( select( "1 Dark Ash","2 Dark Ash","3 Dark Ash","None" ) )
+			{
+				case 1:
+					mes "[Eternal Torch]";
+					mes "So be it.";
+					close2;
+					killmonsterall "1@tower";
+					donpcevent "Mobs_Spawns::OnRoom26";
+					delitem 6000,1;
+					set $@clean,0;
+					for(set .i,0; .i<$ET_PartyCount; set .i,.i+1)
+					{
+						attachrid(getcharid(3,$ET_PartyMember$[.i]));
+						warp "2@tower",50,355;
+					}
+					for(set .j,1; .j<27; set .j,.j+1) { enablenpc "ET_Warp_"+.j+""; }
+					set $@room,27;
+					end;
+
+				case 2:
+					if(countitem(6000)<2)
+					{
+						mes "[Eternal Torch]";
+						mes "You do not have enough Dark Ash.";
+						close;
+					}
+					mes "[Eternal Torch]";
+					mes "So be it.";
+					close2;
+					killmonsterall "1@tower";
+					donpcevent "Mobs_Spawns::OnRoom51";
+					delitem 6000,2;
+					set $@clean,0;
+					for(set .i,0; .i<$ET_PartyCount; set .i,.i+1)
+					{
+						attachrid(getcharid(3,$ET_PartyMember$[.i]));
+						warp "3@tower",50,355;
+					}
+					for(set .j,1; .j<52; set .j,.j+1) { enablenpc "ET_Warp_"+.j+""; }
+					set $@room,52;
+					end;
+
+				case 3:
+					if(countitem(6000)<3)
+					{
+						mes "[Eternal Torch]";
+						mes "You do not have enough Dark Ash.";
+						close;
+					}
+					mes "[Eternal Torch]";
+					mes "So be it.";
+					close2;
+					killmonsterall "1@tower";
+					donpcevent "Mobs_Spawns::OnRoom76";
+					delitem 6000,3;
+					set $@clean,0;
+					for(set .i,0; .i<$ET_PartyCount; set .i,.i+1)
+					{
+						attachrid(getcharid(3,$ET_PartyMember$[.i]));
+						warp "4@tower",50,355;
+					}
+					for(set .j,1; .j<77; set .j,.j+1) { enablenpc "ET_Warp_"+.j+""; }
+					set $@room,77;
+					end;
+
+				case 4:
+					close;
+			}
+		}
+	}
+}
+
+2@tower,48,355,6	script	Room26	-1,4,4,{
+OnTouch:
+	if(getcharid(0)==getpartyleader(getvariableofnpc(.team,"Monemus"),2) && $@clean==1)
+	{
+		getitem 6000,1;
+		set $@clean,0;
+		end;
+	}
+}
+
+3@tower,48,355,6	script	Room51	-1,4,4,{
+OnTouch:
+	if(getcharid(0)==getpartyleader(getvariableofnpc(.team,"Monemus"),2) && $@clean==1)
+	{
+		getitem 6000,1;
+		set $@clean,0;
+		end;
+	}
+}
+
+4@tower,48,355,6	script	Room76	-1,4,4,{
+OnTouch:
+	if(getcharid(0)==getpartyleader(getvariableofnpc(.team,"Monemus"),2) && $@clean==1)
+	{
+		getitem 6000,1;
+		set $@clean,0;
+		end;
+	}
+}
+
+// Spawns des Mobs -->
+-	script	Mobs_Spawns	-1,{
+OnRoom1:
+	set $@room,2;
+	set $@mobs,36;
+	areamonster "1@tower",7,349,37,393,"Poring",1002,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,349,37,393,"Mastering",1090,1,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,349,37,393,"Drops",1113,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,349,37,393,"Poporing",1031,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,349,37,393,"Marin",1242,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,349,37,393,"Metaling",1613,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom2:
+	set $@mobs,31;
+	areamonster "1@tower",91,349,121,393,"Baby Desert Wolf",1107,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,349,121,393,"Desert Wolf",1106,20,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,349,121,393,"Vagabond Wolf",1092,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom3:
+	set $@mobs,30;
+	areamonster "1@tower",179,349,209,393,"Skeleton",1076,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,349,209,393,"Pirate Skeleton",1071,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,349,209,393,"Soldier Skeleton",1028,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,349,209,393,"Skel Worker",1169,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,349,209,393,"Archer Skeleton",1016,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,349,209,393,"Orc Skeleton",1152,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom4:
+	set $@mobs,36;
+	areamonster "1@tower",265,349,295,393,"Hornet",1004,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,349,295,393,"Rocker",1052,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,349,295,393,"Vocal",1088,1,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,349,295,393,"Argos",1100,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,349,295,393,"Argiope",1099,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,349,295,393,"Mantis",1139,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom5:
+	set $@mobs,51;
+	areamonster "1@tower",349,349,379,393,"Thief Bug Egg",1048,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,349,379,393,"Thief Bug",1051,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,349,379,393,"Thief Bug Female",1053,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,349,379,393,"Thief Bug Male",1054,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,349,379,393,"Golden Thief Bug",1086,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom6:
+	set $@mobs,20;
+	areamonster "1@tower",7,265,37,309,"Pupa",1008,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,265,37,309,"Peco Peco Egg",1047,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,265,37,309,"Thief Bug Egg",1048,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,265,37,309,"Dragon Egg",1721,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom7:
+	set $@mobs,60;
+	areamonster "1@tower",91,265,121,309,"Familiar",1005,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,265,121,309,"Drainliar",1111,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,265,121,309,"Explosion",1383,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,265,121,309,"Anopheles",1627,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom8:
+	set $@mobs,30;
+	areamonster "1@tower",179,265,209,309,"Cruiser",1248,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,265,209,309,"Firelock Soldier",1403,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom9:
+	set $@mobs,40;
+	areamonster "1@tower",265,265,295,309,"Stapo",1784,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,265,295,309,"Golem",1040,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,265,295,309,"Obsidian",1615,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom10:
+	set $@mobs,46;
+	areamonster "1@tower",349,265,379,309,"Hornet",1004,20,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,265,379,309,"Giant Hornet",1303,25,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,265,379,309,"Mistress",1059,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom11:
+	set $@mobs,60;
+	areamonster "1@tower",7,177,37,221,"Rafflesia",1162,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,177,37,221,"Hermit Plant",1413,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,177,37,221,"Parasite",1500,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,177,37,221,"Dryad",1493,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom12:
+	set $@mobs,50;
+	areamonster "1@tower",91,177,121,221,"Punk",1199,25,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,177,121,221,"Demon Pungus",1378,25,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom13:
+	set $@mobs,40;
+	areamonster "1@tower",179,177,209,221,"Munak",1026,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,177,209,221,"Bongun",1188,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,177,209,221,"Hyegun",1512,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom14:
+	set $@mobs,45;
+	areamonster "1@tower",265,177,295,221,"Orc Warrior",1023,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,177,295,221,"Orc Archer",1189,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,177,295,221,"High Orc",1213,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,177,295,221,"Orc Lady",1273,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,177,295,221,"Orc Baby",1686,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom15:
+	set $@mobs,52;
+	areamonster "1@tower",349,177,379,221,"Ant Egg",1097,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,177,379,221,"Andre",1095,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,177,379,221,"Piere",1160,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,177,379,221,"Deniro",1105,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,177,379,221,"Phreeoni",1159,1,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,177,379,221,"Maya",1147,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom16:
+	set $@mobs,40;
+	areamonster "1@tower",7,94,37,137,"Orc Archer",1189,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,94,37,137,"Raydric Archer",1453,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,94,37,137,"Gargoyle",1253,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,94,37,137,"Archer Skeleton",1016,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom17:
+	set $@mobs,40;
+	areamonster "1@tower",91,94,121,137,"Hill Wind",1629,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,94,121,137,"Strouf",1065,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,94,121,137,"Merman",1264,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,94,121,137,"Baphomet Jr.",1101,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom18:
+	set $@mobs,40;
+	areamonster "1@tower",179,94,209,137,"Tarou",1175,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,94,209,137,"Cramp",1209,25,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom19:
+	set $@mobs,60;
+	areamonster "1@tower",265,94,295,137,"Deviace",1108,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,94,295,137,"Megalodon",1064,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,94,295,137,"Phen",1158,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,94,295,137,"Swordfish",1069,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom20:
+	set $@mobs,51;
+	areamonster "1@tower",349,94,379,137,"Pirate Skeleton",1071,50,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,94,379,137,"Drake",1112,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom21:
+	set $@mobs,35;
+	areamonster "1@tower",7,7,37,51,"Plasma",1693,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,7,37,51,"Plasma",1694,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,7,37,51,"Plasma",1695,5,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,7,37,51,"Plasma",1696,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",7,7,37,51,"Plasma",1697,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom22:
+	set $@mobs,90;
+	areamonster "1@tower",91,7,121,51,"Mandragora",1020,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,7,121,51,"Hydra",1068,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,7,121,51,"Flora",1118,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,7,121,51,"Muscipular",1780,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,7,121,51,"Drosera",1781,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",91,7,121,51,"Rafflesia",1162,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom23:
+	set $@mobs,50;
+	areamonster "1@tower",179,7,209,51,"Swordfish",1069,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,7,209,51,"Obeaune",1044,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,7,209,51,"Penomena",1216,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,7,209,51,"Marse",1144,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",179,7,209,51,"Hydra ",1068,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom24:
+	set $@mobs,40;
+	areamonster "1@tower",265,7,295,51,"Jakk",1130,10,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,7,295,51,"Carat",1267,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",265,7,295,51,"Joker",1131,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom25:
+	set $@mobs,31;
+	areamonster "1@tower",349,7,379,51,"Nine tail",1180,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,7,379,51,"Cat o' Nine Tails",1307,15,"MobDeath::OnMyMobDead";
+	areamonster "1@tower",349,7,379,51,"Moonlight Flower",1150,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom26:
+	set $@mobs,45;
+	areamonster "2@tower",7,349,37,393,"Elder Willow",1033,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,349,37,393,"Stone Shooter",1495,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,349,37,393,"Wooden Golem",1497,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,349,37,393,"Enchanted Peach Tree",1550,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,349,37,393,"Gibbet",1503,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom27:
+	set $@mobs,40;
+	areamonster "2@tower",91,349,121,393,"Goblin Archer",1258,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,349,121,393,"Goblin",1122,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,349,121,393,"Goblin",1124,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,349,121,393,"Goblin",1123,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,349,121,393,"Goblin",1125,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,349,121,393,"Goblin",1126,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom28:
+	set $@mobs,70;
+	areamonster "2@tower",179,349,209,393,"Kukre",1070,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,349,209,393,"Pest",1256,15,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,349,209,393,"Arclouse",1194,30,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,349,209,393,"Neraid",1255,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom29:
+	set $@mobs,50;
+	areamonster "2@tower",265,349,295,393,"Hylozoist",1510,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,349,295,393,"The Paper",1375,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,349,295,393,"Dark Frame",1260,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,349,295,393,"Whisper",1179,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,349,295,393,"Lude",1509,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,349,295,393,"Quve",1508,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom30:
+	set $@mobs,31;
+	areamonster "2@tower",349,349,379,393,"Evil Nymph",1416,30,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,349,379,393,"White Lady",1630,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom31:
+	set $@mobs,50;
+	areamonster "2@tower",7,265,37,309,"Scorpion",1001,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,265,37,309,"Iron Fist",1212,15,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,265,37,309,"Gig",1387,20,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,265,37,309,"Argiope",1099,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom32:
+	set $@mobs,41;
+	areamonster "2@tower",91,265,121,309,"Goblin Archer",1258,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,265,121,309,"Goblin",1122,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,265,121,309,"Goblin",1124,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,265,121,309,"Goblin",1123,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,265,121,309,"Goblin",1125,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,265,121,309,"Goblin",1126,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,265,121,309,"Goblin Leader",1299,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom33:
+	set $@mobs,46;
+	areamonster "2@tower",179,265,209,309,"Kobold Archer",1282,15,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,265,209,309,"Kobold",1133,15,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,265,209,309,"Kobold",1134,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,265,209,309,"Kobold",1135,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,265,209,309,"Kobold Leader",1296,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom34:
+	set $@mobs,40;
+	areamonster "2@tower",265,265,295,309,"Whisper",1179,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,265,295,309,"Giant Whisper",1186,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,265,295,309,"Flame Skull",1869,20,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom35:
+	set $@mobs,51;
+	areamonster "2@tower",349,265,379,309,"Permeter",1314,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,265,379,309,"Freezer",1319,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,265,379,309,"Heater",1318,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,265,379,309,"Solider",1316,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,265,379,309,"Permeter",1314,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,265,379,309,"Turtle General",1312,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom36:
+	set $@mobs,50;
+	areamonster "2@tower",7,177,37,221,"Alligator",1271,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,177,37,221,"Grove",1687,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,177,37,221,"Anolian",1206,30,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom37:
+	set $@mobs,50;
+	areamonster "2@tower",91,177,121,221,"Alarm",1193,30,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,177,121,221,"Clock",1269,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,177,121,221,"Clock Tower Manager",1270,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom38:
+	set $@mobs,50;
+	areamonster "2@tower",179,177,209,221,"Rideword",1195,25,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,177,209,221,"Deathword",1698,25,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom39:
+	set $@mobs,45;
+	areamonster "2@tower",265,177,295,221,"Dancing Dragon",1514,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,177,295,221,"Civil Servant",1513,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,177,295,221,"Evil Nymph",1416,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,177,295,221,"Li Me Mang Ryang",1517,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,177,295,221,"Evil Cloud Hermit",1412,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom40:
+	set $@mobs,41;
+	areamonster "2@tower",349,177,379,221,"Incantation Samurai",1492,1,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,177,379,221,"Miyabi Doll",1404,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,177,379,221,"Shinobi",1996,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,177,379,221,"Tengu",1405,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,177,379,221,"Karakasa",1400,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,177,379,221,"Antique Firelock",1403,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom41:
+	set $@mobs,50;
+	areamonster "2@tower",7,94,37,137,"Kraben",1587,50,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom42:
+	set $@mobs,50;
+	areamonster "2@tower",91,94,121,137,"Hode",1127,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,94,121,137,"Sandman",1165,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,94,121,137,"Sting",1207,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,94,121,137,"Sleeper",1386,20,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,94,121,137,"Increase Soil",1516,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom43:
+	set $@mobs,60;
+	areamonster "2@tower",179,94,209,137,"Snake",1025,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,94,209,137,"Anacondaq",1030,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,94,209,137,"Side Winder",1037,40,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,94,209,137,"Medusa",1148,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom44:
+	set $@mobs,61;
+	areamonster "2@tower",265,94,295,137,"Savage Babe",1167,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,94,295,137,"Baby Desert Wolf",1107,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,94,295,137,"Garm Baby",1515,20,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,94,295,137,"Baphomet Jr.",1101,20,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,94,295,137,"Orc Baby",1686,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom45:
+	set $@mobs,46;
+	areamonster "2@tower",349,94,379,137,"Verit",1032,15,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,94,379,137,"Isis",1029,15,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,94,379,137,"Ancient Mummy",1297,15,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,94,379,137,"Osiris",1038,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom46:
+	set $@mobs,40;
+	areamonster "2@tower",7,7,37,51,"Beholder",1633,20,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",7,7,37,51,"Seeker",1774,20,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom47:
+	set $@mobs,50;
+	areamonster "2@tower",91,7,121,51,"Petite",1155,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,7,121,51,"Petite",1156,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,7,121,51,"Deleter",1384,20,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",91,7,121,51,"Deleter",1385,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom48:
+	set $@mobs,30;
+	areamonster "2@tower",179,7,209,51,"Ancient Mummy",1297,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,7,209,51,"Ancient Mimic",1699,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",179,7,209,51,"Ancient Worm",1305,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom49:
+	set $@mobs,42;
+	areamonster "2@tower",265,7,295,51,"Grizzly",1381,20,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,7,295,51,"Leib Olmai",1306,7,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,7,295,51,"Bigfoot",1060,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,7,295,51,"Sasquatch",1243,5,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",265,7,295,51,"Zipper Bear",1417,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom50:
+	set $@mobs,32;
+	areamonster "2@tower",349,7,379,51,"Matyr",1146,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,7,379,51,"Anubis",1098,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,7,379,51,"Marduk",1140,10,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,7,379,51,"Amon Ra",1511,1,"MobDeath::OnMyMobDead";
+	areamonster "2@tower",349,7,379,51,"Pharoh",1157,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom51:
+	set $@mobs,50;
+	areamonster "3@tower",7,349,37,393,"Deviruchi",1109,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,349,37,393,"Diabolic",1382,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,349,37,393,"Mini Demon",1292,20,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom52:
+	set $@mobs,60;
+	areamonster "3@tower",91,349,121,393,"Hill Wind",1680,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,349,121,393,"Gargoyle",1253,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,349,121,393,"Harpy",1376,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,349,121,393,"Grand Peco",1369,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,349,121,393,"Bloody Butterfly",1408,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,349,121,393,"Hill Wind",1629,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom53:
+	set $@mobs,55;
+	areamonster "3@tower",179,349,209,393,"Shinobi",1996,30,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,349,209,393,"Assaulter",1315,25,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom54:
+	set $@mobs,30;
+	areamonster "3@tower",265,349,295,393,"Marionette",1143,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,349,295,393,"Chepet",1250,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,349,295,393,"Miyabi Doll",1404,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom55:
+	set $@mobs,56;
+	areamonster "3@tower",349,349,379,393,"Evil Snake Lord",1418,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,349,379,393,"Medusa",1148,25,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,349,379,393,"Isis",1029,15,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,349,379,393,"Side Winder",1037,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom56:
+	set $@mobs,55;
+	areamonster "3@tower",7,265,37,309,"Gazeti",1778,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,265,37,309,"Ice Titan",1777,15,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,265,37,309,"Freezer",1319,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,265,37,309,"Garm Baby",1515,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,265,37,309,"Snowier",1775,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom57:
+	set $@mobs,45;
+	areamonster "3@tower",91,265,121,309,"Marin",1242,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,265,121,309,"Mastering",1090,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,265,121,309,"Drops",1113,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,265,121,309,"Poporing",1031,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,265,121,309,"Ghostring",1120,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,265,121,309,"Angeling",1096,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,265,121,309,"Metaling",1613,25,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,265,121,309,"Deviling",1582,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,265,121,309,"Arc Angeling",1388,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom58:
+	set $@mobs,50;
+	areamonster "3@tower",179,265,209,309,"Skeleton Prisoner",1196,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,265,209,309,"Rybio",1201,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,265,209,309,"Phendark",1202,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,265,209,309,"Injustice",1257,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,265,209,309,"Zombie Prisoner",1197,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom59:
+	set $@mobs,60;
+	areamonster "3@tower",265,265,295,309,"Myst Case",1249,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,265,295,309,"Mimic",1191,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,265,295,309,"Ancient Mimic",1699,30,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom60:
+	set $@mobs,62;
+	areamonster "3@tower",349,265,379,309,"Egnigem Cenia",1652,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,265,379,309,"Errende Ebecee",1655,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,265,379,309,"Kavach Icarus",1656,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,265,379,309,"Laurell Weinder",1657,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,265,379,309,"Wickebine Tres",1653,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,265,379,309,"Armeyer Dinze",1654,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,265,379,309,"Doppelganger",1046,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,265,379,309,"General Egnigem Cenia",1658,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom61:
+	set $@mobs,50;
+	areamonster "3@tower",7,177,37,221,"Vanberk",1771,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,177,37,221,"Mobster",1313,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,177,37,221,"Isilla",1772,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,177,37,221,"Echio",1770,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,177,37,221,"Agav",1769,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,177,37,221,"Pasana",1154,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom62:
+	set $@mobs,35;
+	areamonster "3@tower",91,177,121,221,"Wanderer",1208,35,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom63:
+	set $@mobs,45;
+	areamonster "3@tower",179,177,209,221,"Zombie",1015,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,177,209,221,"Orc Zombie",1153,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,177,209,221,"Zombie Prisoner",1197,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,177,209,221,"Ragged Zombie",1865,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,177,209,221,"Zombie Master",1298,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom64:
+	set $@mobs,40;
+	areamonster "3@tower",265,177,295,221,"Giant Hornet",1303,2,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,177,295,221,"Ungoliant",1618,30,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,177,295,221,"Ancient Worm",1305,2,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,177,295,221,"Caterpillar",1300,2,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,177,295,221,"Creamy Fear",1293,2,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,177,295,221,"Killer Mantis",1294,2,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom65:
+	set $@mobs,21;
+	areamonster "3@tower",349,177,379,221,"Galion",1783,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,177,379,221,"Atroce",1785,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom66:
+	set $@mobs,50;
+	areamonster "3@tower",7,94,37,137,"Injustice",1257,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,94,37,137,"Incubus",1374,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,94,37,137,"Aliot",1997,20,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom67:
+	set $@mobs,40;
+	areamonster "3@tower",91,94,121,137,"Deleter",1385,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,94,121,137,"Deleter",1384,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,94,121,137,"Acidus",1716,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,94,121,137,"Acidus",1713,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,94,121,137,"Mutant Dragonoid",1262,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom68:
+	set $@mobs,48;
+	areamonster "3@tower",179,94,209,137,"Stalactic Golem",1278,18,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,94,209,137,"Lava Golem",1366,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,94,209,137,"Ice Titan",1777,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,94,209,137,"Golem",1040,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,94,209,137,"Wooden Golem",1497,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom69:
+	set $@mobs,60;
+	areamonster "3@tower",265,94,295,137,"False Angel",1371,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,94,295,137,"Lady Solace",1703,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,94,295,137,"Baroness of Retribution",1702,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,94,295,137,"Mistress of Shelter",1701,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,94,295,137,"Dame of Sentinel",1700,20,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom70:
+	set $@mobs,22;
+	areamonster "3@tower",349,94,379,137,"Orc Hero",1087,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,94,379,137,"Orc Lord",1190,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,94,379,137,"Orc Baby",1686,20,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom71:
+	set $@mobs,65;
+	areamonster "3@tower",7,7,37,51,"Incubus",1374,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,7,37,51,"Nightmare Terror",1379,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,7,37,51,"Succubus",1370,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",7,7,37,51,"Nightmare",1061,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom72:
+	set $@mobs,40;
+	areamonster "3@tower",91,7,121,51,"Enchanted Peach Tree",1410,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,7,121,51,"Errende Ebecee",1655,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,7,121,51,"Permeter",1314,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",91,7,121,51,"Margaretha Sorin",1637,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom73:
+	set $@mobs,60;
+	areamonster "3@tower",179,7,209,51,"Alice",1275,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,7,209,51,"Loli Ruri",1505,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,7,209,51,"Zealotous",1200,5,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,7,209,51,"Succubus",1370,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,7,209,51,"Aliza",1737,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",179,7,209,51,"Green Maiden",1631,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom74:
+	set $@mobs,54;
+	areamonster "3@tower",265,7,295,51,"Venatu",1676,6,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,7,295,51,"Venatu",1677,6,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,7,295,51,"Venatu",1678,6,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,7,295,51,"Venatu",1679,6,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,7,295,51,"Dimik",1670,6,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,7,295,51,"Dimik",1671,6,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,7,295,51,"Dimik",1672,6,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,7,295,51,"Dimik",1673,6,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",265,7,295,51,"Archdam",1668,6,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom75:
+	set $@mobs,32;
+	areamonster "3@tower",349,7,379,51,"Baphomet Jr",1101,20,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,7,379,51,"Dark Illusion",1302,10,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,7,379,51,"Dark Lord",1272,1,"MobDeath::OnMyMobDead";
+	areamonster "3@tower",349,7,379,51,"Baphomet",1039,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom76:
+	set $@mobs,60;
+	areamonster "4@tower",7,349,37,393,"Nightmare Terror",1379,20,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,349,37,393,"Nightmare",1061,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,349,37,393,"Abysmal Knight",1219,30,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom77:
+	set $@mobs,70;
+	areamonster "4@tower",91,349,121,393,"Evil Druid",1117,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,349,121,393,"Wraith Dead",1291,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,349,121,393,"Banshee",1867,30,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,349,121,393,"Wraith",1192,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,349,121,393,"Wind Ghost",1263,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom78:
+	set $@mobs,50;
+	areamonster "4@tower",179,349,209,393,"Raydric",1163,20,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,349,209,393,"Abysmal Knight",1219,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,349,209,393,"Bloody Knight",1268,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,349,209,393,"Duhallan",1504,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,349,209,393,"Sword Master",1829,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom79:
+	set $@mobs,40;
+	areamonster "4@tower",265,349,295,393,"Hydrolancer",1720,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,349,295,393,"Ferus",1714,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,349,295,393,"Ferus",1717,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,349,295,393,"Deleter",1385,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,349,295,393,"Petite",1155,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom80:
+	set $@mobs,16;
+	areamonster "4@tower",349,349,379,393,"Necromancer",1870,15,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",349,349,379,393,"Fallen Bishop Hibram",1871,1,"MobDeath::OnMyMobDead";
+	end;
+
+
+OnRoom81:
+	set $@mobs,60;
+	areamonster "4@tower",7,265,37,309,"Mysteltainn",1203,20,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,265,37,309,"Tirfing",1204,20,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,265,37,309,"Executioner",1205,20,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom82:
+	set $@mobs,50;
+	areamonster "4@tower",91,265,121,309,"Bloody Knight",1268,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,265,121,309,"Agav",1769,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,265,121,309,"Bloody Murderer",1507,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,265,121,309,"Skogul",1752,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,265,121,309,"Injustice",1257,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom83:
+	set $@mobs,40;
+	areamonster "4@tower",179,265,209,309,"Gryphon",1259,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,265,209,309,"Chimera",1283,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,265,209,309,"Skeggiold",1754,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,265,209,309,"Skeggiold",1755,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,265,209,309,"Dark Illusion",1302,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom84:
+	set $@mobs,70;
+	areamonster "4@tower",265,265,295,309,"Dark Illusion",1302,20,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,265,295,309,"Owl Duke",1320,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,265,295,309,"Owl Baron",1295,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,265,295,309,"Succubus",1370,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,265,295,309,"Incubus",1374,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,265,295,309,"Incubus",1374,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom85:
+	set $@mobs,1;
+	areamonster "4@tower",349,265,379,309,"Ifrit",1832,1,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom86:
+	set $@mobs,40;
+	areamonster "4@tower",7,177,37,221,"Hydrolancer",1720,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,177,37,221,"Gryphon",1259,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,177,37,221,"Chimera",1283,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,177,37,221,"Majorous",1310,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom87:
+	set $@mobs,60;
+	areamonster "4@tower",91,177,121,221,"Salamander",1831,15,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,177,121,221,"Kasa",1833,20,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,177,121,221,"Lava Golem",1366,15,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,177,121,221,"Gajomart",1309,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom88:
+	set $@mobs,60;
+	areamonster "4@tower",179,177,209,221,"Necromancer",1870,15,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,177,209,221,"Anubis",1098,15,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,177,209,221,"Wraith Dead",1291,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,177,209,221,"Ancient Mummy",1297,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,177,209,221,"Khalitzburg",1132,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom89:
+	set $@mobs,24;
+	areamonster "4@tower",265,177,295,221,"Thanatos Odium",1704,6,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,177,295,221,"Thanatos Despero",1705,6,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,177,295,221,"Thanatos Maero",1706,6,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,177,295,221,"Thanatos Dolor",1707,6,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom90:
+	set $@mobs,31;
+	areamonster "4@tower",349,177,379,221,"Valkyrie Randgris",1751,1,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",349,177,379,221,"Baroness of Retribution",1702,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",349,177,379,221,"Lady Solace",1703,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",349,177,379,221,"False Angel",1371,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom91:
+	set $@mobs,50;
+	areamonster "4@tower",7,94,37,137,"Kavach Icarus",1656,30,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,94,37,137,"Cecil Damon",1638,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,94,37,137,"Bow Guardian",1830,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom92:
+	set $@mobs,55;
+	areamonster "4@tower",91,94,121,137,"Elder",1377,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,94,121,137,"Wind Ghost",1263,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,94,121,137,"Kathryne Keyron",1639,15,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,94,121,137,"Laurell Weinder",1657,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,94,121,137,"Marduk",1140,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom93:
+	set $@mobs,45;
+	areamonster "4@tower",179,94,209,137,"Seyren Windsor",1634,15,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,94,209,137,"Bloody Knight",1268,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,94,209,137,"Abysmal Knight",1219,10,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,94,209,137,"Wanderer",1208,10,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom94:
+	set $@mobs,30;
+	areamonster "4@tower",265,94,295,137,"Sword Guardian",1829,15,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,94,295,137,"Bow Guardian",1830,15,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom95:
+	set $@mobs,46;
+	areamonster "4@tower",349,94,379,137,"Beelzebub",1873,1,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",349,94,379,137,"Dragon Fly",1091,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",349,94,379,137,"Steel Chonchon",1042,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",349,94,379,137,"Chonhon",1011,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",349,94,379,137,"Hunter Fly",1035,30,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom96:
+	set $@mobs,15;
+	areamonster "4@tower",7,7,37,51,"Valkyrie",1765,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,7,37,51,"Skeggiold",1754,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",7,7,37,51,"Skeggiold",1755,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom97:
+	set $@mobs,20;
+	areamonster "4@tower",91,7,121,51,"Morroc's Shadow",1920,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,7,121,51,"Morroc's Shadow",1919,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,7,121,51,"Morroc's Shadow",1918,5,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",91,7,121,51,"Morroc's Shadow",1921,5,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom98:
+	set $@mobs,12;
+	areamonster "4@tower",179,7,209,51,"Seyren Windsor",1634,2,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,7,209,51,"Eremes Guile",1635,2,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,7,209,51,"Howard Alt-Eisen",1636,2,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,7,209,51,"Margaretha Sorin",1637,2,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,7,209,51,"Cecil Damon",1638,2,"MobDeath::OnMyMobDead";
+	areamonster "4@tower",179,7,209,51,"Kathryne Keyron",1639,2,"MobDeath::OnMyMobDead";
+	end;
+
+OnRoom99:
+	set .mob1,rand(1,29);
+	set .mob2,rand(1,29);
+	set .mob3,rand(1,29);
+	set .mob4,rand(1,29);
+	set .mob5,rand(1,29);
+	set .mob6,rand(1,29);
+	set .mob7,rand(1,29);
+	areamonster "4@tower",265,7,295,51,""+getmonsterinfo($@mobs99[.mob1],0)+"",$@mobs99[.mob1],$@numb99[.mob1],"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,7,295,51,""+getmonsterinfo($@mobs99[.mob2],0)+"",$@mobs99[.mob2],$@numb99[.mob2],"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,7,295,51,""+getmonsterinfo($@mobs99[.mob3],0)+"",$@mobs99[.mob3],$@numb99[.mob3],"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,7,295,51,""+getmonsterinfo($@mobs99[.mob4],0)+"",$@mobs99[.mob4],$@numb99[.mob4],"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,7,295,51,""+getmonsterinfo($@mobs99[.mob5],0)+"",$@mobs99[.mob5],$@numb99[.mob5],"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,7,295,51,""+getmonsterinfo($@mobs99[.mob6],0)+"",$@mobs99[.mob6],$@numb99[.mob6],"MobDeath::OnMyMobDead";
+	areamonster "4@tower",265,7,295,51,""+getmonsterinfo($@mobs99[.mob7],0)+"",$@mobs99[.mob7],$@numb99[.mob7],"MobDeath::OnMyMobDead";
+	set $@mobs,$@numb99[.mob1]+$@numb99[.mob2]+$@numb99[.mob3]+$@numb99[.mob4]+$@numb99[.mob5]+$@numb99[.mob6]+$@numb99[.mob7];
+	end;
+	
+OnRoom100:
+	set $@mobs,1;
+	monster "5@tower",81,84,"Entweihen Knothen",1957,1,"MobDeath::OnMyMobDead";
+	areamonster "5@tower",74,77,88,91,"Thorn of Bone",1959,9;
+	areamonster "5@tower",74,77,88,91,"Thorn of Recovery",1958,5;
+	areamonster "5@tower",74,77,88,91,"Thorn of Magic",1960,7;
+	areamonster "5@tower",74,77,88,91,"Thorn of Purity",1961,4;
+	areamonster "5@tower",74,77,88,91,"Thorn of ????",rand(1958,1961),1;
+	areamonster "5@tower",74,77,88,91,"Thorn of ????",rand(1958,1961),1;
+	end;
+
+OnRoom101:
+	donpcevent "Naght_Sieger::OnStart";
+	end;
+
+OnRoom102:
+	monster	"6@tower",155,147,"Naght Sieger",1956,1,"Naght_Sieger::OnMyMobDead";
+	areamonster "6@tower",126,64,181,129,"Orc Skeleton",1152,75;
+	areamonster "6@tower",4,82,59,100,"Orc Skeleton",1152,25;
+	areamonster "6@tower",126,64,181,129,"Wind Ghost",1263,45;
+	areamonster "6@tower",4,82,59,100,"Wind Ghost",1263,15;
+	areamonster "6@tower",126,64,181,129,"Khalitzburg",1132,30;
+	areamonster "6@tower",4,82,59,100,"Khalitzburg",1132,10;
+	areamonster "6@tower",126,64,181,129,"Anopheles",1627,8;
+	areamonster "6@tower",4,82,59,100,"Anopheles",1627,2;
+	end;
+}
+
+// Warps -->
+1@tower,12,395,0	warp	ET_Warp_2	1,1,1@tower,137,355
+1@tower,96,395,0	warp	ET_Warp_3	1,1,1@tower,225,355
+1@tower,184,395,0	warp	ET_Warp_4	1,1,1@tower,311,355
+1@tower,270,395,0	warp	ET_Warp_5	1,1,1@tower,395,355
+1@tower,354,395,0	warp	ET_Warp_6	1,1,1@tower,53,271
+1@tower,12,311,0	warp	ET_Warp_7	1,1,1@tower,137,271
+1@tower,96,311,0	warp	ET_Warp_8	1,1,1@tower,225,271
+1@tower,184,311,0	warp	ET_Warp_9	1,1,1@tower,311,271
+1@tower,270,311,0	warp	ET_Warp_10	1,1,1@tower,395,271
+1@tower,354,311,0	warp	ET_Warp_11	1,1,1@tower,53,183
+1@tower,12,223,0	warp	ET_Warp_12	1,1,1@tower,137,183
+1@tower,96,223,0	warp	ET_Warp_13	1,1,1@tower,225,183
+1@tower,184,223,0	warp	ET_Warp_14	1,1,1@tower,311,183
+1@tower,270,223,0	warp	ET_Warp_15	1,1,1@tower,395,183
+1@tower,354,223,0	warp	ET_Warp_16	1,1,1@tower,53,99
+1@tower,12,139,0	warp	ET_Warp_17	1,1,1@tower,137,99
+1@tower,96,139,0	warp	ET_Warp_18	1,1,1@tower,225,99
+1@tower,184,139,0	warp	ET_Warp_19	1,1,1@tower,311,99
+1@tower,270,139,0	warp	ET_Warp_20	1,1,1@tower,395,99
+1@tower,354,139,0	warp	ET_Warp_21	1,1,1@tower,53,12
+1@tower,12,53,0	warp	ET_Warp_22	1,1,1@tower,137,13
+1@tower,96,53,0	warp	ET_Warp_23	1,1,1@tower,225,13
+1@tower,184,53,0	warp	ET_Warp_24	1,1,1@tower,311,13
+1@tower,270,53,0	warp	ET_Warp_25	1,1,1@tower,395,13
+1@tower,354,53,0	warp	ET_Warp_26	1,1,2@tower,53,355
+2@tower,12,395,0	warp	ET_Warp_27	1,1,2@tower,137,355
+2@tower,96,395,0	warp	ET_Warp_28	1,1,2@tower,225,355
+2@tower,184,395,0	warp	ET_Warp_29	1,1,2@tower,311,355
+2@tower,270,395,0	warp	ET_Warp_30	1,1,2@tower,395,355
+2@tower,354,395,0	warp	ET_Warp_31	1,1,2@tower,53,271
+2@tower,12,311,0	warp	ET_Warp_32	1,1,2@tower,137,271
+2@tower,96,311,0	warp	ET_Warp_33	1,1,2@tower,225,271
+2@tower,184,311,0	warp	ET_Warp_34	1,1,2@tower,311,271
+2@tower,270,311,0	warp	ET_Warp_35	1,1,2@tower,395,271
+2@tower,354,311,0	warp	ET_Warp_36	1,1,2@tower,53,183
+2@tower,12,223,0	warp	ET_Warp_37	1,1,2@tower,137,183
+2@tower,96,223,0	warp	ET_Warp_38	1,1,2@tower,225,183
+2@tower,184,223,0	warp	ET_Warp_39	1,1,2@tower,311,183
+2@tower,270,223,0	warp	ET_Warp_40	1,1,2@tower,395,183
+2@tower,354,223,0	warp	ET_Warp_41	1,1,2@tower,53,99
+2@tower,12,139,0	warp	ET_Warp_42	1,1,2@tower,137,99
+2@tower,96,139,0	warp	ET_Warp_43	1,1,2@tower,225,99
+2@tower,184,139,0	warp	ET_Warp_44	1,1,2@tower,311,99
+2@tower,270,139,0	warp	ET_Warp_45	1,1,2@tower,395,99
+2@tower,354,139,0	warp	ET_Warp_46	1,1,2@tower,53,13
+2@tower,12,53,0	warp	ET_Warp_47	1,1,2@tower,137,13
+2@tower,96,53,0	warp	ET_Warp_48	1,1,2@tower,225,13
+2@tower,184,53,0	warp	ET_Warp_49	1,1,2@tower,311,13
+2@tower,270,53,0	warp	ET_Warp_50	1,1,2@tower,395,13
+2@tower,354,53,0	warp	ET_Warp_51	1,1,3@tower,53,355
+3@tower,12,395,0	warp	ET_Warp_52	1,1,3@tower,137,355
+3@tower,96,395,0	warp	ET_Warp_53	1,1,3@tower,225,355
+3@tower,184,395,0	warp	ET_Warp_54	1,1,3@tower,311,355
+3@tower,270,395,0	warp	ET_Warp_55	1,1,3@tower,395,355
+3@tower,354,395,0	warp	ET_Warp_56	1,1,3@tower,53,271
+3@tower,12,311,0	warp	ET_Warp_57	1,1,3@tower,137,271
+3@tower,96,311,0	warp	ET_Warp_58	1,1,3@tower,225,271
+3@tower,184,311,0	warp	ET_Warp_59	1,1,3@tower,311,271
+3@tower,270,311,0	warp	ET_Warp_60	1,1,3@tower,395,271
+3@tower,354,311,0	warp	ET_Warp_61	1,1,3@tower,53,183
+3@tower,12,223,0	warp	ET_Warp_62	1,1,3@tower,137,183
+3@tower,96,223,0	warp	ET_Warp_63	1,1,3@tower,225,183
+3@tower,184,223,0	warp	ET_Warp_64	1,1,3@tower,311,183
+3@tower,270,223,0	warp	ET_Warp_65	1,1,3@tower,395,183
+3@tower,354,223,0	warp	ET_Warp_66	1,1,3@tower,53,99
+3@tower,12,139,0	warp	ET_Warp_67	1,1,3@tower,137,99
+3@tower,96,139,0	warp	ET_Warp_68	1,1,3@tower,225,99
+3@tower,184,139,0	warp	ET_Warp_69	1,1,3@tower,311,99
+3@tower,270,139,0	warp	ET_Warp_70	1,1,3@tower,395,99
+3@tower,354,139,0	warp	ET_Warp_71	1,1,3@tower,53,13
+3@tower,12,53,0	warp	ET_Warp_72	1,1,3@tower,137,13
+3@tower,96,53,0	warp	ET_Warp_73	1,1,3@tower,225,13
+3@tower,184,53,0	warp	ET_Warp_74	1,1,3@tower,311,13
+3@tower,270,53,0	warp	ET_Warp_75	1,1,3@tower,395,13
+3@tower,354,53,0	warp	ET_Warp_76	1,1,4@tower,53,355
+4@tower,12,395,0	warp	ET_Warp_77	1,1,4@tower,137,355
+4@tower,96,395,0	warp	ET_Warp_78	1,1,4@tower,225,355
+4@tower,184,395,0	warp	ET_Warp_79	1,1,4@tower,311,355
+4@tower,270,395,0	warp	ET_Warp_80	1,1,4@tower,395,355
+4@tower,354,395,0	warp	ET_Warp_81	1,1,4@tower,53,271
+4@tower,12,311,0	warp	ET_Warp_82	1,1,4@tower,137,271
+4@tower,96,311,0	warp	ET_Warp_83	1,1,4@tower,225,271
+4@tower,184,311,0	warp	ET_Warp_84	1,1,4@tower,311,271
+4@tower,270,311,0	warp	ET_Warp_85	1,1,4@tower,395,271
+4@tower,354,311,0	warp	ET_Warp_86	1,1,4@tower,53,183
+4@tower,12,223,0	warp	ET_Warp_87	1,1,4@tower,137,183
+4@tower,96,223,0	warp	ET_Warp_88	1,1,4@tower,225,183
+4@tower,184,223,0	warp	ET_Warp_89	1,1,4@tower,311,183
+4@tower,270,223,0	warp	ET_Warp_90	1,1,4@tower,395,183
+4@tower,354,223,0	warp	ET_Warp_91	1,1,4@tower,53,99
+4@tower,12,139,0	warp	ET_Warp_92	1,1,4@tower,137,99
+4@tower,96,139,0	warp	ET_Warp_93	1,1,4@tower,225,99
+4@tower,184,139,0	warp	ET_Warp_94	1,1,4@tower,311,99
+4@tower,270,139,0	warp	ET_Warp_95	1,1,4@tower,395,99
+4@tower,354,139,0	warp	ET_Warp_96	1,1,4@tower,53,13
+4@tower,12,53,0	warp	ET_Warp_97	1,1,4@tower,137,13
+4@tower,96,53,0	warp	ET_Warp_98	1,1,4@tower,225,13
+4@tower,184,53,0	warp	ET_Warp_99	1,1,4@tower,311,13
+4@tower,270,53,0	warp	ET_Warp_100	1,1,5@tower,101,73
+5@tower,105,108,0	warp	ET_Warp_101	1,1,6@tower,31,12
+6@tower,155,147,0	warp	ET_Exit	1,1,e_tower,76,108
+
+-	script	RoomCleaned	-1,{
+OnComplete:
+	if($@room==26 || $@room==51 || $@room==76) { set $@clean,1; }
+	donpcevent "Mobs_Spawns::OnRoom"+$@room+"";
+	enablenpc "ET_Warp_"+$@room+"";
+	set $@room,$@room+1;
+	end;
+}
+
+e_tower,68,117,1	script	WarpToFloor	45,1,1,{
+OnTouch:
+	if(getgmlevel()>59)
+	{
+		warp "1@tower",50,355;
+		disablenpc "WarpToFloor";
+		end;
+	}
+	for(set .i,0; .i<$ET_PartyCount; set .i,.i+1)
+	{
+		if(strcharinfo(0)==$ET_PartyMember$[.i] && getcharid(1)==getvariableofnpc(.team,"Monemus"))
+		{
+			warp "1@tower",50,355;
+			disablenpc "WarpToFloor";
+			end;
+		}
+	}
+}
+
+e_tower,68,117,0	script	WarpToFloor2	45,1,1,{
+OnTouch:
+	if(getgmlevel()>59)
+	{	
+		warp "1@tower",50,355;
+		disablenpc "WarpToFloor";
+		end;
+	}
+	for(set .i,0; .i<$ET_PartyCount; set .i,.i+1)
+	{
+		if(strcharinfo(0)==$ET_PartyMember$[.i] && getcharid(1)==getvariableofnpc(.team,"Monemus"))
+		{
+			warp "1@tower",50,355;
+			end;
+		}
+	}
+}
+
+// Mapflags -->
+e_tower	mapflag	nomemo
+e_tower	mapflag	nosave
+e_tower	mapflag	nobranch
+e_tower	mapflag	noteleport
+e_tower	mapflag	noicewall
+e_tower	mapflag	nocommand
+
+1@tower	mapflag	nobranch
+1@tower	mapflag	nomemo
+1@tower	mapflag	noteleport
+1@tower	mapflag	nosave
+1@tower	mapflag	monster_noteleport
+1@tower	mapflag	noicewall
+1@tower	mapflag	nocommand
+
+2@tower	mapflag	nobranch
+2@tower	mapflag	nomemo
+2@tower	mapflag	noteleport
+2@tower	mapflag	nosave
+2@tower	mapflag	monster_noteleport
+2@tower	mapflag	noicewall
+2@tower	mapflag	nocommand
+
+3@tower	mapflag	nobranch
+3@tower	mapflag	nomemo
+3@tower	mapflag	noteleport
+3@tower	mapflag	nosave
+3@tower	mapflag	monster_noteleport
+3@tower	mapflag	noicewall
+3@tower	mapflag	nocommand
+
+4@tower	mapflag	nobranch
+4@tower	mapflag	nomemo
+4@tower	mapflag	noteleport
+4@tower	mapflag	nosave
+4@tower	mapflag	monster_noteleport
+4@tower	mapflag	noicewall
+4@tower	mapflag	nocommand
+
+5@tower	mapflag	nobranch
+5@tower	mapflag	nomemo
+5@tower	mapflag	noteleport
+5@tower	mapflag	nosave
+5@tower	mapflag	monster_noteleport
+5@tower	mapflag	noicewall
+5@tower	mapflag	nocommand
+
+6@tower	mapflag	nobranch
+6@tower	mapflag	nomemo
+6@tower	mapflag	noteleport
+6@tower	mapflag	nosave
+6@tower	mapflag	monster_noteleport
+6@tower	mapflag	noicewall
+6@tower	mapflag	nocommand

@@ -1,0 +1,200 @@
+// Cash Shop Database
+// Contains the items sold in the ingame cash shop.
+//
+// Structure of Database:
+// Type,ItemID,Price
+//
+// Type:
+//    0: New
+//    1: Hot
+//    2: Limited
+//    3: Rental
+//    4: Gear
+//    5: Buff
+//    6: Heal
+//    7: Other
+//    8: Sale
+//
+// Price:
+//    Item cost, in cash points (#CASHPOINTS).
+
+//===========[ New ]===========
+//0,1111,50	//
+
+
+//===========[ Hot ]===========
+//1,1111,50	//
+//1,1111,50	//Costume Amistr Bag Box
+//1,1111,50	//Light Blue Potion Box
+//1,1111,50	//Silvervine 4 Box
+//1,1111,50	//Reset Stone Box
+//1,1111,50	//Token Of Siegfried
+//1,1111,50	//Giant Fly Wing Box
+//1,1111,50	//HD Elunium 10 Box
+//1,1111,50	//Advanced WoE Supply Box
+//1,1111,50	//Battle Manual
+
+
+//===========[ Limited ]===========
+//2,1111,50	//
+
+
+//===========[ Rental ]===========
+//3,1111,50	//
+3,13953,50	//All In One Ring Box
+3,16683,50	//Halter Lead 30 Day Box
+3,16682,50	//Halter Lead 7 Day Box
+3,14126,50	//Apple of Archer Box
+3,14125,50	//Asura Box
+3,14130,50	//Elven Ears Box
+3,16430,50	//Rudra Bow Box
+3,14137,50	//Brooch Box
+3,14127,50	//Bunny Band Box
+3,14118,50	//Combat Knife Box
+3,14119,50	//Counter Dagger Box
+3,14132,50	//Critical Ring Box
+3,16425,50	//Cutlas Box
+3,14124,50	//Sage's Diary Box
+3,14133,50	//Earring Box
+3,16424,50	//Executioner Box
+3,14136,50	//Glove Box
+3,14122,50	//Light Epsilon Box
+3,16426,50	//Moonlight Dagger Box
+3,14135,50	//Necklace Box
+3,14134,50	//Ring Box
+3,14138,50	//Rosary Box
+3,16428,50	//Solar Sword Box
+3,16431,50	//Poll Axe Box
+3,14139,50	//Safety Ring Box
+3,14131,50	//Steel Flower Box
+3,16429,50	//Tomahawk Box
+3,16427,50	//Wrench Box
+
+//===========[ Gear ]===========
+//4,1111,50	//
+4,18759,50	//Wood Goblin's Nose
+4,18737,50	//Fortier Masque
+4,18652,50	//Vanargand Helm
+4,17125,50	//Red Pom Band Box
+4,17124,50	//Cat Ear Beret Box
+//4,13634,50	//Zodiac Diadem Crown Package
+//4,12577,50	//Rideword Hat Box
+4,5315,50	//Observer
+4,17122,50	//Immune Shield Box
+4,13866,50	//Flapping Angel Wing Box
+4,13937,50	//Robo Eye Box
+4,13869,50	//Chick Hat Box
+4,13725,50	//Ramen Hat Box
+4,16728,50	//Pink Beanie Hat
+4,16715,50	//Puppy Hat Box
+4,16720,50	//Vacation Hat Box
+4,16722,50	//Vane Hairpin Box
+4,16699,50	//Evolved Blue Fish Box
+4,16730,50	//Green Ribbon Box
+4,13722,50	//Pecopeco Hairband Box
+4,16711,50	//Magic Eyes Box
+4,16707,50	//Jumping Poring Box
+4,16717,50	//Sheep Hat Box
+4,16726,50	//Water Lily Crown Box
+4,13724,50	//Whisper Mask Box
+4,16615,50	//Charming Ribbon Box
+4,16732,50	//Gray Deviruchi Hat Box
+4,16705,50	//Hibiscus Box
+4,16709,50	//Kettle Hat Box
+4,16697,50	//Drooping Bunny Box
+4,16724,50	//Vanilmirth Hat Box
+4,13723,50	//Red Glasses Box
+4,17081,50	//Yggdrasil Crown Box
+
+//===========[ Buff ]===========
+//5,13940,50	//
+5,13990,50	//Job Battle Manual 10 Box
+5,14002,50	//Advanced WoE Supply Box
+5,17068,50	//Acid Bomb 50 Pack
+5,12900,50	//Battle Manual Box
+5,12902,50	//Bubble Gum Box
+5,17053,50	//Butterflywing Color Box
+5,12909,50	//Kafra Card Box
+5,12917,50	//Wind Walk 10 Scroll Box
+5,13572,50	//Hwergelmir's Tonic 30 Box
+5,13574,50	//Nine Tail Dish 30 Box
+5,13578,50	//Stew of Immortality 30 Box
+5,13592,50	//Steamed Scorpion 30 Box
+5,13596,50	//Dragon Breath Cocktail 30 Box
+5,13604,50	//Steamed Tongue 30 Box
+5,12922,50	//Token of Siegfried Box
+5,13718,50	//Abrasive 10 Box
+5,13810,50	//Light Blue Potion Box
+5,13998,50	//Giant Fly Wing Box 500
+5,12992,50	//Adventurer Pack
+5,12901,50	//Insurance Package
+5,13739,50	//Glass of Illusion 10 Box
+5,16419,50	//Greed Scroll 30 Box
+5,13714,50	//Medium Life Potion 10 Box
+5,13719,50	//Regeneration Potion 5 Box
+5,13755,50	//Big Magic Defense Potion 10 Box
+5,13749,50	//Big Defense Potion 10 Box
+5,12913,50	//Blessing 10 Scroll Box
+5,12914,50	//Increase AGI 10 Scroll Box
+5,12916,50	//Assumptio 5 Scroll Box
+5,12915,50	//Aspersio 5 Scroll Box
+5,12918,50	//Adrenaline 5 Scroll Box
+5,13711,50	//Small Life Potion 10 Box
+5,12903,50	//Steamed Tongue Box
+5,12904,50	//Steamed Scorpion Box
+5,12905,50	//Dragon Breath Cocktail Box
+5,12906,50	//Hwergelmir's Tonic Box
+5,12907,50	//Nine Tail Dish Box
+5,12908,50	//Stew Of Immortality Box
+5,13746,50	//Small Defense Potion 10 Box
+5,13752,50	//Small Magic Defense Potion 10 Box
+5,13850,50	//Yellow Butterfly Wing Box
+5,13852,50	//Green Butterfly Wing Box
+5,13854,50	//Red Butterfly Wing Box
+5,13856,50	//Blue Butterfly Wing Box
+5,13721,50	//Dungeon Teleport Scroll 10 Box
+5,12910,50	//Giant Fly Wing Box
+5,13940,50	//WoE Teleport Scroll 100 Box
+5,12208,50	//Battle Manual
+5,12210,50	//Bubble Gum
+
+//===========[ Other ]===========
+//6,1111,50	//
+6,14176,50	//Enriched Elunium 50 Box
+6,14177,50	//Enriched Oridecon 50 Box
+6,17159,50	//Name Change Box(iRO)
+6,17296,50	//Character Position Change Box(iRO)
+6,16262,50	//HD Bradium 5 Box
+6,16263,50	//HD Carnium 5 Box
+6,16677,50	//Bargain Hunter's Catalog 10 Box
+6,16769,50	//Neuralizer Box(iRO)
+6,16556,50	//Reset Stone Box
+6,17106,50	//Heavy Lifter Box
+//6,12994,50	//HD Elunium 10 Box(iRO) //not use
+//6,13701,50	//HD Oridecon 10 Box(iRO) //not use
+6,16396,50	//HD Elunium 10 Box
+6,16394,50	//HD Oridecon 10 Box
+6,6294,50	//Marriage Covenant
+//6,6289,50	//Mysterious Dyestuffs(iRO) //not use
+6,6220,50	//Mysterious Dyestuffs
+6,6287,50	//Omni Clothing Dye
+6,6290,50	//Hairstyle Coupon
+//6,6286,50	//Gym Pass(iRO) not use
+6,7776,50	//Gym Pass
+6,6225,50	//HD Carnium
+6,6226,50	//HD Bradium
+6,6241,50	//HD Elunium
+6,6240,50	//HD Oridecon
+6,6291,50	//Enriched Elunium
+6,6292,50	//Enriched Oridecon
+
+//===========[ Costume ]===========
+//7,1111,50	//
+//7,17747,50	//Creepy Costume Box
+//7,17739,50	//Spooktober Costume Box
+//7,17585,50	//Costume:_New_Wave_Sunglasses_Box
+//7,17581,50	//Costume: Analyzing Eye Box
+//7,17571,50	//Costume: Hill Wind Mask Box
+//7,17370,50	//Costume: Man's Pride Box
+//7,17371,50	//Costume: Charleston's Antenna Box
+//7,17709,50	//Costume Amistr Bag Box

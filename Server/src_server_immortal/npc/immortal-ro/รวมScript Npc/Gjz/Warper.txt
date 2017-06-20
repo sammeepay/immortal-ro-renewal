@@ -1,0 +1,963 @@
+//============== NPC Memo =============
+-	script	npclastwarp	-1,{
+onwwar:
+getmapxy @mapname$,@mapx,@mapy,0,strcharinfo(0);
+if (@mapname$ == youlastwarp$) end;
+set youlastwarp$,@mapname$;
+set youlastwarp_x,@mapx;
+set youlastwarp_y,@mapy;
+deltimer "npclastwarp::onwwar";
+dispbottom "Warper : ทำการบันทึก จุดวาป..";
+close;
+}
+//============== NPC WARP =============
+-	script	พนักงานวาร์ปอื่นๆ#m-1::Warpermaps	-1,{
+set .@namew$,"[ ^FF0000Warper^000000 ]";
+if ($@ActiveSv == 0) end;
+mes .@namew$;
+mes "ว่าไง ~ * มีอะไรให้ช่วยอะป่าว";
+next;
+getitem 602,1;
+menu 
+"- ^FF0000วาปไปจุดบันทึกล่าสุด^000000 ( "+youlastwarp$+" ) [ "+getmapusers(""+youlastwarp$+"")+" ]",lastwarp,
+"- Towns",W_Town,
+"- Dungeon",dungeon,
+"- Fields",fieldwar,
+"- MvP Easy [ "+getmapusers("moc_fild12")+" ]",mvpeasy,
+"- MvP Hard [ "+getmapusers("moc_fild07")+" ]",mvphard,
+"- Close",k2;
+
+lastwarp:
+if (youlastwarp$ == "") { dispbottom "Warper : คุณยังไม่มีการจดจำวาปล่าสุด"; close; }
+warp ""+youlastwarp$+"",youlastwarp_x,youlastwarp_y;
+close;
+
+W_Town:
+mes .@namew$;
+mes "เมื่องแสนสวยตามมุมต่างๆ ทั่วโลก";
+mes "แล้วท่านต้องการไปเมืองใด ?";
+next;
+menu 
+"- ^FF0000Morroc^000000",wmorroc,
+"- Ra Temsky",wratemsky,
+"- Capitolina Abbey",wcap,
+"- Moscovia",wmoscovia,
+"- Thor Camp",wthor,
+"- Nameless Island",wnamel,
+"- Mid Camp",wmidcamp,
+"- Izlu2dun",wizlu2dun,
+"- Alb2trea",walb2trea,
+"- Xmas",wxmas,
+"- Prontera",wprontera,
+"- Alberta",walberta,
+"- Aldebaran",waldebaran,
+"- Amatsu",wamatsu,
+"- Comodo",wcomodo,
+"- Gonryun",wgonryun,
+"- Geffen",wgeffen,
+"- Izlude",wizlude,
+"- Lutie",wxmas,
+"- Niflheim",wniflheim,
+"- Payon",wpayon,
+"- Yuno",wyuno,
+"- Umbala",wumbala,
+"- Louyang",wlouyang,
+"- Lighthalzen",wlight,
+"- Jawaii Island",wjaw,
+"- Ayothaya",wayo,
+"- Einbroch",weinbr,
+"- Einbech",weinbe,
+"- Hugel",whugel,
+"- Rachel",wrachel,
+"- Veins",wveins,
+"- Close",k2;
+
+fieldwar:
+mes .@namew$;
+mes "ฟิวต่างๆ ทั่วมุมโลก";
+mes "คุณต้องการไปฟิวใด ?";
+next;
+menu 
+"- ^FF0000Moscovia Fields^000000",wmkfild,
+"- Amatsu Fields",wamafild,
+"- Ayothaya Fields",wayofild,
+"- Comodo Fields",wcmdfild,
+"- Einbroch Fields",weinfild,
+"- Geffen Fields",wgeffild,
+"- Gonryun Fields",wgonfild,
+"- Hugel Fields",whufild,
+"- Lighthalzen Fields",wlhzfild,
+"- Louyang Field",wloufild,
+"- Lutie Field",wxmasfild,
+"- Mjolnir Fields",wmjolnir,
+"- Niflheim Fields",wniffild,
+"- Odin Temple",wodint,
+"- Payon Forests",wpayfor,
+"- Prontera Fields",wprtfild,
+"- Rachel Fields",warunfild,
+"- Sograt Deserts (Moc Field)",wmocfild,
+"- Umbala Fields",wumfild,
+"- Veins Fields",wveinsfild,
+"- Yuno Fields",wyunofild,
+"- Close",k2;
+
+dungeon:
+mes .@namew$;
+mes "Dungeon สุดโหด... เตรียมตัวให้พร้อมละ";
+mes "แล้วท่านต้องการไปที่ใด ?";
+next;
+menu 
+"- ^FF0000Abbey Dungeon^000000",wabbey,
+"- ^FF0000Moscovia Dungeon^000000",mosk,
+"- ^FF0000Guild Dungeon^000000 ( Gld Dun )",dgld,
+"- Xmas Dungeon",dxmas,
+"- Ayothaya Dungeon",ayo,
+"- Amatsu Dungeon",ama,
+"- Ancient Mine Dungeon",amine,
+"- Bio Laboratory",bio,
+"- Juperos Dungeon",jupe,
+"- Gonryun Dungeon",gon,
+"- Louyang Dungeon",lou,
+"- Anthell",ant,
+"- Beach Dungeon",beach,
+"- Byalan Dungeon",byalan,
+"- Clock Tower",clock,
+"- Coal Mines",coal,
+"- Culvert",culvert,
+"- Geffen Dungeon",geffen,
+"- Glast Heim",glast,
+"- Hidden Dungeon",hidden,
+"- Magma Dungeon",magma,
+"- Orc Dungeon",orc,
+"- Payon Dungeon",payon,
+"- Pyramids",pyramids,
+"- Sphinx",sphinx,
+"- Sunken Ship",sunken,
+"- Toy Factory",toy,
+"- Turtle Dungeon",turtle,
+"- Gefenia",gefenia,
+"- Thanatos",thana,
+"- Abyss Lake",abyss,
+"- Keil Machine Factory",keil,
+"- Odin Temple",odin,
+"- Ice Dungeon",ice,
+"- Rachel Sanctuary",freya,
+"- Thor Valcano",thorv,
+"- Close",k2;
+
+wabbey:
+	mes .@namew$;
+	mes "โปรดเลือกชั้นของดันเจี้ยนที่ท่านจะไปค่ะ";
+	next;
+	menu "- ชั้นที่ 1",dabbey1,"- ชั้นที่ 2",dabbey2,"- ชั้นที่ 3",dabbey3;
+dgld:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . .";
+	next;
+	menu "- ชั้นที่ 1",dgld1,"- ชั้นที่ 2",dgld2,"- ชั้นที่ 3",dgld3,"- ชั้นที่ 4",dgld4;
+dxmas:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . .";
+	next;
+	menu "- ชั้นที่ 1",dxmas1,"- ชั้นที่ 2",dxmas2;
+ayo:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . .";
+	next;
+	menu "- ชั้นที่ 1",dayo1,"- ชั้นที่ 2",dayo2;
+ant:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",danthell1,"- ชั้นที่ 2",danthell2;
+amine:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",damine1,"- ชั้นที่ 2",damine2;
+bio:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dbio1,"- ชั้นที่ 2",dbio2,"- ชั้นที่ 3",dbio3;
+jupe:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",djupe1,"- ชั้นที่ 2",djupe2,"- ชั้น Core 1",djupecore;
+lou:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dlou1,"- ชั้นที่ 2",dlou2,"- ชั้นที่ 3",dlou3;
+beach:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dbeach1,"- ชั้นที่ 2",dbeach2,"- ชั้นที่ 3",dbeach3;
+byalan:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dbyalan1,"- ชั้นที่ 2",dbyalan2,"- ชั้นที่ 3",dbyalan3,"- ชั้นที่ 4",dbyalan4,"- ชั้นที่ 5",dbyalan5;
+clock:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dclock1,"- ชั้นที่ 2",dclock2,"- ชั้นที่ 3",dclock3,"- ชั้นที่ 4",dclock4,"- ใต้ดิน 1",dalde1,"- ใต้ดิน 2",dalde2,"- ใต้ดิน 3",dalde3,"- ใต้ดิน 4",dalde4;
+coal:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dcoal1,"- ชั้นที่ 2",dcoal2,"- ชั้นที่ 3",dcoal3;
+culvert:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dculvert1,"- ชั้นที่ 2",dculvert2,"- ชั้นที่ 3",dculvert3,"- ชั้นที่ 4",dculvert4;
+geffen:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dgeffen1,"- ชั้นที่ 2",dgeffen2,"- ชั้นที่ 3",dgeffen3,"- ชั้นที่ 4",dgeffen4;
+glast:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- Entrance",dglastent,"- Castle 1",dglastcast1,"- Castle 2",dglastcast2,"- Chivalry 1",dglastchiv1,"- Chivalry 2",dglastchiv2,"- Churchyard",dglastyard,"- Culvert 1",dglastcul1,"- Culvert 2",dglastcul1,"- Culvert 3",dglastcul3,"- Culvert 4",dglastcul4,"- St.Abbey",dglastchur,"- Staircase Dungeon",dglaststep,"- Underground Cave 1",dglastcave1,"- Underground Cave 2",dglastcave2,"- Underground Prison 1",dglastpris1,"- Underground Prison 2",dglastpris2;
+hidden:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dhidden1,"- ชั้นที่ 2",dhidden2,"- ชั้นที่ 3",dhidden3;
+magma:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dmagma1,"- ชั้นที่ 2",dmagma2;
+orc:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dorc1,"- ชั้นที่ 2",dorc2;
+payon:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dpayon1,"- ชั้นที่ 2",dpayon2,"- ชั้นที่ 3",dpayon3,"- ชั้นที่ 4",dpayon4,"- ชั้นที่ 5",dpayon5;
+pyramids:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dpyramids1,"- ชั้นที่ 2",dpyramids2,"- ชั้นที่ 3",dpyramids3,"- ชั้นที่ 4",dpyramids4,"- ใต้ดิน 1",dpyramidsb1,"- ใต้ดิน 2",dpyramidsb2;
+sphinx:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dsphinx1,"- ชั้นที่ 2",dsphinx2,"- ชั้นที่ 3",dsphinx3,"- ชั้นที่ 4",dsphinx4,"- ชั้นที่ 5",dsphinx5;
+sunken:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dsunken1,"- ชั้นที่ 2",dsunken2;
+toy:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dtoy1,"- ชั้นที่ 2",dtoy2;
+turtle:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- Entrance",dturtleent,"- ชั้นที่ 1",dturtle1,"- ชั้นที่ 2",dturtle2,"- ชั้นที่ 3",dturtle3;
+ama:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dama1,"- ชั้นที่ 2",dama2,"- ชั้นที่ 3",dama3;
+gon:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dgon1,"- ชั้นที่ 2",dgon2,"- ชั้นที่ 3",dgon3;
+gefenia:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dgefenia1,"- ชั้นที่ 2",dgefenia2,"- ชั้นที่ 3",dgefenia3,"- ชั้นที่ 4",dgefenia4;
+
+thana:
+	mes .@namew$;
+	mes "โปรดเลือกชั้นของดันเจี้ยนที่ท่านจะไปค่ะ";
+	next;
+	menu "- Level 1",thana1,"- Level 2",thana2,"- Level 3",thana3,"- Level 4",thana4,"- Level 5",thana5,"- Level 6",thana6,"- Level 7",thana7,"- Level 8",thana8,"- Level 9",thana9,"- Level 10",thana10,"- Level 11",thana11,"- Level 12",thana12,"- Thanatos Boss",thanaboss;
+abyss:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dabyss1,"- ชั้นที่ 2",dabyss2,"- ชั้นที่ 3",dabyss3;
+keil:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dkeil1,"- ชั้นที่ 2",dkeil2;
+odin:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dodin1,"- ชั้นที่ 2",dodin2,"- ชั้นที่ 3",dodin3;
+ice:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dice1,"- ชั้นที่ 2",dice2,"- ชั้นที่ 3",dice3;
+freya:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dfreya1,"- ชั้นที่ 2",dfreya2,"- ชั้นที่ 3",dfreya3,"- ชั้นที่ 4",dfreya4,"- ชั้นที่ 5",dfreya5;
+thorv:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dthorv1,"- ชั้นที่ 2",dthorv2,"- ชั้นที่ 3",dthorv3;
+
+mosk:
+	mes .@namew$;
+	mes "ไปชั้นไหนดีหละ . . . ";
+	next;
+	menu "- ชั้นที่ 1",dmosk1,"- ชั้นที่ 2",dmosk2,"- ชั้นที่ 3",dmosk3;
+
+wsecpri:
+	mes .@namew$;
+	mes "ไปห้องไหนดีหละ . . . ";
+	next;
+	menu "- ห้อง 1",wsecpri1,"- ห้อง 2",wsecpri2;
+//----------------MvP----------------\\
+mvpeasy:	warp "moc_fild12",159,378;	goto swppoint; close;
+mvphard:	warp "moc_fild07",198,25;	goto swppoint; close;
+//----------------Towns----------------\\
+wmidcamp:	warp "mid_camp",215,225;	goto swppoint; close;
+wmoscovia:	warp "moscovia",266,159;	goto swppoint; close;
+wnamel:	warp "nameless_i",228,226;	goto swppoint; close;
+wrachel:	warp "rachel",130,108;	goto swppoint; close;
+wveins:	warp "veins",202,125;	goto swppoint; close;
+whugel:	warp "hugel",96,151;	goto swppoint; close;
+wlight:	warp "lighthalzen",108,136;	goto swppoint; close;
+walberta:	warp "alberta",117,57;	goto swppoint; close;
+waldebaran:	warp "aldebaran",140,111;	goto swppoint; close;
+wamatsu:	warp "amatsu",109,148;	goto swppoint; close;
+wcomodo:	warp "comodo",192,145;	goto swppoint; close;
+wgonryun:	warp "gonryun",158,117;	goto swppoint; close;
+wgeffen:	warp "geffen",119,59;	goto swppoint; close;
+wizlude:	warp "izlude",128,88;	goto swppoint; close;
+wratemsky:	warp "ra_temsky",100,90;	goto swppoint; close;
+wizlu2dun:	warp "izlu2dun",105,64;	goto swppoint; close;
+walb2trea:	warp "alb2trea",56,36;	goto swppoint; close;
+wmorroc:	warp "morocc",159,92;	goto swppoint; close;
+wxmas:	warp "xmas",143,310;	goto swppoint; close;
+wniflheim:	warp "niflheim",85,154;	goto swppoint; close;
+wpayon:	warp "payon",176,97;	goto swppoint; close;
+wprontera:	warp "prontera",155,148;	goto swppoint; close;
+wyuno:	warp "yuno",157,51;	goto swppoint; close;
+wumbala:	warp "umbala",123,130;	goto swppoint; close;
+wlouyang:	warp "louyang",215,100;	goto swppoint; close;
+wcap:	warp "prt_monk",254,93;	goto swppoint; close;
+wjaw:	warp "jawaii",251,135;	goto swppoint; close;
+wayo:	warp "ayothaya",218,174;	goto swppoint; close;
+weinbr:	warp "einbroch",70,197;	goto swppoint; close;
+weinbe:	warp "einbech",150,240;	goto swppoint; close;
+wracheltmp:	warp "ra_temsky",99,60;	goto swppoint; close;
+wthor:	warp "thor_camp",36,97;	goto swppoint; close;
+//----------------Dungeons----------------\\
+dabbey1:	warp "abbey01",51,14;	goto swppoint; close;
+dabbey2:	warp "abbey02",150,11;	goto swppoint; close;
+dabbey3:	warp "abbey03",120,10;	goto swppoint; close;
+dgld1:	warp "gld_dun01",119,17;	goto swppoint; close;
+dgld2:	warp "gld_dun02",23,160;	goto swppoint; close;
+dgld3:	warp "gld_dun03",238,271;	goto swppoint; close;
+dgld4:	warp "gld_dun04",40,230;	goto swppoint; close;
+dxmas1:	warp "xmas_dun01",205,16;	goto swppoint; close;
+dxmas2:	warp "xmas_dun02",131,130;	goto swppoint; close;
+dayo1:	warp "ayo_dun01",275,17;	goto swppoint; close;
+dayo2:	warp "ayo_dun02",149,16;	goto swppoint; close;
+danthell1:	warp "anthell01",35,262;	goto swppoint; close;
+danthell2:	warp "anthell02",168,170;	goto swppoint; close;
+damine1:	warp "ein_dun01",22,15;	goto swppoint; close;
+damine2:	warp "ein_dun02",292,287;	goto swppoint; close;
+dbio1:	warp "lhz_dun01",150,284;	goto swppoint; close;
+dbio2:	warp "lhz_dun02",152,18;	goto swppoint; close;
+dbio3:	warp "lhz_dun03",140,134;	goto swppoint; close;
+djupe1:		warp "juperos_01",53,247;	goto swppoint; close;
+djupe2:		warp "juperos_02",38,65;	goto swppoint; close;
+djupecore:		warp "jupe_core",0,0;	goto swppoint; close;
+dlou1:		warp "lou_dun01",218,196;	goto swppoint; close;
+dlou2:		warp "lou_dun02",282,20;	goto swppoint; close;
+dlou3:		warp "lou_dun03",165,38;	goto swppoint; close;
+dbeach1:	warp "beach_dun",266,67;	goto swppoint; close;
+dbeach2:	warp "beach_dun2",255,244;	goto swppoint; close;
+dbeach3:	warp "beach_dun3",23,260;	goto swppoint; close;
+dbyalan1:	warp "iz_dun00",168,168;	goto swppoint; close;
+dbyalan2:	warp "iz_dun01",253,252;	goto swppoint; close;
+dbyalan3:	warp "iz_dun02",236,204;	goto swppoint; close;
+dbyalan4:	warp "iz_dun03",32,63;	goto swppoint; close;
+dbyalan5:	warp "iz_dun04",26,27;	goto swppoint; close;
+dalde1:		warp "alde_dun01",297,25;	goto swppoint; close;
+dalde2:		warp "alde_dun02",127,169;	goto swppoint; close;
+dalde3:		warp "alde_dun03",277,178;	goto swppoint; close;
+dalde4:		warp "alde_dun04",268,74;	goto swppoint; close;
+dclock1:	warp "c_tower1",199,159;	goto swppoint; close;
+dclock2:	warp "c_tower2",148,283;	goto swppoint; close;
+dclock3:	warp "c_tower3",65,147;	goto swppoint; close;
+dclock4:	warp "c_tower4",56,155;	goto swppoint; close;
+dcoal1:		warp "mjo_dun01",52,17;	goto swppoint; close;
+dcoal2:		warp "mjo_dun02",381,343;	goto swppoint; close;
+dcoal3:		warp "mjo_dun03",302,262;	goto swppoint; close;
+dculvert1:	warp "prt_sewb1",131,247;	goto swppoint; close;
+dculvert2:	warp "prt_sewb2",19,19;	goto swppoint; close;
+dculvert3:	warp "prt_sewb3",180,169;	goto swppoint; close;
+dculvert4:	warp "prt_sewb4",100,92;	goto swppoint; close;
+dgeffen1:	warp "gef_dun00",104,99;	goto swppoint; close;
+dgeffen2:	warp "gef_dun01",115,236;	goto swppoint; close;
+dgeffen3:	warp "gef_dun02",106,132;	goto swppoint; close;
+dgeffen4:	warp "gef_dun03",203,200;	goto swppoint; close;
+dglastent:	warp "glast_01",370,304;	goto swppoint; close;
+dglastcast1:	warp "gl_cas01",199,29;	goto swppoint; close;
+dglastcast2:	warp "gl_cas02",104,25;	goto swppoint; close;
+dglastchiv1:	warp "gl_knt01",150,15;	goto swppoint; close;
+dglastchiv2:	warp "gl_knt02",157,287;	goto swppoint; close;
+dglastyard:	warp "gl_chyard",147,15;	goto swppoint; close;
+dglastcul1:	warp "gl_sew01",258,255;	goto swppoint; close;
+dglastcul2:	warp "gl_sew02",108,291;	goto swppoint; close;
+dglastcul3:	warp "gl_sew03",171,283;	goto swppoint; close;
+dglastcul4:	warp "gl_sew04",68,277;	goto swppoint; close;
+dglastchur:	warp "gl_church",156,7;	goto swppoint; close;
+dglaststep:	warp "gl_step",12,7;	goto swppoint; close;
+dglastcave1:	warp "gl_dun01",133,271;	goto swppoint; close;
+dglastcave2:	warp "gl_dun02",224,274;	goto swppoint; close;
+dglastpris1:	warp "gl_prison",14,70;	goto swppoint; close;
+dglastpris2:	warp "gl_prison1",150,14;	goto swppoint; close;
+dhidden1:	warp "prt_maze01",176,7;	goto swppoint; close;
+dhidden2:	warp "prt_maze02",93,21;	goto swppoint; close;
+dhidden3:	warp "prt_maze03",23,8;	goto swppoint; close;
+dmagma1:	warp "mag_dun01",126,68;	goto swppoint; close;
+dmagma2:	warp "mag_dun02",47,30;	goto swppoint; close;
+dorc1:		warp "orcsdun01",32,170;	goto swppoint; close;
+dorc2:		warp "orcsdun02",21,185;	goto swppoint; close;
+dpayon1:	warp "pay_dun00",21,183;	goto swppoint; close;
+dpayon2:	warp "pay_dun01",19,33;	goto swppoint; close;
+dpayon3:	warp "pay_dun02",19,63;	goto swppoint; close;
+dpayon4:	warp "pay_dun03",155,159;	goto swppoint; close;
+dpayon5:	warp "pay_dun04",201,204;	goto swppoint; close;
+dpyramids1:	warp "moc_pryd01",192,9;	goto swppoint; close;
+dpyramids2:	warp "moc_pryd02",10,192;	goto swppoint; close;
+dpyramids3:	warp "moc_pryd03",100,92;	goto swppoint; close;
+dpyramids4:	warp "moc_pryd04",181,11;	goto swppoint; close;
+dpyramidsb1:	warp "moc_pryd05",94,96;	goto swppoint; close;
+dpyramidsb2:	warp "moc_pryd06",192,10;	goto swppoint; close;
+dsphinx1:	warp "in_sphinx1",288,9;	goto swppoint; close;
+dsphinx2:	warp "in_sphinx2",149,81;	goto swppoint; close;
+dsphinx3:	warp "in_sphinx3",210,54;	goto swppoint; close;
+dsphinx4:	warp "in_sphinx4",10,222;	goto swppoint; close;
+dsphinx5:	warp "in_sphinx5",100,99;	goto swppoint; close;
+dsunken1:	warp "treasure01",69,24;	goto swppoint; close;
+dsunken2:	warp "treasure02",102,27;	goto swppoint; close;
+dtoy1:		warp "xmas_dun01",205,19;	goto swppoint; close;
+dtoy2:		warp "xmas_dun02",129,133;	goto swppoint; close;
+dturtleent:	warp "tur_dun01",154,49;	goto swppoint; close;
+dturtle1:	warp "tur_dun02",148,261;	goto swppoint; close;
+dturtle2:	warp "tur_dun03",132,189;	goto swppoint; close;
+dturtle3:	warp "tur_dun04",100,192;	goto swppoint; close;
+dama1:		warp "ama_dun01",228,11;	goto swppoint; close;
+dama2:		warp "ama_dun02",34,41;	goto swppoint; close;
+dama3:		warp "ama_dun03",119,14;	goto swppoint; close;
+dgon1:		warp "gon_dun01",153,53;	goto swppoint; close;
+dgon2:		warp "gon_dun02",28,113;	goto swppoint; close;
+dgon3:		warp "gon_dun03",68,16;	goto swppoint; close;
+dgefenia1:	warp "gefenia01",40,103;	goto swppoint; close;
+dgefenia2:	warp "gefenia02",203,34;	goto swppoint; close;
+dgefenia3:	warp "gefenia03",266,168;	goto swppoint; close;
+dgefenia4:	warp "gefenia04",130,272;	goto swppoint; close;
+thana1:	warp "tha_t01",0,0;	goto swppoint; close;
+thana2:	warp "tha_t02",0,0;	goto swppoint; close;
+thana3:	warp "tha_t03",0,0;	goto swppoint; close;
+thana4:	warp "tha_t04",0,0;	goto swppoint; close;
+thana5:	warp "tha_t05",0,0;	goto swppoint; close;
+thana6:	warp "tha_t06",0,0;	goto swppoint; close;
+thana7:	warp "tha_t07",0,0;	goto swppoint; close;
+thana8:	warp "tha_t08",0,0;	goto swppoint; close;
+thana9:	warp "tha_t09",0,0;	goto swppoint; close;
+thana10:	warp "tha_t10",0,0;	goto swppoint; close;
+thana11:	warp "tha_t11",0,0;	goto swppoint; close;
+thana12:	warp "tha_t12",0,0;	goto swppoint; close;
+thanaboss:	warp "thana_boss",0,0;	goto swppoint; close;
+dabyss1:	warp "abyss_01",260,270;	goto swppoint; close;
+dabyss2:	warp "abyss_02",271,270;	goto swppoint; close;
+dabyss3:	warp "abyss_03",116,28;	goto swppoint; close;
+dkeil1:	warp "kh_dun01",3,230;	goto swppoint; close;
+dkeil2:	warp "kh_dun02",41,198;	goto swppoint; close;
+dodin1:	warp "odin_tem01",98,145;	goto swppoint; close;
+dodin2:	warp "odin_tem02",29,334;	goto swppoint; close;
+dodin3:	warp "odin_tem03",120,53;	goto swppoint; close;
+dice1:	warp "ice_dun01",157,15;	goto swppoint; close;
+dice2:	warp "ice_dun02",151,154;	goto swppoint; close;
+dice3:	warp "ice_dun03",149,24;	goto swppoint; close;
+dfreya1:	warp "ra_san01",139,17;	goto swppoint; close;
+dfreya2:	warp "ra_san02",35,21;	goto swppoint; close;
+dfreya3:	warp "ra_san03",6,149;	goto swppoint; close;
+dfreya4:	warp "ra_san04",204,218;	goto swppoint; close;
+dfreya5:	warp "ra_san05",150,10;	goto swppoint; close;
+dthorv1:	warp "thor_v01",21,228;	goto swppoint; close;
+dthorv2:	warp "thor_v02",76,204;	goto swppoint; close;
+dthorv3:	warp "thor_v03",33,272;	goto swppoint; close;
+dmosk1:	warp "mosk_dun01",190,46;	goto swppoint; close;
+dmosk2:	warp "mosk_dun02",163,31;	goto swppoint; close;
+dmosk3:	warp "mosk_dun03",33,136;	goto swppoint; close;
+
+//-------------------------------
+//          Fields
+//-------------------------------
+
+warunfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Rachel Field 1",drunfild1,
+	"- Rachel Field 2",drunfild2,
+	"- Rachel Field 3",drunfild3,
+	"- Rachel Field 4",drunfild4,
+	"- Rachel Field 5",drunfild5,
+	"- Rachel Field 6",drunfild6,
+	"- Rachel Field 7",drunfild7,
+	"- Rachel Field 8",drunfild8,
+	"- Rachel Field 9",drunfild9,
+	"- Rachel Field 10",drunfild10,
+	"- Rachel Field 11",drunfild11,
+	"- Rachel Field 12",drunfild12,
+	"- Rachel Field 13",drunfild13;
+
+wgeffild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Geffen Field 0",dgeffild00,
+	"- Geffen Field 1",dgeffild01,
+	"- Geffen Field 2",dgeffild02,
+	"- Geffen Field 3",dgeffild03,
+	"- Geffen Field 4",dgeffild04,
+	"- Geffen Field 5",dgeffild05,
+	"- Geffen Field 6",dgeffild06,
+	"- Geffen Field 7",dgeffild07,
+	"- Geffen Field 8",dgeffild08,
+	"- Geffen Field 9",dgeffild09,
+	"- Geffen Field 10",dgeffild10,
+	"- Geffen Field 11",dgeffild11,
+	"- Geffen Field 12",dgeffild12,
+	"- Geffen Field 13",dgeffild13,
+	"- Geffen Field 14",dgeffild14;
+
+wmjolnir:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Mjolnir Field 1",dmjolnir1,
+	"- Mjolnir Field 2",dmjolnir2,
+	"- Mjolnir Field 3",dmjolnir3,
+	"- Mjolnir Field 4",dmjolnir4,
+	"- Mjolnir Field 5",dmjolnir5,
+	"- Mjolnir Field 6",dmjolnir6,
+	"- Mjolnir Field 7",dmjolnir7,
+	"- Mjolnir Field 8",dmjolnir8,
+	"- Mjolnir Field 9",dmjolnir9,
+	"- Mjolnir Field 10",dmjolnir10,
+	"- Mjolnir Field 11",dmjolnir11,
+	"- Mjolnir Field 12",dmjolnir12;
+
+wmkfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Moscovia Field 1",dmkfild1;
+
+wbrafild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Brasilia Field 1",dbrafild1;
+
+wmocfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Sograt Desert 1",dmocfild1,
+	"- Sograt Desert 2",dmocfild2,
+	"- Sograt Desert 3",dmocfild3,
+	"- Sograt Desert 4",dmocfild4,
+	"- Sograt Desert 5",dmocfild5,
+	"- Sograt Desert 6",dmocfild6,
+	"- Sograt Desert 7",dmocfild7,
+	"- Sograt Desert 8",dmocfild8,
+	"- Sograt Desert 9",dmocfild9,
+	"- Sograt Desert 10",dmocfild10,
+	"- Sograt Desert 11",dmocfild11,
+	"- Sograt Desert 12",dmocfild12,
+	"- Sograt Desert 13",dmocfild13,
+	"- Sograt Desert 14",dmocfild14,
+	"- Sograt Desert 15",dmocfild15,
+	"- Sograt Desert 16",dmocfild16,
+	"- Sograt Desert 17",dmocfild17,
+	"- Sograt Desert 18",dmocfild18,
+	"- Sograt Desert 19",dmocfild19,
+	"- Sograt Desert 20",dmocfild20,
+	"- Sograt Desert 21",dmocfild21,
+	"- Sograt Desert 22",dmocfild22;
+
+wpayfor:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Payon Forest 1",dpayfild1,
+	"- Payon Forest 2",dpayfild2,
+	"- Payon Forest 3",dpayfild3,
+	"- Payon Forest 4",dpayfild4,
+	"- Payon Forest 5",dpayfild5,
+	"- Payon Forest 6",dpayfild6,
+	"- Payon Forest 7",dpayfild7,
+	"- Payon Forest 8",dpayfild8,
+	"- Payon Forest 9",dpayfild9,
+	"- Payon Forest 10",dpayfild10,
+	"- Payon Forest 11",dpayfild11;
+
+wprtfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Prontera Field 1",dprtfild1,
+	"- Prontera Field 2",dprtfild2,
+	"- Prontera Field 3",dprtfild3,
+	"- Prontera Field 4",dprtfild4,
+	"- Prontera Field 5",dprtfild5,
+	"- Prontera Field 6",dprtfild6,
+	"- Prontera Field 7",dprtfild7,
+	"- Prontera Field 8",dprtfild8,
+	"- Prontera Field 9",dprtfild9,
+	"- Prontera Field 10",dprtfild10,
+	"- Prontera Field 11",dprtfild11;
+
+wxmasfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Lutie Field 1",dxmasfild1;
+
+wcmdfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Comodo Field 1",dcmdfild1,
+	"- Comodo Field 2",dcmdfild2,
+	"- Comodo Field 3",dcmdfild3,
+	"- Comodo Field 4",dcmdfild4,
+	"- Comodo Field 5",dcmdfild5,
+	"- Comodo Field 6",dcmdfild6,
+	"- Comodo Field 7",dcmdfild7,
+	"- Comodo Field 8",dcmdfild8,
+	"- Comodo Field 9",dcmdfild9;
+
+wyunofild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Yuno Field 1",dyunofild1,
+	"- Yuno Field 2",dyunofild2,
+	"- Yuno Field 3",dyunofild3,
+	"- Yuno Field 4",dyunofild4,
+	"- Yuno Field 5",dyunofild5,
+	"- Yuno Field 6",dyunofild6,
+	"- Yuno Field 7",dyunofild7,
+	"- Yuno Field 8",dyunofild8,
+	"- Yuno Field 9",dyunofild9,
+	"- Yuno Field 10",dyunofild10,
+	"- Yuno Field 11",dyunofild11,
+	"- Yuno Field 12",dyunofild12;
+
+wamafild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Amatsu Field 1",damafild1;
+
+wgonfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Gonryun Field 1",dgonfild1;
+
+wumfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Umbala Field 1",dumfild1,
+	"- Umbala Field 2",dumfild2,
+	"- Umbala Field 3",dumfild3,
+	"- Umbala Field 4",dumfild4;
+
+wniffild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Niflheim Field 1",dniffild1,
+	"- Niflheim Field 2",dniffild2;
+
+wodint:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Odin Temple 1",wodtemp1,
+	"- Odin Temple 2",wodtemp2,
+	"- Odin Temple 3",wodtemp3;
+
+wloufild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Louyang Field 1",dloufild1;
+
+wayofild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Ayothaya Field 1",dayofild1,
+	"- Ayothaya Field 2",dayofild2;
+
+weinfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Einbroch Field 1",deinfild1,
+	"- Einbroch Field 2",deinfild2,
+	"- Einbroch Field 3",deinfild3,
+	"- Einbroch Field 4",deinfild4,
+	"- Einbroch Field 5",deinfild5,
+	"- Einbroch Field 6",deinfild6,
+	"- Einbroch Field 7",deinfild7,
+	"- Einbroch Field 8",deinfild8,
+	"- Einbroch Field 9",deinfild9,
+	"- Einbroch Field 10",deinfild10;
+
+wlhzfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Lighthalzen Field 1",dlhzfild1,
+	"- Lighthalzen Field 2",dlhzfild2,
+	"- Lighthalzen Field 3",dlhzfild3;
+
+whufild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Hugel Field 1",dhufild1,
+	"- Hugel Field 2",dhufild2,
+	"- Hugel Field 3",dhufild3,
+	"- Hugel Field 4",dhufild4,
+	"- Hugel Field 5",dhufild5,
+	"- Hugel Field 6",dhufild6,
+	"- Hugel Field 7",dhufild7;
+
+wveinsfild:
+mes .@namew$;
+mes "ไปฟิวไหนดีละ ?";
+next;
+menu 
+	"- Veins Field 1",dvfild1,
+	"- Veins Field 2",dvfild2,
+	"- Veins Field 3",dvfild3,
+	"- Veins Field 4",dvfild4,
+	"- Veins Field 5",dvfild5,
+	"- Veins Field 6",dvfild6,
+	"- Veins Field 7",dvfild7;
+goto swppoint; close;
+
+//-------------------------------
+//         Field Warps
+//-------------------------------
+drunfild1:	warp "ra_fild01",192,162;	goto swppoint; close;
+drunfild2:	warp "ra_fild02",235,166;	goto swppoint; close;
+drunfild3:	warp "ra_fild03",202,206;	goto swppoint; close;
+drunfild4:	warp "ra_fild04",202,208;	goto swppoint; close;
+drunfild5:	warp "ra_fild05",225,202;	goto swppoint; close;
+drunfild6:	warp "ra_fild06",202,214;	goto swppoint; close;
+drunfild7:	warp "ra_fild07",263,196;	goto swppoint; close;
+drunfild8:	warp "ra_fild08",217,201;	goto swppoint; close;
+drunfild9:	warp "ra_fild09",87,121;	goto swppoint; close;
+drunfild10:	warp "ra_fild10",277,181;	goto swppoint; close;
+drunfild11:	warp "ra_fild11",221,185;	goto swppoint; close;
+drunfild12:	warp "ra_fild12",175,200;	goto swppoint; close;
+drunfild13:	warp "ra_fild13",174,197;	goto swppoint; close;
+dgeffild00:	warp "gef_fild00",46,199;	goto swppoint; close;
+dgeffild01:	warp "gef_fild01",213,204;	goto swppoint; close;
+dgeffild02:	warp "gef_fild02",195,212;	goto swppoint; close;
+dgeffild03:	warp "gef_fild03",257,192;	goto swppoint; close;
+dgeffild04:	warp "gef_fild04",188,171;	goto swppoint; close;
+dgeffild05:	warp "gef_fild05",166,263;	goto swppoint; close;
+dgeffild06:	warp "gef_fild06",248,158;	goto swppoint; close;
+dgeffild07:	warp "gef_fild07",195,191;	goto swppoint; close;
+dgeffild08:	warp "gef_fild08",186,183;	goto swppoint; close;
+dgeffild09:	warp "gef_fild09",221,117;	goto swppoint; close;
+dgeffild10:	warp "gef_fild10",178,218;	goto swppoint; close;
+dgeffild11:	warp "gef_fild11",136,328;	goto swppoint; close;
+dgeffild12:	warp "gef_fild12",240,181;	goto swppoint; close;
+dgeffild13:	warp "gef_fild13",235,235;	goto swppoint; close;
+dgeffild14:	warp "gef_fild14",211,185;	goto swppoint; close;
+dmjolnir1:	warp "mjolnir_01",204,120;	goto swppoint; close;
+dmjolnir2:	warp "mjolnir_02",175,193;	goto swppoint; close;
+dmjolnir3:	warp "mjolnir_03",208,213;	goto swppoint; close;
+dmjolnir4:	warp "mjolnir_04",179,180;	goto swppoint; close;
+dmjolnir5:	warp "mjolnir_05",181,240;	goto swppoint; close;
+dmjolnir6:	warp "mjolnir_06",195,270;	goto swppoint; close;
+dmjolnir7:	warp "mjolnir_07",235,202;	goto swppoint; close;
+dmjolnir8:	warp "mjolnir_08",188,215;	goto swppoint; close;
+dmjolnir9:	warp "mjolnir_09",205,144;	goto swppoint; close;
+dmjolnir10:	warp "mjolnir_10",245,223;	goto swppoint; close;
+dmjolnir11:	warp "mjolnir_11",180,206;	goto swppoint; close;
+dmjolnir12:	warp "mjolnir_12",196,208;	goto swppoint; close;
+dmkfild1:	warp "mosk_fild02",190,254;	goto swppoint; close;
+dbrafild1:	warp "bra_fild01",74,34;	goto swppoint; close;
+dmocfild1:	warp "moc_fild01",219,205;	goto swppoint; close;
+dmocfild2:	warp "moc_fild02",177,206;	goto swppoint; close;
+dmocfild3:	warp "moc_fild03",194,182;	goto swppoint; close;
+dmocfild4:	warp "moc_fild04",184,217;	goto swppoint; close;
+dmocfild5:	warp "moc_fild05",203,213;	goto swppoint; close;
+dmocfild6:	warp "moc_fild06",213,208;	goto swppoint; close;
+dmocfild7:	warp "moc_fild07",224,170;	goto swppoint; close;
+dmocfild8:	warp "moc_fild08",229,177;	goto swppoint; close;
+dmocfild9:	warp "moc_fild09",195,198;	goto swppoint; close;
+dmocfild10:	warp "moc_fild10",209,168;	goto swppoint; close;
+dmocfild11:	warp "moc_fild11",198,216;	goto swppoint; close;
+dmocfild12:	warp "moc_fild12",156,187;	goto swppoint; close;
+dmocfild13:	warp "moc_fild13",185,263;	goto swppoint; close;
+dmocfild14:	warp "moc_fild14",209,219;	goto swppoint; close;
+dmocfild15:	warp "moc_fild15",223,188;	goto swppoint; close;
+dmocfild16:	warp "moc_fild16",206,228;	goto swppoint; close;
+dmocfild17:	warp "moc_fild17",208,238;	goto swppoint; close;
+dmocfild18:	warp "moc_fild18",209,223;	goto swppoint; close;
+dmocfild19:	warp "moc_fild19",85,97;	goto swppoint; close;
+dmocfild20:	warp "moc_fild20",38,179;	goto swppoint; close;
+dmocfild21:	warp "moc_fild21",33,195;	goto swppoint; close;
+dmocfild22:	warp "moc_fild22",35,196;	goto swppoint; close;
+dpayfild1:	warp "pay_fild01",158,206;	goto swppoint; close;
+dpayfild2:	warp "pay_fild02",151,219;	goto swppoint; close;
+dpayfild3:	warp "pay_fild03",205,148;	goto swppoint; close;
+dpayfild4:	warp "pay_fild04",186,247;	goto swppoint; close;
+dpayfild5:	warp "pay_fild05",134,204;	goto swppoint; close;
+dpayfild6:	warp "pay_fild06",193,235;	goto swppoint; close;
+dpayfild7:	warp "pay_fild07",200,177;	goto swppoint; close;
+dpayfild8:	warp "pay_fild08",137,189;	goto swppoint; close;
+dpayfild9:	warp "pay_fild09",201,224;	goto swppoint; close;
+dpayfild10:	warp "pay_fild10",160,205;	goto swppoint; close;
+dpayfild11:	warp "pay_fild11",194,150;	goto swppoint; close;
+dprtfild0:	warp "prt_fild00",184,235;	goto swppoint; close;
+dprtfild1:	warp "prt_fild01",190,206;	goto swppoint; close;
+dprtfild2:	warp "prt_fild02",240,206;	goto swppoint; close;
+dprtfild3:	warp "prt_fild03",190,143;	goto swppoint; close;
+dprtfild4:	warp "prt_fild04",307,252;	goto swppoint; close;
+dprtfild5:	warp "prt_fild05",239,213;	goto swppoint; close;
+dprtfild6:	warp "prt_fild06",185,188;	goto swppoint; close;
+dprtfild7:	warp "prt_fild07",193,194;	goto swppoint; close;
+dprtfild8:	warp "prt_fild08",187,218;	goto swppoint; close;
+dprtfild9:	warp "prt_fild09",210,183;	goto swppoint; close;
+dprtfild10:	warp "prt_fild10",195,149;	goto swppoint; close;
+dprtfild11:	warp "prt_fild11",198,164;	goto swppoint; close;
+dxmasfild1:	warp "xmas_fild01",115,145;	goto swppoint; close;
+dcmdfild1:	warp "cmd_fild01",180,178;	goto swppoint; close;
+dcmdfild2:	warp "cmd_fild02",231,160;	goto swppoint; close;
+dcmdfild3:	warp "cmd_fild03",191,172;	goto swppoint; close;
+dcmdfild4:	warp "cmd_fild04",228,194;	goto swppoint; close;
+dcmdfild5:	warp "cmd_fild05",224,203;	goto swppoint; close;
+dcmdfild6:	warp "cmd_fild06",190,223;	goto swppoint; close;
+dcmdfild7:	warp "cmd_fild07",234,177;	goto swppoint; close;
+dcmdfild8:	warp "cmd_fild08",194,175;	goto swppoint; close;
+dcmdfild9:	warp "cmd_fild09",172,172;	goto swppoint; close;
+dyunofild1:	warp "yuno_fild01",189,224;	goto swppoint; close;
+dyunofild2:	warp "yuno_fild02",192,207;	goto swppoint; close;
+dyunofild3:	warp "yuno_fild03",221,157;	goto swppoint; close;
+dyunofild4:	warp "yuno_fild04",226,199;	goto swppoint; close;
+dyunofild5:	warp "yuno_fild05",223,177;	goto swppoint; close;
+dyunofild6:	warp "yuno_fild06",187,232;	goto swppoint; close;
+dyunofild7:	warp "yuno_fild07",231,174;	goto swppoint; close;
+dyunofild8:	warp "yuno_fild08",196,203;	goto swppoint; close;
+dyunofild9:	warp "yuno_fild09",183,214;	goto swppoint; close;
+dyunofild10:	warp "yuno_fild10",200,124;	goto swppoint; close;
+dyunofild11:	warp "yuno_fild11",195,226;	goto swppoint; close;
+dyunofild12:	warp "yuno_fild12",210,304;	goto swppoint; close;
+damafild1:	warp "ama_fild01",190,197;	goto swppoint; close;
+dgonfild1:	warp "gon_fild01",220,227;	goto swppoint; close;
+dumfild1:	warp "um_fild01",217,206;	goto swppoint; close;
+dumfild2:	warp "um_fild02",223,221;	goto swppoint; close;
+dumfild3:	warp "um_fild03",237,215;	goto swppoint; close;
+dumfild4:	warp "um_fild04",202,197;	goto swppoint; close;
+dniffild1:	warp "nif_fild01",215,229;	goto swppoint; close;
+dniffild2:	warp "nif_fild02",167,234;	goto swppoint; close;
+dloufild1:	warp "lou_fild01",229,187;	goto swppoint; close;
+dayofild1:	warp "ayo_fild01",173,134;	goto swppoint; close;
+dayofild2:	warp "ayo_fild02",212,150;	goto swppoint; close;
+deinfild1:	warp "ein_fild01",142,225;	goto swppoint; close;
+deinfild2:	warp "ein_fild02",182,141;	goto swppoint; close;
+deinfild3:	warp "ein_fild03",187,228;	goto swppoint; close;
+deinfild4:	warp "ein_fild04",185,173;	goto swppoint; close;
+deinfild5:	warp "ein_fild05",216,173;	goto swppoint; close;
+deinfild6:	warp "ein_fild06",195,148;	goto swppoint; close;
+deinfild7:	warp "ein_fild07",272,220;	goto swppoint; close;
+deinfild8:	warp "ein_fild08",173,214;	goto swppoint; close;
+deinfild9:	warp "ein_fild09",207,174;	goto swppoint; close;
+deinfild10:	warp "ein_fild10",196,200;	goto swppoint; close;
+dlhzfild1:	warp "lhz_fild01",240,179;	goto swppoint; close;
+dlhzfild2:	warp "lhz_fild02",185,235;	goto swppoint; close;
+dlhzfild3:	warp "lhz_fild03",240,226;	goto swppoint; close;
+dhufild1:	warp "hu_fild01",268,101;	goto swppoint; close;
+dhufild2:	warp "hu_fild02",222,193;	goto swppoint; close;
+dhufild3:	warp "hu_fild03",232,185;	goto swppoint; close;
+dhufild4:	warp "hu_fild04",252,189;	goto swppoint; close;
+dhufild5:	warp "hu_fild05",196,106;	goto swppoint; close;
+dhufild6:	warp "hu_fild06",216,220;	goto swppoint; close;
+dhufild7:	warp "hu_fild07",227,197;	goto swppoint; close;
+wodtemp1:	warp "odin_tem01",298,167;	goto swppoint; close;
+wodtemp2:	warp "odin_tem02",224,149;	goto swppoint; close;
+wodtemp3:	warp "odin_tem03",266,280;	goto swppoint; close;
+dvfild1:	warp "ve_fild01",186,175;	goto swppoint; close;
+dvfild2:	warp "ve_fild02",196,370;	goto swppoint; close;
+dvfild3:	warp "ve_fild03",222,45;	goto swppoint; close;
+dvfild4:	warp "ve_fild04",51,250;	goto swppoint; close;
+dvfild5:	warp "ve_fild05",202,324;	goto swppoint; close;
+dvfild6:	warp "ve_fild06",150,223;	goto swppoint; close;
+dvfild7:	warp "ve_fild07",149,307;	goto swppoint; close;
+
+k2:
+close;
+
+swppoint:
+addtimer 1000,"npclastwarp::onwwar";
+close;
+}

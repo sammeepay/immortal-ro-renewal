@@ -1,0 +1,35 @@
+-	script	Emperium#1::EPIM	-1,{
+mes "[ Emperium ]";
+mes "สถานที่ทดสอบ พลังในการตีหิน";
+mes "ท่านพร้อมที่จะทดสอบหรือไม่";
+next;
+menu "- พร้อมแล้ว",yesatk,"- ยังก่อน",noatk;
+
+yesatk:
+if ($@ActiveSv == 0) end;
+if($emperium_have == 1) goto Emperiumnoatk;
+set $emperium_have,1;
+mes "[ Emperium ]";
+mes "ผลึกเกิดขึ้นมาแล้ว";
+monster "morocc",129,110,"Emperium",1288,1,"EPIM::OnEmperium"; 
+close;
+
+noatk:
+mes "[ Emperium ]";
+mes "ไปเตรียมตัวให้พร้อมแล้วมาพบกันใหม่";
+close;
+
+Emperiumnoatk:
+mes "[ Emperium ]";
+mes "กรุณาตีผลึกให้แตก";
+close;
+
+OnEmperium:
+set $emperium_have,0;
+mapannounce "morocc","ผู้พิชิตผลึก คือ [ "+strcharinfo(0)+" ]",0;
+end;
+
+OnInit:
+set $emperium_have,0;
+end;
+}

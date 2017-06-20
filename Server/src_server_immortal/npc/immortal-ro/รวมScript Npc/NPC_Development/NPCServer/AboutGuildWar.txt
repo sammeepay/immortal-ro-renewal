@@ -1,0 +1,476 @@
+//===================================================================
+// NPC : Guild Master & Other
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+gefg_cas05.gat,147,115,4	script	Guild Master	419,{
+set @GID,getcastledata("gefg_cas05.gat",1);
+if (strcharinfo(0) == getguildmaster(@GID)) goto YGM;
+if (getcharid(2) == @GID) goto NGM;
+
+
+
+mes "[ Guild Master ]";
+mes "สำหรับ หัวหน้ากิล ที่ชื่อ ^ff0000[" + getguildmaster(@GID) + "]^000000";
+mes "เท่านั้น";
+close;
+
+
+
+YGM:
+mes "[ Guild Master ]";
+mes "ขอแสดงความยินดี";
+mes "กิวล์ของท่านเป็นผู้ชนะ";
+mes "เรามีของรางวัลเล็กๆน้อยๆจะให้";
+mes "อย่าลืมไปแจกลูกกิวล์ล่ะ";
+next;
+announce "คุณ [ "+strcharinfo(0)+" ] หัวหน้ากิวล์ [ "+GetGuildName(@GID)+" ] ได้ของรางวัลจากกิวล์วอร์ แล้วค่ะ.",0,0xFFFFFF;
+disablenpc "CGMRachel";
+disablenpc "Guild Master";
+set @randomitem,rand(1,6);
+if ( @randomitem == 1 ) goto skull1;
+if ( @randomitem == 2 ) goto skull2;
+if ( @randomitem == 3 ) goto skull3;
+if ( @randomitem == 4 ) goto skull4;
+if ( @randomitem == 5 ) goto skull5;
+if ( @randomitem == 6 ) goto skull6;
+
+
+
+skull1:
+mes "[ Guild Master ]";
+mes "แล้วพบกันใหม่";
+getitem 7420,500;
+next;
+if ( Q1Start == 1 ) goto RandomQ1;  // for InCe-WickeD Sv Only   ( Quest )
+if ( Q2Start == 1 ) goto RandomQ2;  // for InCe-WickeD Sv Only   ( Quest )
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+skull2:
+mes "[ Guild Master ]";
+mes "แล้วพบกันใหม่";
+getitem 7420,700;
+next;
+if ( Q1Start == 1 ) goto RandomQ1;  // for InCe-WickeD Sv Only   ( Quest )
+if ( Q2Start == 1 ) goto RandomQ2;  // for InCe-WickeD Sv Only   ( Quest )
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+skull3:
+mes "[ Guild Master ]";
+mes "แล้วพบกันใหม่";
+getitem 7420,900;
+next;
+if ( Q1Start == 1 ) goto RandomQ1;  // for InCe-WickeD Sv Only   ( Quest )
+if ( Q2Start == 1 ) goto RandomQ2;  // for InCe-WickeD Sv Only   ( Quest )
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+skull4:
+mes "[ Guild Master ]";
+mes "แล้วพบกันใหม่";
+getitem 7420,1100;
+next;
+if ( Q1Start == 1 ) goto RandomQ1;  // for InCe-WickeD Sv Only   ( Quest )
+if ( Q2Start == 1 ) goto RandomQ2;  // for InCe-WickeD Sv Only   ( Quest )
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+
+skull5:
+mes "[ Guild Master ]";
+mes "แล้วพบกันใหม่";
+getitem 7420,1300;
+next;
+if ( Q1Start == 1 ) goto RandomQ1;  // for InCe-WickeD Sv Only   ( Quest )
+if ( Q2Start == 1 ) goto RandomQ2;  // for InCe-WickeD Sv Only   ( Quest )
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+
+skull6:
+mes "[ Guild Master ]";
+mes "แล้วพบกันใหม่";
+getitem 7420,1500;
+next;
+if ( Q1Start == 1 ) goto RandomQ1;  // for InCe-WickeD Sv Only   ( Quest )
+if ( Q2Start == 1 ) goto RandomQ2;  // for InCe-WickeD Sv Only   ( Quest )
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+RandomQ1:
+set @RQ1RWF,rand(1,3);
+goto randomQ1RWF;
+
+
+
+randomQ1RWF:
+if( @RQ1RWF == 1 ) goto miss;
+if( @RQ1RWF == 2 ) goto JackpotQ1;
+if( @RQ1RWF == 3 ) goto miss;
+close;
+
+
+
+JackpotQ1:
+getitem 7484,1;
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+RandomQ2:
+set @RQ2ACR,rand(1,3);
+goto randomQ2ACR;
+
+
+
+randomQ2ACR:
+if( @RQ2ACR == 1 ) goto miss;
+if( @RQ2ACR == 2 ) goto JackpotQ2;
+if( @RQ2ACR == 3 ) goto miss;
+close;
+
+
+
+JackpotQ2:
+getitem 7315,1;
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+miss:
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+NGM:
+mes "[ Guild Master ]";
+mes "ข้ารอ หัวหน้ากิลของเจ้า ที่ชื่อ";
+mes "^5533FF[ "+getguildmaster(@GID)+" ]^000000";
+close;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//===================================================================
+// NPC : Call Guild Master
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,130,107,4	script	CGMRachel	-1,5,5,{  
+end;
+OnTouch:
+set @CGM,getcastledata("gefg_cas05.gat",1);
+if (strcharinfo(0) == getguildmaster(@CGM)) goto Call;
+end;
+
+
+
+Call:
+charCommand "#warp gefg_cas05 144 108 "+getguildmaster(@CGM)+"";
+end;
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//===================================================================
+// NPC : On/Off | Guild Master NPC , Call Guild Master & Auto Return
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+-	script	DisableAboutGuild	-1,{
+
+OnInit:
+disablenpc "CGMRachel";
+disablenpc "Guild Master";
+end;
+
+OnAgitEnd:
+enablenpc "returnwar";
+enablenpc "CGMRachel";
+enablenpc "Guild Master";
+end;
+
+OnAgitStart:
+disablenpc "returnwar";
+disablenpc "CGMRachel";
+disablenpc "Guild Master";
+end;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//===================================================================
+// NPC : Auto Guild War
+// Designe By : Unknow Credit
+// Contact : -
+//===================================================================
+
+-	script	AgitEvent	-1,{
+OnInit:
+
+OnClock0600:
+OnClock0800:
+OnClock1000:
+OnClock1200:
+OnClock1400:
+OnClock1600:
+OnClock1800:
+OnClock2000:
+OnClock2200:
+OnClock0000:
+OnClock0200:
+OnClock0400:
+Announce "ขณะนี้ The War Of Emperium ได้เริ่มต้นขึ้นแล้ว",16;
+Agitstart;
+end;
+
+OnClock0645:
+OnClock0845:
+OnClock1045:
+OnClock1245:
+OnClock1445:
+OnClock1645:
+OnClock1845:
+OnClock2045:
+OnClock2245:
+OnClock0045:
+OnClock0245:
+OnClock0445:
+Announce "ขณะนี้ The War Of Emperium เหลือเวลาอีก 15 นาที",16;
+end;
+
+OnClock0657:
+OnClock0857:
+OnClock1057:
+OnClock1257:
+OnClock1457:
+OnClock1657:
+OnClock1857:
+OnClock2057:
+OnClock2257:
+OnClock0057:
+OnClock0257:
+OnClock0457:
+Announce "ขณะนี้ The War Of Emperium เหลือเวลาอีก 3 นาที",0,0x00CC00;
+end;
+
+OnClock0658:
+OnClock0858:
+OnClock1058:
+OnClock1258:
+OnClock1458:
+OnClock1658:
+OnClock1858:
+OnClock2058:
+OnClock2258:
+OnClock0058:
+OnClock0258:
+OnClock0458:
+Announce "ขณะนี้ The War Of Emperium เหลือเวลาอีก 2 นาที",0,0xFFFF00;
+end;
+
+OnClock0659:
+OnClock0859:
+OnClock1059:
+OnClock1259:
+OnClock1459:
+OnClock1659:
+OnClock1859:
+OnClock2059:
+OnClock2259:
+OnClock0059:
+OnClock0259:
+OnClock0459:
+Announce "ขณะนี้ The War Of Emperium เหลือเวลาอีก 1 นาที",0,0xFF0000;
+end;
+
+OnClock0700:
+OnClock0900:
+OnClock1100:
+OnClock1300:
+OnClock1500:
+OnClock1700:
+OnClock1900:
+OnClock2100:
+OnClock2300:
+OnClock0100:
+OnClock0300:
+OnClock0500:
+
+Agitend;
+Announce "ขณะนี้ The War Of Emperium ได้จบลงแล้วค่ะ",0,0xFFFFFF;
+mapwarp "gefg_cas05.gat","rachel.gat",130,110;
+end;
+}
+
+
+
+// Flags /////////////////////////////////////////////////////////////////////////////////
+
+
+
+rachel.gat,136,120,5	script	Mersetzdeitz#Flag1-1::Mersetzdeitz1	722,{
+	set .@GID, GetCastleData("gefg_cas05",1);
+	if (.@GID == 0) {
+		mes " [ Edict of the Divine Rune Midgard Kingdom ]";
+		mes " ";
+		mes "1. Follow the ordinance of The Divine Rune Midgard Kingdom, ";
+		mes "We declare that";
+		mes "there is no formal master of this castle.";
+		mes " ";
+		mes "2. To the one who can ";
+		mes "overcome all trials";
+		mes "and destroy the Emperium,";
+		mes "the king will endow the one with";
+		mes "ownership of this castle.";
+	}
+	else {
+		if (getcharid(2) == .@GID) {
+			mes "Brave ones...";
+			mes "Do you wish to return to your honorable place?";
+			next;
+			if (select("Return to the guild castle.:Quit.") == 1) {
+				if (getcharid(2) == GetCastleData("gefg_cas05",1)) {
+					warp "gefg_cas05",61,52;
+					end;
+				}
+			}
+			close;
+		}
+		mes "[ Edict of the Divine Rune Midgard Kingdom ]";
+		mes " ";
+		mes "1. Following the ordinance of the";
+		mes "Divine Rune Midgard Kingdom,";
+		mes "we approve that this place is in";
+		mes "the private possession of ^ff0000" + GetGuildName(.@GID) + "^000000 Guild.";
+		mes " ";
+		mes "2. The guild Master of ^ff0000"+ GetGuildName(.@GID) + "^000000 Guild is";
+		mes "^FF0000" + GetGuildMaster(.@GID) + "^000000";
+		mes "If there is anyone who objects to this,";
+		mes " prove your strength and honor with a steel blade in your hand.";
+	}
+	close;
+
+OnRecvCastleG05:
+	FlagEmblem GetCastleData("gefg_cas05",1);
+	end;
+}
+
+
+
+rachel.gat,124,120,3	script	Mersetzdeitz#Flag2-1::Mersetzdeitz2	722,{
+	set .@GID, GetCastleData("gefg_cas05",1);
+	if (.@GID == 0) {
+		mes " [ Edict of the Divine Rune Midgard Kingdom ]";
+		mes " ";
+		mes "1. Follow the ordinance of The Divine Rune Midgard Kingdom, ";
+		mes "We declare that";
+		mes "there is no formal master of this castle.";
+		mes " ";
+		mes "2. To the one who can ";
+		mes "overcome all trials";
+		mes "and destroy the Emperium,";
+		mes "the king will endow the one with";
+		mes "ownership of this castle.";
+	}
+	else {
+		mes "[ Edict of the Divine Rune Midgard Kingdom ]";
+		mes " ";
+		mes "1. Following the ordinance of the";
+		mes "Divine Rune Midgard Kingdom,";
+		mes "we approve that this place is in";
+		mes "the private possession of ^ff0000" + GetGuildName(.@GID) + "^000000 Guild.";
+		mes " ";
+		mes "2. The guild Master of ^ff0000"+ GetGuildName(.@GID) + "^000000 Guild is";
+		mes "^FF0000" + GetGuildMaster(.@GID) + "^000000";
+		mes "If there is anyone who objects to this,";
+		mes " prove your strength and honor with a steel blade in your hand.";
+	}
+	close;
+
+OnRecvCastleG05:
+	FlagEmblem GetCastleData("gefg_cas05",1);
+	end;
+}
+
+
+
+gefg_cas05.gat,140,115,5	duplicate(Mersetzdeitz1)	Mersetzdeitz#MasterRoom	722
+
+rachel.gat,136,132,7	duplicate(Mersetzdeitz1)	Mersetzdeitz#Flag1-4	722
+
+rachel.gat,124,132,1	duplicate(Mersetzdeitz2)	Mersetzdeitz#Flag2-3	722
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//===================================================================
+// NPC : Retuen Function for InCe-WickeD Sv ( Only )
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+
+
+-	script	WarReturn	111,{
+callfunc "ARWFunction";
+close;
+}
+
+
+
+function	script	ARWFunction	{
+if (getgmlevel()>=60) { dispbottom "คุณสามารถผ่านไปได้"; close; }
+dispbottom "ยังไม่ถึงเวลา Guild War ในขณะนี้";
+warp "rachel.gat",130,110;
+close;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//===================================================================
+// NPC : Return NPCs for InCe-WickeD Sv ( Only )
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+gefg_cas05.gat,11,137,4	duplicate(WarReturn)	Auto Return::returnwar	111,0,0

@@ -1,0 +1,41 @@
+//===================================================================
+// NPC : Death Match
+// Design By : Unknow Credit
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+-	script	OnPCDieEvent	-1,{
+
+OnPCDieEvent:
+
+	getmapxy @mapname$,@mapx,@mapy,0,strcharinfo(0);
+if ((@mapname$ == "guild_vs1") || (@mapname$ == "guild_vs2") || (@mapname$ == "guild_vs5"))  goto death;
+end;
+
+
+death:
+sleep2 500;
+atcommand strcharinfo(0)+"@alive";
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+sc_start 29,1800000,10; 
+sc_start 30,1800000,10; // Blessing
+sc_start 32,1800000,10; // Agi up
+sc_start 40,1800000,10;  // Magnificaf
+sc_start 41,1800000,10;  // Gloria
+sc_start SC_ITEMBOOST,1800000,60;    // Drop *2
+sc_start SC_EXPBOOST,1800000,60;    // EXP *2
+percentheal 100,100; 
+atcommand strcharinfo(0)+"@jump";
+specialeffect2(587);
+end;
+}

@@ -1,0 +1,45 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+guildvs01	mapflag	gvg_castle
+guildvs01	mapflag	nobranch
+guildvs01	mapflag	nomemo
+guildvs01	mapflag	nosave	SavePoint
+guildvs01	mapflag	noteleport
+guildvs01	mapflag	nowarp
+guildvs01	mapflag	nowarpto
+
+guildvs02	mapflag	gvg_castle
+guildvs02	mapflag	nobranch
+guildvs02	mapflag	nomemo
+guildvs02	mapflag	nosave	SavePoint
+guildvs02	mapflag	noteleport
+guildvs02	mapflag	nowarp
+guildvs02	mapflag	nowarpto
+
+guildvs03	mapflag	gvg_castle
+guildvs03	mapflag	nobranch
+guildvs03	mapflag	nomemo
+guildvs03	mapflag	nosave	SavePoint
+guildvs03	mapflag	noteleport
+guildvs03	mapflag	nowarp
+guildvs03	mapflag	nowarpto
+
+guildvs04	mapflag	gvg_castle
+guildvs04	mapflag	nobranch
+guildvs04	mapflag	nomemo
+guildvs04	mapflag	nosave	SavePoint
+guildvs04	mapflag	noteleport
+guildvs04	mapflag	nowarp
+guildvs04	mapflag	nowarpto
+
+guildvs05	mapflag	gvg_castle
+guildvs05	mapflag	nobranch
+guildvs05	mapflag	nomemo
+guildvs05	mapflag	nosave	SavePoint
+guildvs05	mapflag	noteleport
+guildvs05	mapflag	nowarp
+guildvs05	mapflag	nowarpto
+

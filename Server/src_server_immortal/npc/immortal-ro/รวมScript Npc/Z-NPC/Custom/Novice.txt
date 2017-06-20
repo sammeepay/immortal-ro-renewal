@@ -1,0 +1,23 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+new_1-1,68,111,0	script	ออกจากที่นี่	45,2,2,{
+//ไอเท็มแจกตอนเข้าเมือง
+getitem 29400,1;
+getitem 29401,1;
+getitem 29402,1;
+warp "morocc",159,95;
+savepoint "morocc",159,95;
+end;
+}
+
+new_1-1,49,102,0,0	monster	Poring	1002,20,1000,0,0
+new_1-1,49,102,0,0	monster	Poporing	1031,20,1000,0,0
+new_1-1,0,0,0,0	monster	Pupa	1008,20,1000,0,0
+new_1-1,49,102,0,0	monster	Frog	1012,20,1000,0,0
+new_1-1,49,102,0,0	monster	SantaPoring	1062,20,1000,0,0
+
+
+new_1-1,63,115,4	duplicate(healabmain2)	Heal Express#777	714

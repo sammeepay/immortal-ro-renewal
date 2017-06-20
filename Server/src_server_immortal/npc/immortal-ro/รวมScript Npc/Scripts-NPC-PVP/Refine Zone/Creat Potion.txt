@@ -1,0 +1,233 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+//================ NPC ขายของทำยา =================
+-	shop	ShopCre	-1,678:12000,7135:16000,7136:8000,606:6000,7138:10000,7139:10000,12118:10000,12119:10000,12120:10000,12121:10000,12114:5000,12115:5000,12116:5000,12117:5000
+
+-	script	cess2	-1,{
+mes "^FF0000[ ผู้สะสมวิชาผสมน้ำ ]^000000";
+mes "เมื่อท่านซื้อน้ำยาชนิดใดก็ได้ ท่านจะได้รับส่วนผสมในการทำครบทุกชนิด";
+next;
+switch(select("^FF0000-^000000 ขอดูรายการน้ำยา","^FF0000-^000000 ยกเลิก")) {
+
+case 1:
+npcshopattach "ShopCre";
+callshop "ShopCre",1;
+close;
+case 2:
+mes "^FF0000[ ผู้สะสมวิชาผสมน้ำ ]^000000";
+mes "ไว้พบกันใหม่นะคุณ ?";
+close;
+}
+OnBuyItem:
+if(@bought_nameid==678){
+if (Zeny > (12000*@bought_quantity)) 
+{
+set zeny,zeny- (12000*@bought_quantity);
+getitem 657,1*@bought_quantity;
+getitem 937,1*@bought_quantity;
+getitem 952,1*@bought_quantity;
+getitem 7033,1*@bought_quantity;
+getitem 972,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 939,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==7135){
+if (Zeny > (16000*@bought_quantity)) 
+{
+set zeny,zeny- (16000*@bought_quantity);
+getitem 970,1*@bought_quantity;
+getitem 1059,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==7136){
+if (Zeny > (8000*@bought_quantity)) 
+{
+set zeny,zeny- (8000*@bought_quantity);
+getitem 929,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==606){
+if (Zeny > (6000*@bought_quantity)) 
+{
+set zeny,zeny- (6000*@bought_quantity);
+getitem 704,1*@bought_quantity;
+getitem 518,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==7138){
+if (Zeny > (10000*@bought_quantity)) 
+{
+set zeny,zeny- (10000*@bought_quantity);
+getitem 1050,1*@bought_quantity;
+getitem 1051,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==7139){
+if (Zeny > (10000*@bought_quantity)) 
+{
+set zeny,zeny- (10000*@bought_quantity);
+getitem 970,1*@bought_quantity;
+getitem 950,1*@bought_quantity;
+getitem 1044,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==605){
+if (Zeny > (10000*@bought_quantity)) 
+{
+set zeny,zeny- (10000*@bought_quantity);
+getitem 970,1*@bought_quantity;
+getitem 708,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==606){
+if (Zeny > (10000*@bought_quantity)) 
+{
+set zeny,zeny- (10000*@bought_quantity);
+getitem 518,1*@bought_quantity;
+getitem 704,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==12118){
+if (Zeny > (10000*@bought_quantity)) 
+{
+set zeny,zeny- (10000*@bought_quantity);
+getitem 716,1*@bought_quantity;
+getitem 1012,2*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==12119){
+if (Zeny > (10000*@bought_quantity)) 
+{
+set zeny,zeny- (10000*@bought_quantity);
+getitem 717,1*@bought_quantity;
+getitem 950,3*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==12120){
+if (Zeny > (10000*@bought_quantity)) 
+{
+set zeny,zeny- (10000*@bought_quantity);
+getitem 717,1*@bought_quantity;
+getitem 7126,2*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==12121){
+if (Zeny > (10000*@bought_quantity)) 
+{
+set zeny,zeny- (10000*@bought_quantity);
+getitem 715,1*@bought_quantity;
+getitem 1057,3*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==12114){
+if (Zeny > (5000*@bought_quantity)) 
+{
+set zeny,zeny- (5000*@bought_quantity);
+getitem 7433,1*@bought_quantity;
+getitem 904,3*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==12115){
+if (Zeny > (5000*@bought_quantity)) 
+{
+set zeny,zeny- (5000*@bought_quantity);
+getitem 7433,1*@bought_quantity;
+getitem 946,3*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==12116){
+if (Zeny > (5000*@bought_quantity)) 
+{
+set zeny,zeny- (5000*@bought_quantity);
+getitem 7433,1*@bought_quantity;
+getitem 947,3*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+if(@bought_nameid==12117){
+if (Zeny > (5000*@bought_quantity)) 
+{
+set zeny,zeny- (5000*@bought_quantity);
+getitem 7433,1*@bought_quantity;
+getitem 1013,3*@bought_quantity;
+close;
+}
+mes "คุณมีเงินไม่พอค่ะ";
+close;
+}
+close;
+OnInit: 
+waitingroom "ของทำยาดีที่สุดใน3โลก",0;
+end;
+}

@@ -1,0 +1,88 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+rtc_ro,12,77,4	script	ตีบวก All+5	717,{
+	mes "[ เทพตีอาวุธและชุดเกราะ ]";
+	mes "ข้าเป็นช่างอาวุธ ข้าสามารถตีอุปกรณ์ให้ท่านได้ทุกชนิด";
+	mes "ข้าจะตีให้สูงสุดได้ +5";
+	mes "แต่มีข้อแม้ว่าไอเทมของเจ้าไม่เคยทำการบวกมาก่อน";
+	next;
+	menu "- ตกลงใช้บริการ",-,"- ยังไม่ต้องการใช้บริการ",cancle;
+	getequipname(1);
+	set @part,1;
+	if (getequiprefinerycnt(@part) == 0) goto refine1_4;
+	goto insert2;
+refine1_4:
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+insert2:
+	getequipname(2);
+	set @part,2;
+	if (getequiprefinerycnt(@part) == 0) goto refine2_4;
+	goto insert3;
+refine2_4:
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+insert3:
+	getequipname(3);
+	set @part,3;
+	if (getequiprefinerycnt(@part) == 0) goto refine3_4;
+	goto insert4;
+refine3_4:
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+insert4:
+	getequipname(4);
+	set @part,4;
+	if (getequiprefinerycnt(@part) == 0) goto refine4_4;
+	goto insert5;
+refine4_4:
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+insert5:
+	getequipname(5);
+	set @part,5;
+	if (getequiprefinerycnt(@part) == 0) goto refine5_4;
+	goto insert6;
+refine5_4:
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+insert6:
+	getequipname(6);
+	set @part,6;
+	if (getequiprefinerycnt(@part) == 0) goto refine6_4;
+	goto enclose;
+refine6_4:
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+	successrefitem @part;
+enclose:	mes "[ เทพตีอาวุธและชุดเกราะ ]";
+	mes "ผลงานของข้าเยี่ยมไหม";
+cancle:
+	close;
+}

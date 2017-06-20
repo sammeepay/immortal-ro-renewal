@@ -1,0 +1,195 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+-	script	BattlePVP	-1,{
+
+	mes "^CC66CC[Super Battle PVP]^000000";
+	mes "นี้คือกิจกรรม PVP ของทุกสายทุกอาชีพ";
+	mes "ข้าจะบอกกติกาให้เจ้าทราบ";
+	next;
+	menu "เข้าร่วม",-,"ฟังกติกา",rule,"เวลาของกิจกรรม",time,"ข้าไม่สนหรอก",sbye;
+
+if(Zeny < 100000) goto Lset;
+if($inf == 1) goto L_go;
+goto non;
+
+Lset:
+	mes "^CC66CC[ Battle PVP ]^000000";
+	mes "แต่เจ้าต้องมีเงิน 100,000z";
+	close;
+	
+rule:
+	mes "^CC66CC[ Battle PVP ]^000000";
+	mes "กฏกติกาคือ กิจกรรมนี้เป็นกิจกรรม";
+	mes "ค้นหาผู้ที่แข็งแกร่งที่สุดของเซิฟเวอร์";
+	mes "โดนกิจกรรมนี้เป็นการแข็งขัน PVP";
+	mes "ระหว่างผู้เล่นไม่จำกัดสายอาชีพ";
+	mes "รับผู้เล่นแค่ 36 คนในการแข่งเท่านั้น";
+	mes "และหนึ่งเดียวที่เอาชนะผู้เล่นคนอื่นได้นั้น";
+	mes "ทางเราก้อจะมีของรางวัลมอบให้";
+	mes "TCG 300ea !!";
+	mes "สามารถแลกได้ที่เมือง Morocc";
+	close;
+
+time:
+	mes "^CC66CC[ Battle PVP ]^000000";
+	mes "เวลาเข้าร่วมกิจกรรม";
+	mes "กิจกรรมมีทุกวัน เวลา";
+	mes "16.45 น. - 16.50 น.";
+	mes "18.15น. - 18.20 น.";
+	mes "19.45 น. - 19.50 น.";
+	mes "21.15 น. - 21.20 น.";
+	close;
+
+sbye:
+	mes "^CC66CC[ Battle PVP ]^000000";
+	mes "งั้นไว้เจอกันใหม่นะ";
+	mes "โชคดี";
+	close;
+
+L_go:
+if (getmapusers("guild_vs2.gat")==35) goto toomany;
+set Zeny,Zeny -30000;
+announce ""+strcharinfo(0)+" ได้เข้าไปสู่กิจกรรม Super Battle Pvp แล้ว",8;
+percentheal 100,100;
+warp "guild_vs2.gat",50,50;
+end;
+
+non:
+	mes "^CC66CC[ Battle PVP ]^000000";
+	mes "ขณะนี้ประตูสู่ Super Battle PVP ได้ปิดลงแล้ว ";
+	close;
+
+toomany:
+	mes "^CC66CC[ Battle PVP ]^000000";
+	mes "ข้าเสียใจขณะนี้มีผู้กล้าเข้าไปครบจำนวนแล้ว";
+	set $inf,0;
+	close;
+	end;
+
+OnClock1644:
+Announce "[ Battle PVP ] : การแข่งขัน Battle PVP จะเริ่มใน 1นาที ให้ผู้กล้าทั้งหลายจงเตรียมพร้อม!!",0;
+end;
+
+OnClock1814:
+Announce "[ Battle PVP ] : การแข่งขัน Battle PVP จะเริ่มใน 1นาที ให้ผู้กล้าทั้งหลายจงเตรียมพร้อม!!",0;
+end;
+
+OnClock1944:
+Announce "[ Battle PVP ] : การแข่งขัน Battle PVP จะเริ่มใน 1นาที ให้ผู้กล้าทั้งหลายจงเตรียมพร้อม!!",0;
+end;
+
+OnClock2114:
+Announce "[ Battle PVP ] : การแข่งขัน Battle PVP จะเริ่มใน 1นาที ให้ผู้กล้าทั้งหลายจงเตรียมพร้อม!!",0;
+end;
+
+OnClock2214:
+Announce "[ Battle PVP ] : การแข่งขัน Battle PVP จะเริ่มใน 1นาที ให้ผู้กล้าทั้งหลายจงเตรียมพร้อม!!",0;
+end;
+
+OnClock1645:
+goto onBattlePVP;
+end;
+OnClock1815:
+goto onBattlePVP;
+end;
+OnClock1945:
+goto onBattlePVP;
+end;
+OnClock2115:
+goto onBattlePVP;
+end;
+OnClock2215:
+goto onBattlePVP;
+end;
+
+OnClock1650:
+goto EndBattlePVP;
+end;
+OnClock1820:
+goto EndBattlePVP;
+end;
+OnClock1950:
+goto EndBattlePVP;
+end;
+OnClock2120:
+goto EndBattlePVP;
+end;
+OnClock2220:
+goto EndBattlePVP;
+end;
+onBattlePVP:
+Announce "[ Battle PVP ] : ขณะนี้การแข่งขัน Battle PVP ได้เริ่มขึ้นแล้ว คุณมีเวลา 5 นาที ในการแสดงฝีมือเป็นจ้าวแห่ง PVP",8;
+disablenpc "Itemwinpvp";
+disablenpc "•Exit•";
+initnpctimer;
+set $inf,1;
+end;
+
+EndBattlePVP:
+Announce "[ Battle PVP ] : ขณะนี้ประตู Battle PVP ได้ปิดลงแล้ว ผู้ใดที่ออกจากการแข่งขัน Battle PVP จะไม่สามารถเข้าได้อีก และผู้ใดอยู่เป็นคนสุดท้าย จะได้รับรางวัลค่ะ",8;
+enablenpc "Itemwinpvp";
+stopnpctimer;
+set $inf,0;
+end;
+
+
+OnInit: 
+	waitingroom "< ( Battle PVP ) >",0; 
+	end;
+}
+
+// -- Mapflags
+guild_vs2.gat	mapflag	nowarp
+guild_vs2.gat	mapflag	nowarpto
+guild_vs2.gat	mapflag	noteleport
+guild_vs2.gat	mapflag	nosave	SavePoint
+guild_vs2.gat	mapflag	nomemo
+guild_vs2.gat	mapflag	pvp
+guild_vs2.gat	mapflag	nobranch
+guild_vs2.gat	mapflag	nopenalty
+guild_vs2.gat	mapflag	pvp_noparty
+// -- End of Mapflags
+
+
+guild_vs2.gat,46,53,5	script	Itemwinpvp	735,{
+if (getmapusers("guild_vs2.gat")!=1) goto now;
+	mes "เจ้าคือสุดยอดผู้กล้าการแข่งขัน";
+	mes "Super Battle PVP";
+	getitem 29000,300;
+	announce "[ Battle PVP ] : ขอแสดงความยินดีกับคุณ  [ " +strcharinfo(0) + " ] เป็นผู้ชนะ Battle PVP ได้รับรางวัลเป็น Poring Coin 300 ea." ,0;
+	disablenpc "Itemwinpvp";
+	enablenpc "•Exit•";
+	close;
+	
+now:
+	mes "ยังคงมีผู้กล้ารอดชีวิตมากกว่า1คน";
+	mes "ดังนั้นเจ้าจึงยังไม่สามารถรับของรางวัล";
+	close;
+	}
+
+
+guild_vs2.gat,53,53,3	script	•Exit•	735,{
+mes "Exit";
+mes "นี่คือทางกลับเมือง ขอให้ท่านจงโชคดี";
+warp "rtc_ro",158,102;
+close;
+}
+
+-	script	OnDie	-1,{
+OnPCDieEvent:
+getmapxy @mapnameget$,@mapx,@mapy,0 ,strcharinfo(0);
+if(@mapnameget$ == "guild_vs2") {
+sleep2 750;
+warp "SavePoint",0,0;
+}}
+
+
+rtc_ro,24,106,4	duplicate(BattlePVP)	Battle PVP	419

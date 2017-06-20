@@ -1,0 +1,96 @@
+//===================================================================
+// NPC : card set for your job
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,121,100,4	script	Card Set NPC	412,{
+mes "^FF0000[ Card Set NPC ]^000000";
+mes "โปรดเลือกการ์ดเช็ต";
+mes "ตามสายอาชีพของคุณค่ะ";
+next;
+menu 
+"- Acolyte Set",set1,
+"- Archer Set",set2,
+"- Mage Set",set3,
+"- Merchent Set",set4,
+"- Sword Set",set5,
+"- Thief Set",set6,
+"Exit",cancel;
+
+
+
+set1:
+mes "^FF0000[ Card Set NPC ]^000000";
+mes "ท่านได้รับ Card Set แล้วค่ะ";
+atcommand strcharinfo(0)+"@item 4280 1";
+atcommand strcharinfo(0)+"@item 4185 1";
+atcommand strcharinfo(0)+"@item 4312 1";
+atcommand strcharinfo(0)+"@item 4217 1";
+atcommand strcharinfo(0)+"@item 4293 1";
+close;
+
+set2:
+mes "^FF0000[ Card Set NPC ]^000000";
+mes "ท่านได้รับ Card Set แล้วค่ะ";
+atcommand strcharinfo(0)+"@item 4297 1";
+atcommand strcharinfo(0)+"@item 4234 1";
+atcommand strcharinfo(0)+"@item 4199 1";
+atcommand strcharinfo(0)+"@item 4178 1";
+atcommand strcharinfo(0)+"@item 4252 1";
+close;
+
+set3:
+mes "^FF0000[ Card Set NPC ]^000000";
+mes "ท่านได้รับ Card Set แล้วค่ะ";
+atcommand strcharinfo(0)+"@item 4327 1";
+atcommand strcharinfo(0)+"@item 4309 1";
+atcommand strcharinfo(0)+"@item 4325 1";
+atcommand strcharinfo(0)+"@item 4208 1";
+atcommand strcharinfo(0)+"@item 4258 1";
+atcommand strcharinfo(0)+"@item 4191 1";
+close;
+
+set4:
+mes "^FF0000[ Card Set NPC ]^000000";
+mes "ท่านได้รับ Card Set แล้วค่ะ";
+atcommand strcharinfo(0)+"@item 4206 1";
+atcommand strcharinfo(0)+"@item 4281 1";
+atcommand strcharinfo(0)+"@item 4186 1";
+atcommand strcharinfo(0)+"@item 4321 1";
+atcommand strcharinfo(0)+"@item 4233 1";
+close;
+
+set5:
+mes "^FF0000[ Card Set NPC ]^000000";
+mes "ท่านได้รับ Card Set แล้วค่ะ";
+atcommand strcharinfo(0)+"@item 4319 1";
+atcommand strcharinfo(0)+"@item 4331 1";
+atcommand strcharinfo(0)+"@item 4220 1";
+atcommand strcharinfo(0)+"@item 4311 1";
+atcommand strcharinfo(0)+"@item 4246 1";
+close;
+
+set6:
+mes "^FF0000[ Card Set NPC ]^000000";
+mes "ท่านได้รับ Card Set แล้วค่ะ";
+atcommand strcharinfo(0)+"@item 4230 1";
+atcommand strcharinfo(0)+"@item 4210 1";
+atcommand strcharinfo(0)+"@item 4257 1";
+atcommand strcharinfo(0)+"@item 4172 1";
+atcommand strcharinfo(0)+"@item 4272 1";
+close;
+
+
+
+cancel:
+mes "^FF0000[ Card Set NPC ]^000000";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+Waitingroom "Card Set For Job",0;
+end;
+}

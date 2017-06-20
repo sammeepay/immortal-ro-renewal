@@ -1,0 +1,727 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	ConfigTurboTrack	-1,{
+OnInit:
+// ------------ Mapflags -------------------
+setarray $@MapRanName$[1],"turbo_room","alde_tt02";
+setmapflag $@MapRanName$[1],mf_indoors;
+setmapflag $@MapRanName$[1],mf_nobranch;
+setmapflag $@MapRanName$[1],mf_noicewall;
+setmapflag $@MapRanName$[1],mf_noreturn;
+setmapflag $@MapRanName$[1],mf_nomemo;
+setmapflag $@MapRanName$[1],mf_noteleport;
+setmapflag $@MapRanName$[1],mf_nowarpto;
+setmapflag $@MapRanName$[1],mf_nowarp;
+setmapflag $@MapRanName$[1],mf_nosave;
+setmapflag $@MapRanName$[2],mf_indoors;
+setmapflag $@MapRanName$[2],mf_nobranch;
+setmapflag $@MapRanName$[2],mf_noicewall;
+setmapflag $@MapRanName$[2],mf_noreturn;
+setmapflag $@MapRanName$[2],mf_nomemo;
+setmapflag $@MapRanName$[2],mf_noteleport;
+setmapflag $@MapRanName$[2],mf_nowarpto;
+setmapflag $@MapRanName$[2],mf_nowarp;
+setmapflag $@MapRanName$[2],mf_nosave;
+setmapflag $@MapRanName$[2],mf_noskill;
+setmapflag $@MapRanName$[2],mf_fireworks;
+
+//ของรางวัล
+setarray $gwPrizeID[1], 29000,29000,29000,29000,29000;
+setarray $gwPrizeAmt[1], 1000,500,400,300,200;
+end;
+}
+
+rtc_ro,30,100,4	script	TurboTrack	523,{
+set .@TurboTrack$, "[ ^0000FFTTRC Staff^000000 ]";
+mes .@TurboTrack$;
+mes "มีเวลาให้แค่ 20 นาทีเท่านั้นท่านต้องทำเวลาให้ได้";
+mes "ของรางวัลได้รับเฉพาะ 5 คนแรกที่เข้าเส้นชัยเท่านั้น";
+mes "^0033FFห้ามนำ Bloody Axe เข้า^000000";
+mes "^0033FFห้ามนำ ปิโกะ เข้า^000000";
+mes "^0033FFห้ามนำ รถเข็น เข้า^000000";
+mes "^0033FF^000000";
+mes "ที่ 1 1000 PC";
+mes "ที่ 2 500 PC";
+mes "ที่ 3 400 PC";
+mes "ที่ 4 300 PC";
+mes "ที่ 5 200 PC";
+next;
+menu "- เข้าร่วมทันที",gogo1,"- ไม่เข้าร่วม",noevent;
+
+gogo1:
+if ((countitem(1363) >= 1)) { mes .@TurboTrack$; dispbottom "ห้ามนำขวานวิ่งเข้ากิจกรรม"; close; end; }
+if (checkoption(0x20) == 1){ mes .@TurboTrack$; dispbottom "กรุณาลงจาก PecoPeco"; close; end; }
+if (checkcart()) { mes .@TurboTrack$; dispbottom "กรุณาเอารถเข็นออก"; close; end; }
+announce "ท่าน [ "+strcharinfo(0)+" ] ได้เข้าร่วมแข่งขัน Turbo Track แล้ว",bc_all,0x66FF66;
+warp "alde_tt02.gat",56,365;
+close;
+
+noevent:
+mes .@TurboTrack$;
+mes " ครับ...";
+close;
+OnInit:
+waitingroom " -> วิ่งแข่งมหาสนุก ",0; 
+end;
+}
+
+// ------------ Prize Room NPC -------------
+alde_tt02.gat,383,168,5	script	SuLin	719,{
+mes "[ Su Lin ]";
+mes "คุณต้องการรับของรางวัลหรือยัง";
+next;
+menu "- ต้ อ ง ก า ร",S_Leave,"- ย ก เ ลิ ก",-;
+mes "คุณ กับฉัน ได้อีกครั้ง ถ้าคุณ ต้องการรับของรางวัล";
+close;
+
+S_Leave:
+if(@score==1) goto win1;
+if(@score==2) goto win2;
+if(@score==3) goto win3;
+if(@score==4) goto win4;
+if(@score>4) goto win5;
+mes "[ Su Lin ]";
+mes "คุณไม่ใช่ผู้ชนะ อันดับ 1-5 นิค่ะ ?";
+close;
+
+win1:
+killmonsterall "alde_tt02.gat";
+getitem $gwPrizeID[1],$gwPrizeAmt[1];
+mes "[ Su Lin ]";
+mes "ขอแสดงความยินดีกับไอเท็มที่ได้รับด้วยครับ";
+sleep2 1000;
+warp "SavePoint",0,0;
+close;
+
+win2:
+getitem $gwPrizeID[2],$gwPrizeAmt[2];
+mes "[Su Lin]";
+mes "ขอแสดงความยินดีกับไอเท็มที่ได้รับด้วยครับ";
+sleep2 1000;
+warp "SavePoint",0,0;
+close;
+
+win3:
+getitem $gwPrizeID[3],$gwPrizeAmt[3];
+mes "[Su Lin]";
+mes "ขอแสดงความยินดีกับไอเท็มที่ได้รับด้วยครับ";
+sleep2 1000;
+warp "SavePoint",0,0;
+close;
+
+win4:
+getitem $gwPrizeID[4],$gwPrizeAmt[4];
+mes "[Su Lin]";
+mes "ขอแสดงความเสียใจด้วยที่ไม่ได้รับรางวัล";
+mes "อย่างน้อยเราก้มีรางวัลปลอบใจจะให้..";
+sleep2 1000;
+warp "SavePoint",0,0;
+close;
+
+win5:
+getitem $gwPrizeID[5],$gwPrizeAmt[5];
+mes "[Su Lin]";
+mes "ขอแสดงความเสียใจด้วยที่ไม่ได้รับรางวัล";
+mes "อย่างน้อยเราก้มีรางวัลปลอบใจจะให้..";
+sleep2 1000;
+warp "SavePoint",0,0;
+mapannounce "alde_tt02.gat","ผู้เล่นเข้าเส้นชัยครบ 5 ท่านแล้ว !!",1; 
+close;
+}
+
+// ------------- TTRC Countdown Timer --------
+-	script	Countdown	-1,{
+
+//----- ส่วนหมดเวลากิจกรรม
+OnClock1820:
+announce "การแข่งขัน Turbo Track ได้จบลงแล้ว!!",16;
+atcommand "@shownpc Start_Line";
+atcommand "@shownpc Start_Line2";
+atcommand "@shownpc Start_Line3";
+atcommand "@hidenpc SuLin";
+atcommand "@shownpc TurboTrack";
+end;
+
+//----- ส่วนเริ่มกิจกรรม
+OnClock1800:
+announce "อีก 3 นาทีจะเริ่มกิจกรรม Turbo Track ขอให้ผู้ที่ต้องการร่วมแข่งขันมาร่วมกิจกรรมด้วย ! .",16;
+sleep2 60000;
+announce "อีก 2 นาทีจะเริ่มกิจกรรม Turbo Track มีเวลาให้แข่งขันเพียงแค่ 20 นาทีเท่านั้น.",16;
+sleep2 60000;
+announce "อีก 1 นาทีจะเริ่มกิจกรรม Turbo Track ผู้ที่ได้รับรางวัลอันดับที่ 1 ถึง 5 เท่านั้นที่เหลือตกรอบทั้งหมด.",16;
+sleep2 60000;
+announce "อีก 30 วินาทีจะเริ่มกิจกรรม Turbo Track ขอให้ผู้ที่ต้องการร่วมแข่งขันมาร่วมกิจกรรมด้วย!.",16;
+sleep2 30000;
+announce "ประกาศๆ ขณะนี้ได้เริ่มการแข่งขันแล้ว",16;
+mapannounce "alde_tt02.gat","พร้อมกันหรือยัง จะเริ่มนับ ถอยหลัง 3 วินาทีแล้วนะ !",1; 
+atcommand "@hidenpc TurboTrack";
+atcommand "@shownpc SuLin";
+sleep2 1000;
+mapannounce "alde_tt02.gat","- 3 -",1;
+sleep2 1000;
+mapannounce "alde_tt02.gat","- 2 -",1;
+sleep2 1000;
+mapannounce "alde_tt02.gat","- 1 -",1;
+sleep2 1000;
+mapannounce "alde_tt02.gat", "ไปได้ !",1;
+set $position,0;
+atcommand "@hidenpc Start_Line";
+atcommand "@hidenpc Start_Line2";
+atcommand "@hidenpc Start_Line3";
+atcommand "@hidenpc TTRCEntrance";
+atcommand "@hidenpc TurboTrack";
+end;
+
+OnPCLogoutEvent:
+OnPCDieEvent:
+if (EndT == 1) {
+set EndT,2;
+warp "SavePoint",0,0;
+end; }
+end;
+
+OnEnd:
+announce "ขณะนี้ผู้เล่นทุกคนได้ออกจากจุด Start แล้ว.",16;
+end;
+}
+
+// -------------- Start Line --------------
+alde_tt02.gat,66,364,5	script	Start_Line	139,4,11,{
+end;
+OnTouch:
+warp "alde_tt02",56,364;
+mes "[Start Line]";
+mes "นี่ การแข่งขันยังไม่เริ่ม กรุณา อยู่หลังจุดสตาร์ทก่อน!";
+mes "คุณ คงไม่อยากจะ ถูกตัดสินออกจากการแข่งขันใช้ไหม กรุณา ไปยืนหลัง จุดสตาร์ทก่อน ?";
+close;
+}
+alde_tt02.gat,67,351,5	script	Start_Line2	139,4,1,{
+end;
+OnTouch:
+warp "alde_tt02",56,364;
+mes "[Start Line]";
+mes "นี่ การแข่งขันยังไม่เริ่ม กรุณา อยู่หลังจุดสตาร์ทก่อน!";
+mes "คุณ คงไม่อยากจะ ถูกตัดสินออกจากการแข่งขันใช้ไหม กรุณา ไปยืนหลัง จุดสตาร์ทก่อน ?";
+close;
+}
+alde_tt02.gat,66,377,5	script	Start_Line3	139,4,2,{
+end;
+OnTouch:
+warp "alde_tt02",56,364;
+mes "[Start Line]";
+mes "นี่ การแข่งขันยังไม่เริ่ม กรุณา อยู่หลังจุดสตาร์ทก่อน!";
+mes "คุณ คงไม่อยากจะ ถูกตัดสินออกจากการแข่งขันใช้ไหม กรุณา ไปยืนหลัง จุดสตาร์ทก่อน ?";
+close;
+}
+
+// -------------- Finish Line --------------
+alde_tt02.gat,373,47,5	script	Finish Line	139,3,11,{
+end;
+OnTouch:
+if (EndT == 2) end;
+set $position,$position+1;
+announce "ผู้เข้าแข่งขัน [ " + strcharinfo(0) +" ] ได้เข้าสู่เส้นชัยแล้ว ได้เข้าเป็นที่ ! [ " + $position + "]",1;
+set @score,$position;
+set EndT,2;
+end;
+}
+
+// ------------ Abyss on field #1 -----------
+
+alde_tt02.gat,81,354,0	script	01_1::TTRCAbyss	139,4,1,{
+warp "alde_tt02",56,364;
+end;
+}
+//---------------------------  ล่าง  --------------------------------\\
+alde_tt02.gat,83,358,0	duplicate(TTRCAbyss)	01_2	139,9,0
+alde_tt02.gat,74,353,0	duplicate(TTRCAbyss)	01_3	139,0,2
+alde_tt02.gat,74,360,0	duplicate(TTRCAbyss)	01_4	139,0,2
+alde_tt02.gat,90,353,0	duplicate(TTRCAbyss)	01_5	139,5,0
+alde_tt02.gat,93,359,0	duplicate(TTRCAbyss)	01_8#1	139,0,3
+alde_tt02.gat,100,359,0	duplicate(TTRCAbyss)	01_9#1	139,3,0
+alde_tt02.gat,90,357,0	duplicate(TTRCAbyss)	01_6	139,2,1
+alde_tt02.gat,96,356,0	duplicate(TTRCAbyss)	01_7	139,0,3
+alde_tt02.gat,100,362,0	duplicate(TTRCAbyss)	01_8#2	139,6,0
+alde_tt02.gat,106,360,0	duplicate(TTRCAbyss)	01_9#2	139,0,2
+alde_tt02.gat,103,357,0	duplicate(TTRCAbyss)	01_10	139,0,1
+alde_tt02.gat,107,355,0	duplicate(TTRCAbyss)	01_11	139,4,0
+alde_tt02.gat,112,354,0	duplicate(TTRCAbyss)	01_12	139,0,3
+alde_tt02.gat,117,351,0	duplicate(TTRCAbyss)	01_13	139,3,0
+alde_tt02.gat,123,353,0	duplicate(TTRCAbyss)	01_14	139,3,2
+alde_tt02.gat,127,353,0	duplicate(TTRCAbyss)	01_15	139,0,2
+alde_tt02.gat,135,353,0	duplicate(TTRCAbyss)	01_16	139,7,0
+alde_tt02.gat,143,354,0	duplicate(TTRCAbyss)	01_17	139,1,1
+alde_tt02.gat,146,357,0	duplicate(TTRCAbyss)	01_18	139,2,2
+alde_tt02.gat,149,357,0	duplicate(TTRCAbyss)	01_19	139,0,2
+alde_tt02.gat,156,355,0	duplicate(TTRCAbyss)	01_20	139,6,0
+alde_tt02.gat,108,359,0	duplicate(TTRCAbyss)	01_21	139,1,1
+alde_tt02.gat,113,360,0	duplicate(TTRCAbyss)	01_22	139,3,0
+alde_tt02.gat,116,356,0	duplicate(TTRCAbyss)	01_23	139,0,2
+alde_tt02.gat,117,356,0	duplicate(TTRCAbyss)	01_24	139,0,2
+alde_tt02.gat,124,358,0	duplicate(TTRCAbyss)	01_25	139,6,0
+alde_tt02.gat,134,357,0	duplicate(TTRCAbyss)	01_26	139,4,1
+alde_tt02.gat,139,357,0	duplicate(TTRCAbyss)	01_27	139,0,1
+alde_tt02.gat,140,360,0	duplicate(TTRCAbyss)	01_28	139,1,2
+alde_tt02.gat,147,362,0	duplicate(TTRCAbyss)	01_29	139,5,0
+alde_tt02.gat,157,359,0	duplicate(TTRCAbyss)	01_30	139,5,1
+alde_tt02.gat,113,354,0	duplicate(TTRCAbyss)	01_31	139,0,3
+
+//----------------------------- กลาง -----------------------------\\
+alde_tt02.gat,79,362,0	duplicate(TTRCAbyss)	02_1	139,4,1
+alde_tt02.gat,87,360,0	duplicate(TTRCAbyss)	02_2	139,4,0
+alde_tt02.gat,91,361,0	duplicate(TTRCAbyss)	02_3	139,0,0
+alde_tt02.gat,92,363,0	duplicate(TTRCAbyss)	02_4	139,0,2
+alde_tt02.gat,98,365,0	duplicate(TTRCAbyss)	02_5	139,6,0
+alde_tt02.gat,106,364,0	duplicate(TTRCAbyss)	02_6	139,2,2
+alde_tt02.gat,112,362,0	duplicate(TTRCAbyss)	02_7	139,3,0
+alde_tt02.gat,123,361,0	duplicate(TTRCAbyss)	02_8	139,7,0
+alde_tt02.gat,140,363,0	duplicate(TTRCAbyss)	02_9	139,8,1
+alde_tt02.gat,149,364,0	duplicate(TTRCAbyss)	02_10	139,1,1
+alde_tt02.gat,154,364,0	duplicate(TTRCAbyss)	02_11	139,3,0
+alde_tt02.gat,160,365,0	duplicate(TTRCAbyss)	02_12	139,3,0
+alde_tt02.gat,158,366,0	duplicate(TTRCAbyss)	02_13	139,1,0
+alde_tt02.gat,160,366,0	duplicate(TTRCAbyss)	02_14	139,0,0
+alde_tt02.gat,77,366,0	duplicate(TTRCAbyss)	02_15	139,3,0
+alde_tt02.gat,82,365,0	duplicate(TTRCAbyss)	02_16	139,2,0
+alde_tt02.gat,87,363,0	duplicate(TTRCAbyss)	02_17	139,2,1
+alde_tt02.gat,90,365,0	duplicate(TTRCAbyss)	02_18	139,0,2
+alde_tt02.gat,96,368,0	duplicate(TTRCAbyss)	02_19	139,6,1
+alde_tt02.gat,106,368,0	duplicate(TTRCAbyss)	02_20	139,4,0
+alde_tt02.gat,113,366,0	duplicate(TTRCAbyss)	02_21	139,3,2
+alde_tt02.gat,123,364,0	duplicate(TTRCAbyss)	02_22	139,6,1
+alde_tt02.gat,137,366,0	duplicate(TTRCAbyss)	02_23	139,8,0
+alde_tt02.gat,149,367,0	duplicate(TTRCAbyss)	02_24	139,3,0
+alde_tt02.gat,152,366,0	duplicate(TTRCAbyss)	02_25	139,0,0
+alde_tt02.gat,154,367,0	duplicate(TTRCAbyss)	02_26	139,1,1
+alde_tt02.gat,159,368,0	duplicate(TTRCAbyss)	02_27	139,3,0
+
+
+//-------------------- บน ------------------------\\
+alde_tt02.gat,77,371,0	duplicate(TTRCAbyss)	03_1	139,2,0
+alde_tt02.gat,79,369,0	duplicate(TTRCAbyss)	03_2	139,0,2
+alde_tt02.gat,83,367,0	duplicate(TTRCAbyss)	03_3	139,3,0
+alde_tt02.gat,86,370,0	duplicate(TTRCAbyss)	03_4	139,0,3
+alde_tt02.gat,90,371,0	duplicate(TTRCAbyss)	03_5	139,3,2
+alde_tt02.gat,109,372,0	duplicate(TTRCAbyss)	03_6	139,7,1
+alde_tt02.gat,117,369,0	duplicate(TTRCAbyss)	03_7	139,0,4
+alde_tt02.gat,128,367,0	duplicate(TTRCAbyss)	03_8	139,0,2
+alde_tt02.gat,135,369,0	duplicate(TTRCAbyss)	03_9	139,6,0
+alde_tt02.gat,144,371,0	duplicate(TTRCAbyss)	03_10	139,2,2
+alde_tt02.gat,147,371,0	duplicate(TTRCAbyss)	03_11	139,0,2
+alde_tt02.gat,150,369,0	duplicate(TTRCAbyss)	03_12	139,3,0
+alde_tt02.gat,102,370,0	duplicate(TTRCAbyss)	03_13	139,0,0
+alde_tt02.gat,74,369,0	duplicate(TTRCAbyss)	03_14	139,0,2
+alde_tt02.gat,78,374,0	duplicate(TTRCAbyss)	03_15	139,3,0
+alde_tt02.gat,74,376,0	duplicate(TTRCAbyss)	03_16	139,0,2
+alde_tt02.gat,82,373,0	duplicate(TTRCAbyss)	03_17	139,0,3
+alde_tt02.gat,83,373,0	duplicate(TTRCAbyss)	03_18	139,0,3
+alde_tt02.gat,90,376,0	duplicate(TTRCAbyss)	03_19	139,6,0
+alde_tt02.gat,97,374,0	duplicate(TTRCAbyss)	03_20	139,1,2
+alde_tt02.gat,99,374,0	duplicate(TTRCAbyss)	03_21	139,0,2
+alde_tt02.gat,122,370,0	duplicate(TTRCAbyss)	03_22	139,2,2
+alde_tt02.gat,125,370,0	duplicate(TTRCAbyss)	03_23	139,0,2
+alde_tt02.gat,132,372,0	duplicate(TTRCAbyss)	03_24	139,7,0
+alde_tt02.gat,139,374,0	duplicate(TTRCAbyss)	03_25	139,0,2
+alde_tt02.gat,145,376,0	duplicate(TTRCAbyss)	03_26	139,5,0
+alde_tt02.gat,150,374,0	duplicate(TTRCAbyss)	03_27	139,0,2
+alde_tt02.gat,157,372,0	duplicate(TTRCAbyss)	03_28	139,6,0
+alde_tt02.gat,110,376,0	duplicate(TTRCAbyss)	03_29	139,10,0
+
+// --------- Warp Portals ------------
+//alde_gld.gat,184,202,0	warp	tt001	1,1,turbo_room.gat,100,65
+//turbo_room.gat,100,61,0	warp	tt002	1,1,alde_gld.gat,184,199
+alde_tt02.gat,168,364,0	warp	tt012	1,1,alde_tt02.gat,210,368
+alde_tt02.gat,258,364,0	warp	tt023	1,1,alde_tt02.gat,316,367
+alde_tt02.gat,384,368,0	warp	tt034	1,1,alde_tt02.gat,10,267
+alde_tt02.gat,114,192,0	warp	tt045	1,1,alde_tt02.gat,184,226
+alde_tt02.gat,251,201,0	warp	tt056	1,1,alde_tt02.gat,268,274
+alde_tt02.gat,388,274,0	warp	tt067	1,1,alde_tt02.gat,4,91
+alde_tt02.gat,94,19,0	warp	tt078	1,1,alde_tt02.gat,166,54
+alde_tt02.gat,232,14,0	warp	tt089	1,1,alde_tt02.gat,306,48
+alde_tt02.gat,385,46,0	warp	tt099	1,1,alde_tt02.gat,384,153
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////// By Niffalose //////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+alde_tt02,227,379,0	script	Warp#n_1_1::Warp_n_1	-1,1,1,{
+OnTouch:
+	set .@warprand,rand(1,20);
+	if (.@warprand == 1)
+		warp "alde_tt02",216,378;
+	else if (.@warprand == 2)
+		warp "alde_tt02",218,360;
+	else if (.@warprand == 4)
+		warp "alde_tt02",223,361;
+	else if (.@warprand == 5)
+		warp "alde_tt02",243,342;
+	else if (.@warprand == 6)
+		warp "alde_tt02",247,364;
+	end;
+}
+alde_tt02,237,380,0	duplicate(Warp_n_1)	Warp#n_1_2	-1,1,1,{
+alde_tt02,227,367,0	duplicate(Warp_n_1)	Warp#n_1_3	-1,1,1,{
+alde_tt02,231,360,0	duplicate(Warp_n_1)	Warp#n_1_4	-1,1,1,{
+alde_tt02,225,349,0	duplicate(Warp_n_1)	Warp#n_1_5	-1,1,1,{
+alde_tt02,249,352,0	duplicate(Warp_n_1)	Warp#n_1_6	-1,1,1,{
+alde_tt02,253,364,0	duplicate(Warp_n_1)	Warp#n_1_7	-1,2,2,{
+
+alde_tt02,307,55,0	script	trap_n1#F1::TurboTrap_n1	139,1,1,{
+OnTouch:
+	specialeffect 106; //"trap_n1#F1" EF_BLASTMINEBOMB
+	set .@HitTrap,10;
+	if (.@HitTrap > 0 && .@HitTrap < 4)
+		percentheal -1,0;
+	else if (.@HitTrap > 4 && .@HitTrap < 8)
+		percentheal -5,0;
+	else
+		percentheal -2,0;
+	end;
+}
+
+alde_tt02,307,51,0	duplicate(TurboTrap_n1)	trap_n1#F2	139,1,1
+alde_tt02,307,47,0	duplicate(TurboTrap_n1)	trap_n1#F3	139,1,1
+alde_tt02,307,43,0	duplicate(TurboTrap_n1)	trap_n1#F4	139,1,1
+alde_tt02,307,39,0	duplicate(TurboTrap_n1)	trap_n1#F5	139,1,1
+alde_tt02,307,39,0	duplicate(TurboTrap_n1)	trap_n1#F96	139,1,1
+alde_tt02,312,56,0	duplicate(TurboTrap_n1)	trap_n1#F6	139,1,1
+alde_tt02,312,52,0	duplicate(TurboTrap_n1)	trap_n1#F7	139,1,1
+alde_tt02,312,48,0	duplicate(TurboTrap_n1)	trap_n1#F8	139,1,1
+alde_tt02,312,44,0	duplicate(TurboTrap_n1)	trap_n1#F9	139,1,1
+alde_tt02,312,40,0	duplicate(TurboTrap_n1)	trap_n1#F10	139,1,1
+alde_tt02,312,36,0	duplicate(TurboTrap_n1)	trap_n1#F11	139,1,1
+alde_tt02,316,55,0	duplicate(TurboTrap_n1)	trap_n1#F12	139,1,1
+alde_tt02,316,51,0	duplicate(TurboTrap_n1)	trap_n1#F13	139,1,1
+alde_tt02,316,47,0	duplicate(TurboTrap_n1)	trap_n1#F14	139,1,1
+alde_tt02,316,43,0	duplicate(TurboTrap_n1)	trap_n1#F15	139,1,1
+alde_tt02,316,39,0	duplicate(TurboTrap_n1)	trap_n1#F16	139,1,1
+alde_tt02,316,36,0	duplicate(TurboTrap_n1)	trap_n1#F17	139,1,1
+alde_tt02,320,56,0	duplicate(TurboTrap_n1)	trap_n1#F18	139,1,1
+alde_tt02,320,52,0	duplicate(TurboTrap_n1)	trap_n1#F19	139,1,1
+alde_tt02,320,48,0	duplicate(TurboTrap_n1)	trap_n1#F20	139,1,1
+alde_tt02,320,44,0	duplicate(TurboTrap_n1)	trap_n1#F21	139,1,1
+alde_tt02,320,40,0	duplicate(TurboTrap_n1)	trap_n1#F22	139,1,1
+alde_tt02,320,36,0	duplicate(TurboTrap_n1)	trap_n1#F23	139,1,1
+alde_tt02,324,55,0	duplicate(TurboTrap_n1)	trap_n1#F24	139,1,1
+alde_tt02,324,51,0	duplicate(TurboTrap_n1)	trap_n1#F25	139,1,1
+alde_tt02,324,47,0	duplicate(TurboTrap_n1)	trap_n1#F26	139,1,1
+alde_tt02,324,43,0	duplicate(TurboTrap_n1)	trap_n1#F27	139,1,1
+alde_tt02,324,39,0	duplicate(TurboTrap_n1)	trap_n1#F28	139,1,1
+alde_tt02,324,36,0	duplicate(TurboTrap_n1)	trap_n1#F29	139,1,1
+alde_tt02,328,56,0	duplicate(TurboTrap_n1)	trap_n1#F30	139,1,1
+alde_tt02,328,52,0	duplicate(TurboTrap_n1)	trap_n1#F31	139,1,1
+alde_tt02,328,48,0	duplicate(TurboTrap_n1)	trap_n1#F32	139,1,1
+alde_tt02,328,44,0	duplicate(TurboTrap_n1)	trap_n1#F33	139,1,1
+alde_tt02,328,40,0	duplicate(TurboTrap_n1)	trap_n1#F34	139,1,1
+alde_tt02,328,36,0	duplicate(TurboTrap_n1)	trap_n1#F35	139,1,1
+alde_tt02,332,55,0	duplicate(TurboTrap_n1)	trap_n1#F36	139,1,1
+alde_tt02,332,51,0	duplicate(TurboTrap_n1)	trap_n1#F37	139,1,1
+alde_tt02,332,47,0	duplicate(TurboTrap_n1)	trap_n1#F38	139,1,1
+alde_tt02,332,43,0	duplicate(TurboTrap_n1)	trap_n1#F39	139,1,1
+alde_tt02,332,39,0	duplicate(TurboTrap_n1)	trap_n1#F40	139,1,1
+alde_tt02,332,36,0	duplicate(TurboTrap_n1)	trap_n1#F41	139,1,1
+
+alde_tt02,336,56,0	script	trap_n1#F42::TurboTrap_n1_2	-1,1,1,{
+OnTouch:
+	specialeffect 108; //"trap_n1#F42" EF_FREEZING
+	set .@HitTrap,10;
+	if (.@HitTrap > 0 && .@HitTrap < 4)
+		percentheal -1,0;
+	else if (.@HitTrap > 4 && .@HitTrap < 8) {
+		percentheal -5,0;
+		sc_start SC_FREEZE,3000,0;
+	}
+	else {
+		sc_start SC_FREEZE,4000,0;
+		percentheal -2,0;
+	}
+}
+alde_tt02,336,52,0	duplicate(TurboTrap_n1_2)	trap_n1#F43	139,1,1
+alde_tt02,336,48,0	duplicate(TurboTrap_n1_2)	trap_n1#F44	139,1,1
+alde_tt02,336,44,0	duplicate(TurboTrap_n1_2)	trap_n1#F45	139,1,1
+alde_tt02,336,50,0	duplicate(TurboTrap_n1_2)	trap_n1#F46	139,1,1
+alde_tt02,336,36,0	duplicate(TurboTrap_n1_2)	trap_n1#F47	139,1,1
+alde_tt02,340,55,0	duplicate(TurboTrap_n1_2)	trap_n1#F48	139,1,1
+
+alde_tt02,340,51,0	duplicate(TurboTrap_n1)	trap_n1#F49	139,1,1
+alde_tt02,340,47,0	duplicate(TurboTrap_n1)	trap_n1#F50	139,1,1
+alde_tt02,340,43,0	duplicate(TurboTrap_n1)	trap_n1#F51	139,1,1
+alde_tt02,340,39,0	duplicate(TurboTrap_n1)	trap_n1#F52	139,1,1
+alde_tt02,340,36,0	duplicate(TurboTrap_n1)	trap_n1#F53	139,1,1
+alde_tt02,344,56,0	duplicate(TurboTrap_n1)	trap_n1#F54	139,1,1
+alde_tt02,344,52,0	duplicate(TurboTrap_n1)	trap_n1#F55	139,1,1
+alde_tt02,344,48,0	duplicate(TurboTrap_n1)	trap_n1#F56	139,1,1
+alde_tt02,344,44,0	duplicate(TurboTrap_n1)	trap_n1#F57	139,1,1
+alde_tt02,344,40,0	duplicate(TurboTrap_n1)	trap_n1#F58	139,1,1
+alde_tt02,344,36,0	duplicate(TurboTrap_n1)	trap_n1#F59	139,1,1
+alde_tt02,348,55,0	duplicate(TurboTrap_n1)	trap_n1#F60	139,1,1
+alde_tt02,348,51,0	duplicate(TurboTrap_n1)	trap_n1#F61	139,1,1
+alde_tt02,348,47,0	duplicate(TurboTrap_n1)	trap_n1#F62	139,1,1
+alde_tt02,348,43,0	duplicate(TurboTrap_n1)	trap_n1#F63	139,1,1
+alde_tt02,348,39,0	duplicate(TurboTrap_n1)	trap_n1#F64	139,1,1
+alde_tt02,348,36,0	duplicate(TurboTrap_n1)	trap_n1#F65	139,1,1
+alde_tt02,352,56,0	duplicate(TurboTrap_n1)	trap_n1#F66	139,1,1
+alde_tt02,352,52,0	duplicate(TurboTrap_n1)	trap_n1#F67	139,1,1
+alde_tt02,352,48,0	duplicate(TurboTrap_n1)	trap_n1#F68	139,1,1
+alde_tt02,352,44,0	duplicate(TurboTrap_n1)	trap_n1#F69	139,1,1
+alde_tt02,352,40,0	duplicate(TurboTrap_n1)	trap_n1#F70	139,1,1
+alde_tt02,352,36,0	duplicate(TurboTrap_n1)	trap_n1#F71	139,1,1
+alde_tt02,356,55,0	duplicate(TurboTrap_n1)	trap_n1#F72	139,1,1
+alde_tt02,356,51,0	duplicate(TurboTrap_n1)	trap_n1#F73	139,1,1
+alde_tt02,356,47,0	duplicate(TurboTrap_n1)	trap_n1#F74	139,1,1
+alde_tt02,356,43,0	duplicate(TurboTrap_n1)	trap_n1#F75	139,1,1
+alde_tt02,356,39,0	duplicate(TurboTrap_n1)	trap_n1#F76	139,1,1
+alde_tt02,356,36,0	duplicate(TurboTrap_n1)	trap_n1#F77	139,1,1
+alde_tt02,360,56,0	duplicate(TurboTrap_n1)	trap_n1#F78	139,1,1
+alde_tt02,360,52,0	duplicate(TurboTrap_n1)	trap_n1#F79	139,1,1
+alde_tt02,360,48,0	duplicate(TurboTrap_n1)	trap_n1#F80	139,1,1
+alde_tt02,360,44,0	duplicate(TurboTrap_n1)	trap_n1#F81	139,1,1
+alde_tt02,360,40,0	duplicate(TurboTrap_n1)	trap_n1#F82	139,1,1
+alde_tt02,360,36,0	duplicate(TurboTrap_n1)	trap_n1#F83	139,1,1
+alde_tt02,364,55,0	duplicate(TurboTrap_n1)	trap_n1#F84	139,1,1
+alde_tt02,364,51,0	duplicate(TurboTrap_n1)	trap_n1#F85	139,1,1
+alde_tt02,364,47,0	duplicate(TurboTrap_n1)	trap_n1#F86	139,1,1
+alde_tt02,364,43,0	duplicate(TurboTrap_n1)	trap_n1#F87	139,1,1
+alde_tt02,364,39,0	duplicate(TurboTrap_n1)	trap_n1#F88	139,1,1
+alde_tt02,364,36,0	duplicate(TurboTrap_n1)	trap_n1#F89	139,1,1
+alde_tt02,368,56,0	duplicate(TurboTrap_n1)	trap_n1#F90	139,1,1
+alde_tt02,368,52,0	duplicate(TurboTrap_n1)	trap_n1#F91	139,1,1
+alde_tt02,368,48,0	duplicate(TurboTrap_n1)	trap_n1#F92	139,1,1
+alde_tt02,368,44,0	duplicate(TurboTrap_n1)	trap_n1#F93	139,1,1
+alde_tt02,368,40,0	duplicate(TurboTrap_n1)	trap_n1#F94	139,1,1
+alde_tt02,368,36,0	duplicate(TurboTrap_n1)	trap_n1#F95	139,1,1
+
+alde_tt02,322,354,0	script	#TBT_trap_n16-1::TurboSandHill_n16	-1,3,3,{
+OnTouch:
+	switch(rand(1,10)) {
+	case 1:
+	case 9:
+		sc_start SC_CONFUSION,8000,0;
+		emotion e_swt2,1;
+		end;
+	case 2:
+		sc_start SC_STONE,4000,0;
+		end;
+	case 4:
+		sc_start SC_SLEEP,4000,0;
+		end;
+	case 6:
+		sc_start SC_FREEZE,4000,0;
+		emotion e_swt2,1;
+		end;
+	case 8:
+		sc_start SC_STUN,4000,0;
+		end;
+	case 10:
+		sc_start SC_CURSE,80000,0;
+		end;
+	}
+}
+alde_tt02,323,360,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-2	-1,3,3
+alde_tt02,324,365,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-3	-1,1,1
+alde_tt02,325,370,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-4	-1,3,3
+alde_tt02,325,375,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-5	-1,1,1
+alde_tt02,329,377,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-6	-1,3,3
+alde_tt02,338,372,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-7	-1,3,3
+alde_tt02,341,364,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-8	-1,3,3
+alde_tt02,325,359,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-9	-1,2,2
+alde_tt02,341,355,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-10	-1,1,1
+alde_tt02,350,355,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-11	-1,3,3
+alde_tt02,348,363,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-12	-1,1,1
+alde_tt02,347,370,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-13	-1,2,2
+alde_tt02,349,377,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-14	-1,9,9
+alde_tt02,362,372,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-15	-1,3,3
+alde_tt02,364,365,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-16	-1,1,1
+alde_tt02,363,357,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-17	-1,3,3
+alde_tt02,374,358,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-18	-1,2,2
+alde_tt02,371,367,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-19	-1,3,3
+alde_tt02,371,376,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-20	-1,1,1
+alde_tt02,379,375,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-21	-1,3,3
+alde_tt02,382,363,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-22	-1,2,2
+alde_tt02,381,354,0	duplicate(TurboSandHill_n16)	#TBT_trap_n16-23	-1,1,1
+
+
+// Turbo Track: Normal Mode - 16 Players (Water Maze)
+alde_tt02,13,266,0	script	flasher#n16-01::TurboWaterMaze_n_16	-1,0,2,{
+OnTouch:
+	set .@BLINDND,rand(1,20);
+	if (.@BLINDND == 1)
+		sc_start SC_BLIND,60000,0;
+	end;
+}
+alde_tt02,24,268,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-02	-1,1,0
+alde_tt02,20,258,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-03	-1,1,0
+alde_tt02,23,251,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-04	-1,0,1
+alde_tt02,36,270,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-05	-1,1,0
+alde_tt02,22,239,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-06	-1,1,0
+alde_tt02,38,239,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-07	-1,0,1
+alde_tt02,37,237,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-08	-1,1,0
+alde_tt02,55,247,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-09	-1,0,1
+alde_tt02,55,246,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-10	-1,1,0
+alde_tt02,63,253,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-11	-1,0,1
+alde_tt02,36,216,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-12	-1,1,0
+alde_tt02,20,209,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-13	-1,1,0
+alde_tt02,28,195,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-14	-1,1,0
+alde_tt02,82,264,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-15	-1,1,0
+alde_tt02,47,185,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-16	-1,0,1
+alde_tt02,53,207,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-17	-1,1,0
+alde_tt02,54,208,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-18	-1,0,1
+alde_tt02,81,247,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-19	-1,0,1
+alde_tt02,105,257,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-20	-1,0,1
+alde_tt02,95,242,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-21	-1,0,1
+alde_tt02,77,232,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-22	-1,2,0
+alde_tt02,67,222,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-23	-1,2,0
+alde_tt02,83,206,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-24	-1,0,1
+alde_tt02,95,224,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-25	-1,0,1
+alde_tt02,106,220,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-26	-1,2,0
+alde_tt02,93,191,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-27	-1,1,0
+alde_tt02,94,192,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-28a	-1,0,1
+alde_tt02,46,214,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-28b	-1,0,1
+alde_tt02,16,247,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-29	-1,1,0
+alde_tt02,58,268,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-30	-1,1,1
+alde_tt02,36,253,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-31	-1,1,0
+alde_tt02,69,238,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-32	-1,1,1
+alde_tt02,58,268,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-33	-1,1,1
+alde_tt02,74,188,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-34	-1,2,0
+alde_tt02,99,207,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-35	-1,1,1
+alde_tt02,74,188,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-36	-1,2,0
+alde_tt02,111,188,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-37a	-1,1,0
+alde_tt02,51,232,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-37b	-1,1,1
+alde_tt02,30,232,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-38	-1,1,1
+alde_tt02,92,256,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-39	-1,1,1
+alde_tt02,79,220,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-40	-1,1,1
+alde_tt02,51,192,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-41	-1,1,1
+alde_tt02,22,227,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-42	-1,1,1
+alde_tt02,51,232,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-43	-1,1,1
+alde_tt02,42,258,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-44	-1,1,0
+alde_tt02,45,271,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-45	-1,2,1
+alde_tt02,72,207,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-46	-1,1,1
+alde_tt02,33,192,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-47	-1,0,1
+alde_tt02,90,241,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-48a	-1,1,0
+alde_tt02,236,3,0	duplicate(TurboWaterMaze_n_16)	flasher#n16-48b	-1,3,0
+
+
+// Turbo Track: Normal Mode - 16 Players (Snake Dice course)
+alde_tt02,324,279,0	script	snake01#n16	45,1,1,{
+OnTouch:
+	set .@turbo2,rand(1,7);
+	if (.@turbo2 > 0) && (.@turbo2 < 3)
+		warp "alde_tt02",370,292;
+	else if (.@turbo2 > 2) && (.@turbo2 < 5)
+		warp "alde_tt02",295,293;
+	else if (.@turbo2 > 4) && (.@turbo2 < 7)
+		warp "alde_tt02",355,292;
+	else
+		warp "alde_tt02",279,292;
+	end;
+}
+
+alde_tt02,332,279,0	script	snake02#n16	45,1,1,{
+OnTouch:
+	set .@turbo2,rand(1,8);
+	if (.@turbo2 > 0) && (.@turbo2 < 3)
+		warp "alde_tt02",287,256;
+	else if (.@turbo2 > 2) && (.@turbo2 < 5)
+		warp "alde_tt02",303,256;
+	else if (.@turbo2 > 4) && (.@turbo2 < 7)
+		warp "alde_tt02",347,256;
+	else
+		warp "alde_tt02",363,256;
+	end;
+}
+
+alde_tt02,324,270,0	script	snake03#n16	45,1,1,{
+OnTouch:
+	set .@turbo2,rand(1,8);
+	if (.@turbo2 > 0) && (.@turbo2 < 3)
+		warp "alde_tt02",279,292;
+	else if (.@turbo2 > 2) && (.@turbo2 < 5)
+		warp "alde_tt02",311,292;
+	else if (.@turbo2 > 4) && (.@turbo2 < 7)
+		warp "alde_tt02",347,256;
+	else
+		warp "alde_tt02",370,292;
+	end;
+}
+
+alde_tt02,332,270,0	script	snake04#n16	45,1,1,{
+OnTouch:
+	set .@turbo2,rand(1,7);
+	if (.@turbo2 > 0) && (.@turbo2 < 3)
+		warp "alde_tt02",363,256;
+	else if (.@turbo2 > 2) && (.@turbo2 < 5)
+		warp "alde_tt02",295,293;
+	else if (.@turbo2 > 4) && (.@turbo2 < 7)
+		warp "alde_tt02",355,292;
+	else
+		warp "alde_tt02",287,256;
+	end;
+}
+
+// Turbo Track: Normal Mode - 16 Players (Water Maze)
+alde_tt02,179,55,0	script	#n16Intersectiona::TurboHint_n16_1	-1,1,1,{
+OnTouch:
+	emotion e_what,1;
+	end;
+}
+alde_tt02,184,45,0	duplicate(TurboHint_n16_1)	#n16Intersectionb	-1,1,1
+alde_tt02,181,30,0	duplicate(TurboHint_n16_1)	#n16Intersectionc	-1,1,1
+alde_tt02,186,28,0	duplicate(TurboHint_n16_1)	#n16Intersectiond	-1,1,1
+alde_tt02,183,19,0	duplicate(TurboHint_n16_1)	#n16Intersectione	-1,1,1
+alde_tt02,191,37,0	duplicate(TurboHint_n16_1)	#n16Intersectionf	-1,1,1
+alde_tt02,173,25,0	duplicate(TurboHint_n16_1)	#n16Intersectiong	-1,1,1
+alde_tt02,201,21,0	duplicate(TurboHint_n16_1)	#n16Intersectionh	-1,1,1
+alde_tt02,222,21,0	duplicate(TurboHint_n16_1)	#n16Intersectioni	-1,1,1
+alde_tt02,214,39,0	duplicate(TurboHint_n16_1)	#n16Intersectionj	-1,1,1
+alde_tt02,222,48,0	duplicate(TurboHint_n16_1)	#n16Intersectionk	-1,1,1
+alde_tt02,214,60,0	duplicate(TurboHint_n16_1)	#n16Intersectionl	-1,1,1
+alde_tt02,209,61,0	duplicate(TurboHint_n16_1)	#n16Intersectionm	-1,1,1
+alde_tt02,208,56,0	duplicate(TurboHint_n16_1)	#n16Intersectionn	-1,1,1
+
+alde_tt02,178,63,0	script	#n16CorrectPath1::TurboHint_n16_2	-1,1,1,{
+OnTouch:
+	emotion e_gasp,1;
+}
+alde_tt02,182,40,0	duplicate(TurboHint_n16_2)	#n16CorrectPath2	-1,1,1
+alde_tt02,176,29,0	duplicate(TurboHint_n16_2)	#n16CorrectPath3	-1,1,1
+alde_tt02,180,25,0	duplicate(TurboHint_n16_2)	#n16CorrectPath4	-1,1,1
+alde_tt02,201,157,0	duplicate(TurboHint_n16_2)	#n16CorrectPath5	-1,1,1
+alde_tt02,203,65,0	duplicate(TurboHint_n16_2)	#n16CorrectPath6	-1,1,1
+alde_tt02,208,52,0	duplicate(TurboHint_n16_2)	#n16CorrectPath7	-1,1,1
+alde_tt02,208,26,0	duplicate(TurboHint_n16_2)	#n16CorrectPath8	-1,1,1
+alde_tt02,191,30,0	duplicate(TurboHint_n16_2)	#n16CorrectPath9	-1,1,1
+
+alde_tt02,187,55,0	script	#n16NoWayOut1::TurboHint_n16_3	-1,1,1,{
+OnTouch:
+	emotion e_swt2,1;
+	if (rand(1,4) == 3)
+		emotion e_gasp;
+	end;
+}
+alde_tt02,176,45,0	duplicate(TurboHint_n16_3)	#n16NoWayOut2	-1,1,1
+alde_tt02,222,26,0	duplicate(TurboHint_n16_3)	#n16NoWayOut3	-1,1,1
+alde_tt02,219,39,0	duplicate(TurboHint_n16_3)	#n16NoWayOut4	-1,1,1
+alde_tt02,222,45,0	script	#n16NoWayOut5	-1,1,1,{
+OnTouch:
+	emotion e_swt2,1;
+	end;
+}
+alde_tt02,222,61,0	duplicate(TurboHint_n16_3)	#n16NoWayOut6	-1,1,1
+alde_tt02,222,65,0	duplicate(TurboHint_n16_3)	#n16NoWayOut7	-1,1,1
+
+//-----------------------------------------------------------------------------------------------------------------
+alde_tt02.gat,339,47,0	warp	ttt001	1,1,alde_tt02.gat,197,30
+alde_tt02.gat,334,54,0	warp	ttt002	1,1,alde_tt02.gat,197,30
+alde_tt02.gat,336,46,0	warp	ttt003	1,1,alde_tt02.gat,308,47
+alde_tt02.gat,366,54,0	warp	ttt004	1,1,alde_tt02.gat,308,47
+alde_tt02.gat,366,39,0	warp	ttt005	1,1,alde_tt02.gat,308,47
+

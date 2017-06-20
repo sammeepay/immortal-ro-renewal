@@ -1,0 +1,31 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	OnlineBonus	-1,{
+OnInIt:
+	set .time_count, 40;	// ออนไลน์นานเท่าไหร่ จึงจะได้ Cash (นาที)
+	end;
+
+OnPCLoginEvent:
+	dispbottom "[ Event Server ] : เมื่อคุณ Online ตัวละครครบ 40 นาที !! จะได้รับ 100 Poring Coin";
+	initnpctimer getcharid(3);
+	end;
+
+OnTimer60000:
+	stopnpctimer;
+	initnpctimer;
+	getmapxy( .@map$, .@x, .@y, 0 );
+	if ( .@map$ != @map$ || .@x != @x || .@y != @y ) {	// ถ้าไม่ขยับไปไหน จะพักเวลาไว้
+		set @map$, .@map$;
+		set @x, .@x;
+		set @y, .@y;
+		set @count, @count+1;
+		if ( @count >= .time_count ) {
+			set @count, 0;
+			atcommand "@item 29000 100";
+		}
+	}
+	end;
+}

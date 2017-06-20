@@ -1,0 +1,218 @@
+//------------- ซ้อนnpc -----------
+prontera.gat,134,54,4	script	visible1	139,{
+OnInit:
+disablenpc "บ้านSkoegul";
+disablenpc "บ้านHohenschwangau";
+disablenpc "บ้านMersetzdeitz";
+disablenpc "บ้านSacred Altar";
+//disablenpc "วาบบ้านพรอน#warpgvg1-1";
+//disablenpc "วาบบ้านนากา#warpgvg1-2";
+//disablenpc "วาบบ้านกิฟ#warpgvg1-3";
+//disablenpc "วาบบ้านย่อน#warpgvg1-4";
+end;
+
+OnAgitEnd:
+enablenpc "บ้านSkoegul";
+enablenpc "บ้านHohenschwangau";
+enablenpc "บ้านMersetzdeitz";
+enablenpc "บ้านSacred Altar";
+//disablenpc "วาบบ้านพรอน#warpgvg1-1";
+//disablenpc "วาบบ้านนากา#warpgvg1-2";
+//disablenpc "วาบบ้านกิฟ#warpgvg1-3";
+//disablenpc "วาบบ้านย่อน#warpgvg1-4";
+end;
+
+OnAgitStart:
+disablenpc "บ้านSkoegul";
+disablenpc "บ้านHohenschwangau";
+disablenpc "บ้านMersetzdeitz";
+disablenpc "บ้านSacred Altar";
+//enablenpc "วาบบ้านพรอน#warpgvg1-1";
+//enablenpc "วาบบ้านนากา#warpgvg1-2";
+//enablenpc "วาบบ้านกิฟ#warpgvg1-3";
+//enablenpc "วาบบ้านย่อน#warpgvg1-4";
+end;
+}
+
+//------------------oasis---------------------------------------------------------
+prontera.gat,132,171,4	duplicate(Skoegul2)	Skoegul#toj1	722
+prontera.gat,135,171,4	duplicate(Hohenschwangau2)	Hohenschwangau#toj2	722
+prontera.gat,138,171,4	duplicate(Mersetzdeitz2)	Mersetzdeitz#toj3	722
+prontera.gat,141,171,4	duplicate(SacredAltar2)	Sacred Altar#f4-7	722
+//---------------วาป-------------------------------------------------------------------------------------
+	//oasis.gat,135,52,5	script	วาบบ้านพรอน#warpgvg7-1	723,{ warp "prt_gld.gat",200,240;	close; }
+	//oasis.gat,127,52,5	script	วาบบ้านนากา#warpgvg7-2	723,{ warp "alde_gld",235,242;	close; }
+	//oasis.gat,131,52,5	script	วาบบ้านกิฟ#warpgvg7-3	723,{ warp "gef_fild13.gat",308,235;	close; }
+	//oasis.gat,138,52,5	script	วาบบ้านย่อน#warpgvg7-4	723,{ warp "pay_gld.gat",188,266;	close; }
+	
+//------------- แจกของ -------------
+prontera.gat,132,169,4	script	บ้านSkoegul	721,{
+set @GID,getcastledata("prtg_cas04.gat",1);
+if (strcharinfo(0) == getguildmaster(@GID)) goto Lpass;
+if (getcharid(2) == @GID) goto Lnotpass;
+mes "[ตัวแจกitemz]";
+mes "สำหรับ หัวหน้ากิล ที่ชื่อ ^ff0000[" + getguildmaster(@GID) + "]^000000";
+mes "เท่านั้น"; 
+close;
+
+Lpass:
+mes "[ตัวแจก itemz]";
+mes "ท่านเป็นหัวหน้ากิล";
+mes "ข้าจะแจก ไอเท็มให้เจ้า เพราะว่าเจ้าชนะ";
+mes "เอาไปแจกลูกน้องของเจ้าด้วยล่ะ";
+next;
+set Zeny,zeny+36000000;
+getitem 13973,10;
+getitem 13989,10;
+getitem 12103,10;
+getitem 22104,5;
+disablenpc "บ้านSkoegul";
+close;
+
+Lnotpass:
+mes "[ตัวแจก itemz]";
+mes "ข้ารอ หัวหน้ากิลของเจ้า ที่ชื่อ ^5533FF["+ getguildmaster(@GID)+"]^000000";
+mes "เจ้าไม่ใช้หัวหน้ากิล ไปซะ";
+close;
+}
+
+prontera.gat,135,169,4	script	บ้านHohenschwangau	721,{
+set @GID,getcastledata("aldeg_cas02.gat",1);
+if (strcharinfo(0) == getguildmaster(@GID)) goto Lpass;
+if (getcharid(2) == @GID) goto Lnotpass;
+mes "[ตัวแจกitemz]";
+mes "สำหรับ หัวหน้ากิล ที่ชื่อ ^ff0000[" + getguildmaster(@GID) + "]^000000";
+mes "เท่านั้น";
+close;
+
+Lpass:
+mes "[ตัวแจก itemz]";
+mes "ท่านเป็นหัวหน้ากิล";
+mes "ข้าจะแจก ไอเท็มให้เจ้า เพราะว่าเจ้าชนะ";
+mes "เอาไปแจกลูกน้องของเจ้าด้วยล่ะ";
+next;
+set Zeny,zeny+36000000;
+getitem 13973,10;
+getitem 13989,10;
+getitem 12103,10;
+getitem 22104,5;
+disablenpc "บ้านHohenschwangau";
+close;
+
+Lnotpass:
+mes "[ตัวแจก itemz]";
+mes "ข้ารอ หัวหน้ากิลของเจ้า ที่ชื่อ ^5533FF["+ getguildmaster(@GID)+"]^000000";
+mes "เจ้าไม่ใช้หัวหน้ากิล ไปซะ";
+close;
+}
+
+prontera.gat,138,169,4	script	บ้านMersetzdeitz	721,{
+set @GID,getcastledata("gefg_cas05.gat",1);
+if (strcharinfo(0) == getguildmaster(@GID)) goto Lpass;
+if (getcharid(2) == @GID) goto Lnotpass;
+mes "[ตัวแจกitemz]";
+mes "สำหรับ หัวหน้ากิล ที่ชื่อ ^ff0000[" + getguildmaster(@GID) + "]^000000";
+mes "เท่านั้น";
+close;
+
+Lpass:
+mes "[ตัวแจก itemz]";
+mes "ท่านเป็นหัวหน้ากิล";
+mes "ข้าจะแจก ไอเท็มให้เจ้า เพราะว่าเจ้าชนะ";
+mes "เอาไปแจกลูกน้องของเจ้าด้วยล่ะ";
+next;
+set Zeny,zeny+36000000;
+getitem 13973,10;
+getitem 13989,10;
+getitem 12103,10;
+getitem 22104,5;
+disablenpc "บ้านMersetzdeitz";
+close;
+
+Lnotpass:
+mes "[ตัวแจก itemz]";
+mes "ข้ารอ หัวหน้ากิลของเจ้า ที่ชื่อ ^5533FF["+ getguildmaster(@GID)+"]^000000";
+mes "เจ้าไม่ใช้หัวหน้ากิล ไปซะ";
+close;
+}
+
+prontera.gat,141,169,4	script	บ้านSacred Altar	721,{
+set @GID,getcastledata("payg_cas04.gat",1);
+if (strcharinfo(0) == getguildmaster(@GID)) goto Lpass;
+if (getcharid(2) == @GID) goto Lnotpass;
+mes "[ตัวแจกitemz]";
+mes "สำหรับ หัวหน้ากิล ที่ชื่อ ^ff0000[" + getguildmaster(@GID) + "]^000000";
+mes "เท่านั้น";
+close;
+
+Lpass:
+mes "[ตัวแจก itemz]";
+mes "ท่านเป็นหัวหน้ากิล";
+mes "ข้าจะแจก ไอเท็มให้เจ้า เพราะว่าเจ้าชนะ";
+mes "เอาไปแจกลูกน้องของเจ้าด้วยล่ะ";
+next;
+set Zeny,zeny+36000000;
+getitem 13973,10;
+getitem 13989,10;
+getitem 12103,10;
+getitem 22104,5;
+disablenpc "บ้านSacred Altar";
+close;
+
+Lnotpass:
+mes "[ตัวแจก itemz]";
+mes "ข้ารอ หัวหน้ากิลของเจ้า ที่ชื่อ ^5533FF["+ getguildmaster(@GID)+"]^000000";
+mes "เจ้าไม่ใช้หัวหน้ากิล ไปซะ";
+close;
+}
+
+//==========================================================================================================================================\\
+
+prontera,145,168,4	script	WoE Timer	858,{
+end;
+
+OnTimer60000:
+delwaitingroom;
+set .@Goal_Time,atoi(getd(".War_Time"+(agitcheck()?gettime(4):.Next_War)+"$["+agitcheck()+"]"));
+set .@Mn_left,((.@Goal_Time%100)-gettime(2)) + (((.@Goal_Time%100)<gettime(2))?60:0);
+waitingroom "อีก "+(.Hr_left?.Hr_left+" ชั่วโมง ":"")+""+(.@Mn_left?.@Mn_left+" นาที ":"")+""+(agitcheck()?"จะหมดเวลากิลวอ":"จะเริ่มกิลวอ"),0;
+stopnpctimer;
+initnpctimer;
+end;
+
+
+OnAgitEnd:
+callsub Next_war;
+OnAgitStart:
+callsub New_Hour;
+end;
+
+New_Hour:
+OnMinute00:
+set .@Goal_Time,atoi(getd(".War_Time"+(agitcheck()?gettime(4):.Next_War)+"$["+agitcheck()+"]"));
+set .Hr_left,((.@Goal_Time/100) - gettime(3)) - (((.@Goal_Time%100)<gettime(2))?1:0) + (agitcheck()?0:(24*(.Next_War-gettime(4))));
+callsub OnTimer60000;
+end;
+
+
+OnInit:
+/*วิธีตั้งค่า ใส่เวลาเริ่มกิลล์วอร์ในช่องแรก และ เวลาหมดวอร์ในช่องหลัง ให้ตรงกับแต่ละวันที่เรามีกิลวอรื วิธีใส่ให้ใส่ลงไปเลย เช่น ถ้าวอร์เริ่ม 19.00 ก็ใส่ลงไปเลยว่า "1900" หรือวอร์เริ่ม เที่ยงคืนก็ใส่ไปเลย "0000" อย่าลืมว่าใส่ให้ในเครื่องหมาย "" ใส่ให้ตรงวัน และ เริ่มวอร์อยู่อันแรก จบวอร์อันหลัง*/
+setarray .War_Time0$[0],"2000","2100";	//วันอาทิตย์
+setarray .War_Time1$[0],"2000","2100";	//วันจันทร์
+setarray .War_Time2$[0],"2000","2100";	//วันอังคาร
+setarray .War_Time3$[0],"2000","2100";	// วันพุธ
+setarray .War_Time4$[0],"2000","2100";	//วันพฤหัส
+setarray .War_Time5$[0],"2000","2100";	//วันศุกร์
+setarray .War_Time6$[0],"2000","2100";	//วันเสาร์
+initnpctimer;
+callsub Next_war;
+end;
+
+Next_war:
+if(atoi(getd(".War_Time"+gettime(4)+"$[1]")) <= ((gettime(3)*100)+gettime(2))) set .@st_loop,1;
+for(set .@i,gettime(4)+.@st_loop; .@i <= 7; set .@i,.@i+1) {
+if(.@i == 7) { set .@i,-1; continue; }
+if(getd(".War_Time"+.@i+"$[0]") != "") { set .Next_War,.@i; break; }
+}
+callsub New_Hour;
+}

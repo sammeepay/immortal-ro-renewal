@@ -1,0 +1,15 @@
+function	script	freevip	{
+atcommand "@item 1161 1";
+atcommand "@item 27075 1";
+
+}
+
+function	script	itemgvg	{
+atcommand "@item 7227 300";
+atcommand "@item 12221 10";
+atcommand "@zeny 100000000 1";
+atcommand "@item 607 100";
+
+}
+
+

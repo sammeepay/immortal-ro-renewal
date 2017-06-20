@@ -1,0 +1,217 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+
+-	script	marry33::marry	-1,{
+	set .@npc$,"[บาทหลวง]";
+	if (getpartnerid()) goto OnPartner;
+	if ( (.WEDstatus == 2) && (.WEDname_girl$ == strcharinfo(0)) ) goto OnStatus2;
+	mes .@npc$;
+	mes "คุณต้องการแต่งงานใช่ไหม";
+	next;
+	if (select("- ใช่","- ไม่ใช่") == 2) goto Cancel;
+	mes .@npc$;
+	mes "สิ่งของที่ใช้ในการแต่งงาน";
+	mes "====== ชาย ======";
+	for (set .@i,0; .@i < getarraysize(.WEDboy_item); set .@i,.@i+1) {
+		mes getitemname(.WEDboy_item[.@i])+" 1 ea";
+	}
+	mes "====== หญิง ======";
+	for (set .@i,0; .@i < getarraysize(.WEDgirl_item); set .@i,.@i+1) {
+		mes getitemname(.WEDgirl_item[.@i])+" 1 ea";
+	}
+	mes "================";
+	mes "จำนวนเงิน "+.WEDzeny+" Zeny";
+	if (Sex == 0) {
+		mes "================";
+		mes "ถ้าต้องการแต่งงาน";
+		mes "กรุณาให้ฝ่ายชายมาเริ่มพิธี";
+		close;
+	}
+	next;
+	if (select("- ตกลง","- ไม่ตกลง") == 2) goto Cancel;
+	mes .@npc$;
+	if (.WEDstatus > 0) {
+		mes "มีผู้อื่นกำลังเข้าพิธี";
+		close;
+	}
+	set .WEDstauts,1;
+	mes "กรุณาบอกชื่อหญิงที่คุณ";
+	mes "ต้องการแต่งงาน";
+	set .WEDname_boy$,strcharinfo(0);
+	set .@loop,1;
+	do {
+		input .WEDname_girl$;
+		if (.WEDname_girl$ == "") {
+			mes "================";
+			mes "ยกเลิกการลงทะเบียน";
+			close;
+		} else if (getstrlen(.WEDname_girl$) > 24) {
+			mes "================";
+			mes "ระบุชื่อตัวละครให้ถูกต้อง";
+		} else if (isloggedin(getcharid(3,.WEDname_girl$))) {
+			mes "================";
+			attachrid(getcharid(3,.WEDname_girl$));
+			set .@check_sex,Sex;
+			detachrid;
+			attachrid(getcharid(3,.WEDname_boy$));
+			if (.@check_sex != 0) {
+				mes "บุคคลนี้ไม่ใช่เพศหญิง";
+			} else {
+				set .@loop,0;
+			}
+		} else {
+			mes "================";
+			mes "ไม่พบชื่อหญิงที่คุณรัก";
+			mes "กรุณาระบุใหม่";
+		}
+	} while (.@loop);
+	set .@isok,1;
+	for (set .@i,0; .@i < getarraysize(.WEDboy_item); set .@i,.@i+1) {
+		if (countitem(.WEDboy_item[.@i]) < 1) {
+			mes "คุณไม่มี "+getitemname(.WEDboy_item[.@i])+" 1 ea";
+			set .@isok,0;
+		}
+	}
+	if (Zeny < .WEDzeny) {
+		mes "คุณมีเงินไม่พอ";
+		set .@isok,0;
+	}
+	if (!.@isok) {
+		set .WEDstatus,0;
+	} else {
+		for (set .@i,0; .@i < getarraysize(.WEDboy_item); set .@i,.@i+1) {
+			delitem .WEDboy_item[.@i],1;
+		}
+		set Zeny,Zeny-.WEDzeny;
+		mes "กรุณาให้แฟนคุณมารายงานตัว";
+		mes "ภายใน 1 นาที";
+		set .WEDstatus,2;
+		donpcevent ""+strnpcinfo(0)+"::OnCheckTime";
+	}
+	close;
+
+OnStatus2:
+	mes .@npc$;
+	mes "คุณต้องการแต่งงานกับ";
+	mes "คุณ "+.WEDname_boy$+"";
+	mes "หรือไม่";
+	next;
+	if (select("- ตกลง","- ไม่ตกลง") == 2) {
+		attachrid(getcharid(3,.WEDname_boy$));
+		for (set .@i,0; .@i < getarraysize(.WEDboy_item); set .@i,.@i+1) {
+			getitem .WEDboy_item[.@i],1;
+		}
+		set Zeny,Zeny+.WEDzeny;
+		dispbottom "คุณ "+.WEDname_girl$+" ปฏิเสธการแต่งงาน";
+		detachrid;
+		attachrid(getcharid(3,.WEDname_girl$));
+		set .WEDstatus,0;
+		goto Cancel;
+	}
+	mes .@npc$;
+	set .@isok,1;
+	for (set .@i,0; .@i < getarraysize(.WEDgirl_item); set .@i,.@i+1) {
+		if (countitem(.WEDgirl_item[.@i]) < 1) {
+			mes "คุณไม่มี "+getitemname(.WEDgirl_item[.@i])+" 1 ea";
+			set .@isok,0;
+		}
+	}
+	if (Zeny < .WEDzeny) {
+		mes "คุณมีเงินไม่พอ";
+		set .@isok,0;
+	}
+	if (.@isok) {
+		if ( isloggedin(getcharid(3,.WEDname_boy$)) && marriage(.WEDname_boy$) && (.WEDstatus == 2) ) {
+			for (set .@i,0; .@i < getarraysize(.WEDgirl_item); set .@i,.@i+1) {
+				if (.WEDgirl_item[.@i] == 2206) continue;
+				delitem .WEDgirl_item[.@i],1;
+			}
+			set Zeny,Zeny-.WEDzeny;
+
+			sc_start SC_Wedding,3600000,1;
+			getitem 2635,1;
+			attachrid(getcharid(3,.WEDname_boy$));
+			sc_start SC_Wedding,3600000,1;
+			getitem 2634,1;
+			detachrid;
+			attachrid(getcharid(3,.WEDname_girl$));
+			announce "เจ้าบ่าว [ "+.WEDname_boy$+" ] และ เจ้าสาว [ "+.WEDname_girl$+" ] ได้แต่งงานกัน ร่วมเป็น ชีวิตคู่ตลอดไป..!!",0;
+			wedding;
+			equip 2206;
+		
+			mes "พิธีแต่งงานเริ่มขึ้นแล้ว";
+		} else {
+			if (getpartnerid()) divorce();
+			mes "เกิดข้อผิดพลาด";
+		}
+		set .WEDstatus,0;
+		set .WEDname_boy$,"";
+		set .WEDname_girl$,"";
+	}
+	close;
+
+OnPartner:
+	mes .@npc$;
+	mes "คุณต้องการแยกทางกับ";
+	mes "แฟนคุณหรือไม่";
+	mes "ค่าดำเนินการ";
+	mes ""+(.WEDzeny*2)+" Zeny";
+	next;
+	if (select("- ต้องการ","- ไม่ต้องการ") == 2) {
+		mes .@npc$;
+		mes "ขอให้มีความสุขตลอดไป";
+		close;
+	}
+	mes .@npc$;
+	if (Zeny < (.WEDzeny*2)) {
+		mes "คุณมีเงินไม่พอ";
+		close;
+	} else if (divorce()) {
+		mes "ดำเนินการเรียบร้อยแล้ว";
+		set Zeny,Zeny-(WEDzeny*2);
+	}
+	close;
+
+OnCheckTime:
+	set .@time,60;
+	while ( (.@time > 0) && (.WEDstatus == 2) ) {
+		sleep 1000;
+		set .@time,.@time-1;
+	}
+	if (attachrid(getcharid(3,.WEDname_boy$))) {
+		for (set .@i,0; .@i < getarraysize(.WEDboy_item); set .@i,.@i+1) {
+			getitem .WEDboy_item[.@i],1;
+		}
+		set Zeny,Zeny+.WEDzeny;
+		dispbottom "ยกเลิกพิธีแต่งงาน";
+	}
+	set .WEDstatus,0;
+	end;
+
+Cancel:
+	mes .@npc$;
+	mes "ขอให้คุณโสดต่อไป";
+	close;
+	end;
+
+OnInit:
+	// Set
+	set .WEDzeny,1500000;
+	setarray .WEDboy_item[0],7170,745,2613;
+	setarray .WEDgirl_item[0],2338,2206,2613;
+
+	// System
+	set .WEDstatus,0;
+	set .WEDname_boy$,"";
+	set .WEDname_girl$,"";
+	end;
+}

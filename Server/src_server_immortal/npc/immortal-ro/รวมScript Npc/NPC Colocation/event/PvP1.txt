@@ -1,0 +1,60 @@
+morocc2,278,73,4	script	Event PvP	419,{
+set .@namess$,"[Event PvP]";
+mes .@namess$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "ต้องการเข้าร่วมกิจกรรมมั้ยครับ";
+next;
+mes .@namess$;
+menu "^009933•^000000 ต้องการ",gogo,"^FF0000•^000000 ยกเลิก",can;
+can:
+close;
+
+gogo:
+warp "homes4",51,40; 
+close;
+
+OnInit:
+Waitingroom "๐ Event PvP ๐" , 0;
+end;
+
+}
+
+homes4	mapflag	nodrop
+homes4	mapflag	nobranch
+homes4	mapflag	noloot
+homes4	mapflag	noteleport
+homes4	mapflag	nosave
+homes4	mapflag	novending
+homes4	mapflag	notrade
+homes4	mapflag	pvp
+
+homes4,64,35,0	warp	2exittomorpvp	1,1,morocc2,159,92
+
+homes4,44,51,4	script	PvP Event#2	858,{ end;}
+homes4,44,49,4	script	PvP Event#3	858,{ end;}
+homes4,44,47,4	script	PvP Event#4	858,{ end;}
+homes4,44,45,4	script	PvP Event#5	858,{ end;}
+homes4,44,43,4	script	PvP Event#6	858,{ end;}
+
+homes4,44,43,4	script	PvP Event#7	858,{ end;}
+homes4,44,43,4	script	PvP Event#8	858,{ end;}
+homes4,44,43,4	script	PvP Event#9	858,{ end;}
+homes4,46,43,4	script	PvP Event#10	858,{ end;}
+homes4,48,43,4	script	PvP Event#11	858,{ end;}
+homes4,50,43,4	script	PvP Event#12	858,{ end;}
+homes4,52,43,4	script	PvP Event#13	858,{ end;}
+homes4,54,43,4	script	PvP Event#14	858,{ end;}
+homes4,56,43,4	script	PvP Event#15	858,{ end;}
+homes4,58,43,4	script	PvP Event#16	858,{ end;}
+
+homes4,58,45,4	script	PvP Event#17	858,{ end;}
+homes4,58,47,4	script	PvP Event#18	858,{ end;}
+homes4,58,49,4	script	PvP Event#19	858,{ end;}
+homes4,58,51,4	script	PvP Event#20	858,{ end;}
+
+homes4,56,51,4	script	PvP Event#21	858,{ end;}
+homes4,54,51,4	script	PvP Event#22	858,{ end;}
+homes4,52,51,4	script	PvP Event#23	858,{ end;}
+homes4,50,51,4	script	PvP Event#24	858,{ end;}
+homes4,48,51,4	script	PvP Event#25	858,{ end;}
+homes4,46,51,4	script	PvP Event#26	858,{ end;}

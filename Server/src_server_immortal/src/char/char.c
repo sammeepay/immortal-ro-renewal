@@ -2547,7 +2547,7 @@ void char_sql_config_read(const char* cfgName) {
 		else if(!strcmpi(w1,"mail_db"))
 			safestrncpy(schema_config.mail_db, w2, sizeof(schema_config.mail_db));
 		else if (!strcmpi(w1, "mail_attachment_db"))
-+			safestrncpy(schema_config.mail_attachment_db, w2, sizeof(schema_config.mail_attachment_db));
+			safestrncpy(schema_config.mail_attachment_db, w2, sizeof(schema_config.mail_attachment_db));
 		else if(!strcmpi(w1,"auction_db"))
 			safestrncpy(schema_config.auction_db, w2, sizeof(schema_config.auction_db));
 		else if(!strcmpi(w1,"friend_db"))

@@ -8303,7 +8303,7 @@ void clif_guild_masterormember(struct map_session_data *sd)
 void clif_guild_basicinfo(struct map_session_data *sd) {
 	int fd;
 	struct guild *g;
-if PACKETVER < 20160622
+#if PACKETVER < 20160622
 	int cmd = 0x1b6;
 	int offset = NAME_LENGTH;
 #else
@@ -14918,7 +14918,7 @@ void clif_Mail_send(struct map_session_data* sd, enum mail_send_result result){
 /// result:
 ///     0 = success
 ///     1 = failure
-+// 09f6 <mail tab>.B <mail id>.Q (ZC_ACK_DELETE_MAIL)
+// 09f6 <mail tab>.B <mail id>.Q (ZC_ACK_DELETE_MAIL)
 void clif_mail_delete( struct map_session_data* sd, struct mail_message *msg, bool success ){
 	int fd = sd->fd;
 
@@ -15402,7 +15402,7 @@ void clif_parse_Mail_Receiver_Check(int fd, struct map_session_data *sd) {
 /// 0244 <mail id>.L (CZ_MAIL_GET_ITEM)
 /// 09f1 <mail id>.Q <mail tab>.B (CZ_REQ_ZENY_FROM_MAIL)
 /// 09f3 <mail id>.Q <mail tab>.B (CZ_REQ_ITEM_FROM_MAIL)
-void clif_parse_Mail_getattach( int fd, struct map_session_data *sd ){
+void clif_parse_Mail_getattach(int fd, struct map_session_data *sd) {
 	int i;
 	bool fail = false;
 	struct mail_message* msg;
@@ -15416,89 +15416,90 @@ void clif_parse_Mail_getattach( int fd, struct map_session_data *sd ){
 	int attachment = packet_id == 0x9f1 ? MAIL_ATT_ZENY : packet_id == 0x9f3 ? MAIL_ATT_ITEM : MAIL_ATT_NONE;
 #endif
 
-	if( !chrif_isconnected() )
+	if (!chrif_isconnected())
 		return;
-	if( mail_id <= 0 )
+	if (mail_id <= 0)
 		return;
-	if( mail_invalid_operation(sd) )
+	if (mail_invalid_operation(sd))
 		return;
 
 	ARR_FIND(0, MAIL_MAX_INBOX, i, sd->mail.inbox.msg[i].id == mail_id);
-	if( i == MAIL_MAX_INBOX )
+	if (i == MAIL_MAX_INBOX)
 		return;
 
 	msg = &sd->mail.inbox.msg[i];
 
-	if( attachment&MAIL_ATT_ZENY && msg->zeny < 1 ){
+	if (attachment&MAIL_ATT_ZENY && msg->zeny < 1) {
 		attachment &= ~MAIL_ATT_ZENY;
 	}
-	
-	if( attachment&MAIL_ATT_ITEM ){
+
+	if (attachment&MAIL_ATT_ITEM) {
 		ARR_FIND(0, MAIL_MAX_ITEM, i, msg->item[i].nameid > 0 || msg->item[i].amount > 0);
 
 		// No items were found
-		if( i == MAIL_MAX_ITEM ){
+		if (i == MAIL_MAX_ITEM) {
 			attachment &= ~MAIL_ATT_ITEM;
 		}
 	}
 
 	// Either no attachment requested at all or there are no zeny or items in the mail
-	if( attachment == MAIL_ATT_NONE ){
+	if (attachment == MAIL_ATT_NONE) {
 		return;
 	}
 
-	if( attachment&MAIL_ATT_ZENY ){
-		if( msg->zeny + sd->status.zeny > MAX_ZENY ){
+	if (attachment&MAIL_ATT_ZENY) {
+		if (msg->zeny + sd->status.zeny > MAX_ZENY) {
 			clif_mail_getattachment(sd, msg, 1, MAIL_ATT_ZENY); //too many zeny
 			return;
-		}else{
+		}
+		else {
 			// To make sure another request fails
 			msg->zeny = 0;
 		}
 	}
 
-	if( attachment&MAIL_ATT_ITEM ){
+	if (attachment&MAIL_ATT_ITEM) {
 		int new_ = 0, totalweight = 0;
 
-		for( i = 0; i < MAIL_MAX_ITEM; i++ ){
+		for (i = 0; i < MAIL_MAX_ITEM; i++) {
 			struct item* item = &msg->item[i];
 
-			if( item->nameid > 0 && item->amount > 0 ){
+			if (item->nameid > 0 && item->amount > 0) {
 				struct item_data *data;
 
-				if((data = itemdb_exists(item->nameid)) == NULL)
+				if ((data = itemdb_exists(item->nameid)) == NULL)
 					continue;
 
-				switch( pc_checkadditem(sd, item->nameid, item->amount) ){
-					case CHKADDITEM_NEW:
-						new_++;
-						break;
-					case CHKADDITEM_OVERAMOUNT:
-						clif_mail_getattachment(sd, msg, 2, MAIL_ATT_ITEM);
-						return;
+				switch (pc_checkadditem(sd, item->nameid, item->amount)) {
+				case CHKADDITEM_NEW:
+					new_++;
+					break;
+				case CHKADDITEM_OVERAMOUNT:
+					clif_mail_getattachment(sd, msg, 2, MAIL_ATT_ITEM);
+					return;
 				}
 
 				totalweight += data->weight * item->amount;
 			}
 
-		if( ( totalweight + sd->weight ) > sd->max_weight ){
-			clif_mail_getattachment(sd, msg, 2, MAIL_ATT_ITEM);
-			return;
-		}else if( pc_inventoryblank(sd) < new_ ){
-			clif_mail_getattachment(sd, msg, 2, MAIL_ATT_ITEM);
-			return;
+			if ((totalweight + sd->weight) > sd->max_weight) {
+				clif_mail_getattachment(sd, msg, 2, MAIL_ATT_ITEM);
+				return;
+			}
+			else if (pc_inventoryblank(sd) < new_) {
+				clif_mail_getattachment(sd, msg, 2, MAIL_ATT_ITEM);
+				return;
+			}
+
+			// To make sure another request fails
+			memset(msg->item, 0, MAIL_MAX_ITEM * sizeof(struct item));
 		}
 
-		// To make sure another request fails
-		memset(msg->item, 0, MAIL_MAX_ITEM*sizeof(struct item));
+		sd->mail.inbox.msg[i].zeny = 0;
+		memset(&sd->mail.inbox.msg[i].item, 0, sizeof(struct item));
+		intif_mail_getattach(sd, msg, attachment);
+		clif_Mail_read(sd, mail_id);
 	}
-
-	sd->mail.inbox.msg[i].zeny = 0;
-	memset(&sd->mail.inbox.msg[i].item, 0, sizeof(struct item));
-	intif_mail_getattach(sd,msg,attachment);
-	clif_Mail_read(sd, mail_id);
-
-	intif_Mail_getattach(sd->status.char_id, mail_id);
 }
 
 

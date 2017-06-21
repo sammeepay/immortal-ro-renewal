@@ -2311,8 +2311,14 @@ bool intif_mail_getattach( struct map_session_data* sd, struct mail_message *msg
 int intif_parse_Mail_getattach(int fd)
 {
 	struct map_session_data *sd;
-	struct item item;
-	int zeny = RFIFOL(fd,8);
+	struct item item[MAIL_MAX_ITEM];
+	int i, mail_id, zeny;
+	
+		if (RFIFOW(fd, 2) - 16 != sizeof(struct item)*MAIL_MAX_ITEM)
+		 {
+		ShowError("intif_parse_Mail_getattach: data size error %d %d\n", RFIFOW(fd, 2) - 16, sizeof(struct item));
+		return 0;
+		}
 
 	sd = map_charid2sd( RFIFOL(fd,4) );
 
@@ -2388,7 +2394,7 @@ int intif_parse_Mail_delete(int fd)
 		}
 
 		if( sd->mail.inbox.full || sd->mail.inbox.unchecked > 0 )
-+			intif_Mail_requestinbox(sd->status.char_id, 1, type); // Free space is available for new mails
+			intif_Mail_requestinbox(sd->status.char_id, 1, type); // Free space is available for new mails
 	}
 
 	return 1;

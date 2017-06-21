@@ -38,7 +38,7 @@ struct achievement *mapif_achievements_fromsql(uint32 char_id, int *count)
 	StringBuf_Init(&buf);
 	StringBuf_AppendStr(&buf, "SELECT `id`, `complete`, `completeDate`, `gotReward`");
 	for (i = 0; i < MAX_ACHIEVEMENT_OBJECTIVES; ++i)
-StringBuf_Printf(&buf, ", `count%d`", i + 1);
+	StringBuf_Printf(&buf, ", `count%d`", i + 1);
 	StringBuf_Printf(&buf, " FROM `%s` WHERE `char_id` = '%d'", schema_config.achievement_table, char_id);
 
 	stmt = SqlStmt_Malloc(sql_handle);

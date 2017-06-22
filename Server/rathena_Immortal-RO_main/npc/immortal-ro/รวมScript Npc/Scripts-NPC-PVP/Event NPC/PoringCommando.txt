@@ -1,0 +1,255 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+rtc_ro,30,103,4	script	poringCommando	440,{
+mes "[ ^FF0000Poring Commando^000000 ]";
+mes "ท่านสนใจเข้าร่วมกิจกรรม";
+mes "Poring Commando ไหมล่ะ";
+mes "ค่าเข้า [ ^FF0000 500,000 z. ^000000 ]";
+next;
+menu "- เข้าร่วมกิจกรรม",-,"- ไม่ดีกว่าข้างบหมด",Cancel;
+if($@isPoringCmdStart == 1){
+mes "[ ^FF0000Poring Commando^000000 ]";
+mes "ขณะนี้ได้เริ่มการกิจกรรมไปแล้ว";
+mes "โปรดรอรอบต่อไป";
+close;
+}
+if (Zeny < 500000){
+mes "[ ^FF0000Poring Commando^000000 ]";
+mes "คุณมี Zeny ไม่พอไม่สามารถลงเล่นได้";
+close;
+}
+if (countitem(7621) > 0) goto Lcancel;
+if (countitem(610) > 0) goto Lcancel;
+if (countitem(607) > 0) goto Lcancel;
+announce "ผู้เล่น [ "+strcharinfo(0)+" ] ได้เข้าร่วม Poring Commando แล้ว",bc_blue|bc_all;
+set poringCmdFlag, $poringCmdFlag;
+set Zeny, Zeny - 500000;
+warp $@poringCmdMap$,0,0;
+close;
+
+Cancel:
+mes "[ ^FF0000Poring Commando^000000 ]";
+mes "ไว้เจอกันใหม่นะ";
+close;
+
+Lcancel:
+mes "[ ^FF0000Poring Commando^000000 ]";
+mes "คุณพก ^FF0000Token of Ziegfried^000000";
+mes "คุณพก ^FF0000ใบชุบ^000000";
+mes "คุณพก ^FF0000Yggdrasilberry^000000";
+mes "ไม่สามารถร่วมกิจกรรมได้, ลาก่อน";
+close;
+
+OnSpawn:
+mapannounce $@poringCmdMap$,"Poring Commando : เริ่มขึ้นแล้ว !!! คุณมีหน้าที่เพียงแค่อยู่รอดเท่านั้น ยิ่งอยู่รอดได้นาน ยิ่งได้ PC Coin มากขึ้น",bc_map,0xBFEFFF;
+monster $@poringCmdMap$,32,36,"Poring",.poringMobID[0],.spawnMax[0],"poringCommando::OnPoringDie";
+end;
+
+OnPoringDie:
+end;
+
+OnPCLogoutEvent:
+getmapxy .@map$, .@x, .@y, 0;
+if(.@map$ == ("guild_vs5")){
+warp "SavePoint",0,0;
+}
+end;
+OnPCDieEvent:
+getmapxy .@map$, .@x, .@y, 0;
+if(.@map$ == ("guild_vs5") || ("poringCmdFlag") == ("$poringCmdFlag")){
+announce "ผู้เล่น [ " + strcharinfo(0) + " ] ได้พ่ายแพ้ต่อฝูง Poring แล้ว ได้รับ PC จำนวน " + (.IZPCMD[(gettimetick(2)-.startTime)/60]) +  " ea.",bc_blue|bc_all;
+getitem 29000,.IZPCMD[(gettimetick(2)-.startTime)/60];
+warp "SavePoint",0,0;
+sleep2 200;
+atcommand "@alive "+strcharinfo(0);
+}
+end;
+
+OnActivate:
+set .min, 0;
+set $poringCmdFlag, rand(100000,999999);
+set .timerMode, 0;
+set $@isPoringCmdStart, 0;
+hideoffnpc "poringCommando";
+hideonnpc "poringCmdExit";
+hideonnpc "poringCmdMsg";
+announce "Poring Commando : กิจกรรม Poring Commando ได้เปิดให้ท่านร่วมสนุกแล้ว",bc_blue|bc_all;
+maprespawnguildid $@poringCmdMap$,0,7;
+initnpctimer;
+end;
+
+OnTimer60000:
+if(.timerMode == 0){
+set .min, .min+1;
+if(.min==.prepareTime){
+set .startTime, gettimetick(2);
+set .timerMode, 1;
+set .oldMin, 0;
+set $@isPoringCmdStart, 1;
+initnpctimer;
+hideonnpc "poringCommando";
+hideoffnpc "poringCmdMsg";
+goto OnSpawn;
+}
+else {
+announce "Poring Commando : จะปิดการสมัคร และเริ่มต้นในอีก " + (.prepareTime-.min) + " นาที",bc_blue|bc_all;
+initnpctimer;
+}
+}
+end;
+
+OnTimer300:
+if(.timerMode == 1){
+set .poringAlive, mobcount($@poringCmdMap$,"poringCommando::OnPoringDie");
+set .curMin, (gettimetick(2)-.startTime)/60;
+if(.oldMin != .curMin){
+set .oldMin, .curMin;
+mapannounce $@poringCmdMap$, "ขณะนี้ผู้เล่นทั้งหมด " + getmapusers($@poringCmdMap$) + " ท่าน รอดชีวิตมาได้แล้ว " + .curMin + " นาที",bc_map,0xBFEFFF;
+if(.@curMin%3 == 0)
+killmonsterall $@poringCmdMap$;
+}
+set .@end, 0;
+if(.curMin >= .maxMin) set .@end, 1;
+else if(getmapusers($@poringCmdMap$)==0) set .@end, 2;
+if(.@end){
+switch(.@end){
+case 1:
+announce "ผู้เล่นทั้งหมด " + getmapusers($@poringCmdMap$) + " ท่านได้อยู่รอดจนครบ " + .maxMin + " นาทีแล้ว!! ขอแสดงความยินดี ด้วย!! รับ รางวัล ตรงกลาง แม๊พ", bc_all;
+set .IZPCMD,0;
+break;
+
+case 2:
+announce "ผู้เล่นทั้งหมด ได้พ่ายแพ้ต่อฝูง Poring แล้ว !!",bc_all;
+set .IZPCMD,0;
+break;
+}
+killmonsterall $@poringCmdMap$;
+hideoffnpc "poringCmdExit";
+stopnpctimer;
+end;
+}
+if(.poringAlive < .spawnMax[.curMin]){
+monster $@poringCmdMap$,0,0,"Poring",.poringMobID[(.curMin/3)],1,"poringCommando::OnPoringDie";
+}
+initnpctimer;
+}
+end;
+OnClock0030:
+OnClock0430:
+OnClock0830:
+OnClock1230:
+OnClock1630:
+OnClock2030:
+donpcevent "poringCommando::OnActivate";
+end;
+
+OnInit:
+hideonnpc "poringCommando";
+set $poringCmdFlag, rand(100000,999999);
+set .timerMode, 0;
+set .IZPCMD,0;
+
+
+//--------------- Config Event Poring CMD
+//จำนวนทีได้รับแต่ละนาทีๆ
+setarray .IZPCMD[0],0,50,100,150,200,250,300,350,400,450,500,600,700,800,900,1000;
+
+//จำนวนพอริ่งที่ต้องการให้เงินในแต่ละนาที
+setarray .spawnMax[0],100,100,100,200,200,200,250,250,300,300,300,400,400,1000,1000;
+
+//แผนที่จัดกิจกรรม
+set $@poringCmdMap$,"guild_vs5";
+
+//เวลาลงทะเบียน ก่อนเริ่มกิจกรรม
+set .prepareTime, 3;
+set .maxMin, getarraysize(.IZPCMD);
+set $@maxPrize, .IZPCMD[.maxMin-1];
+
+//Poring Mob_db
+setarray .poringMobID[0],3300,3301,3302,3303,3304;
+
+//Mapflag conf
+setmapflag $@poringCmdMap$,mf_nomemo;
+setmapflag $@poringCmdMap$,mf_noteleport;
+setmapflag $@poringCmdMap$,mf_nosave;
+setmapflag $@poringCmdMap$,mf_nobranch;
+setmapflag $@poringCmdMap$,mf_nopenalty;
+setmapflag $@poringCmdMap$,mf_nozenypenalty;
+setmapflag $@poringCmdMap$,mf_noskill;
+setmapflag $@poringCmdMap$,mf_nowarp;
+setmapflag $@poringCmdMap$,mf_noreturn;
+removemapflag $@poringCmdMap$,mf_gvg;
+end;
+}
+
+
+//--------------- NPC Exit Proing Cmd 15min
+guild_vs5,49,71,4	script	poringCmdExit	222,{
+if(poringCmdFlag){
+mes "[ ^FF0000Poring Win^000000 ]";
+mes "ยินดีด้วย ท่านรอดมาจนครบ";
+mes "จำนวนนาทีสูงสุดแล้ว!!";
+mes "เอาล่ะ นี่คือ ของ รางวัลของท่าน";
+mes "^0000FF*ได้รับ " + ($@maxPrize) + " PC";
+getitem 29000,$@maxPrize;
+set poringCmdFlag, 0;
+close2;
+}
+announce "ผู้เล่น [ "+strcharinfo(0)+" ] ได้รับ PC 1000 ea. เนื่องจากชนะ Poring Commando",bc_blue|bc_all;
+warp "SavePoint",0,0;
+end;
+}
+
+
+//--------------- NPC Information Poring CMD
+rtc_ro,30,103,4	script	poringCmdMsg	440,{
+mes "[ ^FF0000Infomation Poring^000000 ]";
+mes "คุณต้องการสอบถามอะไร ?";
+next;
+menu "- รางวัลที่จะได้",-,"- เวลาเริ่มของ Poring Commando",InfoPoringCMD,"- ยกเลิก",Exit;
+mes "[ ^FF0000Infomation Poring^000000 ]";
+mes "ค่าสมัครเล่น ^FF0000 500,000 z. ^000000";
+mes "ยิ่งอยู่นานยิ่งได้รางวัลเยอะ";
+mes "เวลาสูงสุดคือ ^FF000015^000000 นาที ได้ ^FF0000 1000 PC^000000";
+mes "1 นาที = 50  PC";
+mes "2 นาที = 100 PC";
+mes "3 นาที = 150 PC";
+mes "4 นาที = 200 PC";
+mes "5 นาที = 250 PC";
+mes "6 นาที = 300 PC";
+mes "7 นาที = 350 PC";
+mes "8 นาที = 400 PC";
+mes "9 นาที = 450 PC";
+mes "10 นาที = 500 PC";
+mes "11 นาที = 600 PC";
+mes "12 นาที = 700 PC";
+mes "13 นาที = 800 PC";
+mes "14 นาที = 900 PC";
+mes "15 นาที = 1000 PC";
+close;
+InfoPoringCMD:
+mes "[ ^FF0000Infomation Poring^000000 ]";
+mes "เวลา กิจกรรมของ Poring Commado คือ";
+mes "^FF000000.30^000000";
+mes "^FF000004.30^000000";
+mes "^FF000008.30^000000";
+mes "^FF000012.30^000000";
+mes "^FF000016.30^000000";
+mes "^FF000020.30^000000";
+close;
+Exit:
+close;
+
+OnInit:
+waitingroom "-> Poring Comando",0;
+end;
+}

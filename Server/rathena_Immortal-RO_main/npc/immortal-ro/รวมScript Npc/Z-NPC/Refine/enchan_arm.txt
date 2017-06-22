@@ -1,0 +1,168 @@
+//===== rAthena Script ======================================= 
+//= Armor Enchanter
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.3a
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Aegis Conversion]
+//= Add a +1, +2, or +3 random stat to a specified armor.
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//= 1.1 Corrected typo (Sit -> Suit) (bugreport:4586)
+//= 1.2 Optimized. [Euphy]
+//= 1.3 Fixed some typos and optimized a little more. [Daegaladh]
+//= 1.3a Added 'disable_items' command. [Euphy]
+//============================================================ 
+
+izlude,95,135,4	script	เสริมพลังชุดเกราะ::Apprentice Craftsman	73,{
+	disable_items;
+	mes "[Apprentice Craftsman]";
+	if (Zeny >= 400000) {
+		mes "เจ้ารู้มั้ยว่า";
+		mes "ข้าเป็นผู้เชี่ยวชาญ";
+		mes "ในการเสริมพลังชุดเกราะเชียวนะ";
+		mes "เจ้าอยากจะลองดูไหมล่ะ ?";
+		next;
+		mes "[Apprentice Craftsman]";
+		mes "ในการเสริมพลังชุดเกราะนั้น มีความเสี่ยงสูงพอสมควร";
+		mes "ข้าว่าเจ้าคงไม่อยากเอาชุดเกราะแพง ๆ ของเจ้ามาเสี่ยงหรอกนะ";
+		next;
+		mes "[Apprentice Craftsman]";
+		mes "ถ้าเจ้ามีชุดเกราะที่เหมือนกัน";
+		mes "อยู่ในช่องเก็บของ";
+		mes "ข้าขอแนะนำให้เอาเกราะนั้นไปเก็บซะ";
+		next;
+		mes "[Apprentice Craftsman]";
+		mes "เพราะข้าจะทำการเสริมพลังให้กับ ^5555ffเกราะที่เจ้าสวมอยู่^000000 ในตัวละครเท่านั้น";
+		next;
+		mes "[Apprentice Craftsman]";
+		mes "เอาล่ะ! ชุดเกราะของเจ้า";
+		mes "มันจัดอยู่ในหมวดไหนล่ะ";
+		next;
+		switch(select("เกราะไม่มี []:เกราะมี []:เกราะคุณภาพสูง:ไม่รู้สิ")) {
+		case 1:
+			setarray .@Items[0],2307,2309,2314,2316,2321,2325,2327,2328,2330,2332,2334,2335,2341,2344,2346,2348,2350,2337,2386,2394,2395,2396;
+			set .@j,50;
+			break;
+		case 2:
+			setarray .@Items[0],2311,2318,2319,2320,2308,2310,2315,2317,2322,2324,2326,2331,2333,2336,2342,2345,2347,2349,2351;
+			set .@j,55;
+			set .@k,1;
+			break;
+		case 3:
+			setarray .@Items[0],2364,2365,2391,2374,2375,2376,2377,2378,2379,2380,2381,2382,2387,2388,2389,2390;
+			set .@j,60;
+			break;
+		case 4:
+			mes "[Apprentice Craftsman]";
+			mes "ไหนล่ะชุดเกราะที่เจ้าจะให้ข้าทำ ?";
+			close;
+		}
+		set .@menu$,"";
+		for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+1)
+			set .@menu$, .@menu$+getitemname(.@Items[.@i])+((.@k)?" [1]":"")+":";
+		callsub S_EnchantArmor, .@Items[select(.@menu$)-1], .@j;
+		end;
+	}
+	mes "ข้าสามารถเพิ่มความสามารถ";
+	mes "ให้ชุดเกราะของเจ้าได้";
+	next;
+	mes "[Apprentice Craftsman]";
+	mes "ถ้าเจ้าสนใจ";
+	mes "เจ้าก็ไปหาเงินมา 400,000 Zeny";
+	mes "แล้วก็นำเกราะที่เจ้าอยากจะเพิ่ม";
+	mes "ความสามารถของมันมาด้วย";
+	mes "ข้าจะรอ";
+	close;
+
+S_EnchantArmor:
+	set .@itemid,getarg(0);
+	set .@failrate,getarg(1);
+	mes "[Apprentice Craftsman]";
+	if ((countitem(.@itemid) > 0) && (countitem(.@itemid) < 2)) {
+		mes "เอาล่ะ ก่อนอื่นเลยเจ้าต้องมีเงินให้ข้า 400,000 Zeny";
+		next;
+		mes "[Apprentice Craftsman]";
+		mes "และที่สำคัญเกราะของเจ้า";
+		mes "^ff5555ต้องไม่ผ่านการอัพเกรดมาก่อน";
+		mes "และต้องไม่มีการ์ดในช่องด้วย^000000";
+		mes "เจ้าจะตกลงไหมล่ะ?";
+		next;
+		if(select("เอ่อ...ข้าขอคิดดูก่อนนะ:เริ่มกันเลยดีกว่า")==1) {
+			mes "[Apprentice Craftsman]";
+			mes "ไม่เป็นไร ถ้าเจ้าพร้อม";
+			mes "ก็มาหาข้าได้ทุกเมื่อ";
+			close;
+		}
+		mes "[Apprentice Craftsman]";
+		mes "เงียบ ๆ หน่อยนะ ระหว่างที่ข้ากำลังทำงาน";
+		close2;
+		specialeffect2 EF_MAPPILLAR;
+		if (Zeny < 400000) {
+			mes "[Apprentice Craftsman]";
+			mes "ขอโทษทีนะ เจ้ามีเงินไม่พอล่ะ";
+			close;
+		}
+		progressbar "ffff00",7;
+		set zeny,zeny-400000;
+		delitem .@itemid,1;
+		switch (rand(1,.@failrate)) {
+			case 1: set .@addpart,4702;break;
+			case 2: set .@addpart,4712;break;
+			case 3: set .@addpart,4722;break;
+			case 4: set .@addpart,4732;break;
+			case 5: set .@addpart,4742;break;
+			case 6: set .@addpart,4752;break;
+			case 7:
+			case 8: set .@addpart,4701;break;
+			case 9:
+			case 10: set .@addpart,4711;break;
+			case 11:
+			case 12: set .@addpart,4721;break;
+			case 13:
+			case 14: set .@addpart,4731;break;
+			case 15:
+			case 16: set .@addpart,4741;break;
+			case 17:
+			case 18: set .@addpart,4751;break;
+			case 19:
+			case 20:
+			case 21: set .@addpart,4700;break;
+			case 22:
+			case 23:
+			case 24: set .@addpart,4710;break;
+			case 25:
+			case 26:
+			case 27: set .@addpart,4720;break;
+			case 28:
+			case 29:
+			case 30: set .@addpart,4730;break;
+			case 31:
+			case 32:
+			case 33: set .@addpart,4740;break;
+			case 34:
+			case 35:
+			case 36: set .@addpart,4750;break;
+			default:
+				specialeffect2 EF_PHARMACY_FAIL;
+				mes "[Apprentice Craftsman]";
+				mes "แย่จัง";
+				mes "เกราะของเจ้า";
+				mes "ดูเหมือนจะเป็นของเก๊นะ";
+				mes "เสียใจด้วยพ่อหนุ่ม";
+				mes "เจ้าคงต้องหาของใหม่แล้วล่ะ";
+				close;
+		}
+		getitem2 .@itemid, 1, 1, 0, 0, 0, 0, 0, .@addpart;
+	}
+	else {
+		mes "หืม ดูเหมือนว่าเกราะของเจ้า";
+		mes "จะมีในช่องเก็บของอีก 1 ชิ้น นะ";
+		mes "เอาเกราะในช่องเก็บของไปฝากไว้ก่อน";
+		mes "แล้วเจ้าก็ใส่ในตัวแค่ชิ้นเดียวก็พอ";
+		close;
+	}
+}

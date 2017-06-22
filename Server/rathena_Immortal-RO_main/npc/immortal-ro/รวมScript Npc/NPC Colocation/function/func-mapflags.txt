@@ -1,0 +1,178 @@
+/*
+bossnia_01,0,0,0,0	boss_monster	Boitata	2300,1,21600000,600000,1
+bossnia_02,0,0,0,0	boss_monster	Daibo Kyo	2302,1,21600000,600000,1
+bossnia_03,0,0,0,0	boss_monster	Dark eddga	2303,1,21600000,600000,1
+bossnia_04,0,0,0,0	boss_monster	Duney	2305,1,21600000,600000,1
+que_qsch01,0,0,0,0	boss_monster	Flying Demon	2306,1,21600000,600000,1
+odin_tem02,0,0,0,0	boss_monster	GM Detale	2308,1,21600000,600000,1
+mid_camp,0,0,0,0	boss_monster	Red Zmey Gorynych	2312,1,21600000,600000,1
+moc_fild22b,0,0,0,0	boss_monster	Snydhog	2317,1,21600000,600000,1
+abbey01,0,0,0,0	boss_monster	True Berzebub	2318,1,21600000,600000,1
+manuk,0,0,0,0	boss_monster	Igniz	2332,1,21600000,600000,1
+yuno_fild11,0,0,0,0	boss_monster	OLD Beelzebub	2322,1,21600000,600000,1
+ein_fild09,0,0,0,0	boss_monster	Predator	2324,1,21600000,600000,1
+moc_fild17,0,0,0,0	boss_monster	Scorpions King	2325,1,21600000,600000,1
+
+manuk,0,0,0,0	monster	Mimic	1191,10,300000,0,0
+manuk,0,0,0,0	monster	Ancient Mimic	1699,10,300000,0,0
+manuk,0,0,0,0	monster	Acidus	1713,60,600000,0,0
+manuk,0,0,0,0	monster	Acidus	1716,10,300000,0,0
+manuk,0,0,0,0	monster	Ferus	1714,10,300000,0,0
+manuk,0,0,0,0	monster	Ferus	1717,10,300000,0,0
+manuk,0,0,0,0	monster	Dragon Egg	1721,10,1800000,600000,0
+manuk,0,0,0,0	monster	Hydrolancer	1720,3,3000000,2400000,0
+manuk,0,0,0,0	monster	Baby Leopard	1415,40,600000,300000,0
+manuk,0,0,0,0	monster	Zipper Bear	1417,20,0,0,0
+manuk,0,0,0,0	monster	Poporing	1031,20,0,0,0
+manuk,0,0,0,0	monster	Dumpling Child	1409,30,0,0,0
+manuk,0,0,0,0	monster	Hermit Plant	1413,2,630000,330000,0
+manuk,0,0,0,0	monster	Green Plant	1080,5,0,0,0
+manuk,0,0,0,0	monster	Shining Plant	1083,1,0,0,0
+
+bossnia_01,0,0,0,0	monster	Breeze	1692,10,300000,240000,0
+bossnia_01,0,0,0,0	monster	Plasma	1697,3,900000,300000,0
+bossnia_01,0,0,0,0	monster	Plasma	1695,3,900000,300000,0
+bossnia_01,0,0,0,0	monster	Plasma	1696,3,900000,300000,0
+bossnia_01,0,0,0,0	monster	Plasma	1694,3,900000,300000,0
+bossnia_01,0,0,0,0	monster	Plasma	1693,10,900000,300000,0
+bossnia_01,0,0,0,0	monster	Frus	1753,5,0,0,0
+bossnia_01,0,0,0,0	monster	Skogul	1752,5,0,0,0
+bossnia_01,0,0,0,0	monster	Green Plant	1080,5,60000,30000,1
+bossnia_01,0,0,0,0	monster	Yellow Plant	1081,5,60000,30000,1
+bossnia_01,0,0,0,0	monster	Blue Plant	1079,5,600000,300000,1
+bossnia_01,0,0,0,0	monster	Plasma	1693,15,900000,300000,0
+bossnia_01,0,0,0,0	monster	Skeggiold	1754,1,1800000,0,0
+bossnia_01,0,0,0,0	monster	Skeggiold	1755,1,1800000,0,0
+bossnia_01,0,0,0,0	monster	Frus	1753,30,0,0,0
+bossnia_01,0,0,0,0	monster	Skogul	1752,30,0,0,0
+bossnia_01,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_01,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+bossnia_01,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_01,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+bossnia_01,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_01,0,0,0,0	monster	Valkyrie	1765,1,5400000,1800000,0
+bossnia_01,0,0,0,0	monster	Blue Plant	1079,10,1800000,900000,1
+bossnia_02,0,0,0,0	monster	Breeze	1692,10,300000,240000,0
+bossnia_02,0,0,0,0	monster	Plasma	1697,3,900000,300000,0
+bossnia_02,0,0,0,0	monster	Plasma	1695,3,900000,300000,0
+bossnia_02,0,0,0,0	monster	Plasma	1696,3,900000,300000,0
+bossnia_02,0,0,0,0	monster	Plasma	1694,3,900000,300000,0
+bossnia_02,0,0,0,0	monster	Plasma	1693,10,900000,300000,0
+bossnia_02,0,0,0,0	monster	Frus	1753,5,0,0,0
+bossnia_02,0,0,0,0	monster	Skogul	1752,5,0,0,0
+bossnia_02,0,0,0,0	monster	Green Plant	1080,5,60000,30000,1
+bossnia_02,0,0,0,0	monster	Yellow Plant	1081,5,60000,30000,1
+bossnia_02,0,0,0,0	monster	Blue Plant	1079,5,600000,300000,1
+bossnia_02,0,0,0,0	monster	Plasma	1693,15,900000,300000,0
+bossnia_02,0,0,0,0	monster	Skeggiold	1754,1,1800000,0,0
+bossnia_02,0,0,0,0	monster	Skeggiold	1755,1,1800000,0,0
+bossnia_02,0,0,0,0	monster	Frus	1753,30,0,0,0
+bossnia_02,0,0,0,0	monster	Skogul	1752,30,0,0,0
+bossnia_02,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_02,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+bossnia_02,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_02,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+bossnia_02,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_02,0,0,0,0	monster	Valkyrie	1765,1,5400000,1800000,0
+bossnia_02,0,0,0,0	monster	Blue Plant	1079,10,1800000,900000,1
+bossnia_03,0,0,0,0	monster	Breeze	1692,10,300000,240000,0
+bossnia_03,0,0,0,0	monster	Plasma	1697,3,900000,300000,0
+bossnia_03,0,0,0,0	monster	Plasma	1695,3,900000,300000,0
+bossnia_03,0,0,0,0	monster	Plasma	1696,3,900000,300000,0
+bossnia_03,0,0,0,0	monster	Plasma	1694,3,900000,300000,0
+bossnia_03,0,0,0,0	monster	Plasma	1693,10,900000,300000,0
+bossnia_03,0,0,0,0	monster	Frus	1753,5,0,0,0
+bossnia_03,0,0,0,0	monster	Skogul	1752,5,0,0,0
+bossnia_03,0,0,0,0	monster	Green Plant	1080,5,60000,30000,1
+bossnia_03,0,0,0,0	monster	Yellow Plant	1081,5,60000,30000,1
+bossnia_03,0,0,0,0	monster	Blue Plant	1079,5,600000,300000,1
+bossnia_03,0,0,0,0	monster	Plasma	1693,15,900000,300000,0
+bossnia_03,0,0,0,0	monster	Skeggiold	1754,1,1800000,0,0
+bossnia_03,0,0,0,0	monster	Skeggiold	1755,1,1800000,0,0
+bossnia_03,0,0,0,0	monster	Frus	1753,30,0,0,0
+bossnia_03,0,0,0,0	monster	Skogul	1752,30,0,0,0
+bossnia_03,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_03,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+bossnia_03,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_03,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+bossnia_03,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_03,0,0,0,0	monster	Valkyrie	1765,1,5400000,1800000,0
+bossnia_03,0,0,0,0	monster	Blue Plant	1079,10,1800000,900000,1
+bossnia_04,0,0,0,0	monster	Breeze	1692,10,300000,240000,0
+bossnia_04,0,0,0,0	monster	Plasma	1697,3,900000,300000,0
+bossnia_04,0,0,0,0	monster	Plasma	1695,3,900000,300000,0
+bossnia_04,0,0,0,0	monster	Plasma	1696,3,900000,300000,0
+bossnia_04,0,0,0,0	monster	Plasma	1694,3,900000,300000,0
+bossnia_04,0,0,0,0	monster	Plasma	1693,10,900000,300000,0
+bossnia_04,0,0,0,0	monster	Frus	1753,5,0,0,0
+bossnia_04,0,0,0,0	monster	Skogul	1752,5,0,0,0
+bossnia_04,0,0,0,0	monster	Green Plant	1080,5,60000,30000,1
+bossnia_04,0,0,0,0	monster	Yellow Plant	1081,5,60000,30000,1
+bossnia_04,0,0,0,0	monster	Blue Plant	1079,5,600000,300000,1
+bossnia_04,0,0,0,0	monster	Plasma	1693,15,900000,300000,0
+bossnia_04,0,0,0,0	monster	Skeggiold	1754,1,1800000,0,0
+bossnia_04,0,0,0,0	monster	Skeggiold	1755,1,1800000,0,0
+bossnia_04,0,0,0,0	monster	Frus	1753,30,0,0,0
+bossnia_04,0,0,0,0	monster	Skogul	1752,30,0,0,0
+bossnia_04,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_04,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+bossnia_04,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_04,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+bossnia_04,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+bossnia_04,0,0,0,0	monster	Valkyrie	1765,1,5400000,1800000,0
+bossnia_04,0,0,0,0	monster	Blue Plant	1079,10,1800000,900000,1
+
+mid_camp,0,0,0,0	monster	Breeze	1692,10,300000,240000,0
+mid_camp,0,0,0,0	monster	Plasma	1697,3,900000,300000,0
+mid_camp,0,0,0,0	monster	Plasma	1695,3,900000,300000,0
+mid_camp,0,0,0,0	monster	Plasma	1696,3,900000,300000,0
+mid_camp,0,0,0,0	monster	Plasma	1694,3,900000,300000,0
+mid_camp,0,0,0,0	monster	Plasma	1693,10,900000,300000,0
+mid_camp,0,0,0,0	monster	Frus	1753,5,0,0,0
+mid_camp,0,0,0,0	monster	Skogul	1752,5,0,0,0
+mid_camp,0,0,0,0	monster	Green Plant	1080,5,60000,30000,1
+mid_camp,0,0,0,0	monster	Yellow Plant	1081,5,60000,30000,1
+mid_camp,0,0,0,0	monster	Blue Plant	1079,5,600000,300000,1
+mid_camp,0,0,0,0	monster	Plasma	1693,15,900000,300000,0
+mid_camp,0,0,0,0	monster	Skeggiold	1754,1,1800000,0,0
+mid_camp,0,0,0,0	monster	Skeggiold	1755,1,1800000,0,0
+mid_camp,0,0,0,0	monster	Frus	1753,30,0,0,0
+mid_camp,0,0,0,0	monster	Skogul	1752,30,0,0,0
+mid_camp,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+mid_camp,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+mid_camp,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+mid_camp,0,0,0,0	monster	Skogul	1761,1,30000,15000,0
+mid_camp,0,0,0,0	monster	Frus	1762,1,30000,15000,0
+mid_camp,0,0,0,0	monster	Valkyrie	1765,1,5400000,1800000,0
+mid_camp,0,0,0,0	monster	Blue Plant	1079,10,1800000,900000,1
+
+gon_test	mapflag	nomemo
+gon_test	mapflag	noteleport
+gon_test	mapflag	nosave
+gon_test	mapflag	nobranch
+gon_test	mapflag	nopenalty
+gon_test	mapflag	notrade
+gon_test	mapflag	nowarp
+gon_test	mapflag	nobaseexp
+gon_test	mapflag	nojobexp
+gon_test	mapflag	nowarpto
+gon_test	mapflag	nodrop
+gon_test	mapflag	novending
+gon_test	mapflag	noexppenalty
+gon_test	mapflag	noloot
+
+Champion	mapflag	pvp
+Champion	mapflag	nodrop
+Champion	mapflag	nobranch
+Champion	mapflag	noloot
+Champion	mapflag	noteleport
+Champion	mapflag	nosave
+Champion	mapflag	novending
+Champion	mapflag	notrade
+
+poring_w02	mapflag	noicewall
+poring_w02	mapflag	nobranch
+poring_w02	mapflag	nosave	SavePoint
+
+morocc2	mapflag	nobranch
+morocc2	mapflag	noicewall

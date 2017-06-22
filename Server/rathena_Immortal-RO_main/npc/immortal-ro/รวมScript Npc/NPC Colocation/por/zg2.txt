@@ -1,0 +1,5 @@
+c5	mapflag	nobranch
+c5	mapflag	noicewall
+c5	mapflag	nodrop
+c5	mapflag	noteleport
+guild_vs11	mapflag	noteleport

@@ -1,0 +1,212 @@
+//===================================================================
+// NPC : Hot Key
+// Design By : Pornchai17  ( some part )
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+-	script	HotKey	-1,{
+
+OnWhisperGlobal:
+if (@whispervar0$ == "help") { goto help; }
+if (@whispervar0$ == "GM") { goto GM; }
+if (@whispervar0$ == "ab") { goto ab; }
+if (@whispervar0$ == "am") { goto am; }
+if (@whispervar0$ == "cg") { goto cg; }
+if (@whispervar0$ == "cp") { goto cp; }
+if (@whispervar0$ == "ci") { goto ci; }
+if (@whispervar0$ == "cs") { goto cs; }
+if (@whispervar0$ == "es") { goto es; }
+if (@whispervar0$ == "gvg") { goto gvg; }
+if (@whispervar0$ == "pvp") { goto pvp; }
+end;
+
+
+
+help:
+dispbottom "พิมพ์ GM = GM Manu ( For Gm plays normal user , Can use Gm cammands )";
+dispbottom "พิมพ์ ab = Agi Up , Blessing แก้สถานะต่างๆ  ไม่มี Healอย่างเดียว";
+dispbottom "พิมพ์ am = ประกาศข้อความ";
+dispbottom "พิมพ์ cg = เรียกคนในกิวล์ ( สำหรับหัวหน้ากิวล์เท่านั้น )";
+dispbottom "พิมพ์ cp = เรียกคนในปาร์ตี้ ( สำหรับหัวหน้าปาร์ตี้เท่านั้น )";
+dispbottom "พิมพ์ ci = ตรวจสอบไอเท็ม";
+dispbottom "พิมพ์ cs = ตรวจสอบสเตตัส";
+dispbottom "พิมพ์ es = ร้านสะดวกซื้อ";
+dispbottom "พิมพ์ gvg = เข้าสู่ Guild War";
+dispbottom "พิมพ์ pvp = เข้าสู่ห้อง Normal PvP";
+close;
+
+
+
+GM:
+set $pass,159357;	//ตั้งรหัสผ่าน >รหัสเดิมเป็น159357
+input @pw;
+if (@pw != $pass) goto fail;
+menu
+"-> ใช้คำสั่งGM [@]",GWC1,
+"-> ใช้คำสั่งผู้เล่น [#]",GWC2,
+"Exit",Cancel;
+close;
+
+
+
+GWC1:
+input @GC$;
+atcommand ""+ @GC$ +"";
+close;
+
+
+
+GWC2:
+input @PC$;
+charcommand ""+ @PC$ +"";
+close;
+
+
+
+fail:
+dispbottom "รหัสผ่านไม่ถูกต้องค่ะ";
+close;
+
+
+
+am:
+input @Megaphone$; 
+announce strcharinfo(0) + " : " + @Megaphone$,bc_all,0xffffff;
+close;
+
+
+
+ab:
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+sc_start 29,1800000,10; 
+sc_start 30,1800000,10; // Blessing
+sc_start 32,1800000,10; // Agi up
+sc_start 40,1800000,10;  // Magnificaf
+sc_start 41,1800000,10;  // Gloria
+//percentheal 100,100;  
+specialeffect2(14);
+close; 
+
+
+
+cg:
+set @guildm,getcharid(2);
+if (strcharinfo(0) == getguildmaster(@guildm)) goto YGM;
+if (getcharid(2) == @guildm) goto NGM;
+close;
+
+
+
+YGM:
+atcommand strcharinfo(0) + "@guildrecall "+ getcharid(2) +"";
+close;
+
+
+
+NGM:
+dispbottom "Sorry ; This menu can't manage because you aren't the guild master";
+close;
+
+
+
+cp:
+set @party,getcharid(1);
+if (strcharinfo(1) == getpartyname(@party)) goto YP;
+close;
+
+
+
+YP:
+atcommand strcharinfo(0) + "@partyrecall "+ getcharid(1) +"";
+close;
+
+
+
+ci:
+input $NamePlayer$;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+charCommand strcharinfo(0)+"#itemlist "+$NamePlayer$+"";
+close;
+
+
+
+cs:
+input $NamePlayer$;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+charCommand strcharinfo(0)+"#stats "+$NamePlayer$+"";
+close;
+
+
+
+es:
+switch(select("- ของปั๊ม:- ลูกธนู | กระสุนปืน | ดาวกระจาย:- ของทำยา:- แร่ต่าง ๆ:- Homunculus Foods")) {
+case 1:
+callshop "1",1;
+close;
+          
+case 2:
+callshop "2",1;
+close;
+
+case 3:
+callshop "3",1;
+close;
+
+case 4:
+callshop "4",1;
+close;
+
+case 5:
+callshop "5",1;
+close;
+}
+
+
+
+gvg:
+if (getmapusers("gefg_cas05.gat") == 30) goto full;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Guild War ” แล้วค่ะ",0,0x00CC00;
+percentheal 100,100;
+warp "gefg_cas05.gat",11,137;
+specialeffect2(587);
+close;
+
+
+
+pvp:
+if (getmapusers("guild_vs3.gat") == 30) goto full;
+announce "คุณ [ "+strcharinfo(0)+" ] ได้เข้าสู่ “ Normal PvP ” แล้วค่ะ",0,0xCC00CC;
+warp "guild_vs3.gat",0,0;
+percentheal 100,100;
+specialeffect2(587);
+close;
+
+
+
+full:
+mes"ขออภัยค่ะ";
+mes"ห้องที่ท่านเลือก เต็มแล้วในขณะนี้";
+close;
+
+
+
+offline:
+dispbottom "ขออภัยค่ะ ผู้เล่นที่ท่านตรวจสอบไม่ได้ออนไลท์ในขณะนี้";
+close;
+
+
+
+Cancel:
+dispbottom "แล้วพบกันใหม่";
+close;
+}

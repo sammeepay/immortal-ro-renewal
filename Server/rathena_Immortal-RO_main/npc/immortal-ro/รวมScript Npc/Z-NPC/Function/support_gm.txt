@@ -1,0 +1,259 @@
+//=-=-=-=-=-=-=-= Script by ColoExpress =-=-=-=-=-=-=-=
+//=-=-=-=-=-=-=-= 2010 - 2011 Develop present =-=-=-=-=-=-=-=
+//=-=-=-=-=-=-=-= Powered By www.coloexpress.in.th =-=-=-=-=-=-=-=
+morocc,171,113,5	script	ซัพพอร์ต GM	452,{
+	if(getgmlevel() < 99) end;
+	mes "[ Support GM ]";
+	mes "สวัสดีท่าน GM มีอะไรให้ข้าช่วย";
+	next;
+	switch(select("• แบน ID","• แบน IP","• แบน ID ทั้งหมดที่ใช้ IP เดียวกัน","• ปลดแบน ID","• ทำ Premium ID","• เปลี่ยนแปลงอัตรา Bexp/Jexp","• เปลี่ยนแปลงอัตรา Drop")) 
+	{
+	case 1:
+		mes "[ Support GM ]";
+		mes "กรุณาใส่เลข Account ID ที่ต้องการแบน";
+		input @nameID$;
+		next;
+		set @idbanner$,"";
+		query_sql "SELECT `state` FROM `login` WHERE `account_id`='" + @nameID$ + "' and `sex` != 'S' limit 1", @idbanner$;
+		if(@idbanner$ != "") {
+			query_sql "UPDATE `login` SET `state`='5' WHERE `account_id`='"+@nameID$+"'";
+			mes "[ Support GM ]";
+			mes "Account ID ^FF0000" + @nameID$ + "^000000 ได้ถูกแบนเรียบร้อยแล้ว";
+			mes "มีอะไรให้ช่วยบอกข้าได้เสมอ";
+		}
+		else {
+			mes "[ Support GM ]";
+			mes "ไม่มี Account ID นี้ โปรดตรวจสอบใหม่";
+		}
+		break;
+	case 2:
+		mes "[ Support GM ]";
+		mes "กรุณาใส่เลข Account ID ที่ต้องการแบน IP";
+		input @IDBanIP$;
+		next;
+		mes "[ Support GM ]";
+		mes "กรุณาใส่วันที่จะสิ้นสุดการแบน ที่ต้องการแบน IP";
+		mes "YYYY-MM-DD เช่น 2009-05-20";
+		input @timeban$;
+		next;
+		mes "[ Support GM ]";
+		mes "กรุณาใส่เหตุผลในการแบน";
+		input @reason$;
+		next;
+		set @ipbanner$,"";
+		query_sql "SELECT `last_ip` FROM `login` WHERE `account_id`='" + @nameID$ + "' and `sex` != 'S' limit 1",@ipbanner$;	
+		if (@ipbanner$ != "") {
+			query_sql "INSERT INTO `ipbanlist` (`list`, `btime`, `rtime`, `reason`) VALUES ('" + @ipbanner$ + "', '" + gettimestr("%Y-%m-%d %H:%M:%S",21) + "', '" + @timeban$ + " " + gettimestr("%H:%M:%S",10) + "', '" + @reason$ + "')";
+			mes "[ Support GM ]";
+			mes "Account ID ^FF0000" + @nameID$ + "^000000 ได้ถูกแบน IP แล้ว";
+			mes "โดย IP คือ ^FF0000" + @ipbanner$ + "^000000";
+			mes "จะถูกปลดแบนวันที่ ^FF0000" + @timeban$ + "^000000";
+			mes "ด้วยเหตุผลที่ว่า ^FF0000" + @reason$ + "^000000";
+			mes "มีอะไรให้ช่วยบอกข้าได้เสมอ";
+		}
+		else {
+			mes "[ Support GM ]";
+			mes "ไม่มี Account ID นี้โปรดตรวจสอบใหม่";
+		}
+		break;
+	case 3:
+		mes "[ Support GM ]";
+		mes "กรุณาใส่เลข Account ID ที่ต้องการแบนทั้ง IP";
+		input @nameID$;
+		next;
+		set @ipbanner$,"";
+		query_sql "SELECT `last_ip` FROM `login` WHERE `account_id`='" + @nameID$ + "' and `sex` != 'S' limit 1", @ipbanner$;
+		if(@ipbanner$!="") {
+			query_sql "UPDATE `login` SET `state`='5' WHERE `last_ip`='" + @ipbanner$ + "'";
+			mes "[ Support GM ]";
+			mes "Account ID ^FF0000"+@nameID$+"^000000 ได้ถูกแบนทั้ง IP แล้ว";
+			mes "โดย IP คือ ^FF0000"+@ipbanner$+"^000000";
+			mes "มีอะไรให้ช่วยบอกข้าได้เสมอ";
+		}
+		else {
+			mes "[ Support GM ]";
+			mes "ไม่มี Account ID นี้โปรดตรวจสอบใหม่";
+		}
+		break;
+	case 4:
+		mes "[ Support GM ]";
+		mes "กรุณาใส่ชื่อ ID ที่ต้องการปลดแบน";
+		input @nameUnban$;
+		next;
+		set @idunbanner,0;
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='" + @nameUnban$ + "'", @idunbanner;
+		if(@idunbanner) {
+			query_sql "UPDATE `login` SET `state`='0' WHERE `account_id`='" + @idunbanner + "'";
+			mes "[ Support GM ]";
+			mes "ID ^FF0000" + @nameUnban$ + "^000000 ได้รับการปลดแบนแล้ว";
+			mes "มีอะไรให้ช่วยบอกข้าได้เสมอ";
+		}
+		else {
+			mes "[ Support GM ]";
+			mes "ไม่มีชื่อ ID นี้โปรดตรวจสอบใหม่";
+		}
+		break;
+	case 5:
+		mes "[ Support GM ]";
+		mes "กรุณาใส่ชื่อ ID ที่ต้องการทำ Premium ID";
+		input @idpremium$;
+		next;
+		set @idlevels$,"";
+		query_sql "SELECT `level` FROM `login` WHERE `userid`='" + @idpremium$ + "'", @idlevels$;
+		if (@idlevels$!="") {
+			mes "[ Support GM ]";
+			mes "ID " + @idpremium$ + " มีเลเวลคือ " + @idlevels$;
+			mes "ใส่เลเวลที่ต้องการเปลี่ยนแปลง ไม่สามารถใส่เกินเลเวล 5 ได้";
+			input @idpremiumlevel;
+			next;
+			if (@idpremiumlevel >=0 && @idpremiumlevel <=5) {
+				query_sql "UPDATE `login` SET `level`='" + @idpremiumlevel + "' WHERE `userid`='" + @idpremium$ + "'";
+				mes "[ Support GM ]";
+				mes "ID ^FF0000" + @idpremium$ + "^000000 ได้เปลี่ยนเลเวลแล้ว";
+				mes "เลเวลที่เปลี่ยนแปลงคือ ^FF0000" + @idpremiumlevel + "^000000";
+				mes "มีอะไรให้ช่วยบอกข้าได้เสมอ";
+			}
+			else {
+				mes "[ Support GM ]";
+				mes "เลเวลที่ใส่มากเกินไป";
+			}
+		}
+		else {
+			mes "[ Support GM ]";
+			mes "ไม่มีชื่อ ID นี้โปรดตรวจสอบใหม่";
+		}
+		break;
+	case 6:
+		mes "[ Support GM ]";
+		mes "ใส่อัตราการคูณ Bexp";
+		next;
+		input @rateEXP;
+		mes "[ Support GM ]";
+		mes "ใส่อัตราการคูณ Jexp";
+		next;
+		input @rateJOB;
+		mes "[ Support GM ]";
+		mes "อัตราการคูณ Bexp *"+@rateEXP;
+		mes "อัตราการคูณ Jexp *"+@rateJOB;
+		next;
+		if (select("• ถูกต้องแล้ว","• ไม่ใช่")-1) break;
+		setbattleflag "base_exp_rate",@rateEXP*100;
+		setbattleflag "job_exp_rate",@rateJOB*100;
+		atcommand "@reloadmobdb";
+		Announce "[ GM ] : ขณะนี้มีการเปลี่ยนแปลงอัตราการคูณเป็น Bexp *"+@rateEXP+" | Jexp *"+@rateJOB+" ",0;
+		mes "[ Support GM ]";
+		mes "ปรับเปลี่ยนตามที่ท่านต้องการแล้ว";
+		break;
+	case 7:
+
+		switch(select("• Monster ทั่วไป","• Boss"))
+		{
+		case 1:
+			switch(select("• ETC (ไอเทม กดใช้/ขยะ)","• Equipment","• Card")) 
+			{						
+			case 1:
+				mes "[ Support GM ]";
+				mes "ใส่อัตราการคูณ ETC ไอเทมทั่วไป";
+				next;
+				input @ETC;					
+				mes "[ Support GM ]";
+				mes "อัตราการคูณ ETC ไอเทมทั่วไป *"+@ETC;
+				next;
+				if (select("• ถูกต้องแล้ว","• ไม่ใช่")-1) break;
+				setbattleflag "item_rate_common",@ETC*100;
+				setbattleflag "item_rate_heal",@ETC*100;
+				setbattleflag "item_rate_use",@ETC*100;
+				atcommand "@reloadmobdb";
+				Announce "[ GM ] : ขณะนี้มีการเปลี่ยนแปลงอัตราการคูณ คือ ETC ไอเทมทั่วไป *"+@ETC+" ",0;
+				mes "[ Support GM ]";
+				mes "ปรับเปลี่ยนตามที่ท่านต้องการแล้ว";
+				break;
+			case 2:
+				mes "[ Support GM ]";
+				mes "ใส่อัตราการคูณ Equipment ";
+				next;
+				input @Equipment;
+				mes "[ Support GM ]";
+				mes "อัตราการคูณ Equipment *"+@Equipment;
+				next;
+				if (select("• ถูกต้องแล้ว","• ไม่ใช่")-1) break;
+				setbattleflag "item_rate_equip",@Equipment*100;
+				atcommand "@reloadmobdb";
+				Announce "[ GM ] : ขณะนี้มีการเปลี่ยนแปลงอัตราการคูณ คือ Equipment หรือของสวมใส่*"+@Equipment+" ไม่รวมของบอส",0;
+				mes "[ Support GM ]";
+				mes "ปรับเปลี่ยนตามที่ท่านต้องการแล้ว";
+				break;
+			case 3:
+				mes "[ Support GM ]";
+				mes "ใส่อัตราการคูณ Card ";
+				next;
+				input @Card;
+				mes "[ Support GM ]";
+				mes "อัตราการคูณ Card *"+@Card;
+				next;
+				if (select("• ถูกต้องแล้ว","• ไม่ใช่")-1) break;
+				setbattleflag "item_rate_card",@Card*100;
+				atcommand "@reloadmobdb";
+				Announce "[ GM ] : ขณะนี้มีการเปลี่ยนแปลงอัตราการคูณ คือ Card *"+@Card+" ไม่รวม Card Boss",0;
+				mes "[ Support GM ]";
+				mes "ปรับเปลี่ยนตามที่ท่านต้องการแล้ว";
+				break;
+			}
+			break;
+		case 2:
+			switch(select("• ETC Boss (ไอเทม กดใช้/ขยะ)","• Equipment Boss","• Card Boss")) 
+			{
+			case 1:
+				mes "[ Support GM ]";
+				mes "ใส่อัตราการคูณ ETC ไอเทมทั่วไปที่ได้จาก Boss ";
+				next;
+				input @ETC_Boss;
+				mes "[ Support GM ]";
+				mes "อัตราการคูณ ETC ไอเทมทั่วไปที่ได้จาก Boss *"+@ETC_Boss;
+				next;
+				if (select("• ถูกต้องแล้ว","• ไม่ใช่")-1) break;
+				setbattleflag "item_rate_common_boss",@ETC_Boss*100;
+				setbattleflag "item_rate_heal_boss",@ETC_Boss*100;
+				setbattleflag "item_rate_use_boss",@ETC_Boss*100;
+				atcommand "@reloadmobdb";
+				Announce "[ GM ] : ขณะนี้มีการเปลี่ยนแปลงอัตราการคูณ คือ ETC ไอเทมทั่วไปที่ได้จาก Boss *"+@ETC_Boss+" ",0;
+				mes "[ Support GM ]";
+				mes "ปรับเปลี่ยนตามที่ท่านต้องการแล้ว";
+				break;
+			case 2:
+				mes "[ Support GM ]";
+				mes "ใส่อัตราการคูณ Equipment Boss";
+				next;
+				input @Equipment_Boss;
+				mes "[ Support GM ]";
+				mes "อัตราการคูณ Equipment Boss *"+@Equipment_Boss;
+				next;
+				if (select("• ถูกต้องแล้ว","• ไม่ใช่")-1) break;
+				setbattleflag "item_rate_equip_boss",@Equipment_Boss*100;
+				atcommand "@reloadmobdb";
+				Announce "[ GM ] : ขณะนี้มีการเปลี่ยนแปลงอัตราการคูณ คือ Equipment หรือ ของสวมใส่ ที่ได้จาก Boss *"+@Equipment_Boss+" ",0;
+				mes "[ Support GM ]";
+				mes "ปรับเปลี่ยนตามที่ท่านต้องการแล้ว";
+				break;
+			case 3:
+				mes "[ Support GM ]";
+				mes "ใส่อัตราการคูณ Card Boss";
+				next;
+				input @Card_boss;
+				mes "[ Support GM ]";
+				mes "อัตราการคูณ Card Boss *"+@Card_boss;
+				next;
+				if (select("• ถูกต้องแล้ว","• ไม่ใช่")-1) break;
+				setbattleflag "item_rate_card_boss",@Card_boss*100;
+				atcommand "@reloadmobdb";
+				Announce "[ GM ] : ขณะนี้มีการเปลี่ยนแปลงอัตราการคูณ คือ Card Boss *"+@Card_boss+" ",0;
+				mes "[ Support GM ]";
+				mes "ปรับเปลี่ยนตามที่ท่านต้องการแล้ว";
+				break;
+			}
+		break;
+		}
+	break;
+	}
+close;
+}

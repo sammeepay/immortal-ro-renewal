@@ -1,0 +1,247 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+
+///========= Fishing Season 2 ==========\\\
+///====== รูปแบบใหม่สนุกกับการตกปลา ========\\\
+///========= Scirpt By : P`XaOu =========\\\
+///========== Version : 1.1a ============\\\
+///=== Work With : eAthena SVN 13,xxx + ===\\\
+///========== วาป ไปสถานที่ตกปลา ===========\\\
+rtc_ro,135,23,4	script	#tofish	45,1,1,{ warp "sec_in02",129,162; close; }
+///====================================\\\
+///=========== แก้ไข ต่างๆ ===============\\\
+-	script	FishingRound	-1,{
+Oninit:
+set $FishRod_Id,1201;		//--- รหัสไอเท็ม เบ็ดตกปลา
+set $F_Fishing,505;		//--- รหัสไอเท็ม เหยื่อตกปลา
+set $Rates_Fishing,60;		//--- % ที่จะตกปลา ได้ (ปกติ 60%)
+set $Rates_RodBoom,5;		//--- % ที่จะทำให้เบ็ดตกปลา พัง และ ใช้การไม่ได้ (ปกติ 5%)
+end;
+}
+
+function	script	Out_Item	{
+///--------------- ไอเท็มที่จะได้รับ เมื่อตกปลาได้ ------------------------\\\
+///------ สามารถเปลี่ยน รหัส และ % ที่จะได้ ด้วย และการเพิ่ม -------\\\
+///---- การเพิ่ม ก้อเพียบก๊อปบรรทัด และ เพิ่มลงไป แล้วก็ ----------\\\
+///------ เปลี่ยน เลขใน [?] ให้เพิ่มขึ้น 1 เรียงลำดับ ต่อไปเรื่อยๆ --------\\\
+///----- ข้อแนะนำ ไม่ควร ใส่ % ที่จะได้รับ ซ้ำๆ กัน หลายอย่าง ---------\\\
+setarray .@Item[0],607;		setarray	.@Percent[0],5;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[1],1023;		setarray	.@Percent[1],40;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[2],544;		setarray	.@Percent[2],45;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[3],579;		setarray	.@Percent[3],50;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[4],624;		setarray	.@Percent[4],30;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[5],1053;		setarray	.@Percent[5],60;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[6],5065;		setarray	.@Percent[6],3;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[7],7083;		setarray	.@Percent[7],10;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[8],12054;		setarray	.@Percent[8],20;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[9],14524;		setarray	.@Percent[9],25;	//---- รหัส และ %ที่จะได้รับ
+setarray .@Item[10],7875;		setarray	.@Percent[10],2;	//---- รหัส และ %ที่จะได้รับ
+
+/////==============================================================\\\\\
+LoopRan:
+set .@Rates,rand(100);
+ReUp:
+if(.@R == getarraysize(.@Item)){ set .@R,0; goto LoopRan; }
+if(.@Rates <= .@Percent[.@R]) goto ItemG;
+set .@R,.@R+1;
+goto ReUp;
+
+ItemG:
+delitem $F_Fishing,1;
+set .@Rates,0;
+
+set .@G,rand(100);
+if($Rates_Fishing <= .@G) goto Fishing;
+specialeffect2 611;
+deletearray .@Item[0],255;
+deletearray .@Percent[0],255;
+dispbottom "[Fishing] : ปลากินเหยื่อ ไปแร้ว...!!!";
+return;
+
+Fishing:
+specialeffect2 610;
+getitem .@Item[.@R],1;
+deletearray .@Item[0],255;
+deletearray .@Percent[0],255;
+dispbottom "[Fishing] : โอ้วว ปลา เสร็จเรา...!!!";
+return;
+}
+
+sec_in02,0,0,0	script	#Fish_1	999,{
+if(getequipid(4) != $FishRod_Id){ dispbottom " !!!... คุณไม่ได้สวมใส่ เบ็ดตกปลา ...!!! "; close; }
+if(countitem($F_Fishing) < 1){ dispbottom " !!!... คุณไม่มีเหยื่อตกปลา สักชิ้นเลย จะตกปลาได้ไง ...!!! "; close; }
+set .@RatesRod,rand(100);
+if(.@RatesRod <= $Rates_RodBoom) goto RodBoom;
+callfunc "Out_Item";
+set $@Fish_R,$@Fish_R+1;
+if($@Fish_R >= $@Round){ hideonnpc "#Fish_1"; set $@Round,0; set $@Fish_R,0; close; }
+hideonnpc "#Fish_1";
+Callfunc "Fish_Out";
+close;
+
+RodBoom:
+announce "!!!... เบ็ดตกปลา เนื่องจาก ถูกปลากระชากลงไป ทำให้เบ็ดพัง ...!!!",bc_self,0xFFFFFF;
+specialeffect2 183;
+unequip 4;
+delitem $FishRod_Id,1;
+close;
+}
+
+-	script	Check_Time	-1,{
+OnMinute00:
+OnMinute01: OnMinute02: OnMinute03: OnMinute04: OnMinute05:
+OnMinute06: OnMinute07: OnMinute08: OnMinute09: OnMinute10:
+OnMinute11: OnMinute12: OnMinute13: OnMinute14: OnMinute15:
+OnMinute16: OnMinute17: OnMinute18: OnMinute19: OnMinute20:
+OnMinute21: OnMinute22: OnMinute23: OnMinute24: OnMinute25:
+OnMinute26: OnMinute27: OnMinute28: OnMinute29: OnMinute30:
+OnMinute31: OnMinute32: OnMinute33: OnMinute34: OnMinute35:
+OnMinute36: OnMinute37: OnMinute38: OnMinute39: OnMinute40:
+OnMinute41: OnMinute42: OnMinute43: OnMinute44: OnMinute45:
+OnMinute46: OnMinute47: OnMinute48: OnMinute49: OnMinute50:
+OnMinute51: OnMinute52: OnMinute53: OnMinute54: OnMinute55:
+OnMinute56: OnMinute57: OnMinute58: OnMinute59: OnMinute60:
+set $@Round,0;
+set $@Fish_R,0;
+
+if(getmapusers("sec_in02") < 1) end;
+set $@Round,rand(1,5);	//---- สุ่มรอบที่ ปลาจะโผล่ออกมา ( ปกติ 1 - 5 )
+Callfunc "Fish_Out";
+end;
+}
+
+function	script	Fish_Out	{
+set $@X,rand(151,160);
+set $@Y,rand(168,155);
+movenpc "#Fish_1",$@X,$@Y;
+hideoffnpc "#Fish_1";
+return;
+}
+
+function	script	FishingRod_On	{
+getmapxy @mapname$,@mapx,@mapy,0,strcharinfo(0);
+if (@mapname$ == "sec_in02") && (@mapx == 149) && (@mapy <= 170) && (@mapy >= 153) goto startfish;
+if (@mapname$ == "sec_in02") && (@mapx >= 149) && (@mapx <= 166) && (@mapy == 153) goto startfish;
+if (@mapname$ == "sec_in02") && (@mapx == 166) && (@mapx >= 153) && (@mapy <= 169) goto startfish;
+if (@mapname$ == "sec_in02") && (@mapx <= 166) && (@mapx >= 149) && (@mapy == 170) goto startfish;
+if (@mapname$ == "sec_in02") && (@mapx >= 161) && (@mapx <= 165) && (@mapy == 162) goto startfish;
+if (@mapname$ == "sec_in02") && (@mapx <= 165) && (@mapx >= 161) && (@mapy == 161) goto startfish;
+if (@mapname$ == "sec_in02") && (@mapx <= 164) && (@mapx >= 161) && (@mapy == 163) goto startfish;
+pcblockmove getcharid(3),1;
+unequip 4;
+dispbottom " !!!.. คุณไม่ได้อยู่ใน พื้นที่ ที่จะสามารถ ตกปลาได้ ..!!! ";
+close;
+
+startfish:
+pcblockmove getcharid(3),1;
+dispbottom " !!!.. คุณได้สวมใส่ เบ็ดตกปลา เรียบร้อยแล้ว ..!!! ";
+close;
+}
+
+function	script	FishingRod_Off	{
+pcblockmove getcharid(3),0;
+dispbottom " !!!.. ถอดเบ็ดตกปลาเรียบร้อยแล้ว ..!!! ";
+close;
+}
+
+///=============== NPC : ทั่วๆไป ================\\\
+sec_in02,145,166,4	script	เหยื่อตกปลา#1	807,{
+set .@Pay,5000;	///--- ราคาเหยื่อตกปลา
+
+mes "[Sell Man]";
+mes "ข้าขาย เหยื่อตกปลา ";
+mes "อันละ ^000080"+.@Pay+"^000000 Zeny.";
+next;
+menu "^FF0000ไว้ก่อน",exit,"^006611ซื้อ เหยื่อตกปลา",buy;
+
+buy:
+mes "[Sell Man]";
+mes "จะซื้อ เท่าไรดี ?";
+input .@much;
+if(.@much == 0) close;
+if(.@much > 300) close;
+set .@Count,.@much*.@Pay;
+mes "^0000BBจำนวน^000000 : ^008080"+.@much+"^000000 อัน..";
+mes "^0000BBราคาทั้งหมด^000000 : ^FF0000"+.@Count+"^000000 Zeny..";
+next;
+menu "^006611ตกลง",-,"^FF0000ยกเลิก",exit;
+if(zeny < .@Count) goto Notzeny;
+set zeny,zeny-.@Count;
+getitem $F_Fishing,.@much;
+mes "เรียบร้อยแล้ว...";
+close;
+
+Notzeny:
+mes "[Sell Man]";
+mes "^FF0000คุณมีเงินไม่พอนะ..";
+close;
+
+exit:
+close;
+
+Oninit:
+waitingroom "<( ขายเหยื่อตกปลา )>",0;
+end;
+}
+
+sec_in02,145,157,0	script	เบ็ดตกปลา#1	809,{
+set .@Pay,500000;	///--- ราคาเบ็ดตกปลา
+
+mes "[Sell Man]";
+mes "วันนี้ ราคาเบ็ดตกปลา";
+mes "อยู่ที่ ^000080"+.@Pay+"^000000 Zeny.";
+mes "สนใจอยากได้เอาไว้ตกปลา ไหมละ";
+next;
+menu "^FF0000ยกเลิก",exit,"^006611ซื้อ เบ็ดตกปลา",-;
+if(countitem($FishRod_Id) > 0) goto Hasit;
+if(zeny < .@Pay) goto Notzeny;
+set zeny,zeny-.@Pay;
+getitem $FishRod_Id,1;
+mes "เรียบร้อยแล้ว !!";
+close;
+
+Notzeny:
+mes "[Sell Man]";
+mes "^FF0000คุณมีเงินไม่พอนะ..";
+close;
+
+Hasit:
+mes "[Sell Man]";
+mes "คุณมี เบ็ดตกปลาอยู่แล้ว จะซื้ออีกทำไมหนิ....";
+close;
+
+exit:
+close;
+
+Oninit:
+waitingroom "<( ขายเบ็ดตกปลา )>",0;
+end;
+}
+
+sec_in02,125,162,4	script	#tosave	45,1,1,{ warp "SavePoint",0,0; close; }
+
+sec_in02,129,166,6	script	#Flag1	858,{
+end;
+
+Oninit:
+waitingroom "Fishing Land",0;
+end;
+}
+sec_in02,129,157,6	script	#Flag2	858,{
+end;
+
+Oninit:
+waitingroom "Fishing Land",0;
+end;
+}
+
+

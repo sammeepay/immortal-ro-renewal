@@ -1,0 +1,19 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+rtc_ro	mapflag	nobranch
+rtc_ro	mapflag	noicewall
+rtc_ro	mapflag	nodrop
+rtc_ro	mapflag	noteleport
+rtc_ro	mapflag	noskill
+rtc_ro	mapflag	nomemo
+rtc_ro	mapflag	noskill
+
+sec_in02	mapflag	pvp

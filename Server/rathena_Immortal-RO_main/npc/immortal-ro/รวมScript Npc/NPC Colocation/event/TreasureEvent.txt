@@ -1,0 +1,176 @@
+c5,0,0,0	script	TreasureEvent	111,{
+close;
+trevstart:
+enablenpc "treasure"; 
+set $@trevent,rand(10,30);
+set $@ftrevent,0;
+announce "[ JuTi-Ro ] : กิจกรรมล่าลุงซานต้า เมืองหลัก จำนวน ["+$@trevent+"]  !!",0,0x9ACD32;
+monster "c5",0,0,"Treasure Box",1247,$@trevent,"TreasureEvent::OnTreasureDie";
+end;
+
+OnTreasureDie:
+set $@ftrevent,$@ftrevent+1;
+//if($@ftrevent>=$@trevent)
+//announce "",0,0xFF33CC;
+if($@ftrevent!=$@trevent)
+announce "[ JuTi-Ro ] : ท่าน " + strcharinfo(0) + " พบลุงซานต้า ตัวที่ ["+$@ftrevent+"/"+$@trevent+"] แล้ว !!",0,0x9ACD32;
+getitem 7227,1;
+atcommand strcharinfo(0)+ "@jump";
+end;
+
+trevend:
+if($@ftrevent!=$@trevent)
+announce "[ JuTi-Ro ] : หมดเวลาในการล่าลุงซานต้าแล้ว !!",0,0x9ACD32;
+killmonster "c5","TreasureEvent::OnTreasureDie";
+disablenpc "treasure"; 
+end;
+OnTimeout:
+end;
+
+OnClock0145:
+goto trevstart;
+end;
+OnClock0150:
+goto trevend;
+end;
+
+OnClock0245:
+goto trevstart;
+end;
+OnClock0250:
+goto trevend;
+end;
+
+OnClock0345:
+goto trevstart;
+end;
+OnClock0350:
+goto trevend;
+end;
+
+OnClock0445:
+goto trevstart;
+end;
+OnClock0450:
+goto trevend;
+end;
+
+OnClock0545:
+goto trevstart;
+end;
+OnClock0550:
+goto trevend;
+end;
+
+OnClock0645:
+goto trevstart;
+end;
+OnClock0650:
+goto trevend;
+end;
+
+OnClock0745:
+goto trevstart;
+end;
+OnClock0750:
+goto trevend;
+end;
+
+OnClock0845:
+goto trevstart;
+end;
+OnClock0850:
+goto trevend;
+end;
+
+OnClock0945:
+goto trevstart;
+end;
+OnClock0950:
+goto trevend;
+end;
+
+OnClock1045:
+goto trevstart;
+end;
+OnClock1050:
+goto trevend;
+end;
+
+OnClock1145:
+goto trevstart;
+end;
+OnClock1150:
+goto trevend;
+end;
+
+OnClock1245:
+goto trevstart;
+end;
+OnClock1250:
+goto trevend;
+end;
+
+OnClock1345:
+goto trevstart;
+end;
+OnClock1350:
+goto trevend;
+end;
+
+OnClock1445:
+goto trevstart;
+end;
+OnClock1450:
+goto trevend;
+end;
+
+OnClock1545:
+goto trevstart;
+end;
+OnClock1550:
+goto trevend;
+end;
+
+OnClock1645:
+goto trevstart;
+end;
+OnClock1650:
+goto trevend;
+end;
+
+OnClock1745:
+goto trevstart;
+end;
+OnClock1750:
+goto trevend;
+end;
+
+OnClock1845:
+goto trevstart;
+end;
+OnClock1850:
+goto trevend;
+end;
+
+OnClock2145:
+goto trevstart;
+end;
+OnClock2150:
+goto trevend;
+end;
+
+OnClock2245:
+goto trevstart;
+end;
+OnClock2250:
+goto trevend;
+end;
+
+OnClock2345:
+goto trevstart;
+end;
+OnClock2350:
+goto trevend;
+end;
+}

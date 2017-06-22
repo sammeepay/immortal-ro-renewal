@@ -1,0 +1,118 @@
+//===================================================================
+// NPC : Homunculus Service
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,118,121,4	script	Homunculus	881,{
+mes "[ Homunculus ]";
+mes "Welcome to Homunculus Service";
+next;
+menu
+"- Homunculus Skill Support",h1,
+"- Homunculus Level Up",h2,
+"- Homunculus Friendly",h3,
+"- Homunculus Evolution",h4,
+"- Homunculus Foods",h5,
+"Exit",Cancel;
+
+
+
+h1:
+mes"[ Homunculus ]";
+mes"Please Wait.";
+mes"Server is checking your Job.";
+next;
+if(BaseJob != Job_Alchem) goto noalchem;
+if(JobLevel<40) goto nojob;
+mes"[ Homunculus ]";
+mes"You got Homunculus Skill Support already";
+getitem 7142,1;
+skill 238,1,0;
+skill 239,1,0;
+skill 240,1,0;
+skill 241,1,0;
+skill 242,1,0;
+skill 245,1,0;
+skill 246,1,0;
+close;
+
+
+
+h2:
+mes"[ Homunculus ]";
+mes"Please Wait.";
+mes"Server is checking your Job.";
+next;
+if(BaseJob != Job_Alchem) goto noalchem;
+if(JobLevel<40) goto nojob;
+mes"[ Homunculus ]";
+mes"Homunculus Level Up ; Successful";
+atcommand strcharinfo(0)+ "@homlvup 99";
+close;
+
+
+
+h3:
+mes"[ Homunculus ]";
+mes"Please Wait.";
+mes"Server is checking your Job.";
+next;
+if(BaseJob != Job_Alchem) goto noalchem;
+if(JobLevel<40) goto nojob;
+mes"[ Homunculus ]";
+mes"Homunculus Friendly 100 %";
+atcommand strcharinfo(0)+ "@homfriendly 1000";
+close;
+
+
+
+h4:
+mes"[ Homunculus ]";
+mes"Please Wait.";
+mes"Server is checking your Job.";
+next;
+if(BaseJob != Job_Alchem) goto noalchem;
+if(JobLevel<40) goto nojob;
+mes"[ Homunculus ]";
+mes"Homunculus evolution successful.";
+atcommand strcharinfo(0)+ "@homevolution";
+close;
+
+
+
+h5:
+mes"[ Homunculus ]";
+mes"Thank you.";
+close2;
+callshop "5",1;
+close;
+
+
+
+noalchem:
+mes"[ Homunculus ]";
+mes"You aren't Biochemist or Alchemist Job";
+close;
+
+
+
+nojob:
+mes"[ Homunculus ]";
+mes"Sorry ; your Level lower 40";
+mes"Can't get a Skill Support";
+close;
+
+
+
+Cancel:
+mes"[ Homunculus ]";
+mes"See you later";
+close;
+
+
+
+OnInit:
+waitingroom "Homunculus Service",0;
+end;
+}

@@ -1,0 +1,22 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	identi	-1,{
+    getinventorylist;
+	announce "[พนักงานตรวจสอบไอเท็ม] ข้าจะช่วยเจ้าส่อง Item ทั้งหมดที่มี ฮา ฮ่า ฮ๊า.",19,0xFFCC00;
+    for(set @i, 0; @i < @inventorylist_count; set @i, @i + 1) {
+        if (@inventorylist_identify[@i] == 1) continue;
+        delitem2 @inventorylist_id[@i],1,0,0,0,0,0,0,0;
+        getitem @inventorylist_id[@i],1;
+    }
+}
+
+morocc,123,72,5	duplicate(identi)	ส่ อ ง ไ อ เ ท็ ม	852

@@ -1,0 +1,53 @@
+//===================================================================
+// NPC : Test Weapon Monster  for InCe-WickeD Sv ( Only )
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+job_sage.gat,31,97,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_sage.gat,46,112,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_sage.gat,61,97,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_sage.gat,46,83,0,0	monster	Test-Weapon	1288,1,0,0,0
+
+
+
+job_sage.gat,39,100,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_sage.gat,52,100,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_sage.gat,39,95,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_sage.gat,52,95,0,0	monster	Test-Weapon	1905,1,0,0,0
+
+
+
+job_knt.gat,155,64,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,155,61,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,155,58,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,155,55,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,155,52,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,155,49,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,155,46,0,0	monster	Test-Weapon	1288,1,0,0,0
+
+job_knt.gat,131,64,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,131,61,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,131,58,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,131,55,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,131,52,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,131,49,0,0	monster	Test-Weapon	1288,1,0,0,0
+job_knt.gat,131,46,0,0	monster	Test-Weapon	1288,1,0,0,0
+
+
+
+job_knt.gat,134,68,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,137,68,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,140,68,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,143,68,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,146,68,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,149,68,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,152,68,0,0	monster	Test-Weapon	1905,1,0,0,0
+
+job_knt.gat,134,43,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,137,43,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,140,43,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,143,43,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,146,43,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,149,43,0,0	monster	Test-Weapon	1905,1,0,0,0
+job_knt.gat,152,43,0,0	monster	Test-Weapon	1905,1,0,0,0

@@ -1,0 +1,36 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+leagepvp11	mapflag	gvg
+leagepvp11	mapflag	nobranch
+leagepvp11	mapflag	noicewall
+leagepvp11	mapflag	nomemo
+leagepvp11	mapflag	nosave	SavePoint
+leagepvp11	mapflag	noteleport
+leagepvp11	mapflag	nowarp
+leagepvp11	mapflag	nowarpto
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

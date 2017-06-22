@@ -1,0 +1,247 @@
+// ====== มอนส์เตอร์บอส MVP ======
+home_gld.gat,0,0,0,0	boss_monster	Maya	1147,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Ghostring	1120,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Phreeoni	1159,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Turtle General	1312,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	GoldenBug	1086,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Drake	1112,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Angeling	1096,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Stormy Knight	1251,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Eddga	1115,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Orc hero	1087,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Orc lord	1190,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	MISTRESS	1059,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Dark lord	1272,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Lord of Death	1373,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Dark Snake Lord	1418,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Osiris	1038,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Doppelganger	1046,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Incantation Samurai	1492,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Dracula	1389,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	MOONLIGHT	1150,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Baphomet	1039,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	PHARAOH	1157,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	GARM	1252,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Valkyrie Randgris	1751,5,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Kiel D-01	1734,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Thanatos	1708,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Tao Gunka	1583,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	RSX-0806	1623,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Maya Purple	1289,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Vesper	1685,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Ifrit	1832,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Satan Morroc	1916,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Naght Sieger	1956,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Amon Ra	1511,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	White Lady	1630,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Egnigem Cenia	1658,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Lady Tanee	1688,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Atros	1785,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Zmey Gorynych	1885,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Beelzebub	1874,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Fallen Bishop	1871,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Lord Knight	1646,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Whitesmith	1648,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	AssassinCross	1647,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	High Priest	1649,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Sniper	1650,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	High Wizard	1651,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Detardeurus	1719,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Gloom Under Night	1768,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Ktullanux	1779,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Wish Maiden	1931,3,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Nidhoggr's Shadow	2022,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Boitata	2068,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Queen Scaraba	2087,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Thor Morocc	2299,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Raichu	2459,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Satan Hollow	2421,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Dark Eddga	2300,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Black Eddga	2302,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Blue Eddga	2303,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Golden Eddga	2304,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Green Eddga	2305,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Red Eddga	2306,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Black Thanatos	2307,1,0,0,1
+home_gld.gat,0,0,0,0	boss_monster	Golden Thanatos	2309,1,0,0,1
+
+home_gld.gat,0,0,0,0	monster	Deviling	1582,1,0,0,1
+home_gld.gat,0,0,0,0	monster	Arc Angeling	1388,1,0,0,1
+home_gld.gat,0,0,0,0	monster	ตัวล้างห้อง	1002,20,0,0,1
+
+
+// ====== มอนส์เตอร์เริ่มแรก ======
+Coliseum,102,105,0,0	monster	เก็บเวล	1002,3,0,0,1
+Coliseum,102,105,0,0	monster	เก็บเวล#2	1031,3,0,0,1
+Coliseum,102,105,0,0	monster	เก็บเวล#3	1062,3,0,0,1
+Coliseum,102,105,0,0	monster	เก็บเวล#4	1063,3,0,0,1
+Coliseum,99,105,0,0	monster	เก็บเวล#5	1595,3,0,0,1
+Coliseum,99,105,0,0	monster	เก็บเวล#6	1113,3,0,0,1
+Coliseum,99,105,0,0	monster	เก็บเวล#7	1062,3,0,0,1
+Coliseum,99,105,0,0	monster	เก็บเวล#8	1242,3,0,0,1
+Coliseum,99,105,0,0	monster	เก็บเวล#9	2562,3,0,0,1
+Coliseum,94,105,0,0	monster	เก็บเวล#10	2563,3,0,0,1
+Coliseum,94,105,0,0	monster	เก็บเวล#11	2564,3,0,0,1
+Coliseum,94,105,0,0	monster	เก็บเวล#12	2566,3,0,0,1
+Coliseum,94,105,0,0	monster	เก็บเวล#13	2567,3,0,0,1
+Coliseum,89,105,0,0	monster	เก็บเวล#14	2568,3,0,0,1
+Coliseum,89,105,0,0	monster	เก็บเวล#15	2569,3,0,0,1
+Coliseum,89,105,0,0	monster	เก็บเวล#16	2570,3,0,0,1
+Coliseum,89,105,0,0	monster	เก็บเวล#17	2572,3,0,0,1
+Coliseum,102,95,0,0	monster	เก็บเวล#18	2573,3,0,0,1
+Coliseum,102,95,0,0	monster	เก็บเวล#19	2574,3,0,0,1
+Coliseum,114,104,0,0	monster	เก็บเวล#20	2575,3,0,0,1
+Coliseum,114,104,0,0	monster	เก็บเวล#21	2576,3,0,0,1
+Coliseum,95,116,0,0	monster	เก็บเวล#22	2577,3,0,0,1
+Coliseum,114,104,0,0	monster	เก็บเวล#23	2578,3,0,0,1
+Coliseum,105,114,0,0	monster	เก็บเวล#24	2579,3,0,0,1
+Coliseum,95,116,0,0	monster	เก็บเวล#25	2580,3,0,0,1
+Coliseum,95,116,0,0	monster	เก็บเวล#26	2581,3,0,0,1
+Coliseum,108,101,0,0	monster	เก็บเวล#27	2582,3,0,0,1
+Coliseum,108,101,0,0	monster	เก็บเวล#28	2583,3,0,0,1
+
+//====================================================
+prontera,0,0,0,0	monster	Wild Rose	1261,5,1200000,900000,0
+
+// ============  บากิ แด้นซ์ กลางเมือง    ======
+//oasis,160,104,0,0	monster	Clown AI	2605,1,0,0,1
+//oasis,159,104,0,0	monster	Gypsy AI	2606,1,0,0,1
+
+//====================================================
+//2@cata,0,0,0,0	monster	Evil Druid	1117,9,0,0,1
+//2@cata,0,0,0,0	monster	Khalitzburg	1132,9,0,0,1
+//2@cata,0,0,0,0	monster	Wraith Dead	1291,9,0,0,1
+//2@cata,0,0,0,0	monster	Mini Demon	1292,9,0,0,1
+//2@cata,0,0,0,0	monster	Banshee	1867,3,0,0,1
+//2@cata,0,0,0,0	monster	Flame Skull	1869,9,0,0,1
+//2@cata,0,0,0,0	boss_monster	Great Demon Baphomet	1929,1,0,0,1
+
+//1@cata,0,0,0,0	monster	Evil Druid	1117,33,0,0,1
+//1@cata,0,0,0,0	monster	Khalitzburg	1132,9,0,0,1
+//1@cata,0,0,0,0	monster	Wind Ghost	1263,30,0,0,1
+//1@cata,0,0,0,0	monster	Skeleton General	1290,40,0,0,1
+//1@cata,0,0,0,0	monster	Wraith Dead	1291,9,0,0,1
+//1@cata,0,0,0,0	monster	Zombie Master	1298,40,0,0,1
+//1@cata,0,0,0,0	monster	Dark Illusion	1302,1,0,0,1
+//1@cata,0,0,0,0	monster	Lude	1509,20,0,0,1
+//1@cata,0,0,0,0	monster	Ancient Mimic	1699,20,0,0,1
+//1@cata,0,0,0,0	monster	Banshee	1867,10,0,0,1
+//1@cata,0,0,0,0	monster	Flame Skull	1869,45,0,0,1
+
+//iz_dun05,0,0,0,0	monster	Iara	2069,40,0,0,1
+//iz_dun05,0,0,0,0	monster	Piranha	2070,30,0,0,1
+//iz_dun05,0,0,0,0	monster	Hydra	1068,25,0,0,1
+//iz_dun05,0,0,0,0	monster	Swordfish	1069,15,0,0,1
+//iz_dun05,0,0,0,0	monster	Strouf	1065,15,0,0,1
+//iz_dun05,0,0,0,0	monster	Aqua Elemental	2016,30,0,0,1
+//iz_dun05,0,0,0,0	monster	Phylla	2021,20,0,0,1
+//iz_dun05,0,0,0,0	boss_monster	Kraken	2202,1,7200000,3600000,1
+
+//lhz_dun05,0,0,0,0	monster	ArchBishop	2349,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Chloe	2350,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Experiment001	2351,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	GuiliotineCross	2352,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Guns Boy	2353,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Guns Girl	2354,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Male GM	2356,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Male Soullinker	2357,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Ninja Boy	2358,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Ninja Girl	2359,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Professer Gisele	2360,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Ranger	2361,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Royal Guard	2362,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Seville	2363,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Shadow Chaser	2364,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Sorcerer	2365,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Soullinker	2366,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Sura	2367,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Warlock	2368,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Leciel	2369,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Female Mech	2370,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Soullinker Biolab	2371,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Azenis	2373,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Champion	2383,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Nergal	2407,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Gypsy	2409,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Star Gladiator	2418,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	GM Male	2472,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	GM Woman	2473,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Beholder	1633,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Cecil Damon	1638,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Kathryne Keyron	1639,30,0,0,1
+//lhz_dun05,0,0,0,0	monster	Howard Alt-Eisen	1636,30,0,0,1
+//lhz_dun05,0,0,0,0	boss_monster	Assassin Cross Eremes	1647,1,7200000,3600000,1
+
+anthell01,0,0,0,0	monster	Colorfully Egg	2378,30,0,0,1
+anthell01,0,0,0,0	monster	Blue Egg	2386,30,0,0,1
+anthell01,0,0,0,0	monster	Green Egg	2387,30,0,0,1
+anthell01,0,0,0,0	monster	Red Egg	2388,30,0,0,1
+
+moc_fild22b,0,0,0,0	monster	Thor Morroc	2299,1,7200000,3600000,1
+
+thana_boss.gat,0,0,0,0	boss_monster	Thanatos	1708,1,7200000,3600000,1
+
+
+//=========== Event Kill =========================================================
+/*
+	Script : Event Kill (1.0)
+	Release : 2012/04/19
+	By : ReadyGo
+	From : ro-basic.com
+	
+	Description : เมื่อฆ่ามอนสเตอร์ครบตามที่กำหนดแล้วจะได้ไอเทม
+*/
+-	script	Event Kill	-1,{
+OnNPCKillEvent:
+	set EVENT_KILL, EVENT_KILL+1;
+	if ( EVENT_KILL >= 100 ) {	// จำนวนที่จะให้ฆ่า
+		set EVENT_KILL, 0;
+		dispbottom "["+strnpcinfo(0)+"] ฆ่ามอนสเตอร์ครบตามที่กำหนดแล้ว รับรางวัลไปเลย !";
+		// ไอเทมรางวัล
+		getitem 671, 10;
+		// - - - - - - - - - -
+	}
+	end;
+}
+
+
+
+////////////// start_warp_to_Prontera ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Coliseum,101,125,4	script	วาบไปเมืองหลวง	723,{
+
+mes "ท่านต้องการไปยังเมืองหลวงใช่ไหม";
+next;
+menu "ใช่",Yes,"ยัง!ขอเดินเล่นแปบ",No,"ยกเลิก",Can;
+
+Yes:
+mes "งั้นข้าจะส่งท่านไปยังเมืองหลวงเลยนะ";
+warp "prontera",155,179;
+savepoint "prontera",155,179;
+close;
+
+No:
+mes "ถ้าท่านต้องการจะเข้าช่วยมาอีกครั้งแล้วกัน";
+mes "ข้าจะรอท่านอยู่ตรงนี้ทุกเวลา";
+close;
+
+Can:
+mes "ยกเลิกการทำรายการ";
+close;
+
+}
+
+prontera	mapflag	nobranch
+prontera	mapflag	noicewall
+
+
+Coliseum	mapflag	nomemo
+Coliseum	mapflag	nosave
+Coliseum	mapflag	noicewall
+Coliseum	mapflag	nobranch
+Coliseum	mapflag	noteleport
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

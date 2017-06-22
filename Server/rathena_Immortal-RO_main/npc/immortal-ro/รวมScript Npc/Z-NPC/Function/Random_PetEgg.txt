@@ -1,0 +1,290 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+function	script	ranegg	{
+set @coin,rand(1,70);
+if (@coin == 1) goto F_1;
+if (@coin == 2) goto F_2;
+if (@coin == 3) goto F_3;
+if (@coin == 4) goto F_4;
+if (@coin == 5) goto F_5;
+if (@coin == 6) goto F_6;
+if (@coin == 7) goto F_7;
+if (@coin == 8) goto F_8;
+if (@coin == 9) goto F_9;
+if (@coin == 10) goto F_10;
+if (@coin == 11) goto F_11;
+if (@coin == 12) goto F_12;
+if (@coin == 13) goto F_13;
+if (@coin == 14) goto F_14;
+if (@coin == 15) goto F_15;
+if (@coin == 16) goto F_16;
+if (@coin == 17) goto F_17;
+if (@coin == 18) goto F_18;
+if (@coin == 19) goto F_19;
+if (@coin == 20) goto F_20;
+if (@coin == 21) goto F_21;
+if (@coin == 22) goto F_22;
+if (@coin == 23) goto F_23;
+if (@coin == 24) goto F_24;
+if (@coin == 25) goto F_25;
+if (@coin == 26) goto F_26;
+if (@coin == 27) goto F_27;
+if (@coin == 28) goto F_28;
+if (@coin == 29) goto F_29;
+if (@coin == 30) goto F_30;
+if (@coin == 31) goto F_31;
+if (@coin == 32) goto F_32;
+if (@coin == 33) goto F_33;
+if (@coin == 34) goto F_34;
+if (@coin == 35) goto F_35;
+if (@coin == 36) goto F_36;
+if (@coin == 37) goto F_37;
+if (@coin == 38) goto F_38;
+if (@coin == 39) goto F_39;
+if (@coin == 40) goto F_40;
+if (@coin == 41) goto F_41;
+if (@coin == 42) goto F_42;
+if (@coin == 43) goto F_43;
+if (@coin == 44) goto F_44;
+if (@coin == 45) goto F_45;
+if (@coin == 46) goto F_46;
+if (@coin == 47) goto F_47;
+if (@coin == 48) goto F_48;
+if (@coin == 49) goto F_49;
+if (@coin == 50) goto F_50;
+if (@coin == 51) goto F_51;
+if (@coin == 52) goto F_52;
+if (@coin == 53) goto F_53;
+if (@coin == 54) goto F_54;
+if (@coin == 55) goto F_55;
+if (@coin == 56) goto F_56;
+if (@coin == 57) goto F_57;
+if (@coin == 58) goto F_58;
+if (@coin == 59) goto F_59;
+if (@coin == 60) goto F_60;
+if (@coin == 61) goto F_61;
+if (@coin == 62) goto F_62;
+if (@coin == 63) goto F_63;
+if (@coin == 64) goto F_64;
+if (@coin == 65) goto F_65;
+if (@coin == 66) goto F_66;
+if (@coin == 67) goto F_67;
+if (@coin == 68) goto F_68;
+if (@coin == 69) goto F_69;
+if (@coin == 70) goto F_70;
+
+F_1:
+getitem 9061,1;
+close;
+F_2:
+getitem 9062,1;
+close;
+F_3:
+getitem 9063,1;
+close;
+F_4:
+getitem 9066,1;
+close;
+F_5:
+getitem 9067,1;
+close;
+F_6:
+getitem 9068,1;
+close;
+F_7:
+getitem 9069,1;
+close;
+F_8:
+getitem 9070,1;
+close;
+F_9:
+getitem 9071,1;
+close;
+F_10:
+getitem 9072,1;
+close;
+F_11:
+getitem 9073,1;
+close;
+F_12:
+getitem 9074,1;
+close;
+F_13:
+getitem 9075,1;
+close;
+F_14:
+getitem 9076,1;
+close;
+F_15:
+getitem 9077,1;
+close;
+F_16:
+getitem 9078,1;
+close;
+F_17:
+getitem 9079,1;
+close;
+F_18:
+getitem 9080,1;
+close;
+F_19:
+getitem 9081,1;
+close;
+F_20:
+getitem 9082,1;
+close;
+F_21:
+getitem 9083,1;
+close;
+F_22:
+getitem 9084,1;
+close;
+F_23:
+getitem 9085,1;
+close;
+F_24:
+getitem 9086,1;
+close;
+F_25:
+getitem 9087,1;
+close;
+F_26:
+getitem 9088,1;
+close;
+F_27:
+getitem 9089,1;
+close;
+F_28:
+getitem 9090,1;
+close;
+F_29:
+getitem 9091,1;
+close;
+F_30:
+getitem 9092,1;
+close;
+F_31:
+getitem 9093,1;
+close;
+F_32:
+getitem 9094,1;
+close;
+F_33:
+getitem 9095,1;
+close;
+F_34:
+getitem 9096,1;
+close;
+F_35:
+getitem 9097,1;
+close;
+F_36:
+getitem 9098,1;
+close;
+F_37:
+getitem 9099,1;
+close;
+F_38:
+getitem 9100,1;
+close;
+F_39:
+getitem 9101,1;
+close;
+F_40:
+getitem 9102,1;
+close;
+F_41:
+getitem 9103,1;
+close;
+F_42:
+getitem 9104,1;
+close;
+F_43:
+getitem 9105,1;
+close;
+F_44:
+getitem 9106,1;
+close;
+F_45:
+getitem 9107,1;
+close;
+F_46:
+getitem 9108,1;
+close;
+F_47:
+getitem 9109,1;
+close;
+F_48:
+getitem 9110,1;
+close;
+F_49:
+getitem 9111,1;
+close;
+F_50:
+getitem 9112,1;
+close;
+F_51:
+getitem 9113,1;
+close;
+
+F_52:
+getitem 9114,1;
+close;
+F_53:
+getitem 9115,1;
+close;
+F_54:
+getitem 9116,1;
+close;
+F_55:
+getitem 9117,1;
+close;
+F_56:
+getitem 9118,1;
+close;
+F_57:
+getitem 9119,1;
+close;
+F_58:
+getitem 9120,1;
+close;
+F_59:
+getitem 9121,1;
+close;
+F_60:
+getitem 9122,1;
+close;
+F_61:
+getitem 9123,1;
+close;
+F_62:
+getitem 9124,1;
+close;
+F_63:
+getitem 9125,1;
+close;
+F_64:
+getitem 9126,1;
+close;
+F_65:
+getitem 9127,1;
+close;
+F_66:
+getitem 9128,1;
+close;
+F_67:
+getitem 9129,1;
+close;
+F_68:
+getitem 9130,1;
+close;
+F_69:
+getitem 9131,1;
+close;
+F_70:
+getitem 9133,1;
+close;
+}

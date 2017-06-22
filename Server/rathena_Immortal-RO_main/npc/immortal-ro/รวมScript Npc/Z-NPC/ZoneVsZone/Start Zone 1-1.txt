@@ -1,0 +1,47 @@
+//========================================
+// 		- Script V.1 -
+// 	- Server BY exsoulionzzz. -
+//========================================
+
+-	script	SAMPLENPC1	-1,{
+
+OnGVGSTART:
+Announce "System Zone 1-1 ได้เตรียมห้องไว้เรียบร้อยแล้ว",8;
+enablenpc "WALL#1";
+enablenpc "WALL#2";
+enablenpc "WALL#3";
+enablenpc "WALL#4";
+enablenpc "WALL#5";
+enablenpc "WALL#6";
+enablenpc "WALL#7";
+enablenpc "WALL#8";
+enablenpc "WALL#9";
+enablenpc "WALL#10";
+enablenpc "WALL#11";
+enablenpc "WALL#12";
+enablenpc "WALL#13";
+enablenpc "WALL#14";
+enablenpc "WALL#15";
+enablenpc "WALL#16";
+enablenpc "เรียกรวมพล#110";
+enablenpc "เรียกรวมพล#120";
+setcell "leagepvp11",18,50,63,24,cell_walkable,0;
+
+end;
+}
+
+-	script	zone1	-1,{
+OnWhisperGlobal:
+if(getgmlevel() < 99) end;
+if(@whispervar0$ == "1")
+donpcevent "SAMPLENPC1::OnGVGSTART";
+end;
+}
+
+-	script	zone2	-1,{
+OnWhisperGlobal:
+if(getgmlevel() < 99) end;
+if(@whispervar0$ == "1")
+donpcevent "SAMPLENPC2::OnGVGSTART";
+end;
+}

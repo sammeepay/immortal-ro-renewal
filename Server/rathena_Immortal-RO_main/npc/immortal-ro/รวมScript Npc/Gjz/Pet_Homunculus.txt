@@ -1,0 +1,49 @@
+-	shop	HomunShop	870,12040:-1,910:-1,912:-1,537:-1,911:-1,7142:-1
+
+-	script	Homunculus::HMC	-1,{
+mes "[ ^0000FFHomunculus^000000 ]";
+mes "สวัสดี!";
+mes "มีอะไรให้ข้าช่วยไหม?";
+next;
+menu "- Homunculus Shop",L_HoShop,"- Skill Homunculus",L_Skills,"- Homunculus Friendly",L_friendly,"- Close",L_MenuExit;
+
+L_HoShop:
+close2;
+callshop "HomunShop",1;
+end;
+
+L_Skills:
+mes "[ ^0000FFHomunculus^000000 ]";
+if(BaseJob != Job_Alchem) goto L_noalche;
+if(JobLevel<50) goto L_nojob;
+skill 238,1,0;
+skill 239,1,0;
+skill 240,1,0;
+skill 241,1,0;
+skill 242,1,0;
+skill 245,1,0;
+skill 246,1,0;
+mes "ขอบคุณที่ใช้บริการ...";
+close;
+
+L_friendly:
+if(BaseJob != Job_Alchem) goto L_noalche;
+mes "[ ^0000FFHomunculus^000000 ]";
+mes "Homunculus สนิทสนมแล้ว ...";
+atcommand strcharinfo(0)+":@homfriendly 1000";
+close;
+
+L_nojob:
+mes "[ ^0000FFHomunculus^000000 ]";
+mes "Job Level : ต่ำกว่า 50";
+close;
+
+L_noalche:
+mes "[ ^0000FFHomunculus^000000 ]";
+mes "คุณไม่ใช่ Alchemist / Creator(Bio) ";
+mes "หรืออาชีพที่ไม่สามารถเลี้ยงได้";
+close;
+
+L_MenuExit:
+close;
+}

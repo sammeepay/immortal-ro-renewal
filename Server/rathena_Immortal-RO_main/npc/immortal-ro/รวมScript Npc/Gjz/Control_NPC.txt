@@ -1,0 +1,106 @@
+//========== Gjz Control ==========//
+
+// Set Control NPC In Map
+
+// Event
+morocc,191,110,4	duplicate(PorC)	Poring†Catcher#01	909
+morocc,196,110,4	duplicate(PBE)	Plant†Ball#01	850
+morocc,192,105,4	duplicate(rnbev)	RUNNER†BOME#01	712
+morocc,197,105,4	duplicate(TLM)	Talent†Match#01	752
+
+// Cashshop «‘∏’≈ß ≈ß‡À¡◊Õπ shop ‰Õ‡∑¡π–§√—∫ ÀÈ“¡ -1 π–§√—∫
+// ÀÈ“¡ 501:-1
+// „™È‰¥È 501:1
+morocc,127,101,5	cashshop	CashShop#01	910,7227:1
+
+// Novice
+new_1-1,55,114,4	duplicate(BFS)	Buffs†Support#n-1	890
+new_1-1,55,114,4	duplicate(ATBS)	ATBS#n-1	-1,10,10
+new_1-1,57,114,4	duplicate(Warpermaps)	Warper#n-1	895
+new_1-1,65,116,4	duplicate(JobChanges)	JobChange#n-1	811
+new_1-1,68,113,4	script	WarpToMorocc#n-1	45,1,1,{ warp "morocc",159,92; savepoint "morocc",159,92; close; }
+
+// Morocc
+morocc,159,116,4	duplicate(AKL)	AllSkill#01	904
+morocc,166,108,4	duplicate(RKG)	Ranking†Board#01	857
+morocc,172,84,9	duplicate(IFMT)	Infomation#01	857
+morocc,152,112,5	duplicate(SPGM)	PlayerSupport#01	864
+morocc,158,97,4	duplicate(BFS)	Buffs†Support#01	890
+morocc,156,97,4	duplicate(KFSV)	KafraServices#01	115
+morocc,158,92,4	duplicate(ATBS)	ATBS#01	-1,10,10
+morocc,173,101,4	duplicate(DISN)	Designer#01	894
+morocc,160,97,4	duplicate(Warpall)	Warper#01	1002
+morocc,162,97,4	duplicate(Warpermaps)	Warper#02	895
+morocc,148,102,5	duplicate(ETCShopCustom)	ETCShop#01	886
+morocc,155,116,4	duplicate(JobChanges)	JobChange#01	811
+morocc,163,116,4	duplicate(JCBB)	JobChangeBaby#01	877
+morocc,180,98,4	duplicate(QH1)	QuestHat1#01	701
+morocc,182,95,4	duplicate(QH2)	QuestHat2#01	701
+morocc,177,101,4	duplicate(Quest Shop)	Quest Shop#01	701
+morocc,131,77,5	duplicate(Slot Shop)	Slot Shop#01	869
+morocc,168,106,4	duplicate(PTSP)	Pet†Shop#01	909
+morocc,170,104,4	duplicate(HMC)	Homunculus#01	909
+morocc,133,110,4	duplicate(EPIM)	Emperium#01	105
+morocc,185,93,4	duplicate(WP4)	WeaponLv4#01	733
+
+// Refiner
+morocc,133,79,4	duplicate(RFAV)	RefinesCash#01	85
+morocc,135,79,4	duplicate(RefineSv)	Refines#01	63
+morocc,137,79,4	duplicate(RMC)	RemoveCard#01	84
+
+// PvP
+guild_vs3,52,47,4	duplicate(abpp)	...Buff...#1-0	738
+guild_vs2,49,46,4	duplicate(abpp)	...Buff...#1-1	738
+knight_3-1,104,100,4	duplicate(abpp)	...Buff...#1-2	738
+pvp_y_8-2,129,119,4	duplicate(abpp)	...Buff...#1-3	738
+guild_vs2,49,53,4	duplicate(ETCShopCustom)	ETCShop#1-1	886
+guild_vs3,47,47,4	duplicate(ETCShopCustom)	ETCShop#1-2	886
+knight_3-1,94,100,4	duplicate(ETCShopCustom)	ETCShop#1-3	886
+pvp_y_8-2,126,119,4	duplicate(ETCShopCustom)	ETCShop#1-4	886
+guild_vs3,49,50,4	duplicate(Warper)	Warper#1-1	895
+pvp_y_8-2,178,55,0	warp	†††#1-1	1,2,pvp_y_8-2,147,40
+
+// GuildWar
+morocc,140,124,4	duplicate(Mersetzdeitz2)	Mersetzdeitz#10-1	722
+morocc,144,124,4	duplicate(HolyShadow2)	Holy Shadow#f10-1	722
+morocc,140,121,4	duplicate(ITGW1)	ItemGuildWar1#01	105
+morocc,144,121,4	duplicate(ITGW2)	ItemGuildWar2#02	105
+
+// No Vending
+morocc,154,95,4	duplicate(NVD)	No†Veding#01	858
+morocc,156,95,4	duplicate(NVD)	No†Veding#02	858
+morocc,158,95,4	duplicate(NVD)	No†Veding#03	858
+morocc,160,95,4	duplicate(NVD)	No†Veding#04	858
+morocc,162,95,4	duplicate(NVD)	No†Veding#05	858
+morocc,164,95,4	duplicate(NVD)	No†Veding#06	858
+morocc,164,97,4	duplicate(NVD)	No†Veding#07	858
+morocc,164,99,4	duplicate(NVD)	No†Veding#08	858
+morocc,162,99,4	duplicate(NVD)	No†Veding#09	858
+morocc,160,99,4	duplicate(NVD)	No†Veding#10	858
+morocc,158,99,4	duplicate(NVD)	No†Veding#11	858
+morocc,158,99,4	duplicate(NVD)	No†Veding#12	858
+morocc,156,99,4	duplicate(NVD)	No†Veding#13	858
+morocc,154,99,4	duplicate(NVD)	No†Veding#14	858
+morocc,154,97,4	duplicate(NVD)	No†Veding#15	858
+
+// Save
+morocc,42,174,4	duplicate(KFSV)	KafraServices#sp01	115
+morocc,44,174,4	duplicate(BFS)	Buffs†Support#sp01	890
+morocc,44,174,4	duplicate(ATBS)	ATBS#sp01	-1,10,10
+morocc,46,174,4	duplicate(Warpall)	Warper#sp01	1002
+morocc,48,174,4	duplicate(Warpermaps)	Warper#spw01	895
+morocc,50,174,4	duplicate(ETCShopCustom)	ETCShop#sp01	886
+
+morocc,155,257,4	duplicate(KFSV)	KafraServices#sp02	115
+morocc,157,257,4	duplicate(BFS)	Buffs†Support#sp02	890
+morocc,157,257,4	duplicate(ATBS)	ATBS#sp02	-1,10,10
+morocc,159,257,4	duplicate(Warpall)	Warper#sp02	1002
+morocc,161,257,4	duplicate(Warpermaps)	Warper#spw02	895
+morocc,163,257,4	duplicate(ETCShopCustom)	ETCShop#sp02	886
+
+morocc,284,211,4	duplicate(KFSV)	KafraServices#sp03	115
+morocc,286,211,4	duplicate(BFS)	Buffs†Support#sp03	890
+morocc,286,211,4	duplicate(ATBS)	ATBS#sp03	-1,10,10
+morocc,288,211,4	duplicate(Warpall)	Warper#sp03	1002
+morocc,290,211,4	duplicate(Warpermaps)	Warper#spw03	895
+morocc,292,211,4	duplicate(ETCShopCustom)	ETCShop#sp03	886

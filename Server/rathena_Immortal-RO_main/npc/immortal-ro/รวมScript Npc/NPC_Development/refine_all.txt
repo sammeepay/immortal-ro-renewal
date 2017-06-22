@@ -1,0 +1,8 @@
+-	script	RefineAll#Main	-1,{
+	for (set .@i,1; .@i <= 10; set .@i,.@i+1) {
+		if (!getequipisequiped(.@i)) continue;
+		if (!getequipisenableref(.@i)) continue;
+		if (getequiprefinerycnt(.@i) >= 5) continue;
+		setitemrefine(.@i,5);
+	}
+}

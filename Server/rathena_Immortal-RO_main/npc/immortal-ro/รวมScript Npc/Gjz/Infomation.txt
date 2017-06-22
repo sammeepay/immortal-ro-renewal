@@ -1,0 +1,134 @@
+-	script	infomation::IFMT	-1,{
+if ($@ActiveSv == 0) end;
+mes "[ Infomation ]";
+mes "สวัสดี มีอะไรให้ช่วยมั๊ย ?";
+next;
+switch  (select("- Server Rate:- เก็บเลเวลยังไง:- หาเงินยังไง:- อัตราการตีบวกเท่าไหร่:- กิลวอร์เมื่อไหร่:- รางวัลกิลวอร์:- ทำยา Assassin ยังไง:- ทำยา Alchemist ยังไง:- เวลาบอสเกิด:- ช่องทางการบริจาค:- ไม่มีอะไร"))
+{
+case 1:
+mes "[ Infomation ]";
+mes "ตามนี้เลยจ้า";
+mes "BaseExp = ^FF0000"+$@exprate$+"^000000";
+mes "JobExp  = ^FF0000"+$@jobrate$+"^000000";
+break;
+case 2:
+mes "[ Infomation ]";
+mes "เก็บเลเวลแบบ Server หลัก";
+mes "ตัวอย่าง";
+mes "Lv 1~20 AntHell";
+mes "Lv 21~40 Payon Dungeon";
+mes "Lv 41~60 Pyramid Dungeon";
+mes "Lv 61~80 Glast Heim";
+mes "Lv 81~99 Bio Loboratory";
+break;
+case 3:
+mes "[ Infomation ]";
+mes "Dungeon -> Glast Helm -> Underground Prison 1 / 2";
+mes "Dungeon -> Anthell -> ชั้น 1 / ชั้น 2";
+mes "และอื่นๆครับ";
+break;
+case 4:
+mes "[ Infomation ]";
+mes "Armor";
+mes "100,100,100,100, 60, 40, 40, 20, 20, 10";
+next;
+mes "[ Infomation ]";
+mes "Lv.1 Weapons";
+mes "100,100,100,100,100,100,100, 60, 40, 20";
+next;
+mes "[ Infomation ]";
+mes "Lv.2 Weapons";
+mes "100,100,100,100,100,100, 60, 40, 20, 20";
+next;
+mes "[ Infomation ]";
+mes "Lv.3 Weapons";
+mes "100,100,100,100,100, 60, 50, 20, 20, 20";
+next;
+mes "[ Infomation ]";
+mes "Lv.4 Weapons";
+mes "100,100,100,100, 60, 40, 40, 20, 20, 10";
+break;
+case 5:
+mes "[ Infomation ]";
+mes "ทุกวัน 19.00น. - 20.00น. ";
+break;
+case 6:
+mes "[ Infomation ]";
+mes "^FF9900บ้านหลัง 1^000000 : ได้รับ "+getitemname($@GW1_I1)+" "+$@GW1_I1a+" ea. == "+getitemname($@GW1_I2)+" "+$@GW1_I2a+" ea. == Zeny. "+$@GW1_z1+" z. ";
+mes "^0000FFบ้านหลัง 2^000000 : ได้รับ "+getitemname($@GW2_I1)+" "+$@GW2_I1a+" ea. == "+getitemname($@GW2_I2)+" "+$@GW2_I2a+" ea. == Zeny. "+$@GW2_z2+" z. ";
+break;
+case 7:
+mes "[ Infomation ]";
+mes "ส่วนผสมที่ใช้";
+mes "Berserk Potion = 1";
+mes "Karvodailnirol = 1";
+mes "Empty Bottle = 1";
+mes "Venom Canine = 1 [Boa]";
+mes "Cactus Needle = 1 [Muka]";
+mes "Bee Sting = 1 [Honet]";
+mes "Poison Spore = 1 [Poison Spore]";
+break;
+case 8:
+mes "[ Infomation ]";
+mes "เลือก ชนิดยาที่คณต้องการข้อมูล";
+switch (select( "- Bottle Grenade:- Acid Bottle:- Plant Bottle:- Marine Sphere Bottle:- Glistening Coat:- ไม่มีอะไร ใจมาก"))
+{
+case 1:
+mes "ส่วนผสมที่ใช้";
+mes "Bottle Grenade Creation";
+mes "Alcohol = 1";
+mes "Empty Bottle = 1";
+mes "Fabirc = 1 [Whisper]";
+break;
+case 2:
+mes "ส่วนผสมที่ใช้";
+mes "Acid Bottle Creation";
+mes "Empty Bottle = 1";
+mes "Immortal Heart = 1 [Verit]";
+break;
+case 3:
+mes "ส่วนผสมที่ใช้";
+mes "Plant Bottle Creation";
+mes "Empty Bottle = 1";
+mes "Maneater Blossom = 1 [Flora]";
+break;
+case 4:
+mes "ส่วนผสมที่ใช้";
+mes "Marine Sphere Creation";
+mes "Empty Bottle = 1";
+mes "Tendon = 1 [Marine Sphere]";
+mes "Detonator = 1 [Marine Sphere]";
+break;
+case 5:
+mes "ส่วนผสมที่ใช้";
+mes "Glistening Coat Creation";
+mes "Alcohol = 1";
+mes "Empty Bottle = 1";
+mes "Heart of Mermaid = 1 [Obeaune]";
+mes "Zenorcs Fang = 1 [Zenorc]";
+break;
+default:
+}
+break;
+case 9:
+mes "[ Infomation ]";
+mes "Mvp Easy : 30 นาทีเกิดหลังจากตาย (ยกเว้น แม๊พ จริง)";
+mes "Mvp Hard : 1 ชม. 30 นาที เกิดหลังจากตาย (ยกเว้น แม๊พ จริง)";
+break;
+case 10:
+mes "[ Infomation ]";
+mes "ขอบคุณมากที่มีน้ำใจ";
+mes "คิดถึงหัวข้อนี้น่ะจ๊ะ ";
+mes "ติดต่อ GM ได้เลยจ้า";
+mes "Email : "+$@S_Email$+"";
+mes "Tel : "+$@S_TEL$+"";
+mes "ขอบคุณจ้า ~*";
+break;
+case 11:
+break;
+}
+close;
+OnInit:
+waitingroom "ข้อมูลเซิฟเวอร์",0;
+end;
+}

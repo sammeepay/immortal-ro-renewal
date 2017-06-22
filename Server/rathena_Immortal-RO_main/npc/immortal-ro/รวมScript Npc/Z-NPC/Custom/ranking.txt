@@ -1,0 +1,201 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	MVPrank	-1,{
+
+OnNPCKillEvent:
+switch(killedrid) {
+	case 1086:	callfunc "MVP_rank",1;	break; /*Golden Bug	*/
+	case 1112:	callfunc "MVP_rank",1;	break; /*Drake		*/
+	case 1115:	callfunc "MVP_rank",1;	break; /*Eddga		*/
+	case 1150:	callfunc "MVP_rank",1;	break; /*Moonlight	*/
+	case 1159:	callfunc "MVP_rank",1;	break; /*Phreeoni		*/
+	case 1252:	callfunc "MVP_rank",1;	break; /*Garm		*/
+	case 1583:	callfunc "MVP_rank",1;	break; /*Tao Gunka	*/
+	case 1038:	callfunc "MVP_rank",1;	break; /*Osiris		*/
+	case 1046:	callfunc "MVP_rank",1;	break; /*Doppelganger	*/
+	case 1087:	callfunc "MVP_rank",1;	break; /*Orc Hero		*/
+	case 1147:	callfunc "MVP_rank",1;	break; /*Maya		*/
+	case 1251:	callfunc "MVP_rank",1;	break; /*Stormy Knight	*/
+	case 1492:	callfunc "MVP_rank",1;	break; /*Samurai		*/
+	case 1157:	callfunc "MVP_rank",1;	break; /*Pharaoh		*/
+	case 1312:	callfunc "MVP_rank",1;	break; /*TurtleGeneral	*/
+	case 1389:	callfunc "MVP_rank",1;	break; /*Dracula		*/
+	case 1418:	callfunc "MVP_rank",1;	break; /*EvilSnakeLord	*/
+	case 1658:	callfunc "MVP_rank",1;	break; /*Egnigem Cenia	*/
+	case 1885:	callfunc "MVP_rank",1;	break; /*Zmey Gorynych	*/
+	case 1039:	callfunc "MVP_rank",1;	break; /*Baphomet		*/
+	case 1190:	callfunc "MVP_rank",1;	break; /*Orc Lord		*/
+	case 1373:	callfunc "MVP_rank",1;	break; /*LordOfTheDead	*/
+	case 1272:	callfunc "MVP_rank",1;	break; /*Dark Lord	*/
+	case 1623:	callfunc "MVP_rank",1;	break; /*RSX-0806		*/
+	case 1630:	callfunc "MVP_rank",1;	break; /*White Lady	*/
+	case 1685:	callfunc "MVP_rank",1;	break; /*Vesper		*/
+	case 1719:	callfunc "MVP_rank",1;	break; /*Detardeurus	*/
+	case 1785:	callfunc "MVP_rank",1;	break; /*Atros		*/
+	case 1734:	callfunc "MVP_rank",1;	break; /*Kiel D-01	*/
+	case 1059:	callfunc "MVP_rank",1;	break; /*Mistress		*/
+	case 1511:	callfunc "MVP_rank",1;	break; /*Amon Ra		*/ 
+	case 1688:	callfunc "MVP_rank",1;	break; /*Lady Tanee	*/
+	case 1708:	callfunc "MVP_rank",1;	break; /*Thanatos		*/
+	case 1646:	callfunc "MVP_rank",1;	break; /*Lord Knight	*/
+	case 1648:	callfunc "MVP_rank",1;	break; /*Whitesmith	*/
+	case 1647:	callfunc "MVP_rank",1;	break; /*AssassinCross	*/
+	case 1649:	callfunc "MVP_rank",1;	break; /*High Priest	*/
+	case 1751:	callfunc "MVP_rank",1;	break; /*Valkyrie		*/
+	case 1779:	callfunc "MVP_rank",1;	break; /*Ktullanux	*/
+	case 1650:	callfunc "MVP_rank",1;	break; /*Sniper		*/
+	case 1871:	callfunc "MVP_rank",1;	break; /*Fallen Bishop	*/
+	case 1768:	callfunc "MVP_rank",1;	break; /*GloomUnder	*/
+	case 1651:	callfunc "MVP_rank",1;	break; /*High Wizard	*/
+	case 1832:	callfunc "MVP_rank",1;	break; /*Ifrit		*/
+	case 1874:	callfunc "MVP_rank",1;	break; /*Beelzebub 	*/
+	case 1917:	callfunc "MVP_rank",1;	break; /*Satan Morroc 	*/
+	case 1956:	callfunc "MVP_rank",1;	break; /*Naght Sieger	*/
+	case 1990:	callfunc "MVP_rank",1;	break; /*Hardrock Mammoth	*/
+	case 1991:	callfunc "MVP_rank",1;	break; /*Tendril Lion 	*/
+	case 2022:	callfunc "MVP_rank",1;	break; /*Nidhoggr's Shadow 	*/
+	case 2068:	callfunc "MVP_rank",1;	break; /*Boitata 		*/
+	case 2087:	callfunc "MVP_rank",1;	break; /*Queen Scaraba 	*/
+
+	case 2700:	callfunc "MVP_rank",1;	break;
+	case 2701:	callfunc "MVP_rank",1;	break;
+	case 2702:	callfunc "MVP_rank",1;	break;
+	case 2703:	callfunc "MVP_rank",1;	break;
+	case 2704:	callfunc "MVP_rank",1;	break;
+	case 2705:	callfunc "MVP_rank",1;	break;
+	case 2706:	callfunc "MVP_rank",1;	break;
+	case 2707:	callfunc "MVP_rank",1;	break;
+	case 2708:	callfunc "MVP_rank",1;	break;
+	case 2709:	callfunc "MVP_rank",1;	break;	
+	case 2710:	callfunc "MVP_rank",1;	break;
+	case 2711:	callfunc "MVP_rank",1;	break;
+	case 2712:	callfunc "MVP_rank",1;	break;
+	case 2713:	callfunc "MVP_rank",1;	break;
+	case 2714:	callfunc "MVP_rank",1;	break;
+	case 2715:	callfunc "MVP_rank",1;	break;
+	case 2716:	callfunc "MVP_rank",1;	break;
+	case 2717:	callfunc "MVP_rank",1;	break;
+	case 2718:	callfunc "MVP_rank",1;	break;
+	case 2719:	callfunc "MVP_rank",1;	break;
+	case 2720:	callfunc "MVP_rank",1;	break;
+	case 2721:	callfunc "MVP_rank",1;	break;
+	case 2722:	callfunc "MVP_rank",1;	break;
+	case 2723:	callfunc "MVP_rank",1;	break;
+	case 2724:	callfunc "MVP_rank",1;	break;
+	case 2725:	callfunc "MVP_rank",1;	break;
+	case 2726:	callfunc "MVP_rank",1;	break;
+	case 2727:	callfunc "MVP_rank",1;	break;
+	case 2728:	callfunc "MVP_rank",1;	break;
+	case 2729:	callfunc "MVP_rank",1;	break;
+	case 2730:	callfunc "MVP_rank",1;	break;
+	case 2731:	callfunc "MVP_rank",1;	break;
+	case 2732:	callfunc "MVP_rank",1;	break;
+	case 2733:	callfunc "MVP_rank",1;	break;
+	case 2734:	callfunc "MVP_rank",1;	break;
+	case 2735:	callfunc "MVP_rank",1;	break;
+	case 2736:	callfunc "MVP_rank",1;	break;
+	case 2737:	callfunc "MVP_rank",1;	break;
+	case 2738:	callfunc "MVP_rank",1;	break;
+	case 2739:	callfunc "MVP_rank",1;	break;
+	case 2740:	callfunc "MVP_rank",1;	break;
+	case 2741:	callfunc "MVP_rank",1;	break;
+	case 2742:	callfunc "MVP_rank",1;	break;
+	case 2743:	callfunc "MVP_rank",1;	break;
+	case 2744:	callfunc "MVP_rank",1;	break;
+	case 2745:	callfunc "MVP_rank",1;	break;
+	case 2746:	callfunc "MVP_rank",1;	break;
+	case 2747:	callfunc "MVP_rank",1;	break;
+	case 2748:	callfunc "MVP_rank",1;	break;
+	case 2749:	callfunc "MVP_rank",1;	break;
+	case 2750:	callfunc "MVP_rank",1;	break;
+	case 2751:	callfunc "MVP_rank",1;	break;
+	case 2752:	callfunc "MVP_rank",1;	break;
+	case 2753:	callfunc "MVP_rank",1;	break;
+	case 2754:	callfunc "MVP_rank",1;	break;
+	case 2755:	callfunc "MVP_rank",1;	break;
+	case 2756:	callfunc "MVP_rank",1;	break;
+	case 2757:	callfunc "MVP_rank",1;	break;
+	case 2758:	callfunc "MVP_rank",1;	break;
+	case 2759:	callfunc "MVP_rank",1;	break;
+	case 2760:	callfunc "MVP_rank",1;	break;
+	case 2761:	callfunc "MVP_rank",1;	break;
+	case 2762:	callfunc "MVP_rank",1;	break;
+	case 2763:	callfunc "MVP_rank",1;	break;
+	case 2764:	callfunc "MVP_rank",1;	break;
+	case 2765:	callfunc "MVP_rank",1;	break;
+	case 2766:	callfunc "MVP_rank",1;	break;
+	case 2767:	callfunc "MVP_rank",1;	break;
+	case 2768:	callfunc "MVP_rank",1;	break;
+	case 2769:	callfunc "MVP_rank",1;	break;
+	case 2770:	callfunc "MVP_rank",1;	break;
+	case 2771:	callfunc "MVP_rank",1;	break;
+	case 2772:	callfunc "MVP_rank",1;	break;
+	case 2773:	callfunc "MVP_rank",1;	break;
+	case 2774:	callfunc "MVP_rank",1;	break;
+	case 2775:	callfunc "MVP_rank",1;	break;
+	case 2776:	callfunc "MVP_rank",1;	break;
+	case 2777:	callfunc "MVP_rank",1;	break;
+	case 2778:	callfunc "MVP_rank",1;	break;
+	case 2779:	callfunc "MVP_rank",1;	break;
+	case 2780:	callfunc "MVP_rank",1;	break;
+	case 2781:	callfunc "MVP_rank",1;	break;
+	case 2782:	callfunc "MVP_rank",1;	break;
+	case 2783:	callfunc "MVP_rank",1;	break;
+	case 2784:	callfunc "MVP_rank",1;	break;
+	case 2785:	callfunc "MVP_rank",1;	break;
+	case 2786:	callfunc "MVP_rank",1;	break;
+	case 2787:	callfunc "MVP_rank",1;	break;
+	case 2788:	callfunc "MVP_rank",1;	break;
+	case 2789:	callfunc "MVP_rank",1;	break;
+	case 2790:	callfunc "MVP_rank",1;	break;
+	case 2791:	callfunc "MVP_rank",1;	break;
+	case 2792:	callfunc "MVP_rank",1;	break;
+	case 2793:	callfunc "MVP_rank",1;	break;
+	case 2794:	callfunc "MVP_rank",1;	break;
+	case 2795:	callfunc "MVP_rank",1;	break;
+	case 2796:	callfunc "MVP_rank",1;	break;
+	case 2797:	callfunc "MVP_rank",1;	break;
+	case 2798:	callfunc "MVP_rank",1;	break;
+	case 2799:	callfunc "MVP_rank",1;	break;
+	case 2800:	callfunc "MVP_rank",1;	break;
+	case 2801:	callfunc "MVP_rank",1;	break;
+	case 2802:	callfunc "MVP_rank",1;	break;
+	case 2803:	callfunc "MVP_rank",1;	break;
+	case 2804:	callfunc "MVP_rank",1;	break;
+	case 2805:	callfunc "MVP_rank",1;	break;
+	case 2806:	callfunc "MVP_rank",1;	break;
+	case 2807:	callfunc "MVP_rank",1;	break;
+	case 2808:	callfunc "MVP_rank",1;	break;
+	case 2809:	callfunc "MVP_rank",1;	break;
+	case 2810:	callfunc "MVP_rank",1;	break;
+	case 2811:	callfunc "MVP_rank",1;	break;
+	case 2812:	callfunc "MVP_rank",1;	break;
+	case 2813:	callfunc "MVP_rank",1;	break;
+	case 2814:	callfunc "MVP_rank",1;	break;
+	case 2815:	callfunc "MVP_rank",1;	break;
+	case 2816:	callfunc "MVP_rank",1;	break;
+	case 2817:	callfunc "MVP_rank",1;	break;
+	case 2818:	callfunc "MVP_rank",1;	break;
+	case 2819:	callfunc "MVP_rank",1;	break;
+	case 2820:	callfunc "MVP_rank",1;	break;
+}
+end;
+}
+
+function	script	MVP_rank	{
+
+if(!getarg(0))end;
+set @mid,0;
+set @MVpoint,0;
+	query_sql "select char_id, r_mvp from ranking where char_id = "+ getcharid(0,strcharinfo(0))+" ",@mid,@MVpoint;
+	if(@mid){
+		query_sql "update ranking set r_mvp=r_mvp+"+getarg(0)+" where char_id = '"+ getcharid(0,strcharinfo(0)) +"'";
+	}else{
+		query_sql "insert into ranking(char_id,r_mvp) values ('" + getcharid(0,strcharinfo(0)) + "','"+getarg(0)+"')";		
+	}
+dispbottom "คุณได้รับคะแนน   [M]VP [K]illing  เพิ่มขึ้นอีก "+getarg(0)+" Point รวมเป็น  "+(@MVpoint+getarg(0))+" Point";	
+return;
+}

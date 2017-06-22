@@ -1,0 +1,34 @@
+moc_para01,26,15,4	script	Primo d'Buffer	790,{
+	if( vip_status(1) ) {
+		mes "[Primo d'Buffer]";
+		mes "Hello adventurer, you look like you are itching to get out there and save the world!";
+		mes "I can also tell that you have been blessed with 'VIP Status'!";
+		next;
+		mes "[Primo d'Buffer]";
+		mes "That is awesome!";
+		mes "Here is +7 to all your stats for 30 minutes to help you on your Journey.  Just come back when you need to refill your stats!";
+		close2;
+		sc_start SC_STRFood,1800000,7;
+		sc_start SC_AGIFood,1800000,7;
+		sc_start SC_VITFood,1800000,7;
+		sc_start SC_DEXFood,1800000,7;
+		sc_start SC_INTFood,1800000,7;
+		sc_start SC_LUKFood,1800000,7;
+		end;
+	} else {
+		mes "[Primo d'Buffer]";
+		mes "Hello adventurer, you look like you are itching to get out there and save the world!";
+		mes "I can also tell that you haven't been blessed with '^072cffVIP Status^000000'.";
+		next;
+		mes "[Primo d'Buffer]";
+		mes "My orders are to help out any Adventurer marked as VIP with special Buffs!";
+		mes "Currently I will give you ^e92f2f+7 to all of your Stats for 30 minutes^000000 if you are VIP.";
+		next;
+		mes "[Primo d'Buffer]";
+		mes "If you would like to be VIP, you can use WarpPortal to ^ffd07bPower-UP^000000 your game account with VIP Status.";
+		mes "Of course there are many other advantages to being VIP, like higher EXP and Drop Rates, more Storage and special buff NPCs like me!";
+		mes "Happy Journeys!";
+		close;
+	}
+}
+

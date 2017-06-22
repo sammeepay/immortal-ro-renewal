@@ -1,0 +1,281 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	DEVIL_SQUARE	-1,{ 
+mes "[Devil Square Guard]";
+mes "ยินดีต้อนรับผู้กล้าทั้งหลายเข้าสู่ ^FF0000Devil Square^000000"; 
+mes "เมื่อเจ้าออกหรือตายใน Devil Square เจ้าจะไม่สามารถจะเข้ามาได้อีกจนกว่าจะถึงเวลาอีกครั้ง"; 
+mes "เจ้าต้องการที่จะเข้าไปเลยมั้ย"; 
+disablenpc "Exit";
+next; 
+menu "แน่นอนข้าจะเข้าไป",-,"ข้าต้องการฟังรายละเอียดอีกครั้ง",Info,"ไม่ล่ะ ข้าไม่เอาด้วยหรอก",Cancel; 
+
+if(Baselevel < 90) goto LReq; 
+if($inf == 1) goto L_go; 
+goto L_eror; 
+
+LReq: 
+mes "[Devil Square Guard]"; 
+mes "เจ้าต้องมีเลเวลอย่างน้อย 90 ถึงจะเข้าไปได้"; 
+close; 
+end;
+
+L_go: 
+if (getmapusers("ordeal_1-1.gat")==30) goto toomany; 
+announce "[ Devil ] : "+strcharinfo(0)+" ได้เข้าสู่ Devil Square แล้ว",8; 
+percentheal 100,100; 
+warp "ordeal_1-1.gat",183,182; 
+end; 
+
+L_eror: 
+mes "[Devil Square Guard]"; 
+mes "ขณะนี้ประตูสู่ Devil Square ได้ปิดลงแล้ว"; 
+mes " Devil Square จะเปิดอีกครั้งเมื่อเวลา"; 
+mes "13:00 15:00 17:00 21:00 23:00 01:00 03:00 ครับ"; 
+close; 
+end;
+
+Info: 
+mes "[Devil Square Guard]"; 
+mes "เมื่อเจ้าเข้าสู่ Devil Square จะมีมอนสเตอร์ทั้งหมด 3 ระดับด้วยกัน"; 
+mes "ระดับยิ่งสูงมอนสเตอร์ก็จะยิ่งเก่งขึ้นตามลำดับ"; 
+mes "เมื่อเจ้าสามารถพิชิตมอนสเตอร์ทั้ง 3 ระดับ เจ้าก็จะพบกับหีบสมบัติอันล้ำค่าที่สุด"; 
+close; 
+end; 
+
+
+Cancel: 
+mes "[Devil Square Guard]"; 
+mes "ไม่เป็นไรท่านผู้กล้าถ้าท่านพร้อมค่อยมาหาข้าใหม่"; 
+close; 
+OnInit:
+	waitingroom "   Devil Square",0;
+end;
+
+} 
+
+////End Of Devil Square Entrance 
+
+
+ordeal_1-1.gat,182,183,5	script	Cek	-1,{ 
+
+OnTimer30000: 
+if (getmapusers("ordeal_1-1.gat") <= 0) Announce "[ Devil ] : ผุ้กล้าทั้งหมดได้พ่ายแพ้ใน Devil Square แล้ว",8; 
+if (getmapusers("ordeal_1-1.gat") <= 0) set $status,1; 
+if (getmapusers("ordeal_1-1.gat") <= 0) killmonsterall "ordeal_1-1.gat"; 
+if (getmapusers("ordeal_1-1.gat") <= 0) end; 
+Announce "[ Devil ] : ยังคงมีผู้กล้ารอดชีวิตใน Devil Square " + getmapusers("ordeal_1-1.gat") + " ท่าน",8; 
+initnpctimer; 
+end; 
+
+OnInit:setnpctimer 0;stopnpctimer;end;
+
+} 
+
+ordeal_1-1.gat,182,183,5	script	HiddenNpc	-1,{ 
+
+OnClock1300:
+OnClock1500:
+OnClock1700:
+OnClock2100:
+OnClock2300:
+OnClock0100:
+OnClock0300: 
+Announce "[ Devil ] : Devil Square กำลังจะเปิดใน 5 นาที ให้ผู้กล้าทั้งหลายจงเตรียมพร้อม !!",8; 
+disablenpc "Exit"; 
+initnpctimer; 
+set $inf,1; 
+set $status,0; 
+killmonsterall "ordeal_1-1.gat"; 
+end; 
+
+OnTimer60000: 
+Announce "[ Devil ] : Devil Square จะเริ่มต้นภายใน 4 นาที!!",8; 
+end; 
+
+OnTimer120000: 
+Announce "[ Devil ] : Devil Square จะเริ่มต้นภายใน 3 นาที!!",8; 
+end; 
+
+OnTimer180000: 
+Announce "[ Devil ] : Devil Square จะเริ่มต้นภายใน 2 นาที!!",8; 
+end; 
+
+OnTimer240000: 
+Announce "[ Devil ] : Devil Square จะเริ่มต้นภายใน 1 นาที!!",8; 
+end; 
+
+OnTimer300000:
+Announce "[ Devil ] : Devil Square ได้เริ่มต้นขึ้นแล้ว ณ บัดนี้ !!",8; 
+initnpctimer "Cek";
+setnpctimer 0;
+stopnpctimer;
+set $inf,0; 
+set $mob,77; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] SOLDIER SKELETON",1028,10,"HiddenNpc::Ondevildead";
+ 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] ORC ARCHER",1189,15,"HiddenNpc::Ondevildead"; 
+
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] SANDMAN",1165,10,"HiddenNpc::Ondevildead"; 
+
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] ARCHER SKELETON",1016,15,"HiddenNpc::Ondevildead"; 
+
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] MINOROUS",1149,15,"HiddenNpc::Ondevildead"; 
+
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] REQUIEM",1164,10,"HiddenNpc::Ondevildead"; 
+
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] BOSS SERVER",1159,2,"HiddenNpc::Ondevildead"; 
+end;
+
+Ondevildead: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 25) goto Lannou1; 
+if($mob == 5) goto Lannou2; 
+if($mob == 0) goto Lannou3; 
+end; 
+
+Lannou1: 
+Announce "[ Devil ] : เหลือมอนสเตอร์อีก 25 ตัวสู่ทางผ่านระดับที่ 2",0; 
+end; 
+
+Lannou2: 
+Announce "[ Devil ] : เหลือมอนสเตอร์อีก 5 ตัวสู่ทางผ่านระดับที่ 2",0; 
+end; 
+
+Lannou3: 
+Announce "[ Devil ] : Devil Square ได้เข้าสู่ระดับที่ 2 แล้ว",8; 
+goto Ondevil2; 
+end; 
+
+Ondevil2: 
+set $mob,71; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] GARGOYLE",1253,15,"HiddenNpc::Ondevildead2"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] ALARM",1193,10,"HiddenNpc::Ondevildead2"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] HIGH ORC",1213,10,"HiddenNpc::Ondevildead2"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] INJUSTICE",1257,10,"HiddenNpc::Ondevildead2"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] MIMIC",1191,15,"HiddenNpc::Ondevildead2"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] WRAITH",1192,10,"HiddenNpc::Ondevildead2"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] BOSS SERVER",1115,1,"HiddenNpc::Ondevildead2"; 
+end; 
+
+Ondevildead2: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 25) goto Lannou4; 
+if($mob == 5) goto Lannou5; 
+if($mob == 0) goto Lannou6; 
+end; 
+
+Lannou4: 
+Announce "[ Devil ] : เหลือมอนสเตอร์อีก 25 ตัวสู่ทางผ่านระดับที่ 3",0; 
+end; 
+
+Lannou5: 
+Announce "[ Devil ] : เหลือมอนสเตอร์อีก 5 ตัวสู่ทางผ่านระดับที่ 3",0; 
+end; 
+
+Lannou6: 
+Announce "[ Devil ] : Devil Square ได้เข้าสู่ระดับที่ 3 แล้ว",8; 
+goto Ondevil3; 
+end; 
+
+Ondevil3: 
+set $mob,45; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] Rideword",1195,15,"HiddenNpc::Ondevildead3"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] WANDERER",1208,15,"HiddenNpc::Ondevildead3"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] Redric",1163,15,"HiddenNpc::Ondevildead3"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] Bloodyknight",1268,2,"HiddenNpc::Ondevildead3"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] BOSS SERVER",1087,3,"HiddenNpc::Ondevildead3"; 
+areamonster "ordeal_1-1.gat",183,182,246,244,"[TL] DARK Abysknight",1219,3,"HiddenNpc::Ondevildead3"; 
+end; 
+
+Ondevildead3: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 25) goto Lannou7; 
+if($mob == 5) goto Lannou8; 
+if($mob == 0) goto Lannou9; 
+end; 
+
+Lannou7: 
+Announce "[ Devil ] : เหลือมอนสเตอร์อีก 25 มุ่งสู่จุดหมาย",0; 
+end; 
+
+Lannou8: 
+Announce "[ Devil ] : เหลือมอนสเตอร์อีก 5 ใกล้ถึงเส้นชัยแล้ว",0; 
+end; 
+
+Lannou9: 
+Announce "[ Devil ] : โอ้!! ท่านได้พิชิต Devil Square แล้ว มหาสมบัตกำลังรอท่านอยู่ จงรีบไป",8; 
+goto Ondevil4; 
+end; 
+
+Ondevil4: 
+set $mob,10; 
+monster "ordeal_1-1.gat",231,250,"Treasure Box",1324,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",234,247,"Treasure Box",1328,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",237,244,"Treasure Box",1332,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",240,241,"Treasure Box",1336,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",243,238,"Treasure Box",1340,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",246,235,"Treasure Box",1344,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",249,232,"Treasure Box",1348,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",252,229,"Treasure Box",1352,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",249,241,"Treasure Box",1356,1,"HiddenNpc::Onboxdead"; 
+monster "ordeal_1-1.gat",240,249,"Treasure Box",1360,1,"HiddenNpc::Onboxdead"; 
+end; 
+
+Onboxdead: 
+if ($status == 1) end; 
+set $mob, $mob - 1; 
+Announce "[ Devil ] : " + strcharinfo(0) +" ได้เปิดขุมทรัพย์ Devil Square แล้ว",8; 
+if($mob == 0) enablenpc "Exit"; 
+getitem 603,5;
+getitem 617,2;
+if(rand(1,10)==9){getitem 616,1;}
+end; 
+
+OnInit:setnpctimer 0;stopnpctimer;end;
+
+} 
+
+// -- Mapflags 
+ordeal_1-1.gat	mapflag	nowarp 
+ordeal_1-1.gat	mapflag	nowarpto 
+ordeal_1-1.gat	mapflag	noteleport 
+ordeal_1-1.gat	mapflag	nosave	SavePoint 
+ordeal_1-1.gat	mapflag	nomemo 
+ordeal_1-1.gat	mapflag	nobranch 
+ordeal_1-1.gat	mapflag	nopenalty 
+ordeal_1-1.gat	mapflag	noreturn
+
+// -- End of Mapflags 
+
+ordeal_1-1.gat,246,245,5	script	Exit	735,{ 
+mes "[Exit]"; 
+mes "นี่คือทางออก Devil Square "; 
+mes "ท่านจะกลับออกไปหรือไม่"; 
+menu "กลับ",Gback,"ช้าก่อน ข้ามีอะไรที่ยังต้องทำ",Gno;
+
+Gback:
+next; 
+warp "rtc_ro.gat",153,92; 
+close; 
+
+Gno:
+next; 
+mes "[Exit]"; 
+mes "จะกลับเมื่อไหร่บอกข้านะ"; 
+close; 
+}
+
+
+rtc_ro,12,97,4	duplicate(DEVIL_SQUARE)	Devil Square	417

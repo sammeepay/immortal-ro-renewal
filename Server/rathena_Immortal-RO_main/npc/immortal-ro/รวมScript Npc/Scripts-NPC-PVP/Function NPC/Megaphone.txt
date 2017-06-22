@@ -1,0 +1,59 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+function	script	F_Announce	{
+	if ((getmapflag(strcharinfo(3),9)) || (getmapflag(strcharinfo(3),10)) || (getmapflag(strcharinfo(3),26)) || (getmapflag(strcharinfo(3),27))) {
+		dispbottom "äÁèÊÒÁÒÃ¶ãªé »ÃÐ¡ÒÈ' ä´éã¹á¼¹·Õè¹Õé";
+		close;
+	} else {
+
+	menu "-^00FF00••••••••••••••••••••••••••••••••••••••••••••••••^000000",goguild1,
+	"- ^0099FF••••••••••••••••••••••••••••••••••••••••••••••••^000000",goguild2,
+	"- ^99FFFF••••••••••••••••••••••••••••••••••••••••••••••••^000000",goguild3,
+	"- ^EEF2F7••••••••••••••••••••••••••••••••••••••••••••••••^000000",goguild4,
+	"- ^FFFF66••••••••••••••••••••••••••••••••••••••••••••••••^000000",goguild5,
+	"- ^0000CC••••••••••••••••••••••••••••••••••••••••••••••••^000000",goguild6,
+	"- ^FF00CC••••••••••••••••••••••••••••••••••••••••••••••••^000000",goguild7;
+	close;
+goguild1:
+	input @Megaphone$; 
+	announce strcharinfo(0) + "  :::  " + @Megaphone$,bc_all,0x33FF00;
+	close;
+goguild2:
+	input @Megaphone$; 
+	announce strcharinfo(0) + "  :::  " + @Megaphone$,bc_all,0x0099FF;
+	close;
+goguild3:
+	input @Megaphone$; 
+	announce strcharinfo(0) + "  :::  " + @Megaphone$,bc_all,0x99FFFF;
+	close;
+goguild4:
+	input @Megaphone$; 
+	announce strcharinfo(0) + "  :::  " + @Megaphone$,bc_all,0xEEF2F7;
+	close;
+goguild5:
+	input @Megaphone$; 
+	announce strcharinfo(0) + "  :::  " + @Megaphone$,bc_all,0xFFFF66;
+	close;
+goguild6:
+	input @Megaphone$; 
+	announce strcharinfo(0) + "  :::  " + @Megaphone$,bc_all,0x0000CC;
+	close;
+goguild7:
+	input @Megaphone$; 
+	announce strcharinfo(0) + "  :::  " + @Megaphone$,bc_all,0xFF00CC;
+	close;
+	}
+}
+
+
+
+

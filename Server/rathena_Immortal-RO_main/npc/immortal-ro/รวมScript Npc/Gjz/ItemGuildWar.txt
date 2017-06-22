@@ -1,0 +1,93 @@
+-	script	ItemGuild_H1::ITGW1	-1,{
+if ($@ActiveSv == 0) end;
+set @GID,getcastledata("gefg_cas05.gat",1);
+if (strcharinfo(0) == getguildmaster(@GID)) {
+mes "[ ^0000FFItemGuildWar^000000 ]";
+mes "...ท่านเป็นหัวหน้ากิล...";
+mes "ข้าให้ ItemGuildWar สำหรับเจ้า เพราะเจ้าชนะ Guildwar ครั้งนี้ ";
+mes "... อย่าลืมเอาไปแจกลูกกิลล่ะ ...";
+next;
+getitem $@GW1_I1,$@GW1_I1a;
+getitem $@GW1_I2,$@GW1_I2a;
+set Zeny,Zeny+$@GW1_z1;
+disablenpc "ItemGuildWar1#01";
+close;
+}
+if (getcharid(2) == @GID) {
+mes "[ ^0000FFItemGuildWar^000000 ]";
+mes "ข้ารอ หัวหน้ากิลของเจ้า ที่ชื่อ ^5533FF["+ getguildmaster(@GID)+"]^000000";
+mes "เจ้าไม่ใช้หัวหน้ากิล ไปสะ";
+close;
+}
+mes "[ ^0000FFItemGuildWar^000000 ]";
+mes "สำหรับ หัวหน้ากิล ที่ชื่อ ^ff0000[" + getguildmaster(@GID) + "]^000000";
+mes "เท่านั้น";
+close;
+}
+
+-	script	ItemGuild_H2::ITGW2	-1,{
+if ($@ActiveSv == 0) end;
+set @GID,getcastledata("payg_cas03.gat",1);
+if (strcharinfo(0) == getguildmaster(@GID)) {
+mes "[ ^0000FFItemGuildWar^000000 ]";
+mes "... ท่านเป็นหัวหน้ากิล ...";
+mes "ข้าให้ ItemGuildWar สำหรับเจ้า เพราะเจ้าชนะ Guildwar ครั้งนี้ ";
+mes "...อย่าลืมเอาไปแจกลูกกิลล่ะ...";
+next;
+getitem $@GW2_I1,$@GW2_I1a;
+getitem $@GW2_I2,$@GW2_I2a;
+set Zeny,Zeny+$@GW2_z2;
+disablenpc "ItemGuildWar2#02";
+close;
+}
+if (getcharid(2) == @GID) {
+mes "[ ^0000FFItemGuildWar^000000 ]";
+mes "ข้ารอ หัวหน้ากิลของเจ้า ที่ชื่อ ^5533FF["+ getguildmaster(@GID)+"]^000000";
+mes "เจ้าไม่ใช้หัวหน้ากิล ไปสะ";
+close;
+}
+mes "[ ^0000FFItemGuildWar^000000 ]";
+mes "สำหรับ หัวหน้ากิล ที่ชื่อ ^ff0000[" + getguildmaster(@GID) + "]^000000";
+mes "เท่านั้น";
+close;
+}
+
+-	script	Visible	-1,{
+end;
+OnInit:
+//disablenpc "ItemGuild_H1";
+//disablenpc "ItemGuild_H2";
+disablenpc "ItemGuildWar1#01";
+disablenpc "ItemGuildWar2#02";
+enablenpc "Anti2GuildWar";
+enablenpc "Anti2GuildWar01";
+end;
+OnAgitEnd:
+//enablenpc "ItemGuild_H1";
+//enablenpc "ItemGuild_H2";
+enablenpc "ItemGuildWar1#01";
+enablenpc "ItemGuildWar2#02";
+enablenpc "Anti2GuildWar";
+enablenpc "Anti2GuildWar01";
+end;
+OnAgitStart:
+//disablenpc "ItemGuild_H1";
+//disablenpc "ItemGuild_H2";
+disablenpc "ItemGuildWar1#01";
+disablenpc "ItemGuildWar2#02";
+disablenpc "Anti2GuildWar";
+disablenpc "Anti2GuildWar01";
+end;
+}
+
+payg_cas03,226,26,0	script	Anti2GuildWar	45,10,10,{
+if(getgmlevel() > 60) {
+dispbottom "GuildWar : ...คุณเป็น GM สามารถผ่านไปได้...";
+end;
+}
+dispbottom "GuildWar : ...กิลวอยังไม่เปิดไม่สามารถเข้าได้...";
+warp "SavePoint",0,0;
+end;
+}
+
+gefg_cas05,11,138,0	duplicate(Anti2GuildWar)	Anti2GuildWar01	45,10,10

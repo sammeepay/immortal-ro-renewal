@@ -1,0 +1,212 @@
+//===== eAthena Script =======================================================
+//= Dota Allstars announcement ( TXT & SQL )
+//===== By: ==================================================================
+//= ~AnnieRuru~
+//===== Current Version: =====================================================
+//= 1.8
+//===== Compatible With: =====================================================
+//= eAthena 12322 Trunk
+//===== Description: =========================================================
+//= Dota Announcement script
+//= with a lot configurations, and anti-sit-killer feature
+//= http://www.eathena.ws/board/index.php?s=&showtopic=175136&view=findpost&p=999446
+//============================================================================
+//= แปลโดย ParkZ Team
+//============================================================================
+-	script	DOTAPVP	-1,{
+OnInit:
+// Config
+	set.sound, 1; // soundeffect : 0-ระงับ, 1-เล่น soundeffect ถึงผู้เล่นทั้งหมดบนแผนที่, 2-เล่น soundeffect ถึงพื้นที่รอบๆผู้ฆ่า, 3-เล่น soundeffect ถึงผู้ฆ่า
+	set.ownage, 0;// ownage การประกาศ: 0-ระงับ, 1-ภายใน Paty, 2-ภายใน Guild
+	set.announce, 1;//ทำประกาศให้: 0-ทั่วโลก, 1-แผนที่
+	set.announcemap, 1;//ประกาศแผนที่ตั้งชื่อในการประกาศ? : 0-ปิด, 1-เปิด
+
+	set.announcekill, 0;//ประกาศผู้ซึ่งจำนำหัวของผู้ซึ่ง: 0-ปิด, 1-เปิด
+	set.msg_die, 0;//แสดงผู้ซึ่งให้ข่าวสารฆ่าคุณเมื่อตาย: 0-ปิด, 1-เปิด
+	set.msg_kill, 0;//แสดงคุณให้ข่าวสารฆ่าผู้ซึ่งเมื่อใครบางคนที่ฆ่า: 0-ปิด, 1-เปิด
+
+	set.gmnokill, 0;// GMs ไม่สมมุติเพื่อฆ่าผู้เล่น  GM กับ<ตัวเลขนี้>ระดับหรือสูงกว่าจะทำไม่มีสิ่งใด ถ้าตั้งเป็น60,  GM60 และเหนือกว่าฆ่าผู้เล่นอย่างใดๆจะไม่ได้ทุกๆสิ่ง: 0-ปิด
+
+	set.killingspree, 3;
+	set.dominating, 4;
+	set.megakill, 5;
+	set.unstoppable, 6;
+	set.wickedsick, 7;
+	set.monsterkill, 8;
+	set.godlike, 9;
+	set.holyshit,  10 ;
+	set.continue, 1;//หลังจากข้างหลัง-godlike, ทุก<ตัวเลขนี้>ฆ่าจะทำการประกาศอีกครั้ง
+
+	set.owned, 5;//เวลามากแค่ไหนงานสังสรรค์/สมาคมจะต้องฆ่าเพื่อประกาศ ownage
+ 	set.owncontinue, 1;//หลังจากownage, ทุก<ตัวเลขนี้>งานสังสรรค์/สมาคมสะสมขึ้นฆ่าจะทำ ownage ประกาศอีกครั้ง
+
+	//	*NEW* anti-sit-killer system
+	//ผู้เล่นต้องฆ่าผู้เล่นอื่นๆกับน้อยที่สุดนี้<ตัวเลขนี้>ระดับที่จะได้การประกาศและในบันได
+	// เฉพาะมีการประกาศที่จบเส้นหลายสีและเส้นหลายสีของผู้เล่นที่ฆ่าคืนค่า
+	// เป็นไปได้ของมันสำหรับระดับ1ผู้ที่เพิ่งเป็นที่จะฆ่าระดับ 55 ผู้เล่นและเขา/เธอจะยังคงเข้าถึงบันได
+	//แต่ระดับ 55 ฆ่าระดับ1ผู้เล่นจะได้ไม่มีสิ่งใด
+	// 0-ปิดระบบนี้(ค่าพื้นฐานคือ55, การตั้งค่า pk )
+	set.lvltokill, 0;
+
+	// เมื่อผู้เล่นฆ่าผู้เล่นเดียวกันอื่นๆ<ตัวเลขนี้>เวลาในแถวนอน, ผู้เล่นบิดเบือนกลับเพื่อบันทึกจุด
+ 	// และเส้นหลายสีของผู้เล่นและ ownage จำนวนนับจะหักตาม
+	// 0-ปิดระบบนี้
+	set.counttopunish, 6;
+
+	// ระยะระดับน้อยที่สุดที่จะฆ่าตัวอย่างผู้เล่นอื่นๆ
+	// เมื่อตั้งเป็น20, ระดับผู้เล่น 99 ความต้องการที่จะฆ่าผู้เล่นอื่นๆกับระดับน้อยที่สุดของ 79 ที่จะได้การประกาศและทำให้เพิ่มรอบการฆ่า
+ 	// แต่ผู้เล่นกับระดับอาศัย 50 ฆ่าระดับ 99 จะได้ระดับอาศัยสูงกว่าการประกาศ
+	//ไม่สามารถฆ่าระดับต่ำกว่า,อีกด้วย แต่ระดับต่ำกว่าสามารถฆ่าระดับสูงกว่า
+	// 0-ปิดระบบนี้
+	set .minlvlrange, 0;
+
+// Config ends ------------------------------------------------------------------------------------------
+
+//	เพื่อป้องกันจุดบกพร่องเกิดขึ้น
+	if ( .ownage < 0 || .ownage > 2 ) set .ownage, 0;
+	if ( .announce < 0 || .announce > 1 ) set .announce,0;
+	if ( .continue < 1 ) set .continue, 1;
+	if ( .owncontinue < 1 ) set .owncontinue, 1;
+	if ( .gmnokill <= 0 ) set .gmnokill, 100;
+	if ( .lvltokill <= 1 ) set .lvltokill, 0;
+	if ( .counttopunish <= 1 ) set .counttopunish, 0;
+	end;
+
+//	script start
+OnPCKillEvent:
+	if ( getgmlevel() >= .gmnokill ) end;
+	getmapxy .@map$,.@x,.@y,0;
+	if ( !attachrid(killedrid) ) end;
+		if ( killerrid != getcharid(3) && ( .msg_die || .msg_kill ) ) {
+			if ( .msg_die ) message strcharinfo(0),"You have been killed by "+ rid2name(killerrid);
+			if ( .msg_kill ) message rid2name(killerrid),"You just killed "+ strcharinfo(0);
+		}
+		if ( @PlayersKilledStreak >= .holyshit )
+			set .@streakname$,"Beyond Godlike";
+		else if ( @PlayersKilledStreak >= .godlike )
+			set .@streakname$,"Godlike";
+		else if ( @PlayersKilledStreak >= .monsterkill )
+			set .@streakname$,"Monster Kill";
+		else if ( @PlayersKilledStreak >= .wickedsick )
+			set .@streakname$,"Wicked Sick";
+		else if ( @PlayersKilledStreak >= .unstoppable )
+			set .@streakname$,"Unstoppable";
+		else if ( @PlayersKilledStreak >= .megakill )
+			set .@streakname$,"Mega-kill";
+		else if ( @PlayersKilledStreak >= .dominating )
+			set .@streakname$,"Dominating";
+		else if ( @PlayersKilledStreak >= .killingspree )
+			set .@streakname$,"Killing Spree";
+	if ( @PlayersKilledStreak >= .killingspree && killerrid == getcharid(3) )
+		announce strcharinfo(0) +" has ended "+( (sex)?"him":"her" )+" own "+ .@streakname$ +"["+ @PlayersKilledStreak +"] streak "+( (.announcemap)?("at "+ .@map$):""),16|.announce;
+	else if ( @PlayersKilledStreak >= .killingspree )
+		announce rid2name(killerrid) +" has ended "+ strcharinfo(0) +"'s "+ .@streakname$ +"["+ @PlayersKilledStreak +"] streak "+( (.announcemap)?("at "+ .@map$):""),16|.announce;
+	else if ( .announcekill )
+		announce rid2name(killerrid) +" has pawned "+ strcharinfo(0) +"'s head "+( (.announcemap)?("at "+ .@map$):""),16|.announce;
+	set @PlayersKilledStreak,0;
+	set @dota_multikills,0;
+	if ( .ownage && getcharid(.ownage) ) {
+		setd ".dotaown_"+ getcharid(.ownage), 0;
+		set .@killedgroup, getcharid(.ownage);
+	}
+	if ( killerrid == getcharid(3) || baselevel < .lvltokill ) end;
+	if ( .minlvlrange ) set .@killedlvl, baselevel;
+	if ( !attachrid(killerrid) ) end;
+	if ( .minlvlrange && .@killedlvl + .minlvlrange < baselevel ) end;
+	if ( .counttopunish ) {
+		for ( set .@i,0; .@i < 60; set .@i, .@i +1 ) {
+			if ( .@i == gettime(2) ) continue;
+			deletearray getd("@sitkillid"+ .@i), 128;
+			deletearray getd("@sitkilltimes"+ .@i), 128;
+		}
+		for ( set .@i,0; .@i < getarraysize( getd("@sitkillid"+ gettime(2)) ); set .@i, .@i +1 ) {
+			if ( getd("@sitkillid"+ gettime(2) +"["+ .@i +"]") != killedrid ) 
+				continue;
+			else {
+				set .@sitkillfound, 1;
+				setd "@sitkilltimes"+ gettime(2) +"["+ .@i +"]", getd("@sitkilltimes"+ gettime(2) +"["+ .@i +"]") +1 ;
+				if ( getd("@sitkilltimes"+ gettime(2) +"["+ .@i +"]") >= .counttopunish ) {
+					warp "SavePoint",0,0;
+					announce strcharinfo(0) +" , Stop killing "+ rid2name(killedrid) + " !!!",0;
+					debugmes strcharinfo(0) +" is sit-killing "+ rid2name(killedrid) +" for "+ getd("@sitkilltimes"+ gettime(2) +"["+ .@i +"]") + " times";
+					logmes "is sit-killing "+ rid2name(killedrid) +" for "+ getd("@sitkilltimes"+ gettime(2) +"["+ .@i +"]") +" times";
+					set @PlayersKilledStreak, @PlayersKilledStreak +1 - .counttopunish;
+					if ( .ownage && getcharid(.ownage) )
+						setd ".dotaown_"+ getcharid(.ownage), getd(".dotaown_"+ getcharid(.ownage) ) +1 - .counttopunish;
+					end;
+				}
+			}
+		}
+		if ( !.@sitkillfound ) {
+			setd "@sitkillid"+ gettime(2) +"["+ .@i +"]", killedrid;
+			setd "@sitkilltimes"+ gettime(2) +"["+ .@i +"]", 1;
+		}
+	}
+	set @PlayersKilledStreak, @PlayersKilledStreak + 1;
+	set PlayersKilled, PlayersKilled + 1;
+		if ( @PlayersKilledStreak == .killingspree )
+			setarray .@streakname$,"killingspree.wav","on a KILLING SPREE",".";
+		else if ( @PlayersKilledStreak == .dominating )
+			setarray .@streakname$,"dominating.wav","DOMINATING!",".";
+		else if ( @PlayersKilledStreak == .megakill )
+			setarray .@streakname$,"megakill.wav","on a MEGA Spree!",".";
+		else if ( @PlayersKilledStreak == .unstoppable )
+			setarray .@streakname$,"unstoppable.wav","UNSTOPPABLE!",".";
+		else if ( @PlayersKilledStreak == .wickedsick )
+			setarray .@streakname$,"wickedsick.wav","WICKED SICK!",".";
+		else if ( @PlayersKilledStreak == .monsterkill )
+			setarray .@streakname$,"monsterkill.wav","on a MONSTER Spree!",".";
+		else if ( @PlayersKilledStreak == .godlike )
+			setarray .@streakname$,"godlike.wav","GODLIKE!",". Will someone ever stop "+( (sex)?"him":"her" ) +"?";
+		else if ( @PlayersKilledStreak >= .holyshit && ( (@PlayersKilledStreak - .holyshit) % .continue == 0 ) )
+			setarray .@streakname$,"holyshit.wav","BEYOND GODLIKE!",". Someone kill "+( (sex)?"him":"her" ) +"!";
+	if ( .@streakname$[1] != "" ) {
+		announce strcharinfo(0) +" "+ .@streakname$[1] +"["+ @PlayersKilledStreak +"] "+( (.announcemap)?("at "+ .@map$):"") + .@streakname$[2],16|.announce;
+		if ( .sound == 1 ) soundeffectall .@streakname$[0],0,.@map$;
+		else if ( .sound == 2 ) soundeffectall .@streakname$[0],0;
+		else if ( .sound == 3 ) soundeffect .@streakname$[0],0;
+	}
+	set @dota_multikills, @dota_multikills + 1;
+	deltimer "DOTAPVP::OnStreakReset";
+	addtimer 11500,"DOTAPVP::OnStreakReset";
+	if ( .ownage ) {
+		set .@sideid, getcharid(.ownage);
+		if ( .@sideid != .@killedgroup ) setd ".dotaown_"+ .@sideid, getd(".dotaown_"+ .@sideid ) + 1;
+	}
+	set .@dota_multikills, @dota_multikills;
+	set .@origin, getcharid(3);
+	sleep 1500;
+	if ( .@sideid && .ownage && .@sideid != .@killedgroup && getd(".dotaown_"+ .@sideid) >= .owned && ( ( getd(".dotaown_"+ .@sideid) - .owned ) % .owncontinue == 0 ) ) {
+		if ( .announce ) mapannounce .@map$, "The "+( (.ownage == 1)?"party":"guild" )+" ["+( (.ownage == 1)?getpartyname(.@sideid):getguildname(.@sideid) )+"] is OWNING["+ getd(".dotaown_"+ .@sideid) +"] !!!",16;
+		else announce "The "+( (.ownage == 1)?"party":"guild" )+" ["+( (.ownage == 1)?getpartyname(.@sideid):getguildname(.@sideid) )+"] is OWNING["+ getd(".dotaown_"+ .@sideid) +"] !!!",16;
+		if ( .sound == 1 ) soundeffectall "ownage.wav",0,.@map$;
+		else if ( .sound == 2 ) soundeffectall "ownage.wav",0;
+		else if ( .sound == 3 && attachrid(.@origin) ) soundeffect "ownage.wav",0;
+	}
+	sleep 1250;
+	if ( !attachrid(.@origin) ) end;
+	if ( .@dota_multikills == 2 ) {
+		if ( .announce ) mapannounce .@map$, strcharinfo(0) +" เป็นไงไอ้น้องข้าเก่งมั้ย ฆ่าที่เดียว 2 คนติด ภายในเวลา 3 วิ !!",16;
+		else announce strcharinfo(0) +" เป็นไงไอ้น้องข้าเก่งมั้ย ฆ่าที่เดียว 2 คนติด ภายในเวลา 3 วิ  !!",16;
+		if ( .sound == 1 ) soundeffectall "doublekill.wav",0,.@map$;
+		else if ( .sound == 2 ) soundeffectall "doublekill.wav",0;
+		else if ( .sound == 3 ) soundeffect "doublekill.wav",0;
+	}
+	else if ( .@dota_multikills >= 3 ) {
+		if ( .announce ) mapannounce .@map$, strcharinfo(0) +" เป็นไงไอ้น้องข้าเก่งมั้ย ฆ่าที่เดียว 3 คนติด ภายในเวลา 3 วิ !!!",16;
+		else announce strcharinfo(0) +" เป็นไงไอ้น้องข้าเก่งมั้ย ฆ่าที่เดียว 3 คนติด ภายในเวลา 3 วิ !!!",16;
+		if ( .sound == 1 ) soundeffectall "triplekill.wav",0,.@map$;
+		else if ( .sound == 2 ) soundeffectall "triplekill.wav",0;
+		else if ( .sound == 3 ) soundeffect "triplekill.wav",0;
+	}
+	end;
+OnWhisperGlobal:
+	dispbottom "Your current Streak : "+ @PlayersKilledStreak;
+	dispbottom "Your total Kills		  : "+ PlayersKilled;
+	if ( .ownage && getcharid(.ownage) )
+		dispbottom "Your "+( (.ownage ==1)?"party":"guild" )+" Own		: "+ getd(".dotaown_"+ getcharid(.ownage) );
+	end;
+OnStreakReset:
+	set @dota_multikills,0;
+	end;
+}

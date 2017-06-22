@@ -1,0 +1,20 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+-	script	Novending	-1,{
+
+OnInit:
+setcell "rtc_ro",58,105,135,54,cell_novending,1;
+setcell "rtc_ro",6,186,187,116,cell_novending,1;
+setcell "rtc_ro",144,75,190,44,cell_novending,1;
+setcell "rtc_ro",144,37,189,14,cell_novending,1;
+end;
+}
+

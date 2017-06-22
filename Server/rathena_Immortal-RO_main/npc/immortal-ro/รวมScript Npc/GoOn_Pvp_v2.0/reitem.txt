@@ -1,0 +1,129 @@
+//------------------NPC กระเทยทอง-------
+//----------------------------------------------By--------------
+//-------------------------------------------Bigking---------------------------------------
+//--------------------------เขียนครั้งแรก ผิดพลาดยังไงก็ขออภัยนะคับ-----------
+izlude.gat,137,131,4 script ซ่อมอาวุธ 86,{
+mes "[Repairmen]";
+mes "ฉันเป็นช่างเหล็กการซ่อมแซมและฉันสามารถซ่อมแซมแขนอย่างใดๆที่คุณต้องการ.";
+mes "อุปกรณ์ที่คุณต้องการซ่อมแซม คือชิ้นไหนล่ะ";
+set @broken1,getbrokenid(1);
+set @broken2,getbrokenid(2);
+set @broken3,getbrokenid(3);
+set @broken4,getbrokenid(4);
+set @broken5,getbrokenid(5);
+set @broken6,getbrokenid(6);
+set @broken7,getbrokenid(7);
+set @broken8,getbrokenid(8);
+set @broken9,getbrokenid(9);
+set @broken10,getbrokenid(10);
+next;
+if(@broken1==NULL) goto L_CANCEL_3;
+menu getitemname(@broken1),REPAIR1,getitemname(@broken2),REPAIR2,getitemname(@broken3),REPAIR3,
+  getitemname(@broken4),REPAIR4,getitemname(@broken5),REPAIR5,getitemname(@broken6),REPAIR6,
+  getitemname(@broken7),REPAIR7,getitemname(@broken8),REPAIR8,getitemname(@broken9),REPAIR9,
+  getitemname(@broken10),REPAIR10;
+REPAIR1:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(1);
+  goto L_CLOSE;
+REPAIR2:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(2);
+  goto L_CLOSE;
+REPAIR3:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(3);
+  goto L_CLOSE;
+REPAIR4:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(4);
+  goto L_CLOSE;
+REPAIR5:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(5);
+  goto L_CLOSE;
+REPAIR6:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(6);
+  goto L_CLOSE;
+REPAIR7:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(7);
+  goto L_CLOSE;
+REPAIR8:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(8);
+  goto L_CLOSE;
+REPAIR9:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(9);
+  goto L_CLOSE;
+REPAIR10:
+  mes "[Repairmen]";
+  mes "ดูเหมือนว่า " + getitemname(@broken1) + "จะเสียหายนะเนี่ย";
+  mes "ถึงอย่างไรก็ตามข้าสามารถซ่อมได้ แต่เจ้าต้องนำ ^ff9999Steel^000000 1 อัน และเงิน 10,000 Zeny";
+  mes "มาให้ข้า ว่าแต่เจ้าต้องการให้ข้าซ่อมอุปกรณ์ของเจ้าไหมล่ะ";
+  next;
+  menu "แน่นอน",-,"ไม่ต้อง",L_CANCEL_2;
+  repair(10);
+  goto L_CLOSE;
+
+L_CANCEL_2:
+mes "[Repairmen]";
+mes "Ok..หากเจ้าไม่ต้องการซ่อมมัน ข้าก็จะไม่ยุ่งกับมัน";
+goto L_CLOSE;
+L_CANCEL_3:
+mes "[Repairmen]";
+mes "ดูเหมือนว่าคุณยังมีอุปกรณืที่ดีอยู่ ไม่มีอะไรเสียหายนิ";
+goto L_CLOSE;
+L_CLOSE:
+close;
+OnInit:
+waitingroom "ซ่อมอาวุธ",0;
+end;
+} 

@@ -1,0 +1,198 @@
+//===== Developers Script ===================================
+//= Zone Vs Zone 1-1
+//===== Current Version =====================================
+//= 1.0
+//===== Description ========================================= 
+//= Zone Vs Zone 1-1
+//===== Additional Comments ================================= 
+//= 1.0 Start Version
+//= 1.1 Edit By Xtrap-COLO
+//===========================================================
+
+function	script	RegisterZone11	{
+set @nguild,getcharid(2);
+if (strcharinfo(0) != getguildmaster(@nguild)) {mes "Zone Vs Zone 1-1"; mes "ไม่สามารถลงทะเบียนท่านไม่ใช่หัวหน้ากิลด์"; close; }
+mes "ใบเข้าประจำ ZONE 1";
+next;
+menu "- เข้า ZONE 1",g1,"- ถอนตัวจากการแข่งขัน",Lcancel;
+g1:
+set @GID,getcharid(2);
+warp "2009rwc_03",10,49;
+if(strcharinfo(0) == getguildmaster(@GID)){atcommand "@guildrecall "+@GID;;}
+Announce "Guild [ "+GetGuildName(@nguild)+" ] ได้ทำการลงทะเบียน ZONE 1 เรียบร้อยแล้ว",bc_all,"0x33FF66";
+close;
+Lcancel:
+close;
+}
+
+function	script	RegisterZone12	{
+set @nguild,getcharid(2);
+if (strcharinfo(0) != getguildmaster(@nguild)) {mes "Zone Vs Zone 1-1"; mes "ไม่สามารถลงทะเบียนท่านไม่ใช่หัวหน้ากิลด์"; close; }
+mes "ใบเข้าประจำ ZONE 2";
+next;
+menu "- เข้า ZONE 2",g1,"- ถอนตัวจากการแข่งขัน",Lcancel;
+g1:
+set @GID,getcharid(2);
+warp "2009rwc_03",90,49;
+if(strcharinfo(0) == getguildmaster(@GID)){atcommand "@guildrecall "+@GID;;}
+Announce "Guild [ "+GetGuildName(@nguild)+" ] ได้ทำการลงทะเบียน ZONE 2 เรียบร้อยแล้ว",bc_all,"0x33FF66";
+close;
+Lcancel:
+close;
+}
+
+//===========================================================================================//
+// Start Zone 1-1
+
+-	script	SAMPLENPC1	-1,{
+
+OnGVGSTART:
+Announce "System Zone 1-1 ได้เตรียมห้องไว้เรียบร้อยแล้ว",8;
+enablenpc "WALL#1";
+enablenpc "WALL#2";
+enablenpc "WALL#3";
+enablenpc "WALL#4";
+enablenpc "WALL#5";
+enablenpc "WALL#6";
+enablenpc "WALL#7";
+enablenpc "WALL#8";
+enablenpc "WALL#9";
+enablenpc "WALL#10";
+enablenpc "WALL#11";
+enablenpc "WALL#12";
+enablenpc "WALL#13";
+enablenpc "WALL#14";
+enablenpc "WALL#15";
+enablenpc "WALL#16";
+enablenpc "เรียกรวมพล#110";
+enablenpc "เรียกรวมพล#120";
+setcell "2009rwc_03",20,79,79,20,cell_walkable,0;
+
+end;
+}
+
+-	script	zone1	-1,{
+OnWhisperGlobal:
+if(getgmlevel() < 99) end;
+if(@whispervar0$ == "1")
+donpcevent "SAMPLENPC1::OnGVGSTART";
+end;
+}
+
+-	script	zone2	-1,{
+OnWhisperGlobal:
+if(getgmlevel() < 99) end;
+if(@whispervar0$ == "1")
+donpcevent "SAMPLENPC2::OnGVGSTART";
+end;
+}
+
+
+//===========================================================================================//
+// Simple Zone 1-1
+
+-	script	SAMPLENPC2	-1,{
+
+OnGVGSTART:
+enablenpc "WALL#1";
+enablenpc "WALL#2";
+enablenpc "WALL#3";
+enablenpc "WALL#4";
+enablenpc "WALL#5";
+enablenpc "WALL#6";
+enablenpc "WALL#7";
+enablenpc "WALL#8";
+enablenpc "WALL#9";
+enablenpc "WALL#10";
+enablenpc "WALL#11";
+enablenpc "WALL#12";
+enablenpc "WALL#13";
+enablenpc "WALL#14";
+enablenpc "WALL#15";
+enablenpc "WALL#16";
+mapannounce "2009rwc_03", "มีเวลาเตรียมตัวการแข่งขันอีก 1 นาที ขอให้พร้อมทุก Guild",bc_map,"0xFFFFFF";
+
+sleep2 10000;
+mapannounce "2009rwc_03", "เหลือเวลาอีก 10 วินาที กำแพงจะถูกเปิดออก",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "9",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "8",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "7",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "6",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "5",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "4",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "3",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "2",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "1",bc_map,"0xFFFFFF";
+sleep2 1000;
+mapannounce "2009rwc_03", "0",bc_map,"0xFFFFFF";
+
+setcell "2009rwc_03",20,79,79,20,cell_walkable,0;
+
+sleep 1000;
+mapannounce "2009rwc_03", "กำแพงได้ถูกเปิดออกแล้ว !!",bc_map,"0xFFFFFF";
+
+disablenpc "WALL#1";
+disablenpc "WALL#2";
+disablenpc "WALL#3";
+disablenpc "WALL#4";
+disablenpc "WALL#5";
+disablenpc "WALL#6";
+disablenpc "WALL#7";
+disablenpc "WALL#8";
+disablenpc "WALL#9";
+disablenpc "WALL#10";
+disablenpc "WALL#11";
+disablenpc "WALL#12";
+disablenpc "WALL#13";
+disablenpc "WALL#14";
+disablenpc "WALL#15";
+disablenpc "WALL#16";
+disablenpc "เรียกรวมพล#110";
+disablenpc "เรียกรวมพล#120";
+setcell "2009rwc_03",20,79,79,20,cell_walkable,1;
+end;
+}
+
+-	script	Wall	-1,{
+end;
+}
+
+2009rwc_03,19,53,4	duplicate(Wall)	WALL#1	1905
+2009rwc_03,19,52,4	duplicate(Wall)	WALL#2	1905
+2009rwc_03,19,51,4	duplicate(Wall)	WALL#3	1905
+2009rwc_03,19,50,4	duplicate(Wall)	WALL#4	1905
+2009rwc_03,19,49,4	duplicate(Wall)	WALL#5	1905
+2009rwc_03,19,48,4	duplicate(Wall)	WALL#6	1905
+2009rwc_03,19,47,4	duplicate(Wall)	WALL#7	1905
+2009rwc_03,19,46,4	duplicate(Wall)	WALL#8	1905
+
+2009rwc_03,80,53,4	duplicate(Wall)	WALL#9	1905
+2009rwc_03,80,52,4	duplicate(Wall)	WALL#10	1905
+2009rwc_03,80,51,4	duplicate(Wall)	WALL#11	1905
+2009rwc_03,80,50,4	duplicate(Wall)	WALL#12	1905
+2009rwc_03,80,49,4	duplicate(Wall)	WALL#13	1905
+2009rwc_03,80,48,4	duplicate(Wall)	WALL#14	1905
+2009rwc_03,80,47,4	duplicate(Wall)	WALL#15	1905
+2009rwc_03,80,46,4	duplicate(Wall)	WALL#16	1905
+
+
+//===========================================================================================//
+// Mapflag
+
+2009rwc_03	mapflag	gvg
+2009rwc_03	mapflag	nobranch
+2009rwc_03	mapflag	noicewall
+2009rwc_03	mapflag	nomemo
+2009rwc_03	mapflag	nosave	SavePoint
+2009rwc_03	mapflag	noteleport
+2009rwc_03	mapflag	nowarp
+2009rwc_03	mapflag	nowarpto

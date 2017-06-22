@@ -1,0 +1,172 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	pskill	-1,{
+	mes "[ Platinium Skill ]";
+	mes "ฉันสามารถสอนสกิลพิเศษให้แก่คุณได้";
+	next;
+	if (select("- ได้โปรดสอนฉันที","- ไม่ล่ะ")-1)
+	{
+		mes "[ Platinium Skill ]";
+		mes "งั้นขอให้โชคดี บ๊าย บาย";
+		close;
+	}
+	if ((Class==1) || (Class==7) || (Class==4008) || (Class==4030)) 
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Knight, Lord Knight or Baby Knight. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 144,1,0;
+		skill 145,1,0;
+		skill 146,1,0;
+		skill 1001,1,0;
+		goto LskillsEND;
+	}
+	if ((Class==14) || (Class==4015) || (Class==4037))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Crusader, Paladin or Baby Crusader. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 144,1,0;
+		skill 145,1,0;
+		skill 146,1,0;
+		skill 1002,1,0;
+		goto LskillsEND;
+	}
+	if ((Class==2) || (Class==9) || (Class==4010) || (Class==4032))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Wizard, High wizard or Baby Wizard. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 157,1,0;
+		skill 1006,1,0;
+		goto LskillsEND;
+	}
+	if ((Class==16) || (Class==4017) || (Class==4039))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Sage, Professor or Baby Sage. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 157,1,0;
+		skill 1007,1,0;
+		skill 1008,1,0;
+		skill 1017,1,0;
+		skill 1018,1,0;
+		skill 1019,1,0;
+		goto LskillsEND;
+}
+	if ((Class==3) || (Class==11) || (Class==4012) || (Class==4034))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Hunter, Sniper or Baby Hunter. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 147,1,0;
+		skill 148,1,0;
+		skill 1009,1,0;
+		goto LskillsEND;
+	}
+	if ((Class==19) || (Class==4020) || (Class==4042))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Bard, Clown or Baby Bard. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 147,1,0;
+		skill 148,1,0;
+		skill 1010,1,0;
+		goto LskillsEND;
+	}
+	if ((Class==20) || (Class==4021) || (Class==4043))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Dancer, Gypsy or Baby Dancer. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 147,1,0;
+		skill 148,1,0;
+		skill 1011,1,0;
+		goto LskillsEND;
+	}
+	if ((Class==4) || (Class==8) || (Class==4009) || (Class==4031))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Priest, High Priest or Baby Priest. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 156,1,0;
+		skill 1014,1,0;
+		skill 363,10,0;
+		goto LskillsEND;
+	}
+	if ((Class==15) || (Class==4016) || (Class==4038))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Monk, Champion or Baby Monk. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 156,1,0;
+		skill 1015,1,0;
+		skill 1016,10,0;
+		goto LskillsEND;
+	}
+	if ((Class==5) || (Class==10) || (Class==4011) || (Class==4033))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ BlackSmith, White Smith or Baby BlackSmith. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 153,1,0;
+		skill 154,1,0;
+		skill 155,1,0;
+		skill 1012,1,0;
+		skill 1013,1,0;
+		goto LskillsEND;
+	}
+	if ((Class==18) || (Class==4019) || (Class==4041))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Alchemist, Creator or Baby Alchemist. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 153,1,0;
+		skill 154,1,0;
+		skill 155,1,0;
+		skill 238,1,0;
+		if(alch_bock != 1) { getitem 7434,1; }
+		set alch_bock,1;
+		goto LskillsEND;
+}
+	if ((Class==6) || (Class==12) || (Class==4013) || (Class==4035))
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Assasin, Assasin Cross or Baby Assasin. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 149,1,0;
+		skill 150,1,0;
+		skill 151,1,0;
+		skill 152,1,0;
+		skill 1003,1,0;
+		skill 1004,1,0;
+		goto LskillsEND;
+	}
+	if ((Class==17) || (Class==4018) || (Class==4040)) 
+	{
+		mes "[ Platinium Skill ]";
+		mes "คุณต้องเรียนสกิลพิเศษของสายอาชีพ Rogue, Stalker or Baby Rogue. และฉันจะสอนให้คุณเดี๋ยวนี้";
+		skill 142,1,0;
+		skill 149,1,0;
+		skill 150,1,0;
+		skill 151,1,0;
+		skill 152,1,0;
+		skill 1005,1,0;
+		goto LskillsEND;
+	}
+
+LskillsEND:
+next;
+mes "[ Platinium Skill ]";
+mes "เอาล่ะ จบคลอสแล้วล่ะ";
+close;
+}

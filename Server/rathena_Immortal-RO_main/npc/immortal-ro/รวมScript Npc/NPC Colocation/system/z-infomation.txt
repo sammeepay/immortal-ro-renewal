@@ -1,0 +1,181 @@
+-	script	Infomation::infoserv	120,{
+mes "[ Infomation ]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+next;
+menu "^009933•^000000 อัตราการคุณ",q1,
+//"^FF0000•^000000 การเก็บเลเวล",q2,
+//"^FF0000•^000000 การหาเงิน",q3,
+"^FF0000•^000000 อัตราการตีบวก",q4,
+"^009933•^000000 รายละเอียดกิลวอร์",q5,
+//"^FF0000•^000000 การทำยา Assassin",q6,
+//"^FF0000•^000000 การทำยา Alchemist",q7,
+//"^FF0000•^000000 เวลาบอสเกิด",q8,
+"^009933•^000000 รายละเอียดการเติมเงิน",q9,
+"^FF0000•^000000 ตามให้ทันคนเล่นเก่าอย่างไร?",q10,
+//"^FF0000•^000000 การทำเควส",q11,
+"^FF0000•^000000 ยกเลิก",qEnd;
+
+q1:
+mes "[ Infomation ]";
+mes "Base Exp = ^FF00002500^000000 ";
+mes "Job Exp = ^FF00002500^000000 ";
+mes "Equip = ^FF0000100^000000 ";
+mes "Card = ^FF0000100^000000 ";
+mes "MVP = ^FF00001-5%^000000 ";
+close;
+q2:
+mes "[ Infomation ]";
+mes "เก็บเลเวลแบบ Server หลัก";
+mes "ตัวอย่าง";
+mes "Lv 1~20 AntHell";
+mes "Lv 21~40 Payon Dungeon";
+mes "Lv 41~60 Pyramid Dungeon";
+mes "Lv 61~80 Glast Heim";
+mes "Lv 81~99 Bio Loboratory";
+close;
+q4:
+mes "[ Infomation ]";
+mes "^FF0000Armor^000000";
+mes "100 100 100 100 100 100 40 30 20 20";
+mes "^FF0000Weapon LV.1^000000";
+mes "100 100 100 100 100 100 100 100 70 40";
+mes "^FF0000Weapon LV.2^000000";
+mes "100 100 100 100 100 100 100 100 70 40";
+mes "^FF0000Weapon LV.3^000000";
+mes "100 100 100 100 100 100 100 100 70 40";
+mes "^FF0000Weapon LV.4^000000";
+mes "100 100 100 100 100 100 100 100 70 30";
+close;
+
+q3:
+mes "[ Infomation ]";
+mes "หาเงินได้ที่ Map หาเงินนะจ๊ะ และMonster ทุกตัว";
+close;
+q5:
+mes "[ Infomation ]";
+mes "^FF33CCมีทุกวัน วันละ 3 รอบ^000000";
+mes "เวลา 13.00 - 14.00 / 17.00 - 18.00 / 22.00 - 23.00 น.";
+mes "จะเปิดบ้านตามจำนวนผู้เล่นครับช่วงแรก เปิด2หลังเท่านั้น";
+mes "^FF33CCกิลวอร์บ้านเช่ามีทุกวันเวลา 20.00 - 21.00 น.^000000";
+next;
+mes "[ Infomation ]";
+mes "รางวัลกิลด์วอร์ครับ";
+mes "สุ่ม TCG 100 ใบ";
+mes "เงิน 100M zeny";
+mes "โข่ง 10 ea ดอกเหลือง 100 ea ";
+mes "รางวัลพิเศษติดตามทางหน้า Web";
+close;
+q6:
+mes "[ Infomation ]";
+mes "ส่วนผสมที่ใช้";
+mes "Berserk Potion = 1";
+mes "Karvodailnirol = 1";
+mes "Empty Bottle = 1";
+mes "Venom Canine = 1 [Boa]";
+mes "Cactus Needle = 1 [Muka]";
+mes "Bee Sting = 1 [Honet]";
+mes "Poison Spore = 1 [Poison Spore]";
+close;
+q7:
+mes "[ Infomation ]";
+menu "^FF0000•^000000 Bottle Grenade",alc1,
+"^FF0000•^000000 Acid Bottle",alc2,
+"^FF0000•^000000 Plant Bottle",alc3,
+"^FF0000•^000000 Marine Sphere Bottle",alc4,
+"^FF0000•^000000 Glistening Coat",alc5,
+"^FF0000•^000000 ไม่มีอะไร ใจมาก",LEnd;
+close;
+
+alc1:
+mes "ส่วนผสมที่ใช้";
+mes "Bottle Grenade Creation";
+mes "Alcohol = 1";
+mes "Empty Bottle = 1";
+mes "Fabirc = 1 [Whisper]";
+close;
+alc2:
+mes "ส่วนผสมที่ใช้";
+mes "Acid Bottle Creation";
+mes "Empty Bottle = 1";
+mes "Immortal Heart = 1 [Verit]";
+close;
+alc3:
+mes "ส่วนผสมที่ใช้";
+mes "Plant Bottle Creation";
+mes "Empty Bottle = 1";
+mes "Maneater Blossom = 1 [Flora]";
+close;
+alc4:
+mes "ส่วนผสมที่ใช้";
+mes "Marine Sphere Creation";
+mes "Empty Bottle = 1";
+mes "Tendon = 1 [Marine Sphere]";
+mes "Detonator = 1 [Marine Sphere]";
+close;
+alc5:
+mes "ส่วนผสมที่ใช้";
+mes "Glistening Coat Creation";
+mes "Alcohol = 1";
+mes "Empty Bottle = 1";
+mes "Heart of Mermaid = 1 [Obeaune]";
+mes "Zenorcs Fang = 1 [Zenorc]";
+close;
+LEnd:
+close;
+q8:
+mes "[ Infomation ]";
+mes "บอสแมฟทั่วไป 10 นาทีเกิดนะจ๊ะ *-* ^^";
+close;
+q9:
+mes "[ Infomation ]";
+mes "เติมด้วยบัตรทรูมันนี่เท่านั้นครับ";
+mes "บัตรราคา ^0000FF50^000000 บาทได้ ^FF0000600^000000 Point";
+mes "บัตรราคา ^0000FF90^000000 บาทได้ ^FF00001080^000000 Point";
+mes "บัตรราคา ^0000FF150^000000 บาทได้ ^FF00001800^000000 Point";
+mes "บัตรราคา ^0000FF300^000000 บาทได้ ^FF00003600^000000 Point";
+mes "บัตรราคา ^0000FF500^000000 บาทได้ ^FF00006000^000000 Point";
+mes "บัตรราคา ^0000FF1000^000000 บาทได้ ^FF000012000^000000 Point";
+mes "โอนราคา ^0000FF500^000000 บาทได้ ^FF00008000^000000 Point";
+mes "โอนราคา ^0000FF1000^000000 บาทได้ ^FF000015000^000000 Point";
+close;
+
+q10:
+mes "[ Infomation ]";
+mes "ถ้าเจ้ารู้ว่า หาของ หาเงินยังไง";
+mes "ถ้าเจ้าขยันจริงๆ เพียง 2 วัน เจ้าก็จะเก่งเหมือนคนอื่นๆได้";
+mes "มันอยู่ที่ความพยายามและสเตป";
+mes "เลิกกังวล ถ้าเจ้าเพิ่งมาไหม่";
+mes "สู้ต่อไป ขอให้เจ้าโชคดี";
+close;
+
+q11:
+mes "[ Infomation ]";
+mes "ถ้าเจ้าหาไอเทมที่จะมาทำเควสไหม่เจอ";
+mes "จงดูNPC หมวกเควสไอเทม A-Z ^^";
+close;
+
+qEnd:
+close;
+
+OnInit:
+	waitingroom "๐ JuTI-Ro Information ๐", 0;
+	end;
+}
+
+/*morocc2,187,116,0	script	effect726	2936,{
+
+OnTimer3000:
+	specialeffect 726;
+	initnpctimer "effect726",1;
+	setnpctimer 0,"effect726";
+	stopnpctimer "effect726";
+	startnpctimer "effect726";
+	end;
+
+OnInit:
+	initnpctimer "effect726",1;
+	setnpctimer 0,"effect726";
+	stopnpctimer "effect726";
+	startnpctimer "effect726";
+	end;
+}*/

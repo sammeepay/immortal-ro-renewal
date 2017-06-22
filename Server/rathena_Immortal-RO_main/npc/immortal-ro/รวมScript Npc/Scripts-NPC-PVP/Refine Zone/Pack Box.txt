@@ -1,0 +1,111 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	shop	Packbox	-1,13889:100,13890:100,29008:100,29010:100,29003:100,29005:100,29001:100,29002:100
+
+-	script	packboxx	-1,{
+npcshopattach "Packbox";
+callshop "Packbox",1;
+close;
+
+OnBuyItem:
+if(@bought_nameid==29008){
+if(countitem(7135)>= 100*@bought_quantity){
+if(countitem(7136)>= 100*@bought_quantity){
+getitem 29008,1*@bought_quantity;
+delitem 7135,100*@bought_quantity;
+delitem 7136,100*@bought_quantity;
+close;
+}
+}
+mes "[ Pack Box ]";
+mes "¤Ø³ÁÕäÍà·ÁäÁè¾Í¤èÐ";
+close;
+}
+if(@bought_nameid==13890){
+if(countitem(984)>= 100*@bought_quantity){
+getitem 13890,1*@bought_quantity;
+delitem 984,100*@bought_quantity;
+close;
+}
+mes "[ Pack Box ]";
+mes "¤Ø³ÁÕäÍà·ÁäÁè¾Í¤èÐ";
+close;
+}
+if(@bought_nameid==13889){
+if(countitem(985)>= 100*@bought_quantity){
+getitem 13889,1*@bought_quantity;
+delitem 985,100*@bought_quantity;
+close;
+}
+mes "[ Pack Box ]";
+mes "¤Ø³ÁÕäÍà·ÁäÁè¾Í¤èÐ";
+close;
+}
+if(@bought_nameid==29010){
+if(countitem(607)>= 10*@bought_quantity){
+getitem 29010,1*@bought_quantity;
+delitem 607,10*@bought_quantity;
+close;
+}
+mes "[ Pack Box ]";
+mes "¤Ø³ÁÕäÍà·ÁäÁè¾Í¤èÐ";
+close;
+}
+if(@bought_nameid==29011){
+if(countitem(608)>= 10*@bought_quantity){
+getitem 29011,1*@bought_quantity;
+delitem 608,10*@bought_quantity;
+close;
+}
+mes "[ Pack Box ]";
+mes "¤Ø³ÁÕäÍà·ÁäÁè¾Í¤èÐ";
+close;
+}
+if(@bought_nameid==29003){
+if(countitem(547)>= 100*@bought_quantity){
+getitem 29003,1*@bought_quantity;
+delitem 547,100*@bought_quantity;
+close;
+}
+mes "[ Pack Box ]";
+mes "¤Ø³ÁÕäÍà·ÁäÁè¾Í¤èÐ";
+close;
+}
+if(@bought_nameid==29005){
+if(countitem(505)>= 100*@bought_quantity){
+getitem 29005,1*@bought_quantity;
+delitem 505,100*@bought_quantity;
+close;
+}
+mes "[ Pack Box ]";
+mes "¤Ø³ÁÕäÍà·ÁäÁè¾Í¤èÐ";
+close;
+}
+if(@bought_nameid==29001){
+if(countitem(678)>= 100*@bought_quantity){
+getitem 29001,1*@bought_quantity;
+delitem 678,100*@bought_quantity;
+close;
+}
+mes "[ Pack Box ]";
+mes "¤Ø³ÁÕäÍà·ÁäÁè¾Í¤èÐ";
+close;
+}
+if(@bought_nameid==29002){
+if(countitem(7139)>= 100*@bought_quantity){
+getitem 29002,1*@bought_quantity;
+delitem 7139,100*@bought_quantity;
+close;
+}
+close;
+}
+}

@@ -1,0 +1,71 @@
+-	script	Dig::ExchageDig	-1,{
+	query_sql "SELECT * FROM `shop_hwdig` WHERE `msitemmain`>'0' limit 50",$@hwdig_msitemmain,$@hwdig_mshwdig;
+	set $@shop_hwdig_size,getarraysize($@hwdig_msitemmain);
+npcshopitem "ToolDig", $@hwdig_msitemmain[0],$@hwdig_mshwdig[0],$@hwdig_msitemmain[1],$@hwdig_mshwdig[1],$@hwdig_msitemmain[2],$@hwdig_mshwdig[2],$@hwdig_msitemmain[3],$@hwdig_mshwdig[3],$@hwdig_msitemmain[4],$@hwdig_mshwdig[4],$@hwdig_msitemmain[5],$@hwdig_mshwdig[5],$@hwdig_msitemmain[6],$@hwdig_mshwdig[6],$@hwdig_msitemmain[7],$@hwdig_mshwdig[7],$@hwdig_msitemmain[8],$@hwdig_mshwdig[8],$@hwdig_msitemmain[9],$@hwdig_mshwdig[9],$@hwdig_msitemmain[10],$@hwdig_mshwdig[10],$@hwdig_msitemmain[11],$@hwdig_mshwdig[11]
+,$@hwdig_msitemmain[12],$@hwdig_mshwdig[12],$@hwdig_msitemmain[13],$@hwdig_mshwdig[13],$@hwdig_msitemmain[14],$@hwdig_mshwdig[14],$@hwdig_msitemmain[15],$@hwdig_mshwdig[15],$@hwdig_msitemmain[16],$@hwdig_mshwdig[16],$@hwdig_msitemmain[17],$@hwdig_mshwdig[17],$@hwdig_msitemmain[18],$@hwdig_mshwdig[18],$@hwdig_msitemmain[19],$@hwdig_mshwdig[19],$@hwdig_msitemmain[20],$@hwdig_mshwdig[20],$@hwdig_msitemmain[21],$@hwdig_mshwdig[21],$@hwdig_msitemmain[22],$@hwdig_mshwdig[22],$@hwdig_msitemmain[23],$@hwdig_mshwdig[23]
+,$@hwdig_msitemmain[24],$@hwdig_mshwdig[24],$@hwdig_msitemmain[25],$@hwdig_mshwdig[25],$@hwdig_msitemmain[26],$@hwdig_mshwdig[26],$@hwdig_msitemmain[27],$@hwdig_mshwdig[27],$@hwdig_msitemmain[28],$@hwdig_mshwdig[28],$@hwdig_msitemmain[29],$@hwdig_mshwdig[29],$@hwdig_msitemmain[30],$@hwdig_mshwdig[30],$@hwdig_msitemmain[31],$@hwdig_mshwdig[31],$@hwdig_msitemmain[32],$@hwdig_mshwdig[32],$@hwdig_msitemmain[33],$@hwdig_mshwdig[33],$@hwdig_msitemmain[34],$@hwdig_mshwdig[34],$@hwdig_msitemmain[35],$@hwdig_mshwdig[35]
+,$@hwdig_msitemmain[36],$@hwdig_mshwdig[36],$@hwdig_msitemmain[37],$@hwdig_mshwdig[37],$@hwdig_msitemmain[38],$@hwdig_mshwdig[38],$@hwdig_msitemmain[39],$@hwdig_mshwdig[39],$@hwdig_msitemmain[40],$@hwdig_mshwdig[40],$@hwdig_msitemmain[41],$@hwdig_mshwdig[41],$@hwdig_msitemmain[42],$@hwdig_mshwdig[42],$@hwdig_msitemmain[43],$@hwdig_mshwdig[43],$@hwdig_msitemmain[44],$@hwdig_mshwdig[44],$@hwdig_msitemmain[45],$@hwdig_mshwdig[45],$@hwdig_msitemmain[46],$@hwdig_mshwdig[46],$@hwdig_msitemmain[47],$@hwdig_mshwdig[47]
+,$@hwdig_msitemmain[48],$@hwdig_mshwdig[48],$@hwdig_msitemmain[49],$@hwdig_mshwdig[49];
+	sleep2 100;
+	query_sql "SELECT `point` FROM `hwdig`  WHERE `account_id` = " + getcharid(3) + "",@digpoint;
+	dispbottom "========= คุณมี แต้มขุด ทั้งหมด [ "+@digpoint+" ] ===========";
+	callshop "ToolDig",1;
+	npcshopattach "ToolDig";
+end;
+
+OnBuyItem:
+
+for(set @j,0; @j < getarraysize(@bought_nameid);set @j,@j+1){
+	set @check_loop,0;
+	for(set @i,0; @i < $@shop_hwdig_size&&@check_loop==0; set @i,@i+1){
+		if(@bought_nameid[@j]==$@hwdig_msitemmain[@i])
+			set @check_loop,1;
+
+	}
+	set @i,@i-1;
+	dispbottom "[ "+getitemname($@hwdig_msitemmain[@i])+" ]";
+	if($@hwdig_mshwdig[@i]*@bought_quantity[@j]>0)dispbottom "ใช้แต้ม [ "+$@hwdig_mshwdig[@i]*@bought_quantity[@j]+" ] Point";
+	if(@digpoint<$@hwdig_mshwdig[@i]*@bought_quantity[@j])
+		goto L_Pass;
+	set @digpoint,@digpoint - $@hwdig_mshwdig[@i]*@bought_quantity[@j];
+	sleep2 100;
+	query_sql "UPDATE `hwdig` SET `point` = '"+escape_sql(@digpoint)+"' WHERE `account_id` = "+getcharid(3);
+	query_sql "INSERT INTO `LogUseDig` (`id`,`AccID`,`UsePoint`) VALUES (NULL,'" +getcharid(3)+"','" +@digpoint+"')";
+	getitem $@hwdig_msitemmain[@i],@bought_quantity[@j];
+	dispbottom "[ คุณได้รับของเรียบร้อยแล้ว ]";
+	sleep2 100;
+	query_sql "SELECT `point` FROM `hwdig`  WHERE `account_id` = " + getcharid(3) + "",@digpoint;
+	dispbottom "========= คุณมีเหลือแต้มขุด [ "+@digpoint+" ] ===========";
+	deletearray @bought_nameid, getarraysize(@bought_nameid);
+	deletearray @bought_quantity, getarraysize(@bought_quantity);
+	set @bought_nameid,0;
+	set @bought_quantity,0;
+end;
+}
+
+L_Pass:
+	dispbottom "[ แต้มคุณมีไม่พอใช้ ไปจัดการขุดด้วยครับ ]";
+	deletearray @bought_nameid, getarraysize(@bought_nameid);
+	deletearray @bought_quantity, getarraysize(@bought_quantity);
+	set @bought_nameid,0;
+	set @bought_quantity,0;
+end;
+
+OnInit:
+waitingroom "๐ แลกของขุด ๐",0;
+end;
+}
+
+-	script	HwDig	-1,{
+OnInit:
+	query_sql "SELECT * FROM `shop_hwdig` WHERE `msitemmain`>'0' limit 50",$@hwdig_msitemmain,$@hwdig_mshwdig;
+	set $@shop_hwdig_size,getarraysize($@hwdig_msitemmain);
+npcshopitem "ToolDig", $@hwdig_msitemmain[0],$@hwdig_mshwdig[0],$@hwdig_msitemmain[1],$@hwdig_mshwdig[1],$@hwdig_msitemmain[2],$@hwdig_mshwdig[2],$@hwdig_msitemmain[3],$@hwdig_mshwdig[3],$@hwdig_msitemmain[4],$@hwdig_mshwdig[4],$@hwdig_msitemmain[5],$@hwdig_mshwdig[5],$@hwdig_msitemmain[6],$@hwdig_mshwdig[6],$@hwdig_msitemmain[7],$@hwdig_mshwdig[7],$@hwdig_msitemmain[8],$@hwdig_mshwdig[8],$@hwdig_msitemmain[9],$@hwdig_mshwdig[9],$@hwdig_msitemmain[10],$@hwdig_mshwdig[10],$@hwdig_msitemmain[11],$@hwdig_mshwdig[11]
+,$@hwdig_msitemmain[12],$@hwdig_mshwdig[12],$@hwdig_msitemmain[13],$@hwdig_mshwdig[13],$@hwdig_msitemmain[14],$@hwdig_mshwdig[14],$@hwdig_msitemmain[15],$@hwdig_mshwdig[15],$@hwdig_msitemmain[16],$@hwdig_mshwdig[16],$@hwdig_msitemmain[17],$@hwdig_mshwdig[17],$@hwdig_msitemmain[18],$@hwdig_mshwdig[18],$@hwdig_msitemmain[19],$@hwdig_mshwdig[19],$@hwdig_msitemmain[20],$@hwdig_mshwdig[20],$@hwdig_msitemmain[21],$@hwdig_mshwdig[21],$@hwdig_msitemmain[22],$@hwdig_mshwdig[22],$@hwdig_msitemmain[23],$@hwdig_mshwdig[23]
+,$@hwdig_msitemmain[24],$@hwdig_mshwdig[24],$@hwdig_msitemmain[25],$@hwdig_mshwdig[25],$@hwdig_msitemmain[26],$@hwdig_mshwdig[26],$@hwdig_msitemmain[27],$@hwdig_mshwdig[27],$@hwdig_msitemmain[28],$@hwdig_mshwdig[28],$@hwdig_msitemmain[29],$@hwdig_mshwdig[29],$@hwdig_msitemmain[30],$@hwdig_mshwdig[30],$@hwdig_msitemmain[31],$@hwdig_mshwdig[31],$@hwdig_msitemmain[32],$@hwdig_mshwdig[32],$@hwdig_msitemmain[33],$@hwdig_mshwdig[33],$@hwdig_msitemmain[34],$@hwdig_mshwdig[34],$@hwdig_msitemmain[35],$@hwdig_mshwdig[35]
+,$@hwdig_msitemmain[36],$@hwdig_mshwdig[36],$@hwdig_msitemmain[37],$@hwdig_mshwdig[37],$@hwdig_msitemmain[38],$@hwdig_mshwdig[38],$@hwdig_msitemmain[39],$@hwdig_mshwdig[39],$@hwdig_msitemmain[40],$@hwdig_mshwdig[40],$@hwdig_msitemmain[41],$@hwdig_mshwdig[41],$@hwdig_msitemmain[42],$@hwdig_mshwdig[42],$@hwdig_msitemmain[43],$@hwdig_mshwdig[43],$@hwdig_msitemmain[44],$@hwdig_mshwdig[44],$@hwdig_msitemmain[45],$@hwdig_mshwdig[45],$@hwdig_msitemmain[46],$@hwdig_mshwdig[46],$@hwdig_msitemmain[47],$@hwdig_mshwdig[47]
+,$@hwdig_msitemmain[48],$@hwdig_mshwdig[48],$@hwdig_msitemmain[49],$@hwdig_mshwdig[49];
+end;
+}
+
+-	shop	ToolDig	-1,502:-1

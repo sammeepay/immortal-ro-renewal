@@ -1,0 +1,345 @@
+//===== CyberExtend Script ====================================
+//= Job All
+//===== Current Version: ======================================
+//= 1.0
+//===== Description: ========================================= 
+//= เปลี่ยนอาชีพ
+//===== Additional Comments: ================================= 
+//= 1.0 Start Version
+//==========================================================
+
+-	script	jobmaster	-1,{
+	deletearray @ejc[0],getarraysize(@ejc);
+	set @npcname$,"[ Job Master ]";
+	set @ejc[0],40;	// Super Novice Job Change Base Level.
+	set @ejc[1],10;	// Novice to First Class Minimum Job Level.
+	set @ejc[2],40;	// First to Second Class Minimum Job Level.
+	set @ejc[3],50;	// Rebirth Job Level.
+	set @ejc[4],99;	// Rebirth Base Level.
+	set @ejc[5],1;	// Delete Extra Skill Points: 0 - No, 1 - Yes.
+	set @ejc[6],1;	// Check for basic skills: 0 - No, 1 - Yes.
+	set @ejc[7],1;	// Restrict Job Tree: 0 - No, 1 - Yes.
+	set @ejc[8],1;	// Enable Ninja and Gunslinger: 0 - No, 1 - Yes.
+	set @ejc[9],1;	// Get Platinum Skills:	0 - No, 1 - Yes.
+	set @ejc[10],1;	// Enable New Platinum Skills: 0 - No, 1 - Yes.
+	set @ejc[11],1;	// Enable Choice for Sage/Professor Elemental Charge:	0 - Give All, 1 - Choose One.
+	set @ejc[12],1;	// Enable Baby Classes:	0 - No, 1 - Yes.
+	set @ejc[13],0;	// Enable Rebirth Class Skipping:	0 - No, 1 - First High, 2 - Second Advanced.
+	set @ejc[14],1;	// Reset Status during Rebirth: 0 - No, 1 - Yes. Note: To be used with @ejc[13].
+
+	mes " ";
+	mes " ";
+	mes " ";
+	mes "^f7f7f7________^000000กรุณาเลือกเมนูที่คุณต้องการ";
+	next;
+	menu	"-> เปลี่ยนอาชีพ",J_Change,
+		"-> เปลี่ยนเป็นตัวเล็ก",J_Baby,
+		//"-> คราส 3 ^FF0000(พิเศษ)^000000",J_Class3,
+		"-> รับสกิลเสริม",J_Pts;
+
+J_Change:
+	if((Class >= Job_Lord_Knight && Class <= Job_Paladin2) || (Class >= Job_Rune_Knight && Class <= Job_Shadow_Chaser_T) || (Class >= 4047 && Class <= 4049) || (Class >= 4030 && Class <= 4045) || Class >= 22 && Class <= 26){
+		mes @npcname$;
+		mes "สายอาชีพที่คุณกำลังเล่นอยู่ ไม่สามารถเปลี่ยนอาชีพได้อีก";
+		close2;
+		cutin "", 255;
+		end;
+	}else if(!@ejc[12] && Upper == 2){
+		mes @npcname$;
+		mes "เสียใจด้วยข้าไม่สามารถเปลี่ยนอาชีพให้ท่านได้";
+		close2;
+		cutin "", 255;
+		end;
+	}else if(@ejc[6] && getskilllv(1) < 9){
+			mes @npcname$;
+			mes "เสียใจด้วย, Basic Skill ของคุณไม่ผ่านเงื่อนไข Novice, อย่างน้อยที่สุดคือเลเวล 9";
+			mes "แล้วกลับมาใช้บริการใหม่อีกครั้ง";
+			close2;
+			cutin "", 255;
+			end;
+	}else if(@ejc[5] && SkillPoint){
+		mes @npcname$;
+		mes "เสียใจด้วย, คุณยังเหลือ";
+		mes "Skill Points : ^FF0000"+SkillPoint+"^000000";
+		L_Finito:
+			close2;
+			cutin "", 255;
+			end;
+	}
+	if(Class >= Job_Knight && Class <= Job_Crusader2){
+		if(BaseLevel < @ejc[4] || JobLevel < @ejc[3]){ callfunc "JBLevel",3,5; goto L_Finito; }
+		mes @npcname$;
+		mes "ยินดีต้อนรับ, ";
+		mes "คุณต้องการที่จะเปลี่ยนสายอาชีพ";
+		mes "ในระดับ High Class หรือไม่";
+		next;
+		menu "ยืนยัน",-, "ยกเลิก",L_Finito;
+		set @ejc[99],1;
+		if(!@ejc[13]) callfunc "JChange",4001;
+		if(@ejc[13] == 1) goto L_FChoice;
+	}
+	if((Class >= Job_Swordman_High && Class <= Job_Thief_High) || (Class >= Job_Swordman && Class <= Job_Thief) || (Class >= Job_Baby_Swordman && Class <= Job_Baby_Thief) || Class == 4046 || @ejc[99]){
+		if(!@ejc[99] && JobLevel < @ejc[2]){ callfunc "JBLevel",2,0; goto L_Finito; }
+		if((Upper == 1 && SJob) || (@ejc[99] && @ejc[7])){ if(!SJob){ set @ejc[100],4001+Class; }else if(SJob){ set @ejc[100],4001+SJob; } callfunc "JChange",@ejc[100]; }
+	
+		mes @npcname$;
+		mes "ยินดีต้อนรับ, กรุณาเลือกสายอาชีพที่คุณต้องการ";
+		next;
+			switch(Class){
+				case Job_Knight: case Job_Crusader: case Job_Swordman: case Job_Swordman_High: case Job_Baby_Swordman:
+					if(Upper == 1 || @ejc[99]){ set .@cmenu,select("Lord Knight:Paladin"); setarray @ejc[80],4008,4015; }else if(Upper == 2){ set .@cmenu,select("Baby Knight:Baby Crusader"); setarray @ejc[80],4030,4037; }else if(!Upper){ set .@cmenu,select("Knight:Crusader"); setarray @ejc[80],7,14; }
+					break;
+				case Job_Wizard: case Job_Sage: case Job_Mage: case Job_Mage_High: case Job_Baby_Mage:
+					if(Upper == 1 || @ejc[99]){ set .@cmenu,select("High Wizard:Scholar"); setarray @ejc[80],4010,4017; }else if(Upper == 2){ set .@cmenu,select("Baby Wizard:Baby Sage"); setarray @ejc[80],4032,4039; }else if(!Upper){ set .@cmenu,select("Wizard:Sage"); setarray @ejc[80],9,16; }
+					break;
+				case Job_Hunter: case Job_Dancer: case Job_Bard: case Job_Archer: case Job_Archer_High: case Job_Baby_Archer:
+					if(Sex == 0){ if(Upper == 1 || @ejc[99]){ set .@cmenu,select("Sniper:Clown"); setarray @ejc[80],4012,4021; }else if(Upper == 2){ set .@cmenu,select("Baby Hunter:Baby Dancer"); setarray @ejc[80],4034,4043; }else if(!Upper){ set .@cmenu,select("Hunter:Dancer"); setarray @ejc[80],11,20; }}
+					if(Sex == 1){ if(Upper == 1 || @ejc[99]){ set .@cmenu,select("Sniper:Gypsy"); setarray @ejc[80],4012,4020; }else if(Upper == 2){ set .@cmenu,select("Baby Hunter:Baby Bard"); setarray @ejc[80],4034,4042; }else if(!Upper){ set .@cmenu,select("Hunter:Bard"); setarray @ejc[80],11,19; }}
+					break;
+				case Job_Priest: case Job_Monk: case Job_Acolyte: case Job_Acolyte_High: case Job_Baby_Acolyte:
+					if(Upper == 1 || @ejc[99]){ set .@cmenu,select("High Priest:Champion"); setarray @ejc[80],4009,4016; }else if(Upper == 2){ set .@cmenu,select("Baby Priest:Baby Monk"); setarray @ejc[80],4031,4038; }else if(!Upper){ set .@cmenu,select("Priest:Monk"); setarray @ejc[80],8,15; }
+					break;
+				case Job_Blacksmith: case Job_Alchem: case Job_Merchant: case Job_Merchant_High: case Job_Baby_Merchant:
+					if(Upper == 1 || @ejc[99]){ set .@cmenu,select("Whitesmith:Creator"); setarray @ejc[80],4011,4019; }else if(Upper == 2){ set .@cmenu,select("Baby Merchant:Baby Alchemist"); setarray @ejc[80],4033,4041; }else if(!Upper){ set .@cmenu,select("Blacksmith:Alchemist"); setarray @ejc[80],10,18; }
+					break;
+				case Job_Assassin: case Job_Rogue: case Job_Thief: case Job_Thief_High: case Job_Baby_Thief:
+					if(Upper == 1 || @ejc[99]){ set .@cmenu,select("Assassin Cross:Stalker"); setarray @ejc[80],4013,4018; }else if(Upper == 2){ set .@cmenu,select("Baby Assassin:Baby Rogue"); setarray @ejc[80],4035,4040; }else if(!Upper){ set .@cmenu,select("Assassin:Rogue"); setarray @ejc[80],12,17; }
+					break;
+				case Job_Taekwon:
+					set .@cmenu,select("Star Gladiator:Soul Linker"); setarray @ejc[80],4047,4049;
+					break;
+			}
+		switch(.@cmenu){
+			case 1: callfunc "JChange",@ejc[80]; goto L_Finito;
+			case 2: callfunc "JChange",@ejc[81]; goto L_Finito;
+			}
+	}
+	if(!BaseClass){
+	L_FChoice:
+		if(JobLevel < @ejc[1]){ callfunc "JBLevel",1,0; goto L_Finito; }
+		if((Upper == 1 && FJob) || @ejc[99]) callfunc "JChange",4001+FJob;
+		mes @npcname$;
+		mes "ยินดีต้อนรับ, กรุณาเลือกสายอาชีพที่คุณต้องการ";
+		next;
+		if(Class == Job_Novice && !@ejc[8]) set .@cmenu,select("-> Swordman:-> Mage:-> Archer:-> Acolyte:-> Merchant:-> Thief:-> Super Novce:-> Taekwon");
+		if(Class == Job_Novice && @ejc[8]) set .@cmenu,select("-> Swordman:-> Mage:-> Archer:-> Acolyte:-> Merchant:-> Thief:-> Super Novce:-> Taekwon:-> Ninja:-> Gunslinger");
+		if(Class == Job_Baby) set .@cmenu,select("-> Baby Swordman:-> Baby Mage:-> Baby Archer:-> Baby Acolyte:-> Baby Merchant:-> Baby Thief:-> Super Baby");
+		if(Upper == 1 || @ejc[99]) set .@cmenu,select("-> Swordman High:-> Mage High:-> Archer High:-> Acolyte High:-> Merchant High:-> Thief High");
+			switch(.@cmenu){
+				case 1: if(!Class){ callfunc "JChange",1; }else if(Upper == 1){ callfunc "JChange",4002; }else{ callfunc "JChange",4024; }
+				case 2: if(!Class){ callfunc "JChange",2; }else if(Upper == 1){ callfunc "JChange",4003; }else{ callfunc "JChange",4025; }
+				case 3: if(!Class){ callfunc "JChange",3; }else if(Upper == 1){ callfunc "JChange",4004; }else{ callfunc "JChange",4026; }
+				case 4: if(!Class){ callfunc "JChange",4; }else if(Upper == 1){ callfunc "JChange",4005; }else{ callfunc "JChange",4027; }
+				case 5: if(!Class){ callfunc "JChange",5; }else if(Upper == 1){ callfunc "JChange",4006; }else{ callfunc "JChange",4028; }
+				case 6: if(!Class){ callfunc "JChange",6; }else if(Upper == 1){ callfunc "JChange",4007; }else{ callfunc "JChange",4029; }
+				case 7: if(BaseLevel < @ejc[0]){ callfunc "JBLevel",1,1; goto L_Finito; }
+					if(!Class){ callfunc "JChange",23; }else{ callfunc "JChange",4045; }
+				case 8: callfunc "JChange",4046;
+				case 9: callfunc "JChange",25;
+				case 10: callfunc "JChange",24;
+				default: mes "ผิดพลาด"; close2; cutin "", 255; end;
+				}
+		}
+	close2;
+	cutin "", 255;
+	end;
+
+J_Baby:
+	mes @npcname$;	
+	if(Class == Job_Baby) {
+		mes "คุณได้อยู่ในสายอาชีพ Baby แล้ว";
+		goto L_Finito;
+	}
+	if(Class != Job_Novice) {
+		mes "เสียใจด้วย, อาชีพ Novice เท่านั้น";
+		mes "ที่สามารถเปลี่ยน Baby Class ได้";
+		goto L_Finito;
+	}
+	if(BaseLevel > 1 || JobLevel > 1) {
+		mes "เสียใจด้วย, สำหรับ Novice ที่มี Base Level และ Job Level ^FF00001^000000 เท่านั้น";
+		goto L_Finito;
+	}		
+	mes "หลังจากเปลี่ยน Baby Class แล้ว";
+	mes "ค่า Status สูงสุดคือ ^FF0000800^000000 เท่านั้น";
+	mes "คุณยังต้องการเปลี่ยนอาชีพหรือไม่?";
+	next;
+	menu "ยืนยัน",-,"ยกเลิก",L_Finito;
+
+	jobchange 4023;
+	if(@ejc[9]) callfunc "PSkills";
+	close2;
+	cutin "", 255;
+	end;
+
+J_Class3:
+	if(Class >= Job_Rune_Knight && Class <= Job_Shadow_Chaser_T) {
+		mes @npcname$;
+		mes "คุณอยู่ในระดับ Class 3 อยู่แล้ว";
+		goto J_Exit;				
+	}
+	if((Class < Job_Knight && Class >Job_Crusader2) || (Class < Job_Lord_Knight && Class > Job_Paladin2)) {
+		mes @npcname$;
+		mes "เสียใจด้วย, คุณจะต้องเปลี่ยนเป็น ขั้น 2 ก่อนเท่านั้น";
+		goto J_Exit;				
+	}
+	if(BaseLevel < 99) {
+		mes @npcname$;
+		mes "เสียใจด้วย, คุณจะต้องมี Base Levels ถึง 99 เสียก่อน";
+		goto J_Exit;
+	}
+	if(Class >=Job_Knight && Class <=Job_Crusader2 && JobLevel < 50) {
+		mes @npcname$;
+		mes "เสียใจด้วย, คุณจะต้องมี Job Levels ถึง 50 เสียก่อน";
+		goto J_Exit;
+	}
+	if(Class >= Job_Lord_Knight && Class <= Job_Paladin2 && JobLevel < 70) {
+		mes @npcname$;
+		mes "เสียใจด้วย, คุณจะต้องมี Job Levels ถึง 70 เสียก่อน";
+		goto J_Exit;
+	}
+	if(SkillPoint) {
+		mes @npcname$;
+		mes "เสียใจด้วย, คุณจะต้องใช้ค่า Skill Points ให้หมดเสียก่อน";
+		goto J_Exit;
+	}
+	if(Class == Job_Knight || Class == Job_Knight2) callfunc "JChange3",4054;
+	else if(Class == Job_Priest) callfunc "JChange3",4057;
+	else if(Class == Job_Wizard) callfunc "JChange3",4055;
+	else if(Class == Job_Blacksmith) callfunc "JChange3",4058;
+	else if(Class == Job_Hunter) callfunc "JChange3",4056;
+	else if(Class == Job_Assassin) callfunc "JChange3",4059;
+	else if(Class == Job_Crusader || Class == Job_Crusader2) callfunc "JChange3",4066;
+	else if(Class == Job_Monk) callfunc "JChange3",4070;
+	else if(Class == Job_Sage) callfunc "JChange3",4067;
+	else if(Class == Job_Rogue) callfunc "JChange3",4072;
+	else if(Class == Job_Alchemist) callfunc "JChange3",4071;
+	else if(Class == Job_Bard) callfunc "JChange3",4068;
+	else if(Class == Job_Dancer) callfunc "JChange3",4069;
+
+	else if(Class == Job_Lord_Knight || Class == Job_Lord_Knight2) callfunc "JChange3",4060;
+	else if(Class == Job_High_Priest) callfunc "JChange3",4063;
+	else if(Class == Job_High_Wizard) callfunc "JChange3",4061;
+	else if(Class == Job_Whitesmith) callfunc "JChange3",4064;
+	else if(Class == Job_Sniper) callfunc "JChange3",4062;
+	else if(Class == Job_Assassin_Cross) callfunc "JChange3",4065;
+	else if(Class == Job_Paladin || Class == Job_Paladin2) callfunc "JChange3",4073;
+	else if(Class == Job_Champion) callfunc "JChange3",4077;
+	else if(Class == Job_Professor) callfunc "JChange3",4074;
+	else if(Class == Job_Stalker) callfunc "JChange3",4079;
+	else if(Class == Job_Creator) callfunc "JChange3",4078;
+	else if(Class == Job_Clown) callfunc "JChange3",4075;
+	else if(Class == Job_Gypsy) callfunc "JChange3",4076;
+	else {
+		mes @npcname$;
+		mes "เกิดข้อผิดพลาดบางอย่าง ทำให้ไม่สามารถเปลี่ยนอาชีพได้ กรุณาติดต่อทีมงาน";
+	}
+J_Exit:
+	close2;
+	cutin "", 255;
+	end;
+
+J_Pts:
+	callfunc "PSkills";
+	mes @npcname$;
+	mes "ขอบคุณที่ใช้บริการ";
+	close2;
+	cutin "", 255;
+	end;
+
+OnInit:
+	waitingroom "เ ป ลี่ ย น อ า ชี พ",0;
+	end;
+}
+function	script	PSkills	{
+	skill 142,1,0; if(BaseJob == 0) skill 143,1,0;
+	if(BaseClass == 1){ setarray .@psk[0],144,145,146; }else if(BaseClass == 2){ setarray .@psk[0],157; }else if(BaseClass == 3){ setarray .@psk[0],147,148; }else if(BaseClass == 4){ setarray .@psk[0],156; }else if(BaseClass == 5){ setarray .@psk[0],153,154,155; }else if(BaseClass == 6){ setarray .@psk[0],149,150,151,152; }
+	for(set .@ps,0; .@ps < getarraysize(.@psk); set .@ps,.@ps+1){
+		skill .@psk[.@ps],1,0;
+	}
+	deletearray .@psk[0],getarraysize(.@psk);
+	if(@ejc[10]){
+		if(BaseJob == 16 && @ejc[11] && (!getskilllv(1008) && !getskilllv(1017) && !getskilllv(1018) && !getskilllv(1019))){
+			mes @npcname$;
+			mes "กรุณาเลือกสกิลเสริมที่คุณต้องการ";
+			next;
+			menu "^0078ff-> ธาตุน้ำ^000000",-, "-> ^5b3c00ธาตุดิน^000000",-, "-> ^f34c03ธาตุไฟ^000000",-, "-> ^12ac24ธาตุลม^000000",-;
+			if(@menu == 1) set .@psk[1],1008;
+			if(@menu == 2) set .@psk[1],1017;
+			if(@menu == 3) set .@psk[1],1018;
+			if(@menu == 4) set .@psk[1],1019;
+		}else if(!@ejc[10]){ setarray .@psk[1],1008,1017,1018,1019; }
+	switch(BaseJob){
+		case 7: setarray .@psk[0],1001; break;
+		case 8: setarray .@psk[0],1014; break;
+		case 9: setarray .@psk[0],1006; break;
+		case 10: setarray .@psk[0],1012,1013; break;
+		case 11: setarray .@psk[0],1009; break;
+		case 12: setarray .@psk[0],1003,1004; break;
+		case 14: setarray .@psk[0],1002; break;
+		case 15: setarray .@psk[0],1015,1016; break;
+		case 16: setarray .@psk[0],1007; break;
+		case 17: setarray .@psk[0],1005; break;
+		case 19: setarray .@psk[0],1010; break;
+		case 20: setarray .@psk[0],1011; break;
+	}
+	for(set .@ps,0; .@ps < getarraysize(.@psk[0]); set .@ps,.@ps+1){
+		skill .@psk[.@ps],1,0;
+		}
+	}
+	return;
+
+}
+function	script	JBLevel	{
+	set @ejc[60],@ejc[getarg(0)]-JobLevel;
+	if(getarg(1)){ set @ejc[61],@ejc[getarg(1)-1]-BaseLevel; }
+	if(@ejc[60] < 0) set @ejc[60],0;
+	if(@ejc[61] < 0) set @ejc[61],0;
+	mes @npcname$;
+	mes "เสียใจด้วย, คุณยังขาด";
+	if(@ejc[61] && getarg(1)) mes "Base Levels : ^FF0000"+@ejc[61]+"^000000";
+	if(@ejc[60]) mes "Job Levels : ^FF0000"+@ejc[60]+"^000000";
+	return;
+}
+function	script	JChange	{
+
+	mes @npcname$;
+	mes "คุณแน่ใจแล้วหรือที่เลือกอาชีพ";
+	mes "^FF0000" + JobName(getarg(0)) + "^000000";	
+	next;
+	menu "ยืนยัน",-, "ยกเลิก",-;
+	if(@menu == 2) { close2; cutin "", 255; end; }
+	if(@ejc[7] || @ejc[13] == 1){
+		if(Class == Job_Novice) set FJob,getarg(0);
+		if(Class >= Job_Swordman && Class <= Job_Thief) set SJob,getarg(0);
+		}
+	if(@ejc[5]) set SkillPoint,0;
+	if(@ejc[99]) atcommand "@option 0 0 0";
+	jobchange getarg(0);
+	if(@ejc[14] && Class == Job_Novice_High) resetlvl(1);
+	if(FJob && Upper && (Class >= Job_Swordman_High && Class <= Job_Thief_High)) set FJob,0;
+	if(SJob && Upper && (Class >= Job_Lord_Knight && Class <= Job_Paladin2)) set SJob,0;
+	if(@ejc[9]) callfunc "PSkills";
+	close2;
+	cutin "", 255;
+	end;
+}
+function	script	JChange3	{
+
+	mes @npcname$;
+	mes "คุณยืนยันที่จะเปลี่ยนเป็น";
+	mes "^FF0000" + JobName(getarg(0)) + "^000000";
+	next;
+	menu "ยืนยัน",-, "ยกเลิก",-;
+
+	atcommand "@option 0 0 0";
+	jobchange getarg(0);
+	callfunc "PSkills";
+	specialeffect2 568;
+	specialeffect2 410;
+	Announce "ท่าน "+strcharinfo(0)+" เปลี่ยนอาชีพเป็น "+JobName(getarg(0))+" เรียบร้อยแล้ว",0,0xff0000;
+	close2;
+	cutin "", 255;
+	end;
+}
+
+c5,164,131,5	duplicate(jobmaster)	jobmaster#1	693

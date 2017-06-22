@@ -1,0 +1,71 @@
+-	script	AllSkill::AKL	-1,{
+if ($@ActiveSv == 0) end;
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "คุณต้องการ AllSkill หรือไม่ ?";
+next;
+menu "- ใช่, ฉันต้องการ",-,"- ข้อมูลเกี่ยวกับการขอ AllSkill",info,"- ไม่ต้องการ",Closed;
+next;
+if(Class == 0) goto novices;
+if(Class == 23) goto supernovices;
+if(Class >= 4023 && Class <= 4045) goto babys;
+if(Class >= 4046 && Class <= 4049) goto specials;
+if(Class >= 24 && Class <= 25) goto specials2;
+if(Class >= 1 && Class <= 21) goto normals;
+if(JobLevel < 70) goto info;
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "Job : High Class";
+atcommand strcharinfo(0) + "@allskill";
+mes "^FF0000ชอบคุณที่ใช้บริการ^000000...";
+close;
+supernovices:
+if(JobLevel < 99) goto info;
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "Job : Super Novice";
+atcommand strcharinfo(0) + "@allskill";
+mes "^FF0000ชอบคุณที่ใช้บริการ^000000...";
+close;
+babys:
+if(JobLevel < 50) goto info;
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "Job : Baby";
+atcommand strcharinfo(0) + "@allskill";
+mes "^FF0000ชอบคุณที่ใช้บริการ^000000...";
+close;
+normals:
+if(JobLevel < 50) goto info;
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "Job : Normal";
+atcommand strcharinfo(0) + "@allskill";
+mes "^FF0000ชอบคุณที่ใช้บริการ^000000...";
+close;
+specials:
+if(JobLevel < 50) goto info;
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "Job : New";
+atcommand strcharinfo(0) + "@allskill";
+mes "^FF0000ชอบคุณที่ใช้บริการ^000000...";
+close;
+specials2:
+if(JobLevel < 50) goto info;
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "Job : New2";
+atcommand strcharinfo(0) + "@allskill";
+mes "^FF0000ชอบคุณที่ใช้บริการ^000000...";
+close;
+info:
+next;
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "^FF0000...วิธีรับ...^000000";
+mes "^0000FFHighClass^000000 : Job Level 70 เท่านั้น !!!";
+mes "^0000FFSuperNovice^000000 : Job Level 99 เท่านั้น !!!";
+mes "^0000FFBaby^000000 : Job Level 50 เท่านั้น !!!";
+mes "^0000FFNormal Class 1-1 1-2^000000 : Job Level 50 เท่านั้น !!!";
+mes "^0000FFNinja - Gunslinger - Taekwon^000000 : Job Level 50 เท่านั้น !!!";
+close;
+novices:
+mes "[ ^FF0000AllSkill^000000 ]";
+mes "Novice : ไม่สามารถรับได้";
+close;
+Closed:
+close;
+}

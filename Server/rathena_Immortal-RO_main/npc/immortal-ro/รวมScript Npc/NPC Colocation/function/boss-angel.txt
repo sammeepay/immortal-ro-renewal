@@ -1,0 +1,129 @@
+-	script	SPAWN_ANGEL	-1,{
+close;
+
+	OnClock0100:
+	OnClock0300:
+	OnClock0500:
+	OnClock0700:
+	OnClock0900:
+	OnClock1100:
+	OnClock1300:
+	OnClock1500:
+	OnClock1700:
+	OnClock1900:
+	OnClock2100:
+	OnClock2300:
+	killmonsterall "pvp_y_8-3";
+
+	if ($spwan_ran1 == 28) { set $spwan_ran1,1; goto main; }
+	set $spwan_ran1,$spwan_ran1+1;
+	goto main;
+
+main:
+	announce "Payon PVP Room : หิน Angel Box เกิดใหม่แล้ว ที่ห้อง PVP Payon",8,0x99FF99;
+	monster "pvp_y_8-3",0,0,"MONSTER SPWAN",$atmonster1[$spwan_ran1],200,"EV_MONSTER::OnDie";
+	monster "pvp_y_8-3",0,0,"Angel Box",1907,100,"EV_MONSTER::OnDie";
+	end;
+
+OnInit: 
+	setarray $atmonster1[1],1016,1019,1034,1041,1044,1056,1068,1101,1106,1114,1132,1169,1179,1189,1201,1208,1369,1375,1275,1163,1028,1060,1099,1170,1178,1192,1193,1207;
+	end;
+}
+
+-	script	EV_MONSTER	-1,{
+
+OnDie:
+	set Zeny,zeny+5000;
+	end;
+
+OnInit:
+	announce "Payon PVP Room : หิน Angel Box เกิดใหม่แล้ว ที่ห้อง PVP Payon",8,0x99FF99;
+	//monster "pvp_y_8-3",0,0,"MONSTER SPWAN",$atmonster1[$spwan_ran1],100,"EV_MONSTER::OnDie"; 
+	//monster "pvp_y_8-3",0,0,"Angel Box",1907,100,"EV_MONSTER::OnDie"; 
+	end;
+}
+
+-	script	SPAWN_BOSS	-1,{
+close;
+
+	OnClock0130:
+	OnClock0230:
+	OnClock0330:
+	OnClock0430:
+	OnClock0530:
+	OnClock0630:
+	OnClock0730:
+	OnClock0830:
+	OnClock0930:
+	OnClock1030:
+	OnClock1130:
+	OnClock1230:
+	OnClock1330:
+	OnClock1430:
+	OnClock1530:
+	OnClock1630:
+	OnClock1730:
+	OnClock1830:
+	OnClock1930:
+	OnClock2030:
+	OnClock2130:
+	OnClock2230:
+	OnClock2330:
+	OnClock0030:
+	killmonsterall "guild_vs5";
+	if ($spwan_ran2 == 38) { set $spwan_ran2,1; goto main; }
+	set $spwan_ran2,$spwan_ran2+1;
+	goto main;
+
+main:
+	announce "BOSS : บอสเกิดแล้วที่ ห้องบอส !!! มาฆ่าเร็ว",8,0xFF0000;
+	monster "guild_vs5",0,0,"BOSS",$atmonster2[$spwan_ran2],1,"BOSS_MONSTER::OnDie";
+	end;
+
+OnInit: 
+	setarray $atmonster2[1],1039,1038,1046,1059,1086,1087,1096,1112,1115,1120,1147,1150,1157,1159,1190,1251,1252,1272,1312,1373,1388,1389,1418,1492,1511,1582,1583,1623,1630,1658,1685,1688,1708,1719,1734,1768,1779,1785;
+	end;
+}
+
+-	script	BOSS_MONSTER	-1,{
+
+OnDie:
+	set Zeny,zeny+700000;
+	announce "BOSS : "+ strcharinfo(0) +" เป็นผู้ฆ่าบอส และได้รับของรางวัลแล้ว !!",8,0xFF0000;
+
+	set .@bossssitem, rand(1,4);
+	if(.@bossssitem==1) goto mBox1;
+	if(.@bossssitem==2) goto mBox2;
+	if(.@bossssitem==3) goto mBox3;
+	if(.@bossssitem==3) goto mBox4;
+	end;
+
+mBox1:
+	getitem 12103,1;
+	announce "BOSS : ได้รับ Bloody Branch 1ea และเงินรางวัล 700k" ,bc_self,0xFF0000;
+	close;
+
+mBox2:
+	getitem 6000,1;
+	announce "BOSS : ได้รับ ไอเทมข้ามชั้น Endless 1ea และเงินรางวัล 700k" ,bc_self,0xFF0000;
+	close;
+
+mBox3:
+	getitem 7621,20;
+	announce "BOSS : ได้รับ Token of Siegfried 20ea และเงินรางวัล 700k" ,bc_self,0xFF0000;
+	close;
+
+mBox4:
+	getitem 12211,5;
+	announce "BOSS : ได้รับ Kafra Card 5eaและเงินรางวัล 700k" ,bc_self,0xFF0000;
+	close;
+
+OnInit:
+	announce "BOSS : บอสเกิดแล้วที่ ห้องบอส !!! มาฆ่าเร็ว",8,0xFF0000;
+	//monster "guild_vs5",0,0,"BOSS",$atmonster2[$spwan_ran2],1,"BOSS_MONSTER::Ondie";
+	end;
+}
+
+guild_vs5	mapflag	nodrop
+guild_vs5	mapflag	noloot
+

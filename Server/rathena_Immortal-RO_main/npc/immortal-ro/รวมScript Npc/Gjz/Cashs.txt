@@ -1,0 +1,42 @@
+// By Gjz ...
+morocc,120,97,4	script	CashChanges	914,{
+if ($@ActiveSv == 0) end;
+goto L_Index;
+OnInit:
+set $cp_items,7227; // รหัสไอเทมที่ใช้แลกพ้อย
+set $cp_change,3; // จำนวน ไอเทม ที่ต้องการแลก พ้อย
+set $cp_point,1; // พ้อยที่ได้รับจากการแลก ไอเทม
+end;
+L_Index:
+mes "[ ^0000FFCashPoint^000000 ]";
+mes "สวัสดีคุณ ^0000FF" + strcharinfo(0) + "^000000";
+mes "ขอต้อนรับสู่บริการ "+getitemname($cp_items)+" To CashPoint";
+mes ""+$cp_change+" "+getitemname($cp_items)+" สามารถแลก Cash ได้ "+$cp_point+" CashPoint"; 
+mes "";
+next;
+menu "- แลกเดี๋ยวนี้",-,"- ไม่มีอะไร",cl;
+mes "[ ^0000FFCashPoint^000000 ]";
+mes "กรุณาใส่จำนวน CashPoint ที่ต้องการแลก";
+mes ""+$cp_change+" "+getitemname($cp_items)+" สามารถแลก Cash ได้ "+$cp_point+" CashPoint"; 
+mes "0 = ยกเลิก";
+input .@cp_gjz;
+if (.@cp_gjz == 0) close;
+set .@cpp_gjz,.@cp_gjz*$cp_change;
+if(countitem($cp_items) < .@cpp_gjz){
+mes " ";
+mes "ขออภัยจำนวน "+getitemname($cp_items)+" ของคุณไม่พอที่จะแลก Cash";
+mes "ไปหามาใหม่ก่อน..แล้วค่อยมาใช้บริการ";
+close;
+}
+set .@cppp_gjz,.@cp_gjz*$cp_point;
+atcommand strcharinfo(0) + "@Cash "+.@cppp_gjz+" "+strcharinfo(0)+"";
+delitem $cp_items,.@cpp_gjz;  
+next;
+mes "[ ^0000FFDonation Shop^000000 ]";
+mes "ขอบคุณที่ใช้บริการ...";
+close;
+
+cl:
+mes "วันหลังมาใหม่นะ ขอบคุณ";
+close;
+}

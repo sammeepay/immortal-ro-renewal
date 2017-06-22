@@ -1,0 +1,27 @@
+function	script	F_DeathNote	{
+mes "^FF0000[ ยมทูต ]^000000";
+mes "^FF0000เจ้าคือผู้ครอบครอง Death Note เล่มนี้^000000";
+mes "^FF0000เจ้ามีสิทธิ์ที่จะฆ่าคน โดยเขียนชื่อ เขาลงไปในสมุดเล่มนี้^000000";
+mes "^FF0000และสามารถระบุสาเหตุการตายของเขาได้^000000";
+next;
+mes "^FF0000[ ยมทูต ]^000000";
+mes "^FF0000Death Note จะไม่มีผลถ้าเขียนชื่อผิด^000000";
+mes "^FF0000หรือมีชื่อนามสกุลเดียวกัน^000000";
+next;
+mes "^FF0000[ ยมทูต ]^000000";
+mes "^FF0000เขียนชื่อคนที่ต้องการจะให้เขาตายลงใน Death Note....^000000";
+input $namee$;
+mes "^FF0000ระบุ สาเหตุการตายของ^000000 ^0000FF"+@name$+"^000000";
+input $because$;
+mes "^FF0000Death Note นี้ จะมีผลภายใน 10 วินาที^000000";
+close2;
+sleep2 10000;
+
+if(isloggedin(getcharid(3,$namee$))==0) {
+	announce "ชื่อ "+$namee$+" ที่เขียนสะกดผิด DeathNote จึงไม่เกิดผล...",bc_self,0x00FF00;
+} else {
+	attachrid(getcharid(3,$namee$));
+	percentheal -100,-100;
+	announce ""+$namee$+" ถูกเขียนชื่อลงใน DeathNote โดย คิระ นามว่า "+strcharinfo(0)+" สาเหตุการตายคือ "+$because$+" ",0,0xFF3300;
+}
+}

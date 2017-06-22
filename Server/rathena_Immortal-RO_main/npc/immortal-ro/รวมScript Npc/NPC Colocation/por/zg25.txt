@@ -1,0 +1,78 @@
+
+guild_vs11	mapflag	pvp_nocalcrank
+guild_vs11	mapflag	pvp
+
+-	script	Set novending	-1,{
+
+OnInIt:
+	set $usercountpk,1;
+	setcell "guild_vs11",0,999,999,0,cell_pvp,1;		//แก้ไขแมพที่ต้องการ ของผมคือ morocc    * 0 999 999 0 คือทั้งแมพ ,cell_pvp,1 คือ pvp ไม่ทำงาน 0 คือทำงาน
+	setcell "guild_vs11",42,57,57,42,cell_pvp,0;		//zone1 แก้ไข ช่องสี่เหลี่ยมที่ต้องการให้ PVP x,y   x2,y2
+	setcell "c5",150,179,169,154,cell_pvp,1;		//zone1 แก้ไข ช่องสี่เหลี่ยมที่ต้องการให้ PVP x,y   x2,y2
+	end;
+
+OnPCDieEvent:
+	set setcellpvp,0;
+	end;
+
+}
+
+
+-	script	border	858,{
+	end;
+
+OnTouch:
+	if(setcellpvp==1){
+		repair(1); repair(2); repair(3); repair(4); repair(5); repair(6); repair(7); repair(8); repair(9); repair(10);
+		message strcharinfo(0),"คุณออกจากลานประลอง";
+		set setcellpvp,0; 
+		if($usercountpk<=0){ end; }
+		set $usercountpk,$usercountpk-1;
+		end;
+	}
+
+	message strcharinfo(0),"คุณเข้าสู่ลานประลอง";
+	set setcellpvp,1;
+	if($usercountpk<=0){ end; }
+	set $usercountpk,$usercountpk-1;
+	close;
+	end; 
+
+OnPCLogoutEvent:
+	if(setcellpvp==1){
+		repair(1); repair(2); repair(3); repair(4); repair(5); repair(6); repair(7); repair(8); repair(9); repair(10);
+		message strcharinfo(0),"คุณออกจากลานประลอง";
+		set setcellpvp,0; warp "SavePoint",0,0; 
+		if($usercountpk<=0){ end; }
+		set $usercountpk,$usercountpk-1;
+		end;
+	}
+	end;
+}
+
+
+//หากเข้ามาในลานประลองโดยไม่ผ่าน npc ให้ส่งไปเกิดที่จุดsave
+-	script	border2	858,{
+	end;
+OnTouch:
+	if(setcellpvp==0){
+		percentheal -100,-100; 
+		message strcharinfo(0),"คุณออกจากลานประลองไปแล้ว กรุณาอย่าพยายามหาทางเข้าโดยไม่ผ่าน ประตูลานประลอง";  
+		set setcellpvp,0; warp "SavePoint",0,0;
+		if($usercountpk<=0){ end; }
+		set $usercountpk,$usercountpk-1;
+		end;
+	}
+	end; 
+}
+
+//npc ตรวจสอบการเข้าออกลานประลอง เป็นแนวตั้งและแนวนอนจากจุดที่ตั้ง npc
+//ตย. -1,x,xx  xตัวแรกคือตำแหน่งเช็คแนวนอน xxตัวที่สองคิอเช็คตำแหน่งแนวตั้งจาก npc
+
+
+-	script	basilica	-1,{
+OnInit:
+	setcell "guild_vs11",0,999,999,0,cell_basilica,1;
+	setcell "guild_vs11",42,57,57,42,cell_basilica,0;
+	end;
+}

@@ -1,0 +1,1406 @@
+-	script	QuestHat2::QH2	-1,{
+if ($@ActiveSv == 0) end;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "สวัสดี เจ้าอยากได้หมวกอะไรไปใส่ละทำกันง่ายๆ";
+next;
+maw:
+menu "^000080Page A - H^000000 [^FF00001^000000]",main,"^000080Page J - Z^000000 [^FF00002^000000]",main2;
+
+main:
+menu 
+"หน้าแรก",maw,
+"Angel Blessing(Halo Golden)",t28,
+"Ayothaya King's Hat",t19,
+"Antenna",t31,
+"Bullock Helm",t7,
+"Baphomet Horns",t53,
+"Blue France Santa Hat",t63,
+"Bell Ribbon",t60,
+"Balloon Hat",t57,
+"Bunny Top Hat",t56,
+"Carmen Miranda's Hat",t17,
+"Censor Bar",t1,
+"Clarice Doll Hat",t35,
+"Drooping Bunny",t3,
+"Diadem",t20,
+"Dragon Skull",t27,
+"Deporte Doll Hat",t34,
+"Dark Randgris Helm",t52,
+"Executioner Hood",t8,
+"Flower Lily",t14,
+"Flower Crown",t15,
+"Fisherman's Hat",t23,
+"Flying Angeling",t32,
+"Flying Evil Wing",t54,
+"Fish Head Hat",t58,
+"Ganster Scarf",t47,
+"Gentleman's Pipe",t55,
+"Hello Mother Hat",t24,
+"Hunter Cap",t61,
+"Hukke's Blackcat Ears",t46,
+"Hahoe Mask",t2,
+"Hockey Mask",t10;
+close;
+
+main2:
+menu 
+"หน้าแรก",maw,
+"Judge Cap (หมวกเปาวุ้นจิ้น)",t50,
+"Koneko Hat",t51,
+"Ninja's Scroll",t48,
+"Loki Mask",t30,
+"Little Angel Rock",t11,
+"Large Hibiscus",t18,
+"Observer",t21,
+"Orchid Hairband",t49,
+"Poporing Hat",t40,
+"Pecopeco Ears",t44,
+"Pirate Dagger",t16,
+"Robo Eye",t12,
+"Red Glasses",t26,
+"Selendang",t42,
+"Solar Panels",t4,
+"Smiling Mask",t5,
+"Shining Electric Bulb",t9,
+"Ship Captain's Hat",t45,
+"SantaPoring Cap",t59,
+"Summer Hat",t25,
+"Squatting Poring",t33,
+"Sorin Doll Hat",t36,
+"Songkok",t41,
+"Tailring Doll Hat",t37,
+"Umbrella Hat",t22,
+"Victory Hairband",t13,
+"Vinit Doll Hat",t38,
+"Victory Wings",t43,
+"W Doll Hat",t39,
+"Whisper Mask",t6,
+"Yoyo Hat",t62;
+close;
+
+
+t1:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFCensor Bar^000000 "; //5175
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Black Hair^000000  300 อัน (ที่ได้จาก Sohee)"; //1020
+mes "^FF0000Black Dyestuff^000000 1 อัน"; //983
+next;
+if (countitem(1020) < 300) goto nonitem;
+if (countitem(983) < 1) goto nonitem;
+delitem 1020,300;
+delitem 983,1;
+getitem 5175,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t2:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFHahoe Mask^000000 "; //5176
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Authoritative Badge^000000  200 อัน (ที่ได้จาก Sohee)"; //662
+mes "^FF0000Goblin Mask^000000 1 อัน"; //2297
+next;
+if (countitem(662) < 100) goto nonitem;
+if (countitem(2297) < 1) goto nonitem;
+delitem 662,200;
+delitem 2297,1;
+getitem 5176,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t3:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFDrooping Bunny^000000 "; //5198
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Bunny Band^000000  1 อัน "; //2214
+mes "^FF0000White Dyestuff^000000 1 อัน"; //982
+next;
+if (countitem(2214) < 1) goto nonitem;
+if (countitem(982) < 1) goto nonitem;
+delitem 2214,200;
+delitem 982,1;
+getitem 5198,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t4:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFSolar Panels^000000 "; //5212
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Blue Hairband^000000  1 อัน "; //5052
+mes "^FF0000Kitty Band^000000 1 อัน"; //2213
+mes "^FF0000Hair Band^000000 1 อัน"; //2210
+mes "^FF0000Crystal Blue^000000 1000 อัน"; //991
+mes "^FF0000Blue Gemstone^000000 1000 อัน"; //717
+next;
+if (countitem(5052) < 1) goto nonitem;
+if (countitem(2213) < 1) goto nonitem;
+if (countitem(2210) < 1) goto nonitem;
+if (countitem(991) < 1000) goto nonitem;
+if (countitem(717) < 1000) goto nonitem;
+delitem 991,1000;
+delitem 717,1000;
+delitem 2210,1;
+delitem 2213,1;
+delitem 5052,1;
+getitem 5212,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t5:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFSmiling Mask^000000 "; //5272
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Poker Face^000000  1 อัน "; //5087
+mes "^FF0000Surprised Mask^000000 1 อัน"; //5088
+mes "^FF0000Annoyed Mask^000000 1 อัน"; //5089
+mes "^FF0000Goblin Leader Mask^000000 1 อัน"; //5090
+next;
+if (countitem(5087) < 1) goto nonitem;
+if (countitem(5088) < 1) goto nonitem;
+if (countitem(5089) < 1) goto nonitem;
+if (countitem(5090) < 1) goto nonitem;
+delitem 5087,1;
+delitem 5088,1;
+delitem 5089,1;
+delitem 5090,1;
+getitem 5272,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t6:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFWhisper Mask^000000 "; //5294
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Whisper Card^000000  3 อัน "; //4102
+mes "^FF0000Hat [1]^000000  10 อัน "; //2221
+mes "^FF0000Fabric^000000  100 อัน "; //1059
+next;
+if (countitem(4102) < 3) goto nonitem;
+if (countitem(2221) < 10) goto nonitem;
+if (countitem(1059) < 100) goto nonitem;
+delitem 4102,10;
+delitem 2221,10;
+delitem 1059,100;
+getitem 5294,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t7:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFBullock Helm^000000 "; //5300
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Bone Helm^000000  1 อัน "; //5017
+mes "^FF0000Gold^000000  30 อัน "; //969
+next;
+if (countitem(5017) < 1) goto nonitem;
+if (countitem(969) < 30) goto nonitem;
+delitem 5017,10;
+delitem 969,30;
+getitem 5300,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t8:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFExecutioner Hood^000000 "; //5304
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Hood [1]^000000  10 อัน "; //2502
+mes "^FF0000Executioner's Mitten^000000  30 อัน "; //7017
+next;
+if (countitem(2502) < 10) goto nonitem;
+if (countitem(7017) < 100) goto nonitem;
+delitem 2502,10;
+delitem 7017,30;
+getitem 5304,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t9:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFShining Electric Bulb^000000 "; //5310
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Hair Band^000000 1 อัน"; //2210
+mes "^FF0000Matchstick^000000  10 อัน "; //7035
+mes "^FF0000Bulb Band^000000  1 อัน "; //5034
+next;
+if (countitem(2210) < 1) goto nonitem;
+if (countitem(7035) < 10) goto nonitem;
+if (countitem(5034) < 1) goto nonitem;
+delitem 2210,1;
+delitem 7035,10;
+delitem 5034,1;
+getitem 5310,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t10:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFHockey Mask^000000 "; //5314
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Goblin Leader Mask^000000 1 อัน"; //5090
+mes "^FF0000Steel^000000  444 อัน "; //999
+mes "^FF0000Coal^000000  444 อัน "; //1003
+mes "^FF0000Live Coal^000000  444 อัน "; //7098
+next;
+if (countitem(5090) < 1) goto nonitem;
+if (countitem(999) < 444) goto nonitem;
+if (countitem(1003) < 444) goto nonitem;
+if (countitem(7098) < 444) goto nonitem;
+delitem 2210,1;
+delitem 999,444;
+delitem 1003,444;
+delitem 7098,444;
+getitem 5314,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t11:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFLittle Angel Rock^000000 "; //17500
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Alice Doll^000000 1 อัน"; //5137
+mes "^FF0000Angel Wing Ears^000000  1 อัน "; //5074
+mes "^FF0000Bao Bao^000000  1 อัน "; //5042
+next;
+if (countitem(5137) < 1) goto nonitem;
+if (countitem(5074) < 1) goto nonitem;
+if (countitem(5042) < 1) goto nonitem;
+delitem 5137,1;
+delitem 5074,1;
+delitem 5042,1;
+getitem 5324,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t12:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFRobo Eye^000000 "; //17501
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Sunglasses^000000 1 อัน"; //2201
+mes "^FF0000Diver Goggles^000000 1 อัน"; //2205
+mes "^FF0000Glasses^000000 1 อัน"; //2203
+mes "^FF0000Geek Glasses^000000 1 อัน"; //2243
+mes "^FF0000Purple Glasses^000000 1 อัน"; //2242
+mes "^FF0000Binoculars^000000 3 อัน "; //2296
+next;
+if (countitem(2201) < 1) goto nonitem;
+if (countitem(2205) < 1) goto nonitem;
+if (countitem(2203) < 1) goto nonitem;
+if (countitem(2243) < 1) goto nonitem;
+if (countitem(2242) < 1) goto nonitem;
+if (countitem(2296) < 3) goto nonitem;
+delitem 2201,1;
+delitem 2205,1;
+delitem 2203,1;
+delitem 2243,1;
+delitem 2242,1;
+delitem 2296,3;
+getitem 5325,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t13:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFVictory Hairband^000000 "; //5301
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Hair Band^000000 1 อัน"; //2210
+mes "^FF0000Red Bandana^000000  1 อัน "; //2275
+mes "^FF0000Yarn^000000  100 อัน "; //7038
+next;
+if (countitem(2210) < 1) goto nonitem;
+if (countitem(2275) < 1) goto nonitem;
+if (countitem(7038) < 100) goto nonitem;
+delitem 2210,1;
+delitem 2275,1;
+delitem 7038,100;
+getitem 5301,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t14:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFFlower Lily^000000 "; //5302
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Illusion Flower^000000 10 อัน"; //710
+mes "^FF0000Fancy Flowe^000000  1 อัน "; //2207
+mes "^FF0000Romantic Flower^000000  1 อัน "; //2269
+mes "^FF0000Trunk^000000  1000 อัน "; //1019
+mes "^FF0000Flower^000000  1000 อัน "; //712
+next;
+if (countitem(710) < 10) goto nonitem;
+if (countitem(712) < 1000) goto nonitem;
+if (countitem(1019) < 1000) goto nonitem;
+if (countitem(2207) < 1) goto nonitem;
+if (countitem(2269) < 1) goto nonitem;
+delitem 710,10;
+delitem 712,1000;
+delitem 1019,1000;
+delitem 2207,1;
+delitem 2269,1;
+getitem 5302,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t15:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFFlower Crown^000000 "; //5303
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Puppy Love^000000  1 อัน "; //5008
+mes "^FF0000Izidor^000000  10 อัน "; //709
+next;
+if (countitem(5008) < 1) goto nonitem;
+if (countitem(709) < 10) goto nonitem;
+delitem 5008,1;
+delitem 709,10;
+getitem 5303,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t16:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFPirate Dagger^000000 "; //5305
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Steel^000000 1000 อัน"; //999
+mes "^FF0000Old Hilt^000000  3 อัน "; //7022
+mes "^FF0000Assassin Dagger^000000  1 อัน "; //1232
+next;
+if (countitem(999) < 1000) goto nonitem;
+if (countitem(1232) < 1) goto nonitem;
+if (countitem(7022) < 3) goto nonitem;
+delitem 999,1000;
+delitem 1232,1;
+delitem 7022,3;
+getitem 5305,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t17:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFCarmen Miranda's Hat^000000 "; //5307
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Apple Juicel^000000 1000 อัน"; //531
+mes "^FF0000Banana Juice^000000  1000 อัน "; //532
+mes "^FF0000Grape Juice^000000  1000 อัน "; //533
+mes "^FF0000Carrot Juice^000000  1000 อัน "; //534
+mes "^FF0000Gemmed Sallet[1]^000000  1 อัน "; //2231
+next;
+if (countitem(531) < 1000) goto nonitem;
+if (countitem(532) < 1000) goto nonitem;
+if (countitem(533) < 1000) goto nonitem;
+if (countitem(534) < 1000) goto nonitem;
+if (countitem(2231) < 1) goto nonitem;
+delitem 531,1000;
+delitem 532,1000;
+delitem 533,1000;
+delitem 534,1000;
+delitem 2231,1;
+getitem 5305,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t18:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFLarge Hibiscus^000000 "; //5311
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Four Leaf Clover^000000 3 อัน"; //706
+mes "^FF0000Illusion Flower^000000  3 อัน "; //710
+mes "^FF0000Flower Hairpin^000000  1 อัน "; //5061
+next;
+if (countitem(706) < 3) goto nonitem;
+if (countitem(710) < 3) goto nonitem;
+if (countitem(5061) < 1) goto nonitem;
+delitem 706,3;
+delitem 710,3;
+delitem 5061,1;
+getitem 5311,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t19:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFAyothaya King's Hat^000000 "; //5312
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Trunk^000000  1200 อัน "; //1019
+mes "^FF0000Straw Hat^000000 1 อัน"; //5062
+mes "^FF0000Sombrero^000000  1 อัน "; //5067
+next;
+if (countitem(5062) < 1) goto nonitem;
+if (countitem(1019) < 1200) goto nonitem;
+if (countitem(5067) < 1) goto nonitem;
+delitem 5062,1;
+delitem 1019,1200;
+delitem 5067,1;
+getitem 5312,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t20:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFDiadem^000000 "; //5313
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Crown^000000  1 อัน "; //2235
+mes "^FF0000Tiara^000000 1 อัน"; //2234
+mes "^FF0000";
+next;
+if (countitem(2235) < 1) goto nonitem;
+if (countitem(2234) < 1) goto nonitem;
+delitem 2235,1;
+delitem 2234,1;
+getitem 5313,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t21:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFObserver^000000 "; //5315
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Monocle^000000  1 อัน "; //2239
+mes "^FF0000Crystal Mirror^000000 50 อัน"; //747
+mes "^FF0000Fragment^000000 300 อัน"; //7094
+next;
+if (countitem(2239) < 1) goto nonitem;
+if (countitem(747) < 50) goto nonitem;
+if (countitem(7094) < 300) goto nonitem;
+delitem 2239,1;
+delitem 747,50;
+delitem 7094,300;
+getitem 5315,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t22:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFUmbrella Hat^000000 "; //5316
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Scarlet Dyestuff^000000  3 อัน "; //975
+mes "^FF0000Lemon Dyestuff^000000  3 อัน "; //976
+mes "^FF0000Cobaltblue Dyestuff^000000  3 อัน "; //978
+mes "^FF0000Darkgreen Dyestuff^000000  3 อัน "; //979
+mes "^FF0000Orange Dyestuff^000000  3 อัน "; //980
+mes "^FF0000Violet Dyestuff^000000  3 อัน "; //981
+mes "^FF0000White Dyestuff^000000  3 อัน "; //982
+mes "^FF0000Black Dyestuff^000000  3 อัน "; //983
+mes "^FF0000Mini Propeller^000000 1 อัน"; //2259
+next;
+if (countitem(975) < 3) goto nonitem;
+if (countitem(976) < 3) goto nonitem;
+if (countitem(977) < 3) goto nonitem;
+if (countitem(978) < 3) goto nonitem;
+if (countitem(979) < 3) goto nonitem;
+if (countitem(980) < 3) goto nonitem;
+if (countitem(981) < 3) goto nonitem;
+if (countitem(982) < 3) goto nonitem;
+if (countitem(983) < 3) goto nonitem;
+if (countitem(2259) < 1) goto nonitem;
+delitem 975,3;
+delitem 976,3;
+delitem 977,3;
+delitem 978,3;
+delitem 979,3;
+delitem 980,3;
+delitem 981,3;
+delitem 982,3;
+delitem 983,3;
+delitem 2259,1;
+getitem 5316,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t23:
+
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFFisherman's Hat^000000 "; //5317
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Hat [1]^000000  1 อัน "; //2221
+mes "^FF0000Straw Hat^000000 1 อัน"; //5062
+mes "^FF0000Lemon Dyestuff^000000  1 อัน "; //976
+next;
+if (countitem(5062) < 1) goto nonitem;
+if (countitem(2221) < 1200) goto nonitem;
+if (countitem(976) < 1) goto nonitem;
+delitem 5062,1;
+delitem 2221,1;
+delitem 976,1;
+getitem 5317,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t24:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFHello Mother Hat^000000 "; //5319
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Angel Wing Ears^000000  1 อัน "; //5074
+mes "^FF0000Deviling Hat^000000 1 อัน"; //5254
+mes "^FF0000Cobaltblue Dyestuff^000000  3 อัน "; //978
+next;
+if (countitem(5074) < 1) goto nonitem;
+if (countitem(5254) < 1200) goto nonitem;
+if (countitem(978) < 1) goto nonitem;
+delitem 5074,1;
+delitem 5254,1;
+delitem 978,1;
+getitem 5319,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t25:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFSummer Hat^000000 "; //5287
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Straw Hat^000000  1 อัน "; //5064
+mes "^FF0000Small Ribbons^000000 1 อัน"; //5085
+mes "^FF0000Lemon Dyestuff^000000  1 อัน "; //976
+mes "^FF0000Cobaltblue Dyestuff^000000  1 อัน "; //978
+next;
+if (countitem(5064) < 1) goto nonitem;
+if (countitem(5085) < 1) goto nonitem;
+if (countitem(976) < 1) goto nonitem;
+if (countitem(978) < 1) goto nonitem;
+delitem 5064,1;
+delitem 5285,1;
+delitem 978,1;
+delitem 976,1;
+getitem 5287,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t26:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFRed Glasses^000000 "; //5288
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Angled Glasses^000000  1 อัน "; //2276
+mes "^FF0000Glasses^000000 1 อัน"; //2203
+mes "^FF0000Scarlet Dyestuff^000000  3 อัน "; //975
+next;
+if (countitem(2276) < 1) goto nonitem;
+if (countitem(2203) < 1) goto nonitem;
+if (countitem(975) < 1) goto nonitem;
+delitem 2276,1;
+delitem 2203,1;
+delitem 975,1;
+getitem 5288,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t27:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFDragon Skull^000000 "; //5292
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Three-Headed Dragon's Head^000000  20 อัน "; //7443
+mes "^FF0000Skull^000000  100 อัน "; //7005
+mes "^FF0000Skull Helm^000000 1 อัน"; //10001
+next;
+if (countitem(7443) < 20) goto nonitem;
+if (countitem(7005) < 100) goto nonitem;
+if (countitem(10001) < 1) goto nonitem;
+delitem 7443,20;
+delitem 7005,100;
+delitem 10001,1;
+getitem 5292,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t28:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFAngel Blessing^000000 "; //5207
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Halo^000000  1 อัน "; //2282
+mes "^FF0000Gold^000000  1 อัน "; //969
+next;
+if (countitem(2282) < 1) goto nonitem;
+if (countitem(969) < 1) goto nonitem;
+delitem 2282,1;
+delitem 969,1;
+getitem 5207,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t30:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFLoki Mask^000000 "; //5332
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Loki's Whispers^000000  10 อัน "; //7019
+mes "^FF0000Steel^000000  300 อัน "; //969
+next;
+if (countitem(7019) < 10) goto nonitem;
+if (countitem(999) < 300) goto nonitem;
+delitem 7019,10;
+delitem 999,300;
+getitem 5332,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t31:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFAntenna^000000 "; //5333
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Aerial^000000  1 อัน "; //5011
+mes "^FF0000Rough Wind^000000  20 อัน "; //996
+next;
+if (countitem(5011) < 1) goto nonitem;
+if (countitem(996) < 20) goto nonitem;
+delitem 5011,1;
+delitem 996,20;
+getitem 5333,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t32:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFFlying Angeling^000000 "; //5334
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Angeling Hat^000000  1 อัน "; //5132
+mes "^FF0000Flying Angel^000000  1 อัน "; //5210
+next;
+if (countitem(5132) < 1) goto nonitem;
+if (countitem(5210) < 1) goto nonitem;
+delitem 5132,1;
+delitem 5210,1;
+getitem 5334,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t33:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFSquatting Poring^000000 "; //5335
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Poring Hat^000000  1 อัน "; //5035
+mes "^FF0000Poring Card^000000 1 อัน"; // 4001
+mes "^FF0000Poring Doll^000000  10 อัน "; //741
+mes "^FF0000Embryo^000000 10 อัน"; //7142
+next;
+if (countitem(5035) < 1) goto nonitem;
+if (countitem(4001) < 1) goto nonitem;
+if (countitem(741) < 10) goto nonitem;
+if (countitem(7142) < 10) goto nonitem;
+delitem 5035,1;
+delitem 4001,1;
+delitem 741,10;
+delitem 7142,10;
+getitem 5335,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t34:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFDeporte Doll Hat^000000 "; //5340
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Alice Doll^000000  1 อัน "; //5137
+mes "^FF0000Marionette Doll^000000 1 อัน"; // 5141
+mes "^FF0000Baphomet Doll^000000  1 อัน "; //750
+mes "^FF0000Osiris Doll^000000 1 อัน"; //751
+mes "^FF0000Kafra Band^000000 1 อัน"; //5020
+next;
+if (countitem(5137) < 1) goto nonitem;
+if (countitem(5141) < 1) goto nonitem;
+if (countitem(750) < 1) goto nonitem;
+if (countitem(751) < 1) goto nonitem;
+if (countitem(5020) < 1) goto nonitem;
+delitem 5137,1;
+delitem 5141,1;
+delitem 750,1;
+delitem 751,1;
+delitem 5020,1;
+getitem 5340,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t35:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFClarice Doll Hat^000000 "; //5341
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Alice Doll^000000  1 อัน "; //5137
+mes "^FF0000Marionette Doll^000000 1 อัน"; // 5141
+mes "^FF0000Baphomet Doll^000000  1 อัน "; //750
+mes "^FF0000Osiris Doll^000000 1 อัน"; //751
+mes "^FF0000Kafra Band^000000 1 อัน"; //5020
+next;
+if (countitem(5137) < 1) goto nonitem;
+if (countitem(5141) < 1) goto nonitem;
+if (countitem(750) < 1) goto nonitem;
+if (countitem(751) < 1) goto nonitem;
+if (countitem(5020) < 1) goto nonitem;
+delitem 5137,1;
+delitem 5141,1;
+delitem 750,1;
+delitem 751,1;
+delitem 5020,1;
+getitem 5341,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t36:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFSorin Doll Hat^000000 "; //5342
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Alice Doll^000000  1 อัน "; //5137
+mes "^FF0000Marionette Doll^000000 1 อัน"; // 5141
+mes "^FF0000Baphomet Doll^000000  1 อัน "; //750
+mes "^FF0000Osiris Doll^000000 1 อัน"; //751
+mes "^FF0000Kafra Band^000000 1 อัน"; //5020
+next;
+if (countitem(5137) < 1) goto nonitem;
+if (countitem(5141) < 1) goto nonitem;
+if (countitem(750) < 1) goto nonitem;
+if (countitem(751) < 1) goto nonitem;
+if (countitem(5020) < 1) goto nonitem;
+delitem 5137,1;
+delitem 5141,1;
+delitem 750,1;
+delitem 751,1;
+delitem 5020,1;
+getitem 5342,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t37:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFTailring Doll Hat^000000 "; //5343
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Alice Doll^000000  1 อัน "; //5137
+mes "^FF0000Marionette Doll^000000 1 อัน"; // 5141
+mes "^FF0000Baphomet Doll^000000  1 อัน "; //750
+mes "^FF0000Osiris Doll^000000 1 อัน"; //751
+mes "^FF0000Kafra Band^000000 1 อัน"; //5020
+next;
+if (countitem(5137) < 1) goto nonitem;
+if (countitem(5141) < 1) goto nonitem;
+if (countitem(750) < 1) goto nonitem;
+if (countitem(751) < 1) goto nonitem;
+if (countitem(5020) < 1) goto nonitem;
+delitem 5137,1;
+delitem 5141,1;
+delitem 750,1;
+delitem 751,1;
+delitem 5020,1;
+getitem 5343,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t38:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFVinit Doll Hat^000000 "; //5344
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Alice Doll^000000  1 อัน "; //5137
+mes "^FF0000Marionette Doll^000000 1 อัน"; // 5141
+mes "^FF0000Baphomet Doll^000000  1 อัน "; //750
+mes "^FF0000Osiris Doll^000000 1 อัน"; //751
+mes "^FF0000Kafra Band^000000 1 อัน"; //5020
+next;
+if (countitem(5137) < 1) goto nonitem;
+if (countitem(5141) < 1) goto nonitem;
+if (countitem(750) < 1) goto nonitem;
+if (countitem(751) < 1) goto nonitem;
+if (countitem(5020) < 1) goto nonitem;
+delitem 5137,1;
+delitem 5141,1;
+delitem 750,1;
+delitem 751,1;
+delitem 5020,1;
+getitem 5344,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t39:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFW Doll Hat^000000 "; //5345
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Alice Doll^000000  1 อัน "; //5137
+mes "^FF0000Marionette Doll^000000 1 อัน"; // 5141
+mes "^FF0000Baphomet Doll^000000  1 อัน "; //750
+mes "^FF0000Osiris Doll^000000 1 อัน"; //751
+mes "^FF0000Kafra Band^000000 1 อัน"; //5020
+next;
+if (countitem(5137) < 1) goto nonitem;
+if (countitem(5141) < 1) goto nonitem;
+if (countitem(750) < 1) goto nonitem;
+if (countitem(751) < 1) goto nonitem;
+if (countitem(5020) < 1) goto nonitem;
+delitem 5137,1;
+delitem 5141,1;
+delitem 750,1;
+delitem 751,1;
+delitem 5020,1;
+getitem 5345,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t40:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFPoporing Hat^000000 "; //5352
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Resin^000000  300 อัน "; //907
+mes "^FF0000Poring Hat^000000 1 อัน"; // 5035
+next;
+if (countitem(907) < 300) goto nonitem;
+if (countitem(5035) < 1) goto nonitem;
+delitem 907,300;
+delitem 5035,1;
+getitem 5352,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t41:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFSongkok^000000 "; //5354
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Turban [1]^000000  1 อัน "; //2223
+mes "^FF0000Black Dyestuff^000000 1 อัน"; // 983
+mes "^FF0000Black Bear Skin^000000 300 อัน"; // 7161
+mes "^FF0000Piece of Black Cloth^000000 300 อัน"; // 7205
+next;
+if (countitem(2223) < 1) goto nonitem;
+if (countitem(983) < 1) goto nonitem;
+if (countitem(7161) < 300) goto nonitem;
+if (countitem(7205) < 300) goto nonitem;
+delitem 2223,1;
+delitem 983,1;
+delitem 7161,300;
+delitem 7205,300;
+getitem 5354,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t42:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFSelendang^000000 "; //5355
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Hood [1]^000000  1 อัน "; //2502
+mes "^FF0000White Dyestuff^000000 1 อัน"; // 982
+mes "^FF0000Slick Paper^000000 300 อัน"; // 7111
+mes "^FF0000Sharp Paper^000000 300 อัน"; // 7112
+next;
+if (countitem(2502) < 1) goto nonitem;
+if (countitem(982) < 1) goto nonitem;
+if (countitem(7111) < 300) goto nonitem;
+if (countitem(7112) < 300) goto nonitem;
+delitem 2502,1;
+delitem 982,1;
+delitem 7111,300;
+delitem 7112,300;
+getitem 5355,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t43:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFVictory Wings^000000 "; //5357
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Victory Hairband^000000  1 อัน "; //5301
+mes "^FF0000Angel Wing Ears^000000 1 อัน"; // 5074
+next;
+if (countitem(5301) < 1) goto nonitem;
+if (countitem(5074) < 1) goto nonitem;
+delitem 5301,1;
+delitem 5074,1;
+getitem 5357,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t44:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFPecopeco Ears^000000 "; //5358
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Peco Peco Feather^000000  777 อัน "; //7101
+mes "^FF0000Angel Wing Ears^000000 1 อัน"; // 5074
+next;
+if (countitem(7101) < 777) goto nonitem;
+if (countitem(5074) < 1) goto nonitem;
+delitem 7101,777;
+delitem 5074,1;
+getitem 5358,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t45:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFShip Captain's Hat^000000 "; //5359
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Boys Cap^000000  1 อัน "; //5016
+mes "^FF0000Captain's Hat^000000 1 อัน"; // 5184
+next;
+if (countitem(7101) < 1) goto nonitem;
+if (countitem(5074) < 1) goto nonitem;
+delitem 5016,1;
+delitem 5184,1;
+getitem 5359,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t46:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFHukke's Blackcat Ears^000000 "; //5360
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Black Cat Ears^000000  1 อัน "; //5057
+mes "^FF0000Drooping Cat^000000 1 อัน"; // 5058
+mes "^FF0000Black Cat Doll^000000 400 อัน"; //7206
+mes "^FF0000Piece of Black Cloth^000000 400 อัน"; //7205
+next;
+if (countitem(5057) < 1) goto nonitem;
+if (countitem(5058) < 1) goto nonitem;
+if (countitem(7206) < 400) goto nonitem;
+if (countitem(7205) < 400) goto nonitem;
+delitem 5057,1;
+delitem 5158,1;
+delitem 7206,400;
+delitem 7205,400;
+getitem 5360,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t47:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFGanster Scarf^000000 "; //5361
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Scarlet Dyestuff^000000 1 อัน "; //975
+mes "^FF0000Hood [1]^000000  3 อัน "; //2502
+mes "^FF0000Red Scarf^000000 30 อัน"; // 10019
+mes "^FF0000Yarn^000000 300 อัน "; //7038
+next;
+if (countitem(2502) < 3) goto nonitem;
+if (countitem(10019) < 1) goto nonitem;
+if (countitem(975) < 1) goto nonitem;
+if (countitem(7038) < 300) goto nonitem;
+delitem 7038,300;
+delitem 975,1;
+delitem 2502,3;
+delitem 10019,30;
+getitem 5361,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+nh1:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFPoring Backet^000000 "; //8001
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Backpack^000000 5 อัน "; //10013
+mes "^FF0000Poring Doll^000000  100 อัน "; //741
+mes "^FF0000Angel Wing Ears^000000 1 อัน"; // 5074
+next;
+if (countitem(10013) < 5) goto nonitem;
+if (countitem(741) < 100) goto nonitem;
+if (countitem(5074) < 1) goto nonitem;
+delitem 10013,5;
+delitem 741,100;
+delitem 5074,1;
+getitem 8000,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+nh2:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFPiamette HairBand^000000 "; //8002
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Hair Band^000000 1 อัน "; //2210
+mes "^FF0000Kitty Band^000000  1 อัน "; //2213
+mes "^FF0000Bunny Band^000000 1 อัน"; //2214
+next;
+if (countitem(2210) < 1) goto nonitem;
+if (countitem(2213) < 1) goto nonitem;
+if (countitem(2214) < 1) goto nonitem;
+delitem 2210,1;
+delitem 2213,1;
+delitem 2214,1;
+getitem 8002,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+nh3:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFRibbon WizardHat^000000 "; //8003
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Wizard Hat^000000 1 อัน "; //2252
+mes "^FF0000Red Tailed Ribbon^000000  1 อัน "; //5083
+mes "^FF0000White Dyestuff^000000 1 อัน"; //982
+next;
+if (countitem(2252) < 1) goto nonitem;
+if (countitem(5083) < 1) goto nonitem;
+if (countitem(982) < 1) goto nonitem;
+delitem 2252,1;
+delitem 5083,1;
+delitem 982,1;
+getitem 8003,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+nh4:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FFPanda Doll^000000 "; //8004
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000Marionette Doll^000000 1 อัน "; //5141
+mes "^FF0000Panda Hat^000000  1 อัน "; //5030
+mes "^FF0000Baphomet Doll^000000 1 อัน"; //750
+mes "^FF0000Osiris Doll^000000 1 อัน"; //751
+next;
+if (countitem(5141) < 1) goto nonitem;
+if (countitem(5030) < 1) goto nonitem;
+if (countitem(750) < 1) goto nonitem;
+if (countitem(751) < 1) goto nonitem;
+delitem 5141,1;
+delitem 5030,1;
+delitem 750,1;
+delitem 751,1;
+getitem 8004,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t48:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Ninja's Scroll ^000000"; // 5362
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Worn-out Magic Scroll ^000000 [100] อัน"; //7099
+next;
+if (countitem(7099) < 100) goto nonitem;
+delitem 7099,100;
+getitem 5362,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t49:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Orchid Hairband ^000000"; //5370
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Clover ^000000 [300] อัน"; //705
+mes "^FF0000 Four Leaf Clover ^000000 [3] อัน"; //706
+mes "^FF0000 Izidor ^000000 [3] อัน"; //709
+mes "^FF0000 Hair Band ^000000 [1] อัน"; //2210
+next;
+if (countitem(705) < 300) goto nonitem;
+if (countitem(706) < 3) goto nonitem;
+if (countitem(709) < 3) goto nonitem;
+if (countitem(2210) < 1) goto nonitem;
+delitem 705,300;
+delitem 706,3;
+delitem 709,3;
+delitem 2210,1;
+getitem 5370,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t50:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Judge Cap ^000000"; // 5371
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Judge Hat ^000000 [1] อัน"; //5173
+mes "^FF0000 Trunk ^000000 [1099] อัน"; //1019
+next;
+if (countitem(5173) < 1) goto nonitem;
+if (countitem(1099) < 1099) goto nonitem;
+delitem 5173,1;
+delitem 1019,1099;
+getitem 5371,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t51:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Koneko Hat ^000000"; // 5372
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Drooping Cat ^000000 [1] อัน"; //5058
+mes "^FF0000 Slick Paper ^000000 [500] อัน"; //7111
+mes "^FF0000 Sharp Paper ^000000 [500] อัน"; //7112
+next;
+if (countitem(5058) < 5058) goto nonitem;
+if (countitem(7111) < 500) goto nonitem;
+if (countitem(7112) < 500) goto nonitem;
+delitem 5058,1;
+delitem 7111,500;
+delitem 7112,500;
+getitem 5372,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+
+t52:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Dark Randgris Helm ^000000"; // 5373
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Valkyrie Helm ^000000 [1] อัน"; //5171
+mes "^FF0000 Evil Wing ^000000 [1] อัน"; //2255
+next;
+if (countitem(5171) < 1) goto nonitem;
+if (countitem(2255) < 1) goto nonitem;
+delitem 5171,1;
+delitem 2255,1;
+getitem 5373,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t53:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Baphomet Horns ^000000"; // 5374
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Majestic Goat ^000000 [10] อัน"; //2256
+mes "^FF0000 Evil Horn ^000000 [1000] อัน"; //923
+mes "- ^0000FF100,000,000 zeny^000000";
+next;
+if (countitem(2256) < 10) goto nonitem;
+if (countitem(923) < 1000) goto nonitem;
+if (zeny < 100000000) goto nonitem;
+delitem 2256,10;
+delitem 923,1000;
+set Zeny,zeny-100000000;
+getitem 5374,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t54:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Flying Evil Wing ^000000"; // 5376
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Evil Wing ^000000 [3] อัน"; //2255
+mes "^FF0000 Hair Band ^000000 [1] อัน"; //2210
+next;
+if (countitem(2255) < 3) goto nonitem;
+if (countitem(2210) < 1) goto nonitem;
+delitem 2255,1;
+delitem 2210,1;
+getitem 5376,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t55:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Gentleman's Pipe ^000000"; // 5377
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Pipe ^000000 [2] อัน"; //2268
+mes "^FF0000 Cigar ^000000 [1] อัน"; //2267
+mes "^FF0000 Trunk ^000000 [999] อัน"; //1019
+mes "- ^0000FF10,000,000 zeny^000000";
+next;
+if (countitem(2268) < 2) goto nonitem;
+if (countitem(1019) < 999) goto nonitem;
+if (countitem(2267) < 1) goto nonitem;
+delitem 2268,1;
+delitem 1019,999;
+delitem 2267,1;
+set Zeny,zeny-10000000;
+getitem 5377,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t56:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Bunny Top Hat ^000000"; // 5378
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Bunny Band ^000000 [1] อัน"; //2214
+mes "^FF0000 Sunday Hat ^000000 [1] อัน"; //5032
+mes "^FF0000 Scarlet Dyestuff ^000000 [1] อัน"; //975
+next;
+if (countitem(2214) < 1) goto nonitem;
+if (countitem(5032) < 1) goto nonitem;
+if (countitem(975) < 1) goto nonitem;
+delitem 2214,1;
+delitem 5032,1;
+delitem 975,1;
+getitem 5378,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t57:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Balloon Hat ^000000"; // 5379
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Yarn ^000000 [200] อัน"; //7038
+mes "^FF0000 Blue Hairband ^000000 [1] อัน"; //5052
+mes "^FF0000 Romantic Flower ^000000 [1] อัน"; //2269
+next;
+if (countitem(7038) < 200) goto nonitem;
+if (countitem(5052) < 1) goto nonitem;
+if (countitem(2269) < 1) goto nonitem;
+delitem 7038,200;
+delitem 5052,1;
+delitem 2269,1;
+getitem 5379,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t58:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Fish Head Hat ^000000"; // 5380
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Blue Fish ^000000 [2] อัน"; //5065
+mes "^FF0000 Fresh Fish ^000000 [300] อัน (ได้จาการตกปลา)"; //579
+next;
+if (countitem(579) < 300) goto nonitem;
+if (countitem(5065) < 2) goto nonitem;
+delitem 5065,2;
+delitem 579,300;
+getitem 5380,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t59:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF SantaPoring Cap ^000000"; // 5381
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Santa Hat ^000000 [1] อัน"; //2236
+mes "^FF0000 Squatting Poring ^000000 [1] อัน"; //5335
+next;
+if (countitem(2236) < 1) goto nonitem;
+if (countitem(5335) < 1) goto nonitem;
+delitem 2236,1;
+delitem 5335,1;
+getitem 5381,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t60:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Bell Ribbon ^000000"; // 5382
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Black Ribbon ^000000 [1] อัน"; //5191
+mes "^FF0000 Yellow Ribbon ^000000 [1] อัน"; //5192
+mes "^FF0000 Green Ribbon ^000000 [1] อัน"; //5193
+mes "^FF0000 Pink Ribbon ^000000 [1] อัน"; //5194
+mes "^FF0000 Red Ribbon ^000000 [1] อัน"; //5195
+mes "^FF0000 Orange Ribbon ^000000 [1] อัน"; //5196
+mes "^FF0000 White Ribbon ^000000 [1] อัน"; //5197
+next;
+if (countitem(5191) < 1) goto nonitem;
+if (countitem(5192) < 1) goto nonitem;
+if (countitem(5193) < 1) goto nonitem;
+if (countitem(5194) < 1) goto nonitem;
+if (countitem(5195) < 1) goto nonitem;
+if (countitem(5196) < 1) goto nonitem;
+if (countitem(5197) < 1) goto nonitem;
+delitem 5191,1;
+delitem 5192,1;
+delitem 5193,1;
+delitem 5194,1;
+delitem 5195,1;
+delitem 5196,1;
+delitem 5197,1;
+getitem 5382,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t61:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Hunter Cap ^000000"; // 5383
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Boys Cap ^000000 [1] อัน"; //5016
+mes "^FF0000 Renown Detective's Cap ^000000 [1] อัน"; //5108
+mes "^FF0000 Darkgreen Dyestuff ^000000 [1] อัน"; //979
+next;
+if (countitem(5016) < 1) goto nonitem;
+if (countitem(5108) < 1) goto nonitem;
+if (countitem(979) < 1) goto nonitem;
+delitem 979,1;
+delitem 5108,1;
+delitem 5016,1;
+getitem 5383,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t62:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Yoyo Hat ^000000"; // 5385
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Yoyo Doll ^000000 [77] อัน"; //753
+mes "^FF0000 Yoyo Tail ^000000 [777] อัน"; // 942
+mes "^FF0000 Yoyo Card ^000000 [1] อัน"; // 4051
+next;
+if (countitem(4051) < 1) goto nonitem;
+if (countitem(753) < 77) goto nonitem;
+if (countitem(942) < 777) goto nonitem;
+delitem 753,77;
+delitem 942,777;
+delitem 4051,1;
+getitem 5385,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+t63:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้าต้องการ ^0000FF Blue France Santa Hat ^000000"; // 5390
+mes "สิ่งที่เจ้าควรเอามาแลกคือ..";
+mes "^FF0000 Joker Jester ^000000 [1] อัน"; //5003
+mes "^FF0000 Santa Hat ^000000 [1] อัน"; //2236
+mes "^FF0000 Cobaltblue Dyestuff ^000000 [1] อัน"; //978
+next;
+if (countitem(5003) < 1) goto nonitem;
+if (countitem(2236) < 1) goto nonitem;
+if (countitem(978) < 1) goto nonitem;
+delitem 5003,1;
+delitem 2236,1;
+delitem 978,1;
+getitem 5390,1;
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เรียบร้อย..เอาไปเลยจ้า นี่ของเจ้า";
+close;
+
+nonitem:
+mes "[ ^FF0000QuestHat2^000000 ]";
+mes "เจ้ายังมีของที่มาแลกกับข้ายังไม่พอนะ";
+mes "ไปหาของมาให้ครบก่อน..";
+close;
+
+}

@@ -1,0 +1,24 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+rtc_ro,18,54,4	script	Emperium	441,{
+	mes "[ ∑¥ Õ∫ Emperium ]";
+	next;
+	menu "^FF0000[ "+getmapusers("turbo_room.gat")+" ]^000000 - Emperium",map1;
+	
+map1:
+	warp "turbo_room",81,131;
+	close;
+	OnInit:
+	Waitingroom "    ∑¥ Õ∫ µ’À‘π",0;
+	end;
+}
+

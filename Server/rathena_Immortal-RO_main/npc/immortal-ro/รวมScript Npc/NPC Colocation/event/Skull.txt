@@ -1,0 +1,33 @@
+c5,191,160,5	script	แลกกระโหลกPvP	808,{
+mes "[แลกกระโหลกPvP]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "100 ea แลก TCG ได้ครับ";
+next;
+menu "^009933•^000000 แลกTCG",okskull,"^FF0000•^000000 ยกเลิก",Cancel;
+
+okskull:
+if (countitem(7420) < 100) goto Ino;
+delitem 7420,100;
+set skullitem,rand(1,6);
+if (skullitem == 1){ getitem 7227,rand(1,1); close;}
+if (skullitem == 2){ getitem 7227,rand(1,1); close;}
+if (skullitem == 3){ getitem 7227,rand(1,1); close;}
+if (skullitem == 4){ getitem 7227,rand(1,1); close;}
+if (skullitem == 5){ getitem 7227,rand(1,1); close;}
+if (skullitem == 6){ getitem 7227,rand(1,1); close;}
+
+Ino:
+mes "[แลกกระโหลก]";
+mes "คุณมี Item มาไม่ครบครับ";
+close;
+
+Cancel:
+mes "[แลกกระโหลก]";
+mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+close;
+
+OnInit:
+	waitingroom "๐ แลกกระโหลก ๐", 0;
+	end;
+
+}

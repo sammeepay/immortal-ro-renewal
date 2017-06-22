@@ -1,0 +1,193 @@
+izlude.gat,127,141,0 script หัวคนมีค่า 749,{
+//npctalk "ว้าว เจ้ามีหัวคนมาให้ข้ากิน เเล้ว หรือไง เเต่ข้ามีของเเลกเจ้าน่ะ";
+emotion 1;
+mes "[Frontier ' z]";
+mes "สวัสดีเจ้ามาที่นี้ต้องการอะไรจากข้า";
+mes "ว่าไง!!";
+next;
+menu "คือออข้าขอ Status หนะ",ear1,"ข้าอยากได้ SkillPoint",ear2,"แลกของเทพ",itemz,"เปล่าข้าแค่ผ่านมาทักเฉยๆ",noear;
+
+  ear1:
+  mes "[Frontier ' Z]";
+  mes "Status point 11 ใช้กระโหลก 10 ea.  ขำๆ";
+  mes "เจ้ามีกระโหลก ป่าวละ";
+  next;
+  menu "มี",mea,"ไม่มี",noear;
+  mea:
+  if(countitem(7420)<10) goto nohave;
+  delitem 7420,10;
+next;  
+  atcommand strcharinfo(0) + "@stpoint 11";
+  mes "เจ้าได้รับ Point 11 ใช้ให้คุ้มค่านะ";
+close;
+
+ear2:
+  mes "[Frontier ' Z]";
+  mes "1 Skillpoint ใช้กระโหลก 5 ea.  ขำๆ";
+  mes "เจ้ามีกระโหลก ป่าวละ";
+  next;
+  menu "มี",mea2,"ไม่มี",noear;
+  mea2:
+  if(countitem(7420)<5) goto nohave;
+  delitem 7420,5;
+next;  
+  atcommand strcharinfo(0) + "@skpoint 1";
+  mes "ได้รับ 1 Skillpoint";
+close;
+
+itemz:
+ mes "แลกของเทพ ใช้กระโหลก 30 อัน RanDom ของ";
+  mes "Ok เจ้าพร้อมนะ";
+  mes "ถ้า Data เก่าเกินไปเด้งแน่ๆ";
+  mes "Card บอส คาโฮ มีหมดทุกอย่างแล้วแต่ดวง";
+next;
+  menu "พร้อม",mea3,"ไม่พร้อม",noear;
+  mea3:
+  if(countitem(7420)<30) goto nohave;
+  delitem 7420,30;
+next;
+mes "ของจะมีทุกอย่าง";
+next;
+mes "Card Item มีทุกอย่าง";
+next;
+mes "และของที่เจ้าได้รับก็คือ..";
+next;
+callfunc "item_randomiser";  
+getitem @ITEMS[@RANDOMITEM], 1;
+close;
+
+nohave:
+  mes "[ศึกษาเควสใหม่]";
+  mes "หาของให้ครบแล้วกลับมาหาข้าใหม่นะ";
+  close;
+
+noear:
+close;
+  
+ //---คำพูด---//
+OnInit: 
+waitingroom "กระโหลกแลกของเทพ",0; 
+end; 
+}
+
+//----------------//
+function script item_randomiser {
+set @RANDOMITEM, rand(116);
+set @ITEMS[0], 4121;
+set @ITEMS[1], 4146;
+set @ITEMS[2], 4142;
+set @ITEMS[3], 4047;
+set @ITEMS[4], 4129;
+set @ITEMS[5], 4123;
+set @ITEMS[6], 4132;
+set @ITEMS[7], 4054;
+set @ITEMS[8], 4144;
+set @ITEMS[9], 4128;
+set @ITEMS[10], 4137;
+set @ITEMS[11], 4131;
+set @ITEMS[12], 1130;
+set @ITEMS[13], 1131;
+set @ITEMS[14], 1132;
+set @ITEMS[15], 1133;
+set @ITEMS[16], 1134;
+set @ITEMS[17], 1135;
+set @ITEMS[18], 1136;
+set @ITEMS[19], 1137;
+set @ITEMS[20], 1138;
+set @ITEMS[21], 1139;
+set @ITEMS[22], 1140;
+set @ITEMS[23], 1141;
+set @ITEMS[24], 1142;
+set @ITEMS[25], 1143;
+set @ITEMS[26], 1144;
+set @ITEMS[27], 1145;
+set @ITEMS[28], 1146;
+set @ITEMS[29], 1147;
+set @ITEMS[31], 1148;
+set @ITEMS[32], 1164;
+set @ITEMS[33], 1165;
+set @ITEMS[34], 1166;
+set @ITEMS[35], 1167;
+set @ITEMS[36], 1168;
+set @ITEMS[37], 1169;
+set @ITEMS[38], 1170;
+set @ITEMS[39], 1223;
+set @ITEMS[40], 1224;
+set @ITEMS[41], 1225;
+set @ITEMS[42], 1226;
+set @ITEMS[43], 1227;
+set @ITEMS[44], 1228;
+set @ITEMS[45], 1229;
+set @ITEMS[46], 1230;
+set @ITEMS[47], 1231;
+set @ITEMS[48], 1232;
+set @ITEMS[49], 1233;
+set @ITEMS[51], 1234;
+set @ITEMS[52], 1235;
+set @ITEMS[53], 1236;
+set @ITEMS[54], 1237;
+set @ITEMS[55], 1238;
+set @ITEMS[56], 1239;
+set @ITEMS[57], 1240;
+set @ITEMS[58], 1241;
+set @ITEMS[59], 1242;
+set @ITEMS[60], 1243;
+set @ITEMS[61], 1244;
+set @ITEMS[62], 1245;
+set @ITEMS[63], 1246;
+set @ITEMS[64], 1247;
+set @ITEMS[65], 1248;
+set @ITEMS[66], 1249;
+set @ITEMS[67], 1261;
+set @ITEMS[68], 1304;
+set @ITEMS[69], 1305;
+set @ITEMS[70], 1306;
+set @ITEMS[71], 1307;
+set @ITEMS[72], 1363;
+set @ITEMS[73], 1364;
+set @ITEMS[74], 1365;
+set @ITEMS[75], 1366;
+set @ITEMS[76], 1367;
+set @ITEMS[77], 1368;
+set @ITEMS[78], 1369;
+set @ITEMS[79], 1413;
+set @ITEMS[80], 1414;
+set @ITEMS[81], 1415;
+set @ITEMS[82], 1416;
+set @ITEMS[83], 1417;
+set @ITEMS[84], 1466;
+set @ITEMS[85], 1467;
+set @ITEMS[86], 1468;
+set @ITEMS[87], 1469;
+set @ITEMS[88], 1470;
+set @ITEMS[89], 1471;
+set @ITEMS[90], 1472;
+set @ITEMS[91], 1473;
+set @ITEMS[92], 1522;
+set @ITEMS[93], 1523;
+set @ITEMS[94], 1524;
+set @ITEMS[95], 1525;
+set @ITEMS[96], 1526;
+set @ITEMS[97], 1527;
+set @ITEMS[98], 1528;
+set @ITEMS[99], 1529;
+set @ITEMS[100], 1530;
+set @ITEMS[101], 1531;
+set @ITEMS[102], 1719;
+set @ITEMS[103], 1720;
+set @ITEMS[104], 1721;
+set @ITEMS[105], 1722;
+set @ITEMS[106], 1723;
+set @ITEMS[107], 1724;
+set @ITEMS[108], 1725;
+set @ITEMS[109], 1813;
+set @ITEMS[110], 1814;
+set @ITEMS[111], 1815;
+set @ITEMS[112], 2410;
+set @ITEMS[113], 2615;
+set @ITEMS[114], 2629;
+set @ITEMS[115], 5013;
+set @ITEMS[116], 5022;
+return;
+
+}

@@ -1,0 +1,12 @@
+pvp_y_8-2,0,0,0	script	eventkillboss	111,{
+OnClock0030:
+Announce "[ JuTi-Ro ] : กิจกรรมปล่อยบอส เมือง Izlude !!",0,0x00FFFF;
+monster "pvp_y_8-2",128,210,"Event Morocc",1874,1;
+monster "pvp_y_8-2",60,130,"Event Morocc",2022,1;
+monster "pvp_y_8-2",205,130,"Event Morocc",1917,1;
+monster "pvp_y_8-2",128,70,"Event Morocc",1832,1;
+end;
+OnClock0200:
+atcommand "@killmonster2";
+end;
+}

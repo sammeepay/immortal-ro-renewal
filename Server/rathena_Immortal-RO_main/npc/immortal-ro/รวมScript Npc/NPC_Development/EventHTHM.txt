@@ -1,0 +1,158 @@
+//===================================================================
+// NPC : Happy Time Happy Monster
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+// -- Mapflags 
+moc_fild17.gat	mapflag	noskill
+moc_fild17.gat	mapflag	nosave	SavePoint
+
+
+
+morocc.gat,0,0,0	script	HTHMIn	-1,{
+end;
+OnInit:
+disablenpc "HTHMWarp"; 
+end;
+}
+
+morocc.gat,151,146,0	warp	HTHMWarp	2,2,moc_fild17.gat,0,0
+
+moc_fild17.gat,0,0,0	script	HTHMEvent	111,{
+close;
+
+Start:
+announce "Activity Event : At this moment, Happy Time Happy Monster'Activity has begun!!",0,0xFF6633;
+monster "moc_fild17.gat",0,0,"Happy Monster",1127,1000,"HTHMEvent::OnHMDie";
+monster "moc_fild17.gat",0,0,"UnHappy Monster",1640,5;
+monster "moc_fild17.gat",0,0,"UnHappy Monster",1641,5;
+monster "moc_fild17.gat",0,0,"UnHappy Monster",1642,5;
+monster "moc_fild17.gat",0,0,"UnHappy Monster",1643,5;
+monster "moc_fild17.gat",0,0,"UnHappy Monster",1644,5;
+monster "moc_fild17.gat",0,0,"UnHappy Monster",1645,5;
+pvpon "moc_fild17.gat";
+enablenpc "HTHMWarp";
+disablenpc "Happy Time Happy Monster";
+end;
+
+
+
+OnHMDie:
+getitem 7420,1;
+set @pcTCG,5;
+callfunc "PercentTCG";
+end;
+
+
+
+Stop:
+announce "Activity Event : At this moment, Happy Time Happy Monster'Activity Is Over!!",0,0xFF6633;
+killmonsterall "moc_fild17.gat";
+mapwarp "moc_fild17.gat","rachel.gat",130,110;
+pvpoff "moc_fild17.gat";
+disablenpc "HTHMWarp";
+enablenpc "Happy Time Happy Monster";
+end;
+
+OnTimeout:
+end;
+
+OnClock0110:
+OnClock0210:
+OnClock0310:
+OnClock0410:
+OnClock0510:
+OnClock0610:
+OnClock0710:
+OnClock0810:
+OnClock0910:
+OnClock1010:
+OnClock1110:
+OnClock1210:
+OnClock1310:
+OnClock1410:
+OnClock1510:
+OnClock1610:
+OnClock1710:
+OnClock1810:
+OnClock1910:
+OnClock2010:
+OnClock2110:
+OnClock2210:
+OnClock2310:
+OnClock0010:
+goto Start;
+end;
+
+OnClock0115:
+OnClock0215:
+OnClock0315:
+OnClock0415:
+OnClock0515:
+OnClock0615:
+OnClock0715:
+OnClock0815:
+OnClock0915:
+OnClock1015:
+OnClock1115:
+OnClock1215:
+OnClock1315:
+OnClock1415:
+OnClock1515:
+OnClock1615:
+OnClock1715:
+OnClock1815:
+OnClock1915:
+OnClock2015:
+OnClock2115:
+OnClock2215:
+OnClock2315:
+OnClock0015:
+goto Stop;
+end;
+}
+
+
+
+morocc.gat,151,147,4	script	Happy Time Happy Monster	1640,{
+mes "[ ผู้จัดกิจกรรม ]";
+mes "เวลากิจกรรม";
+mes "01.10 น."; 
+mes "02.10 น."; 
+mes "03.10 น."; 
+mes "04.10 น."; 
+mes "05.10 น."; 
+mes "06.10 น."; 
+mes "07.10 น."; 
+mes "08.10 น."; 
+mes "09.10 น."; 
+mes "10.10 น."; 
+mes "11.10 น."; 
+mes "12.10 น."; 
+mes "13.10 น."; 
+mes "14.10 น."; 
+mes "15.10 น."; 
+mes "16.10 น."; 
+mes "17.10 น."; 
+mes "18.10 น."; 
+mes "19.10 น."; 
+mes "20.10 น."; 
+mes "21.10 น."; 
+mes "22.10 น."; 
+mes "23.10 น."; 
+mes "00.10 น."; 
+close;
+OnInit:
+waitingroom "Happy Time Happy Monster",0;
+end;
+}
+
+
+
+function	script	PercentTCG	{
+if(@pcTCG<rand(1,100))	end;
+getitem 7227,1;
+specialeffect2(610);
+close;
+}

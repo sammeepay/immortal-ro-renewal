@@ -1,0 +1,193 @@
+//function	script	Poringcatcher	{
+-	script	Finding Poring::findpor	610,{
+mes "[Poringcatcher]";
+mes "สวัสดีค่ะ ยินดีให้บริการค่ะ";
+mes "ต้องการเข้าร่วมกิจกรรมมั้ยค่ะ";
+mes "ค่าบริการ 10K Zeny ค่ะ";
+next;
+menu "^009933•^000000 ต้องการ",-,"^FF0000•^000000 รายละเอียด",info,"^FF0000•^000000 ยกเลิก",cance;
+
+if(Zeny < 10000) goto LReq;
+if($eventon == 1) goto L_go;
+goto L_eror;
+
+LReq:
+	mes "[Poringcatcher]";
+	mes "ท่านต้องมีเงิน 10 K Zeny ค่ะ";
+	close;
+L_go:
+	if(getmapusers("pvp_n_2-5") >= 40 ) goto toomany;
+	set Zeny,Zeny - 10000;
+	warp "pvp_n_2-5",99,100;
+	end;
+L_eror:
+	mes "[Poringcatcher]";
+	mes "ยังไม่ถึงเวลากิจกรรมค่ะ";
+	close;
+info:
+	mes "[Poringcatcher]";
+	mes "ถ้าท่านต้องการรู้อะไร";
+	mes "ท่านเข้าไปจะรู้เองค่ะ";
+	close;
+	end;
+toomany:
+	mes "[Poringcatcher]";
+	mes "จำนวนคนเกินที่กำหนดแล้วค่ะ";
+	mes "เข้าร่วมได้รอบล่ะ 40 คนเท่านั้นค่ะ";
+	close;
+	end;
+cance:
+	mes "[Poringcatcher]";
+	mes "ยินดีให้บริการค่ะ";
+	close;
+	end;
+
+OnInit:
+	waitingroom "๐ Find Poring ๐", 0;
+	end;
+}
+
+-	script	poring_event	-1,{
+Onclock0115:
+Onclock0215:
+Onclock0315:
+Onclock0415:
+Onclock0515:
+Onclock0615:
+Onclock0715:
+Onclock0815:
+Onclock0915:
+Onclock1015:
+Onclock1115:
+Onclock1215:
+Onclock1315:
+Onclock1415:
+Onclock1515:
+Onclock1615:
+Onclock1715:
+Onclock1815:
+Onclock2115:
+Onclock2215:
+Onclock2315:
+Onclock0015:
+killmonsterall "pvp_n_2-5";
+announce "[ Find Poring ] : กิจกรรมกำลังจะเปิดใน 3 นาที !!",0,0xFFB6C1;
+set $eventon,1;
+end;
+
+Onclock0118:
+Onclock0218:
+Onclock0318:
+Onclock0418:
+Onclock0518:
+Onclock0618:
+Onclock0718:
+Onclock0818:
+Onclock0918:
+Onclock1018:
+Onclock1118:
+Onclock1218:
+Onclock1318:
+Onclock1418:
+Onclock1518:
+Onclock1618:
+Onclock1718:
+Onclock1818:
+Onclock2118:
+Onclock2218:
+Onclock2318:
+Onclock0018:
+
+set $eventon,0;
+goto monmon;
+
+monmon:
+announce "[ Find Poring ] : กิจกรรมได้เริ่มต้นขึ้นแล้ว !!",0,0xFFB6C1;
+monster "pvp_n_2-5",99,100,"Pouring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Proing",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poirng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poing",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"I'm not a Poring",1002,5,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Gnirop",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1113,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1002,1,"findporingwin::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1062,5,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Por|ng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Por1ng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Porong",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"P0ring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"P@ring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Porng",1002,5,"findporinglose::OnMobKilled";
+end;
+}
+
+-	script	findporingwin	-1,{
+OnMobKilled:
+announce "[ Find Poring ] : ท่าน " + strcharinfo(0) +" เจอ Poring แล้ว !!",0,0xFFB6C1;
+set Zeny,zeny + 100000;
+getitem 7227,5;
+killmonsterall "pvp_n_2-5";
+set $eventon,0;
+end;
+
+OnInit:
+announce "[ Find Poring ] : กิจกรรมได้เริ่มต้นขึ้นแล้ว !!",0,0xFFB6C1;
+monster "pvp_n_2-5",99,100,"Pouring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Proing",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poirng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poing",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"I'm not a Poring",1002,5,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Gnirop",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1113,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1002,1,"findporingwin::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1062,5,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Por|ng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Por1ng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Porong",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"P0ring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"P@ring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Porng",1002,5,"findporinglose::OnMobKilled";
+end;
+}
+
+-	script	findporinglose	-1,{
+OnMobKilled:
+dispbottom "[ Find Poring ] : คุณแพ้แล้วครับ";
+percentheal -100,-100;
+warp "c5,165,113;
+set $eventon,0;
+end;
+
+OnInit:
+announce "[ Find Poring ] : กิจกรรมได้เริ่มต้นขึ้นแล้ว !!",0,0xFFB6C1;
+monster "pvp_n_2-5",99,100,"Pouring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Proing",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poirng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poing",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"I'm not a Poring",1002,5,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Gnirop",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1113,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1002,1,"findporingwin::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Poring",1062,5,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Por|ng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Por1ng",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Porong",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"P0ring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"P@ring",1002,10,"findporinglose::OnMobKilled";
+monster "pvp_n_2-5",99,100,"Porng",1002,5,"findporinglose::OnMobKilled";
+end;
+}
+
+pvp_n_2-5,96,137,0	warp	todmorccii	1,1,c5,165,113
+
+pvp_n_2-5	mapflag	nobranch
+pvp_n_2-5	mapflag	noicewall
+pvp_n_2-5	mapflag	noreturn
+pvp_n_2-5	mapflag	nomemo
+pvp_n_2-5	mapflag	nosave	SavePoint
+pvp_n_2-5	mapflag	noteleport
+pvp_n_2-5	mapflag	nodrop
+pvp_n_2-5	mapflag	nowarp
+pvp_n_2-5	mapflag	nowarpto
+pvp_n_2-5	mapflag	noskill
+pvp_n_2-5	mapflag	noloot

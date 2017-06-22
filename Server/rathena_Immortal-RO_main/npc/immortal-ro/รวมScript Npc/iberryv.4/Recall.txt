@@ -1,0 +1,120 @@
+//==================================================================
+//=======NPC Credit L-Carnitine Server============================
+//==================================================================
+
+//- Recall System 1.0
+//- ระบบเรียกสมาชิกกิลด์และสมาชิกปาร์ตี้
+//-> By Mr.Phason (http://www.eathena.in.th)
+//*//
+
+-	script	RECALL_SYSTEM::RS	-1,{
+
+	if(getcharid(0) == getguildmasterid(getcharid(2))) {
+		set @CS1$,"คุณเป็นหัวหน้าของกิลด์";
+	} else if(getcharid(2) == 0) {
+		set @CS1$,"คุณยังไม่ได้เข้าร่วมกิลด์";
+	} else {
+		set @CS1$,"คุณเป็นสมาชิกของกิลด์";
+	}
+	if(getcharid(2) == 0) {
+		set @CS2$," ";
+	} else {
+		set @CS2$,""+getguildname(getcharid(2))+"";
+	}
+
+	if(getcharid(0) == getpartyleader(getcharid(1),2)) {
+		set @CS3$,"คุณเป็นหัวหน้าของปาร์ตี้";
+	} else if(getcharid(1) == 0) {
+		set @CS3$,"คุณยังไม่ได้เข้าร่วมปาร์ตี้";
+	} else {
+		set @CS3$,"คุณเป็นสมาชิกของปาร์ตี้";
+	}
+	if(getcharid(1) == 0) {
+		set @CS4$," ";
+	} else {
+		set @CS4$,""+getpartyname(getcharid(1))+"";
+	}
+
+	mes "[ RECALL SYSTEM ]";
+	mes "สวัสดีคุณ ^FF0000"+strcharinfo(0)+"^000000";
+	mes "สถานะของคุณขณะนี้คือ";
+	mes "^008080"+@CS1$+"^000000";
+	mes "^FF8040"+@CS2$+"^000000";
+	mes "^0000FF"+@CS3$+"^000000";
+	mes "^006611"+@CS4$+"^000000";
+
+	if(getcharid(0) == getguildmasterid(getcharid(2)) && getcharid(0) == getpartyleader(getcharid(1),2)) {
+		switch(select("เรียกสมาชิกกิลด์","เรียกสมาชิกปาร์ตี้","ยกเลิก")) {
+			case 1:
+				atcommand "@guildrecall "+getcharid(2);
+				break;
+			case 2:
+				atcommand "@partyrecall "+getcharid(1);
+				break;
+			case 3:
+				break;
+		}
+	} else if(getcharid(1) == 0 && getcharid(0) == getguildmasterid(getcharid(2))) {
+		switch(select("เรียกสมาชิกกิลด์","ยกเลิก")) {
+			case 1:
+				atcommand "@guildrecall "+getcharid(2);
+				break;
+			case 2:
+				break;
+		}
+	} else if(getcharid(2) == 0 && getcharid(0) == getpartyleader(getcharid(1),2)) {
+		switch(select("เรียกสมาชิกปาร์ตี้","ยกเลิก")) {
+			case 1:
+				atcommand "@partyrecall "+getcharid(1);
+				break;
+			case 2:
+				break;
+		}
+	}
+	close;
+	end;
+
+}
+// เพิ่ม NPC
+morocc,168,97,4	duplicate(RS)	Recall System#recall01	420
+//prtg_cas03,166,183,4	duplicate(RS)	Recall System#recall03	967
+//prtg_cas03,22,215,4	duplicate(RS)	Recall System#recall04	967
+pay_gld,318,301,4	duplicate(RS)	บริการเรียกลูกกิลด์#RC1	967
+gef_fild13,152,45,4	duplicate(RS)	บริการเรียกลูกกิลด์#RC2	967
+aldebaran,136,116,4	duplicate(RS)	บริการเรียกลูกกิลด์#RC3	967
+morocc,167,262,4	duplicate(RS)	Recall System#recall08	420
+yuno,160,187,4	duplicate(RS)	Recall System#recall13	420
+veins,206,128,4	duplicate(RS)	Recall System#recall14	420
+umbala,124,126,4	duplicate(RS)	Recall System#recall15	420
+thor_camp,197,222,4	duplicate(RS)	Recall System#recall16	420
+splendide,205,147,4	duplicate(RS)	Recall System#recall17	420
+rachel,125,144,4	duplicate(RS)	Recall System#recall18	420
+prontera,150,186,4	duplicate(RS)	Recall System#recall19	420
+payon,186,103,4	duplicate(RS)	Recall System#recall20	420
+niflheim,199,182,4	duplicate(RS)	Recall System#recall21	420
+nameless_n,69,196,4	duplicate(RS)	Recall System#recall22	420
+moscovia,227,196,4	duplicate(RS)	Recall System#recall23	420
+mid_camp,223,238,4	duplicate(RS)	Recall System#recall24	420
+manuk,278,199,4	duplicate(RS)	Recall System#recall25	420
+xmas,144,136,4	duplicate(RS)	Recall System#recall26	420
+louyang,219,104,4	duplicate(RS)	Recall System#recall27	420
+lighthalzen,156,100,4	duplicate(RS)	Recall System#recall28	420
+jawaii,207,292,4	duplicate(RS)	Recall System#recall29	420
+izlude,132,114,4	duplicate(RS)	Recall System#recall30	420
+hugel,100,150,4	duplicate(RS)	Recall System#recall31	420
+prt_monk,231,97,4	duplicate(RS)	Recall System#recall32	420
+gonryun,164,121,4	duplicate(RS)	Recall System#recall33	420
+geffen,115,66,4	duplicate(RS)	Recall System#recall34	420
+einbroch,231,205,4	duplicate(RS)	Recall System#recall35	420
+einbech,172,127,4	duplicate(RS)	Recall System#recall36	420
+comodo,180,148,4	duplicate(RS)	Recall System#recall37	420
+brasilis,200,184,4	duplicate(RS)	Recall System#recall38	420
+ayothaya,221,173,4	duplicate(RS)	Recall System#recall39	420
+amatsu,117,151,4	duplicate(RS)	Recall System#recall40	420
+alberta,114,53,4	duplicate(RS)	Recall System#recall41	420
+dicastes01,203,227,4	duplicate(RS)	Recall System#recall42	420
+dicastes02,120,163,4	duplicate(RS)	Recall System#recall43	420
+alb_ship,112,112,4	duplicate(RS)	Recall System#recall66	420
+ra_temple,178,189,4	duplicate(RS)	Recall System#recall91	420
+malangdo,131,267,4	duplicate(RS)	Recall System#recall92	420
+dewata,200,184,4	duplicate(RS)	Recall System#recall93	420

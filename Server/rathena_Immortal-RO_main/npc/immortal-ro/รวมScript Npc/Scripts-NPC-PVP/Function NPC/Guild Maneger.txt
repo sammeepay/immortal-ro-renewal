@@ -1,0 +1,24 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+-	script	changegm::changegmz	-1,{
+
+mes "ใส่ชื่อหัวกิลที่จะโอนจ้า";
+next;
+input @nameguildchangegm$;
+atcommand strcharinfo(0)+ "@changegm "+@nameguildchangegm$+"";
+next;
+mes "ขอบคุณที่ใช้บริการ";
+close;
+
+OnInit:
+waitingroom "   ::โอนหัวกิล::",0;
+end;
+}

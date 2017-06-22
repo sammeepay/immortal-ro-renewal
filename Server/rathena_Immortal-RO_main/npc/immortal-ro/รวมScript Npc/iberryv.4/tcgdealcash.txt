@@ -1,0 +1,32 @@
+prontera,173,185,4	script	TCG แลก Cash	435,{
+mes "สวัสดีคุณ ^0000FF" + strcharinfo(0) + "^000000";
+mes "ขณะนี้คุณมี";
+mes "TCG Card ทั้งหมด [ ^FF0000"+countitem(7227)+"^000000 ] ใบ.";
+mes "Cash Point ของคุณ [ ^FF0000"+#CASHPOINTS+"^000000 ] Points.";
+mes "อัตราแลก 1 ใบ = 1 Cash"; 
+next;
+menu "แลก TCG Card เป็น Cash",TCG,"ไม่มีอะไร",cl;
+
+TCG:
+if(countitem(7227) < 1) goto nop; //จำนวนเมื่อแลกแล้วได้ Cash
+set #CASHPOINTS ,#CASHPOINTS+1;  //จำนวนแลก Cash ต่อ TCG 1 ใบ
+delitem 7227,1;               //จำนวน TCG ที่ใช้แลก
+next;
+mes "ขณะนี้คุณมี";
+mes "TCG Card ทั้งหมด [ ^FF0000"+countitem(7227)+"^000000 ] ใบ.";
+mes "Cash Point ของคุณ มีจำนวน [ ^FF0000"+#CASHPOINTS+"^000000 ] Points.";
+menu "แลก TCG Card อีก",TCG,"ข้าไปล่ะ",cl;
+close;
+
+nop:
+mes "ขออภัยจำนวน TCG Card ของคุณไม่พอที่จะแลก Cash";
+mes "กรุณาไปหามา TCG Card มาให้ครบก่อน..แล้วค่อยมาใช้บริการ";
+close;
+
+cl:
+mes "หากเจ้าต้องการมาแลกเมื่อไหร่ จงคิดถึงข้า";
+close;
+OnInit:
+waitingroom "TCG Card แลก Cash",0;
+end;
+}

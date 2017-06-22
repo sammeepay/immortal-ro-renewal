@@ -1,0 +1,851 @@
+//===================================================================
+// NPC : Pet Service
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+//Pet New ID for InCe-WickeD Sv ( Only )
+
+rachel.gat,120,118,4	script	Pet NPC	877,{
+	mes "[ Pet NPC ]";
+	mes "สวัสดีค่ะคุณ [ ^FF0000 " + strcharinfo(0) + " ^000000 ]";
+	mes "ยินดีต้อนรับเข้าสู่ Pet Service";
+	mes "โปรดเลือดทำรายการ";
+	mes "จากเมนูด้านล่างค่ะ";
+	next;
+	menu 
+"- แลกสัตว์เลี้ยง",PetEggs,
+"- ซื้ออาหารสัตว์เลี้ยง",P2,
+"- ซื้อเครื่องประดับสัตว์เลี้ยง",P3,
+"- เพิ่มความสนิทสนม",P4,
+"Exit",cancel;
+
+
+
+PetEggs:
+mes "[ Pet NPC ]";
+mes "ท่านต้องการสัตว์เลี้ยงเก่า";
+mes "หรือ ท่านต้องการสัตว์เลี้ยงใหม่ คะ.";
+next;
+menu 
+"- สัตว์เลี้ยงเก่า",PE1,
+"- สัตว์เลี้ยงใหม่",PE2,
+"Exit",cancel;
+
+
+PE1:
+mes "[ Pet NPC ]";
+mes "ใช้ 10 Skull ในการแลก";
+mes "โปรดเลือกสัตว์เลี้ยงที่ต้องการ";
+next;
+menu 
+"- Poring",NP1,
+"- Chonchon",NP2,
+"- Spore",NP3,
+"- Pecopeco",NP4,
+"- Orc Warrior",NP5,
+"- Munak",NP6,
+"- Isis",NP7,
+"- Porpoing",NP8,
+"- Hunter Fly",NP9,
+"- Steel Chonchon",NP10,
+"- Picky",NP11,
+"- Rocker",NP12,
+"- Smokie",NP13,
+"- Yoyo",NP14,
+"- Lunatic",NP15,
+"- Poisob Spore",NP16,
+"- Baphomet Jr",NP17,
+"- Desert wolf B",NP18,
+"- Deviruchi",NP19,
+"- Dokebi",NP20,
+"- Drops",NP21,
+"- Petit",NP22,
+"- Savage Babe",NP23,
+"- Sohee",NP24,
+"- Bon Gun",NP25,
+"- Zherlthsh",NP26,
+"- Alice",NP27,
+"Exit",cancel;
+
+
+
+
+NP1:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1002;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP2:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1011;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP3:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1014;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP4:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1019;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP5:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1023;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP6:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1026;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP7:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1029;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP8:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1031;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP9:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1035;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP10:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1042;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP11:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1049;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP12:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1052;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP13:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1056;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP14:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1057;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP15:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1063;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP16:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1077;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP17:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1101;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP18:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ไข่แล้วค่ะ";
+makepet 1107;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP19:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1109;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP20:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1110;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP21:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1113;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP22:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1155;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP23:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1167;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP24:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1170;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP25:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1188;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP26:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1200;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+NP27:
+if(countitem(7420)<10) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1275;
+delitem 7420,10;
+getitem 643,1;
+close;
+
+
+
+PE2:
+mes "[ Pet NPC ]";
+mes "ใช้ 20 Skull ในการแลก";
+mes "โปรดเลือกสัตว์เลี้ยงที่ต้องการ";
+next;
+menu 
+"- Valkyrie",NPN1,
+"- Thanatos",NPN2,
+"- Baphomet",NPN3,
+"- Detale",NPN4,
+"- High Priest",NPN5,
+"- High Wizard",NPN6,
+"- Lord Knight",NPN7,
+"- Assassin Cross",NPN8,
+"- Maya",NPN9,
+"- Dark Snake Lord",NPN10,
+"- Incantation Samurai",NPN11,
+"- Alicel",NPN12,
+"- Aliot",NPN13,
+"- Aliza",NPN14,
+"- Arc Angeling",NPN15,
+"- Angeling",NPN16,
+"- Deviling",NPN17,
+"- Ghostring",NPN18,
+"- Christmas Goblin",NPN19,
+"- Lord of Death",NPN20,
+"- Osiris",NPN21,
+"- Doppelganger",NPN22,
+"- Orc Hero",NPN23,
+"- Moonlight",NPN24,
+"- Pharaoh",NPN25,
+"- Stormy Knight",NPN26,
+"- Turtle General",NPN27,
+"- Orc Lord",NPN28,
+"- Tao Gunka",NPN29,
+"- Dracula",NPN30,
+"- Satan Morroc",NPN31,
+"Exit",cancel;
+
+
+
+NPN1:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1751;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN2:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1708;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN3:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1399;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN4:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1719;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN5:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1649;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN6:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1651;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN7:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1646;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN8:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1647;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN9:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1147;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN10:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1529;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN11:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1492;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN12:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1739;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN13:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1740;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN14:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1737;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN15:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1388;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN16:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1096;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN17:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1582;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN18:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ไข่แล้วค่ะ";
+makepet 1576;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN19:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1245;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN20:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1373;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN21:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1038;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN22:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1046;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN23:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1087;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN24:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1150;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN25:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1157;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN26:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1251;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN27:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1312;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN28:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1190;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN29:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1583;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN30:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1530;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+NPN31:
+if(countitem(7420)<20) goto nohave;
+mes "[ Pet NPC ]";
+mes "ท่านได้ ไข่พร้อมที่ฟักไข่";
+mes "เรียบร้อยแล้วค่ะ";
+makepet 1916;
+delitem 7420,20;
+getitem 643,1;
+close;
+
+
+
+nohave:
+mes "[ Pet NPC ]";
+mes "ท่านไม่มี Skull ในการแลก";
+close;
+
+
+
+P2:
+callshop "FoodPet",1;
+close;
+
+
+
+P3:
+callshop "EquipmentPet",1;
+close;
+
+
+
+P4:
+mes "[ Pet NPC ]";
+mes "สัตว์เลี้ยงของท่านเปลี่ยนสถานะ";
+mes "เป็นขั้น สนิทสนม แล้วค่ะ";
+atcommand strcharinfo(0)+"@petfriendly 1000";
+close;
+
+
+
+cancel:
+mes "[ Pet NPC ]";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "Pet Service",0;
+}
+
+
+
+-	shop	FoodPet	884,643:100000,531:-1,537:-1,511:-1,716:-1,1002:-1,507:-1,532:-1,534:-1,518:-1,711:-1,508:-1,929:-1,504:-1,912:-1,910:-1,911:-1
+
+-	shop	EquipmentPet	884,643:100000,10001:10000,10002:10000,10003:10000,10004:10000,10005:10000,10006:10000,10007:10000,10008:10000,10009:10000,10010:10000,10011:10000,10012:10000,10013:10000,10014:10000,10015:10000,10016:10000,10017:10000,10018:10000,10019:10000,10020:10000

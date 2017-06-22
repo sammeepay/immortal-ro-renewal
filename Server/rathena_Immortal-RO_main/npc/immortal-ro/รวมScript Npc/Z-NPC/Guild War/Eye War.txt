@@ -1,0 +1,74 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+new_1-1,47,118,5	script	ระบบเข้าชมกิจกรรม	873,{
+	mes "[^0000FF GuildWar System ^000000]";
+	mes "ท่านสามารถกลับเมืองได้โดย";
+	mes "ออกเกมเลือกตัวละคร";
+	next;
+	menu "- เข้าชม 1-1 Guild",battleguild,"- เข้าชม Zone Vs Zone",zonevs,"- เข้าชม 7-7 ปาตี้",a03,"- เข้าชม 1-1 Champ",a04;
+
+	battleguild:
+	menu "^FF0000["+getmapusers("guildvs01.gat")+"]^000000 - บ้านไทย",maps1,
+"^FF0000["+getmapusers("guildvs02.gat")+"]^000000 - บ้านลาว ",maps2,
+"^FF0000["+getmapusers("guildvs03.gat")+"]^000000 - บ้านพม่า",maps3,
+"^FF0000["+getmapusers("guildvs04.gat")+"]^000000 - บ้านเขมร ( 22 )",maps4,
+"^FF0000["+getmapusers("guildvs05.gat")+"]^000000 - บ้านกัมพูชา ( 22 )",maps5;
+
+maps1:
+	menu "- ชั้นที่ 1",a1,"- ชั้นที่ 2",a2,"- ชั้นที่ 3",a3,"- ชั้นที่ 4",a4;
+a1: warp "guildvs01.gat",252,272; setaudience 1; close;
+a2: warp "guildvs01.gat",10,261; setaudience 1; close;
+a3: warp "guildvs01.gat",43,30; setaudience 1; close;
+a4: warp "guildvs01.gat",271,13; setaudience 1; close;
+
+maps2:
+	menu "- ชั้นที่ 1",b1,"- ชั้นที่ 2",b2,"- ชั้นที่ 3",b3,"- ชั้นที่ 4",b4;
+b1: warp "guildvs02.gat",252,272; setaudience 1; close;
+b2: warp "guildvs02.gat",10,261; setaudience 1; close;
+b3: warp "guildvs02.gat",43,30; setaudience 1; close;
+b4: warp "guildvs02.gat",271,13; setaudience 1; close;
+
+maps3:
+	menu "- ชั้นที่ 1",c1,"- ชั้นที่ 2",c2,"- ชั้นที่ 3",c3,"- ชั้นที่ 4",c4;
+c1: warp "guildvs03.gat",252,272; setaudience 1; close;
+c2: warp "guildvs03.gat",10,261; setaudience 1; close;
+c3: warp "guildvs03.gat",43,30; setaudience 1; close;
+c4: warp "guildvs03.gat",271,13; setaudience 1; close;
+
+maps4:
+	menu "- ชั้นที่ 1",d1,"- ชั้นที่ 2",d2,"- ชั้นที่ 3",d3,"- ชั้นที่ 4",d4;
+d1: warp "guildvs04.gat",252,272; setaudience 1; close;
+d2: warp "guildvs04.gat",10,261; setaudience 1; close;
+d3: warp "guildvs04.gat",43,30; setaudience 1; close;
+d4: warp "guildvs04.gat",271,13; setaudience 1; close;
+
+maps5:
+	menu "- ชั้นที่ 1",e1,"- ชั้นที่ 2",e2,"- ชั้นที่ 3",e3,"- ชั้นที่ 4",e4;
+e1: warp "guildvs05.gat",252,272; setaudience 1; close;
+e2: warp "guildvs05.gat",10,261; setaudience 1; close;
+e3: warp "guildvs05.gat",43,30; setaudience 1; close;
+e4: warp "guildvs05.gat",271,13; setaudience 1; close;
+
+zonevs:
+	warp "leagepvp11.gat",0,0; 
+	setaudience 1; 
+	close;
+
+a03:
+	warp "leagepvp11.gat",0,0; 
+	setaudience 1; 
+	close;
+
+a04:
+	warp "gon_test.gat",58,86; 
+	setaudience 1; 
+	close;
+OnInit: 
+waitingroom "  เข้าชมกิจกรรมต่างๆ",0; 
+end;
+}
+//===========================================================================================================================================
+

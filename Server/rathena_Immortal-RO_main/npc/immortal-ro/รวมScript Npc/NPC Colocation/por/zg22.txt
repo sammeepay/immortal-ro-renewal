@@ -1,0 +1,266 @@
+c5,188,187,0	script	SpWarp#aldeg_cas01	45,1,1,{
+	set .@GID, GetCastleData("aldeg_cas01",1);
+	if (.@GID == 0) {
+		mes " [ Clubza-RO ]";
+		mes "ปราสาทหลังนี้ยังไม่มีผู้ครอบครอง";
+
+	}
+	else {
+		if (getcharid(2) == .@GID) {
+			mes "[ Clubza-RO]";
+			mes "คุณต้องการกลับเข้าบ้านสำหรับกิลเจ้าหรือไม่";
+			next;
+			if (select("^009933•^000000 ต้องการ:^FF0000•^000000 ยกเลิก") == 1) {
+				if (getcharid(2) == GetCastleData("aldeg_cas01",1)) {
+					warp "homeb1",35,44;
+					end;
+				}
+			}
+			close;
+		}
+		mes "[ Clubza-RO ]";
+		mes "Guild ^FF0000" + GetGuildName(.@GID) + "^000000";
+		mes "Master Guild ^FF0000" + GetGuildMaster(.@GID) + "^000000";
+
+	}
+	close;
+
+OnRecvCastleA01:
+	FlagEmblem GetCastleData("aldeg_cas01",1);
+	end;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-	script	OnPCLoadMapEvent	-1,{
+OnPCLoadMapEvent:
+if(strcharinfo(3) == "homeb1" && (getcastledata("aldeg_cas01",1) != getcharid(2) || getcharid(2) == 0)) {
+mes "ท่านไม่ใช่เจ้าของบ้านนี้";
+mes "เราจะส่งท่านกลับจุดเกิดของท่าน";
+close2;
+savepoint "c5",163,96;
+warp "c5",163,96;
+end;
+}
+end;
+}
+
+homeb1	mapflag	loadevent
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+c5,173,187,0	script	SpWarp#gefg_cas01	45,1,1,{
+	set .@GID, GetCastleData("gefg_cas01",1);
+	if (.@GID == 0) {
+		mes " [ Clubza-RO ]";
+		mes "ปราสาทหลังนี้ยังไม่มีผู้ครอบครอง";
+
+	}
+	else {
+		if (getcharid(2) == .@GID) {
+			mes "[ Clubza-RO]";
+			mes "คุณต้องการกลับเข้าบ้านสำหรับกิลเจ้าหรือไม่";
+			next;
+			if (select("^009933•^000000 ต้องการ:^FF0000•^000000 ยกเลิก") == 1) {
+				if (getcharid(2) == GetCastleData("gefg_cas01",1)) {
+					warp "homeb2",35,44;
+					end;
+				}
+			}
+			close;
+		}
+		mes "[ Clubza-RO ]";
+		mes "Guild ^FF0000" + GetGuildName(.@GID) + "^000000";
+		mes "Master Guild ^FF0000" + GetGuildMaster(.@GID) + "^000000";
+
+	}
+	close;
+
+OnRecvCastleA01:
+	FlagEmblem GetCastleData("gefg_cas01",1);
+	end;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-	script	OnPCLoadMapEvent	-1,{
+OnPCLoadMapEvent:
+if(strcharinfo(3) == "homeb2" && (getcastledata("gefg_cas01",1) != getcharid(2) || getcharid(2) == 0)) {
+mes "ท่านไม่ใช่เจ้าของบ้านนี้";
+mes "เราจะส่งท่านกลับจุดเกิดของท่าน";
+close2;
+savepoint "c5",163,96;
+warp "c5",163,96;
+end;
+}
+end;
+}
+
+homeb2	mapflag	loadevent
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+c5,147,186,0	script	SpWarp#payg_cas01	45,1,1,{
+	set .@GID, GetCastleData("payg_cas01",1);
+	if (.@GID == 0) {
+		mes " [ Clubza-RO ]";
+		mes "ปราสาทหลังนี้ยังไม่มีผู้ครอบครอง";
+
+	}
+	else {
+		if (getcharid(2) == .@GID) {
+			mes "[ Clubza-RO]";
+			mes "คุณต้องการกลับเข้าบ้านสำหรับกิลเจ้าหรือไม่";
+			next;
+			if (select("^009933•^000000 ต้องการ:^FF0000•^000000 ยกเลิก") == 1) {
+				if (getcharid(2) == GetCastleData("payg_cas01",1)) {
+					warp "homeb3",35,44;
+					end;
+				}
+			}
+			close;
+		}
+		mes "[ Clubza-RO ]";
+		mes "Guild ^FF0000" + GetGuildName(.@GID) + "^000000";
+		mes "Master Guild ^FF0000" + GetGuildMaster(.@GID) + "^000000";
+
+	}
+	close;
+
+OnRecvCastleA01:
+	FlagEmblem GetCastleData("payg_cas01",1);
+	end;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-	script	OnPCLoadMapEvent	-1,{
+OnPCLoadMapEvent:
+if(strcharinfo(3) == "homeb3" && (getcastledata("payg_cas01",1) != getcharid(2) || getcharid(2) == 0)) {
+mes "ท่านไม่ใช่เจ้าของบ้านนี้";
+mes "เราจะส่งท่านกลับจุดเกิดของท่าน";
+close2;
+savepoint "c5",163,96;
+warp "c5",163,96;
+end;
+}
+end;
+}
+
+homeb3	mapflag	loadevent
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+c5,132,187,0	script	SpWarp#prtg_cas01	45,1,1,{
+	set .@GID, GetCastleData("prtg_cas01",1);
+	if (.@GID == 0) {
+		mes " [ Clubza-RO ]";
+		mes "ปราสาทหลังนี้ยังไม่มีผู้ครอบครอง";
+
+	}
+	else {
+		if (getcharid(2) == .@GID) {
+			mes "[ Clubza-RO]";
+			mes "คุณต้องการกลับเข้าบ้านสำหรับกิลเจ้าหรือไม่";
+			next;
+			if (select("^009933•^000000 ต้องการ:^FF0000•^000000 ยกเลิก") == 1) {
+				if (getcharid(2) == GetCastleData("prtg_cas01",1)) {
+					warp "homeb4",35,44;
+					end;
+				}
+			}
+			close;
+		}
+		mes "[ Clubza-RO ]";
+		mes "Guild ^FF0000" + GetGuildName(.@GID) + "^000000";
+		mes "Master Guild ^FF0000" + GetGuildMaster(.@GID) + "^000000";
+
+	}
+	close;
+
+OnRecvCastleA01:
+	FlagEmblem GetCastleData("prtg_cas01",1);
+	end;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-	script	OnPCLoadMapEvent	-1,{
+OnPCLoadMapEvent:
+if(strcharinfo(3) == "homeb4" && (getcastledata("prtg_cas01",1) != getcharid(2) || getcharid(2) == 0)) {
+mes "ท่านไม่ใช่เจ้าของบ้านนี้";
+mes "เราจะส่งท่านกลับจุดเกิดของท่าน";
+close2;
+savepoint "c5",163,96;
+warp "c5",163,96;
+end;
+}
+end;
+}
+
+homeb4	mapflag	loadevent
+
+// วาร์ปออกจากบ้าน
+homeb1,37,42,0	warp	exit-zhouse01	1,1,c5,188,184
+homeb2,37,42,0	warp	exit-zhouse02	1,1,c5,173,184
+homeb3,37,42,0	warp	exit-zhouse03	1,1,c5,147,183
+homeb4,37,42,0	warp	exit-zhouse04	1,1,c5,132,184
+
+c5,191,184,4	script	บ้านนากา	111,{
+OnInit:
+waitingroom ":::บ้านส่วนตัวนากา:::",0;
+end;
+}
+c5,168,184,4	script	บ้านกิฟ	111,{
+OnInit:
+waitingroom ":::บ้านส่วนตัวกิฟ:::",0;
+end;
+}
+c5,152,184,4	script	บ้านย่อน	111,{
+OnInit:
+waitingroom ":::บ้านส่วนตัวย่อน:::",0;
+end;
+}
+c5,128,184,4	script	บ้านพรอน	111,{
+OnInit:
+waitingroom "::บ้านส่วนตัวพรอน::",0;
+end;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+c5,142,125,5	script	ClubzaGuild	605,{
+	mes "^0000FF[juti-RO วาปไป บ้านส่วนตัว]^000000";
+	mes "^FF0000เราจะพานำท่านไปที่ บ้านส่วนตัว^000000";
+	mes "^3355FFสำหรับกิลที่ได้บ้านเท่านั้น^000000";
+	mes "^00BB00ถ้าเจ้ายังไม่มีบ้านจงใช้ฝีมือแย่งมา^000000";
+	mes "^FF0000เพราะในบ้านส่วนตัวมี npc ครบครัน^000000";
+	next;
+menu ">> - •Zone บ้านส่วนตัว• ",vtown2,">> - •ยกเลิก• ",vtown3;
+
+vtown2:
+menu	"^FF0000บ้านนากา^000000",a1,
+	"^FF1493บ้านกิฟ^000000",a2,
+	"^63B8FFบ้านย่อน^000000",a3,
+	"^E066FFบ้านพรอน^000000",a4;
+
+vtown3:
+			mes "[บ้านเช่าส่วนตัว]";
+			mes "ยินดีให้บริการครับ";
+
+close;
+
+a1:
+warp "c5",188,182; 
+end;
+a2:
+warp "c5",173,182; 
+end;
+a3:
+warp "c5",147,182; 
+end;
+a4:
+warp "c5",132,182; 
+end;
+
+OnInit:
+waitingroom "บ้านส่วนตัวสำหรับกิลที่ได้บ้าน",0;
+set $@mapuser$,"^000000User^000000";	// ???????? ????????????
+
+}
+
+homeb1,15,51,5	duplicate(aisystem23)	AI Dance#xx4	472
+homeb2,15,51,5	duplicate(aisystem23)	AI Dance#xx5	472
+homeb3,15,51,5	duplicate(aisystem23)	AI Dance#xx6	472
+homeb4,15,51,5	duplicate(aisystem23)	AI Dance#xx7	472

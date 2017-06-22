@@ -1,0 +1,63 @@
+-	script	DeathsMatchs	-1,{
+end;
+OnPCDieEvent:
+if ($@ActiveSv == 0) end;
+getmapxy @mapdm$,@mapdmx,@mapdmy,0,strcharinfo(0);
+if (@mapdm$ == "pvp_y_8-2") {
+sleep2 200;
+atcommand strcharinfo(0)+"@alive";
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+percentheal 100,100;
+sc_start 29,100000000,10;
+sc_start 30,100000000,10;
+sc_start 32,100000000,10;
+sc_start 40,100000000,10;
+sc_start 41,100000000,10;
+sc_start 72,100,5;
+sc_start 73,100,5;
+sc_start 74,100,5;
+sc_start 75,100,5;
+sc_start SC_SpeedUp1,2000,0;
+atcommand strcharinfo(0) + "@repairall";
+warp "pvp_y_8-2",0,0;
+end;
+}
+if (@mapdm$ == "knight_3-1") {
+sleep2 200;
+atcommand strcharinfo(0)+"@alive";
+sc_end SC_STONE;
+sc_end SC_FREEZE;
+sc_end SC_STAN;
+sc_end SC_SLEEP;
+sc_end SC_POISON;
+sc_end SC_CURSE;
+sc_end SC_SILENCE;
+sc_end SC_CONFUSION;
+sc_end SC_BLIND;
+sc_end SC_Hallucination;
+percentheal 100,100;
+sc_start 29,100000000,10;
+sc_start 30,100000000,10;
+sc_start 32,100000000,10;
+sc_start 40,100000000,10;
+sc_start 41,100000000,10;
+sc_start 72,100,5;
+sc_start 73,100,5;
+sc_start 74,100,5;
+sc_start 75,100,5; 
+sc_start SC_SpeedUp1,2000,0;
+atcommand strcharinfo(0) + "@repairall";
+warp "knight_3-1",0,0;
+end;
+}
+end;
+}

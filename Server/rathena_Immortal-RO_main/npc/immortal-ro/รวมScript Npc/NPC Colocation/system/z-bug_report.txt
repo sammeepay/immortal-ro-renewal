@@ -1,0 +1,446 @@
+// ------------ www.howcolo.com -------------
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-	script	SmS TO GM::bugreq	630,{
+mes "[Bug Reporter]";
+mes "สวัสดีค่ะ ยินดีให้บริการค่ะ";
+mes "ต้องการส่ง SmS ถึง GM มั้ยค่ะ";
+mes "มี [^FF0000"+$savemsg+"^000000] ข้อความ";
+next;
+menu "^009933•^000000 ต้องการส่ง SmS",sendmsg,"^ff0000•^000000 ยกเลิก",notmsg,"^ff0000•^000000 เปิดอ่านข้อความ (GM)",inbox;
+
+OnInit:
+waitingroom "๐ ฝากข้อความถึง GM ๐",0;
+end;
+
+//SEND MESSAGE=================
+sendmsg:
+mes "[Bug Reporter]";
+mes "เลือกช่องที่ว่างอยู่ค่ะ";
+cutin "kafra_04",255;
+next;
+menu "^ff0000•^000000 "+$msg01+"",write01,
+"^ff0000•^000000 "+$msg02+"",write02,
+"^ff0000•^000000 "+$msg03+"",write03,
+"^ff0000•^000000 "+$msg04+"",write04,
+"^ff0000•^000000 "+$msg05+"",write05,
+"^ff0000•^000000 "+$msg06+"",write06,
+"^ff0000•^000000 "+$msg07+"",write07,
+"^ff0000•^000000 "+$msg08+"",write08,
+"^ff0000•^000000 "+$msg09+"",write09,
+"^ff0000•^000000 "+$msg10+"",write10,
+"^ff0000•^000000 ยกเลิก",notmsg;
+
+write01:
+if ($msg01 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write01$;
+next;
+set $msg01,1;
+set $name1$,strcharinfo(0);
+goto finish;
+
+write02:
+if ($msg02 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write02$;
+next;
+set $msg02,1;
+set $name2$,strcharinfo(0);
+goto finish;
+
+write03:
+if ($msg03 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write03$;
+next;
+set $msg03,1;
+set $name3$,strcharinfo(0);
+goto finish;
+
+write04:
+if ($msg04 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write04$;
+next;
+set $msg04,1;
+set $name4$,strcharinfo(0);
+goto finish;
+
+write05:
+if ($msg05 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write05$;
+next;
+set $msg05,1;
+set $name5$,strcharinfo(0);
+goto finish;
+
+write06:
+if ($msg06 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write06$;
+next;
+set $msg06,1;
+set $name6$,strcharinfo(0);
+goto finish;
+
+write07:
+if ($msg07 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write07$;
+next;
+set $msg07,1;
+set $name7$,strcharinfo(0);
+goto finish;
+
+write08:
+if ($msg08 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write08$;
+next;
+set $msg08,1;
+set $name8$,strcharinfo(0);
+goto finish;
+
+write09:
+if ($msg09 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write09$;
+next;
+set $msg09,1;
+set $name9$,strcharinfo(0);
+goto finish;
+
+write10:
+if ($msg10 != 0) goto fullmsg;
+mes "[Bug Reporter]";
+mes "เขียนข้อความได้เลยค่ะ";
+next;
+input $write10$;
+next;
+set $msg10,1;
+set $name10$,strcharinfo(0);
+goto finish;
+
+finish:
+Announce "ผู้เล่น "+ strcharinfo(0) +" : ได้ทำการส่ง SmS หา GM !!",8;
+set $savemsg,$savemsg + 1;
+mes "[Bug Reporter]";
+mes "เรียบร้อยแล้วค่ะ";
+mes "ยินดีให้บริการค่ะ";
+cutin "kafra_04",255;
+close;
+
+fullmsg:
+mes "[Bug Reporter]";
+mes "ช่องนี้มีข้อความแล้วค่ะ";
+goto sendmsg;
+
+//NO SEND MESSAGE==================
+
+notmsg:
+mes "[Bug Reporter]";
+mes "ยินดีให้บริการค่ะ";
+cutin "kafra_04",255;
+close;
+
+//READ MESSAGE GM ONLY===============
+
+inbox:
+mes "[Bug Reporter]";
+mes "GM เท่านั้นค่ะ";
+next;
+set @gm,getgmlevel();
+if (@gm >= 50) goto GM;
+mes "[Bug Reporter]";
+mes "คุณไม่ใช่ GM ค่ะ";
+cutin "kafra_04",255;
+close;
+
+GM:
+readmsg:
+mes "[Bug Reporter]";
+mes "มี [^FF0000"+$savemsg+"^000000] ข้อความ";
+cutin "kafra_04",255;
+next;
+menu "^ff0000•^000000 "+$msg01+"",read01,
+"^ff0000•^000000 "+$msg02+"",read02,
+"^ff0000•^000000 "+$msg03+"",read03,
+"^ff0000•^000000 "+$msg04+"",read04,
+"^ff0000•^000000 "+$msg05+"",read05,
+"^ff0000•^000000 "+$msg06+"",read06,
+"^ff0000•^000000 "+$msg07+"",read07,
+"^ff0000•^000000 "+$msg08+"",read08,
+"^ff0000•^000000 "+$msg09+"",read09,
+"^ff0000•^000000 "+$msg10+"",read10,
+"^ff0000•^000000 ลบข้อความทั้งหมด",delall,
+"^ff0000•^000000 ยกเลิก",cancel;
+
+read01:
+mes "[Bug Reporter]";
+mes "^0000bb["+$name1$+"]^000000";
+mes ""+$write01$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg01;
+delmsg01:
+set $write01$,0;
+set $msg01,0;
+set $name1$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+read02:
+mes "[Bug Reporter]";
+mes "^0000bb["+$name2$+"]^000000";
+mes ""+$write02$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg02;
+delmsg02:
+set $write02$,0;
+set $msg02,0;
+set $name2$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+read03:
+mes "^0000bb["+$name3$+"]^000000";
+mes "[Bug Reporter]";
+mes ""+$write03$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg03;
+delmsg03:
+set $write03$,0;
+set $msg03,0;
+set $name3$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+
+read04:
+mes "^0000bb["+$name4$+"]^000000";
+mes "[Bug Reporter]";
+mes ""+$write04$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg04;
+delmsg04:
+set $write04$,0;
+set $msg04,0;
+set $name4$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+
+read05:
+mes "^0000bb["+$name5$+"]^000000";
+mes "[Bug Reporter]";
+mes ""+$write05$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg05;
+delmsg05:
+set $write05$,0;
+set $msg05,0;
+set $name5$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+
+read06:
+mes "^0000bb["+$name6$+"]^000000";
+mes "[Bug Reporter]";
+mes ""+$write06$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg06;
+delmsg06:
+set $write06$,0;
+set $msg06,0;
+set $name6$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+
+read07:
+mes "^0000bb["+$name7$+"]^000000";
+mes "[Bug Reporter]";
+mes ""+$write07$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg07;
+delmsg07:
+set $write07$,0;
+set $msg07,0;
+set $name7$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+
+read08:
+mes "^0000bb["+$name8$+"]^000000";
+mes "[Bug Reporter]";
+mes ""+$write08$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg08;
+delmsg08:
+set $write08$,0;
+set $msg08,0;
+set $name8$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+
+read09:
+mes "^0000bb["+$name9$+"]^000000";
+mes "[Bug Reporter]";
+mes ""+$write09$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg09;
+delmsg09:
+set $write09$,0;
+set $msg09,0;
+set $name9$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+
+read10:
+mes "^0000bb["+$name10$+"]^000000";
+mes "[Bug Reporter]";
+mes ""+$write10$+"";
+next;
+mes "[Bug Reporter]";
+mes "ต้องการทำอะไรค่ะ";
+menu "ปิดข้อความ",closemsg,"ลบข้อความนี้",delmsg10;
+delmsg10:
+set $write10$,0;
+set $msg10,0;
+set $name10$,0;
+if ($savemsg == 0) goto readmsg;
+set $savemsg,$savemsg - 1;
+mes "[Bug Reporter]";
+mes "ข้อความนี้ถูกลบเรียบร้อย";
+goto readmsg;
+
+
+//CLEAR MESSAGE INBOX==============
+
+delall:
+mes "[Bug Reporter]";
+mes "ตกลงที่จะลบทั้งหมดนะค่ะ";
+next;
+menu "ยกเลิก",notsure,"ตกลง",delsure;
+
+notsure:
+mes "[Bug Reporter]";
+mes "ยินดีให้บริการค่ะ";
+cutin "kafra_04",255;
+goto readmsg;
+
+delsure:
+set $savemsg,$savemsg - $savemsg;
+set $write01$,0;
+set $write02$,0;
+set $write03$,0;
+set $write04$,0;
+set $write05$,0;
+set $write06$,0;
+set $write07$,0;
+set $write08$,0;
+set $write09$,0;
+set $write10$,0;
+set $msg01,0;
+set $msg02,0;
+set $msg03,0;
+set $msg04,0;
+set $msg05,0;
+set $msg06,0;
+set $msg07,0;
+set $msg08,0;
+set $msg09,0;
+set $msg10,0;
+set $name1$,0;
+set $name2$,0;
+set $name3$,0;
+set $name4$,0;
+set $name5$,0;
+set $name6$,0;
+set $name7$,0;
+set $name8$,0;
+set $name9$,0;
+set $name10$,0;
+mes "[Bug Reporter]";
+mes "ลบข้อความทั้งหมดแล้วค่ะ";
+cutin "kafra_04",255;
+close;
+
+cancel:
+mes "[Bug Reporter]";
+mes "ยินดีให้บริการค่ะ";
+cutin "kafra_04",255;
+close;
+
+closemsg:
+cutin "kafra_04",255;
+goto readmsg;
+
+}

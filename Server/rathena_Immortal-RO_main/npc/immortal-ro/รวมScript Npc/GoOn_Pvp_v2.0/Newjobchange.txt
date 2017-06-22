@@ -1,0 +1,363 @@
+izlude.gat,128,119,4	script	เปลี่ยนอาชีพ	811,{
+if(class > 0) goto Nojob;
+mes "[Valkyrie]";
+mes "แปลงร่าง!!!";
+next;
+menu "Super Novice",supn,"Lord Knight",kni,"High Priest",pri,"High Wizard",wiz,"Whitesmith",bss,"Sniper",sni,"Assassin Cross",ass,"Paladin",pal,"Champion",cha,"Professor",pro,"Stalker",sta,"Creator",cre,"Clown",clo,"Gypsy",gyp,"Soul Linker",soul_l,"Gunslinger",guns,"Ninja",ninja,"No!!",no;
+
+soul_l:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBSoul Linker^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "มี Data ใหม่แล้วนะ",-,"ยังไม่มี Data ใหม่",nodata;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4049;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+guns:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBGunslinger^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "มี Data ใหม่แล้วนะ",-,"ยังไม่มี Data ใหม่",nodata;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 24;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+ninja:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBNinja^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "มี Data ใหม่แล้วนะ",-,"ยังไม่มี Data ใหม่",nodata;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 25;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+supn:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBSuper Novice^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 23;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+close;
+
+kni:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBLord Knight^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4008;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+pal:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBPaladin^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4015;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+wiz:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBHigh Wizard^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4010;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+pro:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBProfessor^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4017;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+sni:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBSniper^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4012;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+clo:
+if(Sex==0) goto gyp;
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBClown^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4020;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+gyp:
+if(Sex==1) goto clo;
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBGypsy^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4021;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+pri:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBHigh Priest^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4009;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+cha:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBChampion^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4016;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+bss:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBWhitesmith^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4011;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+cre:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBCreator^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4019;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+ass:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBAssassin Cross^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4013;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+sta:
+mes "[Valkyrie]";
+mes "เจ้าต้องเปลี่ยนเป็น ^262ACBStalker^000000";
+next;
+mes "เจ้าตกลงที่จะเปลี่ยนไหม";
+next;
+menu "เอาเลยซิ",-,"ยังก่อนดีกว่า",no;
+mes "[Valkyrie]";
+mes "ตรวจสอบเรียบร้อย";
+mes "^0E7C15ผ่านได้ !!^000000";
+next;
+setoption 0;
+jobchange 4018;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+set skillpoint,127;
+close;
+
+Nojob:
+mes "ไม่สามารถเปลี่ยนได้อีกแล้ว";
+mes "อย่าโง่";
+close;
+
+nodata:
+mes "ไปหาโหลด ได้ที่ http://goon.phpbb3.net";
+mes "ไปโหลดได้เลยนะครับ";
+close;
+
+no:
+close;
+//---คำพูด---//
+OnInit: 
+waitingroom "เปลี่ยนอาชีพได้เลย",0; 
+end;
+}

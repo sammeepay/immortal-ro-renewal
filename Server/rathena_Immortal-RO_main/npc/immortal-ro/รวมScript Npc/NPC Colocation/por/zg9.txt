@@ -1,0 +1,276 @@
+//===== eAthena Script =======================================
+//= OX
+//===== By: ==================================================
+//= PlayNewZone
+//= Modified By VanNovA
+//===== Current Version: =====================================
+-	script	OXSetter	-1,{
+// ตั้งเวลาในการเปิดกิจกรรม
+OnClock1200:
+OnClock1500:
+OnClock1800:
+OnClock2100:
+	initnpctimer "OXAnnounce";
+end;
+}
+
+
+-	script	GETITEMOX	-1,{
+OnGet:
+	getitem 7227,$@OXplayer*3;
+	getitem 7227,$@OXplayer*1;
+	if(rand(3)==0)	getitem 7227,5;
+	set $@OXplayer,0;
+	set $@OXstart,0;
+	set $@OXpasswd,0;
+	warp "c5",115,110;
+end;
+}
+
+c5,184,75,5	script	ทางเข้ากิจกรรมOX	856,{
+set .@mes$,"^FF0000[ OX ]^000000";
+goto PLZ_Main;
+
+PLZ_Main:
+	mes .@mes$;
+	mes "- กิจกรรม OX เสี่ยงดวงรับเหรียญ";
+	mes "- เพียงเลือกจะอยู่ O หรือ X เท่านั้น";
+	mes "- เวลาที่สามารถเข้าเล่นได้";
+	mes "- 12.00 15.00 18.00 21.00";
+	next;
+	if($@OXstart==0){
+		mes .@mes$;
+		mes "- ขณะนี้ยังไม่ถึงเวลาเริ่มกิจกรรม";
+		mes "- รอประกาศจากทางเซิฟเวอร์ตามเวลา";
+		close;
+		end;
+	}
+	warp $@OXmap$,42,369;
+end;
+
+OnInit:
+	waitingroom "    OX Game",0;
+	set $@OXstart,0;
+end;
+}
+
+guild_room,53,379,0	warp	ox_warp#01	1,1,god_town,115,55
+guild_room,30,379,0	warp	ox_warp#02	1,1,god_town,115,55
+
+
+
+//=============================================================
+//			-             mOnster studiO Scripts               -
+//				www.monsterstudio.in.th
+//#############################################################
+
+-	script	SystemMVPTW	-1,{
+	end;
+
+OnWhisperGlobal:
+	if (getgmlevel() < 99) end;
+OnInit:
+	set $@MVPTWmap$,"guild_vs2-1";			// กำหนด Map ที่ใช้เริ่มกิจกรรม
+	set $@MVPTWdeley_boss,10;				// กำหนดเวลาบอสออกหน่วยเป็นวินาที
+	set $@MVPTWmax_rank,10;				// กำหนดจำนวนการนับผล Ranking
+	set $@MVPTWdeley_check,15;				// กำหนดเวลาการตรวจสอบจำนวนผู้เล่นใน Map หน่วยเป็นวินาที
+	setarray $@MVPTWsavemxy$[0],"c5","183","88";	// กำหนดจุดวาปกลับเมื่อกิจกรรมเสร็จสิ้น
+	
+	// Set System
+	setarray $@MVPTWmob_id[0],1810,1809,1805,1872,1873,1885,1647,1648,1768,1038,
+		1039,1046,1059,1086,1087,1112,1115,1147,1150,1157,
+		1251,1623,1511,1159,1190,1272,1272,1312,1418,1492,
+		1623,1685,1779,1785;
+	set $@MVPTWmob_count,getarraysize($@MVPTWmob_id);
+	set $@MVPTWlevel,0;
+	set $@MVPTW,0;
+	set $@MVPTWparty_name$,"";
+	setarray .@mapflag[0], mf_nomemo, mf_noteleport, mf_noicewall ,mf_nowarpto, mf_nosave, 
+		mf_pvp, mf_nodrop, mf_partylock, mf_nomobloot, mf_nomvploot;
+	
+	// Run System Default
+	for (set .@i,0; .@i < getarraysize(.@mapflag); set .@i,.@i+1) {
+		setmapflag $@MVPTWmap$,.@mapflag[.@i];
+	}
+	end;
+
+OnStart_Boss:
+	set $@MVPTWlevel,$@MVPTWlevel+1;
+	for (set .@i,$@MVPTWdeley_boss; .@i >= 1; set .@i,.@i-1) {
+		if (!$@MVPTW) end;
+		mapannounce $@MVPTWmap$,"[MvpTower] : Boss ของด่านที่ "+$@MVPTWlevel+" จะออกในอีก "+.@i+" วินาที",0;
+		sleep 1000;
+	}
+	mapannounce $@MVPTWmap$,"[MvpTower] : Boss ออกแล้วมาแล้ว",0;
+	monster $@MVPTWmap$,0,0,"Mvp Tower [ LV "+$@MVPTWlevel+"]",$@MVPTWmob_id[rand(0,$@MVPTWmob_count-1)],1,"SystemMVPTW::OnKillBoss";
+	end;
+
+OnKillBoss:
+	mapannounce $@MVPTWmap$,"[MvpTower] : ปาร์ตี้ "+$@MVPTWparty_name$+" ได้ผ่าน Mvp Tower Level "+$@MVPTWlevel+" แล้ว !!",0;
+	sleep 10000;
+	goto OnStart_Boss;
+	end;
+
+OnTimer:
+	set .@loop,1;
+	while (.@loop) {
+		sleep $@MVPTWdeley_check*1000;
+		if (getmapusers($@MVPTWmap$) <= 0) {
+			set .@loop,0;
+		}
+	}
+	goto EndEvent;	
+	end;
+
+EndEvent:
+	mapwarp $@MVPTWmap$,$@MVPTWsavemxy$[0],$@MVPTWsavemxy$[1],$@MVPTWsavemxy$[2];
+	announce "[MvpTower] : ปาร์ตี้ "+$@MVPTWparty_name$+" ได้พ่ายแพ้ใน Mvp Tower Level "+$@MVPTWlevel+" แล้ว !! ",0;
+	set $@MVPTWlevel,$@MVPTWlevel-1;
+	for (set .@i,0; .@i < $@MVPTWmax_rank; set .@i,.@i+1) {
+		if ($MVPTWrank_level[.@i] < $@MVPTWlevel) {
+			set .@temp_name$,$MVPTWrank_name$[.@i];
+			set .@temp_level,$MVPTWrank_level[.@i];
+			set $MVPTWrank_name$[.@i],$@MVPTWparty_name$;
+			set $MVPTWrank_level[.@i],$@MVPTWlevel;
+			for (set .@p,.@i+1; .@p < $@MVPTWmax_rank; set .@p,.@p+1) {
+				set .@swap_name$,.@temp_name$;
+				set .@swap_level,.@temp_level;
+				set .@temp_name$,$MVPTWrank_name$[.@p];
+				set .@temp_level,$MVPTWrank_level[.@p];
+				set $MVPTWrank_name$[.@p],.@swap_name$;
+				set $MVPTWrank_level[.@p],.@swap_level;
+			}
+			break;
+		}
+	}
+	sleep 3000;
+	if ($@MVPTWlevel == 0) {
+		announce "[MvpTower] : ปาร์ตี้ "+$@MVPTWparty_name$+" ไม่ติดอันดับ",0;
+	} else if (.@i > $@MVPTWmax_rank) {
+		announce "[MvpTower] : ปาร์ตี้ "+$@MVPTWparty_name$+" ไม่ติดอันดับ 1 ใน "+$@MVPTWmax_rank+"",0;
+	} else {
+		announce "[MvpTower] : ปาร์ตี้ "+$@MVPTWparty_name$+" ได้ติดอันดับที่ "+(.@i+1)+"",0;
+	}
+	killmonsterall $@MVPTWmap$;
+	set $@MVPTWlevel,0;
+	set $@MVPTW,0;
+	set $@MVPTWparty_id,0;
+	set $@MVPTWparty_name$,"";
+	end;
+}
+
+-	script	Msevent::MVPtow	-1,{
+	set .@npc$,"[MvpTower]";
+	mes .@npc$;
+	mes "ยินดีต้อนรับสู่หอคอย";
+	mes "แห่งความโหดเหี้ยม";
+	mes "หากท่านจะเข้าสู่หอคอยแห่งนี้";
+	mes "ท่านจำเป็นต้องมีปาร์ตี้";
+	mes "และลูกทีมที่เก่ง";
+	next;
+	switch (select("- ตรวจสอบ Ranking","- เข้าสู่หอคอย")) {
+	case 1:
+		mes .@npc$;
+		mes "แสดงผลอันดับที่ ^FF00001^000000 - ^FF0000"+$@MVPTWmax_rank+"^000000";
+		for (set .@i,0; .@i < $@MVPTWmax_rank; set .@i,.@i+1) {
+			if ($MVPTWrank_name$[.@i] == "") {
+				mes (.@i+1)+". ^0000FFNone^000000 [^0000FFLv.^FF00000^000000]";
+			} else {
+				mes (.@i+1)+". ^0000FF"+$MVPTWrank_name$[.@i]+"^000000 [^0000FFLv.^FF0000"+$MVPTWrank_level[.@i]+"^000000]";
+			}
+		}
+		close;
+	break;
+	case 2:
+		set .@party_id,getcharid(1);
+		if (.@party_id == 0) {
+			mes .@npc$;
+			mes "ท่านจำเป็นต้องมีปาร์ตี้";
+			mes "จึงจะสามารถเข้าหอคอยได้";
+			close;
+		} else if (getpartyleader(.@party_id,2) != getcharid(0)) {
+			mes .@npc$;
+			mes "ท่านไม่ใช่หัวหน้าปาร์ตี้";
+			close;
+		} else if ($@MVPTW) {
+			mes .@npc$;
+			mes "ขณะนี้มี Party อื่น";
+			mes "กำลังอยู่ในหอคอย";
+			close;
+		} else {
+			set $@MVPTW,1;
+			set $@MVPTWparty_name$,getpartyname(.@party_id);
+			warpparty $@MVPTWmap$,0,0,.@party_id;
+			sleep 5000;
+			donpcevent "SystemMVPTW::OnStart_Boss";
+			donpcevent "SystemMVPTW::OnTimer";
+		}
+	break;
+	}
+	end;
+
+OnWhisperGlobal:
+	if (getgmlevel() < 99) end;
+OnInit:
+	waitingroom "    Mvp Tower",0;
+	end;
+}
+
+c5,187,75,5	duplicate(MVPtow)	MVP Tower#1	715
+
+
+//===== eAthena Script =======================================
+//= The Hero
+//===== By: ==================================================
+//= PlayNewZone
+//= Modified By VanNovA
+//===== Current Version: =====================================
+
+-	script	NPC_EVENT_HERO	-1,{
+OnMain:
+	set .@mes$,"^FF0000[ Devil Square ]^000000";
+	mes .@mes$;mes "- ยินดีต้อนรับผู้กล้าเข้าสู่ ^FF0000The Hero^000000";mes "- เจ้าต้องการที่จะเข้าไปเลยมั้ย"; next;
+	mes .@mes$;mes "- เวลาที่เปิดให้เข้าเล่น";mes "- 18.00";next;
+	select("- ตกลงข้าจะไป");
+	if($NPC_EVENT_HERO_PLAYING$=="ON"){	mes .@mes$;mes "- ขณะนี้กิจกรรมกำลังดำเนินการอยู่";close;end;	}
+	announce "[ The Hero ] : "+strcharinfo(0)+" ได้เข้าสู่กิจกรรมแล้ว",0; 
+	warp "guild_vs3.gat",0,0; 
+end;
+
+OnPlay:
+	if($NPC_EVENT_HERO_PLAYING$=="ON"){	mes .@mes$;mes "- ขณะนี้กิจกรรมกำลังดำเนินการอยู่";close;end;	}
+	initnpctimer;
+	Announce "[ TheHero ] : The Hero กำลังจะเปิดใน 5 นาที ให้ผู้กล้าทั้งหลายจงเตรียมพร้อม !!",0;  
+	killmonsterall "guild_vs3.gat"; mapwarp "guild_vs3.gat","morocc.gat",0,0;
+end; 
+OnTimer60000:Announce "[ TheHero ] : The Hero จะเริ่มต้นภายใน 4 นาที!!",0;end; 
+OnTimer120000:Announce "[ TheHero ] : The Hero จะเริ่มต้นภายใน 3 นาที!!",0; end; 
+OnTimer180000:Announce "[ TheHero ] : The Hero จะเริ่มต้นภายใน 2 นาที!!",0; end; 
+OnTimer240000:Announce "[ TheHero ] : The Hero จะเริ่มต้นภายใน 1 นาที!!",0; end; 
+OnTimer300000:Announce "[ TheHero ] : The Hero ได้เริ่มต้นขึ้นแล้ว ณ บัดนี้ !!",0; 
+	setnpctimer 0;
+	stopnpctimer;
+	set $NPC_EVENT_HERO_PLAYING$,"ON";
+	initnpctimer "NPC_EVENT_TICK_HERO";
+	set $@NPC_EVENT_HERO_STAGE,1;
+	donpcevent"NPC_EVENT_HERO_S::OnCallMob";
+end;
+
+OnBox:
+	getitem 603,20;getitem 617,5;getitem 7227,5;getitem 607,30;
+end;
+
+OnInit:
+waitingroom "    TheHero",0;
+	set $NPC_EVENT_HERO_PLAYING$,"";
+	setnpctimer 0;stopnpctimer;
+	setmapflag "guild_vs3.gat",mf_nomemo; 
+	setmapflag "guild_vs3.gat",mf_noteleport; 
+	setmapflag "guild_vs3.gat",mf_nowarpto; 
+	setmapflag "guild_vs3.gat",mf_nosave;
+	setmapflag "guild_vs3.gat",mf_nocommand;
+	setmapflag "guild_vs3.gat",mf_noicewall; 
+end;
+}
+
+c5,187,75,4	duplicate(NPC_EVENT_HERO)	HERO#001	856

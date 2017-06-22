@@ -1,0 +1,241 @@
+//==============================================
+//	Script by:Pirate Team
+//==============================================
+
+///----------- แก้ไข ข้อมูลต่างๆ ----------------\\\
+-	script	SettingBoxBoom	-1,{
+Oninit:
+set $MapBB$,"force_1-1";		//--- ชื่อแมป  ( ไม่แนะนำให้แก้ไข )
+set $ibb,7227;		//-- ของรางวัล รหัส
+set $abb,3;		//-- จำนวนของรางวัล
+set $zbb,500000;		//-- เงินรางวัล
+end;
+
+///------------ เวลากิจกรรม ----------\\\
+OnClock0130:
+OnClock0330:
+OnClock0530:
+OnClock0730:
+OnClock0930:
+OnClock1130:
+OnClock1330:
+OnClock1530:
+OnClock1730:
+OnClock1930:
+OnClock2130:
+OnClock2330:
+initnpctimer "TimerBox";
+end;
+}
+
+-	script	Box BOoM::boxboom	801,{
+if(getgmlevel() >= 90) goto Gm;
+Main:
+mes "[Box BOoM]";
+	mes "สวัสดีครับ ยินดีให้บริการครับ";
+	mes "ต้องการเข้าร่วมกิจกรรมมั้ยครับ";
+next;
+if($@BoxStart == 1) goto Start;
+menu "^FF0000•^000000 รายละเอียด",read,"^FF0000•^000000 ยกเลิก",exit;
+
+Start:
+menu "^009933•^000000 ต้องการ",-,"^FF0000•^000000 รายละเอียด",read,"^FF0000•^000000 ยกเลิก",exit;
+if($@BoxStart == 0) close;
+warp "force_1-1",98,99;
+close;
+
+read:
+mes "[Box BOoM]";
+mes "ถ้าท่านต้องการรู้อะไร";
+mes "ท่านเข้าไปจะรู้เองครับ";
+close;
+
+Gm:
+mes "[Box BOoM]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "เลือกเมนูที่ท่านต้องการครับ";
+next;
+menu "^FF0000•^000000 ยกเลิก",Main,"^009933•^000000 เปิดกิจกรรม",Open,"^FF0000•^000000 ปิดกิจกรรม",Cancel;
+Open:
+menu "^FF0000•^000000 ยกเลิก",exit,"^009933•^000000 ตกลง",-;
+if($@BoxStart == 1){ mes "กิจกรรมเปิดอยู่แล้วครับ"; close; }
+if(getmapusers(""+$MapBB$+"") >= 1){ mes "กิจกรรมเปิดอยู่แล้วครับ"; close; }
+initnpctimer "TimerBox";
+mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+close;
+
+Cancel:
+menu "^FF0000•^000000 ยกเลิก",exit,"^009933•^000000 ตกลง",-;
+if($@BoxStart == 0){ mes "กิจกรรมปิดอยู่แล้วครับ"; close; }
+killmonsterall ""+$MapBB$+"";
+mapwarp ""+$MapBB$+"","morocc2",195,60;
+stopnpctimer "TimerBox";
+mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+close;
+
+exit:
+close;
+
+OnInit:
+	waitingroom "๐ Box Boom ๐", 0;
+	end;
+
+}
+
+-	script	TimerBox	-1,{
+
+OnTimer1000:
+set $@BoxStart,1;
+announce "[ Box BOom ] : กิจกรรมกำลังจะเปิดใน 5 นาที !!",bc_all,0x4876FF;
+end;
+
+OnTimer5000:
+announce "[ Box BOom ] : กิจกรรมกำลังจะเปิดใน 3 นาที !!",bc_all,0x4876FF;
+end;
+
+OnTimer65000:
+announce "[ Box BOom ] : กิจกรรมกำลังจะเปิดใน 2 นาที !!",bc_all,0x4876FF;
+end;
+
+OnTimer125000:
+announce "[ Box BOom ] : กิจกรรมกำลังจะเปิดใน 1 นาที !!",bc_all,0x4876FF;
+end;
+
+OnTimer185000:
+set $@BoxStart,0;
+announce "[ Box BOom ] : กิจกรรมได้เริ่มต้นขึ้นแล้ว !!",bc_all,0x4876FF;
+end;
+
+
+OnTimer190000:
+if(getmapusers(""+$MapBB$+"") < 1) goto notplayer;
+mapannounce ""+$MapBB$+"","[ Box BOom ] : ท่านมีเวลาเตรียมตัว 30 วินาที !!",bc_map,0xFFFF00;
+end;
+
+OnTimer195000:
+mapannounce ""+$MapBB$+"","[ Box BOom ] : มีกล่องระเบิด 50 กล่อง มีกล่องระเบิด C4 5 กล่อง มีกล่องสมบัติ 10 กล่อง",bc_map,0xFFFF00;
+end;
+
+OnTimer200000:
+mapannounce ""+$MapBB$+"","[ Box BOom ] : หากท่านเปิดเจอกล่องระเบิด C4 จะทำให้ทุกคนตายหมด !!",bc_map,0xFFFF00;
+end;
+
+OnTimer220000:
+mapannounce ""+$MapBB$+"","[ Box BOom ] : ท่านหมดเวลาเตรียมตัวแล้ว !!",bc_map,0xFFFF00;
+end;
+
+OnTimer225000:
+stopnpctimer;
+callfunc "boxboom";
+end;
+
+notplayer:
+announce "[ Box BOom ] : กิจกรรมได้จบลงแล้ว !!",bc_all,0x4876FF;
+stopnpctimer;
+mapwarp ""+$MapBB$+"","morocc2",195,60;
+end;
+}
+
+function	script	boxboom	{
+mapannounce ""+$MapBB$+"","[ Box BOom ] : กรุณาคิดก่อนที่จะเปิดแต่ละกล่อง !! ",bc_map,0xFFFF00;
+
+areamonster ""+$MapBB$+"",88,111,111,88,"B O X B O O M",1334,50,"BOXOPEN::OnOpen_Boom";
+areamonster ""+$MapBB$+"",88,111,111,88,"B O X B O O M",1334,5,"BOXOPEN::OnOpen_C4";
+areamonster ""+$MapBB$+"",88,111,111,88,"B O X B O O M",1334,10,"BOXOPEN::OnOpen_Ok";
+return;
+}
+
+-	script	BOXOPEN	-1,{
+
+OnOpen_Boom:
+set .@Rate,rand(100);
+if(.@Rate < 10) goto Chock;
+mapannounce ""+$MapBB$+"","[ Box BOom ] : ท่าน "+strcharinfo(0)+" เปิดเจอระเบิดถูกส่งกลับบ้าน !! ",bc_map,0xFFFF00;
+specialeffect2 183;
+sleep2 1000;
+if(getmapusers(""+$MapBB$+"") <= 1) goto lastplayer;
+warp "SavePoint",0,0;
+end;
+
+Chock:
+mapannounce ""+$MapBB$+"","[ Box BOom ] : ท่าน "+strcharinfo(0)+" เปิดเจอระเบิด รอดไประเบิดด้าน !!",bc_map,0xFFFF00;
+specialeffect2 147;
+warp "SavePoint",0,0;
+end;
+
+OnOpen_C4:
+mapannounce ""+$MapBB$+"","[ Box BOom ] : ท่าน "+strcharinfo(0)+" เปิดเจอระเบิด C4 !! ",bc_map,0xFFFF00;
+donpcevent "LandEffect1::OnBoom";
+donpcevent "LandEffect2::OnBoom";
+donpcevent "LandEffect3::OnBoom";
+donpcevent "LandEffect4::OnBoom";
+donpcevent "LandEffect5::OnBoom";
+killmonsterall ""+$MapBB$+"";
+sleep2 2000;
+mapannounce ""+$MapBB$+"","[ Box BOom ] : ทุกคนตายหมด !!",bc_map,0xFFFF00;
+killmonsterall ""+$MapBB$+"";
+mapwarp ""+$MapBB$+"","m_potion",106,250;
+end;
+
+OnOpen_Ok:
+mapannounce ""+$MapBB$+"","[ Box BOom ] : ท่าน "+strcharinfo(0)+" เปิดเจอสมบัติ !!",bc_map,0xFFFF00;
+getitem $ibb,$abb;
+set zeny,zeny+$zbb;
+dispbottom "คุณได้รับเงิน "+$zbb+" Zeny.";
+end;
+
+lastplayer:
+sleep2 1000;
+announce "[ Box BOom ] : กิจกรรมได้จบลงแล้ว !!",bc_all,0x4876FF;
+killmonsterall ""+$MapBB$+"";
+warp "SavePoint",0,0;
+mapwarp ""+$MapBB$+"","m_potion",106,250;
+end;
+}
+
+force_1-1,91,108,4	script	LandEffect1	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+force_1-1,108,108,4	script	LandEffect2	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+force_1-1,108,92,4	script	LandEffect3	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+force_1-1,91,92,4	script	LandEffect4	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+force_1-1,99,100,4	script	LandEffect5	139,{
+OnBoom:
+specialeffect 147;
+sleep2 1000;
+specialeffect 183;
+end;
+}
+
+///------ MAP FLAG ---------\\\
+force_1-1	mapflag	noreturn
+force_1-1	mapflag	noteleport
+force_1-1	mapflag	nowarp
+force_1-1	mapflag	nowarpto
+force_1-1	mapflag	notrade
+force_1-1	mapflag	nodrop
+force_1-1	mapflag	noskill
+force_1-1	mapflag	noloot
+force_1-1	mapflag	nobranch

@@ -1,0 +1,260 @@
+//===================================================================
+// NPC : Convenience Commands
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+izlude_in.gat,75,172,4	script	Convenience Commands	864,{
+set @gm,getgmlevel();
+if (@gm <= 60) goto user;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดเลือกรายการ";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu
+"- About Item",CC1,
+"- About Status",CC2,
+"- About Class User",CC3,
+"- About Weather",CC4,
+"Exit",Cancel;
+
+
+
+CC1:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดเลือก การบริการ";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu
+"- เสก Item ให้ตัวเอง",CCI1,
+"- เสก Item ให้ผู้อื่น",CCI2,
+"- ลบ Item ผู้อื่น",CCI3,
+"Exit",Cancel;
+
+
+
+CCI1:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดใส่รหัส Item ที่ต้องการค่ะ";
+next;
+input @itemcode;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"Item : ^FF00CC"+getitemname(@itemcode)+"^000000";
+mes"โปรดใส่จำนวนที่ต้องการค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $Amount$;
+if($Amount$ == "0") goto Cancel;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านได้รับ ^FF00CC"+getitemname(@itemcode)+" จำนวน "+$Amount$+" ชิ้น^000000";
+mes"เรียบร้อยแล้วค่ะ";
+atcommand strcharinfo(0)+"@item "+@itemcode+" "+$Amount$+"";
+close;
+
+
+
+CCI2:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดใส่รหัส Item ที่ต้องการค่ะ";
+next;
+input @itemcode;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"Item : ^FF00CC"+getitemname(@itemcode)+"^000000";
+mes"โปรดใส่จำนวนที่ต้องการค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $Amount$;
+if($Amount$ == "0") goto Cancel;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"Item : ^FF00CC"+getitemname(@itemcode)+"^000000 จำนวน ^FF0000"+$Amount$+"^000000 ชิ้น";
+mes"โปรดใส่ชื่อผู้อื่นที่ต้องการค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านได้เสก Item : ^FF00CC"+getitemname(@itemcode)+"^000000 จำนวน ^FF0000"+$Amount$+"^000000 ชิ้น";
+mes"ให้คุณ ^FF0000"+$NamePlayer$+"^000000 แล้วค่ะ";
+charCommand strcharinfo(0)+"#item "+@itemcode+" "+$Amount$+" "+$NamePlayer$+"";
+close;
+
+
+
+CCI3:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดใส่รหัส Item ที่ต้องการลบค่ะ";
+next;
+input @itemcode;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"Item : ^FF00CC"+getitemname(@itemcode)+"^000000";
+mes"โปรดใส่จำนวนที่ต้องการลบค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $Amount$;
+if($Amount$ == "0") goto Cancel;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"Item : ^FF00CC"+getitemname(@itemcode)+"^000000 จำนวน ^FF0000"+$Amount$+"^000000 ชิ้น";
+mes"โปรดใส่ชื่อผู้อื่นที่ต้องการลบค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านได้ลบ Item : ^FF00CC"+getitemname(@itemcode)+"^000000 จำนวน ^FF0000"+$Amount$+"^000000 ชิ้น";
+mes"ของคุณ ^FF0000"+$NamePlayer$+"^000000 แล้วค่ะ";
+charCommand strcharinfo(0)+"#delitem "+@itemcode+" "+$Amount$+" "+$NamePlayer$+"";
+close;
+
+
+
+CC2:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดเลือก การบริการ";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu
+"- เสก Status Point ให้ตัวเอง",CCS1,
+"- เสก Status Point ให้ผู้อื่น",CCS2,
+"Exit",Cancel;
+
+
+
+CCS1:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดใส่จำนวน Point ที่ต้องการค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $points$;
+if($points$ == "0") goto Cancel;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านได้รับ Status Point จำนวน ^FF0000"+$points$+" Points^000000";
+mes"เรียบร้อยแล้วค่ะ";
+atcommand strcharinfo(0)+"@stpoint "+$points$+"";
+close;
+
+
+
+CCS2:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดใส่ชื่อผู้อื่นที่ต้องการค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดใส่จำนวน Point ที่ต้องการค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $points$;
+if($points$ == "0") goto Cancel;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านได้เสก Status Point จำนวน ^FF0000"+$points$+" Points^000000";
+mes"ให้คุณ ^FF0000"+$NamePlayer$+"^000000 แล้วค่ะ";
+charCommand strcharinfo(0)+"#stpoint "+$points$+" "+$NamePlayer$+"";
+close;
+
+
+
+CC3:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านต้องการเพิ่ม/ลด Sub User";
+mes"ของ Server หรือไม่";
+next;
+menu
+"- เพิ่ม/ลด ระดับ User",CCSG,
+"Exit",Cancel;
+
+
+
+CCSG:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดใส่ชื่อผู้อื่นที่ต้องการค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิก";
+next;
+input $NamePlayer$;
+if($NamePlayer$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$NamePlayer$)) == 0) goto offline;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"โปรดใส่ Lv ที่ต้องการค่ะ";
+mes"หรือใส่ 0 เพื่อยกเลิกระดับ Sub User";
+mes"หรือใส่ - เพื่อยกเลิก";
+mes"______________________________";
+mes"^FF0000ควรให้ Sub User Lv 60 เท่านั้น";
+mes"เพราะว่าทาง Server ได้แก้ไข";
+mes"คำสั่งที่ Sub User ใช้ได้ ไว้แล้ว";
+mes"ด้วยความหวังดี จาก Server.^000000";
+next;
+input $LvUser$;
+if($LvUser$ == "0") goto lower;
+if($LvUser$ == "-") goto Cancel;
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านได้เพิ่ม Sub User ^FF0000Lv "+$LvUser$+"^000000";
+mes"ให้คุณ ^FF0000"+$NamePlayer$+"^000000 แล้วค่ะ";
+atcommand strcharinfo(0) + "@adjgmlvl "+$LvUser$+" "+$NamePlayer$+"";
+close;
+
+
+
+CC4:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"คืนสภาพอากาศที่เมือง";
+mes"Rachel กลับสู่ภาวะปกติ";
+next;
+menu
+"- คืนสภาพอากาศที่เมือง Rachel",CWR,
+"Exit",Cancel;
+
+
+
+CWR:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ขณะนี้สภาพอากาศที่เมือง";
+mes"Rachel กลับสู่สภาวะปกติแล้วค่ะ";
+removemapflag "rachel.gat",mf_leaves;
+removemapflag "rachel.gat",mf_sakura;
+removemapflag "rachel.gat",mf_snow;
+removemapflag "rachel.gat",mf_clouds;
+removemapflag "rachel.gat",mf_clouds2;
+close;
+
+
+
+lower:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านได้ลดระดับ Sub User";
+mes"ของคุณ ^FF0000"+$NamePlayer$+"^000000";
+mes"ให้อยู่ในระดับ Normal User แล้วค่ะ";
+atcommand strcharinfo(0) + "@adjgmlvl "+$LvUser$+" "+$NamePlayer$+"";
+close;
+
+
+
+offline:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ขออภัยค่ะ ผู้เล่นที่ท่านต้องการให้";
+mes"ไม่ได้ Online ในขณะนี้";
+close;
+
+
+
+user:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"ท่านไม่สามารถใช้งานได้ค่ะ";
+close;
+
+
+
+Cancel:
+mes"^FF0000[ Convenience Commands ]^000000";
+mes"แล้วพบกันใหม่";
+close;
+
+
+
+//OnInit:
+//waitingroom "Commands",0;
+//end;
+}

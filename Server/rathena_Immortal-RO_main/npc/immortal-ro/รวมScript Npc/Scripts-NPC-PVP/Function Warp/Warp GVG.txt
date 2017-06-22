@@ -1,0 +1,85 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+function	script	warpc	{
+
+menu
+"- เล่นหน้าบ้าน 28 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("prtg_cas03") + " คน ]",warpb01,
+"- เล่นหน้าบ้าน 22 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("payg_cas02") + " คน ]",warpb02,
+"- บ้านแจม [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("gefg_cas05") + " คน ]",warpb03,
+"- Rothenburg 22 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("aldeg_cas05") + " คน ]",warpb04,
+"- Hohenschwangau 28 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("aldeg_cas02") + " คน ]",warpb05,
+"- Eeyolbriggar 28 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("gefg_cas02") + " คน ]",warpb06,
+"- Bergel 28 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("gefg_cas04") + " คน ]",warpb07,
+"- Bright Arbor 22 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("payg_cas01") + " คน ]",warpb08,
+"- Holy Shadow 22 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("payg_cas03") + " คน ]",warpb09,
+"- Skoegul 28 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("prtg_cas04") + " คน ]",warpb10,
+"- Gondul 28 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("prtg_cas05") + " คน ]",warpb11,
+"- Sacred altar 28 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("payg_cas04") + " คน ]",warpb12,
+"- nuenberg ^FF0000Lord Knight^000000 [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("aldeg_cas03") + " คน ]",warpb13,
+"- Yesnelph 22 คน [ ^FF0000Open^000000 ] [ ผู้เล่น " + getmapusers("aldeg_cas03") + " คน ]",warpb14;
+
+warpb01:
+warp "prt_gld",153,133;
+close;
+
+warpb02:
+warp "pay_gld",299,124;
+close;
+
+warpb03:
+warp "gef_fild13",246,56;
+close;
+
+warpb04:
+warp "alde_gld",269,90;
+close;
+
+warpb05:
+warp "alde_gld",95,247;
+close;
+
+warpb06:
+warp "gef_fild13",308,237;
+close;
+
+warpb07:
+warp "gef_fild13",189,274;
+close;
+
+warpb08:
+warp "pay_gld",121,232;
+close;
+
+warpb09:
+warp "pay_gld",314,294;
+close;
+
+warpb10:
+warp "prt_gld",128,241;
+close;
+
+warpb11:
+warp "prt_gld",192,240;
+close;
+
+warpb12:
+warp "pay_gld",140,169;
+close;
+
+warpb13:
+warp "alde_gld",141,91;
+close;
+
+warpb14:
+warp "gef_fild13",150,239;
+close;
+
+}

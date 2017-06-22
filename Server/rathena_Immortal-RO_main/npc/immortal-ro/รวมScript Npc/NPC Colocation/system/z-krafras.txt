@@ -1,0 +1,598 @@
+function	script	KafraXX	{
+
+	//cutin "kafra_01",2;
+	//specialeffect 411;
+	//emotion 10;
+
+	set .@heading$, "[^0000FFKafra Express^000000]";
+
+	mes .@heading$;
+	mes "สวัสดีค่ะ ยินดีให้บริการค่ะ"; 
+	mes "เลือกเมนูที่คุณต้องการค่ะ"; 
+	next;
+
+	menu 
+	"^ff0000•^000000 Save",savepointX,
+	"^ff0000•^000000 คลังเก็บของ",storage,
+	//"^ff0000•^000000 เช่า AI",case8,
+	"^ff0000•^000000 เรียกรวมปาร์ตี้",recall_party,
+	"^ff0000•^000000 เรียกรวมกิลด์",recall_guild,
+	//"^ff0000•^000000 ธนาคาร",banking,
+	"^ff0000•^000000 เรียนสกิลเสริม",case2,
+	"^ff0000•^000000 Skill Homun",skill_homun,
+	"^ff0000•^000000 รถเข็น & นก & Peco",rentclass,
+	"^ff0000•^000000 Reset Skill & Status",Rresetstatus;
+	close;
+
+savepointX:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	savepoint getarg(0),getarg(1),getarg(2);
+	close;
+
+storage:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	openstorage;
+	close;
+
+banking:
+	set @cost,500;
+	mes .@heading$;
+	mes "ยินดีต้อนรับสู่ ธนาคาร ประจำเซิฟ";
+	mes "สามารถฝาก/ถอนได้ครั้งละ 10m";
+	next;
+	menu "^ff0000•^000000 ฝากเงิน",Ldeposit,"^ff0000•^000000 ถอนเงิน",Lwithdrawl,"^ff0000•^000000 เช็คยอดเงิน",Lbalance,"^ff0000ยกเลิก^000000",cancel;
+
+Ldeposit:
+	mes .@heading$;
+	mes "ต้องการฝากเท่าไหร่คะ";
+	next;
+	if (@cost > 0) goto Ldepocost;
+	goto Ldepocont;
+
+Ldepocost:
+	mes .@heading$;
+	mes "ค่าบริการจำนวน " + @cost + " Zeny คุณไม่มีก็ไม่ต้องเสนอหน้ามา";
+	next;
+	goto Ldepocont;
+
+Ldepocont:
+	input @deposit;
+	if (@deposit < 1) goto Lrealamount;
+	if (@deposit > Zeny) goto Lneedzeny;
+	if (@deposit > (Zeny - @cost)) goto Lneedzeny2;
+	set Zeny,Zeny - @deposit;
+	set Zeny,Zeny - @cost;
+	set #bankstorage,#bankstorage + @deposit;
+	mes .@heading$;
+	mes "ขอบคุณที่ใช้บริการ ทางเราจะเก็บเงินท่านให้ดีที่สุด";
+	close;
+
+Lwithdrawl:
+	mes .@heading$;
+	mes "ต้องการถอนเท่าไหร่คะ";
+	next;
+	if (@cost > 0) goto Lwithcost;
+	goto Lwithcont;
+
+	Lwithcost:
+		mes .@heading$;
+		mes "ค่าบริการจำนวน " + @cost + " Zeny คุณไม่มีก็ไม่ต้องเสนอหน้ามา";
+		next;
+		goto Lwithcont;
+
+Lwithcont:
+	input @withdrawl;
+	if (@withdrawl < 1) goto Lrealamount;
+	if (@withdrawl > #bankstorage) goto Lneedzeny3;
+	if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) goto Lcostask; 
+	if (@cost > Zeny) goto Lneedzeny2;
+	goto Lwithcont2;
+
+	Lcostask:
+		mes .@heading$;
+		mes "คุณไม่มีเงินค่าบริการ ต้องการให้ฉันหักจากยอดเงินที่ถอนไหม";
+		next;
+		menu "- ตกลง",Lwithtake,"^ff0000ยกเลิก^000000",Lcancel;
+
+	Lwithtake:
+		mes .@heading$;
+		mes "โอเค มาต่อกัน";
+		set @withdrawl,@withdrawl - @cost;
+		set #bankstorage,#bankstorage - @cost;
+		set @cost,0;
+		next;
+		goto Lwithcont2;
+
+Lwithcont2:
+	set Zeny,Zeny - @cost;
+	set Zeny,Zeny + @withdrawl;
+	set #bankstorage,#bankstorage - @withdrawl;
+	mes .@heading$;
+	mes "คุณได้รับ zeny เรียบร้อยแล้วค่ะ";
+	close;
+
+Lbalance:
+	mes .@heading$;
+	mes "อืม..... ขอฉันเช็คดูแป๊ปปปป";
+	next;
+	mes "*Checking . . .*";
+	next;
+	mes .@heading$;
+	mes "ยอดเงินของคุณคือ " + #bankstorage + " Zeny";
+	close;
+
+Lrealamount:
+	mes .@heading$;
+	mes "อย่ามาเล่นตลกกับฉันนะ";
+	close;
+
+Lneedzeny:
+	mes .@heading$;
+	mes "คุณมีเงินไม่พอที่จะฝาก";
+	close;
+
+Lneedzeny2:
+	mes .@heading$;
+	mes "คุณมีเงินไม่พอที่จะจ่ายค่าธรรมเนียม";
+	close;
+
+Lneedzeny3:
+	mes .@heading$;
+	mes "คุณมีเงินไม่พอใน Account ของคุณ";
+	close;
+
+Lcancel:
+	mes .@heading$;
+	mes "ขอบคุณมาก แล้วมาใช้บริการใหม่นะคะ";
+	close;
+
+//===============================================================================================
+
+case2:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	mes "คุณจะเรียนเลยมั้ยค่ะ";
+	next;
+
+	menu "^009933•^000000 ข้าต้องการ",L_110,"^FF0000•^000000 ข้าไม่ต้องการ",cancel;
+
+L_110:
+	if (Class == 0) goto SKLL_NOV;
+	if (Class == 4023) goto SKLL_NOV;
+	if (Class == 4001) goto SKLL_NOV;
+	if (class == 7)  goto L_01;
+	if (class == 4008)  goto L_01;
+	if (class == 4014)  goto L_01;
+	if (class == 21) goto L_02;
+	if (class == 14) goto L_02;
+	if (class == 4022) goto L_02;
+	if (class == 4015) goto L_02;
+	if (class == 12) goto L_03;
+	if (class == 4013) goto L_03;
+	if (class == 17) goto L_04;
+	if (class == 4018) goto L_04;
+	if (class == 9) goto L_05;
+	if (class == 4010) goto L_05;
+	if (class == 16) goto L_06;
+	if (class == 4017) goto L_06;
+	if (class == 11) goto L_07;
+	if (class == 4012) goto L_07;
+	if (class == 19) goto L_08;
+	if (class == 4020) goto L_08;
+	if (class == 20) goto L_09;
+	if (class == 4021) goto L_09;
+	if (class == 4019) goto skill_homun;
+
+	if (class == 10) goto L_010;
+	if (class == 4011) goto L_010;
+	if (class == 8) goto L_014;
+	if (class == 4009) goto L_011;
+	if (class == 15) goto L_012;
+	if (class == 4016) goto L_012;
+	//----------------Class Sword----------------\\
+	if (Class == 1) goto SKLL_SWD;
+	if (Class == 4024) goto SKLL_SWD;
+	if (Class == 4002) goto SKLL_SWD;
+	if (Class == 4030) goto SKLL_SWD;
+	if (Class == 4037) goto SKLL_SWD;
+	//----------------Class Mage----------------\\
+	if (Class == 2) goto SKLL_MAG;
+	if (Class == 4025) goto SKLL_MAG;
+	if (Class == 4003) goto SKLL_MAG;
+	if (Class == 4032) goto SKLL_MAG;
+	if (Class == 4039) goto SKLL_MAG;
+	//----------------Class Archer----------------\\
+	if (Class == 3) goto SKLL_ARC;
+	if (Class == 4026) goto SKLL_ARC;
+	if (Class == 4004) goto SKLL_ARC;
+	if (Class == 4034) goto SKLL_ARC;
+	if (Class == 4042) goto SKLL_ARC;
+	if (Class == 4043) goto SKLL_ARC;
+	//----------------Class Acolyte----------------\\
+	if (Class == 4) goto SKLL_ACO;
+	if (Class == 4027) goto SKLL_ACO;
+	if (Class == 4005) goto SKLL_ACO;
+	if (Class == 4031) goto SKLL_ACO;
+	if (Class == 4038) goto SKLL_ACO;
+	//----------------Class Merchant----------------\\
+	if (Class == 5) goto SKLL_MC;
+	if (class == 18) goto SKLL_MC;
+	if (class == 4028) goto SKLL_MC;
+	if (class == 4041) goto SKLL_MC;
+	if (Class == 4033) goto SKLL_MC;
+	//----------------Class  Thief----------------\\
+	if (Class == 6) goto SKLL_THF;
+	if (Class == 4029) goto SKLL_THF;
+	if (Class == 4007) goto SKLL_THF;
+	if (Class == 4035) goto SKLL_THF;
+	if (Class == 4040) goto SKLL_THF;
+	close;
+
+L_01:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 144,1,0;
+	skill 145,1,0;
+	skill 146,1,0;
+	skill 1001,1,0;
+	close;
+
+SKLL_NOV: 
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 143,1,0;
+	close;
+
+L_02:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 144,1,0;
+	skill 145,1,0;
+	skill 146,1,0;
+	skill 1002,1,0;
+	close;
+
+L_03:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 149,1,0;
+	skill 150,1,0;
+	skill 151,1,0;
+	skill 152,1,0;
+	skill 1003,1,0;
+	skill 1004,1,0;
+	close;
+
+L_04:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 149,1,0;
+	skill 150,1,0;
+	skill 151,1,0;
+	skill 152,1,0;
+	skill 1005,1,0;
+	close;
+
+L_05:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 157,1,0;
+	skill 1006,1,0;
+	close;
+
+L_06:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 157,1,0;
+	skill 1007,1,0;
+	skill 1008,1,0;
+	skill 1017,1,0;
+	skill 1018,1,0;
+	skill 1019,1,0;
+	close;
+
+L_07:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 147,1,0;
+	skill 148,1,0;
+	skill 1009,1,0;
+	close;
+
+L_08:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 147,1,0;
+	skill 148,1,0;
+	skill 1010,1,0;
+	close;
+
+L_09:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 147,1,0;
+	skill 148,1,0;
+	skill 1011,1,0;
+	close;
+
+L_010:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 155,1,0;
+	skill 154,1,0;
+	skill 153,1,0;
+	skill 1012,1,0;
+	skill 1013,1,0;
+	skill 459,1,0;
+	close;
+
+L_011:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 156,1,0;
+	skill 1014,1,0;
+	close;
+
+L_012:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 142,1,0;
+	skill 156,1,0;
+	skill 1015,1,0;
+	skill 1016,1,0;
+	close;
+
+L_13:
+	if(JobLevel<40) goto L_no40;
+	mes .@heading$;
+	mes "คุณต้องมี Job มากกว่า 40";
+	next;
+
+	skill 142,1,0;
+	skill 155,1,0;
+	skill 154,1,0;
+	skill 153,1,0;
+	skill 238,1,0;
+	skill 239,1,0;
+	skill 240,1,0;
+	skill 241,1,0;
+	skill 242,1,0;
+	skill 245,1,0;
+	skill 246,1,0;
+	
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	close;
+
+L_no40:
+	mes .@heading$;
+	mes "Job คุณต่ำกว่า 40";
+	close;
+
+SKLL_SWD:
+	skill 142,1,0;
+	skill 144,1,0;
+	skill 145,1,0;
+	skill 146,1,0;
+	close;
+
+SKLL_MAG: 
+	skill 142,1,0;
+	skill 157,1,0;
+	close;
+
+SKLL_ARC:
+	skill 142,1,0;
+	skill 147,1,0;
+	skill 148,1,0;
+	close;
+
+SKLL_ACO: 
+	skill 142,1,0;
+	skill 156,1,0;
+	close;
+
+SKLL_MC: 
+	skill 142,1,0;
+	skill 155,1,0;
+	skill 154,1,0;
+	skill 153,1,0;
+	close;
+
+SKLL_THF:
+	skill 142,1,0;
+	skill 149,1,0;
+	skill 150,1,0;
+	skill 151,1,0;
+	skill 152,1,0;
+	close;
+
+// ====================================================================================
+
+skill_homun:
+	if(BaseJob != Job_Alchem) goto L_noalche;
+	if(JobLevel<40) goto L_nojob;
+
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	getitem 7142,1;
+	next;
+
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	skill 238,1,0;
+	skill 239,1,0;
+	skill 240,1,0;
+	skill 241,1,0;
+	skill 242,1,0;
+	skill 245,1,0;
+	skill 246,1,0;
+	close;
+
+L_nojob:
+	mes .@heading$;
+	mes "Job คุณต่ำกว่า 40";
+	close;
+
+L_noalche:
+	mes .@heading$;
+	mes "เฉพาะ Alchemit เท่านั้นค่ะ";
+	close;
+
+// ====================================================================================
+
+rentclass:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	mes "โปรดเลือกในเมนู";
+	next;
+
+	menu "^ff0000•^000000 ^bb0000เช่า Peco",Repeco,"^ff0000•^000000 ^FF9900เช่า Falcon",Refal,"^ff0000•^000000 ^3366FFเช่า Cart",Recart,"^ff0000•^000000 ยกเลิก",cancel;
+
+Repeco:
+	if ((Class == 7) || (Class == 14) || (Class == 4008) || (Class == 4015) || (Class == 4030) || (Class == 4037)) {
+		mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+		setriding;
+	} else {
+		mes .@heading$;
+		mes "คุณไม่สามารถเช่า Peco ได้";
+	}
+	close;
+
+Refal:
+	if ((Class == 11) || (Class == 4012) || (Class == 4034)) {
+		mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+		setfalcon;
+	} else {
+		mes .@heading$;
+		mes "คุณไม่สามารถเช่า Falcon ได้";
+	}
+	close;
+
+Recart:
+	if((Class == 5) || (Class == 10) || (Class == 23) || (Class == 18) || (Class == 4006) || (Class == 4011) || (Class == 4019) || (Class == 4028) || (Class == 4033) || (Class == 4041) || (Class == 4045)) {
+		mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+		setcart;
+	} else {
+		mes .@heading$;
+		mes "คุณไม่สามารถเช่า Cart ได้";
+	}
+	close;
+
+// ====================================================================================
+
+Rresetstatus:
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	mes "คุณต้องการ Reset อะไร";
+	mes "ค่าบริการ ^FF8000 1 M ^000000 ค่ะ";
+	next;
+
+	menu "^ff0000•^000000 Status",Resetstatus1,"^ff0000•^000000 Skill",Resetskill1,"^ff0000•^000000 ยกเลิก",cancel;
+
+Resetstatus1:
+	if (Zeny<500000) goto resetnotwprk;
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	set Zeny,Zeny-1000000;
+	resetstatus;
+	close;
+
+Resetskill1:
+	if (Zeny<500000) goto resetnotwprk;
+	mes .@heading$;
+	mes "ยินดีให้บริการค่ะ";
+	set Zeny,Zeny-1000000;
+	resetskill;
+	close;
+
+resetnotwprk:
+	mes .@heading$;
+	mes "คุณมีเงินไม่พอค่ะ";
+	close;
+
+// ====================================================================================
+
+recall_guild:
+
+	if( getgdskilllv( getcharid(2), 10013 ) < 1 ) {
+		mes .@heading$;
+		mes "เฉพาะหัวกิลด์ & ต้องมี Skill ด้วย";
+		close;
+	}
+	set .@GID, getcharid(2);
+
+	if ( strcharinfo(0) == getguildmaster( .@GID ) ) {
+
+		mes .@heading$;
+		mes "ยินดีให้บริการค่ะ";
+		mes "Guild "+ getguildname(.@GID) +"";
+		mes "คุณต้องการเรียกรวมกิลด์";
+		next;
+
+		menu "^ff0000•^000000 แน่นอน",-,"^ff0000•^000000 ไม่ละ",cancel;
+
+		atcommand "@guildrecall "+ getcharid(2);
+		close;
+
+	}else{
+		mes .@heading$;
+		mes "คุณไม่ใช่หัวหน้ากิลด์";
+	}
+close;
+
+// ====================================================================================
+
+case8:
+	callfunc "AIRental";
+	close;
+
+// ====================================================================================
+
+recall_party:
+	mes .@heading$;
+		mes "ยินดีให้บริการค่ะ";
+
+	if (getpartyleader(getcharid(1),2) != getcharid(0)) {
+		mes "คุณไม่สามารถใช้งานได้";
+		close;
+	} else {
+		switch(select("^ff0000•^000000 เรียกรวมปาร์ตี้","^ff0000•^000000 ยกเลิก")) {
+
+			case 1:
+				atcommand "@partyrecall " + getcharid(1);
+				break;
+
+			case 2:
+		mes "ยินดีให้บริการค่ะ";
+				break;
+
+		}
+	}
+	close;
+
+// ====================================================================================
+
+cancel:
+	mes .@heading$;
+		mes "ยินดีให้บริการค่ะ";
+	close;
+
+}

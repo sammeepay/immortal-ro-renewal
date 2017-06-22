@@ -1,0 +1,234 @@
+-	script	SupportPlayer::SPGM	-1,{
+//= Database 
+if ($@ActiveSv == 0) end;
+//==============================================
+mes "[ ^0000FFSupportPlayer^000000 ]";
+mes "สวัสดีท่าน ^800000"+strcharinfo(0)+"^000000";
+mes "มีอะไรให้ข้าช่วยหรือป่าว..?";
+next;
+menu "- ส่งตัวละครกลับจุดเซฟ",Lmoveto_save,"- เปลี่ยนรหัสผ่าน",Lchange_pass,"- รีเซตทรงผมสีต่างๆ",Lreset_stylist,"- เปลี่ยน E-Mail",L_EMAIL,"- ออก",Lend;
+
+Lmoveto_save:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "อธิบาย : ระบบนี้เมือไว้เพือส่งตัว ละครที่ติดบั๊กกลับจุดเซฟ";
+next;
+menu "- ยืนยันการใช้งาน",Lmoveto_save_st,"- ออก",Lend;
+
+Lmoveto_save_st:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ ID ของตัวละครที่ติดบั๊ก";
+input @select_id$;
+next;
+query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+@select_id$+"'",@accyou;
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ชื่อตัวละครที่จะส่งกลับจุดเซฟ";
+mes "[หมายเหตุ]";
+mes " - จะต้องใส่ชื่อให้ตรงกับตัวละคร";
+mes " - ตัวละครนั้นจะต้องไม่ Online";
+input @select_name$;
+next;
+query_sql "SELECT `name`,`account_id` FROM `char` WHERE `name`='"+@select_name$+"'",@name$,@accid;
+
+if (@name$ != @select_name$){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ไม่มีชื่อนี้ในระบบ";
+next;
+goto Lend;
+}
+
+if (@accid != @accyou){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ตัวละคร "+@select_name$+"";
+mes "ไม่สามารถสั่งการได้";
+mes "เพราะไม่ได้อยู่ใน";
+mes "ID : "+@select_id$+"";
+next;
+goto Lend;
+}
+
+query_sql "SELECT `online` FROM `char` WHERE `name`='"+@select_name$+"'",@stat;
+
+if (@stat != 0){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ตัวละครนี้ Online อยู่";
+next;
+goto Lend;
+}
+
+query_sql "SELECT `save_map`,`save_x`,`save_y` FROM `char` WHERE `name`='"+@select_name$+"'",@mapname_save$,@mapx_save,@mapy_save;
+
+query_sql "UPDATE `char` SET `last_map`='"+@mapname_save$+"',`last_x`='"+@mapx_save+"',`last_y`='"+@mapy_save+"' WHERE `name`='"+@select_name$+"'";
+
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "[รายการดำเนินงาน]";
+mes "ID : "+@select_id$+"";
+mes "ชื่อ : "+@select_name$+" ";
+mes "ส่งกลับมาที่ : "+@mapname_save$+"";
+mes ".... เสร็จสิ้นการทำงาน ....";
+next;
+goto Lend;
+
+//=========================================================
+
+Lchange_pass:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "อธิบาย : ระบบนี้อำนวยความสะดวกในการ เปลี่ยนพาส";
+next;
+menu "- ยืนยันการใช้งาน",Lchange_pass_st,"- ออก",Lend;
+
+Lchange_pass_st:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ ID ของท่าน...";
+input @select_id$;
+next;
+query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+@select_id$+"'",@accyou;
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ Password เดิม..";
+input @select_pass_old$;
+next;
+query_sql "SELECT `user_pass` FROM `login` WHERE `account_id`='"+@accyou+"'",@passyou$;
+
+if (@passyou$ != @select_pass_old$) {
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000คุณใส่ Password เดิมไม่ถูกต้อง";
+next;
+goto Lend;
+}
+
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ Password ใหม่..";
+mes "หมายเหตุ : 4 ตัวขึ้นไป";
+input @select_pass_new1$;
+next;
+if (getstrlen(@select_pass_new1$) < 4) {
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000คุณใส่ Password 4 ตัวขึ้นไป";
+next;
+goto Lend;
+}
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ Password อีกครั้ง";
+mes "หมายเหตุ : 4 ตัวขึ้นไป";
+input @select_pass_new2$;
+next;
+
+if (@select_pass_new1$ != @select_pass_new2$) {
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000คุณใส่ Password ใหม่ไม่เหมือนกัน";
+next;
+goto Lend;
+}
+
+query_sql "UPDATE `login` SET `user_pass`='"+@select_pass_new1$+"' WHERE `account_id`='"+@accyou+"'";
+
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "[รายการดำเนินงาน]";
+mes "ID : "+@select_id$+"";
+mes "Pass เดิม : "+@select_pass_old$+" ";
+mes "Pass ใหม่ : "+@select_pass_new1$+" ";
+mes ".... เสร็จสิ้นการทำงาน ....";
+next;
+goto Lend;
+
+
+//=========================================================
+
+Lreset_stylist:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "อธิบาย : ระบบนี้เมือไว้เพือแก้บั๊กสีเครื่องแต่งตัวรวมถึงทรงผม";
+next;
+menu "- ยืนยันการใช้งาน",Lreset_stylist_st,"- ออก",Lend;
+
+Lreset_stylist_st:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ ID ของตัวละครที่ต้องการ";
+input @select_id$;
+next;
+query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+@select_id$+"'",@accyou;
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ชื่อตัวละครที่จะดำเนินงาน";
+mes "[หมายเหตุ]";
+mes " - จะต้องใส่ชื่อให้ตรงกับตัวละคร";
+mes " - ตัวละครนั้นจะต้องไม่ Online";
+input @select_name$;
+next;
+
+if (@name$ != @select_name$){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ไม่มีชื่อนี้ในระบบ";
+next;
+goto Lend;
+}
+
+query_sql "SELECT `name`,`account_id` FROM `char` WHERE `name`='"+@select_name$+"'",@name$,@accid;
+
+if (@accid != @accyou){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ตัวละคร "+@select_name$+"";
+mes "ไม่สามารถสั่งการได้";
+mes "เพราะไม่ได้อยู่ใน";
+mes "ID : "+@select_id$+"";
+next;
+goto Lend;
+}
+
+query_sql "SELECT `online` FROM `char` WHERE `name`='"+@select_name$+"'",@stat;
+
+if (@stat != 0){
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "^FF0000ตัวละครนี้ Online อยู่";
+next;
+goto Lend;
+}
+
+query_sql "UPDATE `char` SET `hair`='0',`hair_color`='0',`clothes_color`='0' WHERE `name`='"+@select_name$+"'";
+
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "[รายการดำเนินงาน]";
+mes "ID : "+@select_id$+"";
+mes "ชื่อ : "+@select_name$+" ";
+mes "ดำเนินการ รีเซตทรงผมสีต่างๆ";
+mes ".... เสร็จสิ้นการทำงาน ....";
+next;
+goto Lend;
+
+L_newe:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "คุณต้องการเปลี่ยน E-mail ใหม่หรือไม่...";
+menu "- ต้องการ",L_EMAIL,"- ไม่ละ",Lend;
+
+L_EMAIL:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "กรุณาใส่ E-mail เก่าค่ะ.";
+input .@oldemail$;
+query_sql "SELECT (SELECT `email` FROM `login` WHERE `account_id` = "+getcharid(3)+") = '"+escape_sql(.@oldemail$)+"'", .@emailcheck;
+if(!.@emailcheck){
+mes "Email ไม่ถูกต้องค่ะ.";
+next;
+goto L_newe;
+}
+mes "กรุณาใส่ E-mail ที่จะเปลี่ยน.";
+input .@newemail1$;
+if(.@oldemail$ == .@newemail1$){
+mes "E-mail ซ้ำอันเก่าค่ะ!";
+next;
+goto L_newe;
+}
+mes "กรุณาใส่ E-mail อีกครั้งค่ะ.";
+input .@newemail2$;
+if(.@newemail1$ != .@newemail2$){
+mes "E-mail ไม่ตรงกันค่ะ.";
+next;
+goto L_newe;
+}
+query_sql "UPDATE `login` SET `email` = '"+escape_sql(.@newemail1$)+"' WHERE `account_id` = "+getcharid(3);
+logmes "Email address changed from "+.@oldemail$+" to "+.@newemail1$+".";
+mes "E-mail เปลี่ยนเรียบร้อยค่ะ.";
+next;
+goto Lend;
+
+Lend:
+mes "[ ^000080SupportPlayer^000000 ]";
+mes "ขอให้สนุกกับการเล่นเกมนะครับ";
+close;
+}

@@ -1,0 +1,36 @@
+-	script	Heal-AB::exheal	60,{	
+OnTouch:
+if (getbrokenid(1) > 0) {
+atcommand "@repairall";
+}
+	specialeffect2 622; 
+	specialeffect2 402; 
+	specialeffect 589;
+	sc_end SC_Poison;
+	sc_end SC_Freeze;
+	sc_end SC_Sleep;
+	sc_end SC_Stan;
+	sc_end SC_Stone;
+	sc_end SC_Silence;
+	sc_end SC_Blind;
+	sc_end SC_Bleeding;
+	sc_end SC_Confusion;
+	sc_end SC_Curse;
+	sc_end SC_Hallucination;
+	sc_end SC_ORCISH;
+
+	sc_start SC_EXPBOOST,900000,100;
+	sc_start SC_BLESSING,900000,10;
+	sc_start SC_INCREASEAGI,900000,10;
+	sc_start SC_GLORIA,900000,5;
+	sc_start SC_STRFood,900000,1;
+	sc_start SC_AGIFood,900000,1;
+	sc_start SC_VITFood,900000,1;
+	sc_start SC_DEXFood,900000,1;
+	sc_start SC_INTFood,900000,1;
+	sc_start SC_LUKFood,900000,1;
+
+	percentheal 100,100;
+	close;
+	end;
+}

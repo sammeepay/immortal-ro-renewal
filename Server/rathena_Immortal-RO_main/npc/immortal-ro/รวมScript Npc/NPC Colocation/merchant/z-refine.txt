@@ -1,0 +1,11 @@
+c5,121,78,4	script	ช่างรวม Elu Ori	609,{
+	//set @name$,"Matestein";
+	//callfunc "orimain";
+	callfunc "orimain","Matestein";
+	end;
+OnInit:
+waitingroom "::ช่างรวม Elu Ori::",0;
+End;
+}
+
+homes10,64,35,0	warp	11exittomorrefine	1,1,god_town,115,111

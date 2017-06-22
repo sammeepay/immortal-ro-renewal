@@ -1,0 +1,170 @@
+prontera,130,200,4	script	ซ่อมไอเทม#1::Repairter	826,{
+	mes "[NPC Repair]";
+	mes "ยินดีต้อนรับสู่บริการ ซ่อมอุปกรณ์";
+	mes "ข้าคือนักซ่อมอุปกรณ์มือ 1 เชียวนะ";
+next;
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+	mes "ข้าคือช่างซ่อมอาวุธ";
+	mes "นำอาวุธที่เสียหายมาให้ข้าซ่อมได้";
+	mes "จะซ่อมอันใหนบอกมาได้เลย";
+	mes "ซ่อมได้ ก็จะซ่อมให้";
+set @broken1,getbrokenid(1);
+set @broken2,getbrokenid(2);
+set @broken3,getbrokenid(3);
+set @broken4,getbrokenid(4);
+set @broken5,getbrokenid(5);
+set @broken6,getbrokenid(6);
+set @broken7,getbrokenid(7);
+set @broken8,getbrokenid(8);
+set @broken9,getbrokenid(9);
+set @broken10,getbrokenid(10);
+next;
+if(@broken1==NULL) goto L_CANCEL_3;
+menu getitemname(@broken1),REPAIR1,getitemname(@broken2),REPAIR2,getitemname(@broken3),REPAIR3,getitemname(@broken4),REPAIR4,getitemname(@broken5),REPAIR5,
+getitemname(@broken6),REPAIR6,getitemname(@broken7),REPAIR7,getitemname(@broken8),REPAIR8,getitemname(@broken9),REPAIR9,
+getitemname(@broken10),REPAIR10;
+
+REPAIR1:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+	mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+	mes "เจ้าต้องเสียค่าซ่อม ^000FF0100,000 z^000000";
+	mes "ต้องการซ่อมหรือไม่?";
+next;
+	menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 100000) goto L_CANCEL_1;
+set Zeny,Zeny-100000;
+repair(1);
+goto L_CLOSE;
+REPAIR2:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม ^0000FF" + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(2);
+goto L_CLOSE;
+REPAIR3:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+	mes "เจ้าต้องการซ่อม ^0000FF" + getitemname(@broken1) + ".^000000";
+	mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+	mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(3);
+goto L_CLOSE;
+REPAIR4:
+mes "[Smith Repairman]";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(4);
+goto L_CLOSE;
+REPAIR5:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(5);
+goto L_CLOSE;
+REPAIR6:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(6);
+goto L_CLOSE;
+REPAIR7:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม ^0000FF5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(7);
+goto L_CLOSE;
+REPAIR8:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม^0000FF 5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(8);
+goto L_CLOSE;
+REPAIR9:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม ^0000FF5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(9);
+goto L_CLOSE;
+REPAIR10:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "เจ้าต้องการซ่อม^0000FF " + getitemname(@broken1) + ".^000000";
+mes "เจ้าต้องเสียค่าซ่อม ^0000FF5,000 z^000000";
+mes "ต้องการซ่อมหรือไม่?";
+next;
+menu "ซ่อมเลย",-,"ไม่อ่ะ",L_CANCEL_2;
+if (Zeny < 5000) goto L_CANCEL_1;
+set Zeny,Zeny-5000;
+repair(10);
+goto L_CLOSE;
+
+L_CANCEL_1:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "^FF0000ตรวจสอบเงินด้วยมีถึง 5,000ไหม^000000";
+goto L_CLOSE;
+L_CANCEL_2:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+mes "^FF0000มาหาข้าได้..เมื่อเจ้าต้องการ^000000";
+goto L_CLOSE;
+L_CANCEL_3:
+	mes "[NPC Repair]";
+	mes "^CCFFCC.^000000";
+	mes "^FF0000ดูเหมือนเจ้าไม่มีอาวุธเสียหายเลยนะ...^000000";
+goto L_CLOSE;
+L_CLOSE:
+close;
+OnInit: 
+waitingroom "[บริการซ่อมไอเทม]", 0; 
+end; 
+}
+
+//xmas,116,157,4	duplicate(Repairter)	ซ่อมItem#2	826

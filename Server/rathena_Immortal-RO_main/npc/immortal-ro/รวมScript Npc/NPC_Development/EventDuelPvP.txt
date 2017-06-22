@@ -1,0 +1,2 @@
+morocc.gat,151,153,4	duplicate(ATDS)	Aha Team Defend	1655
+morocc.gat,151,150,4	duplicate(DS)	Devil Square	1653

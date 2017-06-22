@@ -1,0 +1,71 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	healabmain2	-1,{
+	if (gettimetick(2) < already)
+	{
+		end;
+	}
+	else
+	{
+		progressbar "FF0000",1;
+		if( agitcheck() ){ 
+			sc_start SC_CP_WEAPON,1200000,5;
+			sc_start SC_CP_SHIELD,1200000,5;
+			sc_start SC_CP_ARMOR,1200000,5;
+			sc_start SC_CP_HELM,1200000,5;
+		}
+
+		//เช็คไอเทมที่เสียหายถ้ามีซ่อมให้ทันที
+		if (getbrokenid(1) > 0) {
+			atcommand "@repairall";
+		}
+
+		// บัฟบากิและเซอวิส
+		sc_start4 SC_SERVICE4U,60000,10,40,40,0;
+		sc_start4 SC_POEMBRAGI,60000,10,80,100,0;
+
+		// บัฟสกิลต่างๆ
+		specialeffect2 EF_INCAGILITY;
+		specialeffect2 EF_BLESSING;
+		//specialeffect2 410;
+		//specialeffect2 14; 
+		//specialeffect2 543;
+		percentheal 100,100;
+		sc_start SC_MAGNIFICAT,1200000,5;
+		sc_start SC_GLORIA,1200000,5;
+		sc_start SC_BLESSING,1200000,10;
+		sc_start SC_INCREASEAGI,1200000,10;
+
+		// บัฟอาหาร all+3
+		sc_start SC_STRFood, 1200000, 5;
+		sc_start SC_AGIFood, 1200000, 5;
+		sc_start SC_VITFood, 1200000, 5;
+		sc_start SC_INTFood, 1200000, 5;
+		sc_start SC_DEXFood, 1200000, 5;
+		sc_start SC_LUKFood, 1200000, 5;
+		sc_start SC_EXPBOOST,1200000,25;
+		sc_start SC_ITEMBOOST,1200000,25;
+
+	// แก้สถานะต่างๆ
+		sc_end SC_Poison;
+		sc_end SC_Freeze;
+		sc_end SC_Sleep;
+		sc_end SC_Stan;
+		sc_end SC_Stun;
+		sc_end SC_Stone;
+		sc_end SC_Silence;
+		sc_end SC_Blind;
+		sc_end SC_Bleeding;
+		sc_end SC_Confusion;
+		sc_end SC_Curse;
+		sc_end SC_Hallucination;
+		sc_end SC_ORCISH;	
+		percentheal 100,100;
+		dispbottom "คุณได้อยู่ในสถานะ ( A Poem of Bragi & Service for You ) เป็นเวลา 1 นาที";
+		set already,gettimetick(2)+2;
+		end;
+	}
+}

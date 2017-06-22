@@ -1,0 +1,15 @@
+function	script	F_Buyingstore	{       
+	set .@item_id, 7227;  //ไอเท็มที่ใช้ในการตั้งร้าน
+
+	set .@name$, "[  ^FF0000Buying Store Manager^000000 ]";
+	mes .@name$;
+	mes "สวัสดีค่ะ ~";
+	mes "นี่คือระบบจัดการการตั้งร้าน";
+	mes "กรุณาเลือกประเภท";
+	mes "การตั้งร้านที่ต้องการ";
+	next;
+	set BUYINGSTORE_MODE,select("ใช้ ^FF0000Zeny^000000 เป็นเงื่อนไขการรับซื้อ","ใช้ ^0000FF" + getitemname(.@item_id) + "^000000 เป็นเงื่อนไขการรับซื้อ");
+	set BUYINGSTORE_ITEM_CHANGE, (BUYINGSTORE_MODE?.@item_id:0);
+	close2;
+	buyingstore 2;
+}

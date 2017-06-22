@@ -1,0 +1,67 @@
+-	script	TreasureEvent	-1,{
+end;
+OnClock0100:
+OnClock0200:
+OnClock0300:
+OnClock0400:
+OnClock0500:
+OnClock0600:
+OnClock0700:
+OnClock0800:
+OnClock0900:
+OnClock1000:
+OnClock1100:
+OnClock1200:
+OnClock1300:
+OnClock1400:
+OnClock1500:
+OnClock1600:
+OnClock1700:
+OnClock1800:
+OnClock1900:
+OnClock2000:
+OnClock2100:
+OnClock2200:
+OnClock2300:
+OnClock0000:
+callsub trevstart;
+end;
+
+trevstart:
+if ($@ActiveSv == 0) end;
+set $@trevent,rand(20,25);
+set $@ftrevent,0;
+killmonster "morocc","TreasureEvent::OnTreasureDie";
+announce "Treasure Event : กล่องสมบัติ Treasure Box ปรากฏตัว ณ เมือง Morocc จำนวน [ "+$@trevent+" ] กล่อง มีเวลาในการล่าสมบัติ 5 นาที ",0,0x00FF00;
+monster "morocc",0,0,"Treasure Box",1324,$@trevent,"TreasureEvent::OnTreasureDie";
+initnpctimer;
+end;
+
+OnTreasureDie:
+set $@ftrevent,$@ftrevent+1;
+if($@ftrevent>=$@trevent){
+announce "ผู้เล่น [ " + strcharinfo(0) + " ] ได้ค้นพบ Treasure Box กล่องที่ "+$@ftrevent+" / "+$@trevent+" ",0,0xFF5555;
+callsub trevend;
+end;
+}
+else if($@ftrevent!=$@trevent){
+announce "ผู้เล่น [ " + strcharinfo(0) + " ] ได้ค้นพบ Treasure Box กล่องที่ "+$@ftrevent+" / "+$@trevent+" ",0,0xFF5555;
+getitem 7227,1; }
+end;
+
+OnTimer300000:
+trevend:
+if($@ftrevent!=$@trevent)
+set $@ftrevent,0;
+announce "Treasure Event : หมดเวลาในการล่าสมบัติ Treasure Box ทุกกล่องถูกทำลาย",0,0x00FF00;
+killmonster "morocc","TreasureEvent::OnTreasureDie";
+stopnpctimer;
+setnpctimer 0;
+end;
+
+OnInit:
+stopnpctimer;
+setnpctimer 0;
+callsub trevend;
+end;
+}

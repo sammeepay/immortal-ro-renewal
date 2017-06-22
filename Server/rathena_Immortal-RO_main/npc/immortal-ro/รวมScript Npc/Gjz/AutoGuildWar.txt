@@ -1,0 +1,27 @@
+-	script	AgitEventsGW	-1,{
+end;
+OnClock1900:
+Announce "GuildWar : ขณะนี้ War Of Emperium ได้เริ่มต้นขึ้นแล้ว",16;
+Agitstart;
+end;
+
+OnClock1957:
+Announce "GuildWar : ขณะนี้ War Of Emperium เหลือเวลาอีก 3 นาที",16;
+Agitstart;
+end;
+
+OnClock1958:
+Announce "GuildWar : ขณะนี้ War Of Emperium เหลือเวลาอีก 2 นาที",16;
+Agitstart;
+end;
+
+OnClock1959:
+Announce "GuildWar : ขณะนี้  War Of Emperium เหลือเวลาอีก 1 นาที",16;
+Agitstart;
+end;
+
+OnClock2000:
+Announce "GuildWar : ขณะนี้ War Of Emperium ได้จบลงแล้ว",16;
+Agitend;
+end;
+}

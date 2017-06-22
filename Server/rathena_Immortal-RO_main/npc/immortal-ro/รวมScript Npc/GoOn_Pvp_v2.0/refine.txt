@@ -1,0 +1,120 @@
+izlude.gat,119,131,4 script ช่างตีดาบ 63,{ 
+mes "จาให้ตีดาบให้มั้ยคุณ"; 
+mes "ตีเลยนะ"; 
+next; 
+menu "เอาไปเลย",-,"ยังไม่มีงะไว้ก่อน",no; 
+//if( countitem(985) < 50 ) goto no1; 
+mes "จะตีให้แล้วนะ ติด 100% แน่นอน"; 
+next; 
+menu getequipname(1),L_MENU_1,getequipname(2),L_MENU_2,getequipname(3),L_MENU_3,getequipname(4),L_MENU_4,getequipname(5),L_MENU_5,getequipname(6),L_MENU_6,getequipname(7),L_MENU_7,getequipname(8),L_MENU_8,getequipname(9),L_MENU_9,getequipname(10),L_MENU_10;
+	L_MENU_1:
+		set @part,1;
+		if (getequipisequiped(1)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "ท่านต้องการให้ข้าหลอมมันสมองให้ท่านหรือไง?";
+			goto L_CLOSE;
+	L_MENU_2:
+		set @part,2;
+		if (getequipisequiped(2)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "ข้าจะหลอมร่างกายของท่านด้วยความร้อน";
+			goto L_CLOSE;
+	L_MENU_3:
+		set @part,3;
+		if (getequipisequiped(3)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "ข้าจะทำให้มือซ้ายของท่านไร้เทียมทานไม่ได้...";
+			goto L_CLOSE;
+	L_MENU_4:
+		set @part,4;
+		if (getequipisequiped(4)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "ข้าจะทำให้มือขวาของท่านไร้เทียมทานไม่ได้";
+			goto L_CLOSE;
+	L_MENU_5:
+		set @part,5;
+		if (getequipisequiped(5)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "ดูท่านสิ ท่านไม่ได้สวมใส่เสื้อผ้าเลยสักชิ้น";
+			goto L_CLOSE;
+	L_MENU_6:
+		set @part,6;
+		if (getequipisequiped(6)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "โอยยย..เท้าของท่านส่งกลิ่นเหม็นมาก";
+			goto L_CLOSE;
+	L_MENU_7:
+		set @part,7;
+		if (getequipisequiped(7)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "เครื่องประดับอะไรของท่าน? อันไหนล่ะ?";
+			goto L_CLOSE;
+	L_MENU_8:
+		set @part,8;
+		if (getequipisequiped(8)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "เครื่องประดับอะไรของท่าน? อันไหนล่ะ?";
+			goto L_CLOSE;
+	L_MENU_9:
+		set @part,9;
+		if (getequipisequiped(9)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "ท่านต้องการให้ข้าทำอะไร? ส่วนไหนล่ะ?";
+			goto L_CLOSE;
+	L_MENU_10:
+		set @part,10;
+		if (getequipisequiped(10)) goto L_START_1;
+			mes "[Fredrik Hermanthorn]";
+			mes "ท่านต้องการให้ข้าทำอะไร? ส่วนไหนล่ะ?";
+			goto L_CLOSE;
+
+
+L_START_1:
+
+		if (getequipisenableref(@part)) goto L_START_2;
+		mes "[Fredrik Hermanthorn]";
+		mes "ขอโทษเถอะ แต่ข้าว่าของชิ้นนี้มันตีไม่ได้";
+		goto L_CLOSE;
+
+L_START_2:
+	if (getequipisidentify(@part)) goto L_START_3;
+		mes "[Fredrik Hermanthorn]";
+		mes "ท่านไม่สามารถตีอุปกรณ์ชิ้นนี้ได้ เพราะมันยังไม่ได้ถูกตรวจสอบ..";
+		goto L_CLOSE;
+L_START_3:
+	if (getequiprefinerycnt(@part) < 10) goto L_REFINE_0;
+		mes "[Fredrik Hermanthorn]";
+		mes "ข้าว่าอุปกรณ์ชิ้นนี้ไม่สามารถนำมาตีเพิ่มไปได้มากกว่านี้แล้ว..";
+		goto L_CLOSE;
+
+L_REFINE_0:
+if (getequiprefinerycnt(@part) > 0) goto R_REFINE_0;
+
+successrefitem  @part; 
+successrefitem  @part; 
+successrefitem  @part; 
+successrefitem  @part; 
+successrefitem  @part; 
+successrefitem  @part; 
+successrefitem  @part; 
+successrefitem  @part; 
+successrefitem  @part; 
+successrefitem  @part; 
+goto ready; 
+
+ready: 
+mes "ตีเสร็จแล้วขอบคุณที่ใช้บริการ"; 
+close; 
+
+R_REFINE_0:
+mes "มลึงจะทำบักเหรอ แสด"; 
+close; 
+
+Lnoequip: 
+mes " ช่างตีดาบ "; 
+mes "เฮ้ย ไม่ใส่ไรเลยหรอไงเนี่ยะ"; 
+close;
+
+L_CLOSE:
+	close;
+} 

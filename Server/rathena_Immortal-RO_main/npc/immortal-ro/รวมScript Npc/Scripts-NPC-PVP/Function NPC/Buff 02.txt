@@ -1,0 +1,79 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+-	script	healabmain2	-1,{
+
+//------------------------------------------------------- Config Zone--------------------------------------------------------------------
+	callfunc "healab2"		
+	,30			// เวลาแสดงผลของบัฟ(นาที) ถ้า ใส่ 0 = ปิดการทำงาน จะ debuff ให้เท่านั้น
+	,3			//all status ที่เพิ่ม
+	,1;			// ซ่อมอาวุธและเครื่องป้องกัน 1=ซ่อม, 0= ปิดการใช้งาน
+	end;					
+//----------------------------------------------------------------------------------------------------------------------------------------------
+}
+
+function	script	healab2	{
+//	specialeffect2 42;
+//	specialeffect2 37;
+//	specialeffect2 313;
+//	specialeffect2 150;
+
+	sc_end SC_Poison;
+	sc_end SC_Freeze;
+	sc_end SC_Sleep;
+	sc_end SC_Stan;
+	sc_end SC_Stun;
+	sc_end SC_Stone;
+	sc_end SC_Silence;
+	sc_end SC_Blind;
+	sc_end SC_Bleeding;
+	sc_end SC_Confusion;
+	sc_end SC_Curse;
+	sc_end SC_Hallucination;
+	sc_end SC_ORCISH;		//หัว orc
+
+	if(getarg(0))
+	{
+		set .@tmptime,getarg(0)*60000; 	//60000=1นาที 
+		if(getarg(1))
+		 {
+			sc_start SC_STRFood, .@tmptime, getarg(1);
+			sc_start SC_AGIFood, .@tmptime, getarg(1);
+			sc_start SC_VITFood, .@tmptime, getarg(1);
+			sc_start SC_INTFood, .@tmptime, getarg(1);
+			sc_start SC_DEXFood, .@tmptime, getarg(1);
+			sc_start SC_LUKFood, .@tmptime, getarg(1);
+		}
+		sc_start4 SC_POEMBRAGI,20000,10,70,300,10;
+		sc_start4 SC_SERVICE4U,20000,10,50,50,10;
+		sc_start SC_BLESSING,.@tmptime,10;
+		sc_start SC_INCREASEAGI,.@tmptime,10;
+		sc_start SC_MAGNIFICAT,.@tmptime,5;
+		sc_start SC_GLORIA,.@tmptime,5;
+		sc_start SC_IMPOSITIO,.@tmptime,5;
+
+		sc_start SC_CP_WEAPON,.@tmptime,5;
+		sc_start SC_CP_SHIELD,.@tmptime,5;
+		sc_start SC_CP_ARMOR,.@tmptime,5;
+		sc_start SC_CP_HELM,.@tmptime,5;
+
+		sc_start SC_EXPBOOST,.@tmptime,50;			//50 = +exp*50%(*1.5) ,  100 = +exp*100%(*2) 
+		sc_start SC_ITEMBOOST,.@tmptime,50;		//50 = +dorp_rate*50%(*1.5) ,  100 = +dorp_rate*100%(*2) 
+	}
+
+	if( getbrokenid(1) !=0 && getarg(2) ) {
+		atcommand "@repairall" ;
+	}
+	percentheal 100,100;
+	dispbottom "Buff : คุณได้อยู่ในสถานะ บากิ และ SP เป็นเวลา 20 วินาที";
+	return;
+}
+
+

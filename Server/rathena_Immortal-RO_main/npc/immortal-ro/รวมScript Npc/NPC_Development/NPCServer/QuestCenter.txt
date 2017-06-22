@@ -1,0 +1,277 @@
+//===================================================================
+// NPC : Quest Center
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,168,124,4	script	Quest NPC	994,{
+mes"^FF0000[ Quest NPC ]^000000";
+mes"Welcome to Quest Center";
+mes"โปรดเลือก Quest ที่ท่านต้องการ";
+mes"กรุณาเลือกทำอีกละเควสค่ะ";
+next;
+menu 
+"- Romantic White Flower",Quest1,
+"- 3rd Anniversary Celebration Ring",Quest2,
+"Exit",cancel;
+
+
+
+Quest1:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"Welcome to";
+mes"Quest : Romantic White Flower";
+mes"______________________";
+mes "โปรดเลือกรายการ";
+mes "จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"- อ่านคุณสมบัติไอเท็มและทำเควส",Detail1Q1,
+"- ไอเทมที่ต้องใช้",Detail2Q1,
+"- ผสมไอเทมและรับของจากเควส",MixQ1,
+"Exit",cancel;
+
+
+
+Detail1Q1:
+mes"^0000FFคุณสมบัติพิเศษ^000000";
+mes"All Status + 3";
+mes"ป้องกันทุกธาตุ 10 % ยกเว้น";
+mes"ธาตุธรรมดา";
+mes"ป้องกันกึ่งคนกึ่งมนุษย์ 10 %";
+mes"และไม่ติดสถานะทุกอย่าง";
+next;
+menu 
+"- ทำเควส",AcceptQ1,
+"- ไม่ทำเควส",cancel,
+"Exit",cancel;
+
+
+
+AcceptQ1:
+if(Q1Start == 1) goto Process;
+if(Q2Start == 1) goto EachQuest;
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ท่านได้รับเควสเรียบร้อยแล้วค่ะ";
+set Q1Start,1;
+close;
+
+
+
+Detail2Q1:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ท่านต้องใช้ไอเทมดังต่อไปนี้";
+mes"1.) Symbol of a Brave Warrior 1 ea.";
+mes"หาได้จากกิจกรรม กิวล์วอร์";
+mes"ท่านต้องได้บ้านและไปรับของรางวัล";
+mes"จากนั้นจะทำการสุ่มของรางวัล";
+mes"ท่านมีโอกาศได้รับเพียง";
+mes"1ใน3ต่อหนึ่งครั้งเท่านั้น";
+mes"(ท่านจะได้รับของจากการได้บ้านตามปกติ)";
+mes"2.) Unknown Liquid Bottle 1 ea.";
+mes"หาได้จากกิจกรรม Poring Lucky";
+mes"ให้ตีมอนเตอร์ที่มีชื่อว่า Poring ท่านมีโอกาศ";
+mes"ได้รับไอเทมเพียง 1ใน3ต่อหนึ่งครั้งเท่านั้น";
+mes"3.) Earth Resist Potion 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"4.) Cold Resist Potion 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"5.) Thunder Resist Potion 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"6.) Fire Resist Potion 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"7.) TCG Card 5 ea.";
+mes"หาได้จากกิจกรรมทั่วๆไปในเซิฟเวอร์";
+close;
+
+
+
+MixQ1:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"กรุณารอสักครู่เรากำลังตรวจสอบ";
+mes"ไอเทมที่ท่านมี";
+next;
+if(countitem(7484)<1) goto uncomplete;
+if(countitem(7103)<1) goto uncomplete;
+if(countitem(12118)<3) goto uncomplete;
+if(countitem(12119)<3) goto uncomplete;
+if(countitem(12120)<3) goto uncomplete;
+if(countitem(12121)<3) goto uncomplete;
+if(countitem(7227)<5) goto uncomplete;
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ยินดีด้วยท่านมีไอเทมครบ";
+mes"ตามที่ข้าต้องการ";
+next;
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ท่านได้รับไอเทมที่ต้องการ";
+mes"เรียบร้อยแล้ว";
+mes"แล้วพบกันใหม่";
+delitem 7484,1;
+delitem 7103,1;
+delitem 12118,3;
+delitem 12119,3;
+delitem 12120,3;
+delitem 12121,3;
+delitem 7227,5;
+getitem 5206,1;
+set Q1Start,0;
+close;
+
+
+
+
+Quest2:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"Welcome to";
+mes"Quest : 3rd Anniversary Celebration Ring";
+mes"______________________";
+mes "โปรดเลือกรายการ";
+mes "จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"- อ่านคุณสมบัติไอเท็มและทำเควส",Detail1Q2,
+"- ไอเทมที่ต้องใช้",Detail2Q2,
+"- ผสมไอเทมและรับของจากเควส",MixQ2,
+"Exit",cancel;
+
+
+
+Detail1Q2:
+mes"^0000FFคุณสมบัติพิเศษ^000000";
+mes"All Status + 3";
+mes"Atk + 10 %";
+mes"Matk + 10 %";
+mes"มี Skill Endure ตลอดเวลา";
+mes"^FF0000ถ้าใส่คู่กับ Romantic White Flower^000000";
+mes"HP + 10 %";
+mes"SP + 5 %";
+mes"มีโอกาสร่าย Lexaeterna";
+mes"มองเห็นพวกมุดดิน";
+mes"มีโอกาสสะท้อนเวทย์มนต์ 10 %";
+mes"สะท้อนการโจมตีด้วยอาวุธ 10 %";
+mes"ลดดีเลย์ในการใช้สกิว 10 %";
+mes"เดินเร็วขึ้น 30 %";
+mes"ร่ายเวทย์โดยไม่ถูกขัดขวาง";
+next;
+menu 
+"- ทำเควส",AcceptQ2,
+"- ไม่ทำเควส",cancel,
+"Exit",cancel;
+
+
+
+AcceptQ2:
+if(Q2Start == 1) goto Process;
+if(Q1Start == 1) goto EachQuest;
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ท่านได้รับเควสเรียบร้อยแล้วค่ะ";
+set Q2Start,1;
+close;
+
+
+
+Detail2Q2:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ท่านต้องใช้ไอเทมดังต่อไปนี้";
+mes"1.) Dark Crystal Fragment 1 ea.";
+mes"หาได้จากกิจกรรม กิวล์วอร์";
+mes"ท่านต้องได้บ้านและไปรับของรางวัล";
+mes"จากนั้นจะทำการสุ่มของรางวัล";
+mes"ท่านมีโอกาศได้รับเพียง";
+mes"1ใน3ต่อหนึ่งครั้งเท่านั้น";
+mes"(ท่านจะได้รับของจากการได้บ้านตามปกติ)";
+mes"2.) Unknown Liquid Bottle 1 ea.";
+mes"หาได้จากกิจกรรม Poring Lucky";
+mes"ให้ตีมอนเตอร์ที่มีชื่อว่า Poring ท่านมีโอกาศ";
+mes"ได้รับไอเทมเพียง 1ใน3ต่อหนึ่งครั้งเท่านั้น";
+mes"3.) Steamed Tongue 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"4.) Dragon Breath Cocktail 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"5.) Immortal Stew 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"6.) Steamed Desert Scorpions 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"7.) Hwergelmir's Tonic 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"8.) Cooked Nine Tail 3 ea.";
+mes"หาได้จาก Supplements NPC";
+mes"9.) TCG Card 5 ea.";
+mes"หาได้จากกิจกรรมทั่วๆไปในเซิฟเวอร์";
+close;
+
+
+
+MixQ2:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"กรุณารอสักครู่เรากำลังตรวจสอบ";
+mes"ไอเทมที่ท่านมี";
+next;
+if(countitem(7315)<1) goto uncomplete;
+if(countitem(7103)<1) goto uncomplete;
+if(countitem(12075)<3) goto uncomplete;
+if(countitem(12080)<3) goto uncomplete;
+if(countitem(12085)<3) goto uncomplete;
+if(countitem(12090)<3) goto uncomplete;
+if(countitem(12095)<3) goto uncomplete;
+if(countitem(12100)<3) goto uncomplete;
+if(countitem(7227)<5) goto uncomplete;
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ยินดีด้วยท่านมีไอเทมครบ";
+mes"ตามที่ข้าต้องการ";
+next;
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ท่านได้รับไอเทมที่ต้องการ";
+mes"เรียบร้อยแล้ว";
+mes"แล้วพบกันใหม่";
+delitem 7315,1;
+delitem 7103,1;
+delitem 12075,3;
+delitem 12080,3;
+delitem 12085,3;
+delitem 12090,3;
+delitem 12095,3;
+delitem 12100,3;
+delitem 7227,5;
+getitem 2672,1;
+set Q2Start,0;
+close;
+
+
+
+uncomplete:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"กรุณาตรวจสอบไอเทมที่ท่านมีอีกครั้ง";
+mes"ถ้าท่านมีครบแล้วกลับมาหาเราใหม่";
+mes"อีกครั้ง";
+close;
+
+
+
+Process:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ท่านกำลังอยู่ในช่วง";
+mes"การทำเควสอยู่ค่ะ";
+close;
+
+
+
+EachQuest:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"ท่านกำลังทำเควส";
+mes"อีกอย่างอยู่ค่ะ";
+close;
+
+
+
+cancel:
+mes"^FF0000[ Quest NPC ]^000000";
+mes"แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "Quest Center",0;
+end;
+}

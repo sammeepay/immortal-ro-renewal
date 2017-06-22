@@ -1,0 +1,37 @@
+//========================================
+// 		- Script V.1 -
+// 	- Server BY exsoulionzzz. -
+//========================================
+
+
+function	script	RegisterZone11	{
+set @nguild,getcharid(2);
+if (strcharinfo(0) != getguildmaster(@nguild)) {mes "Zone Vs Zone 1-1"; mes "ไม่สามารถลงทะเบียนท่านไม่ใช่หัวหน้ากิลด์"; close; }
+mes "ใบเข้าประจำ ZONE 1";
+next;
+menu "- เข้า ZONE 1",g1,"- ถอนตัวจากการแข่งขัน",Lcancel;
+g1:
+set @GID,getcharid(2);
+warp "leagepvp11",10,37;
+if(strcharinfo(0) == getguildmaster(@GID)){atcommand "@guildrecall "+@GID;;}
+Announce "Guild [ "+GetGuildName(@nguild)+" ] ได้ทำการลงทะเบียน ZONE 1 เรียบร้อยแล้ว",bc_all,"0x33FF66";
+close;
+Lcancel:
+close;
+}
+
+function	script	RegisterZone12	{
+set @nguild,getcharid(2);
+if (strcharinfo(0) != getguildmaster(@nguild)) {mes "Zone Vs Zone 1-1"; mes "ไม่สามารถลงทะเบียนท่านไม่ใช่หัวหน้ากิลด์"; close; }
+mes "ใบเข้าประจำ ZONE 2";
+next;
+menu "- เข้า ZONE 2",g1,"- ถอนตัวจากการแข่งขัน",Lcancel;
+g1:
+set @GID,getcharid(2);
+warp "leagepvp11",70,36;
+if(strcharinfo(0) == getguildmaster(@GID)){atcommand "@guildrecall "+@GID;;}
+Announce "Guild [ "+GetGuildName(@nguild)+" ] ได้ทำการลงทะเบียน ZONE 2 เรียบร้อยแล้ว",bc_all,"0x33FF66";
+close;
+Lcancel:
+close;
+}

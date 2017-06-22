@@ -1,0 +1,482 @@
+//==================================================================
+//=======NPC Credit L-Carnitine Server============================
+//==================================================================
+
+//Variable description
+//weapon[Weapon_Type,Lv_Mastery,Autospellwhenhit,Autospellwhenattack,Widewhenhit,Widewhenattack]
+
+function	script	WeaponMastery	{
+	set @nameid,getequipid(EQI_HAND_R);
+	if(@nameid<=0) end;
+	if(nameid!=0 && nameid!=@nameid){
+		if(getequipid(EQI_ACC_L)==2674){
+			unequip(EQI_ACC_L);
+			set nameid,0;
+		} else {
+			unequip(EQI_ACC_R);
+			set nameid,0;
+		}
+		end;
+	}
+	deletearray @skill;
+	deletearray @lv;
+	deletearray @EffectHit;
+	deletearray @EffectAttack;
+	deletearray @SkillHit;
+	deletearray @SkillAttack;
+	query_sql "select Skill,LV,EffectHit,EffectAttack,SkillHit,SkillAttack from WeaponMastery where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@nameid,@skill,@lv,@EffectHit,@EffectAttack,@SkillHit,@SkillAttack;
+	if(getarraysize(@skill)<=0) end;	
+	setarray @weapon[0],@skill[0],@lv[0],@EffectHit[0],@EffectAttack[0],@SkillHit[0],@SkillAttack[0];
+	bonus bAtkRate,@weapon[1];
+	bonus bMatkRate,@weapon[1];
+	bonus bHitRate,@weapon[1];
+	bonus bCriticalRate,@weapon[1];
+	bonus bAspdRate,@weapon[1];
+	bonus bCastrate,-(@weapon[1]);
+	bonus bUseSPrate,-(@weapon[1]);
+	bonus bDelayRate,-(@weapon[1]);
+	set nameid,@skill[0];
+	if(@weapon[1]<5){
+		end;
+	} else {
+		set @effect,((@weapon[1]-4)*20)+100;
+		bonus bHPrecovRate,@weapon[1]-4;
+		bonus bSPrecovRate,@weapon[1]-4;
+	}
+	switch(@weapon[2]){
+		case 0:
+			break;
+		case 1:
+			bonus3 bAddEffWhenHit,Eff_Stone,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 2:
+			bonus3 bAddEffWhenHit,Eff_Freeze,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 3:
+			bonus3 bAddEffWhenHit,Eff_Stun,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 4:
+			bonus3 bAddEffWhenHit,Eff_Sleep,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 5:
+			bonus3 bAddEffWhenHit,Eff_Poison,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 6:
+			bonus3 bAddEffWhenHit,Eff_Curse,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 7:
+			bonus3 bAddEffWhenHit,Eff_Silence,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 8:
+			bonus3 bAddEffWhenHit,Eff_Confusion,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 9:
+			bonus3 bAddEffWhenHit,Eff_Blind,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 10:
+			bonus3 bAddEffWhenHit,Eff_Bleeding,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+	}
+	if(@weapon[1]<10){
+		end;
+	} else {
+		set @effect,((@weapon[1]-9)*20)+100;
+		bonus bHealPower,@weapon[1]-9;
+	}
+	switch(@weapon[3]){
+		case 0:
+			break;
+		case 1:
+			bonus3 bAddEff,Eff_Stone,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 2:
+			bonus3 bAddEff,Eff_Freeze,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 3:
+			bonus3 bAddEff,Eff_Stun,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 4:
+			bonus3 bAddEff,Eff_Sleep,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 5:
+			bonus3 bAddEff,Eff_Poison,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 6:
+			bonus3 bAddEff,Eff_Curse,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 7:
+			bonus3 bAddEff,Eff_Silence,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 8:
+			bonus3 bAddEff,Eff_Confusion,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 9:
+			bonus3 bAddEff,Eff_Blind,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+		case 10:
+			bonus3 bAddEff,Eff_Bleeding,@effect,ATF_WEAPON|ATF_SKILL;
+			break;
+	}
+	if(@weapon[1]<15) {
+		end;
+	} else {
+		set @effect,((@weapon[1]-14)*5)+100;
+		bonus bHealPower2,@weapon[1]-14;
+	}
+	switch(@weapon[4]){
+		case 0:
+			break;
+		case 1:	
+			bonus5 bAutoSpellWhenHit,"NPC_WIDESILENCE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 2:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDEFREEZE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 3:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDEBLEEDING",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 4:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDESTONE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 5:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDECONFUSE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 6:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDESLEEP",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 7:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDESIGHT",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 8:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDECURSE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 9:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDESTUN",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 10:
+			bonus5 bAutoSpellWhenHit,"NPC_DRAGONFEAR",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 11:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDESOULDRAIN",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+	}
+	if(@weapon[1]<20){
+		end;
+	} else {
+		set @effect,((@weapon[1]-19)*5)+100;
+		bonus2 bHPRegenRate,@weapon[1],30000;
+		bonus2 bSPRegenRate,@weapon[1],30000;
+	}
+	switch(@weapon[5]){
+		case 0:
+			break;
+		case 1:	
+			bonus5 bAutoSpell,"NPC_WIDESILENCE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 2:
+			bonus5 bAutoSpell,"NPC_WIDEFREEZE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 3:
+			bonus5 bAutoSpell,"NPC_WIDEBLEEDING",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 4:
+			bonus5 bAutoSpell,"NPC_WIDESTONE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 5:
+			bonus5 bAutoSpell,"NPC_WIDECONFUSE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 6:
+			bonus5 bAutoSpell,"NPC_WIDESLEEP",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 7:
+			bonus5 bAutoSpell,"NPC_WIDESIGHT",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 8:
+			bonus5 bAutoSpell,"NPC_WIDECURSE",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 9:
+			bonus5 bAutoSpell,"NPC_WIDESTUN",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 10:
+			bonus5 bAutoSpell,"NPC_DRAGONFEAR",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+		case 11:
+			bonus5 bAutoSpellWhenHit,"NPC_WIDESOULDRAIN",2,@effect,BF_WEAPON|BF_MAGIC,0;
+			break;
+	}
+	if(@weapon[1]<25){
+		end;
+	} else {
+		set @effect,((@weapon[1]-25)*100)+1000;
+		bonus2 bResEff,Eff_Stun,@effect;
+		bonus2 bResEff,Eff_Blind,@effect; 
+		bonus2 bResEff,Eff_Sleep,@effect; 
+		bonus2 bResEff,Eff_Poison,@effect; 
+		bonus2 bResEff,Eff_Freeze,@effect; 
+		bonus2 bResEff,Eff_Silence,@effect; 
+		bonus2 bResEff,Eff_Stun,@effect; 
+		bonus2 bResEff,Eff_Curse,@effect; 
+		bonus2 bResEff,Eff_Confusion,@effect; 
+		bonus2 bResEff,Eff_Stone,@effect; 
+		bonus2 bResEff,Eff_Bleeding,@effect;
+	}
+	end;
+}
+
+-	script	WeaponKill	-1,{
+OnNPCKillEvent:
+	set @maxmastery,30;	//ตั้งค่าระดับอาวุธสูงสุด
+	set @nameid,getequipid(EQI_HAND_R);
+	if(countitem(2674)<=0 || @nameid<=0) end;
+	deletearray @skill;
+	deletearray @lv;
+	query_sql "select Skill,LV from WeaponMastery where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@nameid,@skill,@lv;
+	if(@nameid!=@skill[0] || @lv[0]>=@maxmastery || getarraysize(@skill)<=0) end;
+	setarray @weapon[0],@skill[0],@lv[0];
+	set @exp,getmonsterinfo(killedrid,4);
+	if(getcharid(1)!=0){
+       getpartymember(getcharid(1));
+	   if($@partymembercount!=1){
+			set @expx,(@exp+((@exp*$@partymembercount)/50))+getd(@weapon[0]+"expmastery");
+		} else {
+			set @expx,getmonsterinfo(killedrid,4)+getd(@weapon[0]+"expmastery");
+		}
+	} else {
+		set @expx,getmonsterinfo(killedrid,4)+getd(@weapon[0]+"expmastery");
+	}
+	if(@expx >= (pow(@weapon[1]+1,2)*2000000)){
+		set @weapon[1],@weapon[1]+1;
+		setd(@weapon[0]+"expmastery"),0;
+		query_sql "update WeaponMastery set LV="+@weapon[1]+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+		announce "ท่านได้เลื่อนระดับทักษะทางอาวุธของท่านขึ้นสู่ระดับ "+@weapon[1],bc_blue|bc_self;
+		setarray @status1$[0],"Stone","Freeze","Stun","Sleep","Poison","Curse","Silence","Confusion","Blind","Bleeding";
+		setarray @status2$[0],"Wide Silence","Wide Freeze","Wide Bleeding","Wide Petrify","Wide Confusion","Wide Sleep","Wide Sight","Wide Curse","Wide Stun","Dragon Fear","Wide Soul Drain";		
+		switch(@weapon[1]){
+			case 5:
+				set @weaponef,rand(0,getarraysize(@status1$));
+				query_sql "update WeaponMastery set EffectHit="+@weaponef+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+				if(@weaponef==0) end;
+				announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เมื่อถูกโจมตีมีโอกาสที่ผู้ที่โจมตีติดสถานะ "+@status1$[@weaponef-1],bc_blue|bc_self;
+				break;
+			case 10:
+				set @weaponef,rand(0,getarraysize(@status1$));
+				query_sql "update WeaponMastery set EffectAttack="+@weaponef+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+				if(@weaponef==0) end;
+				announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เมื่อโจมตีมีโอกาสที่ผู้ถูกโจมตีติดสถานะ "+@status1$[@weaponef-1],bc_blue|bc_self;
+				break;
+			case 15:
+				set @weaponef,rand(0,getarraysize(@status2$));
+				query_sql "update WeaponMastery set SkillHit="+@weaponef+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+				if(@weaponef==0) end;
+				announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เมื่อถูกโจมตีมีโอกาสที่จะใช้สกิล "+@status2$[@weaponef-1],bc_blue|bc_self;
+				break;
+			case 20:
+				set @weaponef,rand(0,getarraysize(@status2$));
+				query_sql "update WeaponMastery set SkillAttack="+@weaponef+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+				if(@weaponef==0) end;
+				announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เมื่อโจมตีมีโอกาสที่จะใช้สกิล "+@status2$[@weaponef-1],bc_blue|bc_self;
+				break;
+			case 25:
+				announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เพิ่มความต้านทานสถานะต่างๆ",bc_blue|bc_self;
+				break;
+		}
+	} else {
+		setd(@weapon[0]+"expmastery"),@expx;
+	}
+	end;
+}
+
+-	script	bit_weapon	94,{
+	mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+	if(countitem(2674)==0){
+		mes "ข้าได้ยินเรื่องราวของความชำนาญทางทักษะพิเศษของอาวุธ";
+		mes "ผู้ที่มีความเชี่ยวชาญทางอาวุธสามารถดีงพลังที่แฝงเร้นออกมาใช้งานได้";
+		mes "หากแต่ต้องแลกด้วยเวลาและประสบการณ์ที่ผ่านการสั่งสมมาอย่างยาวนาน";
+		next;
+		menu "หากข้าต้องการจะเป็นผู้เชื่ยวชาญต้องทำเช่นใด",-,"เรื่องไร้สาระมาก ข้าไม่สนใจหรอก",L_Exit;
+		mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+		mes "ข้าจะมอบแหวนแห่งพลังให้ท่าน เมื่อท่านสวมใส่แล้วมันจะเก็บค่าประสบการณ์ของท่านไว้ในแหวนนี้";
+		mes "เมื่อถึงระดับหนึ่ง มันจะมอบพลังพิเศษให้ท่าน ท่านสามารถนำมันมาให้ข้าตรวจสอบระดับได้";
+		mes "จงจำไว้อย่างหนึ่งว่า แหวนนี้ไม่สามารถเดล โอน ทิ้ง ขาย หรือเก็บเข้ารถได้ และสามารถแลกได้ครั้งเดียว มันจะติดตัวเจ้าไปตลอดกาล";
+		mes "อาวุธที่ท่านถืออยู่ในมือขวา จะเป็นตัวกำหนดความเชี่ยวชาญที่ท่านต้องการ";
+		mes "ท่านต้องการมันหรือไม่";
+		next;
+		menu "ข้าต้องการ",-,"ไร้สาระ ข้าไปดีกว่า",L_Exit;
+		goto L_Add;
+		close;
+	} else {
+		set @maxmastery,30;
+		deletearray @weapon;
+		set @nameid,getequipid(EQI_HAND_R);
+		if(@nameid <=0) {
+			mes "ท่านไม่ได้สวมอาวุธ";
+			close;
+		}
+		deletearray @skill;
+		deletearray @lv;
+		deletearray @EffectHit;
+		deletearray @EffectAttack;
+		deletearray @SkillHit;
+		deletearray @SkillAttack;
+		deletearray @skillall;
+		deletearray @skillfull;
+		query_sql "select Skill,LV,EffectHit,EffectAttack,SkillHit,SkillAttack from WeaponMastery where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@nameid,@skill,@lv,@EffectHit,@EffectAttack,@SkillHit,@SkillAttack;
+		if(getarraysize(@skill) <=0){
+			mes "ท่านไม่มีความชำนาญในอาวุธที่ท่านสวมอยู่";
+			mes "ท่านสามารถเพิ่มอาวุธที่ท่านถนัดได้";
+			next;
+			menu "ข้าต้องการเพิ่มอาวุธที่ชำนาญ",L_Add,"ไม่ละข้าไม่ต้องการ",L_Exit;
+			close;
+		}
+		setarray @status1$[0],"Stone","Freeze","Stun","Sleep","Poison","Curse","Silence","Confusion","Blind","Bleeding";
+		setarray @status2$[0],"Wide Silence","Wide Freeze","Wide Bleeding","Wide Petrify","Wide Confusion","Wide Sleep","Wide Sight","Wide Curse","Wide Stun","Dragon Fear","Wide Soul Drain";		
+		setarray @weapon[0],@skill[0],@lv[0],@EffectHit[0],@EffectAttack[0],@SkillHit[0],@SkillAttack[0];
+		mes "ตรวจสอบสถานะความชำนาญ";
+		mes "ความชำนาญ : "+getitemname(@weapon[0]);
+		mes "ระดับ : "+@weapon[1];
+		mes "ค่าประสบการณ์ : "+getd(@weapon[0]+"expmastery")/1000000+"M / "+(pow(@weapon[1]+1,2)*2)+"M";
+		mes "ระดับทักษะพิเศษทางอาวุธ";
+		if(@weapon[1]<5) {
+			mes "- ไม่ปรากฎความสามารถ";
+		}
+		if(@weapon[1]>=5 && @weapon[2]!=0){
+			mes "- เมื่อถูกโจมตีมีโอกาสที่เป้าหมายติดสถานะ "+@status1$[@weapon[2]-1];
+		} else {
+			mes "- ไม่ปรากฎสถานะเมื่อถูกโจมตี";
+		}
+		if(@weapon[1]>=10 && @weapon[3]!=0){
+			mes "- เมื่อโจมตีมีโอกาสที่เป้าหมายติดสถานะ "+@status1$[@weapon[3]-1];
+		} else {
+			mes "- ไม่ปรากฎสถานะเมื่อโจมตี";
+		}
+		if(@weapon[1]>=15 && @weapon[4]!=0){
+			mes "- เมื่อถูกโจมตีมีโอกาสที่จะใช้สกิล "+@status2$[@weapon[4]-1];
+		} else {
+			mes "- ไม่ปรากฎสกิลเมื่อถูกโจมตี";
+		}
+		if(@weapon[1]>=20 && @weapon[5]!=0){
+			mes "- เมื่อโจมตีมีโอกาสที่จะใช้สกิล "+@status2$[@weapon[5]-1];
+		} else {
+			mes "- ไม่ปรากฎสกิลเมื่อโจมตี";
+		}
+		if(@weapon[1]>=25){
+			mes "- ท่านได้ความสามารถในการต้านทานสถานะผิดปกติต่างๆ";
+		}
+		if(@weapon[1] >= @maxmastery){
+			mes "ท่านสามารถเปลี่ยนสถานะที่ได้จากความชำนาญของอาวุธได้";
+			mes "โดยแลกกับเลเวลของอาวุธลดลง 1 เลเวล";
+			next;
+			menu "ข้าต้องการเปลี่ยนสถานะอาวุธใหม่",-,"ไม่ละข้าไม่ต้องการ",L_Exit;
+			mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+			mes "ท่านต้องการเปลี่ยนสถานะของอาวุธโดยแลกกับเลเวลอาวุธที่ลดลงหรือไม่";
+			mes "โดยการเปลี่ยนแปลงนี้ จะทำการสุ่มสถานะที่ได้ในทุกเลเวล";
+			next;
+			menu "ข้ายืนยัน",-,"ไม่ละข้าไม่ต้องการ",L_Exit;			
+			query_sql "update WeaponMastery set  LV="+(@weapon[1]-1)+",EffectHit="+rand(0,getarraysize(@status1$))+", EffectAttack="+rand(0,getarraysize(@status1$))+", SkillHit="+rand(0,getarraysize(@status2$))+", SkillAttack="+rand(0,getarraysize(@status2$))+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+			setd(@weapon[0]+"expmastery"),0;
+			mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+			mes "ท่านได้เปลี่ยนแปลงสถานะอาวุธแล้ว ตรวจสอบคุณสมบัติได้ที่ NPC";
+			close;
+		} else {
+			if(#masteryexptrans==0){
+				if(getd(@weapon[0]+"expmastery")==0) close;
+				mes "ข้ารับฝากประสบการณ์ของแหวนได้ แต่ท่านสามารถโอนให้ได้เฉพาะภายในไอดีเดียวกันเท่านั้น";
+				mes "โดยผู้โอนจะเสียค่าโอนเป็นค่าประสบการณ์ 10% ของประสบการณ์ที่จะฝากไว้ ขั้นต่ำในการโอนคือ exp 1M";
+				next;
+				menu "ข้าอยากฝากประสบการณ์ที่ข้ามี",-,"ไม่มีอะไร",L_Exit;
+				mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+				mes "ท่านต้องการฝากข้าจำนวนเท่าใด เลขที่ใส่มีหน่วยเป็น M";
+				mes "ค่าประสบการณ์ที่มีอยู่ : "+getd(@weapon[0]+"expmastery")+" แต้ม";
+				next;
+				input @expp;
+				if(@expp <= 0 || @expp*1000000 > getd(@weapon[0]+"expmastery")){
+					mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+					mes "ประสบการณ์ของท่านไม่สามารถแลกเปลี่ยนได้";
+					close;
+				}
+				setd(@weapon[0]+"expmastery"),getd(@weapon[0]+"expmastery")-@expp*1000000;
+				set #masteryexptrans,@expp*1000000;
+				close;
+			} else {
+				mes "ท่านมีประสบการณ์ที่ฝากไว้ จำนวน "+#masteryexptrans+" แต้ม";
+				next;
+				menu "ข้ามารับประสบการณ์ที่ข้าฝากไว้",-,"ไม่มีอะไร",L_Exit;
+				setd(@weapon[0]+"expmastery"),#masteryexptrans+(getd(@weapon[0]+"expmastery")-(#masteryexptrans/10));
+				set #masteryexptrans,0;
+				if(getd(@weapon[0]+"expmastery") >= (pow(@weapon[1]+1,2)*2000000)){
+					set @weapon[1],@weapon[1]+1;
+					setd(@weapon[0]+"expmastery"),0;
+					query_sql "update WeaponMastery set LV="+@weapon[1]+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+					announce "ท่านได้เลื่อนระดับทักษะทางอาวุธของท่านขึ้นสู่ระดับ "+@weapon[1],bc_blue|bc_self;
+					switch(@weapon[1]){
+						case 5:
+							set @weaponef,rand(0,getarraysize(@status1$));
+							query_sql "update WeaponMastery set EffectHit="+@weaponef+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+							if(@weaponef==0) end;
+							announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เมื่อถูกโจมตีมีโอกาสที่ผู้ที่โจมตีติดสถานะ "+@status1$[@weaponef-1],bc_blue|bc_self;
+							break;
+						case 10:
+							set @weaponef,rand(0,getarraysize(@status1$));
+							query_sql "update WeaponMastery set EffectAttack="+@weaponef+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+							if(@weaponef==0) end;
+							announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เมื่อโจมตีมีโอกาสที่ผู้ถูกโจมตีติดสถานะ "+@status1$[@weaponef-1],bc_blue|bc_self;
+							break;
+						case 15:
+							set @weaponef,rand(0,getarraysize(@status2$));
+							query_sql "update WeaponMastery set SkillHit="+@weaponef+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+							if(@weaponef==0) end;
+							announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เมื่อถูกโจมตีมีโอกาสที่จะใช้สกิล "+@status2$[@weaponef-1],bc_blue|bc_self;
+							break;
+						case 20:
+							set @weaponef,rand(0,getarraysize(@status2$));
+							query_sql "update WeaponMastery set SkillAttack="+@weaponef+" where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@weapon[0];
+							if(@weaponef==0) end;
+							announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เมื่อโจมตีมีโอกาสที่จะใช้สกิล "+@status2$[@weaponef-1],bc_blue|bc_self;
+							break;
+						case 25:
+							announce "ท่านได้รับระดับทักษะพิเศษทางอาวุธ เพิ่มความต้านทานสถานะต่างๆ",bc_blue|bc_self;
+							break;
+					}
+				}
+				close;		
+			}
+		}
+		close;
+	}
+
+L_Add:
+	mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+	set @nameid,getequipid(EQI_HAND_R);
+	if(@nameid<=0){
+		mes "ท่านไม่สามารถใช้มือเปล่าได้ ท่านต้องเลือกอาวุธ";
+		close;
+	} else {
+		mes "ขณะนี้ ท่านถืออาวุธ คือ "+getitemname(@nameid)+" และต้องการเชี่ยวชาญในอาวุธชนิดนี้หรือไม่";
+	}		
+	next;
+	menu "ข้าต้องการ",-,"ไร้สาระ ข้าไปดีกว่า",L_Exit;
+	deletearray @check;
+	query_sql "select Skill from WeaponMastery where account_id="+getcharid(3)+" and char_id="+getcharid(0)+" and skill="+@nameid,@check;
+	if(getarraysize(@check)!=0){
+		mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+		mes "มีข้อผิดพลาดที่ระบบ กรุณาติดต่อ GM";
+		close;
+	}
+	if(countitem(2674)<=0) getitem 2674,1;
+	setd(@nameid+"expmastery"),0;
+	query_sql "insert into WeaponMastery values ("+getcharid(3)+","+getcharid(0)+","+@nameid+",0,0,0,0,0)";
+	mes "[ ^0065DFพนักงานพิเศษ^000000 ]";	
+	mes "ขณะนี้ ท่านได้ลงทะเบียนอาวุธ "+getitemname(@nameid)+" เรียบร้อยแล้ว";
+	close;
+
+L_Exit:
+	mes "[ ^0065DFพนักงานพิเศษ^000000 ]";
+	mes "ขอบคุณที่ใช้บริการ โอกาสหน้าเชิญใหม่";
+	close;
+	
+OnInit:
+waitingroom "(( ระบบ LV. อาวุธ ))",0;
+end;
+}
+
+prontera,130,207,4	duplicate(bit_weapon)	Weapon Mastery#Wmy2011	470

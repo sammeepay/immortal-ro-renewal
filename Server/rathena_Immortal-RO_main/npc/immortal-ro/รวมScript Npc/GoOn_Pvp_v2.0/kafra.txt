@@ -1,0 +1,287 @@
+izlude.gat,122,122,4 script Kafra 94,{
+emotion 22;
+mes "[^0000FFผู้คุมกฏฑ์^000000]";
+mes "สวัสดี!!!"; 
+mes "ข้าคือกาฟ้าที่เซิฟนี้ หรือเรียกอีกอย่างว่า ผู้คุมก็ได้ ";
+mes "เจ้าต้องการอะไรละ ข้าจะจัดให้เลย";
+cutin "kafra_05",255;
+next;
+menu "UpLvGuild",lvguild,"ประกาศ",pagas,"เซฟ",S0,"เก็บของ",S1,"เช่ารถและนก",S2,"บริการรีเซ็ต",S5,"สกิวเสริม",S7,"Cancel",Lcancel;
+next;
+
+lvguild:
+	mes "[ Guild ]";
+	mes "ข้าสามารถเพิ่ม Lv Guild ให้ท่านได้";
+	mes "และช้าก็จะเสกเลเวลกิลด์ให้ท่านได้ 50 เลเวล";
+	mes "ท่านสนใจมั้ยละ ";
+	next;
+	menu "Up Lv Guild",G_guild,"ไม่ล่ะ ข้าไม่ต้องการ",G_cancle;
+G_guild:
+	mes "[ Guild ]";
+	mes "ไม่ต้องห่วง !!";
+	mes "ท่านจะได้เลเวล Guild แน่นอน";
+	mes "รับไปเลย !! 50 เลเวลกิลด์";
+	atcommand strcharinfo(0) + "@guildlvlup 50";
+	close;
+G_cancle:
+	mes "[ Guild ]";
+	mes "ไม่เอาเลเวลกิลด์ก็เรื่องของนาย !!";
+	close;
+
+pagas:
+mes "[ประกาศ]";
+mes "อยากพูดไร พูดมาเลย.";
+next;
+menu "ประกาศ",bun;
+close;
+bun:
+mes "[ประกาศ]";
+mes "ท่านต้องการประข้อความอะไรเชิญเลือกเลยค่ะ";
+mes "เราคิดค่าบริการ 1000 Z เท่านั้น";
+next;
+if(Zeny<1000) goto NeedZenys;
+set Zeny,Zeny-1000;
+mes "[ประกาศ]";
+mes "กรุณากรอกข้อความที่คุณจะประกาศเลยค่ะ";
+next;
+input @message001$;
+announce "[ " + @message001$ + " ] [ โดยหัวเกรียน " + strcharinfo(0) + " ]",0;
+mes "[ประกาศ]";
+mes "ประกาศเรียบร้อยค่ะ";
+close;
+
+S0:
+savepoint "izlude.gat",128,116;
+mes "[^0000FFผู้คุมกฏฑ์^000000]";
+mes "คุณได้ทำการเซฟเรียบร้อยแล้วนะ. ขอบใจข้าเดะ.";
+cutin "kafra_05",255;
+close; 
+S1:
+if((class ==Job_Novice) && (JobLevel<6)) goto NeedJobLevel;
+if(Zeny<30) goto NeedZenys;
+set Zeny, Zeny-40;
+openstorage;
+cutin "kafra_03",255;
+close;
+
+NeedJobLevel:
+mes "[ผู้คุมกฎฑ์]";
+mes "โทษทีนะครับ ข้าไม่สามารถให้บริการเจ้าได้ เนื่องจากเจ้าจ๊อบไม่ถึง 6 ";
+next;
+cutin "kafra_03",255;
+close;
+NeedZenys:
+mes "[ผู้คุมกฏฑ์]";
+mes "เมิงมีเงินไม่พอ ไปหามาใหม่นะไอลูก.";
+cutin "kafra_03",255;
+close;
+S2:
+mes "[ผู้คุมกฏฑ์]";
+mes "อ้าวว่าไง.เจ้าต้องการเช่าอะไรละ ข้ามีทุกอย่างละ";
+next;
+L_Menu:
+menu "เช่ารถเข็น",L_Cart,"เช่านก",L_Falcon,"เช่าpecopeco",L_Peco,"กลับ",LLcancel;
+close;
+L_Cart:
+if(Class == 5) goto L_Cart_Ok;
+if(Class == 10) goto L_Cart_Ok;
+if(Class == 18) goto L_Cart_Ok;
+if(Class == 23) goto L_Cart_Ok;
+if(Class == 4006) goto L_Cart_Ok;
+if(Class == 4011) goto L_Cart_Ok;
+if(Class == 4019) goto L_Cart_Ok;
+if(Class == 4028) goto L_Cart_Ok;
+if(Class == 4033) goto L_Cart_Ok;
+if(Class == 4041) goto L_Cart_Ok;
+if(Class == 4045) goto L_Cart_Ok;
+mes "[Universal Rental Npc]";
+mes "เสียใจด้วยท่าน " + strcharinfo(0) + "Merchants, Blacksmiths และ Alchimistsเท่านั้นที่ใช้บริการนี้ได้ ";
+close;
+L_Cart_Ok:
+setcart;
+goto L_Quit2;
+L_Falcon:
+if(Class == 11) goto L_falc;
+if(Class == 4012) goto L_falc;
+if(Class == 4034) goto L_falc;
+mes "[Universal Rental Npc]";
+mes "เสียใจด้วยท่าน " + strcharinfo(0) + "Huntersเท่านั้นที่ใช้บริการนี้ได้";
+close;
+L_falc:
+setfalcon;
+goto L_Quit2;
+L_Peco:
+if (Class == 7) goto L_Peco_Ok;
+if (Class == 14) goto L_Peco_Ok;
+if (Class == 4008) goto L_Peco_Ok;
+if (Class == 4015) goto L_Peco_Ok;
+if (Class == 4030) goto L_Peco_Ok;
+if (Class == 4037) goto L_Peco_Ok;
+mes "[Universal Rental Npc]";
+mes "เสียใจด้วยท่าน " + strcharinfo(0) + "Knight and Crusaderเท่านั้นที่ใช้บริการนี้ได้";
+close;
+L_Peco_Ok:
+setriding;
+goto L_Quit2;
+L_Quit2:
+mes "[Super Kafra]";
+mes strcharinfo(0) + ", ข้ายินดีต้อนรับท่านเสมอเมื่อท่านต้องการบริการของข้า";
+close;
+
+S5:
+if(class > 4046) goto Nojob;
+mes "[ผู้คุมกฏฑ์]";
+mes "สวัสดีที่มาใช้บริการท่านต้องการรีเซ็ตอะไร:";
+mes "1) 3,000,000z Status reset";
+mes "2) 3,000,000z Skills reset";
+mes "3) 5,000,000z Status/skills reset";
+next;
+menu "^3355FFSkill and Stat Service^000000",L0,"^FF3355Reset Skills^000000",L1,"^FF3355Reset Stats^000000",L2,"^FF3355Reset Skills and Stats^000000",L3,"Quit",Lcancel;
+
+L0:
+mes "[ผู้คุมกฏฑ์]";
+mes "โปรดเก็บไอเทมทั้งหมดในตัวคุณไว้ใน Kafra ^3355FF0^000000.";
+mes "เพราะว่าพอรีเซ็ตน้ำหนักของคุณจะเหลือ0.";
+mes "ข้อมูล, ^3355FFโนวิทจะไม่สามารถใช้บริการได้^000000.";
+close;
+L1:
+if (Zeny<3000000) goto NeedZenys;
+mes "[ผู้คุมกฏฑ์]";
+mes "รอแปป ข้ากำลังจัดห้าย";
+set Zeny, Zeny-3000000;
+resetskill;
+close;
+L2:
+if (Zeny<3000000) goto NeedZenys;
+mes "[ผู้คุมกฏฑ์]";
+mes "ไอห่าใจเย็นๆๆๆ ได้ละๆๆ หุหุ";
+set Zeny,Zeny-3000000;
+resetstatus;
+close;
+L3:
+if (Zeny<5000000) goto NeedZenys;
+mes "[ผู้คุมกฏฑ์]";
+mes "โอ้ว เมิงนี่ร้ายอาจ หุหุ";
+set Zeny, Zeny-5000000;
+resetskill;
+resetstatus;
+close;
+Lcancel:
+mes "[ผู้คุมกฏฑ์]";
+mes "ดูมาก ..หวังว่าเจ้าคงกลับมาหาข้าใหม่นะ.";
+close;
+Nojob:
+mes "[ผู้คุมกฏฑ์]";
+mes "Baby-Job ไม่สามารถรีเซตได้ครับ";
+close;
+
+S7:
+mes "[ผู้คุมกฏฑ์]";
+mes "ต้องการสกิวเสริมรึ";
+next;
+menu "ใช่",Lgetskills,"ไม่",Lnogetskills;
+
+Lgetskills:
+if ((Class==Job_Novice) || (Class==4001) || (Class==4045)) goto Lskillsnovice;
+if ((Class==Job_Swordman) || (Class==7) || (Class==Job_Knight2) || (Class==14)|| (Class==Job_Crusader2) || (Class==4002) || (Class==4008) || (Class==Job_Lord_Knight2) || (Class==4015) || (Class==Job_Paladin2) || (Class==4024) || (Class==4030) || (Class==4037)) goto Lskillsswordie;
+if ((Class==Job_Mage) || (Class==9) || (Class==16) || (Class==4003) || (Class==4010) || (Class==4017) || (Class==4025) || (Class==4032) || (Class==4039)) goto Lskillsmage;
+if ((Class==Job_Archer) || (Class==11) || (Class==19) || (Class==20) || (Class==4004) || (Class==4012) || (Class==4020) || (Class==4021) || (Class==4026) || (Class==4034) || (Class==4042) || (Class==4043)) goto Lskillsarcher;
+if ((Class==Job_Acolyte) || (Class==8) || (Class==15) || (Class==4005) || (Class==4009) || (Class==4016) || (Class==4027) || (Class==4031) || (Class==4038)) goto Lskillsaco;
+if ((Class==Job_Merchant) || (Class==10) || (Class==18) || (Class==4006) || (Class==4011) || (Class==4019) || (Class==4028) || (Class==4033) || (Class==4041)) goto Lskillsmerchie;
+if ((Class==Job_Thief) || (Class==12) || (Class==17) || (Class==4007) || (Class==4013) || (Class==4018) || (Class==4029) || (Class==4035) || (Class==4040)) goto Lskillsthief;
+Lskillsnovice:
+mes "[ผู้คุมกฏฑ์]";
+mes "นี่เป็นของโนวิช";
+specialeffect 139;
+skill 142,1,0;
+skill 143,1,0;
+mes " ";
+mes "เจ้าได้สกิวจากข้าแล้ว";
+next;
+goto LskillsEND;
+Lskillsswordie:
+mes "[ผู้คุมกฏฑ์]";
+mes "นี่เป็นสกิวของสายswordman";
+specialeffect 139;
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+mes " ";
+mes "เจ้าได้สกิวจากข้าแล้ว";
+next;
+goto LskillsEND;
+Lskillsmage:
+mes "[ผู้คุมกฏฑ์]";
+mes "นี่เป็นสกิวของสายmage";
+specialeffect 139;
+skill 142,1,0;
+skill 157,1,0;
+mes " ";
+mes "เจ้าได้สกิวจากข้าแล้ว";
+next;
+goto LskillsEND;
+Lskillsarcher:
+mes "[ผู้คุมกฏฑ์]";
+mes "นี่เป็นสกิวของสายarcher";
+specialeffect 139;
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+mes " ";
+mes "เจ้าได้สกิวจากข้าแล้ว";
+next;
+goto LskillsEND;
+Lskillsaco:
+mes "[ผู้คุมกฏฑ์]";
+mes "นี่เป็นสกิวของสาย Acolyte";
+specialeffect 139;
+skill 142,1,0;
+skill 156,1,0;
+mes " ";
+mes "เจ้าได้สกิวจากข้าแล้ว";
+next;
+goto LskillsEND;
+Lskillsmerchie:
+mes "[ผู้คุมกฏฑ์]";
+mes "นี่เป้นสกิวของสาย Merchant";
+specialeffect 139;
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+mes " ";
+mes "เจ้าได้สกิวจากข้าแล้ว";
+next;
+goto LskillsEND;
+Lskillsthief:
+mes "[ผู้คุมกฏฑ์]";
+mes "นี่เป็นสกิวของสายThief";
+specialeffect 139;
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+mes " ";
+mes "เจ้าได้สกิวจากข้าแล้ว";
+next;
+goto LskillsEND;
+LskillsEND:
+mes "[ผู้คุมกฏฑ์]";
+mes "วันนี้ช่างสดชื่นจริงๆ";
+close;
+Lnogetskills:
+mes "[ผู้คุมกฏฑ์]";
+mes "นี่เจ้าไม่ต้องการเรียนรู้จากข้ารึ";
+mes "*sob* ไม่เป็นไร";
+mes "วันนี้ช่างสดชื่นจริงๆ";
+close;
+
+
+LCancel:
+mes "[ ^0065DFJobra^000000 ]";
+mes "Blah.. be that way.. >_>..";
+cutin "kafra_01",255;
+close;
+}

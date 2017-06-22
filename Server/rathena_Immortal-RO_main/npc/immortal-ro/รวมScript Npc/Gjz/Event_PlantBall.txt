@@ -1,0 +1,158 @@
+poring_c01	mapflag	nomemo
+poring_c01	mapflag	noteleport
+poring_c01	mapflag	nosave
+poring_c01	mapflag	nobranch
+poring_c01	mapflag	nopenalty
+poring_c01	mapflag	notrade
+poring_c01	mapflag	noskill
+poring_c01	mapflag	nowarp
+poring_c01	mapflag	nobaseexp
+poring_c01	mapflag	nojobexp
+poring_c01	mapflag	nowarpto
+poring_c01	mapflag	nodrop
+poring_c01	mapflag	novending
+poring_c01	mapflag	noexppenalty
+poring_c01	mapflag	noloot
+
+-	script	PlantBall::PBE	-1,{
+if ($@ActiveSv == 0) end;
+if ($toplay_plant == 2) goto startnow;
+if ($toplay_plant == 1) goto main;
+mes "[ ^006611Plant Ball^000000 ]";
+mes "^0000FFPlant Ball จะเริ่มทุกๆ 1 ชั่วโมง..^000000";
+next;
+menu "- ^0000FFรายละเอียด^000000",index,"- ^FF0000ออก^000000",exit;
+
+startnow:
+mes "[ ^006611Plant Ball^000000 ]";
+mes "ขณะนี้ ไม่สามารถเข้าไปได้แล้วเนื่องจากครบเวลาตามที่กำหนด ในการเปิดวาปให้เข้าไปแล้ว..";
+close;
+
+main:
+mes "[ ^006611Plant Ball^000000 ]";
+mes "ยินดีต้อนรับ คุณมีเวลา เข้าไปเพียง 3 นาทีก่อนจะ npc จะหายไป";
+next;
+menu "- ^006611เข้าไปยังกิจกรรม^000000 [ ^FF0000"+getmapusers ("poring_c01")+"^000000 ] ",wplant,"- ^0000FFรายละเอียด^000000",index,"- ^000000ไม่^000000",exit;
+
+index:
+mes "[ ^006611Plant Ball^000000 ]";
+mes "^0000FFNPC จะเปิดรับคน เป็นเวลา 3 นาที";
+mes "เมื่อครบ 3 นาทีแล้ว NPC จะหายไป";
+next;
+mes "[ ^006611Plant Ball^000000 ]";
+mes "^0000FFเมื่อครบเวลา จะรอนับอีก 30 วินาที";
+mes "เพื่อ กำหนดให้ Plant ออกมา";
+next;
+mes "[ ^006611Plant Ball^000000 ]";
+mes "^0000FFและเมื่อ Plant ออกมา";
+mes "คุณจะต้อง ตี Plant";
+mes "เพื่อหา ลุกบอล";
+mes "ตามหมายเลขที่ NPC ระบุให้หา";
+mes "หากหาได้จะได้รับรางวัลไป^000000";
+close;
+
+wplant:
+if ($toplay_plant == 2) goto startnow;
+warp "poring_c01",104,98;
+close;
+
+exit:
+close;
+
+OnInit:
+waitingroom "Plant Ball",0;
+end;
+}
+
+-	script	PlantBallEvents#1-1	-1,{
+OnClock0110:
+OnClock0210:
+OnClock0310:
+OnClock0410:
+OnClock0510:
+OnClock0610:
+OnClock0710:
+OnClock0810:
+OnClock0910:
+OnClock1010:
+OnClock1110:
+OnClock1210:
+OnClock1310:
+OnClock1410:
+OnClock1510:
+OnClock1610:
+OnClock1710:
+OnClock1810:
+OnClock1910:
+OnClock2010:
+OnClock2110:
+OnClock2210:
+OnClock2310:
+OnClock0010:
+set $toplay_plant,1;
+announce "กิจกรรม[ Plant Ball ] ได้เปิดวาปกิจกรรมแล้ว มีเวลาเข้าไปร่วมสนุก 3 นาทีก่อนวาปปิด..!!!",bc_all,0x33FFFF;
+initnpctimer;
+end;
+
+OnTimer120000:
+announce "กิจกรรม [ Plant Ball ] มีเวลาอีก 1 นาที ก่อนกิจกรรม Plant Ball จะปิด...!!!",bc_all,0x33FFFF;
+end;
+
+OnTimer150000:
+announce "กิจกรรม [ Plant Ball ] มีเวลาอีก 30 วินาที ก่อนกิจกรรม Plant Ball จะปิด...!!!",bc_all,0x33FFFF;
+end;
+
+OnTimer180000:
+set $rpball,rand(7361,7390);
+set $toplay_plant,2;
+announce "กิจกรรม [ Plant Ball ] ได้ปิดวาปแล้ว..!!! คนที่เข้าไม่ทันรออีก 1 ชม. ข้างหน้าจ้า ...!!!",bc_all,0x33FFFF;
+end;
+
+OnTimer200000:
+mapannounce "poring_c01","กิจกรรม [ Plant Ball ] มีเวลา 30 วินาทีเตรียมตัวก่อน มอนเตอร์จะโผล่..!!!",1,0x33FFFF;
+end;
+
+OnTimer230000:
+monster "poring_c01",0,0,"Plant",1078,5,"EV_QUEST1::OnWinner";
+monster "poring_c01",0,0,"Plant",1079,5,"EV_QUEST1::OnWinner";
+monster "poring_c01",0,0,"Plant",1080,5,"EV_QUEST1::OnWinner";
+monster "poring_c01",0,0,"Plant",1081,5,"EV_QUEST1::OnWinner";
+monster "poring_c01",0,0,"Plant",1082,5,"EV_QUEST1::OnWinner";
+monster "poring_c01",0,0,"Plant",1083,5,"EV_QUEST1::OnWinner";
+mapannounce "poring_c01","[ Plant Ball ] : กิจกรรม Plant Ball เริ่มต้นขึ้นแล้ว..........!!!!!",1,0x33FFFF;
+mapannounce "poring_c01","[ Plant Ball ] : รอบนี้ออก บอลหมายเลข ... ["+getitemname($rpball)+"] ใครได้เลขบอลนี้ คือผู้ได้รางวัล...",1,0x33FFFF;
+mapannounce "poring_c01","[ Plant Ball ] : มีเวลา 5 นาที ในการหา บอลหมายเลข ["+getitemname($rpball)+"] ",1,0x33FFFF;
+end;
+
+OnTimer530000:  //==== เวลาจบกิจกรรม
+killmonsterall "poring_c01";
+announce "[ Plant Ball ] : กิจกรรม Plant Ball จบลงแล้ว... มีผู้ ได้ของรางวัล [ "+$mem_plant+" ]",bc_all,0x33FFFF;
+set $toplay_plant,0;
+set $rpball,0;
+set $mem_plant,0;
+mapwarp "poring_c01.gat","morocc",159,92;
+stopnpctimer;
+end;
+}
+
+-	script	EV_QUEST1	-1,{
+OnWinner:
+if ($toplay_plant == 0) close;
+set @rball,rand(7361,7390);
+getitem @rball,1;
+if (@rball == $rpball) goto fill;
+set @plantmball,rand(1078,1083);
+delitem @rball,1;
+monster "poring_c01",0,0,"Plant",@plantmball,1,"EV_QUEST1::OnWinner";
+dispbottom "[ Plant Ball ] : รีบๆหา บอลหมายเลข [ "+getitemname($rpball)+" ] ";
+close;
+
+fill:
+getitem @rball,1;
+dispbottom "คุณเก็บ บอล [ "+getitemname(@rball)+" ] ได้แล้ว...";
+getitem 7227,1;
+delitem @rball,1;
+set $mem_plant,$mem_plant+1;
+mapannounce "poring_c01","[ Plant Ball ] : " + strcharinfo(0) + " เก็บบอลหมายเลข [ "+getitemname($rpball)+" ] ได้แล้ว...",1,0x33FFFF;
+close;
+}

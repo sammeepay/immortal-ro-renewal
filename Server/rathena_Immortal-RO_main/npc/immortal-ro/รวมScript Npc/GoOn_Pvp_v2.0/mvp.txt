@@ -1,0 +1,16 @@
+izlude.gat,139,122,4 script ล่าบอส 791,{
+        mes "[คนวาป]";
+        mes "ต้องการไปล่าบอสใช่ไหม";
+	mes "ขอให้โชคดีนะ";
+	next;
+        mes "[คนวาป]";
+        mes "ไปเลย กด!!!";
+        menu "Mvp",mvp,"ออก",Lcancel;
+
+mvp:
+warp "xmas_fild01.gat",0,0;
+close;
+
+Lcancel:
+close;
+}

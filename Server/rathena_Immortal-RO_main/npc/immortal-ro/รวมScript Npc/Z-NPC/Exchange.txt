@@ -1,0 +1,54 @@
+-	script	TMPAY	 -1,{
+
+OnTimer5000:
+	query_sql "SELECT `card_id`,`amount`,`user_id` FROM `truemoney` WHERE `status` = 1",.card_id,.card_amount,.card_account_id;
+	sleep2 500;
+	if (getarraysize(.card_id) > 0) {
+		for (set .i,0; .i < getarraysize(.card_id); set .i,.i+1) {
+			if(attachrid(.card_account_id[.i]) == 1)
+			{
+				dispbottom "[ระบบเติมเงิน] คุณได้รับแคช " + .card_cash_amount[.card_amount[.i]] + " Cash";
+               dispbottom "[ระบบเติมเงิน] คุณได้รับแต้มโบนัส " + .card_cashb_amount[.card_amount[.i]] + " แต้ม";
+               set #CASHPOINTS,(#CASHPOINTS + .card_cash_amount[.card_amount[.i]]);
+
+   query_sql "SELECT COUNT(*) FROM `bonus` WHERE `account_id`="+ .card_account_id[.i] ,@exist_account;
+   if (@exist_account == 0){
+       query_sql "INSERT INTO `bonus` (`account_id`,`point`) VALUES (" + .card_account_id[.i] + ",0)";
+   }
+               query_sql "UPDATE `bonus` SET `point` =  `point` + ROUND(" + (.card_cashb_amount[.card_amount[.i]]) + ") WHERE `account_id` = " + .card_account_id[.i];
+               query_sql "UPDATE `truemoney` SET `status` = 2 WHERE `card_id` = " + .card_id[.i];
+           }
+			detachrid;
+		}
+		deletearray .card_id[0],getarraysize(.card_id);
+		deletearray .card_amount[0],getarraysize(.card_amount);
+		deletearray .card_account_id[0],getarraysize(.card_account_id);
+	}
+	detachrid;
+	setnpctimer 0;
+	startnpctimer;
+	end;
+
+OnInit:
+
+	//ตั้งค่าจำนวน CASHPOINT ที่จะได้รับ
+	//set .card_cash_amount[มูลค่าบัตรเงินสด (ตาม config.php)],จำนวน CASHPOINT;
+	set .card_cash_amount[0],0;
+	set .card_cash_amount[1],100;
+	set .card_cash_amount[2],180;
+	set .card_cash_amount[3],300;
+	set .card_cash_amount[4],600;
+	set .card_cash_amount[5],1000;
+	set .card_cash_amount[6],2000;
+	//ตั้งค่าจำนวน CASHBONUS ที่จะได้รับ
+	set .card_cashb_amount[0],0;
+	set .card_cashb_amount[1],50;
+	set .card_cashb_amount[2],90;
+	set .card_cashb_amount[3],150;
+	set .card_cashb_amount[4],300;
+	set .card_cashb_amount[5],500;
+	set .card_cashb_amount[6],1000;
+	initnpctimer;
+	end;
+
+}

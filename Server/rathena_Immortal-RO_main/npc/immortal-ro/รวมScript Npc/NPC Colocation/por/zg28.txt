@@ -1,0 +1,31 @@
+//c5,164,113,4	script	เทพจุติ	811,{
+mes "[^0000FFบริการแจกพ้อย สเเตตัส สกิล ฟรี^000000]";
+mes "[^0000FFอยากได้อะไรก็เลือกเอา^000000]";
+mes "[^0000FFใช้หมดแล้วมาขอใหม่ได้ข้าใจดี^000000]";
+next;
+menu "^FF3355แจก Status Point^000000",status100,"^FF3355แจก Skill Point^000000",L1,"^FF3355ลด Skill Point เนื่องจากเปลี่ยนอาชีพไม่ได้^000000",status200,"Quit",Lcancel;
+
+status100:
+atcommand strcharinfo(0)+"@stpoint +30000";
+close;
+
+L1:
+atcommand strcharinfo(0)+"@skpoint +100";
+close;
+
+status200:
+atcommand strcharinfo(0)+"@skpoint -10000";
+close;
+
+Lcancel:
+mes "[^0000FFบริการฟรี^000000]";
+mes "ดีมาก ..หวังว่าเจ้าคงกลับมาหาข้าใหม่นะ.";
+close;
+
+OnInit: 
+waitingroom "แจก Status&Skill ฟรี",0; 
+end;
+
+}
+
+

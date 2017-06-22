@@ -1,0 +1,199 @@
+//===================================================================
+// NPC : Duel PvP
+// Design By : CSS25
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+guild_vs2.gat,49,49,4	script	Duel Master	811,{
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "สวัสดีค่ะ ^0000ff"+strcharinfo(0)+"^000000 คุณต้องการให้ฉันทำอะไร?";
+next;
+menu 
+"- เชิญผู้ต่อสู้",duelopen,
+"- เปิดระบบ พีวีพี",pvpnow,
+"- กลับเมือง",back,
+"Exit",Cancel;
+
+
+
+duelopen:
+if ($invite)
+{
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "ขออภัยค่ะไม่สามรถชวนได้อีกครั้ง";
+mes "เนื่องจากเมนูส่วนนี้ได้ถูกใช้งาน";
+mes "ไปแล้วหนึ่งครั้ง";
+close;
+}
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "โปรดใส่ชื่อลงในช่องว่างค่ะ";
+mes "หรือใส่ 0 เพื่อยกเลิก";
+next;
+set $@PlayerOne$,strcharinfo(0);
+input $@PlayerTwo$;
+if($@PlayerTwo$ == "0") goto Cancel;
+if(isloggedin(getcharid(3,$@PlayerTwo$)) == 0) goto offline;
+initnpctimer "PVPtimer";
+startnpctimer "PVPtimer";
+set $invite,1;
+close;
+
+
+
+pvpnow:
+if (getmapusers("guild_vs2.gat") == 1) goto notopen;
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "สถานะของห้องในขณะนี้";
+mes "กำลังจะถูกเปลี่ยน เป็นระบบพีวีพี";
+mes "ในอีก 10 วินาทีข้างหน้า";
+initnpctimer "PVPtimer2";
+startnpctimer "PVPtimer2";
+stopnpctimer "PVPtimer";
+disablenpc "Duel Master";
+set $invite,0;
+close;
+
+
+
+back:
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "ท่านต้องการกลับเมือง ใช่หรือไม่";
+next;
+menu 
+"- ใช่",goback,
+"- ไม่ใช่",remain,
+"Exit",Cancel;
+
+
+
+goback:
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "แล้วพบกันใหม่";
+next;
+set $invite,0;
+warp "SavePoint",0,0;
+disablenpc "Duel Master";
+close;
+
+
+
+remain:
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "ท่านยังคงอยู่ในห้องนี้ ต่อไป";
+close;
+
+
+
+notopen:
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "ไม่สามารถเปิดระบบพีวีพีได้";
+mes "เนื่องจากผู้เล่นไม่เพียงพอ";
+close;
+
+
+
+offline:
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "ขออภัยค่ะ ผู้เล่นที่ท่านเชิญ";
+mes "ไม่ได้ออนไลท์ในขณะนี้";
+close;
+
+
+
+Cancel:
+mes "[ ^0000FF~• Duel Master •~^000000 ]";
+mes "แล้วพบกันใหม่";
+close;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+rachel.gat,0,0,0	script	PVPtimer	-1,{
+initnpctimer;
+OnInit:
+
+OnTimer1000:
+announce "คุณ " +$@PlayerTwo$+" นี่คือการประกาศครั้งแรกสำหรับคุณ | คุณ "+$@PlayerOne$+" ต้องการสู้กับคุณ.",8;
+end;
+
+OnTimer30000:
+announce "คุณ " +$@PlayerTwo$+" นี่คือการประกาศครั้งที่สองสำหรับคุณ | คุณ "+$@PlayerOne$+" ต้องการสู้กับคุณ.",8;
+end;
+
+OnTimer60000:
+announce "คุณ " +$@PlayerTwo$+" นี่คือการประกาศครั้งสุดท้ายสำหรับคุณ | คุณ "+$@PlayerOne$+" ต้องการสู้กับคุณ กรุณาเข้ามาที่ห้อง Duel PvP ด้วยค่ะ.",8;
+end;
+
+OnTimer65000:
+charCommand "#warp guild_vs2 49 45 "+$@PlayerTwo$+"";
+disablenpc "Duel Master";
+initnpctimer "PVPtimer2";
+startnpctimer "PVPtimer2";
+stopnpctimer;
+end;
+}
+
+
+
+rachel.gat,0,0,0	script	PVPtimer2	-1,{
+
+initnpctimer;
+
+OnTimer5000:
+mapannounce "guild_vs2.gat","[ 10 ]",18;
+end;
+
+OnTimer6000:
+mapannounce "guild_vs2.gat","[ 9 ]",18;
+end;
+
+OnTimer7000:
+mapannounce "guild_vs2.gat","[ 8 ]",18;
+end;
+
+OnTimer8000:
+mapannounce "guild_vs2.gat","[ 7 ]",18;
+end;
+
+OnTimer9000:
+mapannounce "guild_vs2.gat","[ 6 ]",18;
+end;
+
+OnTimer10000:
+mapannounce "guild_vs2.gat","[ 5 ]",18;
+end;
+
+OnTimer11000:
+mapannounce "guild_vs2.gat","[ 4 ]",18;
+end;
+
+OnTimer12000:
+mapannounce "guild_vs2.gat","[ 3 ]",18;
+end;
+
+OnTimer13000:
+mapannounce "guild_vs2.gat","[ 2 ]",18;
+end;
+
+OnTimer14000:
+mapannounce "guild_vs2.gat","[ 1 ]",18;
+end;
+
+OnTimer15000:
+mapannounce "guild_vs2.gat","Duel Master : สถานะของห้องขณะนี้ ได้ถูกเปลี่ยนเป็นระบบพีวีพีแล้วค่ะ",18;
+pvpon "guild_vs2.gat";
+end;
+
+OnTimer300000:
+mapannounce "guild_vs2.gat","Duel Master : Duel PvP is Over !!",18;
+mapwarp "guild_vs2.gat","rachel.gat",130,110; 
+pvpoff "guild_vs2.gat";
+set $invite,0;
+stopnpctimer;
+end;
+}

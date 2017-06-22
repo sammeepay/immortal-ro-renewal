@@ -1,0 +1,217 @@
+function	script	ntoz	{
+    if (!getarg(0)) return "0 Zeny";
+    set .@tmp,getarg(0);
+
+    set .@i,0;
+    while (.@tmp > 0)
+    {
+        setarray .@t[.@i],.@tmp%10;
+        set .@tmp,.@tmp/10;
+        set .@i,.@i+1;
+    }
+    set .@strzeny$,"";
+    for (set .@i,0;.@i<getarraysize(.@t);set .@i,.@i+1)
+    {
+        if ((.@i)%3 ==0 && .@i)set .@strzeny$,.@t[.@i]+","+.@strzeny$;
+        else set .@strzeny$,.@t[.@i]+.@strzeny$;
+
+    }
+    return .@strzeny$+" Zeny";
+}
+
+
+// (H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H  Script by G-Cyber  H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H) \\
+// (H                                                             C ) 2010 - 2011  G-Cyber's  Development  Present                                                      H) \\
+// (H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H Powered By G-Cyber.com H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H-H) \\ 
+
+c5,193,150,4	script	Online	423,{
+//-------------------------------------------------------------------------ConFig Zone--------------------------------------------------------------------------------------
+set .@npcname$,"[   ^FF0000พนักงานแจกรางวัล^000000   ]";    // ตั้งชื่อ npc
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    while( getgmlevel() >=99 ){
+        mes .@npcname$;
+        mes "สวัสดีคุณ ^0000FFGM^000000 มีอะไรให้ข้าช่วยไหม"; 
+        mes "การกำหนดค่าปัจจุบัน";
+        mes $onlinebonus[0]?"เวลาสะสมสูงสุดไม่เกิน ^00FF00"+$onlinebonus[0]+"^000000 ชั่วโมง":"^FF0000ยังไม่ได้กำหนด^000000";
+        for (set .@i,1;.@i<=$onlinebonus[0];set .@i,.@i+1)
+        {
+            set .@tmp,.@i*2-1;
+            if ($onlinebonus[.@tmp])
+                mes "ชั่วโมงที่ "+.@i+" ^00FF00"+($onlinebonus[.@tmp]==1?callfunc("ntoz",$onlinebonus[.@i*2]):getitemname($onlinebonus[.@tmp])+" "+$onlinebonus[.@i*2]+" ea")+"^000000";
+            else
+                mes "ชั่วโมงที่ "+.@i+" ^FF0000ยังไม่ได้กำหนด^000000";
+        }
+        mes "ท่านต้องการทำอะไร";
+        next;
+        switch(select( "• เมนูผู้เล่น","• กำหนดเวลาสะสมสูงสุด","• แก้ไขของรางวัล","• ออก"))
+        {
+        case 1:    
+            mes .@npcname$;
+            mes "จะพาไปเดียวนี้ค่ะ";
+            next;
+            break;
+        case 2:
+            mes .@npcname$;
+            mes "ระบุเวลาที่ต้องการเป็นชั่วโมง";
+            mes "1 - 23, ค่าอื่นๆ=ปิดการใช้งาน NPC";
+            mes "***กำหนดใด้สูงสุด 23 ชั่วโมง***";
+            next;
+            input $onlinebonus[0];
+            if ( $onlinebonus[0] >23 ) set $onlinebonus[0],0;
+            continue;
+        case 3:
+            while(1)
+            {
+                mes .@npcname$;
+                mes "เลือกชั่วโมงที่ต้องการแก้ไขค่ะ";
+                next;
+                set .@tmp_h$,"";
+                for (set .@i,1;.@i<=$onlinebonus[0];set .@i,.@i+1)
+                {
+                    set .@tmp,.@i*2-1;
+                    if ($onlinebonus[.@tmp])
+                        set .@tmp_h$,.@tmp_h$+"• ชั่วโมงที่ "+.@i+" [ ^00FF00"+($onlinebonus[.@tmp]==1?callfunc("ntoz",$onlinebonus[.@i*2]):getitemname($onlinebonus[.@tmp])+" "+$onlinebonus[.@i*2]+" ea")+"^000000 ]:";
+                    else
+                        set .@tmp_h$,.@tmp_h$+"• ชั่วโมงที่ "+.@i+" ^FF0000ยังไม่ได้กำหนด^000000:";
+                }
+                set .@tmp_h$,.@tmp_h$+"• กลับไปเมนูแรก";
+                set .@mnu,select(.@tmp_h$);
+                if (.@mnu>$onlinebonus[0]) break;
+
+                mes .@npcname$;
+                mes "กรุณาใส่รหัส Item";
+                mes "หรือใส่ 1 เพื่อกำหนดเป็น Zeny";
+                mes "ค่าอื่นๆ = ยกเลิก";
+                next;
+                input $onlinebonus[.@mnu*2-1];
+                if($onlinebonus[.@mnu*2-1] !=1 && getitemname($onlinebonus[.@mnu*2-1])=="null")
+                {
+                    set $onlinebonus[.@mnu*2-1],0;
+                    continue;
+                }
+                mes .@npcname$;
+                mes "คุณต้องการแจก^0000FF [ "+ ($onlinebonus[.@mnu*2-1]==1?"Zeny":getitemname($onlinebonus[.@mnu*2-1])) +"^000000 ]";
+                mes "กรุณาใสจำนวน, 0=ยกเลิก"; 
+                next;
+                input $onlinebonus[.@mnu*2];
+                if($onlinebonus[.@mnu*2] <1)
+                {
+                    set $onlinebonus[.@mnu*2-1],0;
+                    set $onlinebonus[.@mnu*2],0;
+                    continue;
+                }
+                mes .@npcname$;
+                mes "กำหนดของรางวัล^0000FF [ "+ ($onlinebonus[.@mnu*2-1]==1?callfunc("ntoz",$onlinebonus[.@mnu*2]):getitemname($onlinebonus[.@mnu*2-1]) +" "+$onlinebonus[.@mnu*2]+" ea")+" ]^000000";
+                next;
+            }
+            continue;
+        default:
+            mes .@npcname$;
+            mes "บ๊าย บาย ค่ะ";
+            close;
+        }
+        break;
+    }
+    if (!$onlinebonus[0])
+    {
+        mes .@npcname$;
+        mes "ระบบยังไม่เปิดให้ใช้บริการ";
+        mes "กรุณาติดต่อ GM";
+        close;
+    }
+    while(1)
+    {
+        set .@tmp,gettimetick(2)- #TT_online;    
+        set .@HH, .@tmp/ 3600;
+        set .@tmp,.@tmp%3600;
+        set .@MM, .@tmp/ 60;
+
+        mes .@npcname$;
+        mes "ระบบ ออนไลน์แลกรางวัล"; 
+        mes "ยิ่งคุณออนไลน์ในเกมส์นานเท่าไร";
+        mes "คุณยิ่งได้รับ รางวัลมากเท่านั้น";
+        mes "เวลาออนไลน์ของคุณ [^FF0000"+.@HH+"^000000:^FF0000"+(.@MM<10?"0":"")+.@MM+"^000000]ชั่วโมง";
+        mes "คุณต้องการแลกของรางวัลไหม";
+        next;
+        switch(select("• แลกของรางวัล","• ดูรายละเอียดรางวัล","• ออก"))
+        {
+        case 1: 
+            mes .@npcname$;
+            if (.@HH < 1) {
+                mes "เวลาออนไลนของเจ้าน้อยกว่า 1 ชม."; 
+                mes "กรุณากลับมาใหม่ภายหลัง"; 
+                close; 
+            } 
+            mes "เวลาออนไลน์ทั้งหมด "; 
+            mes "เวลาออนไลน์ของคุณ [^FF0000"+.@HH+"^000000:^FF0000"+(.@MM<10?"0":"")+.@MM+"^000000]ชั่วโมง";
+            mes "เลือกของรางวัลที่ต้องการ";
+            next;
+            set .@tmp_h$,"";
+            for (set .@i,1;.@i<=$onlinebonus[0];set .@i,.@i+1)
+            {
+                if (.@i > .@HH) continue;
+                set .@tmp,.@i*2-1;
+                if ($onlinebonus[.@tmp])
+                    set .@tmp_h$,.@tmp_h$+"• ออนไลน์ "+.@i+" ชม. [ ^00FF00"+($onlinebonus[.@tmp]==1?callfunc("ntoz",$onlinebonus[.@i*2]):getitemname($onlinebonus[.@tmp])+" "+$onlinebonus[.@i*2]+" ea")+"^000000 ]:";
+                else
+                    set .@tmp_h$,.@tmp_h$+"• ออนไลน์ "+.@i+" ชม. ^FF0000ยังไม่ได้กำหนด^000000:";
+            }
+            set .@tmp_h$,.@tmp_h$+"• กลับเมนูแรก";
+            set .@mnu,select(.@tmp_h$);
+            if (.@mnu > .@HH) continue;
+
+            mes .@npcname$;
+            if (!$onlinebonus[.@mnu*2-1])
+            {
+                mes "ขออภัย ยังไม่กำหนดของรางวัล";
+                mes "กรุณาติดต่อ GM";
+                continue;
+            }
+            
+            mes "ของรางวัลขอเจ้าตามที่ข้าสัญญา"; 
+            mes "ออนไลน์ "+.@mnu+" ชม. [ ^00FF00"+ ($onlinebonus[.@mnu*2-1]==1?callfunc("ntoz",$onlinebonus[.@mnu*2]):getitemname($onlinebonus[.@mnu*2-1]) +" "+$onlinebonus[.@mnu*2]+" ea")+" ^000000]";
+            next;
+            if (select("รับของรางวัล","กลับเมนูหลัก")-1)continue; 
+            set #TT_online, #TT_online+(3600*.@mnu);
+            if ($onlinebonus[.@mnu*2-1]==1) set Zeny,Zeny+$onlinebonus[.@mnu*2];
+            else getitem $onlinebonus[.@mnu*2-1],$onlinebonus[.@mnu*2];
+            mes .@npcname$;
+            mes "นี่ไงรางวัลของเจ้า";
+            next;
+            continue;
+        case 2:
+            mes .@npcname$;
+            mes "ระบบเวลาแลกเงิน";
+            mes "จะเริ่มนับเวลาตั้งแต่คุณเข้าเกม";
+            mes "ยิ่งอยู่ในเกมนานเท่าไหร่ก็มีสิทธิ์รับของรางวัลมาก";
+            mes "^FF0000เวลาจะนับใหม่ทุกครั้งที่เข้าเกม^000000";
+            next;
+            mes .@npcname$;
+            mes "กำหนดของรางวัล";
+            for (set .@i,1;.@i<=$onlinebonus[0];set .@i,.@i+1)
+            {
+                set .@tmp,.@i*2-1;
+                if ($onlinebonus[.@tmp])
+                    mes "ชั่วโมงที่ "+.@i+" ^00FF00"+($onlinebonus[.@tmp]==1?callfunc("ntoz",$onlinebonus[.@i*2]):getitemname($onlinebonus[.@tmp])+" "+$onlinebonus[.@i*2]+" ea")+"^000000";
+                else
+                    mes "ชั่วโมงที่ "+.@i+" ^FF0000ยังไม่ได้กำหนด^000000";
+            }
+            next;
+            continue;
+        case 3:
+            mes .@npcname$;
+            mes "แล้วพบกันใหม่ค่ะ";
+            close;
+        }
+    }
+    end;
+
+OnPCLoginEvent: 
+    set #TT_online,gettimetick(2);
+    end; 
+
+OnInit: 
+    waitingroom "Online Bonus !!",0; 
+    end; 
+}

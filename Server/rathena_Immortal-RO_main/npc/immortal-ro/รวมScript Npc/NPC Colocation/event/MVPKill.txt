@@ -1,0 +1,31 @@
+morocc2,0,0,0	script	MVPKilllerSystem	802,{
+	end;
+
+OnWhisperGlobal:
+	if (getgmlevel() < 99) end;
+	if (@whispervar0$ == "Run") goto TestRun;
+OnInit:
+	setarray $@MBKSprize[0],6051,5,10;
+	setarray $@MBKSmob_id[0],2643,2644;
+
+	setarray $@MBKSmap$[0],"alberta","aldebaran","amatsu","ayothaya","comodo",
+		"gonryun","geffen","izlude","xmas","moscovia",
+		"niflheim","payon","prontera","yuno",
+		"umbala","louyang","lighthalzen","hugel",
+		"rachel","veins";
+	end;
+
+TestRun:
+OnMinute10:
+	set .@mob_id,rand(0,getarraysize($@MBKSmob_id)-1);
+	set .@map,rand(0,getarraysize($@MBKSmap$)-1);
+	announce "[ JuTi-Ro ] : BossâË´ [ "+strmobinfo(2,$@MBKSmob_id[.@mob_id])+" ] ºØ¡àÁ×Í§ [ "+$@MBKSmap$[.@map]+" ] !!",0,0xFF0000;
+	monster     $@MBKSmap$[.@map],0,0,strmobinfo(2,$@MBKSmob_id[.@mob_id]),$@MBKSmob_id[.@mob_id],1,"MVPKilllerSystem::OnKillBoss";
+	end;
+
+OnKillBoss:
+	getmapxy(.@map$, .@x, .@y, 0, strcharinfo(0));
+	announce "[ JuTi-Ro] : ·èÒ¹ "+strcharinfo(0)+" ¡Ó¨Ñ´ BossâË´ àÁ×Í§ [ "+.@map$+" ] áÅéÇ !!",0,0xFF0000;
+	getitem $@MBKSprize[0],rand($@MBKSprize[1],$@MBKSprize[2]);
+	end;
+}

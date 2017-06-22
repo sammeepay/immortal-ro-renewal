@@ -1,0 +1,124 @@
+// ID,Name,Name,2,,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Weight"; },{},{}
+
+function	script	WeightSlim	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29003,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 547,100;   /// ITEM
+	close;
+	end;
+	} 
+
+
+function	script	WeightStrawberry	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29004,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 578,100;   /// ITEM
+	close;
+	end;
+	} 
+
+
+function	script	Weightblue	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29005,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 505,100;   /// ITEM
+	close;
+	end;
+	} 
+
+
+function	script	WeightAloe	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29006,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 521,100;   /// ITEM
+	close;
+	end;
+	} 
+
+
+function	script	WeightAcid	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29008,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 7135,100; /// ITEM
+	getitem 7136,100; /// ITEM
+	close;
+	end;
+	} 
+
+function	script	WeightAcid10	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29009,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 7135,10; /// ITEM
+	getitem 7136,10; /// ITEM
+	close;
+	end;
+	} 
+
+
+function	script	Yggdrasilberry	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29010,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 607,10;   /// ITEM
+	close;
+	end;
+	} 
+
+function	script	YggdrasilSeed	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29011,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 608,10;   /// ITEM
+	close;
+	end;
+	} 
+
+
+function	script	Poison_Bottle	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29001,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 678,100;   /// ITEM
+	close;
+	end;
+	} 
+
+
+function	script	Coating_Bottle	{
+	if (MaxWeight*90/100 < Weight) {
+				getitem 29002,1;   /// ITEM
+				dispbottom "90% Weight";
+				close;
+		}
+	getitem 7139,100;   /// ITEM
+	close;
+	end;
+	} 
+
+
+
+

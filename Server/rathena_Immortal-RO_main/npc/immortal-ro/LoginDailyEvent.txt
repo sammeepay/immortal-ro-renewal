@@ -1,0 +1,239 @@
+//=========================================
+//		Daily Log-in Event
+//=========================================
+// Written By HIME_meaw
+//=========================================
+// 1.01
+// -> ให้รางวัลล็อกอินเป็นเงิน Zeny แบบสุ่ม ตั้งแต่ 50000-100000
+// -> รับได้วันละครั้งตอนเข้าเกม มีประกาศบอกในช่องแชท
+// 1.03
+// -> แก้ไขการตั้งค่าให้เป็นแบบอื่นได้ภายในเกม โดยการพิมพ์ setting ซิบหา NPC:DailyLogin
+// -> ตั้งค่าไอเทมที่แจก และจำนวนไอเทมได้ในเกม
+// 1.08
+// -> สามารถตั้งจำนวนเงินที่จะให้ตอนล็อกอินได้แล้ว
+// -> แก้บั๊กที่ค้างอยู่
+//=========================================
+
+	-	script	DailyLogin	-1,{
+
+//----------------------------- Login -----------------------------
+	OnPCLoginEvent:
+		if ((Loginday == gettime(5)) && (Loginmonth == gettime(6)) && (Loginyear == gettime(7))) {
+			dispbottom "เสียใจด้วย วันนี้คุณรับรางวัล Login ประจำวันไปแล้ว";
+			end;
+			}			
+		set Loginday,gettime(5);
+		set Loginmonth,gettime(6);
+		set Loginyear,gettime(7);
+//-=-=-=-=-=-=-=-=-=-=- Get Zeny -=-=-=-=-=-=-=-=-=-=-
+	if ($DailyLoginType == 1) {
+		Set @GetZeny,rand($ZenyStartxs,$ZenyEndxs);
+		set Zeny,Zeny +@GetZeny;
+		dispbottom "[Login Event]: คุณได้รับรางวัล Login เป็นเงิน Zeny จำนวน "+@GetZeny+" Zeny";
+		end;
+		}
+//-=-=-=-=-=-=-=-=-=-=- Get Item -=-=-=-=-=-=-=-=-=-=-
+	if ($DailyLoginType == 2) {
+		Set @Itemx,$itemxs;
+		Set @ItemAmountx,$ItemAmountxs;
+		getitem @Itemx,@ItemAmountx;
+		dispbottom "[Login Event]: คุณได้รับรางวัล Login เป็น "+getitemname(@Itemx)+" จำนวน "+@ItemAmountx+" ชิ้น";
+		end;
+		}
+
+
+//----------------------------- Auto Default -----------------------------
+	OnInit:
+		if ($DailyLoginType == 0) set $DailyLoginType,1;
+		if ($itemxs == 0) set $itemxs,7227;
+		if ($ItemAmountxs == 0) set $ItemAmountxs,15;
+		if ($ZenyStartxs == 0) set $ZenyStartxs,50000;
+		if ($ZenyEndxs == 0) set $ZenyEndxs,100000;
+		end;
+
+
+//----------------------------- Whisper/Setting -----------------------------
+
+	OnWhisperGlobal:
+	if(@whispervar0$ == "setting") {
+		if (getgmlevel() < 90) { end; }
+		mes "[ ^FF6666Daily Login Event^000000 ]";
+		mes "รูปแบบการตั้งค่าปัจจุบัน: ^0000FF"+$DailyLoginType+"^000000";
+		mes "ไอเทม: ^339900"+getitemname($itemxs)+"^000000";
+		mes "จำนวน: ^3300CC"+$ItemAmountxs+"^000000";
+		mes "Zeny ขั้นต่ำ: ^339900"+$ZenyStartxs+"^000000";
+		mes "Zeny สูงสุด: ^3300CC"+$ZenyEndxs+"^000000";
+		switch (select("^FF0000•^000000 ตั้งค่ารูปแบบใหม่","^FF0000•^000000 ตั้งค่าไอเทมและจำนวน","^FF0000•^000000 ตั้งค่าเงิน Zeny","^FF0000•^000000 ยกเลิก")) {
+			case 1:
+			next;
+			mes "[ ^FF6666Daily Login Event^000000 ]";
+			mes "กรุณาเลือกรูปแบบการตั้งค่าที่คุณต้องการ";
+			switch (select("^FF0000•^000000 รูปแบบที่ 1 - Zeny","^FF0000•^000000 รูปแบบที่ 2 - ไอเทม","^FF0000•^000000 ยกเลิก")) {
+				case 1:
+				next;
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "ตั้งค่าเรียบร้อยแล้ว";
+				set $DailyLoginType,1;
+				close;
+
+				case 2:
+				next;
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "ตั้งค่าเรียบร้อยแล้ว";
+				set $DailyLoginType,2;
+				close;
+
+				case 3:
+				close;
+
+				}
+			
+			case 2:
+			next;
+			mes "[ ^FF6666Daily Login Event^000000 ]";
+			mes "การตั้งค่าปัจจุบัน:";
+			mes "ไอเทม: ^339900"+getitemname($itemxs)+"^000000";
+			mes "จำนวน: ^3300CC"+$ItemAmountxs+"^000000";
+			switch (select("^FF0000•^000000 ตั้งไอเทมใหม่","^FF0000•^000000 ตั้งจำนวนใหม่","^FF0000•^000000 ยกเลิก")) {
+				case 1:
+				next;
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "^FF0000กรุณาใส่รหัสไอเทมที่ต้องการตั้ง";
+				mes "หากต้องการยกเลิก กรุณาใส่ 0^000000";
+				input @ItemidLogin;
+				next;
+				if (@ItemidLogin == 0) close;
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "ไอเทมที่ใช้เป็นรางวัล:";
+				mes "^339900"+getitemname(@ItemidLogin)+"^000000";
+				switch (select("^FF0000•^000000 ยืนยัน","^FF0000•^000000 ยกเลิก")) {
+					case 1:
+					next;
+					set $itemxs,@ItemidLogin;
+					mes "[ ^FF6666Daily Login Event^000000 ]";
+					mes "ตั้งค่าเรียบร้อย";
+					mes " ";
+					mes "ไอเทมที่ใช้เป็นรางวัล:";
+					mes "^339900"+getitemname($itemxs)+"^000000";
+					close;
+
+					case 2:
+					close;
+				 }
+
+				case 2:
+				next;
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "^FF0000กรุณาใส่จำนวนไอเทมที่ต้องการตั้ง";
+				mes "หากต้องการยกเลิก กรุณาใส่ 0^000000";
+				input @ItemAMLogin;
+				next;
+				if (@ItemAMLogin == 0) close;
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "จำนวนไอเทมที่ใช้เป็นรางวัล:";
+				mes "^339900"+@ItemAMLogin+"^000000";
+				switch (select("^FF0000•^000000 ยืนยัน","^FF0000•^000000 ยกเลิก")) {
+					case 1:
+					next;
+					set $ItemAmountxs,@ItemAMLogin;
+					mes "[ ^FF6666Daily Login Event^000000 ]";
+					mes "ตั้งค่าเรียบร้อย";
+					mes " ";
+					mes "จำนวนไอเทมที่ใช้เป็นรางวัล:";
+					mes "^339900"+$ItemAmountxs+"^000000";
+					close;
+
+					case 2:
+					close;
+				 }
+
+				case 3:
+				close;
+
+			}
+
+			case 3:
+			next;
+			mes "[ ^FF6666Daily Login Event^000000 ]";
+			mes "การตั้งค่าปัจจุบัน:";
+			mes "Zeny ขั้นต่ำ: ^339900"+$ZenyStartxs+"^000000";
+			mes "Zeny สูงสุด: ^3300CC"+$ZenyEndxs+"^000000";
+			mes "^FF0000หากไม่ต้องการให้มีการสุ่ม กรุณา ";
+			mes "กรอกจำนวน Zeny ทั้งสองให้เท่ากัน^000000";
+			switch (select("^FF0000•^000000 ตั้ง Zeny ต่ำสุดใหม่","^FF0000•^000000 ตั้ง Zeny สูงสุดใหม่","^FF0000•^000000 ยกเลิก")) {
+				case 1:
+				next;
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "^FF0000กรุณาใส่จำนวนที่ต้องการตั้ง";
+				mes "หากต้องการยกเลิก กรุณาใส่ 0^000000";
+				input @ZenyStart;
+				next;
+				if (@ZenyStart == 0) close;
+				if (@ZenyStart > $ZenyEndxs) {
+					mes "[ ^FF6666Daily Login Event^000000 ]";
+					mes "เสียใจด้วย Zeny ขั้นต่ำไม่";
+					mes "สามารถสูงกว่า Zeny สูงสุดได้";
+					close;
+					}
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "Zeny ขั้นต่ำ:";
+				mes "^339900"+@ZenyStart+"^000000";
+				switch (select("^FF0000•^000000 ยืนยัน","^FF0000•^000000 ยกเลิก")) {
+					case 1:
+					next;
+					set $ZenyStartxs,@ZenyStart;
+					mes "[ ^FF6666Daily Login Event^000000 ]";
+					mes "ตั้งค่าเรียบร้อย";
+					mes " ";
+					mes "Zeny ขั้นต่ำ:";
+					mes "^339900"+$ZenyStartxs+"^000000";
+					close;
+
+					case 2:
+					close;
+				 }
+
+				case 2:
+				next;
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "^FF0000กรุณาใส่จำนวนที่ต้องการตั้ง";
+				mes "หากต้องการยกเลิก กรุณาใส่ 0^000000";
+				input @ZenyEnd;
+				next;
+				if (@ZenyEnd == 0) close;
+				if (@ZenyEnd < $ZenyStartxs) {
+					mes "[ ^FF6666Daily Login Event^000000 ]";
+					mes "เสียใจด้วย Zeny สูงสุดไม่";
+					mes "สามารถต่ำกว่า Zeny ขั้นต่ำได้";
+					close;
+					}
+				mes "[ ^FF6666Daily Login Event^000000 ]";
+				mes "Zeny สูงสุด:";
+				mes "^339900"+@ZenyEnd+"^000000";
+				switch (select("^FF0000•^000000 ยืนยัน","^FF0000•^000000 ยกเลิก")) {
+					case 1:
+					next;
+					set $ZenyEndxs,@ZenyEnd;
+					mes "[ ^FF6666Daily Login Event^000000 ]";
+					mes "ตั้งค่าเรียบร้อย";
+					mes " ";
+					mes "Zeny สูงสุด:";
+					mes "^339900"+$ZenyEndxs+"^000000";
+					close;
+
+					case 2:
+					close;
+				 }
+				
+				case 3:
+				close;
+			}
+
+			case 4:
+			close;
+		}
+
+	end;
+
+}
+}

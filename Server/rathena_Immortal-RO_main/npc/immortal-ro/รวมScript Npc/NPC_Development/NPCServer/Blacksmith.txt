@@ -1,0 +1,564 @@
+//===================================================================
+// NPC : About Weapons
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,138,100,4	script	BlackSmith	813,{
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "สวัสดีค่ะคุณ [ ^8B0000 " + strcharinfo(0) + " ^000000 ]";
+mes "มาหาข้า ต้องการอะไร ?";
+next;
+menu 
+"- Refine Items",b1,
+"- Repair Items",b2,
+"- เจาะรู Item ( Unusable )",b3,
+"- ทำอาวุธธาตุ",b4,
+"Exit",cancel;
+
+
+
+b1:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ถ้าอุปกรณ์ชิ้นไหนที่ไม่ถูกตีแสดงว่ามันตีบวกไม่ได้นะ";
+mes "เอาละ..จะเริ่มละนะ";
+next;
+for( set @part , 1; @part <= 6; set @part , @part + 1 )
+{
+	if( getequiprefinerycnt(@part) == 0 && 		    getequipisenableref(@part) ) 
+	{
+		successrefitem @part;
+  		successrefitem @part;
+		successrefitem @part;
+ 		successrefitem @part;
+  		successrefitem @part;
+  		successrefitem @part;
+  		successrefitem @part;
+  		successrefitem @part;
+  		successrefitem @part;
+  		successrefitem @part;
+	}
+}
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes " เสร็จละ ผลงานของข้าเป็นไงมั่ง";
+close;
+
+
+
+b2:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "เอาล่ะ ข้าซ่อมให้ท่านทั้งหมดแล้วแล้ว";
+atcommand strcharinfo(0)+"@repairall";
+close;
+
+
+
+b3:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ขออภัยค่ะ เมนูที่ท่านเลือก";
+mes "ไม่สามารถใช้งานได้ในขณะนี้";
+mes "ขออภัย ณ ที่นี้ด้วย ขอบคุณค่ะ";
+close;
+
+
+
+b4:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ท่านมาหาข้าที่นี่ต้องการให้ข้า";
+mes "ตีอาวุธ ธาตุให้ ใช่หรือไม่";
+next;
+menu 
+"ใช่",ok,
+"ไม่ใช่",cancel;
+
+
+
+ok:
+set @moneyweapon,0;
+set @betvery,5000;
+set @betelement,5000;
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ข้าจะเป็นคนหาแร่ตีดาบมาให้เจ้า หากเจ้าต้องการธาตุหรือ very";
+mes "เจ้าต้องหาแร่มาเอง ข้าคิดค่าบริการใส่แร่อันละ 5000 zeny";
+next;
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "เลือกเอาเลยเจ้าอากได้อาวุธประเภทใดล่ะ แต่โอกาสที่ข้าจะสร้างมันขึ้นมาได้สมบูรณ์มีแค่ 40% เองนะ";
+next;
+menu "ข้าต้องการทำ ขวาน",Two_Axe,
+"ข้าต้องการทำ มีดสั้น",One_Dagger,
+"ข้าต้องการทำ สนับมือ",One_Knuckle,
+"ข้าต้องการทำ คฑา",One_Mace,
+"ข้าต้องการทำ หอก",One_Spear,
+"ข้าต้องการทำ ดาบมือเดียว",One_Sword,
+"ข้าต้องการทำ ดาบสองมือ",Two_Sword,
+"ข้าต้องการทำKatar",Two_Katar;
+
+Two_Axe:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ขวาน เจ้าเลือกขวานเหรอแล้วเจ้าต้องการให้ข้าสร้างขวานอะไรให้เจ้าละ";
+next;
+menu "Axe",Axe,
+"Battle Axe",Battle_Axe,
+"Hammer",Hammer,
+"Buster",Buster,
+"Two-Handed Axe",Two_Handed_Aex;
+Axe:
+set @itemid,1303;
+set @moneyweapon,@moneyweapon+500;
+goto Very;
+Battle_Axe:
+set @itemid,1353;
+set @moneyweapon,@moneyweapon+6000;
+goto Very;
+Hammer:
+set @itemid,1356;
+set @moneyweapon,@moneyweapon+16000;
+goto Very;
+Buster:
+set @itemid,1359;
+set @moneyweapon,@moneyweapon+40000;
+goto Very;
+Two_handed_Axe:
+set @itemid,1362;
+set @moneyweapon,@moneyweapon+60000;
+goto Very;
+One_Dagger:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "มีดสั้น เจ้าเลือกมีดสั้นเหรอแล้วเจ้าต้องการให้ข้าสร้างมีดอะไรให้เจ้าละ";
+next;
+menu "Knife",Knife,
+"Cutter",Cutter,
+"Main Gauce",Main_Gauce,
+"Dagger",Dagger,
+"Gladius",Gladius,
+"Stiletto",Stiletto,
+"Damacus",Damacus;
+Knife:
+set @itemid,1203;
+set @moneyweapon,@moneyweapon+75;
+goto Very;
+Cutter:
+set @itemid,1206;
+set @moneyweapon,@moneyweapon+1300;
+goto Very;
+Main_Gauce:
+set @itemid,1208;
+set @moneyweapon,@moneyweapon+2500;
+goto Very;
+Dagger:
+set @itemid,1215;
+set @moneyweapon,@moneyweapon+15000;
+goto Very;
+Gladius:
+set @itemid,1221;
+set @moneyweapon,@moneyweapon+45000;
+goto Very;
+Stiletto:
+set @itemid,1218;
+set @moneyweapon,@moneyweapon+20000;
+
+Damacus:
+set @itemid,1222;
+set @moneyweapon,@moneyweapon+50000;
+goto Very;
+
+One_Knuckle:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "สนับมือ เจ้าเลือกสนับมือเหรอแล้วเจ้าต้องการให้ข้าสร้างสนับอะไรให้เจ้าละ";
+next;
+menu "Waghnakh",Waghnakh,
+"Knuckle Duster",Knuckle_Duster,
+"Hora",Hora,
+"Fist",Fist,
+"Claw",Claw;
+Waghnakh:
+set @itemid,1801;
+set @moneyweapon,@moneyweapon+8000;
+goto Very;
+Knuckle_Duster:
+set @itemid,1803;
+set @moneyweapon,@moneyweapon+25000;
+goto Very;
+Hora:
+set @itemid,1805;
+set @moneyweapon,@moneyweapon+32000;
+goto Very;
+Fist:
+set @itemid,1807;
+set @moneyweapon,@moneyweapon+53000;
+goto Very;
+Claw:
+set @itemid,1809;
+set @moneyweapon,@moneyweapon+67000;
+goto Very;
+One_Mace:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "กระบอง เจ้าเลือกกระบองเหรอแล้วเจ้าต้องการให้ข้าสร้างกระบองอะไรให้เจ้าละ";
+next;
+menu "ข้าจะทำ Club",Club,
+"Mace",Mace,
+"Smasher",Smasher,
+"Flail",Flail,
+"Morning Star",Morning_Star,
+"Sword Mace",Sword_Mace,
+"Chain",Chain,
+"Stunner",Stunner;
+Club:
+set @itemid,1503;
+set @moneyweapon,@moneyweapon+150;
+goto Very;
+Mace:
+set @itemid,1506;
+set @moneyweapon,@moneyweapon+1800;
+goto Very;
+Smasher:
+set @itemid,1509;
+set @moneyweapon,@moneyweapon+9500;
+goto Very;
+Flail:
+set @itemid,1512;
+set @moneyweapon,@moneyweapon+17500;
+goto Very;
+Morning_Star:
+set @itemid,1515;
+set @moneyweapon,@moneyweapon+45000;
+goto Very;
+Sword_Mace:
+set @itemid,1518;
+set @moneyweapon,@moneyweapon+52000;
+goto Very;
+Chain:
+set @itemid,1521;
+set @moneyweapon,@moneyweapon+25000;
+goto Very;
+Stunner:
+set @itemid,1522;
+set @moneyweapon,@moneyweapon+75000;
+goto Very;
+One_Spear:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "หอก เจ้าเลือกหอกเหรอแล้วเจ้าต้องการให้ข้าสร้างหอกอะไรให้เจ้าละ";
+next;
+menu "Javelin",Javelin,
+"Spear",Spear,
+"Pike",Pike,
+"Guisarme",Guisarme,
+"Glaive",Glaive,
+"Partizan",Partizan,
+"Trident",Trident,
+"Halberd",Halberd,
+"Lance",Lance;
+Javelin:
+set @itemid,1403;
+set @moneyweapon,@moneyweapon+175;
+goto Very;
+Spear:
+set @itemid,1406;
+set @moneyweapon,@moneyweapon+1850;
+goto Very;
+Pike:
+set @itemid,1409;
+set @moneyweapon,@moneyweapon+3600;
+goto Very;
+Guisarme:
+set @itemid,1453;
+set @moneyweapon,@moneyweapon+13000;
+goto Very;
+Glaive:
+set @itemid,1456;
+set @moneyweapon,@moneyweapon+20000;
+goto Very;
+Partizan:
+set @itemid,1459;
+set @moneyweapon,@moneyweapon+27000;
+goto Very;
+Trident:
+set @itemid,1462;
+set @moneyweapon,@moneyweapon+51000;
+goto Very;
+Halberd:
+set @itemid,1465;
+set @moneyweapon,@moneyweapon+54000;
+goto Very;
+Lance:
+set @itemid,1412;
+set @moneyweapon,@moneyweapon+60000;
+goto Very;
+One_Sword:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ดาบมือเดียว เจ้าเลือกดาบมือเดียวเหรอแล้วเจ้าต้องการให้ข้าสร้างดาบอะไรให้เจ้าละ";
+next;
+menu "Sword",Sword,
+"Falchion",Falchion,
+"Blade",Blade,
+"Rapier",Rapier,
+"Scimiter",Scimiter,
+"Ring Pommel Saber",Ring_Pommel_Saber,
+"Saber",Saber,
+"Haedonggum",Headonggum,
+"Tsurugi",Tsurugi,
+"Flamberge",Flamberge;
+Sword:
+set @itemid,1103;
+set @moneyweapon,@moneyweapon+100;
+goto Very;
+Falchion:
+set @itemid,1106;
+set @moneyweapon,@moneyweapon+1500;
+goto Very;
+Blade:
+set @itemid,1109;
+set @moneyweapon,@moneyweapon+2900;
+goto Very;
+Rapier:
+set @itemid,1112;
+set @moneyweapon,@moneyweapon+10000;
+goto Very;
+Scimiter:
+set @itemid,1115;
+set @moneyweapon,@moneyweapon+17000;
+goto Very;
+Ring_Pommel_Saber:
+set @itemid,1122;
+set @moneyweapon,@moneyweapon+24000;
+goto Very;
+Saber:
+set @itemid,1126;
+set @moneyweapon,@moneyweapon+49000;
+goto Very;
+Haedonggum:
+set @itemid,1123;
+set @moneyweapon,@moneyweapon+50000;
+goto Very;
+Tsurugi:
+set @itemid,1121;
+set @moneyweapon,@moneyweapon+51000;
+goto Very;
+Flamberge:
+set @itemid,1129;
+set @moneyweapon,@moneyweapon+60000;
+goto Very;
+
+Two_Sword:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ดาบสองมือ เจ้าเลือกดาบสองมือเหรอแล้วเจ้าต้องการให้ข้าสร้างดาบอะไรให้เจ้าละ";
+next;
+menu "Katana",Katana,
+"Slayer",Slayer,
+"Bastard Sword",Bastard_Sword,
+"Broad Sword",Broad_Sword,
+"Two-Handed Sword",Two_Handed_Sword,
+"Claymore",Claymore;
+Katana:
+set @itemid,1118;
+set @moneyweapon,@moneyweapon+3500;
+goto Very;
+Slayer:
+set @itemid,1153;
+set @moneyweapon,@moneyweapon+22500;
+goto Very;
+Bastard_Sword:
+set @itemid,1156;
+set @moneyweapon,@moneyweapon+35000;
+goto Very;
+Broad_Sword:
+set @itemid,1160;
+set @moneyweapon,@moneyweapon+95000;
+goto Very;
+Two_Handed_Sword:
+set @itemid,1159;
+set @moneyweapon,@moneyweapon+90000;
+goto Very;
+Claymore:
+set @itemid,1163;
+set @moneyweapon,@moneyweapon+120000;
+goto Very;
+Two_Katar:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "กาต้า เจ้าเลือกกาต้าเหรอแล้วเจ้าต้องการให้ข้าสร้างกาต้าอะไรให้เจ้าละ";
+next;
+menu "Jur",Jur,
+"Katar",Katar,
+"Jamadhar",Jamadhar;
+Jur:
+set @itemid,1250;
+set @money,@money+20000;
+goto Very;
+Kater:
+set @itemid,1252;
+set @money,@money+45000;
+goto Very;
+Jamadhar:
+set @itemid,1254;
+set @money,@money+60000;
+goto Very;
+Very:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "แล้วเจ้าจะให้ข้าใส่ค่า Very กี่ตัวดีหละ";
+next;
+menu "ใส่ 1 very",Very_1,"ใส่ 2 very",Very_2,"ใส่ 3 very",Very_3,"ไม่ใส่ very",Very_4;
+Very_1:
+set @very,1;
+set @betvery,@betvery*@very;
+set @moneyweapon,@moneyweapon+@betvery;
+goto Element;
+Very_2:
+set @very,2;
+set @betvery,@betvery*@very;
+set @moneyweapon,@moneyweapon+@betvery;
+goto Element;
+Very_3:
+set @very,3;
+set @betvery,@betvery*@very;
+set @moneyweapon,@moneyweapon+@betvery;
+goto Check_Zeny2;
+Very_4:
+set @very,0;
+goto Element;
+
+Element:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ว่าแต่ ธาตุที่เจ้าต้องการล่ะ เลือกมาได้เลย";
+next;
+menu "เอาธาตุน้ำ",Water,"เอาธาตุดิน",Earth,"เอาธาตุไฟ",Fire,"เอาธาตุลม",Wind,"ไม่ใส่ธาตุ",Noelementbat;
+Water:
+set @element,1;
+set @moneyweapon,@moneyweapon + @betelement;
+goto Check_Zeny;
+Earth:
+set @element,2;
+set @moneyweapon,@moneyweapon + @betelement;
+goto Check_Zeny;
+Fire:
+set @element,3;
+set @moneyweapon,@moneyweapon + @betelement;
+goto Check_Zeny;
+Wind:
+set @element,4;
+set @moneyweapon,@moneyweapon + @betelement;
+goto Check_Zeny;
+Noelementbat:
+set @element,0;
+goto Check_Zeny2;
+Check_Zeny:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ใช้ค่าใช้จ่ายดังนี้";
+mes "เงิน [ " + @moneyweapon + " ] Zeny";
+mes "Star Cumb [ " + @very + " ] อัน";
+goto Lelementprint;
+Lelementprint:
+if ( @element == 1 ) goto Lelement1;
+if ( @element == 2 ) goto Lelement2;
+if ( @element == 3 ) goto Lelement3;
+if ( @element == 4 ) goto Lelement4;
+goto Lpaying;
+Lelement1:
+set @checkelement,995;
+mes "Mystic Frozen [ 1 ] อัน";
+goto Lpaying;
+Lelement2:
+set @checkelement,997;
+mes "Great Nature [ 1 ] อัน";
+goto Lpaying;
+Lelement3:
+set @checkelement,994;
+mes "Flame Heart [ 1 ] อัน";
+goto Lpaying;
+Lelement4:
+set @checkelement,996;
+mes "Rough Wind [ 1 ] อัน";
+goto Lpaying;
+Lpaying:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "เจ้าต้องการที่จะสร้างให้เดี๋ยวนี้เลยหรือไม่";
+next;
+menu "เอาข้าจะเอาเลย",Yes,"ไม่หละเอาไว้ที่หลัง",No;
+Yes:
+if( countitem(@checkelement) < 1 )goto Non_Elem;
+if(Zeny<@moneyweapon) goto Non_Zeny;
+if( countitem(1000) < @very )goto Non_Very;
+
+set Zeny,Zeny-@moneyweapon;
+delitem 1000,@very;
+delitem @checkelement,1;
+
+set @random,rand(100);
+
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ก็อง ก็อง แก็ง แก็ง..!!!!";
+next;
+if(@random<40) goto Produc_Filed;
+set @name,getcharid(0);
+set @attr, (@very * (5 * 256)) + @element ;
+getitem2 @itemid,1,1,0,0,255,@attr,@name,0;
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "นี่คืออาวุธของเจ้า ขอบคุณที่ใช้บริการของข้า";
+close;
+Check_Zeny2:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ใช้ค่าใช้จ่ายดังนี้";
+mes "เงิน [ " + @moneyweapon + " ] Zeny";
+mes "Star Cumb [ " + @very + " ] อัน";
+goto Lpayingnoelement;
+Lpayingnoelement:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "เจ้าต้องการที่จะสร้างให้เดี๋ยวนี้เลยหรือไม่";
+next;
+menu "เอาข้าจะเอาเลย",Yes11,"ไม่หละเอาไว้ที่หลัง",No;
+Yes11:
+if(Zeny<@moneyweapon) goto Non_Zeny;
+if( countitem(1000) < @very )goto Non_Very;
+
+set Zeny,Zeny-@moneyweapon;
+delitem 1000,@very;
+
+set @random,rand(100);
+
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ก็อง ก็อง แก็ง แก็ง..!!!!";
+next;
+if(@random<40) goto Produc_Filed;
+set @name,getcharid(0);
+set @attr, (@very * (5 * 256)) + @element ;
+getitem2 @itemid,1,1,0,0,255,@attr,@name,0;
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "นี่คืออาวุธของเจ้า ขอบคุณที่ใช้บริการของข้า";
+close;
+Produc_Filed:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ฮ๊าก.!!!!!!.....กำข้าตีมันแตกอ่ะ";
+mes "ฝีมือของข้คงหมดไปกับความชลาแล้ว ข้าโทษทีนะ เหอๆ";
+close;
+Non_Zeny:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ท่านมีเงินเหลือไม่พอที่จะสร้างอาวุธ";
+close;
+Non_Very:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ท่านไม่มี Star Cumb นี่นา";
+close;
+Non_Elem:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "ท่านไม่แร่ Enchance Stone ก้อนใหญ่นี่";
+close;
+No:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "มันแพงไปใช่ไหมล่ะ อิอิ";
+close;
+LCancel:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes ".....";
+close;
+
+
+
+cancel:
+mes "[^FF8000~• BlackSmith •~^000000]";
+mes "แล้วพบกันใหม่";
+close;
+
+
+OnInit:
+Waitingroom "Refine|Repair|Other",0;
+end;
+}

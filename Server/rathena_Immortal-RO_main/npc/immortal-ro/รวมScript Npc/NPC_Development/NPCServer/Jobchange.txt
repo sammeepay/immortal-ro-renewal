@@ -1,0 +1,1189 @@
+-	script	SetupJC	-1,{
+end;
+OnInit:
+set $@npcJC$,"^FF0000[ Job Change Service ]^000000"; //ชื่อ NPC เปลี่ยนอาชีพ
+end;
+}
+
+rachel.gat,112,105,4	script	Job Change Service	811,{
+if(class > 0) goto Nojob;
+mes $@npcJC$;
+mes "ยินดีต้อนรับสู่ JobChange บริการเปลี่ยนอาชีพ ";
+next;
+menu "เปลี่ยนอาชีพ",-;
+next;
+mes $@npcJC$;
+mes "โปรดเลือก Class ที่ท่านต้องการเปลี่ยน";
+next;
+
+menu "^000000เปลี่ยน ^00FF00Class Novice",ACN,
+"^000000เปลี่ยน ^0000FFClass1 ",AA1,
+"^000000เปลี่ยน ^FF8040Class2",AA2,
+"^000000เปลี่ยน ^FF0000High-Class",AA3,
+"^000000เปลี่ยน ^804040Class Baby",ABY,
+"^000000เปลี่ยน ^FF0000Class New!",ANN;
+//================================================================
+ACN:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF0000Class Novice  กรุณาเลือก Class ที่ท่านต้องการเปลี่ยน";
+menu "^000000เปลี่ยน ^0000FFSuper Novice",AA4,
+"^000000เปลี่ยน ^0000FFHigh Novice",AA5,
+"^000000เปลี่ยน ^0000FFNovice",AA6;
+
+AA4:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Super Novice ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 23;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Super Novice ให้เจ้าแล้ว";
+mes "เจ้าจงเป็นNoviceผู้เข็มแข็งซะ";
+goto ASS;
+
+AA5:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน High Novice ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4001;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน High Novice ให้เจ้าแล้ว";
+mes "เจ้าจงเป็นNoviceผู้เข็มแข็งซะ";
+goto ASS;
+
+AA6:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน  Novice ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 0;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Novice ให้เจ้าแล้ว";
+mes "เจ้าจงเป็นNoviceผู้เข็มแข็งซะ";
+goto ASS;
+
+AA1:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF0000Class1  ^000000ท่านสามารถเลือกเป็น Class1 ธรรมดา  กับ High-Class1 ";
+next;
+menu "Class 1",Lclass1,
+"High-Class1",Lhiclass1;
+
+Lclass1:
+mes $@npcJC$;
+mes "โปรดเลือกอาชีพที่จะเปลี่ยน  ^FF0000โปรดระวังเป็นพิเศษ";
+next;
+menu "Swordsman",LSword,
+"Mage",LMage,
+"Thief",LThief,
+"Merchant",LMerc,
+"Acolyte",LAco,
+"Archer",LArch;
+
+LSword:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Sword ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 1;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Sword ให้เจ้าแล้ว";
+goto ASS;
+
+LMage:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Mage ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 2;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Mage ให้เจ้าแล้ว";
+
+goto ASS;
+LThief:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Thief ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 6;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Thief ให้เจ้าแล้ว";
+goto ASS;
+
+LMerc:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Merchant ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 5;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Merchant ให้เจ้าแล้ว";
+goto ASS;
+
+LAco:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Acolyte ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Acolyte ให้เจ้าแล้ว";
+goto ASS;
+
+LArch:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Archer ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 3;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Archer ให้เจ้าแล้ว";
+goto ASS;
+
+Lhiclass1:
+mes $@npcJC$;
+mes "โปรดเลือกอาชีพที่จะเปลี่ยน  ^FF0000โปรดระวังเป็นพิเศษ";
+next;
+menu "HIGH Swordsman",LhiSword,
+"HIGH Mage",LhiMage,
+"HIGH Thief",LhiThief,
+"HIGH Merchant",LhiMerc,
+"HIGH Acolyte",LhiAco,
+"HIGH Archer",LhiArch;
+
+LhiSword:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน HIGH Sword ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4002;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน HIGH Sword ให้เจ้าแล้ว";
+goto ASS;
+
+LhiMage:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน HIGH Mage ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4003;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน HIGH Mage ให้เจ้าแล้ว";
+goto ASS;
+
+LhiThief:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน HIGH Thief ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4007;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";;
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน HIGH Thief ให้เจ้าแล้ว";
+goto ASS;
+
+LhiMerc:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน HIGH Merchant ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4006;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน HIGH Merchant ให้เจ้าแล้ว";
+goto ASS;
+
+LhiAco:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน HIGH Acolyte ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4005;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน HIGH Acolyte ให้เจ้าแล้ว";
+goto ASS;
+
+LhiArch:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน HIGH Archer ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4004;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน HIGH Archer ให้เจ้าแล้ว";
+goto ASS;
+
+AA2:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF8040Class2 ";
+mes "^000000โปรดเลือกอาชีพที่จะเปลี่ยน  ^FF0000โปรดระวังเป็นพิเศษ";
+next;
+menu "Knight",c1,
+"Crusader",c2,
+"Wizard",c3,
+"Sage",c4,
+"Hunter",c5,
+"Bard & Dancer",c6,
+"Priest",c7,
+"Monk",c8,
+"Blacksmith",c9,
+"Alchemist",c10,
+"Assassin",c11,
+"Rogue",c12;
+
+c1:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Knight หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 7;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Knight ให้เจ้าแล้ว";
+goto ASS;
+
+c2:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Crusader หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 14;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Crusader ให้เจ้าแล้ว";
+goto ASS;
+
+c3:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Wizard หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 9;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Wizard ให้เจ้าแล้ว";
+next;
+goto ASS;
+
+c4:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Sage หรือไม่";
+next;
+jobchange 16;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Sage ให้เจ้าแล้ว";
+goto ASS;
+
+c5:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Hunter หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 11;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Hunter ให้เจ้าแล้ว";
+goto ASS;
+
+c6:
+if(sex==0) goto sex0F;
+if(sex==1) goto sex1M;
+sex0F:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Dancer หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 20;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Dancer ให้เจ้าแล้ว";
+goto ASS;
+
+sex1M:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Bard หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 19;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Bard ให้เจ้าแล้ว";
+goto ASS;
+
+c7:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Priest หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 8;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Priest ให้เจ้าแล้ว";
+goto ASS;
+
+c8:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Monk หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 15;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Monk ให้เจ้าแล้ว";
+goto ASS;
+
+c9:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Blacksmith หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 10;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Blacksmith ให้เจ้าแล้ว";
+goto ASS;
+
+c10:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Alchemist หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 18;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+skill 238,1,0;
+skill 239,1,0;
+skill 240,1,0;
+skill 241,1,0;
+skill 242,1,0;
+skill 245,1,0;
+skill 246,1,0;
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Alchemist ให้เจ้าแล้ว";
+goto ASS;
+
+c11:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Assassin หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 12;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Assassin ให้เจ้าแล้ว";
+goto ASS;
+
+c12:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Rogue หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 17;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Rogue ให้เจ้าแล้ว";
+goto ASS;
+
+
+AA3:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF0000High-Class  ";
+mes "^000000 โปรดเลือกอาชีพที่จะเปลี่ยน ^FF0000";
+next;
+menu "Lord Knight",H1,
+"Sniper",H2,
+"Paladin",H3,
+"High Priest",H4,
+"Assassin Cross",H5,
+"Champion",H6,
+"High Wizard",H7,
+"Stalker",H8,
+"Scholar",H9,
+"Master Smith",H10,
+"Biochemist",H11,
+"Minstrel",H12,
+"Gypsy",H13;
+
+H1:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4008;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น HiGH-Class แล้วนะ";
+goto ASS;
+
+H2:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4012;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H3:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4015;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H4:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4009;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H5:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4013;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H6:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4016;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H7:
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4010;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";;
+goto ASS;
+
+H8:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4018;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H9:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4017;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H10:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4011;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H11:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4019;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+skill 238,1,0;
+skill 239,1,0;
+skill 240,1,0;
+skill 241,1,0;
+skill 242,1,0;
+skill 245,1,0;
+skill 246,1,0;
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H12:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4020;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+H13:
+mes $@npcJC$;
+mes "พลังที่แข็งแกรงจงอยู่กลับตัวเจ้า";
+jobchange 4021;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes "เจ้าได้เป็น High-Class แล้วนะ";
+goto ASS;
+
+ABY:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF0000Class Baby  ^000000ท่านสามารถเลือกเป็น Baby Class1 หรือ Baby Class2 ก็ได้";
+next;
+menu "Baby Novice Class",Bclass0,
+"Baby Class1",Bclass1,
+"Baby Class2",Bclass2;
+
+Bclass0:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF0000Baby Novice Class^000000";
+mes "^000000โปรดเลือกอาชีพที่จะเปลี่ยน  ^FF0000โปรดระวังเป็นพิเศษ";
+next;
+menu "Baby Novice",BN1,
+"Baby SuperNovice",BN2;
+
+BN1:
+	mes $@npcJC$;
+	mes "เจ้าต้องการเปลี่ยน Baby Novice ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",Lclose;
+	jobchange 4023;
+	atcommand strcharinfo(0) + "@lvup 99";
+	set joblevel,70;
+	atcommand strcharinfo(0)+"@skillall";;
+	mes $@npcJC$;
+	mes "ข้าได้เปลี่ยน Baby Novice ให้เจ้าแล้ว";
+goto ASS;
+
+BN2:
+	mes $@npcJC$;
+	mes "เจ้าต้องการเปลี่ยน Baby SuperNovice ใช่หรือไม่";
+	next;
+	menu "ใช่",-,"ไม่ใช่",Lclose;
+	jobchange 4045;
+	atcommand strcharinfo(0) + "@lvup 99";
+	set joblevel,70;
+	atcommand strcharinfo(0)+"@skillall";
+	mes $@npcJC$;
+	mes "ข้าได้เปลี่ยน Baby SuperNovice ให้เจ้าแล้ว";
+goto ASS;
+
+Bclass1:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF0000Baby Class1^000000";
+mes "^000000โปรดเลือกอาชีพที่จะเปลี่ยน  ^FF0000โปรดระวังเป็นพิเศษ";
+next;
+menu "Baby Swordsman",BSword,
+"Baby Mage",BMage,
+"Baby Thief",BThief,
+"Baby Merchant",BMerc,
+"Baby Acolyte",BAco,
+"Baby Archer",BArch;
+
+BSword:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Baby Swordsman ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4024;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Swordsman ให้เจ้าแล้ว";
+goto ASS;
+
+BMage:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Baby Mage ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4025;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";;
+mes $@npcJC$;
+goto ASS;
+
+BThief:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Baby Thiefใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4029;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Thief ให้เจ้าแล้ว";
+goto ASS;
+
+BMerc:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Baby Merchantใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4028;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Merchant ให้เจ้าแล้ว";
+goto ASS;
+
+BAco:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Baby Acolyteใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4027;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Acolyte ให้เจ้าแล้ว";
+goto ASS;
+
+BArch:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Baby Archerใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4026;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Archer ให้เจ้าแล้ว";
+goto ASS;
+
+Bclass2:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF0000Baby Class2^000000";
+mes "^000000โปรดเลือกอาชีพที่จะเปลี่ยน  ^FF0000โปรดระวังเป็นพิเศษ";
+next;
+menu "Baby Knight",Bc1,
+"Baby Crusader",Bc2,
+"Baby Wizard",Bc3,
+"Baby Sage",Bc4,
+"Baby Hunter",Bc5,
+"Baby Bard & Dancer",Bc6,
+"Baby Priest",Bc7,
+"Baby Monk",Bc8,
+"Baby Blacksmith",Bc9,
+"Baby Alchemist",Bc10,
+"Baby Assassin",Bc11,
+"Baby Rogue",Bc12;
+
+Bc1:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Knight หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4030;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Knight ให้เจ้าแล้ว";
+goto ASS;
+
+Bc2:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby crusader หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4037;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby crusader ให้เจ้าแล้ว";
+goto ASS;
+
+Bc3:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Wizard หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4032;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Wizard ให้เจ้าแล้ว";
+goto ASS;
+
+Bc4:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Sage หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4039;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Sage ให้เจ้าแล้ว";
+goto ASS;
+
+Bc5:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Hunter หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4034;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Hunter ให้เจ้าแล้ว";
+goto ASS;
+
+Bc6:
+if(sex==0) goto Bsex0F;
+if(sex==1) goto Bsex1M;
+Bsex0F:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Dancer หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4043;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Dancer ให้เจ้าแล้ว";
+goto ASS;
+
+Bsex1M:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Bard หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4042;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Bard ให้เจ้าแล้ว";
+goto ASS;
+
+Bc7:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Priest หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4031;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Priest ให้เจ้าแล้ว";
+goto ASS;
+
+Bc8:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Monk หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4038;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Monk ให้เจ้าแล้ว";
+goto ASS;
+
+Bc9:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Blacksmith หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4033;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Blacksmith ให้เจ้าแล้ว";
+goto ASS;
+
+Bc10:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Alchemist หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4041;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Alchemist ให้เจ้าแล้ว";
+goto ASS;
+
+Bc11:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Assassin หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4035;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";;
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Assassin ให้เจ้าแล้ว";
+goto ASS;
+
+Bc12:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยนอาชีพ Baby Rogue หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4040;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Baby Rogue ให้เจ้าแล้ว";
+goto ASS;
+
+ANN:
+mes $@npcJC$;
+mes "เปลี่ยน ^FF0000Class New!  ";
+mes "ในหมวดนี้จะเป็นอาชีพใหม่ๆที่เพิ่มเข้ามา";
+mes "กรุณาเลือก Class ที่ท่านต้องการเปลี่ยน";
+next;
+menu "^000000เปลี่ยน ^0000FFTaekwon",AN99,
+"^000000เปลี่ยน ^0000FFStar Gladiator",AN1,
+"^000000เปลี่ยน ^0000FFSoul Linker ^660099",AN2,
+"^000000เปลี่ยน ^0000FFGunslinger",AN3,
+"^000000เปลี่ยน ^0000FFNinja",AN4;
+
+AN99:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Taekwon ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4046;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Ninja ให้เจ้าแล้ว";
+goto ASS;
+
+
+AN1:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Star Gladiator ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4047;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Star Gladiator ให้เจ้าแล้ว";
+goto ASS;
+
+AN2:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Soul_Linker ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 4049;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Soul Linker ให้เจ้าแล้ว";
+goto ASS;
+
+AN3:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Gunslinger ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 24;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";;
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Gunslinger ให้เจ้าแล้ว";
+goto ASS;
+
+AN4:
+mes $@npcJC$;
+mes "เจ้าต้องการเปลี่ยน Ninja ใช่หรือไม่";
+next;
+menu "ใช่",-,"ไม่ใช่",Lclose;
+jobchange 25;
+atcommand strcharinfo(0) + "@lvup 99";
+set joblevel,70;
+resetstatus;
+resetskill;
+atcommand strcharinfo(0)+"@skillall";
+mes $@npcJC$;
+mes "ข้าได้เปลี่ยน Ninja ให้เจ้าแล้ว";
+goto ASS;
+
+ABS:
+mes $@npcJC$;
+mes "ท่านสามารถเปลี่ยนอาชีพได้แค่ครั้งเดียวเท่านั้น";
+close;
+
+Nojob:
+mes "^660099!!!! คุณต้องการเปลี่ยนอีกหรือไม่? !!!!^000000";
+next;
+mes "^660099!!!! คุณต้องการเปลี่ยนอีกหรือไม่? !!!!^000000";
+menu "^0000FFไม่ต้องการ^000000",norejobagin,"^FF0000ต้องการ!^000000",rejobagin;
+close;
+
+norejobagin:
+close;
+
+rejobagin:
+mes $@npcJC$;
+next;
+mes $@npcJC$;
+mes "^660091 เลือก Class ที่ต้องการได้เลย ! ^000000";
+menu "^000000เปลี่ยน ^00FF00Class Novice",ACN,
+"^000000เปลี่ยน ^0000FFClass1 ",AA1,
+"^000000เปลี่ยน ^FF8040Class2",AA2,
+"^000000เปลี่ยน ^FF0000High-Class",AA3,
+"^000000เปลี่ยน ^804040Class Baby",ABY,
+"^000000เปลี่ยน ^FF0000Class New!",ANN;
+
+ASS:
+save "rachel.gat",130,110;
+specialeffect2(411);
+close;
+
+Lclose:
+close;
+//OnInit:
+//delwaitingroom;			sleep2 1000;
+//waitingroom " ",0;			sleep2 50;
+//waitingroom " J",0;		sleep2 50;
+//waitingroom " JO",0;		sleep2 50;
+//waitingroom " JOB",0;		sleep2 100;
+//waitingroom " JOB Ch",0;		sleep2 50;
+//waitingroom " JOB Cha",0;		sleep2 50;
+//waitingroom " JOB Chan",0;		sleep2 50;
+//waitingroom " JOB Chang",0;		sleep2 50;
+//waitingroom " JOB Change",0;		sleep2 50;
+//waitingroom " JOB Change",0;	sleep2 4500;
+//goto OnInit;
+//end;
+}

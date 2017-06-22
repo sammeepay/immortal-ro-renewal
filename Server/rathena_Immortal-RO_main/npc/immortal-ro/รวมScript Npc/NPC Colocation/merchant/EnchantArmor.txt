@@ -1,0 +1,167 @@
+c5,124,73,4	script	Power Armor	442,{
+set .@nombre$, "[Power Armor]";
+mes .@nombre$;
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "การหลอมมีโอกาศแตก";
+mes "ห้ามใส่ การ์ด หรือ ตี+มาแล้ว";
+mes "การเพิ่ม Power ต้องใช้แร่ Powre";
+mes "หาได้จาก MvP & CashShop ครับ";
+next;
+if (select("^009933•^000000 ดำเนินการ:^FF0000•^000000 ดูรายละเอียด") == 2) {
+	mes .@nombre$;
+	mes "จะสุ่ม Power ดังนี้ครับ";
+	mes "^FF0066Power โจมตีมนุษย์ 1-3%^000000";
+	mes "^FF33CCPower ป้องกันมนุษย์ 1-3%^000000";
+	mes "^9933CCPower Matk 1-3%^000000";
+	mes "^33FFCCPower MaxHp 1-3%^000000";
+	mes "^33FF33Power MaxSp 1-3%^000000";
+	mes "^FF9966Power ลดดีเลย์สกิล 1-3%^000000";
+	next;
+	mes .@nombre$;
+	mes "จะแบ่ง Armor เป็น 3 ระดับ ";
+	mes "^FF0000Armor Lv.1^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids1); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids1[.@c]) + "";
+	next;
+	mes .@nombre$;
+	mes "^FF0000Armor Lv.2^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids2); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids2[.@c]) + "";
+	next;
+	mes .@nombre$;
+	mes "^FF0000Armor Lv.3^000000";
+	for (set .@c, 0; .@c < getarraysize(.ids3); set .@c, .@c + 1)
+		mes "- " + getitemname(.ids3[.@c]) + "";
+	next;
+} // End if
+mes .@nombre$;
+if (countitem(6226) < 1)	{
+	mes "ท่านไม่มีแร่ Power ครับ";
+	close;
+} // End if
+mes "เลือกระดับ Armor ที่ต้องการครับ";
+mes " ";
+mes "^FF0000มีโอกาศ 10% Armor จะถูกทำลาย^000000";
+next;
+switch (select("^009933•^000000 Armor Lv.1:^009933•^000000 Armor Lv.2:^009933•^000000 Armor Lv.3")) {
+	case 1:
+		set .@j, 1;
+		break;
+
+	case 2:
+		set .@j, 2;
+		break;
+
+	case 3:
+		set .@j, 3;
+		break;
+} // End switch
+// Detectamos si tiene equipado una armos que podemos encantar
+for (set .@c, 0; .@c < getarraysize(getd(".ids" + .@j)); set .@c, .@c + 1)
+	if (isequipped(getd(".ids" + .@j + "[" + .@c +"]")) == 1)
+		set .@s, .@c; // Definimos la ID de esa armor en la posici๓n del array
+mes .@nombre$;
+// Descartamos si no tiene armor equipada o si no estแ definida
+if (!.@s) {
+	if (atoi(getequipname(EQI_ARMOR)) == -1)
+		mes "ท่านไม่ได้สวมใส่ Armor ครับ";
+	else
+		mes "Armor นี้เพิ่ม Power ไม่ได้ครับ";
+	close;
+} // End if
+// Empezamos el proceso de encantamiento
+mes "ท่านสวมใส่ ^FF0000[" + getitemname(getd(".ids" + .@j + "[" + .@s +"]")) + "]^000000 ครับ";
+next;
+mes .@nombre$;
+mes "ขอให้เพิ่ม Power ติดนะครับ";
+next;
+delitem 6226,1;
+specialeffect 101;
+specialeffect2 9;
+progressbar "ffff00",3;
+// Borramos el item equipado
+set .@itemid, getequipid(EQI_ARMOR);
+delitem .@itemid,1;
+// Cแlculo del % y seg๚n el % definimos un array con la runa de +X stat y sus stats pertenecientes
+set .@rand, rand(1000);
+mes .@nombre$;
+if (.@rand >= 0 && .@rand < 100) { // Break 10%
+	specialeffect2 306;
+	mes "ล้มเหลว ยินดีให้บริการครับ";
+	close;
+} else if (.@rand >= 100 && .@rand < 300) // +1 20%
+	setarray .@level[0],4703,4713,4723,4733,4743,4753;
+else if (.@rand >= 300 && .@rand < 450) // +2 15%
+	setarray .@level[0],4704,4714,4724,4734,4744,4754;
+else if (.@rand >= 450 && .@rand < 550) // +3 10%
+	setarray .@level[0],4705,4715,4725,4735,4745,4755;
+// Calculamos aleatoriamente el stat con 16,6% cada una
+set .@runa, .@level[rand(getarraysize(.@level))];
+// Encantamos el armor con la runa seleccionada
+specialeffect2 305;
+getitem2 .@itemid, 1, 1, 0, 0, 0, 0, 0, .@runa;
+mes "เรียบร้อย ยินดีให้บริการครับ";
+close;
+
+OnInit:
+waitingroom "::หลอมชุด::",0;
+// Definimos el Zeny que cuesta encantar, 600k por defecto
+set .zeny, 1000000;
+
+// En esta parte se indica que ID's de armadura pertenece a cada tipo de categoria, para hacerte mas sencillo la comprensi๓n y customizacion si se lo desea.
+setarray .ids1[0],2315,
+				2320, 
+				2317,  
+				2342, 
+				2359, 
+				2313,
+				2326, 
+				2322,  
+				2331, 
+				2371, 
+				2336,
+				2319;
+setarray .ids2[0],2355, 
+				2354,
+				2389, 
+				2366, 
+				2373, 
+				2353, 
+				2390, 
+				2388, 
+				2318, 
+				2372, 
+				2364, 
+				2365,
+				2360,
+				2387,
+				2349, 
+				2351,
+				2345, 
+				2347; 
+setarray .ids3[0],2386, 
+				2375, 
+				2374, 
+				2399,
+				2391, 
+				2367, 
+				2357,
+				2376,
+				2377,
+				2378, 
+				2379,
+				2380,
+				2381, 
+				2382, 
+				2394,
+				24802,
+				24806,
+				24810,
+				24814,
+				24818,
+				24822,
+				25503,
+				27051,
+				24826;
+end;
+} // End Script

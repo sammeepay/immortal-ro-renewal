@@ -1,0 +1,724 @@
+//===== eAthena Script ======================================= 
+//= Upgrade Item Refined (C)
+//===== By: ================================================== 
+//= The Best Of Region
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= eAthena Packet Version 8 >>
+//===== Description: =========================================
+//= โปรดอ่าน : Item บางส่วนมีการแก้ไขให้สมดุล ให้ Copy db ที่อยู่ข้างล่าง (ยกเว้น Accessories)
+//= Item ประเภท Head Gear อัตราการป้องกัน +1
+//= Item ประเภท Weapon เพิ่มตามความเหมาะสม
+//= Item ประเภท Accessories ไม่ได้ทำการแก้ไข
+//=========================================
+//= Item ประเภท Headgears ที่สามารถทำการ Refined ได้มีดังนี้
+//==========- Item Refined New Headgears -==========
+//= ===" - Upper - "=== //
+//5265,Apple_Of_Archer_C,Refined Apple of Archer,5,,0,0,,8,,0,0xFFFFFFFE,7,2,256,,1,0,72,{ bonus bDex,4; },{},{}
+//5266,Bunny_Band_C,Refined Bunny Band,5,,0,0,,10,,0,0xFFFFFFFF,7,2,256,,0,0,15,{ bonus bMdef,5; bonus2 bSubRace,RC_DemiHuman,10; },{},{}
+//5267,Sahkkat_C,Refined Sakkat,5,,0,0,,11,,0,0xFFFFFFFF,7,2,256,,0,0,67,{ bonus bAgi,3; },{},{}
+//5330,Drooping_Kitty_C,Refined Drooping_Cat,5,,0,0,,4,,0,0xFFFFFFFE,7,2,256,,1,0,142,{ bonus bMDef,15; bonus2 bResEff,Eff_Curse,10000; },{},{}
+//5281,Deviruchi_Hat_C,Refined Deviruchi Hat,5,,0,0,,2,,0,0xFFFFFFFE,7,2,256,,1,0,123,{ bonus bStr,5; bonus bInt,3; },{},{}
+//= ===" - Middle - "=== //
+//2686,Elven_Ears_C,Refined Elven Ears,5,20,,0,,2,,0,0xFFFFFFFE,7,2,512,,1,0,73,{ bonus bInt,1; },{},{}
+//= ===" - Lower - "=== //
+//2687,Steel_Flower_C,Refined Romantic Flower,5,20,,0,,1,,0,0xFFFFFFFE,7,2,1,,1,0,56,{ bonus2 bSubRace,RC_Plant,3; },{},{}
+//==========- Item Refined New Weapon -==========
+//= Item ประเภท Weapon ที่สามารถทำการ Refined ได้มีดังนี้
+//= ===" - Dagger - "=== //
+//13024,Sword_Breaker_C,Refined Swordbreaker,4,,,0,105,,1,0,0x028F5EEE,7,2,2,4,1,0,1,{ bonus bBreakWeaponRate,500; },{},{}
+//13025,Mail_Breaker_C,Refined Mailbreaker,4,,,0,105,,1,0,0x028F5EEE,7,2,2,4,1,0,1,{ bonus bBreakArmorRate,500; },{},{}
+//= ===" - Sword - "=== //
+//1174,Executioner_C,Refined Executioner,4,,,0,190,,1,0,0x00004082,7,2,34,4,1,0,3,{ bonus bIgnoreDefRace,RC_DemiHuman; bonus2 bAddRace,RC_DemiHuman,20; bonus2 bSubRace,RC_DemiHuman,-10; bonus bAtkEle,Ele_Dark; },{},{}
+//= ===" - Katar - "=== //
+//1267,Infiltrator_C,Refined Infiltrator,4,,,0,189,,1,0,0x00001000,7,2,34,4,1,0,16,{ bonus2 bAddRace,RC_DemiHuman,70; bonus bDef,3; bonus bFlee,5; bonus bFlee2,2; bonus bAspdRate,5; },{},{}
+//= ===" - Axe - "=== //
+//1373,Brood_Axe_C,Refined Bloody Axe,4,,,0,205,,1,0,0x000444A2,7,2,34,4,1,0,7,{ bonus bStr,20; bonus bSpeedRate,25; bonus bAspdRate,8; },{},{}
+//= ===" - Spear - "=== //
+//1419,Pole_Axe_C,Refined Pole Axe,4,,,4800,159,,3,0,0x00004082,7,2,2,3,1,0,4,{ bonus bStr,5; bonus bInt,2; bonus bDex,1; },{},{}
+//= ===" - Book - "=== //
+//1563,Diary_Of_Great_Sage_C,Refined Sage's Diary,4,,,0,135,,1,2,0x00410100,7,2,2,3,1,0,15,{ bonus bMatkRate,20; bonus bAspdRate,5; },{},{}
+//= ===" - Rod - "=== //
+//1623,Mighty_Staff_C,Refined Mighty Staff,4,,10,700,165,,1,0,0x00818314,7,2,2,3,1,0,10,{ bonus bStr,10; bonus bInt,4; bonus bMatkRate,20; bonus bSPDrainValue,-1; },{},{}
+//==========- Item Refined New Accessories -==========
+//= Item ประเภท Accessories ที่สามารถทำการ Refined ได้มีดังนี้
+//= ===" - Accessories - "=== //
+//2688,Critical_Ring_C,Refined Critical Ring,5,20,,0,,0,,0,0xFFFFFFFE,7,2,136,,1,0,0,{ bonus bCritical,10; },{},{}
+//2689,Earring_C,Refined Earring,5,20,,0,,0,,0,0xFFFFFFFE,7,2,136,,1,0,0,{ bonus bInt,3; },{},{}
+//2690,Ring_C,Refined Ring,5,20,,0,,0,,0,0xFFFFFFFE,7,2,136,,1,0,0,{ bonus bStr,4; },{},{}
+//2691,Necklace_C,Refined Necklace,5,20,,0,,0,,0,0xFFFFFFFE,7,2,136,,1,0,0,{ bonus bVit,4; },{},{}
+//2692,Glove_C,Refined Glove,5,20,,0,,0,,0,0xFFFFFFFE,7,2,136,,1,0,0,{ bonus bDex,4; },{},{}
+//2693,Brooch_C,Refined Brooch,5,20,,0,,0,,0,0xFFFFFFFE,7,2,136,,1,0,0,{ bonus bAgi,4; },{},{}
+//2694,Rosary_C,Refined Rosary,5,20,,0,,0,,0,0xFFFFFFFE,7,2,136,,1,0,0,{ bonus bMdef,5; bonus bLuk,4; },{},{}
+//2695,Safety_Ring_C,Refined Safety Ring,5,20,,0,,3,,0,0xFFFFFFFE,7,2,136,,1,0,0,{ bonus bMdef,4; },{},{}
+//= ===" - Accessories Vesper Core - "=== //
+//2696,Vesper_Core01_C,Refined Vesper Core 01,5,,10,0,,1,,0,0x00CFDF80,2,2,136,,1,0,0,{ bonus bMdef,3; bonus bInt,2; bonus bMaxSPrate,5; },{},{}
+//2697,Vesper_Core02_C,Refined Vesper Core 02,5,,10,0,,1,,0,0x00CFDF80,2,2,136,,1,0,0,{ bonus bMdef,3; bonus bStr,3; bonus bBaseAtk,10; },{},{}
+//2698,Vesper_Core03_C,Refined Vesper Core 03,5,,10,0,,1,,0,0x00CFDF80,2,2,136,,1,0,0,{ bonus bMdef,3; bonus bAgi,3; bonus bFlee,5; },{},{}
+//2699,Vesper_Core04_C,Refined Vesper Core 04,5,,10,0,,1,,0,0x00CFDF80,2,2,136,,1,0,0,{ bonus bMdef,3; bonus bDex,3; bonus bHit,10; },{},{}
+//===================================================================================================
+//
+//	   — รายชื่อของคำสั่งต่างๆ —
+//	//-o-o-o-o-o-o-o-o-o-o-o-ooooo-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-oo-o-o-o-o-o-o-o-oo-o-o-o-o-oo-o-o\\
+	//= setarray @upgradeitem[0];	//= รหัส Item ที่จะต้องทำการ Upgrade
+	//= setarray @itemname$[0];	//= ชื่อ Item ที่ต้องการผสม
+	//= setarray @amount[0];		//= จำนวน Item ที่ต้องการผสม
+	//= set @zenyrefined;		//= จำนวน Zeny ที่ต้องจ่าย
+	//= set @itemamount;		//= จำนวนชิ้นของแต่ละรายการ
+	//= set @refineds;			//= อัตตราการเสียหาย คิดเป็น %
+	//= set @upitem;			//= Item ที่จะต้องได้รับไป
+	//-o-o-o-o-o-o-o-o-o-o-o-ooooo-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-oo-o-o-o-o-o-o-o-oo-o-o-o-o-oo-o-o\\
+
+//---------- Refined NPC -------------
+-	script	อัพเกรดItem::upgred	733,{
+cutin "v_breid01",2;
+set @id,0;	set @up,0;	set @d,0;
+mes "[^FF0000Mr.Refined^000000]";
+mes "   ข้าคือผู้ที่สามารถ ผลิตไอเทม ในตำนานได้";
+mes "   ท่านสนใจที่จะทำบ้างมั้ยหละ";
+next;
+emotion e_hmm;
+mes "[^FF0000Mr.Refined^000000]";
+mes "^0000FFUpgrade Item Refined (C)^000000";
+mes "โปรดเลือกประเภท ที่ท่านสนใจ";
+next;
+menu "-> ^0000FFHeadgears^000000",LHead,"-> ^0000FFWeapon^000000",LWeapon,"-> ^0000FFAccessories^000000",LAccess;
+
+LHead:
+	mes "[^FF0000Mr.Refined^000000]";
+	mes "-> ^0000FFItem Headgears^000000 <-";
+	mes "เอละโปรดเลือก Item ที่ท่าน ต้องการจะอัพเกรต";
+	next;
+	LHM:
+	switch(select("^000000-> ^3333FFRefined Apple of Archer" , "^000000-> ^3333FFRefined Bunny Band" , "^000000-> ^3333FFRefined Sakkat" , "^000000-> ^3333FFRefined Drooping Cat" , "^000000-> ^3333FFRefined Deviruchi Hat" , "^000000-> ^3333FFRefined Elven Ears" , "^000000-> ^3333FFRefined Romantic Flower"))
+	{	//=======================================================//
+		//= (5265)
+		case 1:	mes "^9400D3Refined Apple of Archer^000000";
+			mes "ไม่สามารถตีบวกได้";
+			mes "Dex + 4";
+			mes "ประเภท : ^777777Head Gear^000000";
+			mes "พลังป้องกัน : ^7777777^000000";
+			mes "ใช้สำหรับ : ^777777Upper^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2285, 985;
+			setarray @amount[0],1 , 50;
+			set @zenyrefined,200000;
+			set @itemamount,2;
+			set @upitem,5265;
+			set @refineds,15;
+		break;
+		//=======================================================//
+		//= (5266)	
+		case 2:	mes "^9400D3Refined Bunny Band^000000";
+			mes "ป้องกันการโจมตีจาก Demi-Human 10%";
+			mes "ไม่สามารถตีบวกได้";
+			mes "Mdef + 5";
+			mes "ประเภท : ^777777Head Gear^000000";
+			mes "พลังป้องกัน : ^7777779^000000";
+			mes "ใช้สำหรับ : ^777777Upper^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพ^000000";
+		next;
+			setarray @upgradeitem[0], 2214, 2289, 5058, 985;
+			setarray @amount[0],1 , 1, 1, 120;
+			set @zenyrefined,300000;
+			set @itemamount,4;
+			set @upitem,5266;
+			set @refineds,15;
+		break;
+		//=======================================================//
+		//= (5267)
+		case 3:	mes "^9400D3Refined Sakkat^000000";
+			mes "Agi + 3";
+			mes "ไม่สามารถตีบวกได้";
+			mes "ประเภท : ^777777Head Gear^000000";
+			mes "พลังป้องกัน : ^77777710^000000";
+			mes "ใช้สำหรับ : ^777777Upper^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพ^000000";
+		next;
+			setarray @upgradeitem[0], 2280, 1019, 985;
+			setarray @amount[0],1 , 500, 50;
+			set @zenyrefined,25000;
+			set @itemamount,3;
+			set @upitem,5267;
+			set @refineds,15;
+		break;
+		//=======================================================//
+		//= (5330)
+		case 4:	mes "^9400D3Refined Drooping Cat^000000";
+			mes "Mdef + 15";
+			mes "ป้องกัน Curse 100%";
+			mes "ไม่สามารถตีบวกได้";
+			mes "ประเภท : ^777777Helm^000000";
+			mes "พลังป้องกัน : ^7777774^000000";
+			mes "ใช้สำหรับ : ^777777Upper^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 5058, 7214;
+			setarray @amount[0],1 , 500;
+			set @zenyrefined,120000;
+			set @itemamount,2;
+			set @upitem,5330;
+			set @refineds,10;
+		break;
+		//=======================================================//
+		//= (5281)
+		case 5:	mes "^9400D3Refined Deviruchi Hat^000000";
+			mes "STR + 5 , INT + 3";
+			mes "ประเภท : ^777777Head Gear^000000";
+			mes "พลังป้องกัน : ^7777772^000000";
+			mes "ใช้สำหรับ : ^777777Upper^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 5038, 4122;
+			setarray @amount[0],1 , 1;
+			set @zenyrefined,120000;
+			set @itemamount,2;
+			set @upitem,5281;
+			set @refineds,5;
+		break;
+		//=======================================================//
+		//= (2686)
+		case 6:	mes "^9400D3Refined Elven Ears^000000";
+			mes "Int + 1";
+			mes "ประเภท : ^777777Head Gear^000000";
+			mes "พลังป้องกัน : ^7777772^000000";
+			mes "ใช้สำหรับ : ^777777Mid^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2286, 2602, 985;
+			setarray @amount[0],1 , 1 , 95;
+			set @zenyrefined,50000;
+			set @itemamount,3;
+			set @upitem,2686;
+			set @refineds,10;
+		break;
+		//=======================================================//
+		//= (2687)
+		case 7:	mes "^9400D3Refined Romantic Flower^000000";
+			mes "คุณสมบัติพิเศษ :  เพิ่มพลังป้องกัน  Monster Race Veggie 3%";
+			mes "ประเภท : ^777777Head Gear^000000";
+			mes "พลังป้องกัน : ^7777771^000000";
+			mes "ใช้สำหรับ : ^777777Lower^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2269, 2270, 985;
+			setarray @amount[0],1 , 1 , 25;
+			set @zenyrefined,32000;
+			set @itemamount,3;
+			set @upitem,2687;
+			set @refineds,10;
+		break;
+	}
+callsub L_Check;
+close2;
+cutin "", 255;
+end;
+
+LWeapon:
+	mes "[^FF0000Mr.Refined^000000]";
+	mes "-> ^0000FFItem Weapon^000000 <-";
+	mes "เอละโปรดเลือก Item ที่ท่าน ต้องการจะอัพเกรต";
+	LHW:
+	next;
+	switch(select("^000000-> ^3333FFRefined Bloody Axe" , "^000000-> ^3333FFRefined Executioner" , "^000000-> ^3333FFRefined Infiltrator" , "^000000-> ^3333FFRefined Mailbreaker" , "^000000-> ^3333FFRefined Mighty Staff" , "^000000-> ^3333FFRefined Pole Axe" , "^000000-> ^3333FFRefined Sage's Diary" , "^000000-> ^3333FFRefined SwordBreaker"))
+	{	//=======================================================//
+		//= (1373)
+		case 1:	mes "^9400D3Refined Bloody Axe^000000";
+			mes "STR + 20";
+			mes "ความไวในการโจมตี + 8%";
+			mes "ทำให้เดินเร็วขึ้น";
+			mes "ไม่สามารถตีบวกได้";
+			mes "ประเภท : ^777777Axe^000000";
+			mes "พลังโจมตี : ^777777205^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ของอาวุธ : ^7777774^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777Swordman Cls/Merchant Cls^000000";
+		next;
+			setarray @upgradeitem[0], 1363, 984, 985, 662;
+			setarray @amount[0], 1, 100, 30, 120;
+			set @zenyrefined,250000;
+			set @itemamount,4;
+			set @upitem,1373;
+			set @refineds,15;
+				break;
+		//=======================================================//
+		//= (1174)
+		case 2:	mes "^9400D3Refined Executioner^000000";
+			mes "ไม่สนใจพลังป้องกันของ Race Demi-Human";
+			mes "โจมตี Race Demi-Human แรงขึ้น 20%";
+			mes "โดนศัตรู Race Demi-Human โจมตีแรงขึ้น 10%";
+			mes "ไม่สามารถตีบวกได้";
+			mes "ประเภท : ^777777Two-handed Sword^000000";
+			mes "พลังโจมตี : ^777777190^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Property :^777777 Shadow^000000";
+			mes "Lv ของอาวุธ : ^7777774^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777Swordman Cls^000000";
+		next;
+			setarray @upgradeitem[0], 1169, 984, 985, 12020;
+			setarray @amount[0], 1, 100, 30, 25;
+			set @zenyrefined,120000;
+			set @itemamount,4;
+			set @upitem,1174;
+			set @refineds,20;
+		break;
+		//=======================================================//
+		//= (1267) 
+		case 3:	mes "^9400D3Refined Infiltrator^000000";
+			mes "โจมตี Monster Race Demi-Human แรงขึ้น 70%";
+			mes "DEF + 3, Flee Rate + 5";
+			mes "Perfect Dodge + 2, ความเร็วในการโจมตี + 5%";
+			mes "ไม่สามารถตีบวกได้";
+			mes "ประเภท : ^777777Katar^000000";
+			mes "พลังโจมตี : ^777777189^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ของอาวุธ : ^7777774^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777Assassin^000000";
+		next;
+			setarray @upgradeitem[0], 1261, 4035, 984, 985;
+			setarray @amount[0], 1, 1, 50, 1;
+			set @zenyrefined,25000;
+			set @itemamount,4;
+			set @upitem,1267;
+			set @refineds,18;
+		break;
+		//=======================================================//
+		//= (13025)
+		case 4:	mes "^9400D3Refined Mailbreaker^000000";
+			mes "สามารถทำลายเกราะของศัตรูได้ (มีโอกาส 5%)";
+			mes "ประเภท : ^777777Dagger^000000";
+			mes "พลังโจมตี : ^777777105^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ของอาวุธ : ^7777774^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice Cls/Acolyte Cls^000000";
+		next;
+			setarray @upgradeitem[0], 1225, 984, 985;
+			setarray @amount[0], 1, 10, 75;
+			set @zenyrefined,25000;
+			set @itemamount,3;
+			set @upitem,13025;
+			set @refineds,18;
+		break;
+		//=======================================================//
+		//= (1623)
+		case 5:	mes "^9400D3Refined Mighty Staff^000000";
+			mes "STR + 10 , MATK + 20%, INT + 4";
+			mes "ไม่สามารถตีบวกได้";
+			mes "ประเภท : ^777777Rod^000000";
+			mes "พลังโจมตี : ^777777165^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ของอาวุธ : ^7777773^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777Magician Cls/Acolyte Cls^000000";
+		next;
+			setarray @upgradeitem[0], 1613, 4052, 984, 985;
+			setarray @amount[0], 1, 70, 10;
+			set @zenyrefined,45000;
+			set @itemamount,3;
+			set @upitem,1623;
+			set @refineds,20;
+		break;
+		//=======================================================//
+		//= (1419)
+		case 6:	mes "^9400D3Refined Pole Axe^000000";
+			mes "STR + 5, INT + 2, DEX + 1";
+			mes "ไม่สามารถตีบวกได้";
+			mes "ประเภท : ^777777Spear^000000";
+			mes "พลังโจมตี : ^777777159^000000";
+			mes "น้ำหนัก : ^777777480^000000";
+			mes "Lv ของอาวุธ : ^7777773^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777Swordman Cls^000000";
+		next;
+			setarray @upgradeitem[0], 1417, 984, 985;
+			setarray @amount[0], 1, 120, 10;
+			set @zenyrefined,560000;
+			set @itemamount,3;
+			set @upitem,1419;
+			set @refineds,20;
+		break;
+		//=======================================================//
+		//= (1563)
+		case 7:	mes "^9400D3Refined Sage's Diary^000000";
+			mes "MATK + 20%, ความไวในการโจมตี +5%";
+			mes "ไม่สามารถตีบวกได้";
+			mes "ประเภท : ^777777Book^000000";
+			mes "พลังโจมตี : ^777777135^000000";
+			mes "น้ำหนัก : ^777777480^000000";
+			mes "Lv ของอาวุธ : ^7777773^000000";
+			mes "Lv ที่ต้องการ : ^77777760^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777Priest, Sage^000000";
+		next;
+			setarray @upgradeitem[0], 1560, 4052, 984, 985;
+			setarray @amount[0], 1, 1, 1;
+			set @zenyrefined,7500;
+			set @itemamount,3;
+			set @upitem,1563;
+			set @refineds,25;
+		break;
+		//=======================================================//
+		//= (13024)
+		case 8:	mes "^9400D3Refined SwordBreaker^000000";
+			mes "สามารถทำลายอาวุธของศัตรูได้ (มีโอกาส 5%)";
+			mes "ประเภท : ^777777Dagger^000000";
+			mes "พลังโจมตี : ^777777105^000000";
+			mes "น้ำหนัก : ^7777770^000000";
+			mes "Lv ของอาวุธ : ^7777774^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice Cls/Acolyte Cls^000000";
+		next;
+			setarray @upgradeitem[0], 1224, 984, 985;
+			setarray @amount[0], 1, 10, 75;
+			set @zenyrefined,120000;
+			set @itemamount,3;
+			set @upitem,13024;
+			set @refineds,20;
+		break;
+	}
+callsub L_Check;
+close2;
+cutin "", 255;
+end;
+
+LAccess:
+	mes "[^FF0000Mr.Refined^000000]";
+	mes "-> ^0000FFItem Accessory^000000 <-";
+	mes "เอละโปรดเลือก Item ที่ท่าน ต้องการจะอัพเกรต";
+	LHA:
+	next;
+	switch(select("^000000-> ^FF0000ไปยังหน้าที่ 2" , "^000000-> ^3333FFRefined Earring" , "^000000-> ^3333FFRefined Ring" , "^000000-> ^3333FFRefined Necklace" , "^000000-> ^3333FFRefined Glove" , "^000000-> ^3333FFRefined Brooch" , "^000000-> ^3333FFRefined Rosary"))
+	{	//=======================================================//
+		//= (Page 2)
+		case 1:	next;
+			switch(select("^000000-> ^FF0000ไปยังหน้าที่ 1" , "^000000-> ^3333FFRefined Critical Ring" , "^000000-> ^3333FFRefined Safety Ring" , "^000000-> ^3333FFRefined Vesper Core 01" , "^000000-> ^3333FFRefined Vesper Core 02" , "^000000-> ^3333FFRefined Vesper Core 03" , "^000000-> ^3333FFRefined Vesper Core 04"))
+			{	case 1:	goto LHA;
+				//=======================================================//
+				//= (2688)
+				case 2:	mes "^9400D3Refined Critical Ring^000000";
+					mes "CRI + 10";
+					mes "ประเภท : ^777777Accessory^000000";
+					mes "พลังป้องกัน : ^7777770^000000      น้ำหนัก : ^77777710^000000";
+					mes "Lv ที่ต้องการ : ^7777771^000000";
+					mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+				next;
+					setarray @upgradeitem[0], 1224, 984, 985;
+					setarray @amount[0], 1, 1, 20;
+					set @zenyrefined,45000;
+					set @itemamount,3;
+					set @upitem,2688;
+					set @refineds,15;
+				break;
+				//=======================================================//
+				//= (2695)
+				case 3:	mes "^9400D3Refined Safety Ring^000000";
+					mes "DEF + 3 , MDEF + 4";
+					mes "ประเภท : ^777777Accessory^000000";
+					mes "พลังป้องกัน : ^7777770^000000      น้ำหนัก : ^77777710^000000";
+					mes "Lv ที่ต้องการ : ^7777771^000000";
+					mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+				next;
+					setarray @upgradeitem[0], 2615, 2322;
+					setarray @amount[0], 1, 1;
+					set @zenyrefined,120000;
+					set @itemamount,2;
+					set @upitem,2695;
+					set @refineds,15;
+				break;
+				//=======================================================//
+				//= (2696) Vesper Core (Int)
+				case 4:	mes "^9400D3Refined Vesper Core 01^000000";
+					mes "MDEF +3, INT +2 Max SP + 5%";
+					mes "ประเภท : ^777777Accessory^000000";
+					mes "พลังป้องกัน : ^7777773^000000";
+					mes "น้ำหนัก: ^7777770^000000";
+					mes "อาชีพที่ใช้ได้ : ^777777อาชีพ 3-1 , 3-2^000000";
+				next;
+					setarray @upgradeitem[0], 2659, 985;
+					setarray @amount[0], 1, 295;
+					set @zenyrefined,450000;
+					set @itemamount,2;
+					set @upitem,2696;
+					set @refineds,20;
+				break;
+				//=======================================================//
+				//= (2697) Vesper Core (Str)
+				case 5:	mes "^9400D3Refined Vesper Core 02^000000";
+					mes "MDEF +3, STR +3, ATK +10";
+					mes "ประเภท : ^777777Accessory^000000";
+					mes "พลังป้องกัน : ^7777773^000000";
+					mes "น้ำหนัก: ^7777770^000000";
+					mes "อาชีพที่ใช้ได้ : ^777777อาชีพ 3-1 , 3-2^000000";
+				next;
+					setarray @upgradeitem[0], 2660, 985;
+					setarray @amount[0], 1, 295;
+					set @zenyrefined,450000;
+					set @itemamount,2;
+					set @upitem,2697;
+					set @refineds,20;
+				break;
+				//=======================================================//
+				//= (2698) Vesper Core (Agi)
+				case 6:	mes "^9400D3Refined Vesper Core 03^000000";
+					mes "MDEF +3, AGI +3, Flee +5";
+					mes "ประเภท : ^777777Accessory^000000";
+					mes "พลังป้องกัน : ^7777773^000000";
+					mes "น้ำหนัก: ^7777770^000000";
+					mes "อาชีพที่ใช้ได้ : ^777777อาชีพ 3-1 , 3-2^000000";
+				next;
+					setarray @upgradeitem[0], 2661, 985;
+					setarray @amount[0], 1, 295;
+					set @zenyrefined,450000;
+					set @itemamount,2;
+					set @upitem,2698;
+					set @refineds,20;
+				break;
+				//=======================================================//
+				//= (2699) Vesper Core (Dex)
+				case 7:	mes "^9400D3Refined Vesper Core 04^000000";
+					mes "MDEF +3, DEX +3,  Hit +10";
+					mes "ประเภท : ^777777Accessory^000000";
+					mes "พลังป้องกัน : ^7777773^000000";
+					mes "น้ำหนัก: ^7777770^000000";
+					mes "อาชีพที่ใช้ได้ : ^777777อาชีพ 3-1 , 3-2^000000";
+				next;
+					setarray @upgradeitem[0], 2662, 985;
+					setarray @amount[0], 1, 295;
+					set @zenyrefined,450000;
+					set @itemamount,2;
+					set @upitem,2699;
+					set @refineds,20;
+				break;
+			}
+		callsub L_Check;
+		close2;
+		cutin "", 255;
+		end;
+		//=======================================================//
+		//= (2689)
+		case 2:	mes "^9400D3Refined Earring^000000";
+			mes "INT + 3";
+			mes "ประเภท : ^777777Accessory^000000";
+			mes "พลังป้องกัน : ^7777770^000000      น้ำหนัก : ^77777710^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2602, 2617, 984, 985;
+			setarray @amount[0], 1, 1, 25, 25;
+			set @zenyrefined,45000;
+			set @itemamount,4;
+			set @upitem,2689;
+			set @refineds,15;
+		break;
+		//=======================================================//
+		//= (2690)
+		case 3:	mes "^9400D3Refined Ring^000000";
+			mes "STR + 4";
+			mes "ประเภท : ^777777Accessory^000000";
+			mes "พลังป้องกัน : ^7777770^000000      น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2601, 4028, 984, 985;
+			setarray @amount[0], 1, 1, 15, 15;
+			set @zenyrefined,32000;
+			set @itemamount,4;
+			set @upitem,2690;
+			set @refineds,15;
+		break;
+		//=======================================================//
+		//= (2691)
+		case 4:	mes "^9400D3Refined Necklace^000000";
+			mes "VIT + 4";
+			mes "ประเภท : ^777777Accessory^000000";
+			mes "พลังป้องกัน : ^7777770^000000      น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2603, 4022, 984, 985;
+			setarray @amount[0], 1, 1, 15, 15;
+			set @zenyrefined,32000;
+			set @itemamount,4;
+			set @upitem,2691;
+			set @refineds,15;
+		break;
+		//=======================================================//
+		//= (2692)
+		case 5:	mes "^9400D3Refined Glove^000000";
+			mes "DEX + 4";
+			mes "ประเภท : ^777777Accessory^000000";
+			mes "พลังป้องกัน : ^7777770^000000      น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2604, 4034, 984, 985;
+			setarray @amount[0], 1, 1, 15, 15;
+			set @zenyrefined,32000;
+			set @itemamount,4;
+			set @upitem,2692;
+			set @refineds,15;
+		break;
+		//=======================================================//
+		//= (2693)
+		case 6:	mes "^9400D3Refined Brooch^000000";
+			mes "AGI + 4";
+			mes "ประเภท : ^777777Accessory^000000";
+			mes "พลังป้องกัน : ^7777770^000000      น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2605, 4027, 984, 985;
+			setarray @amount[0], 1, 1, 15, 15;
+			set @zenyrefined,32000;
+			set @itemamount,4;
+			set @upitem,2693;
+			set @refineds,15;
+		break;
+		//=======================================================//
+		//= (2694)
+		case 7:	mes "^9400D3Refined Rosary^000000";
+			mes "LUK + 4 , MDEF + 5";
+			mes "ประเภท : ^777777Accessory^000000";
+			mes "พลังป้องกัน : ^7777770^000000      น้ำหนัก : ^7777770^000000";
+			mes "Lv ที่ต้องการ : ^7777771^000000";
+			mes "อาชีพที่ใช้ได้ : ^777777ทุกอาชีพยกเว้น Novice^000000";
+		next;
+			setarray @upgradeitem[0], 2608, 4001, 984, 985;
+			setarray @amount[0], 1, 1, 15, 15;
+			set @zenyrefined,32000;
+			set @itemamount,4;
+			set @upitem,2694;
+			set @refineds,10;
+		break;
+	}
+callsub L_Check;
+close2;
+cutin "", 255;
+end;
+
+L_Check:
+	mes "^FF0000-=^000000ส่วนผสมต่างๆ^FF0000=-^000000";
+	for( set @i,0; @i < @itemamount; set @i,@i+1 ) {
+	if(@d >= @itemamount) break;
+	mes "-> ^CC66FF"+getitemname(@upgradeitem[@d])+"  ^CC3366"+@amount[@d]+" ^000000ea";
+	set @d,@d+1;
+	continue;
+	}
+	mes "และเงินอีกจำนวน  ^FF0000"+@zenyrefined+"^000000  Zeny";
+	mes "-> โอกาสเสียหาย  ^9400D3"+@refineds+"^000000  %";
+	next;
+	switch(select("^000000- ^3333FFทำการอัพเกรตไอเทม" , "^000000- ^3333FFยกเลิกการอัพเกรตไอเทม"))
+	{
+		case 1:	set @r,0;	set @up,0;
+			mes "[^FF0000Mr.Refined^000000]";
+			mes "ข้าต้องเตือนท่านก่อนน่ะ...";
+			mes "ว่ามันมีโอกาสเสียหาย ^FF0000"+@refineds+"^000000 %";
+			mes "ถ้าไม่สำเร็จเท่ากับว่า... ความพยายามของท่านนั้นสูญเปล่า";
+			mes "ท่านต้องการจะ Upgrade อีกหรือ?";
+		next;
+			menu "-> ^FF0000ยืนยัน^000000",-,"-> ^FF0000ยกเลิก^000000",Lcancel;
+			for( set @r,0; @r < @itemamount; set @r,@r+1 ) {
+			if((@up >= @itemamount) || (@upgradeitem[@up] == 0)) break;
+			if (countitem(@upgradeitem[@up]) < @amount[@up]) goto nohave;
+			set @up,@up+1;	if((@up >= @itemamount) || (@upgradeitem[@up] == 0)) break;
+			continue;
+		}
+			if (zeny < @zenyrefined) goto nohave;
+			set @r,0;	set @up,0;
+			set zeny,zeny - @zenyrefined;
+			for( set @r,0; @r < @itemamount; set @r,@r+1 ) {
+			if((@up >= @itemamount) || (@upgradeitem[@up] == 0)) break;
+			delitem @upgradeitem[@up],@amount[@up];
+			set @up,@up+1;
+			continue;
+		}
+			specialeffect2(256);
+			specialeffect2(257);
+			specialeffect2(399);
+			mes "^3366FFชิงๆ แว่บ^000000";
+			next;
+				if (@refineds <= rand(100)) {
+			mes "[^FF0000Mr.Refined^000000]";
+			mes "^0000FFเสร็จสมบรูณ์!!^000000";
+			mes "เยี่ยมมาก... วันนี้ข้าได้ทำงานที่ยอดเยี่ยมอีกชิ้นหนึ่งแล้ว..";
+			emotion e_heh;
+			getitem @upitem,1;
+			set @up,0;
+			set @d,0;
+		return;
+			} else {
+				mes "[^FF0000Mr.Refined^000000]";
+				mes "คือ....";
+				mes "ความล้มเหลวเป็นก้าวแรกของความสำเร็จ";
+				mes "ซักวันท่านจะประสบความสำเร็จ";
+				set @up,0;	set @d,0;
+				return;
+			}
+
+		case 2:	mes "[^FF0000Mr.Refined^000000]";
+			mes "ถ้าเจ้าอยากได้สิ่งที่เจ้าต้องการ";
+			mes "จงกลับมาเมื่อเจ้าพร้อมที่จะยอมรับมัน";
+			set @up,0;
+			set @d,0;
+			return;
+			}
+nohave:
+	set @id,1;
+	mes "[^FF0000Mr.Refined^000000]";
+	mes "กรุณาตรวจสอบสิ่งของภายในตัว ว่าครบตามจำนวนหรือไม่";
+	for( set @i,0; @i < @itemamount; set @i,@i+1 ) {
+	if ((@id >= @itemamount) || (@upgradeitem[@id] == 0)) break;
+	mes "<-- ^0033FF"+getitemname(@upgradeitem[@id])+"^000000";
+	if (countitem(@upgradeitem[@id]) < @amount[@id]) mes "[^FF0000"+countitem(@upgradeitem[@id])+" ^000000/^FF0000 "+@amount[@id]+"^000000]";
+	if (countitem(@upgradeitem[@id]) >= @amount[@id]) mes "[^0033BB"+@amount[@id]+" ^000000/^0033BB "+@amount[@id]+"^000000]";
+	mes "------------------>";	mes " ";	set @id,@id+1;
+	if ((@id >= @itemamount) || (@upgradeitem[@id] == 0)) break;
+	continue;
+}
+	if (@zenyrefined) { mes "<-- ^0033FFZeny^000000";
+	if (countitem(@upgradeitem[@id]) < @amount[@id]) mes "[^FF0000"+Zeny+" ^000000/^FF0000 "+@zenyrefined+"^000000]";
+	if (countitem(@upgradeitem[@id]) >= @amount[@id]) mes "[^0033BB"+@zenyrefined+" ^000000/^0033BB "+@zenyrefined+"^000000]";
+	mes "^000000-------------------->";
+}
+	close2;
+	emotion e_hmm;
+	cutin "", 255;
+	set @id,0;
+	end;
+
+Lcancel:
+	mes "[^FF0000Mr.Refined^000000]";
+	mes "ถ้าเจ้าอยากได้สิ่งที่เจ้าต้องการ";
+	mes "จงกลับมาเมื่อเจ้าพร้อมที่จะยอมรับมัน";
+	set @id,0;
+	set @up,0;
+	set @d,0;
+	close2;
+	cutin "", 255;
+	end;
+OnInit: 
+waitingroom "Best•ไอเทม",0;
+end;
+
+end;
+}
+

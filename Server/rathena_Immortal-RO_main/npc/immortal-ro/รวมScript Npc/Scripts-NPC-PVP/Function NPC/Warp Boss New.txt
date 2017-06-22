@@ -1,0 +1,29 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	NPC0-19::NPC19	-1,{
+mes "^FF6633รวมบอสใหม่ไว้ที่นี่^000000";
+next;
+menu "[^F00000รวมโครตบอส^000000 ]["+getmapusers("prt_are01")+"]",map1;
+
+map1:
+warp "prt_are01",150,158;
+close;
+Lcancel:
+
+close;
+OnInit: 
+waitingroom "New Boss 38 ตัว",0;
+end;
+}
+
+
+

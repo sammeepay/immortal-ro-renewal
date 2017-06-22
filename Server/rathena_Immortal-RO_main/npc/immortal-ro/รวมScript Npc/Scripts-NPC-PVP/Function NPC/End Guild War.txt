@@ -1,0 +1,182 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description ========================================= 
+//= Server Rate
+//===== Additional Comments ================================= 
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+-	script	System_GuildWainner	-1,{
+end;
+
+OnInit:
+disablenpc "G1";
+disablenpc "G2";
+disablenpc "G3";
+disablenpc "G4";
+disablenpc "G5";
+disablenpc "G6";
+disablenpc "G7";
+disablenpc "G8";
+disablenpc "G9";
+disablenpc "G10";
+disablenpc "G11";
+disablenpc "G12";
+end;
+
+OnAgitEnd:
+enablenpc "G1";
+enablenpc "G2";
+enablenpc "G3";
+enablenpc "G4";
+enablenpc "G5";
+enablenpc "G6";
+enablenpc "G7";
+enablenpc "G8";
+enablenpc "G9";
+enablenpc "G10";
+enablenpc "G11";
+enablenpc "G12";
+end;
+
+OnAgitStart:
+disablenpc "G1";
+disablenpc "G2";
+disablenpc "G3";
+disablenpc "G4";
+disablenpc "G5";
+disablenpc "G6";
+disablenpc "G7";
+disablenpc "G8";
+disablenpc "G9";
+disablenpc "G10";
+disablenpc "G11";
+disablenpc "G12";
+end;
+}
+
+function	script	FunGuildPoint	{
+getitem 29023,1;
+return 0;
+}
+
+rtc_ro,64,105,4	script	Rothenburg::G1	752,{
+set @GID,getcastledata("aldeg_cas05",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G1";
+close;
+}
+
+rtc_ro,68,105,4	script	Eeyolbriggar::G2	752,{
+set @GID,getcastledata("gefg_cas02",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G2";
+close;
+}
+
+rtc_ro,72,105,4	script	Skoegul::G3	752,{
+set @GID,getcastledata("prtg_cas04",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G3";
+close;
+}
+
+rtc_ro,76,105,4	script	Bergel::G4	752,{
+set @GID,getcastledata("gefg_cas04",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G4";
+close;
+}
+
+rtc_ro,80,105,4	script	Holy Shadow::G5	752,{
+set @GID,getcastledata("payg_cas03",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G5";
+close;
+}
+
+rtc_ro,60,105,4	script	Hohenschwangau::G6	752,{
+set @GID,getcastledata("aldeg_cas02",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G6";
+close;
+}
+
+rtc_ro,58,103,4	script	Bright Arbor::G7	752,{
+set @GID,getcastledata("payg_cas01",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G7";
+close;
+}
+
+rtc_ro,58,99,4	script	Gondul::G8	752,{
+set @GID,getcastledata("prtg_cas05",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G8";
+close;
+}
+
+rtc_ro,58,95,4	script	Mersetzdeitz::G9	752,{
+set @GID,getcastledata("gefg_cas05",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G9";
+close;
+}
+
+
+rtc_ro,58,83,4	script	Yesnelph::G10	752,{
+set @GID,getcastledata("gefg_cas03",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G10";
+close;
+}
+
+
+rtc_ro,58,91,4	script	Nuenberg::G11	752,{
+set @GID,getcastledata("aldeg_cas03",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G11";
+close;
+}
+
+
+rtc_ro,58,87,4	script	Sacred Altar::G12	752,{
+set @GID,getcastledata("payg_cas04",1);
+if(getguildmaster(@GID) == "null") close;
+if (strcharinfo(0) != getguildmaster(@GID)) close;
+callfunc "FunGuildPoint";
+disablenpc "G12";
+close;
+}
+
+
+
+
+
+
+

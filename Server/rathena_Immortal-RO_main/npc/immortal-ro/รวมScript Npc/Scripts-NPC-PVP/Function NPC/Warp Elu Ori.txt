@@ -1,0 +1,33 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+rtc_ro,18,58,4	script	Warp Elu & Ori	457,{
+mes "[ พนักงานวาป ]";
+mes "เราจะพาท่านไปที่แมฟ ล่า Elu Ori";
+mes "โปรดเลือกสถานที่ต่างๆที่จะไป";
+next;
+menu "- ล่า Elu Ori แมฟ 1",eluoir1,"- ล่า Elu Ori แมฟ 2",eluoir2,"- ยกเลิก",cancel;
+
+eluoir1:
+warp "gl_prison",0,0;
+close;
+
+eluoir2:
+warp "gl_cas02",0,0;
+close;
+
+cancel:
+close;
+
+OnInit:
+waitingroom "   วาปล่า Elu Ori",0;
+end; 
+}

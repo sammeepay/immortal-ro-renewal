@@ -1,0 +1,822 @@
+//===================================================================
+// NPC : Kill Event
+// Design By : Unknow Credit
+// Contact : -
+//===================================================================
+
+-	script	OnPCKillEvent	-1,{
+OnPCKillEvent:
+getmapxy @mapname2$,@mapx,@mapy,0,strcharinfo(0);
+if 
+((@mapname2$ == "guild_vs1") || (@mapname2$ == "guild_vs2") || (@mapname2$ == "guild_vs3") || (@mapname2$ == "guild_vs4") ||
+(@mapname2$ == "guild_vs5") || (@mapname2$ == "pvp_n_1-5") || (@mapname2$ == "pvp_y_1-1") || (@mapname2$ == "pvp_y_1-2")|| 
+(@mapname2$ == "pvp_y_1-5") || (@mapname2$ == "gefg_cas05") || (@mapname2$ == "moc_fild17")) goto KPPoint;
+
+
+
+KPPoint:
+set KillPYPoint,KillPYPoint+1;
+set @kill,@kill+1;
+if($@die >= 3) goto EndDie;
+if(@kill == 1)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000; 
+if(@kill == 2)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000; 
+if(@kill == 3)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 4)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 5)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 6)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 7)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 8)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 9)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 10)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 11)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 12)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 13)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 14)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 15)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 16)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 17)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill == 18)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+if(@kill >= 19)	announce "[ คุณ  " +strcharinfo(0)+ "  ได้ฆ่าคุณ  " +rid2name(killedrid)+ "  ตาย... ]",0,0xFF0000;
+callfunc "F_PointPlayerRanking";
+close;
+
+
+
+EndDie:
+if($@die == 3)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Double Kill .. !!",0,0xFF0000;
+if($@die == 4)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Triple Kill .. !!",0,0xFF0000;
+if($@die == 5)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Quadruple Kill .. !!",0,0xFF0000;
+if($@die == 6)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Pentuple Kill .. !!",0,0xFF0000;
+if($@die == 7)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Hextuple Kill .. !!",0,0xFF0000;
+if($@die == 8)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Septuple Kill .. !!",0,0xFF0000;
+if($@die == 9)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Octuple Kill .. !!",0,0xFF0000;
+if($@die == 10)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Nonuple Kill .. !!",0,0xFF0000;
+if($@die == 11)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] just got a Decuple Kill .. !!",0,0xFF0000;
+if($@die == 12)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] is Dominating .. !!",0,0xFF0000;
+if($@die == 13)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] has a Mega Kill .. !!",0,0xFF0000;
+if($@die == 14)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] has a Ownage .. !!",0,0xFF0000;
+if($@die == 15)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] is Unstoppable .. !!",0,0xFF0000;
+if($@die == 16)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] has a Monster Kill .. !!",0,0xFF0000;
+if($@die == 17)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] is Wicked Sick .. !!",0,0xFF0000;
+if($@die == 18)	Mapannounce ""+@mapname2$+"","[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย ] .. [ " +strcharinfo(0)+ " ] is GODLIKE .. !!",0,0xFF0000;
+if($@die >= 19)	announce "[ คุณ  " +strcharinfo(0)+ "  โดนคุณ  " +rid2name(killedrid)+ "  ฆ่าตาย  ] .. [ " +strcharinfo(0)+ " ]  ได้โดนฆ่าตายบ่อยมากๆ ( พิจรณาตนเองได้แล้ว... )",0,0xFF000;
+callfunc "F_PointPlayerRanking";
+close;
+}
+
+
+
+function	script	F_PointPlayerRanking	{
+set @PCPlayer$,strcharinfo(0);
+if($RankPoint01 == 0) goto L_NonePC;
+goto L_Rank01;
+L_NonePC:
+set $Rank01_Name$,"ไม่มีบันทึก";
+set $Rank02_Name$,"ไม่มีบันทึก";
+set $Rank03_Name$,"ไม่มีบันทึก";
+set $Rank04_Name$,"ไม่มีบันทึก";
+set $Rank05_Name$,"ไม่มีบันทึก";
+set $Rank06_Name$,"ไม่มีบันทึก";
+set $Rank07_Name$,"ไม่มีบันทึก";
+set $Rank08_Name$,"ไม่มีบันทึก";
+set $Rank09_Name$,"ไม่มีบันทึก";
+set $Rank10_Name$,"ไม่มีบันทึก";
+set $RankPoint01,0;
+set $RankPoint02,0;
+set $RankPoint03,0;
+set $RankPoint04,0;
+set $RankPoint05,0;
+set $RankPoint06,0;
+set $RankPoint07,0;
+set $RankPoint08,0;
+set $RankPoint09,0;
+set $RankPoint10,0;
+goto L_Rank01;
+// ============== 1 ==============
+L_Rank01:
+if(@PCPlayer$ == $Rank01_Name$) goto L_Uppoint01;
+if(KillPYPoint > $RankPoint01) goto L_Rank01_Up;
+goto L_Rank02;
+L_Uppoint01:
+set $RankPoint01,KillPYPoint;
+goto L_End;
+// ============== 2 ==============
+L_Rank02:
+if(@PCPlayer$ == $Rank02_Name$) goto L_Uppoint02;
+if(KillPYPoint > $RankPoint02) goto L_Rank02_Up;
+goto L_Rank03;
+L_Uppoint02:
+set $RankPoint02,KillPYPoint;
+goto L_End;
+// ============== 3 ==============
+L_Rank03:
+if(@PCPlayer$ == $Rank03_Name$) goto L_Uppoint03;
+if(KillPYPoint > $RankPoint03) goto L_Rank03_Up;
+goto L_Rank04;
+L_Uppoint03:
+set $RankPoint03,KillPYPoint;
+goto L_End;
+// ============== 4 ==============
+L_Rank04:
+if(@PCPlayer$ == $Rank04_Name$) goto L_Uppoint04;
+if(KillPYPoint > $RankPoint04) goto L_Rank04_Up;
+goto L_Rank05;
+L_Uppoint04:
+set $RankPoint04,KillPYPoint;
+goto L_End;
+// ============== 5 ==============
+L_Rank05:
+if(@PCPlayer$ == $Rank05_Name$) goto L_Uppoint05;
+if(KillPYPoint > $RankPoint05) goto L_Rank05_Up;
+goto L_Rank06;
+L_Uppoint05:
+set $RankPoint05,KillPYPoint;
+goto L_End;
+// ============== 6 ==============
+L_Rank06:
+if(@PCPlayer$ == $Rank06_Name$) goto L_Uppoint06;
+if(KillPYPoint > $RankPoint06) goto L_Rank06_Up;
+goto L_Rank07;
+L_Uppoint06:
+set $RankPoint06,KillPYPoint;
+goto L_End;
+// ============== 7 ==============
+L_Rank07:
+if(@PCPlayer$ == $Rank07_Name$) goto L_Uppoint07;
+if(KillPYPoint > $RankPoint07) goto L_Rank07_Up;
+goto L_Rank08;
+L_Uppoint07:
+set $RankPoint07,KillPYPoint;
+goto L_End;
+// ============== 8 ==============
+L_Rank08:
+if(@PCPlayer$ == $Rank08_Name$) goto L_Uppoint08;
+if(KillPYPoint > $RankPoint08) goto L_Rank08_Up;
+goto L_Rank09;
+L_Uppoint08:
+set $RankPoint08,KillPYPoint;
+goto L_End;
+// ============== 9 ==============
+L_Rank09:
+if(@PCPlayer$ == $Rank09_Name$) goto L_Uppoint09;
+if(KillPYPoint > $RankPoint09) goto L_Rank09_Up;
+goto L_Rank10;
+L_Uppoint09:
+set $RankPoint09,KillPYPoint;
+goto L_End;
+// ============== 10 =============
+L_Rank10:
+if(@PCPlayer$ == $Rank10_Name$) goto L_Uppoint10;
+if(KillPYPoint > $RankPoint10) goto L_Rank10_Up;
+goto L_NoRank;
+L_Uppoint10:
+set $RankPoint10,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 1 ================
+L_Rank01_Up:
+if($Rank02_Name$ == @PCPlayer$) goto L_Rank02_Upto_Rank01;
+if($Rank03_Name$ == @PCPlayer$) goto L_Rank03_Upto_Rank01;
+if($Rank04_Name$ == @PCPlayer$) goto L_Rank04_Upto_Rank01;
+if($Rank05_Name$ == @PCPlayer$) goto L_Rank05_Upto_Rank01;
+if($Rank06_Name$ == @PCPlayer$) goto L_Rank06_Upto_Rank01;
+if($Rank07_Name$ == @PCPlayer$) goto L_Rank07_Upto_Rank01;
+if($Rank08_Name$ == @PCPlayer$) goto L_Rank08_Upto_Rank01;
+if($Rank09_Name$ == @PCPlayer$) goto L_Rank09_Upto_Rank01;
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank01;
+goto L_Rankother_Upto_Rank01;
+L_Rank02_Upto_Rank01:
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank03_Upto_Rank01:
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank04_Upto_Rank01:
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank05_Upto_Rank01:
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank06_Upto_Rank01:
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank07_Upto_Rank01:
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank08_Upto_Rank01:
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank09_Upto_Rank01:
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank10_Upto_Rank01:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rankother_Upto_Rank01:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+set $Rank02_Name$,$Rank01_Name$;
+set $RankPoint02,$RankPoint01;
+goto L_Rank01_LevelUp;
+L_Rank01_LevelUp:
+set $Rank01_Name$,@PCPlayer$;
+set $RankPoint01,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 2 ================
+L_Rank02_Up:
+if($Rank03_Name$ == @PCPlayer$) goto L_Rank03_Upto_Rank02;
+if($Rank04_Name$ == @PCPlayer$) goto L_Rank04_Upto_Rank02;
+if($Rank05_Name$ == @PCPlayer$) goto L_Rank05_Upto_Rank02;
+if($Rank06_Name$ == @PCPlayer$) goto L_Rank06_Upto_Rank02;
+if($Rank07_Name$ == @PCPlayer$) goto L_Rank07_Upto_Rank02;
+if($Rank08_Name$ == @PCPlayer$) goto L_Rank08_Upto_Rank02;
+if($Rank09_Name$ == @PCPlayer$) goto L_Rank09_Upto_Rank02;
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank02;
+goto L_Rankother_Upto_Rank02;
+L_Rank03_Upto_Rank02:
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rank04_Upto_Rank02:
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rank05_Upto_Rank02:
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rank06_Upto_Rank02:
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rank07_Upto_Rank02:
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rank08_Upto_Rank02:
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rank09_Upto_Rank02:
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rank10_Upto_Rank02:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rankother_Upto_Rank02:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+set $Rank03_Name$,$Rank02_Name$;
+set $RankPoint03,$RankPoint02;
+goto L_Rank02_LevelUp;
+L_Rank02_LevelUp:
+set $Rank02_Name$,@PCPlayer$;
+set $RankPoint02,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 3 ================
+L_Rank03_Up:
+if($Rank04_Name$ == @PCPlayer$) goto L_Rank04_Upto_Rank03;
+if($Rank05_Name$ == @PCPlayer$) goto L_Rank05_Upto_Rank03;
+if($Rank06_Name$ == @PCPlayer$) goto L_Rank06_Upto_Rank03;
+if($Rank07_Name$ == @PCPlayer$) goto L_Rank07_Upto_Rank03;
+if($Rank08_Name$ == @PCPlayer$) goto L_Rank08_Upto_Rank03;
+if($Rank09_Name$ == @PCPlayer$) goto L_Rank09_Upto_Rank03;
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank03;
+goto L_Rankother_Upto_Rank03;
+L_Rank04_Upto_Rank03:
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+goto L_Rank03_LevelUp;
+L_Rank05_Upto_Rank03:
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+goto L_Rank03_LevelUp;
+L_Rank06_Upto_Rank03:
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+goto L_Rank03_LevelUp;
+L_Rank07_Upto_Rank03:
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+goto L_Rank03_LevelUp;
+L_Rank08_Upto_Rank03:
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+goto L_Rank03_LevelUp;
+L_Rank09_Upto_Rank03:
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+goto L_Rank03_LevelUp;
+L_Rank10_Upto_Rank03:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+goto L_Rank03_LevelUp;
+L_Rankother_Upto_Rank03:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+set $Rank04_Name$,$Rank03_Name$;
+set $RankPoint04,$RankPoint03;
+goto L_Rank03_LevelUp;
+L_Rank03_LevelUp:
+set $Rank03_Name$,@PCPlayer$;
+set $RankPoint03,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 4 ================
+L_Rank04_Up:
+if($Rank05_Name$ == @PCPlayer$) goto L_Rank05_Upto_Rank04;
+if($Rank06_Name$ == @PCPlayer$) goto L_Rank06_Upto_Rank04;
+if($Rank07_Name$ == @PCPlayer$) goto L_Rank07_Upto_Rank04;
+if($Rank08_Name$ == @PCPlayer$) goto L_Rank08_Upto_Rank04;
+if($Rank09_Name$ == @PCPlayer$) goto L_Rank09_Upto_Rank04;
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank04;
+goto L_Rankother_Upto_Rank04;
+L_Rank05_Upto_Rank04:
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+goto L_Rank04_LevelUp;
+L_Rank06_Upto_Rank04:
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+goto L_Rank04_LevelUp;
+L_Rank07_Upto_Rank04:
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+goto L_Rank04_LevelUp;
+L_Rank08_Upto_Rank04:
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+goto L_Rank04_LevelUp;
+L_Rank09_Upto_Rank04:
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+goto L_Rank04_LevelUp;
+L_Rank10_Upto_Rank04:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+goto L_Rank04_LevelUp;
+L_Rankother_Upto_Rank04:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+set $Rank05_Name$,$Rank04_Name$;
+set $RankPoint05,$RankPoint04;
+goto L_Rank04_LevelUp;
+L_Rank04_LevelUp:
+set $Rank04_Name$,@PCPlayer$;
+set $RankPoint04,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 5 ================
+L_Rank05_Up:
+if($Rank06_Name$ == @PCPlayer$) goto L_Rank06_Upto_Rank05;
+if($Rank07_Name$ == @PCPlayer$) goto L_Rank07_Upto_Rank05;
+if($Rank08_Name$ == @PCPlayer$) goto L_Rank08_Upto_Rank05;
+if($Rank09_Name$ == @PCPlayer$) goto L_Rank09_Upto_Rank05;
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank05;
+goto L_Rankother_Upto_Rank05;
+L_Rank06_Upto_Rank05:
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+goto L_Rank05_LevelUp;
+L_Rank07_Upto_Rank05:
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+goto L_Rank05_LevelUp;
+L_Rank08_Upto_Rank05:
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+goto L_Rank05_LevelUp;
+L_Rank09_Upto_Rank05:
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+goto L_Rank05_LevelUp;
+L_Rank10_Upto_Rank05:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+goto L_Rank05_LevelUp;
+L_Rankother_Upto_Rank05:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+set $Rank06_Name$,$Rank05_Name$;
+set $RankPoint06,$RankPoint05;
+goto L_Rank05_LevelUp;
+L_Rank05_LevelUp:
+set $Rank05_Name$,@PCPlayer$;
+set $RankPoint05,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 6 ================
+L_Rank06_Up:
+if($Rank07_Name$ == @PCPlayer$) goto L_Rank07_Upto_Rank06;
+if($Rank08_Name$ == @PCPlayer$) goto L_Rank08_Upto_Rank06;
+if($Rank09_Name$ == @PCPlayer$) goto L_Rank09_Upto_Rank06;
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank06;
+goto L_Rankother_Upto_Rank06;
+L_Rank07_Upto_Rank06:
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+goto L_Rank06_LevelUp;
+L_Rank08_Upto_Rank06:
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+goto L_Rank06_LevelUp;
+L_Rank09_Upto_Rank06:
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+goto L_Rank06_LevelUp;
+L_Rank10_Upto_Rank06:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+goto L_Rank06_LevelUp;
+L_Rankother_Upto_Rank06:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+set $Rank07_Name$,$Rank06_Name$;
+set $RankPoint07,$RankPoint06;
+goto L_Rank05_LevelUp;
+L_Rank06_LevelUp:
+set $Rank06_Name$,@PCPlayer$;
+set $RankPoint06,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 7 ================
+L_Rank07_Up:
+if($Rank08_Name$ == @PCPlayer$) goto L_Rank08_Upto_Rank07;
+if($Rank09_Name$ == @PCPlayer$) goto L_Rank09_Upto_Rank07;
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank07;
+goto L_Rankother_Upto_Rank07;
+L_Rank08_Upto_Rank07:
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+goto L_Rank07_LevelUp;
+L_Rank09_Upto_Rank07:
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+goto L_Rank07_LevelUp;
+L_Rank10_Upto_Rank07:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+goto L_Rank07_LevelUp;
+L_Rankother_Upto_Rank07:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+set $Rank08_Name$,$Rank07_Name$;
+set $RankPoint08,$RankPoint07;
+goto L_Rank07_LevelUp;
+L_Rank07_LevelUp:
+set $Rank07_Name$,@PCPlayer$;
+set $RankPoint07,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 8 ================
+L_Rank08_Up:
+if($Rank09_Name$ == @PCPlayer$) goto L_Rank09_Upto_Rank08;
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank08;
+goto L_Rankother_Upto_Rank08;
+L_Rank09_Upto_Rank08:
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+goto L_Rank08_LevelUp;
+L_Rank10_Upto_Rank08:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+goto L_Rank08_LevelUp;
+L_Rankother_Upto_Rank08:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+set $Rank09_Name$,$Rank08_Name$;
+set $RankPoint09,$RankPoint08;
+goto L_Rank08_LevelUp;
+L_Rank08_LevelUp:
+set $Rank08_Name$,@PCPlayer$;
+set $RankPoint08,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 9 ================
+L_Rank09_Up:
+if($Rank10_Name$ == @PCPlayer$) goto L_Rank10_Upto_Rank09;
+goto L_Rankother_Upto_Rank09;
+L_Rank10_Upto_Rank09:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+goto L_Rank09_LevelUp;
+L_Rankother_Upto_Rank09:
+set $Rank10_Name$,$Rank09_Name$;
+set $RankPoint10,$RankPoint09;
+goto L_Rank09_LevelUp;
+L_Rank09_LevelUp:
+set $Rank09_Name$,@PCPlayer$;
+set $RankPoint09,KillPYPoint;
+goto L_End;
+// ============== ขึ้นอันดับ 10 ===============
+L_Rank10_Up:
+set $Rank10_Name$,@PCPlayer$;
+set $RankPoint10,KillPYPoint;
+goto L_End;
+// ============== เสร็จสิ้น ===================
+L_End:
+close;
+L_NoRank:
+close;
+End;
+}

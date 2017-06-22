@@ -1,0 +1,140 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+-	script	Recallguild	-1,{
+
+mes "^FF33FFRecallguild^000000";
+mes "คุณต้องการเรียกลูกกิลไหม";
+next;
+menu "- เรียกสมาชิกในกิลรวมพล",recall,"- ยกเลิก",Lcancel;
+
+recall:
+set @nguild,getcharid(2);
+if (strcharinfo(0) == getguildmaster(@nguild)) goto ymaster;
+if (getcharid(2) == @nguild) goto nmaster;
+
+ymaster:
+mes "^FF33FFRecallguild^000000";
+mes "เรียบร้อยแล้ว";
+atcommand strcharinfo(0) + "@guildrecall "+ getcharid(2) +"";
+close;
+
+nmaster:
+mes "^FF33FFRecallguild^000000";
+mes "ไม่สามารถดำเนินการให้ได้";
+mes "เนื่องจากคุณไม่ใช่หัวหน้ากิล";
+close;
+
+Lcancel:
+mes "^FF33FFRecallguild^000000";
+close;
+
+OnInit: 
+waitingroom "เรียกลูกกิลรวมพล",0; 
+end;
+
+end;
+}
+
+prt_gld,147,138,4	duplicate(Recallguild)	Recallguild#1	858
+pay_gld,293,120,4	duplicate(Recallguild)	Recallguild#2	858
+gef_fild13,248,63,4	duplicate(Recallguild)	Recallguild#3	858
+alde_gld,266,98,4	duplicate(Recallguild)	Recallguild#4	858
+alde_gld,103,249,4	duplicate(Recallguild)	Recallguild#5	858
+gef_fild13,299,242,4	duplicate(Recallguild)	Recallguild#6	858
+gef_fild13,185,282,4	duplicate(Recallguild)	Recallguild#7	858
+pay_gld,128,237,4	duplicate(Recallguild)	Recallguild#8	858
+pay_gld,318,301,4	duplicate(Recallguild)	Recallguild#9	858
+prt_gld,124,247,4	duplicate(Recallguild)	Recallguild#10	858
+prt_gld,194,247,4	duplicate(Recallguild)	Recallguild#12	858
+
+home01,115,92,4	duplicate(Recallguild)	Recallguild#13	858
+home02,115,92,4	duplicate(Recallguild)	Recallguild#14	858
+home03,115,92,4	duplicate(Recallguild)	Recallguild#15	858
+home04,115,92,4	duplicate(Recallguild)	Recallguild#16	858
+home05,115,92,4	duplicate(Recallguild)	Recallguild#17	858
+home06,115,92,4	duplicate(Recallguild)	Recallguild#18	858
+home07,115,92,4	duplicate(Recallguild)	Recallguild#19	858
+home08,115,92,4	duplicate(Recallguild)	Recallguild#20	858
+home09,115,92,4	duplicate(Recallguild)	Recallguild#21	858
+home10,115,92,4	duplicate(Recallguild)	Recallguild#22	858
+home11,115,92,4	duplicate(Recallguild)	Recallguild#23	858
+home12,115,92,4	duplicate(Recallguild)	Recallguild#24	858
+home13,115,92,4	duplicate(Recallguild)	Recallguild#25	858
+home14,115,92,4	duplicate(Recallguild)	Recallguild#26	858
+home15,115,92,4	duplicate(Recallguild)	Recallguild#27	858
+home16,115,92,4	duplicate(Recallguild)	Recallguild#28	858
+home17,115,92,4	duplicate(Recallguild)	Recallguild#29	858
+home18,115,92,4	duplicate(Recallguild)	Recallguild#30	858
+home19,115,92,4	duplicate(Recallguild)	Recallguild#31	858
+home20,115,92,4	duplicate(Recallguild)	Recallguild#32	858
+home21,115,92,4	duplicate(Recallguild)	Recallguild#33	858
+home22,115,92,4	duplicate(Recallguild)	Recallguild#34	858
+home23,115,92,4	duplicate(Recallguild)	Recallguild#35	858
+home24,115,92,4	duplicate(Recallguild)	Recallguild#36	858
+home25,115,92,4	duplicate(Recallguild)	Recallguild#37	858
+home26,115,92,4	duplicate(Recallguild)	Recallguild#38	858
+home27,115,92,4	duplicate(Recallguild)	Recallguild#39	858
+home28,115,92,4	duplicate(Recallguild)	Recallguild#40	858
+home29,115,92,4	duplicate(Recallguild)	Recallguild#41	858
+home30,115,92,4	duplicate(Recallguild)	Recallguild#42	858
+home31,115,92,4	duplicate(Recallguild)	Recallguild#43	858
+home32,115,92,4	duplicate(Recallguild)	Recallguild#44	858
+home33,115,92,4	duplicate(Recallguild)	Recallguild#45	858
+home34,115,92,4	duplicate(Recallguild)	Recallguild#46	858
+home35,115,92,4	duplicate(Recallguild)	Recallguild#47	858
+home36,115,92,4	duplicate(Recallguild)	Recallguild#48	858
+home37,115,92,4	duplicate(Recallguild)	Recallguild#49	858
+home38,115,92,4	duplicate(Recallguild)	Recallguild#50	858
+home39,115,92,4	duplicate(Recallguild)	Recallguild#51	858
+home40,115,92,4	duplicate(Recallguild)	Recallguild#52	858
+home41,115,92,4	duplicate(Recallguild)	Recallguild#53	858
+home42,115,92,4	duplicate(Recallguild)	Recallguild#54	858
+home43,115,92,4	duplicate(Recallguild)	Recallguild#55	858
+home44,115,92,4	duplicate(Recallguild)	Recallguild#56	858
+home45,115,92,4	duplicate(Recallguild)	Recallguild#57	858
+home46,115,92,4	duplicate(Recallguild)	Recallguild#58	858
+home47,115,92,4	duplicate(Recallguild)	Recallguild#59	858
+home48,115,92,4	duplicate(Recallguild)	Recallguild#60	858
+home49,115,92,4	duplicate(Recallguild)	Recallguild#61	858
+home50,115,92,4	duplicate(Recallguild)	Recallguild#62	858
+home51,115,92,4	duplicate(Recallguild)	Recallguild#63	858
+home52,115,92,4	duplicate(Recallguild)	Recallguild#64	858
+home53,115,92,4	duplicate(Recallguild)	Recallguild#65	858
+home54,115,92,4	duplicate(Recallguild)	Recallguild#66	858
+home55,115,92,4	duplicate(Recallguild)	Recallguild#67	858
+home56,115,92,4	duplicate(Recallguild)	Recallguild#68	858
+home57,115,92,4	duplicate(Recallguild)	Recallguild#69	858
+home58,115,92,4	duplicate(Recallguild)	Recallguild#70	858
+home59,115,92,4	duplicate(Recallguild)	Recallguild#71	858
+home60,115,92,4	duplicate(Recallguild)	Recallguild#72	858
+
+
+
+pay_gld,147,170,4	duplicate(Recallguild)	Recallguild#75	858
+alde_gld,144,93,4	duplicate(Recallguild)	Recallguild#76	858
+gef_fild13,157,243,4	duplicate(Recallguild)	Recallguild#77	858
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

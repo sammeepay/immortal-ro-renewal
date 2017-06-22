@@ -1,0 +1,88 @@
+//==============================================================\\
+//================== Script By.Jhondominic =====================\\
+//==============================================================\\
+
+//===================== eAthena Script =========================
+//= Monster Kill Event
+//==================== Current Version: ========================
+//= 1.0
+//==================== Date of Writing =========================
+//= 14/12/2012
+//====================== Description: ==========================
+//= 1.0:
+//= กิจกรรมฆ่ามอนเตอร์รับแคส
+//= สามารถกำหนด เลเวล จำนวน และแคช ได้ในสคริป
+//= โดยแอดมินเลเวล 99 ตีมอน 1 ตัวเข้าโหมด ACP
+//==============================================================
+
+-	script	kills_event	-1,{
+OnNPCKillEvent:
+if(getgmlevel() == 99){
+main:
+mes "[ Event Manager ]";
+mes "รายละเอียดกิจกรรม";
+mes "เลเวลที่สามารถร่วมกิจกรรม ^FF0000"+.levelset+"^000000";
+mes "จำนวนมอนที่ต้องฆ่า ^FF0000"+.countset+"^000000 ตัว";
+mes "จำนวนแคชที่ได้รับ ^FF0000"+.cashset+"^000000 แคช";
+next;
+switch(select("- กำหนดเลเวล:- กำหนดจำนวนมอนเตอร์:- กำหนดแคช:- ยกเลิก")){
+case 1:
+mes "[ Event Manager ]";
+mes "โปรดระบุจำนวน Level";
+input .levelset;
+if(.levelset == 0){ close; }
+set .levelset,.levelset;
+next;
+goto main;
+case 2:
+mes "[ Event Manager ]";
+mes "โปรดระบุจำนวนมอนเตอร์";
+input .countset;
+if(.countset == 0){ close; }
+set .countset,.countset;
+next;
+goto main;
+case 3:
+mes "[ Event Manager ]";
+mes "โปรดระบุจำนวน Cash";
+input .cashset;
+if(.cashset == 0){ close; }
+set .cashset,.cashset;
+next;
+goto main;
+case 4:
+close;
+}
+}
+set .killlevel,.levelset;
+set .killcount,.countset;
+set .killcash,.cashset;
+if(Baselevel < .killlevel){
+end;
+}
+if(.killlevel == 0 && .killcount == 0 && .killcash == 0){
+dispbottom "[Event]: กรุณาติดต่อแอดมินเพื่อตั่งค่ากิจกรรม";
+end;
+}
+set #monkills,#monkills+1;
+if(#monkills == 50){
+announce "[Event]: คุณได้ฆ่ามอนเตอร์ไปแล้ว 50 ตัว",bc_blue|bc_self,0x00FFFF;
+}
+if(#monkills == 150){
+announce "[Event]: คุณได้ฆ่ามอนเตอร์ไปแล้ว 150 ตัว",bc_blue|bc_self,0x00FFFF;
+}
+if($monkills == 200){
+announce "[Event]: คุณได้ฆ่ามอนเตอร์ไปแล้ว 200 ตัว",bc_blue|bc_self,0x00FFFF;
+}
+if(#monkills >= .killcount){
+goto reward;
+}
+end;
+
+reward:
+set #monkills,#monkills-.killcount;
+set #CASHPOINTS,#CASHPOINTS+.killcash;
+announce "[ Event ] : คุณได้รับ "+.cashset+" Cash จาก Monster Kill Event",bc_blue|bc_self,0x00FFFF;
+dispbottom "[ Event ] : คุณมี Cash ทั้งหมด "+#CASHPOINTS+" Cash";
+end;
+}

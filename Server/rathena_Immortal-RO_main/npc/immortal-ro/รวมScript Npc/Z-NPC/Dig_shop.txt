@@ -1,0 +1,187 @@
+-	script	dickshop	-1,{
+
+//-------------------------------------------------------------------------ConFig Zone--------------------------------------------------------------------------------------
+set .@npcname$,"[   ^FF0000"+strnpcinfo(1)+"["+strnpcinfo(2)+"]^000000   ]";    // ตั้งชื่อ npc
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    while( getgmlevel() >=99 ){
+        mes .@npcname$;
+        mes "สวัสดีคุณ ^0000FFGM^000000";
+        mes "ยินดีต้อนรับเข้าสู่ Admin Menu";
+        mes "ท่านต้องการทำอะไร";
+        next;
+        deletearray .@id[0],getarraysize(.@id);
+        deletearray .@price[0],getarraysize(.@price);
+        switch(select( "• เมนูผู้เล่น","• ดูรายการของขุด","• เพิ่มรายการของขุด","• แก้ไขรายการของขุด","• ลบรายการของขุด","• ออก"))
+        {
+        case 1:    
+            mes .@npcname$;
+            mes "จะพาไปเดียวนี้ค่ะ";
+            next;
+            break;
+        case 2:
+            mes .@npcname$;
+            mes "---- รายการดังนี้ ----";
+            query_sql ( "SELECT `id`,`price` FROM `dig_shop` WHERE `shop` = '"+strnpcinfo(2)+"' ORDER BY `price` ASC",.@id,.@price );
+            if( getarraysize(.@id) )
+                for ( set .@i,0; .@i < getarraysize(.@id); set .@i,.@i+1 )
+                    mes getitemname(.@id[.@i]) + " | " +.@price[.@i] + " Point";
+            else
+                mes "ไม่มีรายการ Item";
+            next;
+            continue;
+        case 3:
+            mes .@npcname$;
+            mes "เพิ่มรายการของขุด";
+            mes "ใส่รหัสไอเท่ม";
+            mes "หากใส่ 0 หรือ Item ที่ไม่มี = ยกเลิก";
+            next;
+            input .@tmp_id;
+            if( getitemname(.@tmp_id) == "null" || !.@tmp_id ) continue;
+            query_sql ( "SELECT `id` FROM `dig_shop` WHERE `shop` = '"+strnpcinfo(2)+"' AND `id`='"+.@tmp_id +"'",.@id );
+            mes .@npcname$;
+            if ( getarraysize(.@id) )
+                mes "Item ชิ้นนี้มีในร้านค้าแล้ว !!";
+            else {
+                mes "Item : "+getitemname(.@tmp_id);
+                mes "ใส่จำนวนแต้มที่ใช้แลก";
+                mes "หากใส่ 0 = ยกเลิก";
+                next;
+                input .@tmp_price;
+                if ( !.@tmp_price ) continue;
+                query_sql ( "INSERT INTO `dig_shop` (`shop`, `id`, `price`) VALUES ( '"+strnpcinfo(2)+"', '"+.@tmp_id+"', '"+.@tmp_price+"');" );
+                mes .@npcname$;
+                mes "เพิ่ม Item เข้ารายการเรียบร้อย";
+                callsub Reload_shop;
+            }
+            next;
+            continue;
+        case 4:
+            mes .@npcname$;
+            mes "แก้ไขราคาสำหรับแลก Item";
+            mes "กรุณาเลือกรายการที่จะแก้ไข";
+            next;
+            query_sql ( "SELECT `id`,`price` FROM `dig_shop` WHERE `shop` = '"+strnpcinfo(2)+"' ORDER BY `price` ASC",.@id,.@price );
+            set .@t_mnu$,"";
+            for ( set .@i,0; .@i < getarraysize(.@id); set .@i,.@i+1 )
+                set .@t_mnu$,.@t_mnu$ + "• "+ getitemname(.@id[.@i]) + " [ " +.@price[.@i] + " P ]:";
+            set .@t_mnu$,.@t_mnu$ + "• กลับเมนูหลัก";
+            set .@mnu,select(.@t_mnu$)-1;
+            if( .@mnu == getarraysize(.@id) ) continue;
+
+            mes .@npcname$;
+            mes "ระบุราคาใหม่ หากใส่ 0 = ยกเลิก";
+            next;
+            input .@t_price;
+            if( !.@t_price ) continue;
+            mes .@npcname$;
+            mes "ต้องการแก้ไข "+ getitemname(.@id[.@mnu]);
+            mes .@price[.@mnu] +" -> " +.@t_price;
+            mes "ยืนยันการทำรายการ";
+            next;
+            if( select("• ยืนยัน:• ยกเลิก")-1) continue;
+            query_sql ( "UPDATE `dig_shop` SET `price` = '"+.@t_price + "' WHERE `shop` = '"+strnpcinfo(2)+"' AND `id` = '"+.@id[.@mnu]+"'" );
+            mes .@npcname$;
+            mes "แก้ไขรายการเรียบร้อยแล้ว";
+            callsub Reload_shop;
+            next;
+            continue;
+        case 5:
+            mes .@npcname$;
+            mes "ท่านต้องการลบแบบไหน?";
+            next;
+            set .@pass,rand(1111,9999);
+            if ( select ( "• เลือกลบเอง:• ลบทั้งหมด" ) == 2 ) {
+                mes .@npcname$;
+                mes "ยืนยันการลบ Item";
+                mes "โดยใส่รหัส "+.@pass;
+                next;
+                input .@accept;
+                mes .@npcname$;
+                if ( .@accept == .@pass ) {
+                    npcshopitem "SP_SEL_"+strnpcinfo(2),501,-1;
+                    npcshopdelitem "SP_SEL_"+strnpcinfo(2),501;
+                    query_sql ( "DELETE FROM `dig_shop` WHERE `shop` = '"+strnpcinfo(2)+"'" );
+                    mes "ทำการลบ Item ทั้งหมดเสร็จสิ้น";
+                    callsub Reload_shop;
+                } else
+                    mes "คุณใส่รหัสยืนยันผิด";
+            } else {
+                mes .@npcname$;
+                mes "กรุณาเลือกรายการที่จะลบ";
+                next;
+                query_sql ( "SELECT `id`,`price` FROM `dig_shop` WHERE `shop` = '"+strnpcinfo(2)+"' ORDER BY `price` ASC",.@id,.@price );
+                set .@t_mnu$,"";
+                for ( set .@i,0; .@i < getarraysize(.@id); set .@i,.@i+1 )
+                    set .@t_mnu$,.@t_mnu$ + "• "+ getitemname(.@id[.@i]) + " [ " +.@price[.@i] + " P ]:";
+                set .@t_mnu$,.@t_mnu$ + "• กลับเมนูหลัก";
+                set .@mnu,select(.@t_mnu$)-1;
+                if( .@mnu == getarraysize(.@id) ) continue;
+
+                mes .@npcname$;
+                mes "Item : "+getitemname(.@id[.@t_mnu]);
+                mes "ยืนยันการลบ Item";
+                mes "โดยใส่รหัส "+.@pass;
+                next;
+                input .@accept;
+                mes .@npcname$;
+                if ( .@accept == .@pass ) {
+                    npcshopdelitem "SP_SEL_"+strnpcinfo(2),.@id_del;
+                    query_sql ( "DELETE FROM `dig_shop` WHERE `shop` = '"+strnpcinfo(2)+"' AND `id` = '"+.@id[.@t_mnu]+"'" );
+                    mes "ทำการลบ Item เสร็จสิ้น";
+                    callsub Reload_shop;
+                } else
+                    mes "คุณใส่รหัสยืนยันผิด";
+            }
+            next;
+            continue;
+        default:
+            mes .@npcname$;
+            mes "บ๊าย บาย ค่ะ";
+            close;
+        }
+        break;
+    }
+
+    mes .@npcname$;
+    query_sql ( "SELECT `digg` FROM `point` WHERE `account_id` = '"+getcharid(3)+"'",.@point );
+    mes "มีแต้มขุด  ^ff0000"+.@point+"^000000 points";
+    close2;
+    npcshopattach "SP_SEL_"+strnpcinfo(2),1;
+    callshop "SP_SEL_"+strnpcinfo(2),1;
+    end;
+
+    
+OnBuyItem:
+    for ( set .@i,0; .@i < getarraysize(@bought_nameid); set .@i,.@i+1 ) {
+        query_sql ( "SELECT `price` FROM `dig_shop` WHERE `shop` = '"+strnpcinfo(2)+"' AND `id` = '"+@bought_nameid[.@i]+"'",.@price );
+        if ( .@price > 0 ) {
+            query_sql ( "SELECT `digg` FROM `point` WHERE `account_id` = '"+getcharid(3)+"'",.@point );
+            if ( .@point >= (.@price*@bought_quantity[.@i]) ) {
+                query_sql ( "UPDATE `point` SET `digg` =  '"+(.@point-(.@price*@bought_quantity[.@i]))+"' WHERE `account_id` = '"+getcharid(3)+"'" );
+                getitem @bought_nameid[.@i],@bought_quantity[.@i];
+            } else
+                dispbottom "คุณมีแต้มขุดไม่พอที่จะแลก "+getitemname(@bought_nameid[.@i]);
+        } else
+            dispbottom "ขออภัย "+getitemname(@bought_nameid[.@i])+" ยังไม่สามารถแลกได้ในขณะนี้";
+    }
+    deletearray @bought_nameid[0],getarraysize(@bought_nameid);
+    deletearray @bought_quantity[0],getarraysize(@bought_quantity);
+    end;
+    
+OnInIt:
+//    waitingroom "-> "+strnpcinfo(1),0;
+    npcshopdelitem "SP_SEL_"+strnpcinfo(2),501;
+    callsub Reload_shop;
+    end;
+Reload_shop:    
+    query_sql ( "SELECT `id`,`price` FROM `dig_shop` WHERE `shop` = '"+strnpcinfo(2)+"' ORDER BY `price` ASC",.@id,.@price );
+    if ( getarraysize(.@id) ) {
+        npcshopitem "SP_SEL_"+strnpcinfo(2),.@id,.@price;
+        for ( set .@i,1; .@i < getarraysize(.@id); set .@i,.@i+1 )
+            npcshopadditem "SP_SEL_"+strnpcinfo(2),.@id[.@i],.@price[.@i];
+    }
+    return;
+}    
+
+morocc,166,110,4	duplicate(dickshop)	แลกของขุด#1	848
+-	shop	SP_SEL_1	-,501:-1

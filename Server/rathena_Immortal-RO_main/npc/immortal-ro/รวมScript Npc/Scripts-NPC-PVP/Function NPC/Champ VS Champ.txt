@@ -1,0 +1,39 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+pvp_y_room,78,85,4	script	Champion	105,{
+
+sc_end SC_ASSUMPTIO;
+sc_end SC_POEMBRAGI;
+sc_end SC_APPLEIDUN;
+sc_end SC_ASSNCROS;
+sc_end SC_IMPOSITIO;
+sc_end KYRIE;
+
+mes "^FF0000Champion Vs Champion^000000";
+if(BaseJob != Job_Monk) goto L_nojobchampion;
+menu "Champion ["+getmapusers("pvp_n_2-3")+"]",map1;
+
+map1:
+if (BaseJob == Job_Monk) {
+if (getmapusers("pvp_n_2-3") < 1000) warp "pvp_n_2-3",0,0;
+}
+close;
+
+L_nojobchampion:
+close;
+
+OnInit: 
+waitingroom "Champion",0; 
+end;
+
+end;
+}

@@ -1,0 +1,13 @@
+//Edit By Lz-Athena
+//Credit 14521452
+izlude.gat,135,121,4 script แจกทุกอย่างโว้ยกดเลยย 110,{
+emotion 21; 
+percentheal 100,100; 
+sc_start 30,180000,10; 
+sc_start 32,180000,10; 
+sc_start 29,180000,10; 
+sc_start 39,180000,10; 
+sc_start 40,180000,10; 
+sc_start 41,180000,10; 
+close; 
+}

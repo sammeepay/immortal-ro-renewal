@@ -1,0 +1,46 @@
+-	script	Heal-AB::exheal1	60,{	
+OnTouch:
+if (getbrokenid(1) > 0) {
+atcommand "@repairall";
+}
+	specialeffect2 509; 
+	specialeffect 509;
+	sc_end SC_Poison;
+	sc_end SC_Freeze;
+	sc_end SC_Sleep;
+	sc_end SC_Stan;
+	sc_end SC_Stone;
+	sc_end SC_Silence;
+	sc_end SC_Blind;
+	sc_end SC_Bleeding;
+	sc_end SC_Confusion;
+	sc_end SC_Curse;
+	sc_end SC_Hallucination;
+	sc_end SC_ORCISH;
+
+	sc_start SC_BLESSING,1500000,10;
+	sc_start SC_INCREASEAGI,1500000,10;
+	sc_start SC_ANGELUS,1500000,10;
+	sc_start SC_MAGNIFICAT,1500000,5;
+	sc_start SC_GLORIA,1500000,5;
+	sc_start SC_IMPOSITIO,1500000,5;
+	sc_start SC_STRFood,1500000,8;
+	sc_start SC_AGIFood,1500000,8;
+	sc_start SC_VITFood,1500000,8;
+	sc_start SC_DEXFood,1500000,8;
+	sc_start SC_INTFood,1500000,8;
+	sc_start SC_LUKFood,1500000,8;
+	sc_start SC_CP_WEAPON,300000,5;
+	sc_start SC_CP_SHIELD,300000,5;
+	sc_start SC_CP_ARMOR,300000,5;
+	sc_start SC_CP_HELM,300000,5;
+	sc_start SC_EXPBOOST,1800000,100;
+	sc_start SC_ITEMBOOST,1800000,100;
+
+	percentheal 100,100;
+	close;
+	end;
+}
+disco1,105,74,4	duplicate(exheal1)	Buff NPC#1	643
+
+

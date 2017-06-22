@@ -1,0 +1,358 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+function	script	controlwar	{
+menu
+"1 ^0000FFNeuschwanstein^000000",goguild1,
+"2 ^0000FFNuenberg^000000",goguild2,
+"3 ^0000FFWuerzburg^000000",goguild3,
+"4 ^0000FFRothenburg^000000",goguild4,
+"5 ^FF0066Eeyolbriggar^000000",goguild5,
+"6 ^FF0066Yesnelph^000000",goguild6,
+"7 ^FF0066Bergel^000000",goguild7,
+"8 ^FF0066Mersetzdeitz^000000",goguild8,
+"9 ^6600FFBright Arbo^000000r",goguild9,
+"10 ^6600FFSacred Altar^000000",goguild10,
+"11 ^6600FFHoly Shadow^000000",goguild11,
+"12 ^6600FFBamboo Grove Hill^000000",goguild12,
+"13 ^FF6600Kriemhild^000000",goguild13,
+"14 ^FF6600Skoegul^000000",goguild14,
+"15 ^FF6600Gondul^000000",goguild15,
+"16 ^FF6600Repherion^000000",goguild16,
+"17 ^FF6600Hohenschwangau^000000",goguild17,
+"18 ^FF6600Swanhild^000000",goguild18,
+"19 ^FF6600Scarlet Palace^000000",goguild19,
+"20 ^66CCFFเปิด-ปิด บ้านทุกหลัง^000000",goguild20;
+close;
+
+goguild1:
+menu "^0000CC• เปิด •^000000",map1,"^CC0000• ปิด •^000000",map2;
+map1:
+atcommand strcharinfo(0) + "@shownpc war001";
+close;
+map2:
+atcommand strcharinfo(0) + "@hidenpc war001";
+close;
+goguild2:
+menu "^0000CC• เปิด •^000000",map3,"^CC0000• ปิด •^000000",map4;
+map3:
+atcommand strcharinfo(0) + "@shownpc war003";
+close;
+map4:
+atcommand strcharinfo(0) + "@hidenpc war003";
+close;
+goguild3:
+menu "^0000CC• เปิด •^000000",map5,"^CC0000• ปิด •^000000",map6;
+map5:
+atcommand strcharinfo(0) + "@shownpc war004";
+close;
+map6:
+atcommand strcharinfo(0) + "@hidenpc war004";
+close;
+goguild4:
+menu "^0000CC• เปิด •^000000",map7,"^CC0000• ปิด •^000000",map8;
+map7:
+atcommand strcharinfo(0) + "@shownpc war005";
+close;
+map8:
+atcommand strcharinfo(0) + "@hidenpc war005";
+close;
+goguild5:
+menu "^0000CC• เปิด •^000000",map9,"^CC0000• ปิด •^000000",map10;
+map9:
+atcommand strcharinfo(0) + "@shownpc war007";
+close;
+map10:
+atcommand strcharinfo(0) + "@hidenpc war007";
+close;
+goguild6:
+menu "^0000CC• เปิด •^000000",map11,"^CC0000• ปิด •^000000",map12;
+map11:
+atcommand strcharinfo(0) + "@shownpc war008";
+atcommand strcharinfo(0) + "@shownpc war21";
+atcommand strcharinfo(0) + "@shownpc war22";
+close;
+map12:
+atcommand strcharinfo(0) + "@hidenpc war008";
+atcommand strcharinfo(0) + "@hidenpc war21";
+atcommand strcharinfo(0) + "@hidenpc war22";
+close;
+goguild7:
+menu "^0000CC• เปิด •^000000",map13,"^CC0000• ปิด •^000000",map14;
+map13:
+atcommand strcharinfo(0) + "@shownpc war009";
+close;
+map14:
+atcommand strcharinfo(0) + "@hidenpc war009";
+close;
+goguild8:
+menu "^0000CC• เปิด •^000000",map15,"^CC0000• ปิด •^000000",map16;
+map15:
+atcommand strcharinfo(0) + "@shownpc war10";
+close;
+map16:
+atcommand strcharinfo(0) + "@hidenpc war10";
+close;
+goguild9:
+menu "^0000CC• เปิด •^000000",map17,"^CC0000• ปิด •^000000",map18;
+map17:
+atcommand strcharinfo(0) + "@shownpc war11";
+close;
+map18:
+atcommand strcharinfo(0) + "@hidenpc war11";
+close;
+goguild10:
+menu "^0000CC• เปิด •^000000",map19,"^CC0000• ปิด •^000000",map20;
+map19:
+atcommand strcharinfo(0) + "@shownpc war14";
+close;
+map20:
+atcommand strcharinfo(0) + "@hidenpc war14";
+close;
+goguild11:
+menu "^0000CC• เปิด •^000000",map21,"^CC0000• ปิด •^000000",map22;
+map21:
+atcommand strcharinfo(0) + "@shownpc war13";	
+close;
+map22:
+atcommand strcharinfo(0) + "@hidenpc war13";
+close;
+goguild12:
+menu "^0000CC• เปิด •^000000",map23,"^CC0000• ปิด •^000000",map24;
+map23:
+atcommand strcharinfo(0) + "@shownpc war15";	
+close;
+map24:
+atcommand strcharinfo(0) + "@hidenpc war15";
+close;
+goguild13:
+menu "^0000CC• เปิด •^000000",map25,"^CC0000• ปิด •^000000",map26;
+map25:
+atcommand strcharinfo(0) + "@shownpc war16";	
+close;
+map26:
+atcommand strcharinfo(0) + "@hidenpc war16";
+close;
+goguild14:
+menu "^0000CC• เปิด •^000000",map27,"^CC0000• ปิด •^000000",map28;
+map27:
+atcommand strcharinfo(0) + "@shownpc war19";	
+close;
+map28:
+atcommand strcharinfo(0) + "@hidenpc war19";
+close;
+goguild15:
+menu "^0000CC• เปิด •^000000",map29,"^CC0000• ปิด •^000000",map30;
+map29:
+atcommand strcharinfo(0) + "@shownpc war20";	
+close;
+map30:
+atcommand strcharinfo(0) + "@hidenpc war20";
+close;
+goguild16:
+menu "^0000CC• เปิด •^000000",map31,"^CC0000• ปิด •^000000",map32;
+map31:
+atcommand strcharinfo(0) + "@shownpc war6";
+atcommand strcharinfo(0) + "@shownpc war66";		
+close;
+map32:
+atcommand strcharinfo(0) + "@hidenpc war6";
+atcommand strcharinfo(0) + "@hidenpc war66";
+close;
+goguild17:
+menu "^0000CC• เปิด •^000000",map33,"^CC0000• ปิด •^000000",map34;
+map33:
+atcommand strcharinfo(0) + "@shownpc war002";
+close;
+map34:
+atcommand strcharinfo(0) + "@hidenpc war002";
+close;
+goguild18:
+menu "^0000CC• เปิด •^000000",map35,"^CC0000• ปิด •^000000",map36;
+map35:
+atcommand strcharinfo(0) + "@shownpc war17";	
+close;
+map36:
+atcommand strcharinfo(0) + "@hidenpc war17";
+close;
+goguild19:
+menu "^0000CC• เปิด •^000000",map37,"^CC0000• ปิด •^000000",map38;
+map37:
+atcommand strcharinfo(0) + "@shownpc war12";	
+close;
+map38:
+atcommand strcharinfo(0) + "@hidenpc war12";
+close;
+
+goguild20:
+menu "^0000CC• เปิด •^000000",map39,"^CC0000• ปิด •^000000",map40;
+map39:
+atcommand strcharinfo(0) + "@shownpc war001";
+atcommand strcharinfo(0) + "@shownpc war002";
+atcommand strcharinfo(0) + "@shownpc war003";
+atcommand strcharinfo(0) + "@shownpc war004";
+atcommand strcharinfo(0) + "@shownpc war005";
+atcommand strcharinfo(0) + "@shownpc war006";
+atcommand strcharinfo(0) + "@shownpc war007";
+atcommand strcharinfo(0) + "@shownpc war008";
+atcommand strcharinfo(0) + "@shownpc war009";
+atcommand strcharinfo(0) + "@shownpc war10";
+atcommand strcharinfo(0) + "@shownpc war11";
+atcommand strcharinfo(0) + "@shownpc war13";
+atcommand strcharinfo(0) + "@shownpc war14";
+atcommand strcharinfo(0) + "@shownpc war15";
+atcommand strcharinfo(0) + "@shownpc war16";
+atcommand strcharinfo(0) + "@shownpc war17";
+atcommand strcharinfo(0) + "@shownpc war19";
+atcommand strcharinfo(0) + "@shownpc war20";
+atcommand strcharinfo(0) + "@shownpc war66";
+atcommand strcharinfo(0) + "@shownpc war21";
+atcommand strcharinfo(0) + "@shownpc war22";
+close;
+map40:
+atcommand strcharinfo(0) + "@hidenpc war001";
+atcommand strcharinfo(0) + "@hidenpc war002";
+atcommand strcharinfo(0) + "@hidenpc war003";
+atcommand strcharinfo(0) + "@hidenpc war004";
+atcommand strcharinfo(0) + "@hidenpc war005";
+atcommand strcharinfo(0) + "@hidenpc war006";
+atcommand strcharinfo(0) + "@hidenpc war007";
+atcommand strcharinfo(0) + "@hidenpc war008";
+atcommand strcharinfo(0) + "@hidenpc war009";
+atcommand strcharinfo(0) + "@hidenpc war10";
+atcommand strcharinfo(0) + "@hidenpc war11";
+atcommand strcharinfo(0) + "@hidenpc war13";
+atcommand strcharinfo(0) + "@hidenpc war14";
+atcommand strcharinfo(0) + "@hidenpc war15";
+atcommand strcharinfo(0) + "@hidenpc war16";
+atcommand strcharinfo(0) + "@hidenpc war17";	
+atcommand strcharinfo(0) + "@hidenpc war19";	
+atcommand strcharinfo(0) + "@hidenpc war20";
+atcommand strcharinfo(0) + "@hidenpc war66";
+atcommand strcharinfo(0) + "@hidenpc war21";
+atcommand strcharinfo(0) + "@hidenpc war22";
+close;
+}
+
+// Al de Baran Guild Castles Map
+
+// Neuschwanstein
+//alde_gld,48,79,0	warp	war001	1,1,aldeg_cas01,34,248
+
+// Hohenschwangau
+alde_gld,95,253,0	warp	war002	1,1,aldeg_cas02,88,163
+
+// Nuenberg	
+alde_gld,142,81,0	script	war003	45,1,1,{
+if (getgdskilllv(getcharid(2),10004) > 7) { dispbottom "กิลด์ของคุณไม่สามารถเข้าได้ เนื่องจากเกิน 22 คน"; end; }
+mes "^FF0000Lord Knight Za^000000";
+if(BaseJob != Job_Knight) goto L_WARPLK;
+if (BaseJob == Job_Knight) {
+warp "aldeg_cas03",114,286;
+}
+close;
+
+L_WARPLK:
+close;
+
+end;
+}
+
+
+
+
+
+// Wuerzburg
+alde_gld,243,242,0	warp	war004	1,1,aldeg_cas04,125,167
+
+// Rothenburg
+alde_gld,259,90,0	script	war005	45,1,1,{
+if (getgdskilllv(getcharid(2),10004) > 7) { dispbottom "กิลด์ของคุณไม่สามารถเข้าได้ เนื่องจากเกิน 22 คน"; end; }
+warp "aldeg_cas05",216,103;
+end;
+}
+
+// Geffen Castles Map
+
+// Repherion ทางเข้า 1
+//gef_fild13,150,54,0	warp	war006	1,1,gefg_cas01,34,140
+
+// Repherion ทางเข้า 2
+//gef_fild13,210,75,0	warp	war66	1,1,gefg_cas01,95,178
+
+// Eeyolbriggar
+gef_fild13,308,244,0	warp	war007	1,1,gefg_cas02,70,143
+
+// Yesnelph ทางเข้า 1
+gef_fild13,139,240,0	script	war22	45,1,1,{
+if (getgdskilllv(getcharid(2),10004) > 7) { dispbottom "กิลด์ของคุณไม่สามารถเข้าได้ เนื่องจากเกิน 22 คน"; end; }
+warp "gefg_cas03",125,250;
+end;
+}
+
+// Yesnelph ทางเข้า 2
+gef_fild13,112,269,0	script	war21	45,1,1,{
+if (getgdskilllv(getcharid(2),10004) > 7) { dispbottom "กิลด์ของคุณไม่สามารถเข้าได้ เนื่องจากเกิน 22 คน"; end; }
+warp "gefg_cas03",100,280;
+end;
+}
+
+// Yesnelph ทางเข้า 3
+//gef_fild13,83,185,0	warp	war22	1,1,gefg_cas03,89,159
+
+// Bergel
+gef_fild13,196,281,0	warp	war009	1,1,gefg_cas04,24,149
+
+// Mersetzdeitz
+gef_fild13,257,57,0	warp	war10	1,1,gefg_cas05,177,23
+
+// Payon Guild Castles Map
+
+// Bright Arbor
+pay_gld,121,238,0	script	war11	45,1,1,{
+if (getgdskilllv(getcharid(2),10004) > 7) { dispbottom "กิลด์ของคุณไม่สามารถเข้าได้ เนื่องจากเกิน 22 คน"; end; }
+warp "payg_cas01",214,48;
+end;
+}
+
+// Holy Shadow
+pay_gld,321,293,0	script	war13	45,1,1,{
+if (getgdskilllv(getcharid(2),10004) > 7) { dispbottom "กิลด์ของคุณไม่สามารถเข้าได้ เนื่องจากเกิน 22 คน"; end; }
+warp "payg_cas03",226,26;
+end;
+}
+
+// Sacred Altar
+pay_gld,140,156,0	warp	war14	1,1,payg_cas04,252,271
+
+// Bamboo Grove Hill
+//pay_gld,204,269,0	warp	war15	3,1,payg_cas05,62,225
+
+// Prontera Castles Map
+
+// Kriemhild
+//prt_gld,129,65,0	warp	war16	1,1,prtg_cas01,99,32
+
+// Swanhild
+//prt_gld,240,124,0	warp	war17	1,1,prtg_cas02,43,229
+
+// Skoegul
+prt_gld,116,240,0	warp	war19	1,1,prtg_cas04,86,13
+
+// Gondul
+prt_gld,202,240,0	warp	war20	1,1,prtg_cas05,17,235
+
+
+
+
+
+
+
+

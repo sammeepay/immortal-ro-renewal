@@ -1,0 +1,47 @@
+//<--------------- Resetter By AurA 13/1/47 --------------->
+prontera,164,101,4	script	บริการ Reset	748,{
+	mes "[Reseter]";
+	mes "สวัสดี";
+	mes "เจ้าอยาก ^bb00bbReset^000000 อะไรล่ะ";
+	next;
+	menu "Reset Skills (100,000z)",L_MENU_1,"Reset Status (100,000z)",L_MENU_2,"Reset Both (180,000z) ",L_MENU_3,"ยกเลิก",L_MENU_4;
+L_MENU_1:
+	if (Zeny<100000) goto L_ERROR_1;
+	mes "[Reseter]";
+	mes "จะรีแล้วน้ะ..";
+	next;
+	set Zeny,Zeny-100000;
+	resetskill;
+	mes "[Reseter]";
+	mes "เจ้าคงไม่อัพไรผิดอีกล่ะ";
+	close;
+L_MENU_2:
+	if (Zeny<100000) goto L_ERROR_1;
+	mes "[Reseter]";
+	mes "จะรีแล้วน้ะ";
+	next;
+	set Zeny,Zeny-100000;
+	resetstatus;
+	mes "[Reseter]";
+	mes "เจ้าคงไม่อัพไรผิดอีกล่ะ";
+	close;
+L_MENU_3:
+	if (Zeny<180000) goto L_ERROR_1;
+	mes "[Reseter]";
+	mes "จะรีแล้วน้ะ";
+	next;
+	set Zeny,Zeny-180000;
+	resetstatus;
+	resetskill;
+	mes "[Reseter]";
+	mes "เจ้าคงไม่อัพไรผิดอีกล่ะ";
+	close;
+L_ERROR_1:
+	mes "[Reseter]";
+	mes "ข้าต้องการเงิน ไม่งั้นข้าก็อดตายพอดี ไปหาเงินมาใหม่เมื่อเจ้าพร้อม";
+	close;
+L_MENU_4:
+	mes "[Reseter]";
+	mes "เจ้าอัพผิดเมื่อไหร่ก็กลับมาหาข้าได้นะ ^^";
+	close;
+}

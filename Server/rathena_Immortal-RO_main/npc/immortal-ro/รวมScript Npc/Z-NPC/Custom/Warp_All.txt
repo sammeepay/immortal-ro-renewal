@@ -1,0 +1,1310 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+-	script	warps::wapp	-1,{
+	mes " ";
+	mes " ";
+	mes "^f7f7f7________^000000กรุณาเลือกเมนูที่คุณต้องการ";
+	mes "^f7f7f7________^000000ท่านสามารถใช้คำสั่ง ^FF0000@load^000000";
+	mes "^f7f7f7________^000000เพื่อกลับไปยังจุดเซฟ ค่ะ";
+next;
+if(warp_last_map$ != "") {
+menu "^FF0033    - วาปไปยังสถานที่ล่าสุด -^000000",checksafewarp,"->  Town",stadt,"->  Dungeon",dungeon,"->  Field",field,"->  Save Point",savewi,"->  Home Rent",homes;
+} else {
+menu "->  Town",stadt,"->  Dungeon",dungeon,"->  Field",field,"->  Save Point",savewi,"->  Home Rent",homes;
+}
+
+checksafewarp:
+warp warp_last_map$,warp_last_x,warp_last_y;
+end;
+
+homes:
+mes "ท่านต้องการไปที่ใด .";
+next;
+menu	"- บ้านเช่าที่ 1 - 8",dpointz1,
+	"- บ้านเช่าที่ 9 - 16",dpointz2,
+	"- บ้านเช่าที่ 17 - 34",dpointz3,
+	"- บ้านเช่าที่ 35 - 52",dpointz4;
+
+savewi:
+mes "ท่านต้องการไปที่ใด .";
+next;
+menu	"- Save 1",dpoint1,
+	"- Save 2",dpoint2,
+	"- Save 3",dpoint3,
+	"- Save 4",dpoint4,
+	"- Save 5",dpoint5,
+	"- Save 6",dpoint6,
+	"- Save 7",dpoint7,
+	"- Save 8",dpoint8,
+	"- Save 9",dpoint9,
+	"- Save 10",dpoint10,
+	"- Save 11",dpoint11,
+	"- Save 12",dpoint12,
+	"- Save 13",dpoint13,
+	"- Save 14",dpoint14,
+	"- Save 15",dpoint15,
+	"- Save 16",dpoint16,
+	"- Save 17",dpoint17,
+	"- Save 18",dpoint18,
+	"- Save 19",dpoint19,
+	"- Save 20",dpoint20;
+
+stadt:
+menu 
+"^FF0033 - Morroc ( เมืองหลวง )^000000",wmorrocx,
+"- Alberta [1]",walberta,
+"- Alberta [2]",walberta2,
+"- Aldebaran [1]",waldebaran,
+"- Aldebaran [2]",waldebaran2,
+"- Amatsu [1]",wamatsu,
+"- Amatsu [2]",wamatsu2,
+"- Ayothaya [1]",wayothaya,
+"- Ayothaya [2]",wayothaya2,
+"- Brasilis [1]",wbrasilis,
+"- Brasilis [2]",wbrasilis2,
+"- Comodo [1]",wcomodo,
+"- Comodo [2]",wcomodo2,
+"- Dicastes",wdicastes,
+"- Dewata",wdewata,
+"- Einbech (Mining Village)",weinbech,
+"- Einbroch",weinbroch,
+"- Geffen [1]",wgeffen,
+"- Geffen [2]",wgeffen2,
+"- Gonryun [1]",wgonryun,
+"- Gonryun [2]",wgonryun2,
+"- Hugel",whugel,
+"- Izlude",wizlude,
+"- Lighthalzen",wlhz,
+"- Louyang [1]",wlouyang,
+"- Louyang [2]",wlouyang2,
+"- Lutie [1]",wxmas,
+"- Lutie [2]",wxmas2,
+"- Manuk",wmanuk,
+"- Mora",wmora,
+"- Moscovia",wmoscovia,
+"- Midgarts",wmidcamp,
+"- Nameless Island (Day Time)",wnamelessi,
+"- Nameless Island (Night Time)",wnamelessn,
+"- Niflheim",wniflheim,
+"- Odin",wodin,
+"- Payon [1]",wpayon,
+"- Payon [2]",wpayon2,
+"- Prontera [1]",wprontera,
+"- Prontera [2]",wprontera2,
+"- Rachel",wrachel,
+"- Splendide",wsplendide,
+"- Umbala",wumbala,
+"- Jawaii",wjawaii,
+"- Veins",wveins,
+"- Yuno",wyuno;
+
+field:
+menu 
+"- Amatsu Fields",wamafild,
+"- Ayothaya Fields",wayofild,
+"- Brasilis Fields",wbrafild,
+"- Bifroft Fields",wbiffield,
+"- Comodo Fields",wcmdfild,
+"- Dicastes Fields",wdicfild,
+"- Dewata Fields",wdwtfield,
+"- Einbroch Fields",weinfild,
+"- Geffen Fields",wgeffild,
+"- Gonryun Fields",wgonfild,
+"- Hugel Fields",whufild,
+"- Jawaii Fields",wjawaiifild,
+"- Lighthalzen Fields",wlhzfild,
+"- Louyang Fields",wloufild,
+"- Lutie Fields",wxmasfild,
+"- Morocc Fields",wmrcfild,
+"- Mjolnir Fields",wmjolnir,
+"- Moscovia",wmoscoviafild,
+"- Manuk Fields",wmanfild,
+"- Niflheim Fields",wniffild,
+"- Odin Temple",wodint,
+"- Payon Fields",wpayfor,
+"- Prontera Fields",wprtfild,
+"- Rachel Fields",warunfild,
+"- Splendide Fields",wsplfild,
+"- Umbala Fields",wumfild,
+"- Veins Fields",wveinsfild,
+"- Yuno Fields",wyunofild;
+
+dungeon:
+menu
+"- Abbey Dungeon",dabbey,
+"- Abyss Lake",dabyss,
+"- Amatsu Dungeon",damatsu,
+"- Anthell",dant,
+"- Arunafeltz Dungeon",arugdun,
+"- Ayothaya Dungeon",dayo,
+"- Byalan Dungeon",dbibilan,
+"- Beach Dungeon",beach,
+"- Brasilis Dungeon",bradun,
+"- Coal Mine",dcoal,
+"- Clock Tower",dclock,
+"- Culvert",dculvert,
+"- Dicastes Dungeon",ddicdun,
+"- Einbeach Dungeon",deindun,
+"- Geffen Dungeon",dgifdun,
+"- Gefenia",dgefenia,
+"- Glast Heim",dglast,
+"- Gonryun Dungeon",dgonryun,
+"- Hidden Dungeon",dhiden,
+"- Ice Dungeon",dicedungeon,
+"- Juperos Dungeon",djupe,
+"- Kiel Dungeon",dkiela,
+"- Lighthalzen Dungeon",dlhz,
+"- Louyang Dungeon",dlouyang,
+"- Misty Forest Labyrinth",dmist,
+"- Magma Dungeon",dmagma,
+"- Moscovia Dungeon",dmoscovia,
+"- Nidhogg's or Nyd Dungeon",dnight,
+"- Orc Dungeon",dorc,
+"- Odin Temple",odin,
+"- Payon Dungeon",dpayon,
+"- Pyramids",dpyramids,
+"- Rachel Sanctuary",drasan,
+"- Sphinx",dsphinx,
+"- Sunken Ship",dsunken,
+"- Thanatos Tower",dtha,
+"- Thor Valcono",dthor,
+"- Toy Factory",dtoy,
+"- Turtle Dungeon",dturtle,
+"- Umbala Dungeon",umba;
+
+dpointz1: callfunc "Kf_ZWarp","morocc",125,243; close;
+dpointz2:	callfunc "Kf_ZWarp","morocc",193,243;	close;
+dpointz3:	callfunc "Kf_ZWarp","morocc",235,178;	close;
+dpointz4:	callfunc "Kf_ZWarp","morocc",85,178;	close;
+
+// Save Point
+dpoint1: callfunc "Kf_ZWarp","pay_arche",128,149; close;
+dpoint2:	callfunc "Kf_ZWarp","monk_test",319,133;	close;
+dpoint3:	callfunc "Kf_ZWarp","yuno_in02",45,66;	close;
+dpoint4:	callfunc "Kf_ZWarp","ra_temple",119,147;	close;
+dpoint5:	callfunc "Kf_ZWarp","ra_temple",181,184;	close;
+dpoint6:	callfunc "Kf_ZWarp","in_rogue",365,113;	close;
+dpoint7:	callfunc "Kf_ZWarp","alb_ship",87,99;	close;
+dpoint8:	callfunc "Kf_ZWarp","moc_prydb1",45,121;	close;
+dpoint9:	callfunc "Kf_ZWarp","einbroch",249,328;	close;
+dpoint10:	callfunc "Kf_ZWarp","in_rogue",266,133;	close;
+dpoint11:	callfunc "Kf_ZWarp","thor_camp",169,250;	close;
+dpoint12:	callfunc "Kf_ZWarp","in_hunter",99,100;	close;
+dpoint13:	callfunc "Kf_ZWarp","in_moc_16",168,101;	close;
+dpoint14:	callfunc "Kf_ZWarp","quiz_00",17,117;	close;
+dpoint15:	callfunc "Kf_ZWarp","job_knt",143,152;	close;
+dpoint16:	callfunc "Kf_ZWarp","job_prist",24,95;	close;
+dpoint17:	callfunc "Kf_ZWarp","job_wiz",115,97;	close;
+dpoint18:	callfunc "Kf_ZWarp","job_wiz",45,97;	close;
+dpoint19:	callfunc "Kf_ZWarp","job_wiz",113,168;	close;
+dpoint20:	callfunc "Kf_ZWarp","ama_test",50,33;	close;
+
+//----------------Towns----------------\\
+weinbech: callfunc "Kf_ZWarp","einbech",135,239; close;
+weinbroch: callfunc "Kf_ZWarp","einbroch",51,193; close;
+wjawaii: callfunc "Kf_ZWarp","jawaii",204,287; close;
+wmoscovia: callfunc "Kf_ZWarp","moscovia",223,191; close;
+wsplendide: callfunc "Kf_ZWarp","splendide",197,173; close;
+wmanuk: callfunc "Kf_ZWarp","manuk",282,227; close;
+wbrasilis: callfunc "Kf_ZWarp","brasilis",193,178; close;
+wbrasilis2: callfunc "Kf_ZWarp","brasilis",148,97; close;
+wdicastes: callfunc "Kf_ZWarp","dicastes01",193,181; close;
+wmora: callfunc "Kf_ZWarp","mora",109,92; close;
+wdewata: callfunc "Kf_ZWarp","dewata",200,178; close;
+wmidcamp: callfunc "Kf_ZWarp","mid_camp",147,291; close;
+walberta: callfunc "Kf_ZWarp","alberta",49,241; close;
+walberta2: callfunc "Kf_ZWarp","alberta",106,194; close;
+waldebaran: callfunc "Kf_ZWarp","aldebaran",139,116; close;
+waldebaran2: callfunc "Kf_ZWarp","aldebaran",73,222; close;
+wamatsu: callfunc "Kf_ZWarp","amatsu",197,112; close;
+wamatsu2: callfunc "Kf_ZWarp","amatsu",55,111; close;
+wayothaya: callfunc "Kf_ZWarp","ayothaya",208,259; close;
+wayothaya2: callfunc "Kf_ZWarp","ayothaya",150,168; close;
+wcomodo: callfunc "Kf_ZWarp","comodo",137,176; close;
+wcomodo2: callfunc "Kf_ZWarp","comodo",236,186; close;
+wgonryun: callfunc "Kf_ZWarp","gonryun",150,130; close;
+wgonryun2: callfunc "Kf_ZWarp","gonryun",161,181; close;
+wgeffen: callfunc "Kf_ZWarp","geffen",119,66; close;
+wgeffen2: callfunc "Kf_ZWarp","geffen",189,117; close;
+whugel: callfunc "Kf_ZWarp","hugel",92,130; close;
+wizlude: callfunc "Kf_ZWarp","izlude",128,111; close;
+wlouyang: callfunc "Kf_ZWarp","louyang",210,108; close;
+wlouyang2: callfunc "Kf_ZWarp","louyang",77,211; close;
+wmorrocx: callfunc "Kf_ZWarp","morocc",159,95; close;
+wnamelessi: callfunc "Kf_ZWarp","nameless_i",159,184; close;
+wnamelessn: callfunc "Kf_ZWarp","nameless_n",159,184; close;
+wniflheim: callfunc "Kf_ZWarp","niflheim",35,161; close;
+wodin: callfunc "Kf_ZWarp","odin_tem03",248,38; close;
+wprontera: callfunc "Kf_ZWarp","prontera",155,179; close;
+wprontera2: callfunc "Kf_ZWarp","prontera",155,317; close;
+wpayon: callfunc "Kf_ZWarp","payon",180,94; close;
+wpayon2: callfunc "Kf_ZWarp","payon",154,220; close;
+wrachel: callfunc "Kf_ZWarp","rachel",129,108; close;
+wumbala: callfunc "Kf_ZWarp","umbala",141,155; close;
+wveins: callfunc "Kf_ZWarp","veins",213,123; close;
+wxmas: callfunc "Kf_ZWarp","xmas",148,278; close;
+wxmas2: callfunc "Kf_ZWarp","xmas",147,130; close;
+wyuno: callfunc "Kf_ZWarp","yuno",160,168; close;
+wlhz: callfunc "Kf_ZWarp","lighthalzen",159,93; close;
+wtown: callfunc "Kf_ZWarp","eaplus",159,88; close;
+
+//==============
+// Fields
+//==============
+wdwtfield:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Dewata Fields 1",dwt1field;
+
+wbiffield:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Bifroft Fields 1",bif1field,
+"- Bifroft Fields 2",bif2field;
+
+wbrafild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Brasilis Field 1",bra1fild;
+
+wdicfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Dicastes Field 1",dic1fild,
+"- Dicastes Field 2",dic2fild;
+
+wmoscoviafild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Moscovia Field 1",dmoscfild1,
+"- Moscovia Field 2",dmoscfild2;
+
+wmanfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Man Field 1",dmanfild1,
+"- Man Field 2",dmanfild2,
+"- Man Field 3",dmanfild3;
+
+warunfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Rachel Field 1",drunfild1,
+"- Rachel Field 2",drunfild2,
+"- Rachel Field 3",drunfild3,
+"- Rachel Field 4",drunfild4,
+"- Rachel Field 5",drunfild5,
+"- Rachel Field 6",drunfild6,
+"- Rachel Field 7",drunfild7,
+"- Rachel Field 8",drunfild8,
+"- Rachel Field 9",drunfild9,
+"- Rachel Field 10",drunfild10,
+"- Rachel Field 11",drunfild11,
+"- Rachel Field 12",drunfild12,
+"- Rachel Field 13",drunfild13;
+
+wgeffild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Geffen Field 0",dgeffild00,
+"- Geffen Field 1",dgeffild01,
+"- Geffen Field 2",dgeffild02,
+"- Geffen Field 3",dgeffild03,
+"- Geffen Field 4",dgeffild04,
+"- Geffen Field 5",dgeffild05,
+"- Geffen Field 6",dgeffild06,
+"- Geffen Field 7",dgeffild07,
+"- Geffen Field 8",dgeffild08,
+"- Geffen Field 9",dgeffild09,
+"- Geffen Field 10",dgeffild10,
+"- Geffen Field 11",dgeffild11,
+"- Geffen Field 12",dgeffild12,
+"- Geffen Field 13",dgeffild13,
+"- Geffen Field 14",dgeffild14;
+
+wmrcfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Sograt Desert 1",dmocfild1,
+"- Sograt Desert 2",dmocfild2,
+"- Sograt Desert 3",dmocfild3,
+"- Sograt Desert 4",dmocfild4,
+"- Sograt Desert 5",dmocfild5,
+"- Sograt Desert 6",dmocfild6,
+"- Sograt Desert 7",dmocfild7,
+"- Sograt Desert 8",dmocfild8,
+"- Sograt Desert 9",dmocfild9,
+"- Sograt Desert 10",dmocfild10,
+"- Sograt Desert 11",dmocfild11,
+"- Sograt Desert 12",dmocfild12,
+"- Sograt Desert 13",dmocfild13,
+"- Sograt Desert 14",dmocfild14,
+"- Sograt Desert 15",dmocfild15,
+"- Sograt Desert 16",dmocfild16,
+"- Sograt Desert 17",dmocfild17,
+"- Sograt Desert 18",dmocfild18,
+"- Sograt Desert 19",dmocfild19,
+"- Sograt Desert 20",dmocfild20,
+"- Sograt Desert 21",dmocfild21,
+"- Sograt Desert 22",dmocfild22;
+
+wmjolnir:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Mjolnir Field 1",dmjolnir1,
+"- Mjolnir Field 2",dmjolnir2,
+"- Mjolnir Field 3",dmjolnir3,
+"- Mjolnir Field 4",dmjolnir4,
+"- Mjolnir Field 5",dmjolnir5,
+"- Mjolnir Field 6",dmjolnir6,
+"- Mjolnir Field 7",dmjolnir7,
+"- Mjolnir Field 8",dmjolnir8,
+"- Mjolnir Field 9",dmjolnir9,
+"- Mjolnir Field 10",dmjolnir10,
+"- Mjolnir Field 11",dmjolnir11,
+"- Mjolnir Field 12",dmjolnir12;
+
+wsplfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Spl Field 1",dsplfild1,
+"- Spl Field 2",dsplfild2,
+"- Spl Field 3",dsplfild3;
+
+wpayfor:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Payon Forest 1",dpayfild1,
+"- Payon Forest 2",dpayfild2,
+"- Payon Forest 3",dpayfild3,
+"- Payon Forest 4",dpayfild4,
+"- Payon Forest 5",dpayfild5,
+"- Payon Forest 6",dpayfild6,
+"- Payon Forest 7",dpayfild7,
+"- Payon Forest 8",dpayfild8,
+"- Payon Forest 9",dpayfild9,
+"- Payon Forest 10",dpayfild10,
+"- Payon Forest 11",dpayfild11;
+
+wprtfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Prontera Field 1",dprtfild1,
+"- Prontera Field 2",dprtfild2,
+"- Prontera Field 3",dprtfild3,
+"- Prontera Field 4",dprtfild4,
+"- Prontera Field 5",dprtfild5,
+"- Prontera Field 6",dprtfild6,
+"- Prontera Field 7",dprtfild7,
+"- Prontera Field 8",dprtfild8,
+"- Prontera Field 9",dprtfild9,
+"- Prontera Field 10",dprtfild10,
+"- Prontera Field 11",dprtfild11;
+
+wxmasfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Lutie Field 1",dxmasfild1;
+
+wcmdfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Comodo Field 1",dcmdfild1,
+"- Comodo Field 2",dcmdfild2,
+"- Comodo Field 3",dcmdfild3,
+"- Comodo Field 4",dcmdfild4,
+"- Comodo Field 5",dcmdfild5,
+"- Comodo Field 6",dcmdfild6,
+"- Comodo Field 7",dcmdfild7,
+"- Comodo Field 8",dcmdfild8,
+"- Comodo Field 9",dcmdfild9;
+
+wyunofild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Yuno Field 1",dyunofild1,
+"- Yuno Field 2",dyunofild2,
+"- Yuno Field 3",dyunofild3,
+"- Yuno Field 4",dyunofild4,
+"- Yuno Field 5",dyunofild5,
+"- Yuno Field 6",dyunofild6,
+"- Yuno Field 7",dyunofild7,
+"- Yuno Field 8",dyunofild8,
+"- Yuno Field 9",dyunofild9,
+"- Yuno Field 10",dyunofild10,
+"- Yuno Field 11",dyunofild11,
+"- Yuno Field 12",dyunofild12;
+
+wamafild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Amatsu Field 1",damafild1;
+
+wgonfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Gonryun Field 1",dgonfild1;
+
+wumfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Umbala Field 1",dumfild1,
+"- Umbala Field 2",dumfild2,
+"- Umbala Field 3",dumfild3,
+"- Umbala Field 4",dumfild4;
+
+wniffild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Niflheim Field 1",dniffild1,
+"- Niflheim Field 2",dniffild2;
+
+wjawaiifild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Jawaii Field 1",djawaiifild1;
+
+wodint:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Odin Temple 1",wodtemp1,
+"- Odin Temple 2",wodtemp2,
+"- Odin Temple 3",wodtemp3;
+
+wloufild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Louyang Field 1",dloufild1,
+"- Louyang Field 2",dloufild2;
+
+wayofild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Ayothaya Field 1",dayofild1,
+"- Ayothaya Field 2",dayofild2;
+
+weinfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Einbroch Field 1",deinfild1,
+"- Einbroch Field 2",deinfild2,
+"- Einbroch Field 3",deinfild3,
+"- Einbroch Field 4",deinfild4,
+"- Einbroch Field 5",deinfild5,
+"- Einbroch Field 6",deinfild6,
+"- Einbroch Field 7",deinfild7,
+"- Einbroch Field 8",deinfild8,
+"- Einbroch Field 9",deinfild9,
+"- Einbroch Field 10",deinfild10;
+
+wlhzfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Lighthalzen Field 1",dlhzfild1,
+"- Lighthalzen Field 2",dlhzfild2,
+"- Lighthalzen Field 3",dlhzfild3;
+
+whufild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Hugel Field 1",dhufild1,
+"- Hugel Field 2",dhufild2,
+"- Hugel Field 3",dhufild3,
+"- Hugel Field 4",dhufild4,
+"- Hugel Field 5",dhufild5,
+"- Hugel Field 6",dhufild6,
+"- Hugel Field 7",dhufild7;
+
+wveinsfild:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Veins Field 1",dvfild1,
+"- Veins Field 2",dvfild2,
+"- Veins Field 3",dvfild3,
+"- Veins Field 4",dvfild4,
+"- Veins Field 5",dvfild5,
+"- Veins Field 6",dvfild6,
+"- Veins Field 7",dvfild7;
+
+//==============
+// Field Warps
+//==============
+dsplfild1: callfunc "Kf_ZWarp","spl_fild01",0,0; close;
+dsplfild2: callfunc "Kf_ZWarp","spl_fild02",0,0; close;
+dsplfild3: callfunc "Kf_ZWarp","spl_fild03",0,0; close;
+bif1field: callfunc "Kf_ZWarp","bif_fild01",195,229; close;
+bif2field: callfunc "Kf_ZWarp","bif_fild02",107,167; close;
+dwt1field: callfunc "Kf_ZWarp","dew_fild01",0,0; close;
+dmanfild1: callfunc "Kf_ZWarp","man_fild01",0,0; close;
+dmanfild2: callfunc "Kf_ZWarp","man_fild02",0,0; close;
+dmanfild3: callfunc "Kf_ZWarp","man_fild03",0,0; close;
+bra1fild: callfunc "Kf_ZWarp","bra_fild01",82,32; close;
+dic1fild: callfunc "Kf_ZWarp","dic_fild01",75,42; close;
+dic2fild: callfunc "Kf_ZWarp","dic_fild02",73,359; close;
+djawaiifild1: callfunc "Kf_ZWarp","jawaii",0,0; close;
+dmoscfild1: callfunc "Kf_ZWarp","mosk_fild01",0,0; close;
+dmoscfild2: callfunc "Kf_ZWarp","mosk_fild02",0,0; close;
+drunfild1: callfunc "Kf_ZWarp","ra_fild01",192,162; close;
+drunfild2: callfunc "Kf_ZWarp","ra_fild02",235,166; close;
+drunfild3: callfunc "Kf_ZWarp","ra_fild03",202,206; close;
+drunfild4: callfunc "Kf_ZWarp","ra_fild04",202,208; close;
+drunfild5: callfunc "Kf_ZWarp","ra_fild05",225,202; close;
+drunfild6: callfunc "Kf_ZWarp","ra_fild06",202,214; close;
+drunfild7: callfunc "Kf_ZWarp","ra_fild07",263,196; close;
+drunfild8: callfunc "Kf_ZWarp","ra_fild08",217,201; close;
+drunfild9: callfunc "Kf_ZWarp","ra_fild09",87,121; close;
+drunfild10: callfunc "Kf_ZWarp","ra_fild10",277,181; close;
+drunfild11: callfunc "Kf_ZWarp","ra_fild11",221,185; close;
+drunfild12: callfunc "Kf_ZWarp","ra_fild12",175,200; close;
+drunfild13: callfunc "Kf_ZWarp","ra_fild13",174,197; close;
+dgeffild00: callfunc "Kf_ZWarp","gef_fild00",46,199; close;
+dgeffild01: callfunc "Kf_ZWarp","gef_fild01",213,204; close;
+dgeffild02: callfunc "Kf_ZWarp","gef_fild02",195,212; close;
+dgeffild03: callfunc "Kf_ZWarp","gef_fild03",257,192; close;
+dgeffild04: callfunc "Kf_ZWarp","gef_fild04",188,171; close;
+dgeffild05: callfunc "Kf_ZWarp","gef_fild05",166,263; close;
+dgeffild06: callfunc "Kf_ZWarp","gef_fild06",248,158; close;
+dgeffild07: callfunc "Kf_ZWarp","gef_fild07",195,191; close;
+dgeffild08: callfunc "Kf_ZWarp","gef_fild08",186,183; close;
+dgeffild09: callfunc "Kf_ZWarp","gef_fild09",221,117; close;
+dgeffild10: callfunc "Kf_ZWarp","gef_fild10",178,218; close;
+dgeffild11: callfunc "Kf_ZWarp","gef_fild11",136,328; close;
+dgeffild12: callfunc "Kf_ZWarp","gef_fild12",240,181; close;
+dgeffild13: callfunc "Kf_ZWarp","gef_fild13",235,235; close;
+dgeffild14: callfunc "Kf_ZWarp","gef_fild14",211,185; close;
+dmjolnir1: callfunc "Kf_ZWarp","mjolnir_01",204,120; close;
+dmjolnir2: callfunc "Kf_ZWarp","mjolnir_02",175,193; close;
+dmjolnir3: callfunc "Kf_ZWarp","mjolnir_03",208,213; close;
+dmjolnir4: callfunc "Kf_ZWarp","mjolnir_04",179,180; close;
+dmjolnir5: callfunc "Kf_ZWarp","mjolnir_05",181,240; close;
+dmjolnir6: callfunc "Kf_ZWarp","mjolnir_06",195,270; close;
+dmjolnir7: callfunc "Kf_ZWarp","mjolnir_07",235,202; close;
+dmjolnir8: callfunc "Kf_ZWarp","mjolnir_08",188,215; close;
+dmjolnir9: callfunc "Kf_ZWarp","mjolnir_09",205,144; close;
+dmjolnir10: callfunc "Kf_ZWarp","mjolnir_10",245,223; close;
+dmjolnir11: callfunc "Kf_ZWarp","mjolnir_11",180,206; close;
+dmjolnir12: callfunc "Kf_ZWarp","mjolnir_12",196,208; close;
+dmocfild1: callfunc "Kf_ZWarp","moc_fild01",219,205; close;
+dmocfild2: callfunc "Kf_ZWarp","moc_fild02",177,206; close;
+dmocfild3: callfunc "Kf_ZWarp","moc_fild03",194,182; close;
+dmocfild4: callfunc "Kf_ZWarp","moc_fild04",184,217; close;
+dmocfild5: callfunc "Kf_ZWarp","moc_fild05",203,213; close;
+dmocfild6: callfunc "Kf_ZWarp","moc_fild06",213,208; close;
+dmocfild7: callfunc "Kf_ZWarp","moc_fild07",224,170; close;
+dmocfild8: callfunc "Kf_ZWarp","moc_fild08",229,177; close;
+dmocfild9: callfunc "Kf_ZWarp","moc_fild09",195,198; close;
+dmocfild10: callfunc "Kf_ZWarp","moc_fild10",209,168; close;
+dmocfild11: callfunc "Kf_ZWarp","moc_fild11",198,216; close;
+dmocfild12: callfunc "Kf_ZWarp","moc_fild12",156,187; close;
+dmocfild13: callfunc "Kf_ZWarp","moc_fild13",185,263; close;
+dmocfild14: callfunc "Kf_ZWarp","moc_fild14",209,219; close;
+dmocfild15: callfunc "Kf_ZWarp","moc_fild15",223,188; close;
+dmocfild16: callfunc "Kf_ZWarp","moc_fild16",206,228; close;
+dmocfild17: callfunc "Kf_ZWarp","moc_fild17",208,238; close;
+dmocfild18: callfunc "Kf_ZWarp","moc_fild18",209,223; close;
+dmocfild19: callfunc "Kf_ZWarp","moc_fild19",85,97; close;
+dmocfild20: callfunc "Kf_ZWarp","moc_fild20",0,0; close;
+dmocfild21: callfunc "Kf_ZWarp","moc_fild21",0,0; close;
+dmocfild22: callfunc "Kf_ZWarp","moc_fild22",0,0; close;
+dpayfild1: callfunc "Kf_ZWarp","pay_fild01",158,206; close;
+dpayfild2: callfunc "Kf_ZWarp","pay_fild02",151,219; close;
+dpayfild3: callfunc "Kf_ZWarp","pay_fild03",205,148; close;
+dpayfild4: callfunc "Kf_ZWarp","pay_fild04",186,247; close;
+dpayfild5: callfunc "Kf_ZWarp","pay_fild05",134,204; close;
+dpayfild6: callfunc "Kf_ZWarp","pay_fild06",193,235; close;
+dpayfild7: callfunc "Kf_ZWarp","pay_fild07",200,177; close;
+dpayfild8: callfunc "Kf_ZWarp","pay_fild08",137,189; close;
+dpayfild9: callfunc "Kf_ZWarp","pay_fild09",201,224; close;
+dpayfild10: callfunc "Kf_ZWarp","pay_fild10",160,205; close;
+dpayfild11: callfunc "Kf_ZWarp","pay_fild11",194,150; close;
+dprtfild0: callfunc "Kf_ZWarp","prt_fild00",184,235; close;
+dprtfild1: callfunc "Kf_ZWarp","prt_fild01",190,206; close;
+dprtfild2: callfunc "Kf_ZWarp","prt_fild02",240,206; close;
+dprtfild3: callfunc "Kf_ZWarp","prt_fild03",190,143; close;
+dprtfild4: callfunc "Kf_ZWarp","prt_fild04",307,252; close;
+dprtfild5: callfunc "Kf_ZWarp","prt_fild05",239,213; close;
+dprtfild6: callfunc "Kf_ZWarp","prt_fild06",185,188; close;
+dprtfild7: callfunc "Kf_ZWarp","prt_fild07",193,194; close;
+dprtfild8: callfunc "Kf_ZWarp","prt_fild08",187,218; close;
+dprtfild9: callfunc "Kf_ZWarp","prt_fild09",210,183; close;
+dprtfild10: callfunc "Kf_ZWarp","prt_fild10",195,149; close;
+dprtfild11: callfunc "Kf_ZWarp","prt_fild11",198,164; close;
+dxmasfild1: callfunc "Kf_ZWarp","xmas_fild01",115,145; close;
+dcmdfild1: callfunc "Kf_ZWarp","cmd_fild01",180,178; close;
+dcmdfild2: callfunc "Kf_ZWarp","cmd_fild02",231,160; close;
+dcmdfild3: callfunc "Kf_ZWarp","cmd_fild03",191,172; close;
+dcmdfild4: callfunc "Kf_ZWarp","cmd_fild04",228,194; close;
+dcmdfild5: callfunc "Kf_ZWarp","cmd_fild05",224,203; close;
+dcmdfild6: callfunc "Kf_ZWarp","cmd_fild06",190,223; close;
+dcmdfild7: callfunc "Kf_ZWarp","cmd_fild07",234,177; close;
+dcmdfild8: callfunc "Kf_ZWarp","cmd_fild08",194,175; close;
+dcmdfild9: callfunc "Kf_ZWarp","cmd_fild09",172,172; close;
+dyunofild1: callfunc "Kf_ZWarp","yuno_fild01",189,224; close;
+dyunofild2: callfunc "Kf_ZWarp","yuno_fild02",192,207; close;
+dyunofild3: callfunc "Kf_ZWarp","yuno_fild03",221,157; close;
+dyunofild4: callfunc "Kf_ZWarp","yuno_fild04",226,199; close;
+dyunofild5: callfunc "Kf_ZWarp","yuno_fild05",223,177; close;
+dyunofild6: callfunc "Kf_ZWarp","yuno_fild06",187,232; close;
+dyunofild7: callfunc "Kf_ZWarp","yuno_fild07",231,174; close;
+dyunofild8: callfunc "Kf_ZWarp","yuno_fild08",196,203; close;
+dyunofild9: callfunc "Kf_ZWarp","yuno_fild09",183,214; close;
+dyunofild10: callfunc "Kf_ZWarp","yuno_fild10",200,124; close;
+dyunofild11: callfunc "Kf_ZWarp","yuno_fild11",195,226; close;
+dyunofild12: callfunc "Kf_ZWarp","yuno_fild12",210,304; close;
+damafild1: callfunc "Kf_ZWarp","ama_fild01",190,197; close;
+dgonfild1: callfunc "Kf_ZWarp","gon_fild01",220,227; close;
+dumfild1: callfunc "Kf_ZWarp","um_fild01",217,206; close;
+dumfild2: callfunc "Kf_ZWarp","um_fild02",223,221; close;
+dumfild3: callfunc "Kf_ZWarp","um_fild03",237,215; close;
+dumfild4: callfunc "Kf_ZWarp","um_fild04",202,197; close;
+dniffild1: callfunc "Kf_ZWarp","nif_fild01",215,229; close;
+dniffild2: callfunc "Kf_ZWarp","nif_fild02",167,234; close;
+dyggdrasil1: callfunc "Kf_ZWarp","yggdrasil01",204,78; close;
+dloufild1: callfunc "Kf_ZWarp","lou_fild01",229,187; close;
+dloufild2: callfunc "Kf_ZWarp","lou_fild01",181,170; close;
+dayofild1: callfunc "Kf_ZWarp","ayo_fild01",173,134; close;
+dayofild2: callfunc "Kf_ZWarp","ayo_fild02",212,150; close;
+deinfild1: callfunc "Kf_ZWarp","ein_fild01",142,225; close;
+deinfild2: callfunc "Kf_ZWarp","ein_fild02",182,141; close;
+deinfild3: callfunc "Kf_ZWarp","ein_fild03",187,228; close;
+deinfild4: callfunc "Kf_ZWarp","ein_fild04",185,173; close;
+deinfild5: callfunc "Kf_ZWarp","ein_fild05",216,173; close;
+deinfild6: callfunc "Kf_ZWarp","ein_fild06",195,148; close;
+deinfild7: callfunc "Kf_ZWarp","ein_fild07",272,220; close;
+deinfild8: callfunc "Kf_ZWarp","ein_fild08",173,214; close;
+deinfild9: callfunc "Kf_ZWarp","ein_fild09",207,174; close;
+deinfild10: callfunc "Kf_ZWarp","ein_fild10",196,200; close;
+dlhzfild1: callfunc "Kf_ZWarp","lhz_fild01",240,179; close;
+dlhzfild2: callfunc "Kf_ZWarp","lhz_fild02",185,235; close;
+dlhzfild3: callfunc "Kf_ZWarp","lhz_fild03",240,226; close;
+dhufild1: callfunc "Kf_ZWarp","hu_fild01",268,101; close;
+dhufild2: callfunc "Kf_ZWarp","hu_fild02",222,193; close;
+dhufild3: callfunc "Kf_ZWarp","hu_fild03",232,185; close;
+dhufild4: callfunc "Kf_ZWarp","hu_fild04",252,189; close;
+dhufild5: callfunc "Kf_ZWarp","hu_fild05",196,106; close;
+dhufild6: callfunc "Kf_ZWarp","hu_fild06",216,220; close;
+dhufild7: callfunc "Kf_ZWarp","hu_fild07",227,197; close;
+wodtemp1: callfunc "Kf_ZWarp","odin_tem01",298,167; close;
+wodtemp2: callfunc "Kf_ZWarp","odin_tem02",224,149; close;
+wodtemp3: callfunc "Kf_ZWarp","odin_tem03",266,280; close;
+dvfild1: callfunc "Kf_ZWarp","ve_fild01",186,175; close;
+dvfild2: callfunc "Kf_ZWarp","ve_fild02",196,370; close;
+dvfild3: callfunc "Kf_ZWarp","ve_fild03",222,45; close;
+dvfild4: callfunc "Kf_ZWarp","ve_fild04",51,250; close;
+dvfild5: callfunc "Kf_ZWarp","ve_fild05",202,324; close;
+dvfild6: callfunc "Kf_ZWarp","ve_fild06",150,223; close;
+dvfild7: callfunc "Kf_ZWarp","ve_fild07",149,307; close;
+
+//=======================
+// ?????????????
+//=======================
+safewarp: warp warp_last_map$,warp_last_x,warp_last_y; close;
+
+//========================
+// Dungeons
+//========================
+odin:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกแมพที่ต้องการ ";
+next;
+menu
+"- Odin Temple 1",owodtemp1,
+"- Odin Temple 2",owodtemp2,
+"- Odin Temple 3",owodtemp3;
+
+dnight:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Nidhogg's or Nyd Dungeon 1",nnight1,
+"- Nidhogg's or Nyd Dungeon 2",nnight2,
+"- Nest Level 1",nnyd1,
+"- Nest Level 2",nnyd2;
+
+umba:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Umbala Dungeon 1",umbadun1,
+"- Umbala Dungeon 2",umbadun2;
+
+beach:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Beach Dungeon 1",dbeach1,
+"- Beach Dungeon 2",dbeach2,
+"- Beach Dungeon 3",dbeach3;
+
+ddicdun:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Dicastes Dungeon 1 ",dicdun1,
+"- Dicastes Dungeon 2",dicdun2;
+
+bradun:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Brasilis Dungeon 1",bradun1,
+"- Brasilis Dungeon 2",bradun2;
+
+dabbey:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Abbey Dungeon 1",dabbey_1,
+"- Abbey Dungeon 2",dabbey_2,
+"- Abbey Dungeon 3",dabbey_3;
+
+damatsu:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Amatsu Dungeon 1",damatsu_1,
+"- Amatsu Dungeon 2",damatsu_2,
+"- Amatsu Dungeon 3",damatsu_3;
+
+dant:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Anthell 1",dant_1,
+"- Anthell 2",dant_2;
+
+arugdun:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Arunafeltz Dungeon",arugdun_1;
+
+dayo:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Ayothaya Dungeon 1",dayo_1,
+"- Ayothaya Dungeon 2",dayo_2;
+
+dbibilan:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Byalan Dungeon 1",dbibilan_1,
+"- Byalan Dungeon 2",dbibilan_2,
+"- Byalan Dungeon 3",dbibilan_3,
+"- Byalan Dungeon 4",dbibilan_4,
+"- Byalan Dungeon 5",dbibilan_5;
+
+dcoal:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Coal Mine 1",dcoal_1,
+"- Coal Mine 2",dcoal_2,
+"- Coal Mine 3",dcoal_3;
+
+dclock:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Clock Tower 1",dclock_1,
+"- Clock Tower 2",dclock_2,
+"- Clock Tower 3",dclock_3,
+"- Clock Tower 4",dclock_4,
+"- Clock Tower 5",dclock_5,
+"- Clock Tower 6",dclock_6,
+"- Clock Tower 7",dclock_7,
+"- Clock Tower 8",dclock_8;
+
+dculvert:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Culvert 1",dculvert_1,
+"- Culvert 2",dculvert_2,
+"- Culvert 3",dculvert_3,
+"- Culvert 4",dculvert_4;
+
+deindun:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Einbeach Dungeon 1",deindun_1,
+"- Einbeach Dungeon 2",deindun_2;
+
+dgifdun:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Geffen Dungeon 1",dgifdun_1,
+"- Geffen Dungeon 2",dgifdun_2,
+"- Geffen Dungeon 3",dgifdun_3,
+"- Geffen Dungeon 4",dgifdun_4;
+
+dglast:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Castle F1",dglast_1,
+"- Castle F2",dglast_2,
+"- Chivalry F1",dglast_8,
+"- Chivalry F2",dglast_9,
+"- Churchyard",dglast_4,
+"- Culvert F1",dglast_12,
+"- Culvert F2",dglast_13,
+"- Culvert F3",dglast_14,
+"- Culvert F4",dglast_15,
+"- St. Abbey",dglast_3,
+"- Staircase Dungeon",dglast_16,
+"- Inside Glast Heim",dglast_7,
+"- Underground Cave F1",dglast_5,
+"- Underground Cave F2",dglast_6,
+"- Underground Prison F1",dglast_10,
+"- Underground Prison F2",dglast_11;
+
+dgonryun:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Gonryun Dungeon 1",dgonryun_1,
+"- Gonryun Dungeon 2",dgonryun_2,
+"- Gonryun Dungeon 3",dgonryun_3;
+
+dhiden:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Hidden Dungeon 1",dhiden_1,
+"- Hidden Dungeon 2",dhiden_2,
+"- Hidden Dungeon 3",dhiden_3;
+
+dicedungeon:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Ice Dungeon 1",dicedungeon_1,
+"- Ice Dungeon 2",dicedungeon_2,
+"- Ice Dungeon 3",dicedungeon_3;
+
+djupe:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Juperos Dungeon 1",djupe_1,
+"- Juperos Dungeon 2",djupe_2;
+
+dkiela:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Kiel Dungeon 1",dkiela_1,
+"- Kiel Dungeon 2",dkiela_2;
+
+dlouyang:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Louyang Dungeon 1",dlouyang_1,
+"- Louyang Dungeon 2",dlouyang_2,
+"- Louyang Dungeon 3",dlouyang_3;
+
+dmist:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Misty Forest Labyrinth 1",dmist1;
+
+dmagma:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Magma Dungeon 1",dmagma_1,
+"- Magma Dungeon 2",dmagma_2;
+
+dorc:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Orc Dungeon 1",dorc_1,
+"- Orc Dungeon 2",dorc_2;
+
+dpayon:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Payon Dungeon 1",dpayon_1,
+"- Payon Dungeon 2",dpayon_2,
+"- Payon Dungeon 3",dpayon_3,
+"- Payon Dungeon 4",dpayon_4,
+"- Payon Dungeon 5",dpayon_5;
+
+dpyramids:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Pyramids 1",dpyramids_1,
+"- Pyramids 2",dpyramids_2,
+"- Pyramids 3",dpyramids_3,
+"- Pyramids 4",dpyramids_4,
+"- Pyramids 5",dpyramids_5,
+"- Pyramids 6",dpyramids_6;
+
+dsphinx:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Sphinx 1",dsphinx_1,
+"- Sphinx 2",dsphinx_2,
+"- Sphinx 3",dsphinx_3,
+"- Sphinx 4",dsphinx_4,
+"- Sphinx 5",dsphinx_5;
+
+dsunken:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Sunken Ship 1",dsunken_1,
+"- Sunken Ship 2",dsunken_2;
+
+dturtle:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Turtle Dungeon 1",dturtle_1,
+"- Turtle Dungeon 2",dturtle_2,
+"- Turtle Dungeon 3",dturtle_3,
+"- Turtle Dungeon 4",dturtle_4;
+
+dmoscovia:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Moscovia Dungeon 1",dmoscovia_1,
+"- Moscovia Dungeon 2",dmoscovia_2,
+"- Moscovia Dungeon 3",dmoscovia_3;
+
+dlhz:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Lighthalzen Dungeon 1",dlhz_1,
+"- Lighthalzen Dungeon 2",dlhz_2,
+"- Lighthalzen Dungeon 3",dlhz_3;
+
+dabyss:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Abyss Lake 1",dabyss_1,
+"- Abyss Lake 2",dabyss_2,
+"- Abyss Lake 3",dabyss_3;
+
+dgefenia:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Gefenia 1",dgefenia_1,
+"- Gefenia 2",dgefenia_2,
+"- Gefenia 3",dgefenia_3,
+"- Gefenia 4",dgefenia_4;
+
+drasan:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Rachel Sanctuary 1",drasan_1,
+"- Rachel Sanctuary 2",drasan_2,
+"- Rachel Sanctuary 3",drasan_3,
+"- Rachel Sanctuary 4",drasan_4,
+"- Rachel Sanctuary 5",drasan_5;
+
+dtha:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Thanatos Tower 1",dtha_1,
+"- Thanatos Tower 2",dtha_2,
+"- Thanatos Tower 3",dtha_3,
+"- Thanatos Tower 4",dtha_4,
+"- Thanatos Tower 5",dtha_5,
+"- Thanatos Tower 6",dtha_6,
+"- Thanatos Tower 7",dtha_7,
+"- Thanatos Tower 8",dtha_8,
+"- Thanatos Tower 9",dtha_9,
+"- Thanatos Tower 10",dtha_10,
+"- Thanatos Tower 11",dtha_11,
+"- Thanatos Tower 12",dtha_12;
+
+dthor:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Thor Valcono 1",dthor_1,
+"- Thor Valcono 2",dthor_2,
+"- Thor Valcono 3",dthor_3;
+
+dtoy:
+mes "[ ^FF0000Warp NPC^000000 ]";
+mes "เลือกดันเจี้ยนที่ต้องการจะไป";
+next;
+menu
+"- Toy Factory 1",dtoy_1,
+"- Toy Factory 2",dtoy_2;
+
+//==============
+// Dungeon Warps
+//==============
+owodtemp1: callfunc "Kf_ZWarp","odin_tem01",298,167; close;
+owodtemp2: callfunc "Kf_ZWarp","odin_tem02",224,149; close;
+owodtemp3: callfunc "Kf_ZWarp","odin_tem03",266,280; close;
+dicdun1: callfunc "Kf_ZWarp","dic_dun01",349,44; close;
+dicdun2: callfunc "Kf_ZWarp","dic_dun02",102,142; close;
+bradun1: callfunc "Kf_ZWarp","bra_dun01",128,138; close;
+bradun2: callfunc "Kf_ZWarp","bra_dun02",157,249; close;
+dabbey_1: callfunc "Kf_ZWarp","abbey01",13,200; close;
+dabbey_2: callfunc "Kf_ZWarp","abbey02",149,14; close;
+dabbey_3: callfunc "Kf_ZWarp","abbey03",119,8; close;
+damatsu_1: callfunc "Kf_ZWarp","ama_dun01",228,11; close;
+damatsu_2: callfunc "Kf_ZWarp","ama_dun02",123,115; close;
+damatsu_3: callfunc "Kf_ZWarp","ama_dun03",90,79; close;
+dant_1: callfunc "Kf_ZWarp","anthell01",35,262; close;
+dant_2: callfunc "Kf_ZWarp","anthell02",34,261; close;
+arugdun_1: callfunc "Kf_ZWarp","arug_dun01",0,0; close;
+dayo_1: callfunc "Kf_ZWarp","ayo_dun01",0,0; close;
+dayo_2: callfunc "Kf_ZWarp","ayo_dun02",150,16; close;
+dbibilan_1: callfunc "Kf_ZWarp","iz_dun00",168,168; close; 
+dbibilan_2: callfunc "Kf_ZWarp","iz_dun01",41,40; close; 
+dbibilan_3: callfunc "Kf_ZWarp","iz_dun02",236,204; close; 
+dbibilan_4: callfunc "Kf_ZWarp","iz_dun03",33,64; close; 
+dbibilan_5: callfunc "Kf_ZWarp","iz_dun04",26,30; close; 
+dcoal_1: callfunc "Kf_ZWarp","mjo_dun01",52,32; close;
+dcoal_2: callfunc "Kf_ZWarp","mjo_dun02",58,174; close;
+dcoal_3: callfunc "Kf_ZWarp","mjo_dun03",84,132; close;
+dclock_1: callfunc "Kf_ZWarp","c_tower1",199,159; close;
+dclock_2: callfunc "Kf_ZWarp","c_tower2",148,283; close;
+dclock_3: callfunc "Kf_ZWarp","c_tower3",65,174; close;
+dclock_4: callfunc "Kf_ZWarp","c_tower4",56,155; close;
+dclock_5: callfunc "Kf_ZWarp","alde_dun01",297,25; close;
+dclock_6: callfunc "Kf_ZWarp","alde_dun02",127,169; close;
+dclock_7: callfunc "Kf_ZWarp","alde_dun03",277,178; close;
+dclock_8: callfunc "Kf_ZWarp","alde_dun04",268,74; close;
+dculvert_1: callfunc "Kf_ZWarp","prt_sewb1",52,17; close; 
+dculvert_2: callfunc "Kf_ZWarp","prt_sewb2",137,171; close; 
+dculvert_3: callfunc "Kf_ZWarp","prt_sewb3",179,91; close; 
+dculvert_4: callfunc "Kf_ZWarp","prt_sewb4",104,129; close; 
+deindun_1: callfunc "Kf_ZWarp","ein_dun01",197,49; close;
+deindun_2: callfunc "Kf_ZWarp","ein_dun02",248,20; close;
+dgifdun_1: callfunc "Kf_ZWarp","gef_dun00",104,99; close;
+dgifdun_2: callfunc "Kf_ZWarp","gef_dun01",115,236; close;
+dgifdun_3: callfunc "Kf_ZWarp","gef_dun02",106,132; close;
+dgifdun_4: callfunc "Kf_ZWarp","gef_dun03",203,200; close;
+dglast_1: callfunc "Kf_ZWarp","gl_cas01",199,29; close; 
+dglast_2: callfunc "Kf_ZWarp","gl_cas02",104,25; close;
+dglast_3: callfunc "Kf_ZWarp","gl_church",156,7; close;
+dglast_4: callfunc "Kf_ZWarp","gl_chyard",147,15; close;
+dglast_5: callfunc "Kf_ZWarp","gl_dun01",133,271; close;
+dglast_6: callfunc "Kf_ZWarp","gl_dun02",224,274; close;
+dglast_7: callfunc "Kf_ZWarp","gl_in01",0,0; close;
+dglast_8: callfunc "Kf_ZWarp","gl_knt01",150,15; close;
+dglast_9: callfunc "Kf_ZWarp","gl_knt02",157,287; close;
+dglast_10: callfunc "Kf_ZWarp","gl_prison",14,70; close;
+dglast_11: callfunc "Kf_ZWarp","gl_prison1",150,14; close;
+dglast_12: callfunc "Kf_ZWarp","gl_sew01",258,255; close;
+dglast_13: callfunc "Kf_ZWarp","gl_sew02",108,291; close;
+dglast_14: callfunc "Kf_ZWarp","gl_sew03",171,283; close;
+dglast_15: callfunc "Kf_ZWarp","gl_sew04",68,277; close;
+dglast_16: callfunc "Kf_ZWarp","gl_step",12,7; close;
+dgonryun_1: callfunc "Kf_ZWarp","gon_dun01",153,50; close;
+dgonryun_2: callfunc "Kf_ZWarp","gon_dun02",16,108; close;
+dgonryun_3: callfunc "Kf_ZWarp","gon_dun03",68,12; close;
+dhiden_1: callfunc "Kf_ZWarp","prt_maze01",176,7; close;
+dhiden_2: callfunc "Kf_ZWarp","prt_maze02",92,22; close;
+dhiden_3: callfunc "Kf_ZWarp","prt_maze03",23,8; close;
+dicedungeon_1: callfunc "Kf_ZWarp","ice_dun01",0,0; close;
+dicedungeon_2: callfunc "Kf_ZWarp","ice_dun02",0,0; close;
+dicedungeon_3: callfunc "Kf_ZWarp","ice_dun03",0,0; close;
+djupe_1: callfunc "Kf_ZWarp","juperos_01",53,224; close;
+djupe_2: callfunc "Kf_ZWarp","juperos_02",33,64; close;
+dkiela_1: callfunc "Kf_ZWarp","kh_dun01",0,0; close;
+dkiela_2: callfunc "Kf_ZWarp","kh_dun02",0,0; close;
+dlouyang_1: callfunc "Kf_ZWarp","lou_dun01",215,195; close;
+dlouyang_2: callfunc "Kf_ZWarp","lou_dun02",279,20; close;
+dlouyang_3: callfunc "Kf_ZWarp","lou_dun03",165,38; close;
+dmist1: callfunc "Kf_ZWarp","1@mist",254,124; close;
+dmagma_1: callfunc "Kf_ZWarp","mag_dun01",126,68; close;
+dmagma_2: callfunc "Kf_ZWarp","mag_dun02",47,30; close;
+dorc_1: callfunc "Kf_ZWarp","orcsdun01",32,170; close; 
+dorc_2: callfunc "Kf_ZWarp","orcsdun02",21,185; close; 
+dpayon_1: callfunc "Kf_ZWarp","pay_dun00",21,183; close;
+dpayon_2: callfunc "Kf_ZWarp","pay_dun01",19,33; close;
+dpayon_3: callfunc "Kf_ZWarp","pay_dun02",19,63; close;
+dpayon_4: callfunc "Kf_ZWarp","pay_dun03",155,159; close;
+dpayon_5: callfunc "Kf_ZWarp","pay_dun04",201,204; close;
+dbeach1: callfunc "Kf_ZWarp","beach_dun",266,67; close;
+dbeach2: callfunc "Kf_ZWarp","beach_dun2",255,244; close;
+dbeach3: callfunc "Kf_ZWarp","beach_dun3",23,260; close;
+dpyramids_1: callfunc "Kf_ZWarp","moc_pryd01",192,9; close;
+dpyramids_2: callfunc "Kf_ZWarp","moc_pryd02",10,192; close;
+dpyramids_3: callfunc "Kf_ZWarp","moc_pryd03",100,92; close;
+dpyramids_4: callfunc "Kf_ZWarp","moc_pryd04",181,11; close;
+dpyramids_5: callfunc "Kf_ZWarp","moc_pryd05",94,96; close;
+dpyramids_6: callfunc "Kf_ZWarp","moc_pryd06",192,8; close;
+dsphinx_1: callfunc "Kf_ZWarp","in_sphinx1",288,9; close;
+dsphinx_2: callfunc "Kf_ZWarp","in_sphinx2",149,81; close;
+dsphinx_3: callfunc "Kf_ZWarp","in_sphinx3",210,54; close;
+dsphinx_4: callfunc "Kf_ZWarp","in_sphinx4",10,222; close;
+dsphinx_5: callfunc "Kf_ZWarp","in_sphinx5",100,99; close;
+dsunken_1: callfunc "Kf_ZWarp","treasure01",69,24; close;
+dsunken_2: callfunc "Kf_ZWarp","treasure02",102,27; close;
+dturtle_1: callfunc "Kf_ZWarp","tur_dun01",154,49; close;
+dturtle_2: callfunc "Kf_ZWarp","tur_dun02",148,261; close;
+dturtle_3: callfunc "Kf_ZWarp","tur_dun03",132,189; close;
+dturtle_4: callfunc "Kf_ZWarp","tur_dun04",100,192; close;
+dmoscovia_1: callfunc "Kf_ZWarp","mosk_dun01",154,49; close;
+dmoscovia_2: callfunc "Kf_ZWarp","mosk_dun02",148,261; close;
+dmoscovia_3: callfunc "Kf_ZWarp","mosk_dun03",132,189; close;
+dlhz_1: callfunc "Kf_ZWarp","lhz_dun01",143,11; close;
+dlhz_2: callfunc "Kf_ZWarp","lhz_dun02",155,19; close;
+dlhz_3: callfunc "Kf_ZWarp","lhz_dun03",140,134; close;
+dabyss_1: callfunc "Kf_ZWarp","abyss_01",258,270; close;
+dabyss_2: callfunc "Kf_ZWarp","abyss_02",273,274; close;
+dabyss_3: callfunc "Kf_ZWarp","abyss_03",116,27; close;
+dgefenia_1: callfunc "Kf_ZWarp","gefenia01",40,103; close;
+dgefenia_2: callfunc "Kf_ZWarp","gefenia02",203,34; close;
+dgefenia_3: callfunc "Kf_ZWarp","gefenia03",266,168; close;
+dgefenia_4: callfunc "Kf_ZWarp","gefenia04",130,272; close;
+drasan_1: callfunc "Kf_ZWarp","ra_san01",0,0; close;
+drasan_2: callfunc "Kf_ZWarp","ra_san02",0,0; close;
+drasan_3: callfunc "Kf_ZWarp","ra_san03",0,0; close;
+drasan_4: callfunc "Kf_ZWarp","ra_san04",0,0; close;
+drasan_5: callfunc "Kf_ZWarp","ra_san05",0,0; close;
+dtha_1: callfunc "Kf_ZWarp","tha_t01",0,0; close;
+dtha_2: callfunc "Kf_ZWarp","tha_t02",0,0; close;
+dtha_3: callfunc "Kf_ZWarp","tha_t03",0,0; close;
+dtha_4: callfunc "Kf_ZWarp","tha_t04",0,0; close;
+dtha_5: callfunc "Kf_ZWarp","tha_t05",0,0; close;
+dtha_6: callfunc "Kf_ZWarp","tha_t06",0,0; close;
+dtha_7: callfunc "Kf_ZWarp","tha_t07",0,0; close;
+dtha_8: callfunc "Kf_ZWarp","tha_t08",0,0; close;
+dtha_9: callfunc "Kf_ZWarp","tha_t09",0,0; close;
+dtha_10: callfunc "Kf_ZWarp","tha_t10",0,0; close;
+dtha_11: callfunc "Kf_ZWarp","tha_t11",0,0; close;
+dtha_12: callfunc "Kf_ZWarp","tha_t12",0,0; close;
+dthor_1: callfunc "Kf_ZWarp","thor_v01",0,0; close;
+dthor_2: callfunc "Kf_ZWarp","thor_v02",0,0; close;
+dthor_3: callfunc "Kf_ZWarp","thor_v03",0,0; close;
+dtoy_1: callfunc "Kf_ZWarp","xmas_dun01",205,15; close;
+dtoy_2: callfunc "Kf_ZWarp","xmas_dun02",129,133; close;
+umbadun1: callfunc "Kf_ZWarp","um_dun01",42,30; close;
+umbadun2: callfunc "Kf_ZWarp","um_dun02",50,30; close;
+nnight1: callfunc "Kf_ZWarp","nyd_dun01",60,220; close;
+nnight2: callfunc "Kf_ZWarp","nyd_dun02",108,113; close;
+nnyd1: callfunc "Kf_ZWarp","1@nyd",60,220; close;
+nnyd2: callfunc "Kf_ZWarp","2@nyd",108,113; close;
+}
+
+
+function	script	Kf_ZWarp	{
+set warp_last_map$,getarg(0);
+set warp_last_x,getarg(1);
+set warp_last_y,getarg(2);
+warp getarg(0),getarg(1),getarg(2);
+}

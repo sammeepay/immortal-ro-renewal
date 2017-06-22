@@ -1,0 +1,233 @@
+//=============================================================
+//			-             mOnster studiO Scripts               -
+//				www.monsterstudio.in.th
+//#############################################################
+//===== Description: =========================================
+//= 1.0
+//= GM ต้องกำหนดชื่อ Map เองและพิกัดเองทั้งหมด
+//= เริ่มกิจกรรมและจบกิจกรรมพร้อมกับเวลา Guild War
+//= GM ต้องกำหนดชื่อ Guild ที่จะเข้าแข่งขันทั้ง 2 Guild
+//= GM ต้องเลือก Map จากที่กำหนดมาใช้ใน Guild War
+//= GM ต้องกำหนดจำนวนเงินเดิมพันหรือเหรียญเดิมพันเอง
+//= GM สามารถยกเลิกกิจกรรมได้ตลอดเวลา
+//= ในกรณีที่ GM ยกเลิกกิจกรรมในขณะที่ Guild War ดำเนินอยู่ถึงจะมี Guild ไหนได้บ้านที่ GM กำหนดไว้ก็จะไม่ได้รางวัลอยู่ดี
+//========================================================
+-	script	msGuild Fighter::GuildFighter	-1,{
+
+	set .npcname$,"[ Guild Fighter ]";		// ชื่อ NPC
+	set .npcitem,7227;	// รหัส ID Item เหรียญ
+	if ( getgmlevel() == 99 ) {
+		mes .npcname$;
+		mes " ";
+		if ( $@GuildEvent == 0 ) {
+			mes "ถ้าต้องการเริ่มกิจกรรมละก็";
+			mes "กำหนดเงื่อนไขกิจกรรมได้เลย";
+			if ( select ( " กำหนดเงื่อนไขของกิจกรรม : ยกเลิกการจัดกิจกรรม" ) == 1 ) {
+			Re_Name:
+				next;
+				mes .npcname$;
+				mes " ";
+				mes "ใส่ชื่อ Guild ที่จะเข้าแข่งขัน";
+				mes "1) ";
+				mes "2) ";
+				next;
+				if ( select ( "ใส่เป็นชื่อกิลด์:ใส่เป็นรหัสกิลด์" ) == 1 )
+					input .@GuildName_1$;
+				else {
+					input .@GuildName_1;
+					set .@GuildName_1$,getguildname(.@GuildName_1);
+				}
+				next;
+				mes .npcname$;
+				mes " ";
+				mes "ใส่ชื่อ Guild ที่จะเข้าแข่งขัน";
+				mes "1) "+.@GuildName_1$;
+				mes "2) ";
+				next;
+				if ( select ( "ใส่เป็นชื่อกิลด์:ใส่เป็นรหัสกิลด์" ) == 1 )
+					input .@GuildName_2$;
+				else {
+					input .@GuildName_2;
+					set .@GuildName_2$,getguildname(.@GuildName_2);
+				}
+				next;
+				mes .npcname$;
+				mes " ";
+				mes "ชื่อ Guild ที่จะเข้าแข่งขัน";
+				mes "1) "+.@GuildName_1$;
+				mes "2) "+.@GuildName_2$;
+				next;
+				menu " ตกลงเอาตามนี้",-," แก้ชื่อใหม่",Re_Name;
+				mes .npcname$;
+				mes " ";
+				mes "กำหนด แมพ ที่ใช้แข่งขัน";
+				input .@MapName$;
+				next;
+				mes .npcname$;
+				mes " ";
+				mes "กำหนด พิกัด";
+				mes "x = ";
+				mes "y = ";
+				input .@map_x;
+				next;
+				mes .npcname$;
+				mes " ";
+				mes "กำหนด พิกัด";
+				mes "x = "+.@map_x;
+				mes "y = ";
+				input .@map_y;
+				next;
+				mes .npcname$;
+				mes " ";
+				mes "กำหนดเงินเดิมพัน";
+				input .@reward;
+				next;
+				mes .npcname$;
+				mes " ";
+				mes "กำหนดTCGเดิมพัน";
+				input .@reward2;
+				next;
+				mes .npcname$;
+				mes "-- | สรุปรายละเอียดการแข่งขัน";
+				mes "Guild 1) "+.@GuildName_1$;
+				mes "Guild 2) "+.@GuildName_2$;
+				mes "ใช้ Map [ "+.@MapName$+" ] ( "+.@map_x+" , "+.@map_y+" )";
+				mes "เงินเดิมพัน "+.@reward+" zeny";
+				mes "TCGเดิมพัน "+.@reward2+" เหรียญ";
+				next;
+				menu " ตกลงตามนี้",-," ใส่รายละเอียดใหม่",Re_Name;
+				setarray $@GuildName$[1],.@GuildName_1$,.@GuildName_2$;
+				setarray $@Reward[1],.@reward,.@reward2;
+				setarray $@map_xy[1],.@map_x,.@map_y;
+				set $@MapName$,.@MapName$;
+				setarray $@GuildItem[1],0,0;
+				set $@GuildEvent,1;
+				mes .npcname$;
+				mes " ";
+				mes "เสร็จสิ้นการกำหนดกิจกรรม";
+				mes "โปรดแจ้งเตือนกิลด์ทั้ง 2 ด้วย";
+				Announce "ขอเชิญ Guild [ "+$@GuildName$[1]+" ]   และ Guild  [ "+$@GuildName$[2]+" ]  มาที่ Npc "+.npcname$,8;
+			}
+		} else {
+			mes "ท่านต้องการทำอะไร ?";
+			if ( select ( " เข้าไปดูกิจกรรม: ยกเลิกกิจกรรม" ) == 1 )
+				warp $@MapName$,$@map_xy[1],$@map_xy[2];
+			else {
+				set $@GuildEvent,0;
+			}
+		}
+	} else if ( getcharid(2) ) {
+		mes .npcname$;
+		mes " ";
+		dispbottom "รหัส Guild ของคุณคือ [ "+getcharid(2)+" ]";
+		if ( $@GuildEvent == 1 && getguildmaster(getcharid(2)) == strcharinfo(0) ) {
+			if ( strcharinfo(2) == $@GuildName$[1] ) {
+				if ( $@GuildItem[1] == 0 ) {
+					mes "วางเงินเดิมพันจำนวน";
+					mes "> "+$@Reward[1]+" zeny";
+					mes "และTCGเดิมพันจำนวน";
+					mes "> "+$@Reward[2]+" เหรียญ";
+					next;
+					if ( select ( " วางของเดิมพันทั้งหมด: ขอกลับไปเตรียมตัวก่อนนะ" ) == 1 ) {
+						mes .npcname$;
+						mes " ";
+						if ( Zeny >= $@Reward[1] && countitem(.npcitem) >= $@Reward[2] ) {
+							set Zeny,Zeny-$@Reward[1];
+							delitem .npcitem,$@Reward[2];
+							set $@GuildItem[1],1;
+							Announce "Guild [ "+strcharinfo(2)+" ]  วางเดิมพันเรียบร้อยแล้ว !!",8;
+							if ( $@GuildItem[2] == 1 )
+								set $@GuildEvent,2;
+							mes "เรียบร้อยแล้วละ";
+						} else
+							mes "เจ้าเตรียมของเดิมพันมาไม่ครบ";
+					}
+				} else
+					mes "รอถึงเวลา Guild War ได้เลย";
+			} else if ( strcharinfo(2) == $@GuildName$[2] ) {
+				if ( $@GuildItem[2] == 0 ) {
+					mes "วางเงินเดิมพันจำนวน";
+					mes "> "+$@Reward[1]+" zeny";
+					mes "และTCGเดิมพันจำนวน";
+					mes "> "+$@Reward[2]+" เหรียญ";
+					next;
+					if ( select ( " วางของเดิมพันทั้งหมด: ขอกลับไปเตรียมตัวก่อนนะ" ) == 1 ) {
+						mes .npcname$;
+						mes " ";
+						if ( Zeny >= $@Reward[1] && countitem(.npcitem) >= $@Reward[2] ) {
+							set Zeny,Zeny-$@Reward[1];
+							delitem .npcitem,$@Reward[2];
+							set $@GuildItem[2],1;
+							Announce "Guild [ "+strcharinfo(2)+" ]  วางเดิมพันเรียบร้อยแล้ว !!",8;
+							if ( $@GuildItem[1] == 1 )
+								set $@GuildEvent,2;
+							mes "เรียบร้อยแล้วละ";
+						} else
+							mes "เจ้าเตรียมของเดิมพันมาไม่ครบ";
+					}
+				} else
+					mes "รอถึงเวลา Guild War ได้เลย";
+			} else
+				mes "เจ้าเป็นใคร ?";
+		} else if ( $@GuildEvent == 2 && ( strcharinfo(2) == $@GuildName$[1] || strcharinfo(2) == $@GuildName$[2] ) ) {
+			if ( !agitcheck() )
+				mes "รอถึงเวลา Guild War ก่อนนะ";
+			else
+				warp $@MapName$,$@map_xy[1],$@map_xy[2];
+		} else if ( $@GuildEvent == 3 && getguildmaster(getcharid(2)) == strcharinfo(0) && getguildname(GetCastleData($@MapName$,1)) == strcharinfo(2) ) {
+			set Zeny,Zeny+$@Reward[1]*2;
+			getitem .npcitem,$@Reward[2]*2;
+			set $@GuildEvent,0;
+			Announce "Guild Master [ "+getguildmaster(GetCastleData($@MapName$,1))+" ]  ได้รับรางวัลเดิมพันเป็นที่เรียบร้อยแล้ว",8;
+			mes "และนี่คือรางวัลของเจ้า";
+		} else if ( $@GuildEvent == 4 && getguildmaster(getcharid(2)) == strcharinfo(0) ) {
+			if ( strcharinfo(2) == $@GuildName$[1] && $@GuildItem[1] == 1 ) {
+				set Zeny,Zeny+$@Reward[1];
+				getitem .npcitem,$@Reward[2];
+				set $@GuildItem[1],0;
+				Announce "Guild Master [ "+strcharinfo(0)+" ]  ได้ของเดิมพันคืนแล้ว",8;
+				mes "เอาคืนไปได้เลย";
+			} else if ( strcharinfo(2) == $@GuildName$[2] && $@GuildItem[2] == 1 ) {
+				set Zeny,Zeny+$@Reward[1];
+				getitem .npcitem,$@Reward[2];
+				set $@GuildItem[2],0;
+				Announce "Guild Master [ "+strcharinfo(0)+" ]  ได้ของเดิมพันคืนแล้ว",8;
+				mes "เอาคืนไปได้เลย";
+			} else
+				mes ". . . . . . ?";
+		} else
+			mes "เจ้ามาทำอะไร ?";
+	}
+	close;
+OnAgitStart:
+	if ( $@GuildEvent == 1 ) {
+		Announce "กิจกรรม Guild VS Guild ได้ถูกยกเลิกเนื่องจากของเดิมพันวางไม่ครบ",8;
+		sleep 3000;
+		Announce "ขอเชิญ Guild ที่วางเดิมพันไว้มารับคืนได้ที่ Npc "+.npcname$,8;
+		set $@GuildEvent,4;
+	} else if ( $@GuildEvent == 2 ) {
+		Announce "Map [ "+$@MapName$+" ] ถูกกำหนดให้เป็น Map กิจกรรม Guild VS Guild",8;
+		sleep 3000;
+		Announce "ระหว่าง Guild [ "+$@GuildName$[1]+" ]   Vs   Guild [ "+$@GuildName$[2]+" ]",8;
+		sleep 3000;
+		Announce "โดยมีรางวัลเป็นเงินจำนวน "+$@Reward[1]+" zeny และ TCGจำนวน "+$@Reward[2]+" อัน",8;
+	}
+	end;
+OnAgitEnd:
+	if ( $@GuildEvent == 2 ) {
+		if ( GetCastleData($@MapName$,1) ) {
+			Announce "กิจกรรม Guild VS Guild ได้สิ้นสุดลงแล้ว ผู้ชนะคือ Guild [ "+GetGuildName(GetCastleData($@MapName$,1))+" ]",8;
+			sleep 3000;
+			Announce "Guild Master [ "+getguildmaster(GetCastleData($@MapName$,1))+" ] เชิญมารับของรางวัลได้ที่ Npc "+.npcname$,8;
+			set $@GuildEvent,3;
+		} else {
+			Announce "กิจกรรม Guild VS Guild ได้สิ้นสุดลงแล้ว และไม่มีผู้ใดได้รับชัยชนะในรอบนี้",8;
+			set $@GuildEvent,0;
+		}
+	}
+	end;
+OnInit: 
+waitingroom "๐ Guild vs Guild ๐",0; 
+}
+
+c5,145,103,5	duplicate(GuildFighter)	Guild Fighter	990

@@ -1,0 +1,54 @@
+prontera,133,191,4	script	รับซื้อจุติ	727,{
+	mes "หึๆๆ";
+	mes "เจ้ามี TCG ให้ข้าหรอ";
+	mes "ข้าจะให้ TCG Card ใบละ ^0000FF20 m.^000000";
+	next;
+	menu "มี",-,"ไม่มี",O_not;
+	mes "[TCG]";
+	mes "บอกจำนวนที่เจ้าต้องการแลกมา!!";
+	set @input, 0;
+	input @input;
+	next;  
+	if(countitem(7227)<1) goto O_have;
+	if(@input < 1 ) goto O_Menu;
+	if(@input > 1000 ) goto O_Max;
+	mes "[ TCG ]";
+	mes "ตรวจสอบสักครู่...";
+	next;  
+	if(@input > countitem(7227)) goto O_dis;
+	set Zeny, Zeny + (20000000 * @input);
+	delitem 7227, @input;
+	mes "[TCG]";
+	mes "ให้ TCG [^FF3355" + @input + "^000000] อัน";
+	mes "ได้รับเงิน [^0000FF" + 20000000 * @input + "^000000]";
+	close;
+
+O_Menu:
+	mes "[ TCG ]";
+	mes "งั้นลาก่อน !!";
+	close;
+
+O_dis:
+	mes "[ TCG ]";
+	mes "เจ้ามีไม่ถึงนี่ อย่าคิดว่าข้าโง่นะ";
+	close;
+O_Max:
+	mes "[ TCG ]";
+	mes "เสียใจข้ารับซื้อได้ไม่เกิน 1000 ใบเท่านั้น";
+	close;
+
+O_not:
+	close;
+
+  noear:
+  close;
+
+O_have:
+mes "[ TCG ]";
+mes "เจ้าไม่มี TCG นี่";
+mes "ทีหลังอย่าทำให้ข้าเสียเวลาทำมาหากินอีกนะ";
+close;
+OnInit: 
+waitingroom "รับซื้อจุติ",0; 
+end;
+}

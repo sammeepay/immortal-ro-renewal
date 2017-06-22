@@ -1,0 +1,22 @@
+function	script	EventID2Price	{
+		if(getarg(0) == 13989) return 3;
+		if(getarg(0) == 12187) return 1;
+		if(getarg(0) == 14252) return 1;
+		if(getarg(0) == 13749) return 1;
+		if(getarg(0) == 13756) return 1;
+		if(getarg(0) == 14253) return 1;
+		if(getarg(0) == 14254) return 1;
+		if(getarg(0) == 14255) return 1;
+		if(getarg(0) == 14256) return 1;
+		if(getarg(0) == 12743) return 1;
+		if(getarg(0) == 13819) return 1;
+		if(getarg(0) == 13822) return 1;
+		if(getarg(0) == 13824) return 1;
+		if(getarg(0) == 12035) return 1;
+		if(getarg(0) == 12036) return 1;
+		if(getarg(0) == 12037) return 1;
+		if(getarg(0) == 12038) return 1;
+		if(getarg(0) == 12103) return 5;
+
+}
+-	shop	Event_Shop	-1,13989:3,12187:1,14252:1,14253:1,14254:1,14255:1,14256:1,13749:1,13756:1,12743:1,13819:1,13822:1,13824:1,12035:1,12036:1,12037:1,12038:1,12103:5

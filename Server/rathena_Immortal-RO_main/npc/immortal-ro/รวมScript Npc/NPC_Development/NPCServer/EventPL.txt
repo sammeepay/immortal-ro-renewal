@@ -1,0 +1,227 @@
+//===================================================================
+// NPC : Poring Lucky
+// Designe By : ParadoX
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+// -- Mapflags 
+pvp_y_1-2.gat	mapflag	noskill
+pvp_y_1-2.gat	mapflag	nodrop
+
+
+
+rachel.gat,0,0,0	script	PoringIn	-1,{
+end;
+OnInit:
+disablenpc "poring"; 
+end;
+}
+
+rachel.gat,135,144,0	warp	poring	2,2,pvp_y_1-2.gat,128,114
+
+pvp_y_1-2.gat,0,0,0	script	PoringEvent	111,{
+close;
+
+trevstart: 
+announce "Poring Event : ขณะนี้ Poring ปรากฏตัว ณ เมือง Death Izlude จำนวน 1 ตัว มีเวลาในการล่า Poring 5 นาที [ ของราวัลคือ Skull 500 ea. ]",0,0xFF5555;
+killmonsterall "pvp_y_1-2.gat";
+monster "pvp_y_1-2.gat",0,0,"P๐ring",1002,30,"PoringEvent::Ondevildead01";
+monster "pvp_y_1-2.gat",0,0,"POring",1002,30,"PoringEvent::Ondevildead02";
+monster "pvp_y_1-2.gat",0,0,"Por!ng",1002,30,"PoringEvent::Ondevildead03";
+monster "pvp_y_1-2.gat",0,0,"I am not Poring",1002,9,"PoringEvent::Ondevildead04";
+monster "pvp_y_1-2.gat",0,0,"Poring",1002,100,"PoringEvent::OnPoringDie";
+pvpon "pvp_y_1-2.gat";
+disablenpc "Poring Lucky";
+enablenpc "poring";
+end;
+
+
+
+OnPoringDie:
+getitem 7420,500;
+announce "ผู้เล่น " + strcharinfo(0) + " ได้ค้นพบ Poring แล้วและได้รับรางวัลเป็น Skull 500 ea.",0,0xFF5555;
+killmonsterall "pvp_y_1-2.gat";
+mapwarp "pvp_y_1-2.gat","rachel.gat",130,110;
+pvpoff "pvp_y_1-2.gat"; 
+disablenpc "poring";
+enablenpc "Poring Lucky";
+if ( Q1Start == 1 ) goto RandomQ1;  // for InCe-WickeD Sv Only   ( Quest )
+if ( Q2Start == 1 ) goto RandomQ2;  // for InCe-WickeD Sv Only   ( Quest )
+end;
+
+
+
+Ondevildead01:
+announce "ผู้เล่น " + strcharinfo(0) + " ได้ตี Poring ผิดตัวพยายามเข้าน่ะ... คุณกำลังทำให้เกิดสภาวะแทรกซ้อน ",0,0xFF5555;
+monster "pvp_y_1-2.gat",0,0,"P๐ring",1002,2,"PoringEvent::Ondevildead01";
+specialeffect2(585);
+atcommand strcharinfo(0)+ "@warp rachel 129 133";
+end;
+
+Ondevildead02:
+announce "ผู้เล่น " + strcharinfo(0) + " ได้ตี Poring ผิดตัวพยายามเข้าน่ะ... คุณกำลังทำให้เกิดสภาวะแทรกซ้อน ",0,0xFF5555;
+monster "pvp_y_1-2.gat",0,0,"POring",1002,2,"PoringEvent::Ondevildead02";
+specialeffect2(585);
+atcommand strcharinfo(0)+ "@warp rachel 129 133";
+end;
+
+Ondevildead03:
+announce "ผู้เล่น " + strcharinfo(0) + " ได้ตี Poring ผิดตัวพยายามเข้าน่ะ... คุณกำลังทำให้เกิดสภาวะแทรกซ้อน ",0,0xFF5555;
+monster "pvp_y_1-2.gat",0,0,"Por!ng",1002,2,"PoringEvent::Ondevildead03";
+specialeffect2(585);
+atcommand strcharinfo(0)+ "@warp rachel 129 133";
+end;
+
+Ondevildead04:
+announce "ผู้เล่น " + strcharinfo(0) + " ได้ตี Poring ผิดตัวพยายามเข้าน่ะ... คุณกำลังทำให้เกิดสภาวะแทรกซ้อน ",0,0xFF5555;
+monster "pvp_y_1-2.gat",0,0,"I am not Poring",1002,2,"PoringEvent::Ondevildead04";
+specialeffect2(585);
+atcommand strcharinfo(0)+ "@warp rachel 129 133";
+end;
+
+
+
+RandomQ1:
+set @RQ1RWF,rand(1,3);
+goto randomQ1RWF;
+
+
+
+randomQ1RWF:
+if( @RQ1RWF == 1 ) goto end;
+if( @RQ1RWF == 2 ) goto JackpotQ1;
+if( @RQ1RWF == 3 ) goto end;
+close;
+
+
+
+JackpotQ1:
+getitem 7484,1;
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+RandomQ2:
+set @RQ2ACR,rand(1,3);
+goto randomQ2ACR;
+
+
+
+randomQ2ACR:
+if( @RQ2ACR == 1 ) goto end;
+if( @RQ2ACR == 2 ) goto JackpotQ2;
+if( @RQ2ACR == 3 ) goto end;
+close;
+
+
+
+JackpotQ2:
+getitem 7315,1;
+atcommand strcharinfo(0)+ "@load";
+close;
+
+
+
+trevend:
+announce "กิจกรรม Poring ได้จบลงแล้ว Poring ทั้งหมดจงถูกทำลาย",0,0xFF1493;
+killmonsterall "pvp_y_1-2.gat";
+mapwarp "pvp_y_1-2.gat","rachel.gat",130,110;
+pvpoff "pvp_y_1-2.gat"; 
+disablenpc "poring";
+enablenpc "Poring Lucky";
+end;
+
+OnTimeout:
+end;
+
+OnClock0130:
+OnClock0230:
+OnClock0330:
+OnClock0430:
+OnClock0530:
+OnClock0630:
+OnClock0730:
+OnClock0830:
+OnClock0930:
+OnClock1030:
+OnClock1130:
+OnClock1230:
+OnClock1330:
+OnClock1430:
+OnClock1530:
+OnClock1630:
+OnClock1730:
+OnClock1830:
+OnClock1930:
+OnClock2030:
+OnClock2130:
+OnClock2230:
+OnClock2330:
+OnClock0030:
+goto trevstart;
+end;
+
+OnClock0135:
+OnClock0235:
+OnClock0335:
+OnClock0435:
+OnClock0535:
+OnClock0635:
+OnClock0735:
+OnClock0835:
+OnClock0935:
+OnClock1035:
+OnClock1135:
+OnClock1235:
+OnClock1335:
+OnClock1435:
+OnClock1535:
+OnClock1635:
+OnClock1735:
+OnClock1835:
+OnClock1935:
+OnClock2035:
+OnClock2135:
+OnClock2235:
+OnClock2335:
+OnClock0035:
+goto trevend;
+end;
+}
+
+
+
+rachel.gat,135,144,4	script	Poring Lucky	1642,{
+mes "[ ผู้จัดกิจกรรม ]";
+mes "เวลากิจกรรม";
+mes "01.30 น."; 
+mes "02.30 น."; 
+mes "03.30 น."; 
+mes "04.30 น."; 
+mes "05.30 น."; 
+mes "06.30 น."; 
+mes "07.30 น."; 
+mes "08.30 น."; 
+mes "09.30 น."; 
+mes "10.30 น."; 
+mes "11.30 น."; 
+mes "12.30 น."; 
+mes "13.30 น."; 
+mes "14.30 น."; 
+mes "15.30 น."; 
+mes "16.30 น."; 
+mes "17.30 น."; 
+mes "18.30 น."; 
+mes "19.30 น."; 
+mes "20.30 น."; 
+mes "21.30 น."; 
+mes "22.30 น."; 
+mes "23.30 น."; 
+mes "00.30 น."; 
+close;
+OnInit:
+waitingroom "Poring Lucky",0;
+end;
+}

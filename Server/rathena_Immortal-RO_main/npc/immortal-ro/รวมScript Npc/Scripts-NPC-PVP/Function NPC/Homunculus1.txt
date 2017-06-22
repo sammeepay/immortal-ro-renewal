@@ -1,0 +1,66 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+rtc_ro,105,18,5	script	Homunculus	984,{
+mes "[ Homunculus NPC ]";
+mes "ข้าสามารถสอนเกี่ยวกับเรื่อง Homunculus ให้เจ้าได้นะ";
+next;
+menu "- Uplevel โฮมุน",H2,"- เรียนรู้ Skill โฮมุน",H1;
+
+H1:
+if(BaseJob != Job_Alchem) goto L_noalche;
+if(JobLevel<40) goto L_nojob;
+mes "[ Homunculus NPC ]";
+mes "เจ้าต้องเลี้ยงสัตว์ให้ดีที่สุด";
+mes "รักมันให้มากๆๆ";
+mes "ข้าจะสอน skill แก่เจ้า";
+next;
+skill 238,1,0;
+skill 239,1,0;
+skill 240,1,0;
+skill 241,1,0;
+skill 242,1,0;
+skill 245,1,0;
+skill 246,1,0;
+mes "[ Homunculus NPC ]";
+mes "เจ้าได้ Skill สมใจแล้ว";
+mes "ใช้มันให้มีประโยชน์ละ";
+close;
+
+H2:
+if(BaseJob != Job_Alchem) goto L_noalche;
+if(JobLevel<40) goto L_nojob;
+mes "[ Homunculus NPC ]";
+mes "งั้นหรอ";
+mes "ถ้าเจ้าต้องการส่งโฮโมคูดมาให้ข้าสิ";
+mes "ปิ๊งๆๆ.";
+mes "ปิ๊งๆๆ..";
+mes "เสร็จแล้วอะโฮโมคูดของเจ้าเก่งขึ้นเยอะเลย";
+atcommand "@homevolution";
+atcommand "@homlvup 99";
+close;
+
+L_noalche:
+mes "[ Homunculus NPC ]";
+mes "เจ้าไม่ใช่สายอาชีพนี้";
+mes "เสียใจด้วย อด!!";
+emotion e_gasp;
+close;
+
+L_nojob:
+mes "[ Homunculus NPC ]";
+mes "เสียใจนะครับ Job ของท่านต่ำกว่า 40";
+mes "ไม่สามารถเอาสกิลได้";
+close;
+OnInit:
+waitingroom "   Homunculus",0;
+end;
+}

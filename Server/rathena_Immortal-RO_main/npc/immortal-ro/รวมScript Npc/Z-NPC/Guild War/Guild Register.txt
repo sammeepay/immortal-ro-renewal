@@ -1,0 +1,178 @@
+//=============================================================
+// - Edit Version - 1.1
+// - BY exsoulionzzzz
+//=============================================================
+
+function	script	F_CashDungeonGuild1	{
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 1";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านไทย สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+function	script	F_CashDungeonGuild2	{
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 2";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านไทย สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function	script	F_CashDungeonGuild3	{
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 3";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านลาว สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+function	script	F_CashDungeonGuild4	{
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 4";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านลาว สำหรับ 1-1 Guild แล้ว ",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function	script	F_CashDungeonGuild5	{
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 5";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านพม่า สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+function	script	F_CashDungeonGuild6	{
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 6";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านพม่า สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function	script	F_CashDungeonGuild7	{
+if (getgdskilllv(getcharid(2),10004)<7) goto GBaby2;
+mes "^F00000Guild ของคุณอัพเลเวลรับคนเกิน^000000";
+close;
+GBaby2:
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 7";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านเขมร สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+function	script	F_CashDungeonGuild8	{
+if (getgdskilllv(getcharid(2),10004)<7) goto GBaby2;
+mes "^F00000Guild ของคุณอัพเลเวลรับคนเกิน^000000";
+close;
+GBaby2:
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 8";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านเขมร สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function	script	F_CashDungeonGuild9	{
+if (getgdskilllv(getcharid(2),10004)<7) goto GBaby2;
+mes "^F00000Guild ของคุณอัพเลเวลรับคนเกิน^000000";
+close;
+GBaby2:
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 9";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านกัมพูชา สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+function	script	F_CashDungeonGuild10	{
+if (getgdskilllv(getcharid(2),10004)<7) goto GBaby2;
+mes "^F00000Guild ของคุณอัพเลเวลรับคนเกิน^000000";
+close;
+GBaby2:
+set @nguild,getcharid(2);
+mes "สำหรับเปิดบ้าน";
+mes "บัตรขอท้าดวล 1-1 กิล";
+next;
+menu "ขอท้าดวล",g1,"ไม่ดีก่ากลัว",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 10";
+Announce "Guild "+GetGuildName(@nguild)+" ได้ทำการลงทะเบียน บ้านกัมพูชา สำหรับ 1-1 Guild แล้ว",bc_all,"0xFF00CC";
+close;
+Lcancel:
+  close; 
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function	script	F_CashDungeonGuild-reset	{
+set @nguild,getcharid(2);
+mes "บัตร Reset บ้าน 1 - 1 Guild";
+next;
+menu "Reset",g1,"ยกเลิก",Lcancel;
+g1:
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 1";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 2";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 3";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 4";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 5";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 6";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 7";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 8";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 9";
+query_sql "UPDATE `guild_vs_guild` SET `guild_vs` = "+@nguild+" WHERE `guild_id` = 10";
+dispbottom "คุณได้ทำการ Reset บ้าน 1- 1 Guild ทุกหลังเรียบร้อยแล้ว";
+close;
+Lcancel:
+  close; 
+}
+

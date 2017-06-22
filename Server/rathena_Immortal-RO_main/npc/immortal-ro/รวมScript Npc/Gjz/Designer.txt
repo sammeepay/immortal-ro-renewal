@@ -1,0 +1,153 @@
+-	script	Designer::DISN	-1,{
+if ($@ActiveSv == 0) end;
+goto L_Index;
+OnInit:
+set $@Designer_HStyle,25; // ทรงผมสูงสุดที่มี
+set $@Designer_HColor,251; // สีผมสูงสุดที่มี
+set $@Designer_CColor,553; // สีชุดสูงสุดที่มี
+end;
+L_Index:
+mes "[ ^330033Designer^000000 ]";
+mes "ยินดีต้อนรับสู่ร้านเสริมสวย...!!";
+mes "โปรดเลือกบริการ ...";
+mes "^0000FFHair^000000 : ^FF0000"+$@Designer_HStyle+"^000000";
+mes "^0000FFHairColor^000000 : ^FF0000"+$@Designer_HColor+"^000000";
+mes "^0000FFCoatColor^000000 : ^FF0000"+$@Designer_CColor+"^000000";
+next;
+menu 
+"- เปลี่ยนทรงผม",HStyle,
+"- เปลี่ยนสีผม",HColor,
+"- เปลี่ยนสีชุด",CColor,
+"- ยกเลิก",Cancel; 
+
+HStyle:
+mes "[ ^330033Designer^000000 ]";
+mes "จะเลือกแบบไหนดี";
+mes "ถ้าจำได้ก็ใส่เลขแบบได้เลย";
+mes "หรืออยากดุไปเรือยๆ";
+next;
+menu "- ใส่เลขเอง",NbStyle,"- ดูไปเรือยๆดีกว่า",ACStyle;
+close;
+
+NbStyle:
+input @sty;
+if(@sty > $@Designer_HStyle) goto Erro; 
+setlook 1,@sty; 
+close;
+
+ACStyle:
+set @sty,0;
+goto GStyle;
+close;
+
+GStyle:
+setlook 1,@sty; 
+mes "แบบที่ "+@sty+"";
+goto CStyle;
+close;
+
+CStyle:
+switch(select("- เลือก","- เอาทรงนี้และ")) {
+case 1:
+if(@sty == $@Designer_HStyle) goto MMenu; //แบบผมถ้ามีเท่าไรก็ใส่ตัวเลขเท่านั้น
+set @sty,@sty+1;
+goto GStyle;
+
+case 2:
+mes "[ ^330033Designer^000000 ]";
+mes "อยากเปลี่ยนอีกก็มาหานะ";
+close;
+}
+
+HColor:
+mes "[ ^330033Designer^000000 ]";
+mes "จะเลือกแบบไหนดี";
+mes "ถ้าจำได้ก็ใส่เลขแบบได้เลย";
+mes "หรืออยากดุไปเรือยๆ";
+next;
+menu "- ใส่เลขเอง",NbHair,"- ดูไปเรือยๆดีกว่า",ACHair;
+close;
+
+NbHair:
+input @Hair;
+if(@Hair > $@Designer_HColor) goto Erro; //แบบสีผมถ้ามีเท่าไรก็ใส่ตัวเลขเท่านั้น
+setlook 6,@Hair; 
+close;
+
+ACHair:
+set @Hair,0;
+goto GHair;
+close;
+
+GHair:
+setlook 6,@Hair; 
+mes "แบบที่ "+@Hair+"";
+goto CHair;
+close;
+
+CHair:
+switch(select("- เลือก","- เอาแบบนี้และ")) {
+case 1:
+if(@Hair == $@Designer_HColor) goto MMenu; //แบบสีผมถ้ามีเท่าไรก็ใส่ตัวเลขเท่านั้น
+set @Hair,@Hair+1;
+goto GHair;
+
+case 2:
+mes "[ ^330033Designer^000000 ]";
+mes "อยากเปลี่ยนอีกก็มาหานะ";
+close;
+}
+
+Ccolor:
+mes "[ ^330033Designer^000000 ]";
+mes "จะเลือกแบบไหนดี";
+mes "ถ้าจำได้ก็ใส่เลขแบบได้เลย";
+mes "หรืออยากดุไปเรือยๆ";
+next;
+menu "- ใส่เลขเอง",NbClothes,"- ดูไปเรือยๆดีกว่า",ACClothes;
+close;
+
+NbClothes:
+input @Clothes;
+if(@Clothes > $@Designer_CColor) goto Erro; //แบบชุดถ้ามีเท่าไรก็ใส่ตัวเลขเท่านั้น
+setlook 7,@Clothes; 
+close;
+
+ACClothes:
+set @Clothes,0;
+goto GClothes;
+close;
+
+GClothes:
+setlook 7,@Clothes; 
+mes "แบบที่ "+@Clothes+"";
+goto CClothes;
+close;
+
+CClothes:
+switch(select("- เลือก","- เอาชุดนี้และ")) {
+case 1:
+if(@Clothes == $@Designer_CColor) goto MMenu; //แบบชุดถ้ามีเท่าไรก็ใส่ตัวเลขเท่านั้น
+set @Clothes,@Clothes+1;
+goto GClothes;
+
+case 2:
+mes "[ ^330033Designer^000000 ]";
+mes "อยากเปลี่ยนอีกก็มาหานะ";
+close;
+}
+
+MMenu:
+mes "[ ^330033Designer^000000 ]";
+set @Hair,0;
+mes "แบบหมดแล้วจ๊ะ";
+close;
+
+Erro:
+mes "[ ^330033Designer^000000 ]";
+mes "ไม่มีแบบที่เจ้าเลือก";
+close;
+
+Cancel:
+close;
+}

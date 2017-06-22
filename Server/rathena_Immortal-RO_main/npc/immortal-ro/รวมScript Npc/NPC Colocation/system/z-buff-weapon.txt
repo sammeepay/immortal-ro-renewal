@@ -1,0 +1,50 @@
+-	script	Element Changer::zchanger	120,{
+
+	specialeffect 44;
+	specialeffect 222;
+
+	set .@price, 50000;
+	set .@heading$, "[^0000FFElement Changer^000000]";
+
+	mes .@heading$;
+	mes "ใส่ธาตุลงในอาวุธคุณต้องใช้เงินจำนวน "+ .@price +" Zeny?";
+	next;
+
+	if(select("^009933•^000000 เลือกธาตุ:^FF0000•^000000 ยกเลิก") == 2) goto L_bye;
+	if( Zeny < .@price ) goto L_nozeny;
+
+	mes .@heading$;
+	mes "เลือกธาตุที่คุณต้องการ";
+	next;
+
+	switch(select("^009933•^000000 ธาตุไฟ:^009933•^000000 ธาตุน้ำแข็ง:^009933•^000000 ธาตุดิน:^009933•^000000 ธาตุลม:^009933•^000000 ธาตุสักสิท:^009933•^000000 ธาตุมืด")) {
+		case 1: sc_start sc_fireweapon,1800000,1; break;
+		case 2: sc_start sc_waterweapon,1800000,1; break;
+		case 3: sc_start sc_earthweapon,1800000,1; break;
+		case 4: sc_start sc_windweapon,1800000,1; break;
+		case 5: sc_start sc_aspersio,1800000,1; break;
+		case 6: sc_start sc_shadowweapon,1800000,1; break;
+	}
+
+	specialeffect2 20;
+	specialeffect2 44;
+	set Zeny, Zeny - .@price;
+
+	goto L_bye;
+	close;
+
+L_bye:
+	mes .@heading$;
+	mes "โชคดีนะ..";
+	close;
+
+L_nozeny:
+	mes .@heading$;
+	mes "คุณมีเงินไม่พอ";
+	next;
+	goto L_bye;
+
+OnInit:
+	Waitingroom "ธาตุใส่อาวุธ" , 0;
+	end;
+}

@@ -1,0 +1,53 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+
+morocc,174,97,4	script	แ ล ก เ ห รี ย ญ PC		483,{
+
+mes "[ ^FF0000คนแลกเหรียญ^000000 ]";
+mes "1 Gold Coin แลกได้ 30 Poring Coin";
+mes "Gold Coin หาได้จาก Event ภายในเซิฟเวอร์";
+mes "และ Monster Boss ทุกตัว !!";
+next;
+menu "- ข้าต้องการแลกเหรียญ",pc1,"- ข้าไม่เอาด้วยหรอก",NO;
+
+pc1:
+mes "[ ^FF0000คนแลกเหรียญ^000000 ]";
+mes "เจ้าต้องการแลกเท่าไหร่ !!";
+set @input, 0;
+input @input;
+next;
+if(countitem(19011)<@input*1) goto O_have;
+if(@input < 1 ) goto O_menu;
+if(@input > 30000 ) goto no;
+delitem 19011,@input;
+getitem 19008,@input*30;
+mes "[ ^FF0000คนแลกเหรียญ^000000 ]";
+mes "อ่ะเอาไปสิ ของที่เจ้าต้องการ";
+close;
+
+O_have:
+mes "[ ^FF0000คนแลกเหรียญ^000000 ]";
+mes "เสียใจด้วย.. เจ้ามีของไม่ครบ";
+close;
+
+O_menu:
+mes "[ ^FF0000คนแลกเหรียญ^000000 ]";
+mes "ถ้าหากท่านต้องการแลกเหรียญอีก";
+mes "ก็กลับมาหาข้าได้เสมอ !!";
+close;
+
+NO:
+close;
+
+OnInit:
+waitingroom "   แลก Poring Coin",0;
+end;
+}

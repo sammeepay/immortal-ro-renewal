@@ -1,0 +1,396 @@
+//////-------- RUNNER BOME GAME ---------\\\\\\
+/////----------- Version : 2.0b -----------------\\\\\
+////------------- Writer By : P`XaOu ----------\\\\
+///---- Work With eAthena SVN : 12000+ ----\\\
+//------ [ รายละเอียด ] ------\\
+//--- กิจกรรม วิ่งผ่านกับระเบิด ---\\
+//--- ใครที่ถึงจุดหมายได้ของรางวัล ---\\
+//--- Map ที่ควรเปิด job_cru.gat ---\\
+//---------------------------------------------------------\\
+
+-	script	SettingRB	-1,{
+Oninit:
+set $SysPay,1;	//--- ของรางวัลให้แบบใด ใส่ 0 = เงิน , 1 = ไอเท็ม , 2 = ทั้งเงินและไอเท็ม ห้ามใส่มากกว่า 2
+setarray $Pay[1],7227,3;	//--- ของรางวัล รหัส,จำนวน
+set $PayM,1000000;	//--- ของรางวัล เป็น จำนวนเงิน ?
+end;
+
+OnClock0415:	//--- เวลาเริ่มกิจกรรม
+OnClock0715:	//--- เวลาเริ่มกิจกรรม
+OnClock1015:	//--- เวลาเริ่มกิจกรรม
+OnClock1315:	//--- เวลาเริ่มกิจกรรม
+OnClock1615:	//--- เวลาเริ่มกิจกรรม
+OnClock1815:	//--- เวลาเริ่มกิจกรรม
+OnClock2115:	//--- เวลาเริ่มกิจกรรม
+OnClock2315:	//--- เวลาเริ่มกิจกรรม
+set $@Cb,0;
+set $RunnerBomeStart,1;
+announce "[Runner Bome] : ได้เริ่มต้นขึ้นแล้ว..!!! มีเวลาเล่น 5 นาที..!!!",bc_all,0xFA0080;
+initnpctimer "CountTime";
+end;
+}
+
+///--------- NPC วาปเข้าห้องกิจกรรม ---------------\\\
+c5,190,69,4	script	Runner Bome::RBGame	856,{
+if(getgmlevel() >= 80) goto Gm;
+Main:
+if($RunnerBomeStart == 1) goto Start;
+mes "[^006611Runner Bome Game^000000]";
+mes "ขณะนี้ ^FF0000Runner Bome^000000 ยังไม่เริ่มนะจ๊ะ";
+next;
+menu "> ^006611เวลาเริ่มของกิจกรรม^000000",Tm,
+"> ^000080กฏกติกาในการเล่น",Rule,
+"> ^FF0000ไม่มีอะไร",exit;
+
+Gm:
+mes "[^006611Runner Bome Game^000000]";
+mes "สวัสดีท่านเกมส์ มาสเตอร์";
+mes "ต้องการทำอะไร..?";
+next;
+menu "ไปยังเมนูปกติ",Main,
+"^006611เปิดกิจกรรม",StartGame,
+"^FF0080ปิดกิจกรรม",StopGame,
+"^FF0000ไม่มีอะไร",exit;
+StartGame:
+menu "^FF0000เปลี่ยนใจละ",exit,"^006611ตกลงเปิดกิจกรรม",-;
+if($RunnerBomeStart == 1) { mes "^FF0000 ขณะนี้กิจกรรมเปิดอยู่แล้วไม่สามารถเปิดได้อีก..!!"; close; }
+set $@Cb,0;
+set $RunnerBomeStart,1;
+announce "[Runner Bome] : ได้ถูกเปิดขึ้น โดย GM "+strcharinfo(0)+" มีเวลา 5 นาทีในการเล่นกิจกรรม",bc_all,0xFA0080;
+initnpctimer "CountTime";
+close;
+
+StopGame:
+if($RunnerBomeStart == 0) { mes "^FF0000 ไม่สามารถปิดกิจกรรมได้เนื่องจาก กิจกรรม ยังไม่ได้ถูกเปิดให้เล่น"; close; }
+set $@Cb,0;
+set $RunnerBomeStart,0;
+announce "[Runner Bome] : กิจกรรมถูกปิดลง โดย Gm "+strcharinfo(0)+".",bc_all,0xFA0080;
+stopnpctimer "CountTime";
+close;
+
+Tm:
+mes "[^006611Runner Bome Game^000000]";
+mes " 04.15 น. ";
+mes " 07.15 น. ";
+mes " 10.15 น. ";
+mes " 13.15 น. ";
+mes " 16.15 น. ";
+mes " 18.15 น. ";
+mes " 21.15 น. ";
+mes " 23.15 น. ";
+close;
+
+Rule:
+mes "[^006611Runner Bome Game^000000]";
+mes "อืม...วิธีเล่นมีดังนี้";
+mes "คุณจะต้องไปยังจุดหมาย เพื่อเข้าสู่";
+mes "เส้นชัยถึงจะได้ของรางวัล";
+mes "แต่ปัญหาคือคุณจะต้อง";
+mes "หนีระเบิด 100 กว่ากับดัก";
+mes "ที่ระเบิดวางไว้อยู่";
+mes "เมื่อคุณรอดถึงเป้าหมายได้เอาของรางวัลไปเลย..!!";
+next;
+mes "[^006611Runner Bome Game^000000]";
+mes "^FF0000เมื่อคุณเล่นแล้ว วันนี้ ชนะ วันพรุ่งนี้ถึงจะเล่นได้นะ^000000";
+mes " ";
+if($SysPay == 0) callsub P1;
+close;
+
+P1:
+mes "ของรางวัลคือ ^008080"+$PayM+"^000000 Zeny";
+close;
+
+P2:
+mes "ของรางวัลคือ ^008080"+getitemname($Pay[2])+"^000000 , ^0000FF"+$Pay[1]+"^00000 อัน";
+close;
+
+P3:
+mes "ของรางวัลคือ ^008080"+$PayM+"^000000 Zeny";
+mes "ของรางวัลคือ ^008080"+getitemname($Pay[2])+"^000000 , ^0000FF"+$Pay[1]+"^00000 อัน";
+close;
+
+
+Start:
+if(#IdWinner == gettime(5)) goto Uwin;
+mes "[^006611Runner Bome Game^000000]";
+mes "ลุยกานเลย..!!!";
+mes "มีคนเล่นอยู่ "+getmapusers("job_cru")+" คน.";
+next;
+menu "^FF0000 Let's Go..!!",-,"^000080Cancel",exit;
+if($RunnerBomeStart == 0) close;
+warp "job_cru",97,105;
+close;
+
+Uwin:
+mes "[^006611Runner Bome Game^000000]";
+mes "^FF0000คุณเล่นชนะไปแล้ว นะ จะต้องรอวันพรุ่งนี้ถึงจะเล่นได้..!!";
+close;
+
+exit:
+close;
+
+Oninit:
+set $RunnerBomeStart,0;
+waitingroom "  วิ่งหนีระเบิด",0;
+end;
+}
+-	script	CountTime	-1,{
+
+
+OnTimer290000:
+announce "[Runner Bome] : อีก 10 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer291000:
+announce "[Runner Bome] : อีก 9 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer292000:
+announce "[Runner Bome] : อีก 8 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer293000:
+announce "[Runner Bome] : อีก 7 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer294000:
+announce "[Runner Bome] : อีก 6 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer295000:
+announce "[Runner Bome] : อีก 5 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer296000:
+announce "[Runner Bome] : อีก 4 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer297000:
+announce "[Runner Bome] : อีก 3 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer298000:
+announce "[Runner Bome] : อีก 2 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+OnTimer299000:
+announce "[Runner Bome] : อีก 1 วินาที หมดเวลากิจกรรม ...!!!",bc_all,0xFA0080;
+end;
+
+OnTimer300000:
+set $RunnerBomeStart,0;
+announce "[Runner Bome] : หมดเวลา กิจกรรม แล้ว ...!!!",bc_all,0xFA0080;
+mapwarp "job_cru","vipro_town",115,120;
+stopnpctimer;
+set $@Cb,0;
+end;
+}
+
+-	script	BomeMain	139,{
+callfunc "Bome";
+close;
+}
+
+-	script	BomeMain2	139,{
+callfunc "BomeB";
+close;
+}
+
+job_cru,92,36,4	script	จุดปลอดภัย::Winner1	858,{
+close;
+
+Oninit:
+set $@Cb,0;
+waitingroom "!!!..Area Safe..!!!",0;
+end;
+}
+
+job_cru,103,36,4	script	จุดปลอดภัย::Winner2	858,{
+close;
+
+Oninit:
+waitingroom "!!!..Area Safe..!!!",0;
+end;
+}
+
+job_cru,98,34,4	script	WarpBome2	45,1,1,{
+set $@Cb,$@Cb+1;
+announce "Runner Bome : "+strcharinfo(0)+" ได้ถึงจุดหมายเป็นคนที่ ["+$@Cb+"] แล้ว",bc_all,0xFA0080;
+set #IdWinner,gettime(5);
+if($SysPay == 0) { dispbottom "ได้รับเงิน "+$PayM+" Zeny"; set zeny,zeny+$PayM; warp "SavePoint",0,0; close; }
+if($SysPay == 1) { getitem $Pay[1],$Pay[2]; warp "SavePoint",0,0; close; }
+if($SysPay == 2) { dispbottom "ได้รับเงิน "+$PayM+" Zeny"; getitem $Pay[1],$Pay[2]; set zeny,zeny+$PayM; warp "SavePoint",0,0; close; }
+warp "SavePoint",0,0;
+close;
+}
+
+function	script	Bome	{
+if (getgmlevel()>=80) { dispbottom "ตรงนี้มีระเบิด"; close; }
+specialeffect2 183;
+specialeffect2 170;
+specialeffect2 147;
+percentheal -100,-100;
+sleep2 1000;
+atcommand "@alive";
+warp "SavePoint",0,0;
+close;
+}
+function	script	BomeB	{
+if (getgmlevel()>=80) { dispbottom "ตรงนี้มีระเบิด"; close; }
+set @Rate,rand(1);
+if(@Rate == 1) goto win;
+specialeffect2 183;
+specialeffect2 170;
+specialeffect2 147;
+percentheal -100,-100;
+sleep2 1000;
+atcommand "@alive";
+warp "SavePoint",0,0;
+close;
+
+win:
+close;
+}
+
+job_cru,90,100,4	duplicate(BomeMain)	B1	139,0,0
+job_cru,91,99,4	duplicate(BomeMain)	B2	139,0,0
+job_cru,92,98,4	duplicate(BomeMain)	B3	139,0,0
+job_cru,93,99,4	duplicate(BomeMain)	B4	139,0,0
+job_cru,94,100,4	duplicate(BomeMain)	B5	139,0,0
+job_cru,95,100,4	duplicate(BomeMain)	B6	139,0,0
+job_cru,96,100,4	duplicate(BomeMain)	B7	139,0,0
+job_cru,97,99,4	duplicate(BomeMain)	B8	139,0,0
+job_cru,98,98,4	duplicate(BomeMain)	B9	139,0,0
+job_cru,99,98,4	duplicate(BomeMain)	B10	139,0,0
+job_cru,100,98,4	duplicate(BomeMain)	B11	139,0,0
+job_cru,101,98,4	duplicate(BomeMain)	B12	139,0,0
+job_cru,103,100,4	duplicate(BomeMain)	B13	139,0,0
+job_cru,104,100,4	duplicate(BomeMain)	B14	139,0,0
+job_cru,105,100,4	duplicate(BomeMain)	B15	139,0,0
+job_cru,105,94,4	duplicate(BomeMain)	B16	139,0,0
+job_cru,103,94,4	duplicate(BomeMain)	B17	139,0,0
+job_cru,98,94,4	duplicate(BomeMain)	B18	139,0,0
+job_cru,93,94,4	duplicate(BomeMain)	B19	139,0,0
+job_cru,90,94,4	duplicate(BomeMain)	B20	139,0,0
+job_cru,105,91,4	duplicate(BomeMain)	B21	139,0,0
+job_cru,103,91,4	duplicate(BomeMain)	B22	139,0,0
+job_cru,102,90,4	duplicate(BomeMain)	B23	139,0,0
+job_cru,100,91,4	duplicate(BomeMain)	B24	139,0,0
+job_cru,99,90,4	duplicate(BomeMain)	B25	139,0,0
+job_cru,97,91,4	duplicate(BomeMain)	B26	139,0,0
+job_cru,96,90,4	duplicate(BomeMain)	B27	139,0,0
+job_cru,93,91,4	duplicate(BomeMain)	B28	139,0,0
+job_cru,94,89,4	duplicate(BomeMain)	B29	139,0,0
+job_cru,91,91,4	duplicate(BomeMain)	B30	139,0,0
+job_cru,90,90,4	duplicate(BomeMain)	B31	139,0,0
+job_cru,90,89,4	duplicate(BomeMain)	B32	139,0,0
+job_cru,92,89,4	duplicate(BomeMain)	B33	139,0,0
+job_cru,93,88,4	duplicate(BomeMain)	B34	139,0,0
+job_cru,95,89,4	duplicate(BomeMain)	B35	139,0,0
+job_cru,96,88,4	duplicate(BomeMain)	B36	139,0,0
+job_cru,98,89,4	duplicate(BomeMain)	B37	139,0,0
+job_cru,99,89,4	duplicate(BomeMain)	B38	139,0,0
+job_cru,105,82,4	duplicate(BomeMain)	B39	139,0,0
+job_cru,105,83,4	duplicate(BomeMain)	B40	139,0,0
+job_cru,104,83,4	duplicate(BomeMain)	B41	139,0,0
+job_cru,101,83,4	duplicate(BomeMain)	B42	139,0,0
+job_cru,100,83,4	duplicate(BomeMain)	B43	139,0,0
+job_cru,100,82,4	duplicate(BomeMain)	B44	139,0,0
+job_cru,97,82,4	duplicate(BomeMain)	B45	139,0,0
+job_cru,97,83,4	duplicate(BomeMain)	B46	139,0,0
+job_cru,96,83,4	duplicate(BomeMain)	B47	139,0,0
+job_cru,93,83,4	duplicate(BomeMain)	B48	139,0,0
+job_cru,92,83,4	duplicate(BomeMain)	B49	139,0,0
+job_cru,91,83,4	duplicate(BomeMain)	B50	139,0,0
+job_cru,91,82,4	duplicate(BomeMain)	B51	139,0,0
+job_cru,90,77,4	duplicate(BomeMain)	B52	139,0,0
+job_cru,92,75,4	duplicate(BomeMain)	B53	139,0,0
+job_cru,94,77,4	duplicate(BomeMain)	B54	139,0,0
+job_cru,96,75,4	duplicate(BomeMain)	B55	139,0,0
+job_cru,98,77,4	duplicate(BomeMain)	B56	139,0,0
+job_cru,100,75,4	duplicate(BomeMain)	B57	139,0,0
+job_cru,102,77,4	duplicate(BomeMain)	B58	139,0,0
+job_cru,104,75,4	duplicate(BomeMain)	B59	139,0,0
+job_cru,105,77,4	duplicate(BomeMain)	B60	139,0,0
+job_cru,105,76,4	duplicate(BomeMain)	B61	139,0,0
+job_cru,104,73,4	duplicate(BomeMain)	B62	139,0,0
+job_cru,104,71,4	duplicate(BomeMain)	B63	139,0,0
+job_cru,102,71,4	duplicate(BomeMain)	B64	139,0,0
+job_cru,100,71,4	duplicate(BomeMain)	B65	139,0,0
+job_cru,98,71,4	duplicate(BomeMain)	B66	139,0,0
+job_cru,96,71,4	duplicate(BomeMain)	B67	139,0,0
+job_cru,94,71,4	duplicate(BomeMain)	B68	139,0,0
+job_cru,92,71,4	duplicate(BomeMain)	B69	139,0,0
+job_cru,90,71,4	duplicate(BomeMain)	B70	139,0,0
+job_cru,90,65,4	duplicate(BomeMain)	B71	139,0,0
+job_cru,92,65,4	duplicate(BomeMain)	B72	139,0,0
+job_cru,93,64,4	duplicate(BomeMain)	B73	139,0,0
+job_cru,94,65,4	duplicate(BomeMain)	B74	139,0,0
+job_cru,95,65,4	duplicate(BomeMain)	B75	139,0,0
+job_cru,96,64,4	duplicate(BomeMain)	B76	139,0,0
+job_cru,97,64,4	duplicate(BomeMain)	B77	139,0,0
+job_cru,98,65,4	duplicate(BomeMain)	B78	139,0,0
+job_cru,99,64,4	duplicate(BomeMain)	B79	139,0,0
+job_cru,100,65,4	duplicate(BomeMain)	B80	139,0,0
+job_cru,101,65,4	duplicate(BomeMain)	B81	139,0,0
+job_cru,103,65,4	duplicate(BomeMain)	B82	139,0,0
+job_cru,104,65,4	duplicate(BomeMain)	B83	139,0,0
+job_cru,105,65,4	duplicate(BomeMain)	B84	139,0,0
+job_cru,104,62,4	duplicate(BomeMain)	B85	139,0,0
+job_cru,104,60,4	duplicate(BomeMain)	B86	139,0,0
+job_cru,102,60,4	duplicate(BomeMain)	B87	139,0,0
+job_cru,100,60,4	duplicate(BomeMain)	B88	139,0,0
+job_cru,98,60,4	duplicate(BomeMain)	B89	139,0,0
+job_cru,95,60,4	duplicate(BomeMain)	B90	139,0,0
+job_cru,92,60,4	duplicate(BomeMain)	B91	139,0,0
+job_cru,90,59,4	duplicate(BomeMain)	B92	139,0,0
+job_cru,105,58,4	duplicate(BomeMain)	B93	139,0,0
+
+job_cru,105,55,4	duplicate(BomeMain)	B94	139,0,0
+job_cru,103,54,4	duplicate(BomeMain)	B95	139,0,0
+job_cru,101,55,4	duplicate(BomeMain)	B96	139,0,0
+job_cru,99,54,4	duplicate(BomeMain)	B97	139,0,0
+job_cru,97,55,4	duplicate(BomeMain)	B98	139,0,0
+job_cru,95,54,4	duplicate(BomeMain)	B99	139,0,0
+job_cru,93,55,4	duplicate(BomeMain)	B100	139,0,0
+job_cru,91,54,4	duplicate(BomeMain)	B101	139,0,0
+job_cru,90,54,4	duplicate(BomeMain)	B102	139,0,0
+job_cru,105,47,4	duplicate(BomeMain)	B103	139,0,0
+job_cru,104,47,4	duplicate(BomeMain)	B104	139,0,0
+job_cru,103,47,4	duplicate(BomeMain)	B105	139,0,0
+job_cru,102,47,4	duplicate(BomeMain)	B106	139,0,0
+job_cru,101,47,4	duplicate(BomeMain)	B107	139,0,0
+job_cru,99,47,4	duplicate(BomeMain)	B108	139,0,0
+job_cru,98,47,4	duplicate(BomeMain)	B109	139,0,0
+job_cru,96,47,4	duplicate(BomeMain)	B110	139,0,0
+job_cru,95,47,4	duplicate(BomeMain)	B111	139,0,0
+job_cru,94,47,4	duplicate(BomeMain)	B112	139,0,0
+job_cru,93,47,4	duplicate(BomeMain)	B113	139,0,0
+job_cru,92,47,4	duplicate(BomeMain)	B114	139,0,0
+job_cru,91,47,4	duplicate(BomeMain)	B115	139,0,0
+job_cru,90,47,4	duplicate(BomeMain)	B116	139,0,0
+job_cru,90,44,4	duplicate(BomeMain)	B117	139,0,0
+job_cru,90,43,4	duplicate(BomeMain)	B118	139,0,0
+job_cru,90,42,4	duplicate(BomeMain)	B119	139,0,0
+job_cru,90,41,4	duplicate(BomeMain)	B120	139,0,0
+job_cru,90,40,4	duplicate(BomeMain)	B121	139,0,0
+job_cru,90,39,4	duplicate(BomeMain)	B122	139,0,0
+job_cru,90,48,4	duplicate(BomeMain)	B123	139,0,0
+
+job_cru,105,44,4	duplicate(BomeMain)	B124	139,0,0
+job_cru,105,43,4	duplicate(BomeMain)	B125	139,0,0
+job_cru,105,42,4	duplicate(BomeMain)	B126	139,0,0
+job_cru,105,41,4	duplicate(BomeMain)	B127	139,0,0
+job_cru,105,40,4	duplicate(BomeMain)	B128	139,0,0
+job_cru,105,39,4	duplicate(BomeMain)	B129	139,0,0
+job_cru,105,38,4	duplicate(BomeMain)	B130	139,0,0
+
+job_cru,94,41,4	duplicate(BomeMain)	B131	139,0,0
+job_cru,95,41,4	duplicate(BomeMain)	B132	139,0,0
+job_cru,98,41,4	duplicate(BomeMain)	B133	139,0,0
+job_cru,99,41,4	duplicate(BomeMain)	B134	139,0,0
+job_cru,102,41,4	duplicate(BomeMain)	B135	139,0,0
+job_cru,103,41,4	duplicate(BomeMain)	B136	139,0,0
+
+job_cru,90,52,4	duplicate(BomeMain2)	B2_1	139,15,0
+
+job_cru	mapflag	nomemo
+job_cru	mapflag	noteleport
+job_cru	mapflag	nosave
+job_cru	mapflag	nobranch
+job_cru	mapflag	nodrop
+job_cru	mapflag	noskill
+job_cru	mapflag	novending
+job_cru	mapflag	nochat
+job_cru	mapflag	noreturn

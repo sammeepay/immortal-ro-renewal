@@ -1,0 +1,376 @@
+//===================================================================
+// NPC : Gm Vs Player
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+-	script	GmVsPlayer::GVP	-1,{
+OnTouch:
+if (getgmlevel() > 90) goto GMUser;
+if (!$start)
+{
+mes "^FF0000[ Manager ]^000000";
+mes "ขออภัยค่ะ กิจกรรม Gm Vs Player"; 
+mes "ยังไม่เปิดในขณะนี้"; 
+close;
+}
+mes "^FF0000[ Manager ]^000000";
+mes "ยินดีต้อนรับเข้าสู่กิจกรรม";
+mes "Gm Vs Player";
+next;
+switch(select("- เข้าร่วมกิจกรรม [ "+getmapusers("guild_vs1.gat")+" | 30 ]","Exit"))
+{
+case 1:
+if(getmapusers("guild_vs1.gat") >= 30 )
+{
+mes "^FF0000[ Manager ]^000000";
+mes "ขออภัยค่ะ ห้องเต็มแล้ว ณ ขณะนี้"; 
+close;
+}
+announce "[ "+strcharinfo(0)+" ] : ได้เข้าสู่กิจกรรม Gm Vs Player แล้วค่ะ",0,0xFF0000;
+warp "guild_vs1.gat",0,0;
+specialeffect2(587);
+close;
+
+
+
+case 2:
+mes "^FF0000[ Manager ]^000000";
+mes "แล้วพบกันใหม่"; 
+close;
+
+
+
+GMUser:
+mes "^FF0000[ Manager ]^000000";
+mes"สวัสดีค่ะ [ "+strcharinfo(0)+" ]";
+mes"โปรดเลือกรายการ";
+mes"จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"- ไปยังห้องกิจกรรม",go,
+"- เปิดกิจกรรม",on,
+"- ปิดกิจกรรม",off,
+"Exit",cancel;
+
+
+
+on:
+mes "^FF0000[ Manager ]^000000";
+mes"ท่านได้เปิดกิจกรรม";
+mes"Gm Vs Player แล้วค่ะ";
+set $start,1;
+announce "Activity Event : At this moment, Gm Vs Player'Activity has begun!!",0;
+pvpon "guild_vs1.gat";
+addtimer 600000,"GVP::OnGVPEnd";
+disablenpc "GM_Event";
+next;
+menu 
+"- ไปยังห้องกิจกรรม เดี๋ยวนี้",go,
+"Exit",cancel;
+
+
+
+OnGVPEnd:
+set $start,0;
+announce "Activity Event : At this moment, Gm Vs Player'Activity Is Over!!",18;
+pvpoff "guild_vs1.gat";
+mapwarp "guild_vs1.gat","guild_vs1.gat",49,47;
+enablenpc "GM_Event";
+close;
+
+
+
+off:
+mes "^FF0000[ Manager ]^000000";
+mes"ท่านได้ปิดกิจกรรม";
+mes"Gm Vs Player แล้วค่ะ";
+set $start,0;
+announce "Activity Event : At this moment, Gm Vs Player'Activity Is Over!!",18;
+pvpoff "guild_vs1.gat";
+mapwarp "guild_vs1.gat","guild_vs1.gat",49,47;
+enablenpc "GM_Event";
+close;
+
+
+
+go:
+announce "ขณะนี้ Gm[ "+strcharinfo(0)+" ] : ได้เข้าสู่กิจกรรม Gm Vs Player แล้วค่ะ",0,0xFF0000;
+warp "guild_vs1.gat",49,47;
+percentheal 100,100;
+specialeffect2(587);
+close;
+
+
+
+cancel:
+mes "^FF0000[ Manager ]^000000";
+mes "แล้วพบกันใหม่"; 
+close;
+
+
+
+OnInit:
+set $start,0;
+waitingroom "Gm Vs Player",0;
+end;
+}
+}
+
+
+
+rachel.gat,139,136,4	duplicate(GVP)	Gm Vs Player	1662
+
+
+
+//===================================================================
+// NPC : Comment for gm vs player activity
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+guild_vs1.gat,49,49,4	script	GM_Event	864,{
+if(#check==1) goto Checkday;
+mes "[ GM Event ]";
+mes "ท่านมีความคิดเห็นอะไร";
+mes "เกี่ยวกับกิจกรรม ในวันนี้";
+next;
+if(#check==0) goto Comment;
+close;
+
+
+
+Comment:
+mes "[ GM Event ]";
+mes "โปรดแสดงความคิดเห็นค่ะ";
+next;
+menu 
+"- ดี",well,
+"- พอใช้ได้",fairly,
+"- ควรปรับปรุง",terrible,
+"- ไม่แสดงความคิดเห็น",comeback;
+
+
+
+well:
+set #check,1;
+set #DAY, gettime(5) +gettime(6) +gettime(7);
+mes "[ GM Event ]";
+mes "โปรดเลือกแสดงความคิดเห็น";
+mes "จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"- แสดงความคิดเห็นเดี๋ยวนี้",Idea1,
+"- แสดงความคิดเห็นเพิ่มเติม",IncreaseIdea1;
+
+
+
+Idea1:
+mes "[ GM Event ]";
+mes "ท่านได้แสดงความคิดเห็น เรียบร้อยแล้วค่ะ";
+announce "คุณ [ "+strcharinfo(0)+" ] ได้แสดงความคิดเห็นเกี่ยวกับกิจกรรม Gm Vs Player ว่า : ดี",16;
+next;
+mes"ขอขอบคุณ ท่าน [ "+strcharinfo(0)+" ]";
+mes"ที่มาเข้าร่วมกิจกรรมครั้งนี้";
+mes"ผู้ที่เข้าร่วมกิจกรรม จะได้รับ";
+mes"Skull 50 ea. ไปฟรี ๆ";
+sleep2 1500;
+mes"ทางเราจะส่งท่านกลับสู่จุด Save ของท่าน";
+mes"แล้วพบกันใหม่";
+next;
+warp "rachel.gat",130,110;
+Savepoint "rachel.gat",130,110;
+getitem 7420,50;
+close;
+
+
+
+IncreaseIdea1:
+mes "[ GM Event ]";
+mes "โปรดใส่เหตุผลลงในช่องว่างค่ะ";
+next;
+set @well$,0;
+input @well$;
+next;
+mes "[ GM Event ]";
+mes "ท่านได้แสดงความคิดเห็น เรียบร้อยแล้วค่ะ";
+announce "คุณ [ "+strcharinfo(0)+" ] ได้แสดงความคิดเห็นเกี่ยวกับกิจกรรม Gm Vs Player ว่า : ดี",16;
+announce "เหตุผลเพราะว่า ( "+@well$+" )",16;
+next;
+mes"ขอขอบคุณ ท่าน [ "+strcharinfo(0)+" ]";
+mes"ที่มาเข้าร่วมกิจกรรมครั้งนี้";
+mes"ผู้ที่เข้าร่วมกิจกรรม จะได้รับ";
+mes"Skull 50 ea. ไปฟรี ๆ";
+sleep2 1500;
+mes"ทางเราจะส่งท่านกลับสู่จุด Save ของท่าน";
+mes"แล้วพบกันใหม่";
+next;
+warp "rachel.gat",130,110;
+Savepoint "rachel.gat",130,110;
+getitem 7420,50;
+close;
+
+
+
+fairly:
+set #check,1;
+set #DAY, gettime(5) +gettime(6) +gettime(7);
+mes "[ GM Event ]";
+mes "โปรดเลือกแสดงความคิดเห็น";
+mes "จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"- แสดงความคิดเห็นเดี๋ยวนี้",Idea2,
+"- แสดงความคิดเห็นเพิ่มเติม",IncreaseIdea2;
+
+
+
+Idea2:
+mes "[ GM Event ]";
+mes "ท่านได้แสดงความคิดเห็น เรียบร้อยแล้วค่ะ";
+announce "คุณ [ "+strcharinfo(0)+" ] ได้แสดงความคิดเห็นเกี่ยวกับกิจกรรม Gm Vs Player ว่า : พอใช้ได้",16;
+next;
+mes"ขอขอบคุณ ท่าน [ "+strcharinfo(0)+" ]";
+mes"ที่มาเข้าร่วมกิจกรรมครั้งนี้";
+mes"ผู้ที่เข้าร่วมกิจกรรม จะได้รับ";
+mes"Skull 50 ea. ไปฟรี ๆ";
+sleep2 1500;
+mes"ทางเราจะส่งท่านกลับสู่จุด Save ของท่าน";
+mes"แล้วพบกันใหม่";
+next;
+warp "rachel.gat",130,110;
+Savepoint "rachel.gat",130,110;
+getitem 7420,50;
+close;
+
+
+
+IncreaseIdea2:
+mes "[ GM Event ]";
+mes "โปรดใส่เหตุผลลงในช่องว่างค่ะ";
+next;
+set @fairly$,0;
+input @fairly$;
+next;
+mes "[ GM Event ]";
+mes "ท่านได้แสดงความคิดเห็น เรียบร้อยแล้วค่ะ";
+announce "คุณ [ "+strcharinfo(0)+" ] ได้แสดงความคิดเห็นเกี่ยวกับกิจกรรม Gm Vs Player ว่า : พอใช้ได้ ",16;
+announce "เหตุผลเพราะว่า ( "+@fairly$+" )",16;
+next;
+mes"ขอขอบคุณ ท่าน [ "+strcharinfo(0)+" ]";
+mes"ที่มาเข้าร่วมกิจกรรมครั้งนี้";
+mes"ผู้ที่เข้าร่วมกิจกรรม จะได้รับ";
+mes"Skull 50 ea. ไปฟรี ๆ";
+sleep2 1500;
+mes"ทางเราจะส่งท่านกลับสู่จุด Save ของท่าน";
+mes"แล้วพบกันใหม่";
+next;
+warp "rachel.gat",130,110;
+Savepoint "rachel.gat",130,110;
+getitem 7420,50;
+close;
+
+
+
+terrible:
+set #check,1;
+set #DAY, gettime(5) +gettime(6) +gettime(7);
+mes "[ GM Event ]";
+mes "โปรดเลือกแสดงความคิดเห็น";
+mes "จากเมนูด้านล่างค่ะ";
+next;
+menu 
+"- แสดงความคิดเห็นเดี๋ยวนี้",Idea3,
+"- แสดงความคิดเห็นเพิ่มเติม",IncreaseIdea3;
+
+
+
+Idea3:
+mes "[ GM Event ]";
+mes "ท่านได้แสดงความคิดเห็น เรียบร้อยแล้วค่ะ";
+announce "คุณ [ "+strcharinfo(0)+" ] ได้แสดงความคิดเห็นเกี่ยวกับกิจกรรม Gm Vs Player ว่า : ควรปรับปรุง",16;
+next;
+mes"ขอขอบคุณ ท่าน [ "+strcharinfo(0)+" ]";
+mes"ที่มาเข้าร่วมกิจกรรมครั้งนี้";
+mes"ผู้ที่เข้าร่วมกิจกรรม จะได้รับ";
+mes"Skull 50 ea. ไปฟรี ๆ";
+sleep2 1500;
+mes"ทางเราจะส่งท่านกลับสู่จุด Save ของท่าน";
+mes"แล้วพบกันใหม่";
+next;
+warp "rachel.gat",130,110;
+Savepoint "rachel.gat",130,110;
+getitem 7420,50;
+close;
+
+
+
+IncreaseIdea3:
+mes "[ GM Event ]";
+mes "โปรดใส่เหตุผลลงในช่องว่างค่ะ";
+next;
+set @terrible$,0;
+input @terrible$;
+next;
+mes "[ GM Event ]";mes "ท่านได้แสดงความคิดเห็น เรียบร้อยแล้วค่ะ";
+announce "คุณ [ "+strcharinfo(0)+" ] ได้แสดงความคิดเห็นเกี่ยวกับกิจกรรม Gm Vs Player ว่า : ควรปรับปรุง",16;
+announce "เหตุผลเพราะว่า ( "+@terrible$+" )",16;
+next;
+mes"ขอขอบคุณ ท่าน [ "+strcharinfo(0)+" ]";
+mes"ที่มาเข้าร่วมกิจกรรมครั้งนี้";
+mes"ผู้ที่เข้าร่วมกิจกรรม จะได้รับ";
+mes"Skull 50 ea. ไปฟรี ๆ";
+sleep2 1500;
+mes"ทางเราจะส่งท่านกลับสู่จุด Save ของท่าน";
+mes"แล้วพบกันใหม่";
+next;
+warp "rachel.gat",130,110;
+Savepoint "rachel.gat",130,110;
+getitem 7420,50;
+close;
+
+
+
+comeback:
+set #check,1;
+set #DAY, gettime(5) +gettime(6) +gettime(7);
+mes "[ GM Event ]";
+mes "ท่านได้แสดงความคิดเห็น เรียบร้อยแล้วค่ะ";
+announce "คุณ [ "+strcharinfo(0)+" ] ไม่แสดงความคิดเห็นเกี่ยวกับกิจกรรม Gm Vs Player",16;
+next;
+mes "[ GM Event ]";
+mes"ขอขอบคุณ ท่าน [ "+strcharinfo(0)+" ]";
+mes"ที่มาเข้าร่วมกิจกรรมครั้งนี้";
+mes"ผู้ที่เข้าร่วมกิจกรรม จะได้รับ";
+mes"Skull 50 ea. ไปฟรี ๆ";
+sleep2 1500;
+mes"ทางเราจะส่งท่านกลับสู่จุด Save ของท่าน";
+mes"แล้วพบกันใหม่";
+next;
+warp "rachel.gat",130,110;
+Savepoint "rachel.gat",130,110;
+getitem 7420,50;
+close;
+
+
+
+voice:
+mes "[ GM Event ]";
+mes "ขออภัยค่ะ";
+mes "ท่านได้แสดงความคิดเห็นแล้วค่ะ";
+sleep2 1500;
+mes"ทางเราจะส่งท่านกลับสู่จุด Save ของท่าน";
+mes"แล้วพบกันใหม่";
+next;
+warp "rachel.gat",130,110;
+Savepoint "rachel.gat",130,110;
+close;
+
+
+
+//checks if the day/month/year matches the day last used
+Checkday:
+if(#DAY==gettime(5)+gettime(6)+gettime(7)) goto voice;
+set #check,0;
+goto Comment;
+}

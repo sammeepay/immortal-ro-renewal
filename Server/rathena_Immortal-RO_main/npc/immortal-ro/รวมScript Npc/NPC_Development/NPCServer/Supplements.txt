@@ -1,0 +1,1015 @@
+//===================================================================
+// NPC : Suppltments
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+//Death Note Item ( ID : 1006 ) for InCe-WickeD Sv ( Only )
+
+rachel.gat,156,129,4	script	Supplements	990,{
+mes "^FF0000[ Supplements ]^000000 ";
+mes "โปรดตรวจสอบรายระเอียด ไอเท็ม";
+mes "ที่ท่านแลกเปลี่ยนให้เรียบร้อย";
+mes "เซิฟเวอร์สงวนสิทธิ์ชดเชยไอเท็ม";
+mes "ให้กับผู้แลก ในกรณีที่ไอเท็ม";
+mes "ไม่ครบถ้วน หรือไม่ได้รับไอเท็ม";
+mes "ซึ่งเกิดจากความผิดพลาด";
+mes "ของเซิฟเวอร์เท่านั้น";
+next;
+menu 
+"- Status Points ^FF0000[ Closed ]^000000",e1,
+"- Special Items ^FF0000[ Closed ]^000000",e2,
+"- TCG Card Change to Skull",e3,
+"- Yggdrasil ( Berry , Seed )",e4,
+"- Speed Potions",e5,
+"- Elemental Converters",e6,
+"- Elemental Resistance Potions",e7,
+"- Mixed Foods",e8,
+"- Mixed Boxs",e9,
+"- Scrolls",e10,
+"- Death Note ^FF0000[ Closed ]^000000",e11,
+"Exit",cancel;
+
+
+
+e1:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ขออภัยค่ะเมนูที่ท่านเลือก";
+mes "ไม่เปิดใช้บริการในขณะนี้";
+close;
+
+
+
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Skull 30 ea.";
+mes "ต่อ  11 Status Point";
+next;
+menu 
+"- แลก",y1,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y1:
+if(countitem(7420)<30) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+delitem 7420,30;
+atcommand strcharinfo(0) + "@stpoint 11";
+mes "การแลกเปลี่ยนเสร็จสมบูรณ์";
+mes "ท่านได้รับ 11 Status Point แล้วค่ะ";
+close;
+
+
+
+e2:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ขออภัยค่ะเมนูที่ท่านเลือก";
+mes "ไม่เปิดใช้บริการในขณะนี้";
+close;
+
+
+
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Skull 50 ea.";
+mes "ต่อ Item 1 ea.";
+next;
+menu 
+"- แลก",y2,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+y2:
+if(countitem(7420)<50) goto nohave;
+callfunc "Item_Randomiser";  
+getitem @Item[@ItemRandom], 1;
+delitem 7420,50;
+close;
+
+
+
+e3:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "TCG Card 1 ea.";
+mes "ต่อ Skull 50 ea.";
+next;
+menu 
+"- แลก",y3,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y3:
+if(countitem(7227)<1) goto noTCG;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "โปรดใส่จำนวน TCG Card ที่ท่านมี";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7227)<@input) goto TCGuncomplete;
+delitem 7227,@input;
+getitem 7420,@input*50;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "การแลกเปลี่ยนเสร็จสมบูรณ์";
+close;
+
+
+e4:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Yggdrasil มีสองชนิด";
+mes "ได้แก่ Yggdrasi Berry กับ Yggdrasil Seed";
+mes "Yggdrasil Berry ใช้ Skull 2 ea.";
+mes "ให้ HP / SP เต็มหลอด ต่อ Yggdrasil Berry 1 ea.";
+mes "__________________________________";
+mes "Yggdrasil Seed ใช้ Skull 1 ea.";
+mes "ให้ HP / SP ครึ่งหลอด ต่อ Yggdrasil Seed 1 ea.";
+next;
+menu 
+"- แลก",y4,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y4:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "^FF0080แล้วท่านต้องการแลกอะไรล่ะ^000000";
+mes "ระหว่าง Yggdrasil Berry กับ Yggdrasil Seed";
+next;
+menu 
+"- Yggdrasil Berry",YB,
+"- Yggdrasil Seed",YS,
+"Exit",cancel;
+
+
+
+YB:
+if(countitem(7420)<3) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Yggdrasil Berry กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 607,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเรย Yggdrasil Berry ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+YS:
+if(countitem(7420)<3) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Yggdrasil Seed กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input) goto uncomplete;
+delitem 7420,@input;
+getitem 608,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเรย Yggdrasil Seed ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+e5:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Speed Potions เป็น Item";
+mes "ช่วยให้การเดินของท่านเร็วขึ้น 30 วินาที";
+mes "__________________________________";
+mes "ใช้ Skull 5 ea.";
+mes "ในการแลก Speed Potions 1 ea.";
+next;
+menu 
+"- แลก",y5,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y5:
+if(countitem(7420)<5) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Speed Potions กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12016,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเรย Speed Potions ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+e6:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Elemental Converters";
+mes " เป็น Item ชนิดหนึ่งที่สามารถ";
+mes "เปลี่ยนอาวุธให้เป็นธาตุแต่ละธาตุ";
+mes "ตามคุณสมบัติของ Elemental Converters";
+mes "__________________________________";
+mes "ใช้ Skull 7 ea.";
+mes "ในการแลก Elemental Converters 1 ea.";
+next;
+menu 
+"- แลก",y6,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y6:
+if (countitem(7420) < 7) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "^FF0080แล้วท่านต้องการแลกอะไรล่ะ^000000";
+mes "Seismic Elemental Converter | ดิน";
+mes "Frost Elemental Converter | น้ำ ";
+mes "Lightning Elemental Converter | ลม";
+mes "Flame Elemental Converter | ไฟ";
+next;
+menu 
+"- Seismic Elemental Converter",Seismic,
+"- Frost Elemental Converter",Frost,
+"- Lightning Elemental Converter",Lightning,
+"- Flame Elemental Converter",Flame,
+"Exit",cancel;
+
+
+
+Seismic:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Seismic Elemental Converter กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*7) goto uncomplete;
+delitem 7420,@input*7;
+getitem 12116,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Seismic Elemental Converter ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Frost:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Frost Elemental Converter กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*7) goto uncomplete;
+delitem 7420,@input*7;
+getitem 12115,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Frost Elemental Converter ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Lightning:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Lightning Elemental Converter กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*7) goto uncomplete;
+delitem 7420,@input*7;
+getitem 12117,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Lightning Elemental Converter ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Flame:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Flame Elemental Converter กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*7) goto uncomplete;
+delitem 7420,@input*7;
+getitem 12114,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Flame Elemental Converter ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+e7:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Elemental Resistance Potions เป็น Item ชนิดหนึ่ง";
+mes "ที่สามารถป้องกันธาตุแต่ละธาตุ";
+mes "ตามคุณสมบัติของ Elemental Resistance Potions";
+mes "^FF0000แต่จะโดนธาตุตรงข้ามแรงขึ้น^000000 ";
+mes "__________________________________";
+mes "ใช้ Skull 2 ea.";
+mes "ในการแลก Elemental Resistance Potions 1 ea.";
+next;
+menu 
+"- แลก",y7,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y7:
+if (countitem(7420) < 2) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "^FF0080แล้วท่านต้องการแลกอะไรล่ะ^000000";
+mes "Earth Resist Potion | ดิน";
+mes "Cold Resist Potion | น้ำ";
+mes "Thunder Resist Potion | ลม";
+mes "Fire Resist Potion | ไฟ";
+next;
+menu 
+"- Earth Resist Potion",Earth,
+"- Cold Resist Potion",Cold,
+"- Thunder Resist Potion",Thunder,
+"- Fire Resist Potion",Fire,
+"Exit",cancel;
+
+
+
+Earth:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Earth Resist Potion กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 12120,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Earth Resist Potion ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Cold:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Cold Resist Potion กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 12119,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Cold Resist Potion ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Thunder:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Thunder Resist Potion กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;  
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 12121,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Thunder Resist Potion ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Fire:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Fire Resist Potion กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input; 
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 12118,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Fire Resist Potion ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+e8:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Mixed Foods เป็น Item";
+mes "ที่ช่วยเพิ่ม Status ตามคุณสมบัติของ";
+mes "Mixed Foods แต่ละอย่าง";
+mes "__________________________________";
+mes "ใช้ Skull 5 ea.";
+mes "ในการแลก  Mixed Foods 1 ea.";
+next;
+menu 
+"- แลก",y8,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y8:
+if (countitem(7420) < 5) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "^FF0080แล้วท่านต้องการแลกอะไรล่ะ^000000";
+mes "Steamed Tongue | Str";
+mes "Dragon Breath Cocktail | Int";
+mes "Immortal Stew | Vit";
+mes "Steamed Desert Scorpions | Agi";
+mes "Hwergelmir's Tonic | Dex";
+mes "Cooked Nine Tail | Luk";
+next;
+menu 
+"- Steamed Tongue",Steamed,
+"- Dragon Breath Cocktail",Dragon,
+"- Immortal Stew",Immortal,
+"- Steamed Desert",Desert,
+"- Hwergelmir's Tonic",Hwergelmir,
+"- Cooked Nine Tail",Cooked,
+"Exit",cancel;
+
+
+
+Steamed:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Steamed Tongue กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12075,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Steamed Tongue ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Dragon:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Dragon Breath Cocktail กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input; 
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12080,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Dragon Breath Cocktail ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Immortal:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Immortal Stew กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12085,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Immortal Stew ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Desert:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Steamed Desert กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12090,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Steamed Desert ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Hwergelmir:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Hwergelmir's Tonic กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input; 
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12095,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Hwergelmir's Tonic ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Cooked:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก  Cooked Nine Tail กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12100,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Cooked Nine Tail ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+e9:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Mixed Boxs เป็น Item";
+mes "ที่ช่วยเพิ่ม Status ตามคุณสมบัติของ";
+mes "Mixed Boxs แต่ละอย่าง";
+mes "__________________________________";
+mes "ใช้ Skull 5 ea.";
+mes "ในการแลก  Mixed Boxs 1 ea.";
+next;
+menu 
+"- แลก",y9,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y9:
+if (countitem(7420) < 5) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "^FF0080แล้วท่านต้องการแลกอะไรล่ะ^000000";
+mes "Giggling Box ( Hp regen9% )";
+mes "Painting Box ( Sp regen 9% )";
+mes "Gloomy Box ( Improve Lv.1 )";
+mes "Box Of Grudge ( Atk 20 )";
+mes "Sleepy Box ( Matk 20 )";
+mes "Box Of Storm ^FF0000( Disable )^000000";
+mes "Box Of Sunlight ( See a duck soil )";
+next;
+menu 
+"- Giggling Box",Giggling,
+"- Painting Box",Painting,
+"- Gloomy Box",Gloomy,
+"- Box Of Grudge",Grudge,
+"- Sleepy Box",Sleepy,
+"- Box Of Storm",Storm,
+"- Box Of Sunlight",Sunlight,
+"Exit",cancel;
+
+
+
+Giggling:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก  Giggling Box กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12027,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Giggling Box ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Painting:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก  Painting Box กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12034,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Painting Box ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Gloomy:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก  Gloomy Box กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12029,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Gloomy Box ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Grudge:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก  Box Of Grudge กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12030,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Box Of Grudge ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Sleepy:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก  Sleepy Box กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12031,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Sleepy Box ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Storm:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ขออภัยค่ะ Box Of Storm";
+mes "มีคุณสมบัติซ้ำกับ Frost Elemental Converter";
+mes "ถ้าท่านต้องการให้อาวุธเป็นธาตุน้ำ";
+mes "สามารถแลกได้ที่หมวด Elemental Converter";
+mes "ในหัวข้อ Frost Elemental Converter";
+close;
+
+
+// Box Of Storm //
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก  Box Of Storm กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*7) goto uncomplete;
+delitem 7420,@input*7;
+getitem 12032,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Box Of Storm ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Sunlight:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก  Box Of Sunlight กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*5) goto uncomplete;
+delitem 7420,@input*5;
+getitem 12033,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Box Of Sunlight ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+e10:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Scroll เป็น Item";
+mes "ที่สามารถใช้ Skill ตามคุณสมบัติของ";
+mes "Scroll แต่ละอย่าง";
+mes "__________________________________";
+mes "ใช้ Skull 2 ea.";
+mes "ในการแลก Scroll 1 ea.";
+next;
+menu 
+"- แลก",y10,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y10:
+if (countitem(7420) < 2) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "^FF0080แล้วท่านต้องการแลกอะไรล่ะ^000000";
+mes "Windwalk Scroll";
+mes "Assumptio Scroll";
+mes "Aspersio Scroll ^FF0000( ใช้ 10 Skull )^000000";
+mes "Meteor storm Scroll";
+mes "Storm Gust Scroll";
+mes "Lord of Vermilion Scroll";
+mes "Lex Aeterna Scroll";
+mes "Magnificat Scroll";
+next;
+menu 
+"- Windwalk Scroll",Windwalk,
+"- Assumptio Scroll",Assumptio,
+"- Aspersio Scroll",Aspersio,
+"- Meteor storm Scroll",Meteor,
+"- Storm Gust Scroll",StormGust,
+"- Lord of Vermilion Scroll",Lord,
+"- Lex Aeterna Scroll",Lex,
+"- Magnificat Scroll",Magnificat,
+"Exit",cancel;
+
+
+
+Windwalk:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Windwalk Scroll กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 12219,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Windwalk Scroll ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Assumptio:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Assumptio Scroll กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 12218,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Assumptio Scroll ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Aspersio:
+if (countitem(7420) < 10) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Aspersio Scroll กี่อันบอกข้ามา !!";
+mes "^FF0000Aspersio Scroll จะไม่แสดงผลลัพธ์";
+mes "ถ้าไม่มี Holy Water^000000";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*10) goto uncomplete;
+delitem 7420,@input*10;
+getitem 523,@input;
+getitem 12217,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Aspersio Scroll ตามจำนวนที่เจ้าต้องการ";
+mes "^FF0000พร้อม Holy Water ตามจำนวน Aspersio Scroll ที่ได้^000000 ";
+close;
+
+
+
+Meteor:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Meteor storm Scroll กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 14512,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Meteor storm Scroll ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+StormGust:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Storm Gust Scroll กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 14513,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Storm Gust Scroll ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Lord:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Lord of Vermilion Scroll กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input;  
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 14514,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Lord of Vermilion Scroll ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Lex:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Lex Aeterna Scroll กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input; 
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 14515,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Lex Aeterna Scroll ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+Magnificat:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เจ้าต้องการแลก Magnificat Scroll กี่อันบอกข้ามา !!";
+next;
+set @input, 0;
+	input @input; 
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*2) goto uncomplete;
+delitem 7420,@input*2;
+getitem 14516,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเลย Magnificat Scroll ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+e11:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ขออภัยค่ะเมนูที่ท่านเลือก";
+mes "ไม่เปิดใช้บริการในขณะนี้";
+close;
+
+
+
+mes "^FF0000[ Supplements ]^000000 ";
+mes "Death Note สมุดมรณะ";
+mes "เป็น Item ต้องห้ามของ Sv.";
+mes "เพราะมันสามารถฆ่าใครก็ได้";
+mes "ภายในพริบตาเดียว เพียงแค่";
+mes "ท่านพิมพ์ชื่อคนๆนั้นไป";
+mes "คนๆ นั้นก็จะตายภายใน 3 วินาที";
+mes "__________________________________";
+mes "ใช้ 10 Skull ต่อ Death Note 1 เล่ม";
+mes "ท่านต้องการแลกมันไหมล่ะ";
+next;
+menu 
+"- แลก",y11,
+"- ไม่แลก",cancel,
+"Exit",cancel;
+
+
+
+y11:
+if(countitem(7420)<10) goto nohave;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ท่านต้องการ Death Note กี่เล่มล่ะ";
+next;
+set @input, 0;
+	input @input;
+	if(@input > 30000 ) goto max;
+	if(countitem(7420)<@input*10) goto uncomplete;
+delitem 7420,@input*10;
+getitem 1006,@input;
+mes "^FF0000[ Supplements ]^000000 ";
+mes "อ่ะเอาไปเรย Death Note ตามจำนวนที่เจ้าต้องการ";
+close;
+
+
+
+noTCG:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ท่านไม่มี TCG Card ในการแลก";
+close;
+
+
+
+TCGuncomplete:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ท่านมี TCG ไม่พอต่อการแลก";
+close;
+
+
+
+nohave:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ท่านไม่มี Skull ในการแลก";
+close;
+
+
+
+uncomplete:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "ท่านมี Skull ไม่ครบ";
+close;
+
+
+
+max:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "เกิน 30000 ea.";
+close;
+
+
+
+cancel:
+mes "^FF0000[ Supplements ]^000000 ";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "Supplements",0;
+end;
+}
+
+
+
+function	script	Item_Randomiser	{
+mes "^FF0000[ Supplements ]^000000 ";
+mes "การแลกเปลี่ยนเสร็จสมบูรณ์";
+set @ItemRandom, rand(35);
+set @Item[1], 2115;
+set @Item[2], 2421;
+set @Item[3], 2524;
+set @Item[4], 5171;
+set @Item[5], 5256;
+set @Item[6], 5022;
+set @Item[7], 7227;
+set @Item[8], 4121;
+set @Item[9], 4146;
+set @Item[10], 4142;
+set @Item[11], 4047;
+set @Item[12], 4123;
+set @Item[13], 4132;
+set @Item[14], 4054;
+set @Item[15], 4144;
+set @Item[16], 4128;
+set @Item[17], 4137;
+set @Item[18], 4131;
+set @Item[19], 1230;
+set @Item[20], 1261;
+set @Item[21], 1161;
+set @Item[22], 1530;
+set @Item[23], 1720;
+set @Item[24], 2410;
+set @Item[25], 2629;
+set @Item[26], 5022;
+set @Item[27], 4145;
+set @Item[28], 4147;
+set @Item[29], 4148;
+set @Item[30], 4399;
+set @Item[31], 4135;
+set @Item[32], 4143;
+set @Item[33], 4302;
+set @Item[34], 4342;
+set @Item[35], 13017;
+return;
+}

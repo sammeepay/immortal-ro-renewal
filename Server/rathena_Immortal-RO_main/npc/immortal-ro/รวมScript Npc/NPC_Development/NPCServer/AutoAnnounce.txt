@@ -1,0 +1,47 @@
+//===================================================================
+// NPC : Auto Announce
+// Designe By : Unknow Credit
+// Modify By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+-	script	Auto Announce	-1,{
+
+OnInit:
+initnpctimer;
+cleararray $@msg$[0],"",getarraysize($@msg$);
+set $@tmp,0;
+setarray $@msg$[0], 
+"Stop using program games.",
+"Don't speak rude in the server.",
+"Don't use program game in the server.",
+"Welcome to Interesting Ro Exciting PvP By InCe Intelligent",
+"You can check item or status and other ( At : Checks Service ).",
+"Valkyrie Set find from the activity [ Gold Minute ].",
+"You can inform all problems inside this server At : Badboy_love_girl@hotmail.com  Or  Bug Report in kafra service.",
+"In this time, This server is during test , It might have some part which it can't use ; Server must apologize again.",
+"The failing of yesterday are the learning of tomorrow. = ความผิดพลาดของเมื่อวาน คือบทเรียนของวันพรุ่งนี้.",
+"A friend in need is a friend indeed. = เพื่อนในยามทุกข์ คือเพื่อนที่แท้จริง.",
+"A man without aim is like a ship without a rudder. = คนที่ปราศจากความมุ่งหมาย เปรียบเหมือนกับเรือที่ปราศจากหางเสือ.",
+"Action speaks louder than words. = การกระทำมีเสียงดังกว่าคำพูด.",
+"Knowledge is a treasure of great price. = วิชาความรู้ เป็นทรัพย์สมบัติอันล้ำค่า.",
+"Laziness is the mother of all vices. = ความเกียจคร้าน เป็นมารดาแห่งความชั่วทั้งมวล.",
+"Where there is a will, there is a way. = ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น.";
+end;
+
+
+
+OnTimer180000:
+stopnpctimer;
+while($@tmp == $@num){
+set $@tmp,rand(0,(getarraysize($@msg$)-1));
+}
+
+
+
+set $@num,$@tmp;
+announce "Attention !! : " + $@msg$[$@num],bc_all,0xFF8000;
+setnpctimer 0;
+startnpctimer;
+end;
+}

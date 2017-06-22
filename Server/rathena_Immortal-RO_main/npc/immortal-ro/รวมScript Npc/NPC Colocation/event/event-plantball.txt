@@ -1,0 +1,173 @@
+///========= MAP FLAGE =============\\\
+Porings	mapflag	nomemo
+Porings	mapflag	noteleport
+Porings	mapflag	nosave
+Porings	mapflag	nobranch
+Porings	mapflag	nopenalty
+Porings	mapflag	notrade
+Porings	mapflag	noskill
+Porings	mapflag	nowarp
+Porings	mapflag	nobaseexp
+Porings	mapflag	nojobexp
+Porings	mapflag	nowarpto
+Porings	mapflag	nodrop
+Porings	mapflag	novending
+Porings	mapflag	noexppenalty
+Porings	mapflag	noloot
+///======== SCRIPT Plant Ball =============\\\
+c5,208,69,5	script	PlantBall	856,{
+if ($toplay_plant == 2) goto startnow;
+if ($toplay_plant == 1) goto main;
+mes "[Plant Ball]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "ต้องการเข้าร่วมกิจกรรมมั้ยครับ";
+next;
+menu "^FF0000•^000000 รายละเอียด",index,"^FF0000•^000000 ยกเลิก",exit;
+
+startnow:
+mes "[Plant Ball]";
+mes "ยังไม่ถึงเวลากิจกรรมครับ";
+close;
+
+main:
+mes "[Plant Ball]";
+mes "สวัสดีครับ ยินดีให้บริการครับ";
+mes "ต้องการเข้าร่วมกิจกรรมมั้ยครับ";
+next;
+menu "^009933•^000000 ต้องการ",wplant,"^FF0000•^000000 รายละเอียด",index,"^FF0000•^000000 ยกเลิก",exit;
+
+index:
+mes "[Plant Ball]";
+mes "ถ้าท่านต้องการรู้อะไร";
+mes "ท่านเข้าไปจะรู้เองครับ";
+close;
+
+wplant:
+if ($toplay_plant == 2) goto startnow;
+warp "Porings",93,101;
+end;
+
+exit:
+close;
+
+OnInit:
+waitingroom "๐ Plant Ball ๐",0;
+end;
+}
+
+Porings,0,0,0	script	EV_QUEST2	111,{
+OnClock0230:
+OnClock0430:
+OnClock0630:
+OnClock0830:
+OnClock1030:
+OnClock1230:
+OnClock1430:
+OnClock1630:
+OnClock1830:
+OnClock2030:
+OnClock2230:
+set $toplay_plant,1;
+announce "[ Plant Ball ] : กิจกรรมกำลังจะเปิดใน 3 นาที !!",0,0x00FF00;
+initnpctimer;
+end;
+
+OnTimer60000:
+announce "[ Plant Ball ] : กิจกรรมกำลังจะเปิดใน 2 นาที !!",0,0x00FF00;
+end;
+
+OnTimer120000:
+announce "[ Plant Ball ] : กิจกรรมกำลังจะเปิดใน 1 นาที !!",0,0x00FF00;
+end;
+
+OnTimer180000:
+set $rpball,rand(7361,7390);
+set $toplay_plant,2;
+announce "[ Plant Ball ] : กิจกรรมได้เริ่มต้นขึ้นแล้ว !!",0,0x00FF00;
+end;
+
+OnTimer200000:
+mapannounce "Porings","[ Plant Ball ] : ท่านมีเวลาเตรียมตัว 10 วินาที !!",bc_map,0xFFFF00;
+end;
+
+OnTimer210000:
+monster "Porings",0,0,"Plant",1078,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1079,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1080,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1081,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1082,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1083,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1081,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1082,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1083,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1080,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1078,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1079,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1080,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1081,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1082,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1083,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1081,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1082,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1083,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1080,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1078,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1079,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1080,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1081,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1082,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1083,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1081,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1082,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1083,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1080,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1078,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1079,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1080,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1081,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1082,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1083,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1081,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1082,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1083,1,"EV_QUEST1::OnWinner";
+monster "Porings",0,0,"Plant",1080,1,"EV_QUEST1::OnWinner";
+mapannounce "Porings","[ Plant Ball ] : ท่านหมดเวลาเตรียมตัวแล้ว !!",bc_map,0xFFFF00;
+sleep2 3000;
+mapannounce "Porings","[ Plant Ball ] : รอบนี้บอลหมายเลข ["+getitemname($rpball)+"] !!",bc_map,0xFFFF00;
+sleep2 5000;
+mapannounce "Porings","[ Plant Ball ] : ท่านมีเวลา 5 นาทีในการหาบอลหมายเลข ["+getitemname($rpball)+"] !!",bc_map,0xFFFF00;
+end;
+
+OnTimer530000: //==== เวลาจบกิจกรรม
+killmonsterall "Porings";
+announce "[ Plant Ball ] : กิจกรรมได้จบลงแล้ว !!",0,0x00FF00;
+mapwarp "Porings","c5",165,113;
+set $toplay_plant,0;
+set $rpball,0;
+set $mem_plant,0;
+stopnpctimer;
+end;
+}
+
+Porings,0,0,0	script	EV_QUEST1	111,{
+OnWinner:
+if ($toplay_plant == 0) close;
+set @rball,rand(7361,7390);
+getitem @rball,1;
+if (@rball == $rpball) goto fill;
+set @plantmball,rand(1078,1083);
+delitem @rball,1;
+monster "Porings",0,0,"Plant",@plantmball,1,"EV_QUEST1::OnWinner";
+dispbottom "[ Plant Ball ] : ท่านต้องหาบอลหมายเลข ["+getitemname($rpball)+"] !!";
+close;
+
+fill:
+getitem @rball,1;
+dispbottom "[ Plant Ball ] : คุณเก็บบอลหมายเลข "+getitemname(@rball)+" ได้ !!";
+getitem 7227,3;
+set Zeny,zeny + 100000;
+delitem @rball,1;
+set $mem_plant,$mem_plant+1;
+mapannounce "Porings","[ Plant Ball ] : ท่าน " + strcharinfo(0) + " เก็บบอลหมายเลข ["+getitemname($rpball)+"] ได้แล้ว !!",bc_map,0xFFFF00;
+close;
+}

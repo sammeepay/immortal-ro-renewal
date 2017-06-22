@@ -1,0 +1,73 @@
+// AGIT Manager Template
+//============================================================
+-	script	Gld_Agit_Managers::Gld_Agit_Manager3	-1,{
+	end;
+
+OnInterIfInitOnce:
+	GetCastleData strnpcinfo(2),0,strnpcinfo(0) + "::OnRecvCastle";
+	end;
+
+OnAgitStart2:
+	MapRespawnGuildID strnpcinfo(2),GetCastleData(strnpcinfo(2),1),2;
+	GvgOn strnpcinfo(2);
+
+OnStartArena:
+	if (strnpcinfo(2) == "guildvs01") { setarray .@emproom[0],270,28; }
+	else if (strnpcinfo(2) == "guildvs02") { setarray .@emproom[0],270,28; }
+	else if (strnpcinfo(2) == "guildvs03") { setarray .@emproom[0],270,28; }
+	else if (strnpcinfo(2) == "guildvs04") { setarray .@emproom[0],270,28; }
+	else if (strnpcinfo(2) == "guildvs05") { setarray .@emproom[0],270,28; }
+	else {
+		end;
+	}
+	if (!mobcount(strnpcinfo(2),"Agit#"+strnpcinfo(2)+"::OnAgitBreak")) {
+		monster strnpcinfo(2),.@emproom[0],.@emproom[1],"Emperium",1288,1,"Agit#"+strnpcinfo(2)+"::OnAgitBreak";
+	}
+	end;
+
+OnAgitBreak:
+	if(!query_sql ("select * from ranking where char_id ='"+ getcharid(0,strcharinfo(0))+ "' limit 1",@cid,@ec))
+		query_sql "insert into ranking values ('" + getcharid(0,strcharinfo(0)) +"','1')";
+	else
+		query_sql "SELECT `r_emp` FROM `ranking` WHERE `char_id` ="+getcharid(0)+" LIMIT 1;",@emp_kill;
+		set @emp_kill,@emp_kill+1;
+		query_sql "UPDATE `ranking` SET `r_emp` = "+@emp_kill+" WHERE `char_id` ="+getcharid(0)+";";
+		dispbottom "คุณได้รับคะแนน  [E]mperium [K]illing  เพิ่ม 1 คะแนน";
+
+	set .@GID,getcharid(2);
+	set $@nameatkguild$,strcharinfo(0);
+
+	SetCastleData strnpcinfo(2),1, .@GID;
+	mapannounce strnpcinfo(2),"The emperium has been destroyed.",bc_map,"0x00CCFF";
+	MapRespawnGuildID strnpcinfo(2),.@GID,2;
+
+	GetCastleData strnpcinfo(2),0,strnpcinfo(0)+"::OnRecvCastle";
+	for( set .@i, 4; .@i <= 9; set .@i, .@i+1 ) {
+		SetCastleData strnpcinfo(2), .@i, 0;
+	}
+
+	sleep 500;
+	if( agitcheck2() ) {
+		donpcevent "Agit#"+strnpcinfo(2)+"::OnStartArena";
+	}
+
+	sleep getbattleflag("gvg_eliminate_time");
+	announce "ปราสาท [ " + getcastlename(strnpcinfo(2)) + " ] ได้ถูกทำลายโดย [ " + $@nameatkguild$ + " ] แห่งกิลด์ [ " + getguildName(.@GID) + " ]",bc_all;
+	end;
+
+OnAgitEnd2:
+	GvgOff strnpcinfo(2);
+	if (GetCastleData(strnpcinfo(2),1)) {
+		KillMonster strnpcinfo(2),"Agit#"+strnpcinfo(2)+"::OnAgitBreak";
+	}
+	end;
+
+OnRecvCastle:
+	RequestGuildInfo GetCastleData(strnpcinfo(2),1);
+	if (strnpcinfo(2) == "guildvs01") { donpcevent "::OnRecvCastleGuild01"; }
+	else if (strnpcinfo(2) == "guildvs02") { donpcevent "::OnRecvCastleGuild02"; }
+	else if (strnpcinfo(2) == "guildvs03") { donpcevent "::OnRecvCastleGuild03"; }
+	else if (strnpcinfo(2) == "guildvs04") { donpcevent "::OnRecvCastleGuild04"; }
+	else if (strnpcinfo(2) == "guildvs05") { donpcevent "::OnRecvCastleGuild05"; }
+	end;
+}

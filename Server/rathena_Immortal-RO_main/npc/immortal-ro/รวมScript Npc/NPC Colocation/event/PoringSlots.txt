@@ -1,0 +1,101 @@
+//===== eAthena Script =======================================
+//= FruitSlots
+//===== Server By: ==================================================
+//= OmYimPlus
+//===== By: ==================================================
+//= PlayNewZone
+//= Modified By VanNovA
+//===== Current Version: =====================================
+-	script	PoringSlotsCh	-1,{end;}
+
+c5,192,91,5	duplicate(PoringSlotsCh)	PoringSlots#01	2738
+c5,194,91,5	duplicate(PoringSlotsCh)	PoringSlots#02	2738
+c5,196,91,5	duplicate(PoringSlotsCh)	PoringSlots#03	2739
+c5,198,91,5	duplicate(PoringSlotsCh)	PoringSlots#04	2735
+c5,200,91,5	duplicate(PoringSlotsCh)	PoringSlots#05	2738
+c5,202,91,5	duplicate(PoringSlotsCh)	PoringSlots#06	2736
+c5,204,91,5	duplicate(PoringSlotsCh)	PoringSlots#07	2738
+c5,206,91,5	duplicate(PoringSlotsCh)	PoringSlots#08	2737
+c5,208,91,5	duplicate(PoringSlotsCh)	PoringSlots#09	2738
+c5,210,91,5	duplicate(PoringSlotsCh)	PoringSlots#10	2735
+
+c5,210,89,5	duplicate(PoringSlotsCh)	PoringSlots#11	2739
+c5,210,87,5	duplicate(PoringSlotsCh)	PoringSlots#12	2738
+c5,210,85,5	duplicate(PoringSlotsCh)	PoringSlots#13	2738
+c5,210,83,5	duplicate(PoringSlotsCh)	PoringSlots#14	2735
+c5,210,81,5	duplicate(PoringSlotsCh)	PoringSlots#15	2738
+
+c5,208,81,5	duplicate(PoringSlotsCh)	PoringSlots#16	2739
+c5,206,81,5	duplicate(PoringSlotsCh)	PoringSlots#17	2738
+c5,204,81,5	duplicate(PoringSlotsCh)	PoringSlots#18	2735
+c5,202,81,5	duplicate(PoringSlotsCh)	PoringSlots#19	2738
+c5,200,81,5	duplicate(PoringSlotsCh)	PoringSlots#20	2736
+c5,198,81,5	duplicate(PoringSlotsCh)	PoringSlots#21	2738
+c5,196,81,5	duplicate(PoringSlotsCh)	PoringSlots#22	2739
+c5,194,81,5	duplicate(PoringSlotsCh)	PoringSlots#23	2735
+c5,192,81,5	duplicate(PoringSlotsCh)	PoringSlots#24	2738
+
+c5,192,83,5	duplicate(PoringSlotsCh)	PoringSlots#25	2741
+c5,192,85,5	duplicate(PoringSlotsCh)	PoringSlots#26	2735
+c5,192,87,5	duplicate(PoringSlotsCh)	PoringSlots#27	2738
+c5,192,89,5	duplicate(PoringSlotsCh)	PoringSlots#28	2737
+
+
+
+c5,192,91,0	script	PoringSlotsPoint	45,1,1,{}
+
+
+
+-	script	PoringSlotsSetter	-1,{
+
+OnInit:
+	setarray	$PoringSlotsX,192,194,196,198,200,202,204,206,208,210,210,210,210,210,210,208,206,204,202,200,198,196,194,192,192,192,192,192;
+	setarray	$PoringSlotsY,91,91,91,91,91,91,91,91,91,91,89,87,85,83,81,81,81,81,81,81,81,81,81,81,83,85,87,89;
+	
+	set $@PoringSlotsPlaying,0;
+	set $@PoringSlotsRunning,0;
+
+	donpcevent "PoringSlotsChoose#01::OnResetRoom";
+	donpcevent "PoringSlotsChoose#02::OnResetRoom";
+	donpcevent "PoringSlotsChoose#03::OnResetRoom";
+	donpcevent "PoringSlotsChoose#04::OnResetRoom";
+	donpcevent "PoringSlotsChoose#05::OnResetRoom";
+end;
+
+}
+
+c5,218,90,4	script	PoringSlotsChoose#01	650,{
+	callfunc("FuncPoringSlotsChoose",1,2);
+end;
+OnEffect:for(set $@FSC_i,1;$@FSC_i<15;set $@FSC_i,$@FSC_i+1){specialeffect 68;sleep2 500;}end;
+OnResetRoom:delwaitingroom "PoringSlotsChoose#01";set $FSC_Coin1,0;set $FSC_Player1,0;waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+OnInit:waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+}
+c5,218,86,4	script	PoringSlotsChoose#02	718,{
+	callfunc("FuncPoringSlotsChoose",2,5);
+end;
+OnEffect:for(set $@FSC_i,1;$@FSC_i<15;set $@FSC_i,$@FSC_i+1){specialeffect 68;sleep2 500;}end;
+OnResetRoom:delwaitingroom "PoringSlotsChoose#02";set $FSC_Coin2,0;set $FSC_Player2,0;waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+OnInit:waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+}
+c5,218,82,4	script	PoringSlotsChoose#03	651,{
+	callfunc("FuncPoringSlotsChoose",3,7);
+end;
+OnEffect:for(set $@FSC_i,1;$@FSC_i<15;set $@FSC_i,$@FSC_i+1){specialeffect 68;sleep2 500;}end;
+OnResetRoom:delwaitingroom "PoringSlotsChoose#03";set $FSC_Coin3,0;set $FSC_Player3,0;waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+OnInit:waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+}
+c5,214,88,4	script	PoringSlotsChoose#04	635,{
+	callfunc("FuncPoringSlotsChoose",4,13);
+end;
+OnEffect:for(set $@FSC_i,1;$@FSC_i<15;set $@FSC_i,$@FSC_i+1){specialeffect 68;sleep2 500;}end;
+OnResetRoom:delwaitingroom "PoringSlotsChoose#04";set $FSC_Coin4,0;set $FSC_Player4,0;waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+OnInit:waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+}
+c5,214,84,4	script	PoringSlotsChoose#05	660,{
+	callfunc("FuncPoringSlotsChoose",5,25);
+end;
+OnEffect:for(set $@FSC_i,1;$@FSC_i<15;set $@FSC_i,$@FSC_i+1){specialeffect 68;sleep2 500;}end;
+OnResetRoom:delwaitingroom "PoringSlotsChoose#05";set $FSC_Coin5,0;set $FSC_Player5,0;waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+OnInit:waitingroom"คนแทง [ 0 ] รวม [ 0 ]",0;end;
+}

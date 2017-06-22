@@ -1,0 +1,36 @@
+
+prtg_cas01	mapflag	loadevent
+prtg_cas02	mapflag	loadevent
+prtg_cas03	mapflag	loadevent
+prtg_cas04	mapflag	loadevent
+prtg_cas05	mapflag	loadevent
+
+payg_cas01	mapflag	loadevent
+payg_cas02	mapflag	loadevent
+payg_cas03	mapflag	loadevent
+payg_cas04	mapflag	loadevent
+payg_cas05	mapflag	loadevent
+
+gefg_cas01	mapflag	loadevent
+gefg_cas02	mapflag	loadevent
+gefg_cas03	mapflag	loadevent
+gefg_cas04	mapflag	loadevent
+gefg_cas05	mapflag	loadevent
+
+aldeg_cas01	mapflag	loadevent
+aldeg_cas02	mapflag	loadevent
+aldeg_cas03	mapflag	loadevent
+aldeg_cas04	mapflag	loadevent
+aldeg_cas05	mapflag	loadevent
+
+-	script	Guild War Event	-1,{
+end;
+
+OnPCLoadMapEvent:
+	getmapxy( .@map$, .@x, .@y, 0 );
+		if ((.@map$ == "prtg_cas01") || (.@map$ == "prtg_cas02") || (.@map$ == "prtg_cas03") || (.@map$ == "prtg_cas04") || (.@map$ == "prtg_cas05") || (.@map$ == "payg_cas01") || (.@map$ == "payg_cas02") || (.@map$ == "payg_cas03") || (.@map$ == "payg_cas04") || (.@map$ == "payg_cas05") || (.@map$ == "gefg_cas01") || (.@map$ == "gefg_cas02") || (.@map$ == "gefg_cas03") || (.@map$ == "gefg_cas04") || (.@map$ == "gefg_cas05") || (.@map$ == "aldeg_cas01") || (.@map$ == "aldeg_cas02") || (.@map$ == "aldeg_cas03") || (.@map$ == "aldeg_cas04") || (.@map$ == "aldeg_cas05")) {
+	sc_end SC_POEMBRAGI;
+	sc_end SC_SERVICE4U;
+	}
+end;
+}

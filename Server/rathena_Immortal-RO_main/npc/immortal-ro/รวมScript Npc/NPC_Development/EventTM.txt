@@ -1,0 +1,470 @@
+//===================================================================
+// NPC : Talent Match
+// Design By : Gjz
+// Contact : gusjungs_s@hotmail.com
+//===================================================================
+
+-	script	TalentMatch::TLM	-1,{
+if($Open_Dun_talent==1){end;}
+mes "[Talent Match Guard]";
+mes "ยินดีต้อนรับผู้กล้าทั้งหลายเข้าสู่ ^FF0000Talent Match^000000"; 
+mes "อันตราย !!"; 
+mes "เจ้าต้องการที่จะเข้าไปเลยมั้ย"; 
+next; 
+menu "แน่นอนข้าจะเข้าไป ["+getmapusers("force_1-3.gat")+"] ",-,"ข้าต้องการฟังรายละเอียดอีกครั้ง",Info,"ไม่ล่ะ ข้าไม่เอาด้วยหรอก",Cancel; 
+
+if(Baselevel < 95) goto LReq; 
+if($inf1 == 1) goto L_go; 
+goto L_eror; 
+
+LReq: 
+mes "[Talent Match Guard]"; 
+mes "เจ้าต้องมีเลเวลอย่างน้อย 95 ถึงจะเข้าไปได้"; 
+close; 
+end;
+
+L_go:  
+announce "[ Talent ] : "+strcharinfo(0)+" ได้เข้าสู่ Talent Match แล้ว",8; 
+percentheal 100,100; 
+warp "force_1-3.gat",100,185; 
+end; 
+
+L_eror: 
+mes "[Talent Match Guard]"; 
+mes "ขณะนี้ Talent Match ได้ปิดลงแล้ว"; 
+mes "Talent Match จะเปิดอีกครั้งเมื่อเวลา"; 
+mes "01.50 น."; 
+mes "02.50 น."; 
+mes "03.50 น."; 
+mes "04.50 น."; 
+mes "05.50 น."; 
+mes "06.50 น."; 
+mes "07.50 น."; 
+mes "08.50 น."; 
+mes "09.50 น."; 
+mes "10.50 น."; 
+mes "11.50 น."; 
+mes "12.50 น."; 
+mes "13.50 น."; 
+mes "14.50 น."; 
+mes "15.50 น."; 
+mes "16.50 น."; 
+mes "17.50 น."; 
+mes "18.50 น."; 
+mes "19.50 น."; 
+mes "20.50 น."; 
+mes "21.50 น."; 
+mes "22.50 น."; 
+mes "23.50 น."; 
+mes "00.50 น."; 
+close; 
+end;
+
+Info: 
+mes "[Talent Match Guard]"; 
+mes "อันตราย !!"; 
+mes "อันตราย !!!"; 
+mes "และ อันตราย !!!!!"; 
+close; 
+end; 
+
+
+Cancel: 
+mes "[Talent Match Guard]"; 
+mes "ไม่เป็นไรท่านผู้กล้าถ้าท่านพร้อมค่อยมาหาข้าใหม่"; 
+close; 
+OnInit:
+waitingroom "Talent Match",0;
+end;
+} 
+
+////End Of Devil Square Entrance 
+
+
+ordeal_1-1.gat,182,183,5	script	TalMa	-1,{ 
+if($Open_Dun_talent==1){end;}
+OnTimer30000: 
+if (getmapusers("force_1-3.gat") == 0){
+disablenpc "AtoB";disablenpc "BtoC";disablenpc "CtoD";disablenpc "DtoE";disablenpc "EtoF";disablenpc "FtoG";disablenpc "GtoH";disablenpc "keyD";disablenpc "GOD";
+}
+if (getmapusers("force_1-3.gat") == 0) Announce "[ Talent ] : และแล้ว...ก็จบลงจาก Talent Match",8; 
+if (getmapusers("force_1-3.gat") == 0) set $status,1; 
+if (getmapusers("force_1-3.gat") == 0) killmonsterall "force_1-3.gat"; 
+if (getmapusers("force_1-3.gat") == 0) end; 
+Announce "[ Talent ] : ยังคงเหลือผู้แกร่งกล้าใน Talent Match " + getmapusers("force_1-3.gat") + " ท่าน",8; 
+initnpctimer; 
+end; 
+
+OnInit:setnpctimer 0;stopnpctimer;end;
+
+} 
+
+force_1-3.gat,100,185,5	script	HiddenTalMa	-1,{ 
+if($Open_Dun_talent==1){end;}
+OnClock0150:
+OnClock0250:
+OnClock0350:
+OnClock0450:
+OnClock0550:
+OnClock0650:
+OnClock0750:
+OnClock0850:
+OnClock0950:
+OnClock1050:
+OnClock1150:
+OnClock1250:
+OnClock1350:
+OnClock1450:
+OnClock1550:
+OnClock1650:
+OnClock1750:
+OnClock1850:
+OnClock1950:
+OnClock2050:
+OnClock2150:
+OnClock2250:
+OnClock2350:
+OnClock0050:
+Announce "[ Talent ] : Talent Match กำลังจะเปิดใน 5 นาที กรุณาเตรียมตัวกันให้พร้อม !!",8; 
+disablenpc "AtoB";disablenpc "BtoC";disablenpc "CtoD";disablenpc "DtoE";disablenpc "EtoF";disablenpc "FtoG";disablenpc "GtoH";disablenpc "keyD";disablenpc "GOD";
+initnpctimer; 
+set $inf1,1; 
+set $status,0; 
+killmonsterall "force_1-3.gat"; 
+end; 
+
+OnTimer60000: 
+Announce "[ Talent ] : Talent Match เหลือเวลาอีกเพียง 4 นาที เตรียมตัวกันด้วย!!",8; 
+end; 
+
+OnTimer120000: 
+Announce "[ Talent ] : Talent Match เหลือเวลาเพียง 3 นาที เท่านั่น!!",8; 
+end; 
+
+OnTimer180000: 
+Announce "[ Talent ] : และแล้ว Talent Match เหลืออีกเพียง 2 นาที!!",8; 
+end; 
+
+OnTimer240000: 
+Announce "[ Talent ] : และ 1 นาทีสุดท้ายสำหรับ Talent Match!!",8; 
+end; 
+
+OnTimer300000:
+Announce "[ Talent ] : Talent Match ได้เริ่มต้นขึ้นแล้ว ณ บัดนี้ !!",8; 
+initnpctimer "TalMa";
+setnpctimer 0;
+stopnpctimer;
+set $cankeyd,0;
+set $inf1,0; 
+set $mob,10; 
+areamonster "force_1-3.gat",106,189,107,190,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",100,184,101,185,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",96,186,97,187,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",93,182,94,183,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",96,177,97,178,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",109,177,110,178,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",114,182,115,183,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",97,189,98,190,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",87,178,88,179,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+areamonster "force_1-3.gat",102,187,103,188,"[TL] เห็ดพิษ",1084,1,"HiddenTalMa::OnA";
+end;
+
+OnA: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 9) goto a1;
+if($mob == 0) goto a2; 
+end;
+
+a1: 
+Announce "[ Talent ] : เอ่ะ เห็ดพิษมายังไงเยอะแยะ ช่วยกันจัดการที ระวังตัวด้วย !!",0; 
+end; 
+
+a2: 
+Announce "[ Talent ] : สำเร็จแล้ว กำจัดเห็ดพิษได้หมด เดินทางต่อไปกันเถอะ",8; 
+goto B;
+end; 
+
+B:
+enablenpc "AtoB";
+monster "force_1-3.gat",100,186,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+set $mob,15;
+monster "force_1-3.gat",99,137,"ทรายโหด",1127,10,"HiddenTalMa::OnB";
+monster "force_1-3.gat",99,137,"ทรายโหด",1165,5,"HiddenTalMa::OnB";
+end;  
+
+OnB: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 14) goto b1; 
+if($mob == 1) goto b2; 
+if($mob == 0) goto b3;  
+end; 
+
+b1: 
+Announce "[ Talent ] : พวกนี่มันกำลังตื่นจากใต้พสุธาแล้ว พวกเราระวังตัวด้วย !!",0; 
+end; 
+
+b2: 
+Announce "[ Talent ] : เอ่ะ นั่นอะไรหน่ะ !!",0; 
+end; 
+
+b3: 
+Announce "[ Talent ] : มันตื่นขึ้นแล้ว พวกเราคงไม่รอดแน่",8; 
+monster "force_1-3.gat",99,137,"[BOSS]",1159,1,"HiddenTalMa::OnB1";
+goto C;
+end; 
+
+OnB1:
+monster "force_1-3.gat",105,137,"Treasure Box",1333,1,"HiddenTalMa::OnboxB";
+end;
+//Credit VanNovA
+C:
+disablenpc "AtoB";
+monster "force_1-3.gat",100,185,"Hero",1708,2,"HiddenTalMa::OnDeadSure";
+enablenpc "BtoC";
+set $mob,42;
+monster "force_1-3.gat",86,103,"ผู้คุมห้อง",1285,1,"HiddenTalMa::OnC";
+monster "force_1-3.gat",86,97,"ผู้คุมห้อง",1285,1,"HiddenTalMa::OnC";
+monster "force_1-3.gat",73,100,"มนุษย์โครงเหล็ก",1276,20,"HiddenTalMa::OnC";
+monster "force_1-3.gat",54,100,"มนุษย์โครงเหล็ก",1163,20,"HiddenTalMa::OnC";
+end;  
+
+OnC: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 41) Announce "[ Talent ] : นี่พวกมันเป็นเพียงแค่ส่วนนึงของ ปราสาทหลังนี้หรอเนี่ย",0;  
+if($mob == 40) {Announce "[ Talent ] : พวกมนุษย์โครงเหล็กมันยังคงเฝ้าที่นี้หรอเนี่ย !! นี่มันยังไงกันแน่",0;
+monster "force_1-3.gat",99,137,"Hero",1708,2,"HiddenTalMa::OnDeadSure";
+}
+if($mob == 20) Announce "[ Talent ] : ดูเหมือนว่ามัน โดนบังคับจากอะไรสักอย่างนะ",0;  
+if($mob == 10) Announce "[ Talent ] : มันไม่มีชีวิตนี่นา มันคงโดนเวทมนต์อะไรสักอย่างเข้าสิง",0; 
+if($mob == 0) goto c5; 
+end;
+
+c5: 
+Announce "[ Talent ] : ไปกันต่อเถอะ !!",0; 
+goto D;
+end;
+
+D:
+disablenpc "BtoC";
+enablenpc "CtoD";
+enablenpc "keyD";
+monster "force_1-3.gat",60,100,"Treasure Box",1333,1,"HiddenTalMa::OnboxC";
+monster "force_1-3.gat",52,105,"Treasure Box",1333,1,"HiddenTalMa::OnboxC";
+monster "force_1-3.gat",52,92,"Treasure Box",1333,1,"HiddenTalMa::OnboxC";
+monster "force_1-3.gat",66,92,"Treasure Box",1333,1,"HiddenTalMa::OnboxC";
+monster "force_1-3.gat",66,106,"Treasure Box",1333,1,"HiddenTalMa::OnboxC";
+set $mob,40;
+monster "force_1-3.gat",16,136,"มัมมี่",1297,5,"HiddenTalMa::OnD";
+monster "force_1-3.gat",23,136,"มัมมี่",1297,5,"HiddenTalMa::OnD";
+monster "force_1-3.gat",20,132,"มัมมี่ผู้กำกุญแจ",1297,1,"HiddenTalMa::OnD1";
+end;  
+
+D2:
+monster "force_1-3.gat",15,104,"???",1268,5,"HiddenTalMa::OnD";
+monster "force_1-3.gat",24,104,"???",1208,15,"HiddenTalMa::OnD";
+monster "force_1-3.gat",24,96,"???",1219,5,"HiddenTalMa::OnD";
+monster "force_1-3.gat",15,96,"???",1197,15,"HiddenTalMa::OnD";
+end;
+
+OnD1:
+getitem 7026,1;
+end;
+
+OnD: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 39) Announce "[ Talent ] : ทำไมพวกมันถึงดูแตกตื่นนัก นั่นผู้กำกุญแจ",0;  
+if($mob == 30) {Announce "[ Talent ] : คำภีร์ในบทแรกเขียนไว้ว่า ต้องสละผู้ถือกุญแจ",0;  disablenpc "CtoD";
+monster "force_1-3.gat",54,100,"Hero",1708,1,"HiddenTalMa::OnDeadSure";goto D2;}
+if($mob == 15) Announce "[ Talent ] : พวกเราปลดปล่อยมันได้ส่วนนึงแล้ว เราต้องต่อให้สำเร็จ",0; 
+if($mob == 0) {set $cankeyd,1;Announce "[ Talent ] : เฮ้ออ สำเร็จสักที แต่การเดินทางยังไม่จบนี่ ลุยกันต่อเถอะพวก !!",0; goto E;}
+end;
+
+E:
+monster "force_1-3.gat",16,103,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",23,103,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",21,103,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",18,103,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+set $mob,45;
+monster "force_1-3.gat",41,60,"เทพ",1412,15,"HiddenTalMa::OnE";
+monster "force_1-3.gat",32,60,"มาร",1504,15,"HiddenTalMa::OnE";
+monster "force_1-3.gat",48,60,"สัตว์",1037,15,"HiddenTalMa::OnE";
+monster "force_1-3.gat",65,58,"มนุษย์",1638,1,"HiddenTalMa::OnboxB";
+monster "force_1-3.gat",65,58,"มนุษย์",1634,1,"HiddenTalMa::OnboxB";
+monster "force_1-3.gat",65,58,"มนุษย์",1635,1,"HiddenTalMa::OnboxB";
+end;
+
+OnE: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 44) Announce "[ Talent ] : พวก เทพ มาร สัตว์ ต่างพากันปกป้องอะไรกันแน่",0;  
+if($mob == 15) Announce "[ Talent ] : เอะ ข้างในนั้นมันมีคนไม่ใช่หรอ",0;  
+if($mob == 0) {Announce "[ Talent ] : คนพวกนี้ นี่มันอะไรกันแน่ !!",0; goto F;}
+end;
+
+F:
+enablenpc "EtoF";
+monster "force_1-3.gat",18,60,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",15,60,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",21,60,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",24,60,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+set $mob,46;
+monster "force_1-3.gat",99,61,"Hero",1639,1,"HiddenTalMa::OnF";
+monster "force_1-3.gat",100,16,"อ่อนแอ",1725,1,"HiddenTalMa::OnDeadSure";
+monster "force_1-3.gat",100,16,"Hero",1725,9,"HiddenTalMa::OnF1";
+end;
+
+OnDeadSure:
+monster "force_1-3.gat",100,20,"Hero",1708,1,"HiddenTalMa::OnDeadSure";
+end;
+
+OnF1:
+monster "force_1-3.gat",100,61,"Hero",1693,2,"HiddenTalMa::OnF";
+monster "force_1-3.gat",100,61,"Hero",1694,2,"HiddenTalMa::OnF";
+monster "force_1-3.gat",100,61,"Hero",1698,1,"HiddenTalMa::OnF";
+monster "force_1-3.gat",100,61,"Hero",1701,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",100,61,"Hero",1702,1,"HiddenTalMa::OnboxA";
+end;
+
+OnF: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 45) Announce "[ Talent ] : คัมภีร์บทที่ 2 กล่าวไว้ว่า จงช่วยเหลือผู้อ่อนแอ",0;  
+if($mob == 0) {Announce "[ Talent ] : เราทำสำเร็จ แต่มันยังเหลือบทสุดท้ายในคัมภีร์",0; goto G;}
+end;
+
+G:
+enablenpc "FtoG";
+set $mob,9;
+monster "force_1-3.gat",138,20,"Hero",1634,1,"HiddenTalMa::OnG";
+monster "force_1-3.gat",161,20,"Hero",1634,1,"HiddenTalMa::OnG";
+monster "force_1-3.gat",185,20,"Hero",1634,1,"HiddenTalMa::OnG";
+monster "force_1-3.gat",185,20,"Hero",1635,1,"HiddenTalMa::OnG";
+monster "force_1-3.gat",185,20,"Hero",1636,2,"HiddenTalMa::OnG";
+monster "force_1-3.gat",185,20,"Hero",1637,2,"HiddenTalMa::OnG";
+monster "force_1-3.gat",185,20,"Hero",1638,1,"HiddenTalMa::OnG";
+end;
+
+OnG: 
+if ($status == 1) end; 
+set $mob,$mob-1; 
+if($mob == 7) Announce "[ Talent ] : นี่คือสถานที่สุดท้าย",0;  
+if($mob == 6) Announce "[ Talent ] : ด้านในมีอีกไม่น้อยเราต้องทยอยไป",0;  
+if($mob == 0) {Announce "[ Talent ] : ทำสำเร็จแล้ว บทสุดท้ายของคัมภีร์กล่าวไว้ว่า ห้ามกระทำการใดๆต่อห้องอันศักดิ์สิทธิ์",0;   goto H;}
+end;
+
+H:
+enablenpc "GOD";
+enablenpc "GtoH";
+monster "force_1-3.gat",186,24,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",186,15,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",174,15,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",174,24,"Treasure Box",1333,1,"HiddenTalMa::OnboxA";
+monster "force_1-3.gat",179,19,"Treasure Box",1333,1,"HiddenTalMa::OnboxB";
+monster "force_1-3.gat",18,180,"Juti",1726,10,"HiddenTalMa::OnDeadSureSure1";
+monster "force_1-3.gat",24,174,"Treasure Box",1333,1,"HiddenTalMa::OnboxAB";
+monster "force_1-3.gat",21,174,"Treasure Box",1333,1,"HiddenTalMa::OnboxAB";
+monster "force_1-3.gat",17,174,"Treasure Box",1333,1,"HiddenTalMa::OnboxAB";
+monster "force_1-3.gat",14,174,"Treasure Box",1333,1,"HiddenTalMa::OnboxAB";
+end;
+
+OnDeadSureSure:
+monster "force_1-3.gat",18,180,"Hero",1708,1,"HiddenTalMa::OnDeadSure1";
+end;
+
+OnDeadSureSure1:
+getitem 7420,100;
+end;
+
+OnboxA: 
+getitem 7420,200;
+if(rand(1,10)==9){getitem 7227,1;}
+end;
+OnboxB: 
+getitem 7420,200;
+end;
+OnboxC:
+getitem 7420,200;
+end;
+OnboxAB: 
+Announce "[ Talent ] : " + strcharinfo(0) +" ได้เปิดขุมทรัพย์ในห้องสุดท้ายของ Talent แล้ว",8; 
+getitem 7420,500;
+end;
+
+OnInit:setnpctimer 0;stopnpctimer;end;
+
+} 
+
+// -- Mapflags 
+force_1-3.gat	mapflag	nowarp 
+force_1-3.gat	mapflag	nowarpto 
+force_1-3.gat	mapflag	noteleport 
+force_1-3.gat	mapflag	nosave	SavePoint 
+force_1-3.gat	mapflag	nomemo 
+force_1-3.gat	mapflag	nobranch 
+force_1-3.gat	mapflag	nopenalty 
+force_1-3.gat	mapflag	noreturn
+
+force_1-3.gat,19,100,5	script	keyD	735,{  
+mes "[Talent Match]";
+mes "กุญแจ 1 ดอกสำหรับปลดผนึก";
+next;
+menu "ตกลง",-,"ช้าก่อน ข้ายังไม่มี",waititem;
+if (countitem(7026) < 1) goto noitem;
+if($cankeyd==0){goto nokeyd;}
+next;
+delitem 7026,1;
+enablenpc "DtoE";
+close; 
+
+waititem:
+mes "[Talent Match]";
+mes "กุญแจเพียง 1 ดอกสำหรับการปลดผนึก";
+close;
+
+noitem:
+mes "[Talent Match]";
+mes "ข้าต้องใช้กุญแจ 1 ดอกสำหรับปลดผนึก";
+close;
+
+nokeyd:
+mes "[Talent Match]";
+mes "เจ้าต้องฆ่ามอนสเตอร์ให้หมด";
+close;
+}
+
+force_1-3.gat,99,164,5	script	AtoB	735,{  
+warp "force_1-3.gat",100,147; 
+close; 
+}
+force_1-3.gat,99,128,5	script	BtoC	735,{  
+warp "force_1-3.gat",109,99; 
+close; 
+}
+force_1-3.gat,59,109,5	script	CtoD	735,{  
+warp "force_1-3.gat",20,147; 
+close; 
+}
+force_1-3.gat,19,90,5	script	DtoE	735,{  
+warp "force_1-3.gat",19,69; 
+close; 
+}
+force_1-3.gat,69,60,5	script	EtoF	735,{  
+warp "force_1-3.gat",99,69; 
+close; 
+}
+force_1-3.gat,109,19,5	script	FtoG	735,{  
+warp "force_1-3.gat",130,20; 
+close; 
+}
+force_1-3.gat,180,29,5	script	GtoH	735,{  
+warp "force_1-3.gat",20,189; 
+close; 
+}
+
+
+
+morocc.gat,139,145,4	duplicate(TLM)	Talent Match	1652

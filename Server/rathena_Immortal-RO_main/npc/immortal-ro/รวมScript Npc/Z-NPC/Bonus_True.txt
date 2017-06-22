@@ -1,0 +1,99 @@
+//===== eAthena Script =======================================
+//= Omyimplus
+//===== By: ==================================================
+//= PlayNewZone
+//= Modified By Air OmYimPlus
+//===== Current Version: =====================================
+
+morocc.gat,120,109,4	script	Reward Shop	124,{
+
+BON_Main:
+	mes "[^FF0000Reward Shop^000000]";
+	mes "สวัสดีค่ะ คุณ "+strcharinfo(0)+"";
+	mes "วันนี้เรามีไอเทมโบนัสมาให้แลกค่ะ";
+	mes "แลกโดยใช้แต้มโบนัสจากการบริจาค";
+	mes "ถ้าสนใจเลือกหัวข้อต่างๆเลยค่ะ";
+	next;
+	menu "- ดูไอเทมโบนัส",BON_Shop,"- วิธีได้แต้มโบนัส",REW_Shop,"- ตรวจสอบแต้มโบนัส",BON_Check,"- ยกเลิก",CAN_Check;
+
+BON_Check:
+	mes "[^FF0000Reward Shop^000000]";
+	mes " กรุณารอสักครู่ ....";
+	sleep2 3000;
+	set @point,0;
+	query_sql "SELECT `point` FROM `bonus` WHERE `account_id`='"+getcharid(3)+"' LIMIT 1",@point;
+	mes "==========";
+	mes "คุณมีแต้มโบนัสสะสมจำนวน [ ^FF0000"+@point+"^000000 ]";
+	mes "==========";
+	next;
+	goto BON_Main;
+close;
+
+
+BON_Shop:
+	callshop "BON_Pramool",1;
+	npcshopattach "BON_Pramool";
+close;
+
+CAN_Check:
+	mes "[^FF0000Reward Shop^000000]";
+	mes "บะบายค่ะ";
+	close;
+
+REW_Shop:
+	mes "[^FF0000Reward Shop^000000]";
+	mes "[ ^FF0000 การบริจาคเติมเงินหน้าเวป^000000 ]";
+	mes "โดยอัตราการเติมจะได้รับแต้มโบนัสตามราคาบัตรเติมเงินค่ะ";
+	mes "ทรู 50 = 50 แต้ม";
+	mes "ทรู 90 = 90 แต้ม";
+	mes "ทรู 150 = 150 แต้ม";
+	mes "ทรู 300 = 300 แต้ม";
+	mes "ทรู 500 = 500 แต้ม";
+	mes "ทรู 1000 = 1000 แต้ม";
+	next;
+	mes "[^FF0000Reward Shop^000000]";
+	mes "สำหรับผู้เล่นที่บริจาคผ่านการโอนเงิน";
+	mes "ทางจีเอ็มจะแอดแต้มโบนัสเข้าไอดีที่แจ้งมาค่ะ";
+	mes "โดยอัตราการโอนจะได้รับแต้มโบนัส";
+	mes "เท่ากับการบริจาคผ่านหน้าเว็บค่ะ";
+	next;
+	goto BON_Main;
+	close;
+
+OnBuyItem:
+	set @check_loop,0;
+	for(set @i,0; @i < $@BON_Pramool_Size&&@check_loop==0; set @i,@i+1){
+		if(@bought_nameid[0]==$@BON_Pramool_Item[@i])
+			set @check_loop,1;
+	}
+	set @i,@i-1;
+	set @point,0;
+	query_sql "SELECT `point` FROM `bonus` WHERE `account_id`='"+getcharid(3)+"' LIMIT 1",@point;
+	if(@point>=$@BON_Pramool_Zeny[@i]){
+		query_sql "UPDATE `bonus` SET `point`='"+(@point-$@BON_Pramool_Zeny[@i])+"' WHERE `account_id`='"+getcharid(3)+"'";
+		dispbottom "==========";
+		dispbottom "คุณได้รับ  "+getitemname($@BON_Pramool_Item[@i])+" เรียบร้อยแล้ว";
+		set @point,0;
+		query_sql "SELECT `point` FROM `bonus` WHERE `account_id`='"+getcharid(3)+"' LIMIT 1",@point;
+		dispbottom "คุณมีแต้มคงเหลือจำนวน [ "+@point+" ]";
+		getitem $@BON_Pramool_Item[@i],1;
+	}
+	else{
+		dispbottom "==========";
+		dispbottom "คุณมีแต้มโบนัสไม่พอ";
+	}
+
+	deletearray @bought_nameid, getarraysize(@bought_nameid);
+	set @bought_nameid,0;
+end;
+
+OnInit:
+	setarray $@BON_Pramool_Item,502,503;
+	setarray $@BON_Pramool_Zeny,1000,1000;
+ 	npcshopitem "BON_Pramool",$@BON_Pramool_Item[0],$@BON_Pramool_Zeny[0],$@BON_Pramool_Item[1],$@BON_Pramool_Zeny[1],$@BON_Pramool_Item[2],$@BON_Pramool_Zeny[2],$@BON_Pramool_Item[3],$@BON_Pramool_Zeny[3],$@BON_Pramool_Item[4],$@BON_Pramool_Zeny[4],$@BON_Pramool_Item[5],$@BON_Pramool_Zeny[5],$@BON_Pramool_Item[6],$@BON_Pramool_Zeny[6],$@BON_Pramool_Item[7],$@BON_Pramool_Zeny[7],$@BON_Pramool_Item[8],$@BON_Pramool_Zeny[8],$@BON_Pramool_Item[9],$@BON_Pramool_Zeny[9],$@BON_Pramool_Item[10],$@BON_Pramool_Zeny[10],$@BON_Pramool_Item[11],$@BON_Pramool_Zeny[11],$@BON_Pramool_Item[12],$@BON_Pramool_Zeny[12],$@BON_Pramool_Item[13],$@BON_Pramool_Zeny[13],$@BON_Pramool_Item[14],$@BON_Pramool_Zeny[14],$@BON_Pramool_Item[15],$@BON_Pramool_Zeny[15],$@BON_Pramool_Item[16],$@BON_Pramool_Zeny[16],$@BON_Pramool_Item[17],$@BON_Pramool_Zeny[17],$@BON_Pramool_Item[18],$@BON_Pramool_Zeny[18],$@BON_Pramool_Item[19],$@BON_Pramool_Zeny[19];
+	set $@BON_Pramool_Size,20;
+waitingroom "แลกไอเทมแต้มโบนัส",0;
+end;
+}
+
+-	shop	BON_Pramool	-1,501:50;

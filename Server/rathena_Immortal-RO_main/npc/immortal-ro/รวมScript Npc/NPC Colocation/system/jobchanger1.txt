@@ -1,0 +1,1739 @@
+c5,160,113,5	script	Job Changer#1	811,{
+mes "[Class Master]";
+mes "สวัสดี ท่าน [^FF0000 " + strcharinfo(0) + " ^000000]";
+mes "ข้าคือผู้ดูแลด้านอาชีพ";
+mes "เจ้าต้องการอะไร??";
+next;
+	callfunc "F_JobChanger",1;
+end;
+
+OnInit: 
+waitingroom " เปลี่ยนอาชีพ ",0;
+end;
+
+}
+
+
+//------------------------------------------------ Function
+
+
+
+function	script	F_JobChanger	{
+
+if(SkillPoint != 0){
+		mes "  โปรดอัพ Skil Points ของท่านให้หมด";
+		mes "เสียก่อน";
+		close;
+}
+
+if (class == 0) goto nov;
+if (class == 4046) goto t_taekwon;
+if (class == 1) goto class1;
+if (class == 2) goto class1;
+if (class == 3) goto class1;
+if (class == 4) goto class1;
+if (class == 5) goto class1;
+if (class == 6) goto class1;
+if (class == 7) goto class2;
+if (class == 13) goto class2;
+if (class == 8) goto class2;
+if (class == 9) goto class2;
+if (class == 10) goto class2;
+if (class == 11) goto class2;
+if (class == 12) goto class2;
+if (class == 14) goto class22;
+if (class == 15) goto class22;
+if (class == 16) goto class22;
+if (class == 17) goto class22;
+if (class == 18) goto class22;
+if (class == 19) goto class22;
+if (class == 20) goto class22;
+if (class == 4001) goto nov3;
+if (class == 4024) goto ClassB1;
+if (class == 4025) goto ClassB2;
+if (class == 4026) goto ClassB3;
+if (class == 4027) goto ClassB4;
+if (class == 4028) goto ClassB5;
+if (class == 4029) goto ClassB6;
+if (class == 4002) goto class3;
+if (class == 4003) goto class3;
+if (class == 4004) goto class3;
+if (class == 4005) goto class3;
+if (class == 4006) goto class3;
+if (class == 4007) goto class3;
+
+if (Class == 4008) goto L_0;
+if (Class == 4009) goto L_1;
+if (Class == 4010) goto L_2;
+if (Class == 4011) goto L_3;
+if (Class == 4012) goto L_4;
+if (Class == 4013) goto L_5;
+if (Class == 4015) goto L_6;
+if (Class == 4016) goto L_7;
+if (Class == 4017) goto L_8;
+if (Class == 4018) goto L_9;
+if (Class == 4019) goto L_10;
+if (Class == 4020) goto L_11;
+if (Class == 4021) goto L_12;
+if ( class > 4050 ) {			mes "[Class Master]";
+				mes "ท่านได้มาถึงขั้นสูงสุดแล้ว";
+				close;
+				}
+close;
+
+nov:
+mes "[Class Master]";
+mes "สวัสดี...";
+mes "เจ้า ^bbbb00Novice^000000 น้อย";
+mes "เจ้าอยากเป็นอะไรล่ะ";
+next;
+menu "- ^bb0000Class 1^000000",c_nov,"- ^FF9900Class Baby^000000",ClaB,"- ^009900Super Novice^000000",s_nov,"- ^CC99FFTaekwon^000000",t_taekwon,"- ^3366FFGunslinger^000000,^CCCC00Ninja^000000",guni;
+
+c_nov:
+if(joblevel < 10) goto needjob;
+mes "[Class Master]";
+mes "เลือกอาชีพที่ต้องการเลย";
+next;
+menu "Swordman",swd_a,"Magician",mag_a,"Archer",arc_a,"Acolyte",aco_a,"Merchant",mer_a,"Thief",thf_a;
+
+guni:
+mes "[Class Master]";
+mes ".... 2 อาชีพ นี้ สุดยอด";
+mes "^bb0000เจ้าควรตรวจให้แน่ใจว่า DaTa ของเจ้ามองเห็น 2อาชีพนี้^000000";
+mes "ถ้าเจ้าแน่ใจก็จงพร้อมซะ แล้วเลือก อาชีพที่เจ้าต้องการ";
+next;
+menu "Gunslinger",guns,"Ninja",ninja,"ข้าไม่แน่ใจว่าdataข้าใหม่พอ",L_no;
+
+guns:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Gunslinger^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ใช่ข้าพร้อม",-,"ข้ายังไม่พร้อม",needdata;
+jobchange 24;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Gunslinger^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+ninja:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Ninja^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ใช่ข้าพร้อม",-,"ข้ายังไม่พร้อม",needdata;
+jobchange 25;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Ninja^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+aco_a:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Acolyte^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange;
+jobchange 4;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Acolyte^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+arc_a:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Archer^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange;
+jobchange 3;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Archer^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+mag_a:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Magician^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange;
+jobchange 2;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Magician^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+mer_a:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Merchant^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange;
+jobchange 5;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Merchant^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+swd_a:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Swordman^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange;
+jobchange 1;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Swordman^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+thf_a:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Thief^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange;
+jobchange 6;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Thief^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+Tae_a:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000 Taekwon^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange;
+jobchange 4046;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000 Taekwon^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+t_taekwon:
+mes "[Class Master]";
+mes "เจ้าต้องการเปลี่ยนอาชีพใช่ไหม";
+next;
+menu "ใช่",L_yes,"ไม่ใช่",L_no;
+L_yes: //ถ้าเลือกตัวเลือกที่1จะมาที่นี่
+mes "[Class Master]";
+mes "เป็นอาชีพอะไรดีหละ";
+next;
+menu "Taekwon",L_4046,"SoulLinker",L_4049,"StarGadiator",L_4048,"ไม่เอาดีกว่า",L_no;
+L_4046: //ถ้าเลือกตัวเลือกที่1จะมาที่นี่
+if(class != 0) goto L_no2;
+if(joblevel<10) goto L_no3;
+mes "[Class Master]";
+mes "จงฝึกฝน อย่าย้อท้อหละ";
+jobchange 4046;
+specialeffect 435;
+close;
+L_25: //ถ้าเลือกตัวเลือกที่2จะมาที่นี่
+if(class != 0) goto L_no2;
+if(joblevel<10) goto L_no3;
+mes "[Class Master]";
+mes "จงฝึกฝน อย่าย้อท้อหละ";
+jobchange 25;
+specialeffect 435;
+close;
+L_24: //ถ้าเลือกตัวเลือกที่3จะมาที่นี่
+if(class != 0) goto L_no2;
+if(joblevel<10) goto L_no3;
+mes "[Class Master]";
+mes "จงฝึกฝน อย่าย้อท้อหละ";
+jobchange 24;
+specialeffect 435;
+close;
+L_4049: //ถ้าเลือกตัวเลือกที่4จะมาที่นี่
+if(class != 4046) goto L_no4;
+if(joblevel<50) goto L_no3;
+mes "[Class Master]";
+mes "จงฝึกฝน อย่าย้อท้อหละ";
+jobchange 4049;
+specialeffect 435;
+close;
+L_4048: //ถ้าเลือกตัวเลือกที่5จะมาที่นี่
+if(class != 4046) goto L_no4;
+if(joblevel<50) goto L_no3;
+mes "[Class Master]";
+mes "จงฝึกฝน อย่าย้อท้อหละ";
+jobchange 4048;
+specialeffect 435;
+close;
+
+L_no: //ถ้าเลือกตัวเลือกที่2จะมาที่นี่
+mes "[Class Master]";
+mes "งั้นก็ไม่เป็นไร";
+close;
+
+L_no2: //ถ้าไม่ใช่อาชีพที่กำหนดจะมาที่นี่
+mes "[Class Master]";
+mes "เจ้าไม่ใช่Novice";
+close;
+
+L_no3: //ถ้า JobLevel น้อยกว่าที่กำหนดจะมาที่นี่
+mes "[Class Master]";
+mes "เจ้ายังมีJobLevelไม่พอ";
+close;
+
+L_no4: //ถ้า JobLevel น้อยกว่าที่กำหนดจะมาที่นี่
+mes "[Class Master]";
+mes "เจ้าไม่ใช่Taekwon";
+close;
+
+
+
+s_nov:
+if(joblevel < 10) goto needjob;
+if(baselevel < 45) goto needlv;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Super Novice^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange;
+jobchange 23;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Super Novice^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+nochange:
+mes "[Class Master]";
+mes "เจ้าต้องเลือกให้ดี";
+mes "เพราะเจ้ามีโอกาสเพียงครั้งเดียว";
+goto nov;
+
+//CLASS1=================================
+class1:
+mes "[Class Master]";
+mes "ไหนมาให้ข้าตรวจสอบก่อน...";
+next;
+if (class == 1) goto swd_b;
+if (class == 2) goto mag_b;
+if (class == 3) goto arc_b;
+if (class == 4) goto aco_b;
+if (class == 5) goto mer_b;
+if (class == 6) goto thf_b;
+mes "[Class Master]";
+mes "เจ้าไม่มีข้อมูล";
+close;
+
+swd_b:
+mes "[Class Master]";
+mes "สวัสดี...";
+mes "เจ้า ^bbbb00Swordman^000000 น้อย";
+mes "เลือกอาชีพที่ต้องการเลย";
+next;
+menu "Knight",swd_b2,"Crusader",swd_b22;
+
+swd_b2:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Knight^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 7;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Knight^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+swd_b22:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Crusader^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 14;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Crusader^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+mag_b:
+mes "[Class Master]";
+mes "สวัสดี...";
+mes "เจ้า ^bbbb00Magician^000000 น้อย";
+mes "เลือกอาชีพที่ต้องการเลย";
+next;
+menu "Wizard",mag_b2,"Sage",mag_b22;
+
+mag_b2:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Wizard^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 9;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Wizard^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+mag_b22:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Sage^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 16;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Sage^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+arc_b:
+mes "[Class Master]";
+mes "สวัสดี...";
+mes "เจ้า ^bbbb00Archer^000000 น้อย";
+mes "เลือกอาชีพที่ต้องการเลย";
+next;
+menu "Hunter",arc_b2,"Bard-Dancer",arc_b22;
+
+arc_b2:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Hunter^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 11;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Hunter^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+arc_b22:
+if(joblevel < 40) goto needjob2;
+if(Sex==1) goto arc_b22_2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Dancer^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 20;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Dancer^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+arc_b22_2:
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Bard^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 19;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Bard^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+aco_b:
+mes "[Class Master]";
+mes "สวัสดี...";
+mes "เจ้า ^bbbb00Acolyte^000000 น้อย";
+mes "เลือกอาชีพที่ต้องการเลย";
+next;
+menu "Priest",aco_b2,"Monk",aco_b22;
+
+aco_b2:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Priest^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 8;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Priest^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+aco_b22:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Monk^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 15;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Monk^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+mer_b:
+mes "[Class Master]";
+mes "สวัสดี...";
+mes "เจ้า ^bbbb00Merchant^000000 น้อย";
+mes "เลือกอาชีพที่ต้องการเลย";
+next;
+menu "Blacksmith",mer_b2,"Alchemist",mer_b22;
+
+mer_b2:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Blacksmith^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 10;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Blacksmith^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+mer_b22:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Alchemist^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 18;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Alchemist^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+thf_b:
+mes "[Class Master]";
+mes "สวัสดี...";
+mes "เจ้า ^bbbb00Thief^000000 น้อย";
+mes "เลือกอาชีพที่ต้องการเลย";
+next;
+menu "Assassin",thf_b2,"Rogue",thf_b22;
+
+thf_b2:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Assassin^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 12;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Assassin^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+thf_b22:
+if(joblevel < 40) goto needjob2;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Rogue^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้าเลือกผิดอาชีพ",nochange2;
+jobchange 17;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Rogue^000000";
+mes "เรียบร้อยแล้ว";
+close;
+
+nochange2:
+mes "[Class Master]";
+mes "เจ้าต้องเลือกให้ดี";
+mes "เพราะเจ้ามีโอกาสเพียงครั้งเดียว";
+goto class1;
+
+//CLASS2=============================
+class2:
+mes "[Class Master]";
+mes "ไหนมาให้ข้าตรวจสอบก่อน...";
+next;
+if (class == 7) goto swd_c;
+if (class == 13) goto swd_c;
+if (class == 8) goto aco_c;
+if (class == 9) goto mag_c;
+if (class == 10) goto mer_c;
+if (class == 11) goto arc_c;
+if (class == 12) goto thf_c;
+mes "[Class Master]";
+mes "เจ้าไม่มีข้อมูล";
+close;
+
+swd_c:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_knt,1;
+goto rebirth;
+
+aco_c:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_prt,1;
+goto rebirth;
+
+mag_c:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_wiz,1;
+goto rebirth;
+
+mer_c:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_bls,1;
+goto rebirth;
+
+arc_c:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_hun,1;
+goto rebirth;
+
+thf_c:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_ass,1;
+goto rebirth;
+
+//CLASS2-2==========================
+class22:
+mes "[Class Master]";
+mes "ไหนมาให้ข้าตรวจสอบก่อน...";
+next;
+if (class == 14) goto swd_c22;
+if (class == 15) goto aco_c22;
+if (class == 16) goto mag_c22;
+if (class == 17) goto thf_c22;
+if (class == 18) goto mer_c22;
+if (class == 19) goto arc_c22;
+if (class == 20) goto arc_c22_2;
+mes "[Class Master]";
+mes "เจ้าไม่มีข้อมูล";
+close;
+
+swd_c22:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_cru,1;
+goto rebirth;
+
+aco_c22:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_mok,1;
+goto rebirth;
+
+mag_c22:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_sag,1;
+goto rebirth;
+
+thf_c22:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_rog,1;
+goto rebirth;
+
+mer_c22:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_alc,1;
+goto rebirth;
+
+arc_c22:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_bad,1;
+goto rebirth;
+
+arc_c22_2:
+mes "[Class Master]";
+mes "เจ้าได้มาถึงอีกขั้นหนึ่ง";
+mes "ของระบบอาชีพ";
+next;
+mes "[Class Master]";
+mes "เจ้าต้องการเป็น";
+mes "^bb0000High Class , Advance Class^000000";
+mes "หรือไม่?";
+menu "ข้าต้องการเป็น",-,"ข้าพอแล้ว",nohi;
+set cls_dan,1;
+goto rebirth;
+
+rebirth:
+if(joblevel < 50) goto needjob2;
+if(baselevel != 99) goto needlv2;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Novice High^000000";
+mes "เรียบร้อยแล้ว";
+setoption 0;
+jobchange 4001;
+set baselevel,1;
+set joblevel,1;
+atcommand "@reset";
+set skillpoint,0;
+percentheal 100,100;
+close;
+
+//NOVICE HI========================
+nov3:
+mes "[Class Master]";
+mes "ไหนมาให้ข้าตรวจสอบก่อน...";
+next;
+if (cls_knt != 0) goto swd_d;
+if (cls_cru != 0) goto swd_d;
+if (cls_prt != 0) goto aco_d;
+if (cls_mok != 0) goto aco_d;
+if (cls_wiz != 0) goto mag_d;
+if (cls_sag != 0) goto mag_d;
+if (cls_ass != 0) goto thf_d;
+if (cls_rog != 0) goto thf_d;
+if (cls_bls != 0) goto mer_d;
+if (cls_alc != 0) goto mer_d;
+if (cls_hun != 0) goto arc_d;
+if (cls_bad != 0) goto arc_d;
+if (cls_dan != 0) goto arc_d;
+mes "[Class Master]";
+mes "เจ้าไม่มีข้อมูล";
+close;
+
+swd_d:
+mes "[Class Master]";
+mes "เจ้าอดทนมากในการ";
+mes "เก็บประสบการณ์";
+mes "เจ้าจะเปลี่ยนอาชีพไหม?";
+next;
+menu "ข้ายังคงยืนยันเปลี่ยน",-,"ข้าขอพักก่อน",nohi2;
+if(joblevel < 10) goto needjob;
+jobchange 4002;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าดูน่าเกรงขามมากเลยน้ะ";
+close;
+
+aco_d:
+mes "[Class Master]";
+mes "เจ้าอดทนมากในการ";
+mes "เก็บประสบการณ์";
+mes "เจ้าจะเปลี่ยนอาชีพไหม?";
+next;
+menu "ข้ายังคงยืนยันเปลี่ยน",-,"ข้าขอพักก่อน",nohi2;
+if(joblevel < 10) goto needjob;
+jobchange 4005;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าดูน่าเกรงขามมากเลยน้ะ";
+close;
+
+mag_d:
+mes "[Class Master]";
+mes "เจ้าอดทนมากในการ";
+mes "เก็บประสบการณ์";
+mes "เจ้าจะเปลี่ยนอาชีพไหม?";
+next;
+menu "ข้ายังคงยืนยันเปลี่ยน",-,"ข้าขอพักก่อน",nohi2;
+if(joblevel < 10) goto needjob;
+jobchange 4003;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าดูน่าเกรงขามมากเลยน้ะ";
+close;
+
+thf_d:
+mes "[Class Master]";
+mes "เจ้าอดทนมากในการ";
+mes "เก็บประสบการณ์";
+mes "เจ้าจะเปลี่ยนอาชีพไหม?";
+next;
+menu "ข้ายังคงยืนยันเปลี่ยน",-,"ข้าขอพักก่อน",nohi2;
+if(joblevel < 10) goto needjob;
+jobchange 4007;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าดูน่าเกรงขามมากเลยน้ะ";
+close;
+
+mer_d:
+mes "[Class Master]";
+mes "เจ้าอดทนมากในการ";
+mes "เก็บประสบการณ์";
+mes "เจ้าจะเปลี่ยนอาชีพไหม?";
+next;
+menu "ข้ายังคงยืนยันเปลี่ยน",-,"ข้าขอพักก่อน",nohi2;
+if(joblevel < 10) goto needjob;
+jobchange 4006;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าดูน่าเกรงขามมากเลยน้ะ";
+close;
+
+arc_d:
+mes "[Class Master]";
+mes "เจ้าอดทนมากในการ";
+mes "เก็บประสบการณ์";
+mes "เจ้าจะเปลี่ยนอาชีพไหม?";
+next;
+menu "ข้ายังคงยืนยันเปลี่ยน",-,"ข้าขอพักก่อน",nohi2;
+if(joblevel < 10) goto needjob;
+jobchange 4004;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าดูน่าเกรงขามมากเลยน้ะ";
+close;
+
+
+//CLASS3=========================
+class3:
+mes "[Class Master]";
+mes "ไหนมาให้ข้าตรวจสอบก่อน...";
+next;
+if (cls_knt != 0) goto swd_e;
+if (cls_prt != 0) goto aco_e;
+if (cls_wiz != 0) goto mag_e;
+if (cls_ass != 0) goto thf_e;
+if (cls_bls != 0) goto mer_e;
+if (cls_hun != 0) goto arc_e;
+
+if (cls_cru != 0) goto swd_e22;
+if (cls_mok != 0) goto aco_e22;
+if (cls_sag != 0) goto mag_e22;
+if (cls_rog != 0) goto thf_e22;
+if (cls_alc != 0) goto mer_e22;
+if (cls_bad != 0) goto arc_e22;
+if (cls_dan != 0) goto arc_e22_2;
+mes "[Class Master]";
+mes "เจ้าไม่มีข้อมูล";
+close;
+
+swd_e:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Lord Knight^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4008;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Lord Knight^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+aco_e:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000High Priest^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4009;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000High Priest^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+mag_e:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000High Wizard^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4010;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000High Wizard^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+thf_e:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Assassin Cross^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4013;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Assassin Cross^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+mer_e:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Whitesmith^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4011;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Whitesmith^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+arc_e:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Sniper^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4012;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Sniper^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+//CLASS33=================================
+
+swd_e22:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Paladin^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4015;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Paladin^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+aco_e22:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Champion^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4016;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Champion^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+mag_e22:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Professor^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4017;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Professor^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+thf_e22:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Stalker^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4018;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Stalker^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+mer_e22:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Creator^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4019;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Creator^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+arc_e22:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Clown^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4020;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Clown^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+arc_e22_2:
+mes "[Class Master]";
+mes "เจ้ามาถึงขั้นสูงสุดของระบบอาชีพแล้ว";
+next;
+mes "[Class Master]";
+mes "เจ้าตกลงที่จะเป็น";
+mes "^bb0000Gypsy^000000";
+mes "แล้ว ใช่ไหม?";
+next;
+menu "ข้ายืนยันการเลือก",-,"ข้ายังไม่เปลี่ยน",nohi3;
+if(joblevel < 40) goto needjob2;
+jobchange 4021;
+percentheal 100,100;
+mes "[Class Master]";
+mes "เจ้าได้เป็น";
+mes "^bb0000Gypsy^000000";
+mes "เรียบร้อยแล้ว";
+next;
+goto already;
+
+
+//ALREADY=====//NOCHANGE=====
+
+already:
+mes "[Class Master]";
+mes "เจ้าถึงขั้นสูงสุดแล้ว";
+mes "เจ้าไม่ต้องมาหาข้าอีกแล้ว";
+close;
+
+nohi:
+mes "อืม..งั้นข้าขอให้เจ้าโชคดีน้ะ";
+close;
+
+nohi2:
+mes "[Class Master]";
+mes "เจ้าต้องอดทนอีกหน่อยน้ะ";
+close;
+
+nohi3:
+mes "[Class Master]";
+mes "ไม่เป็นไร..วันหลังมาใหม่น้ะ";
+
+
+
+
+//NEED===========================
+
+needlv:
+mes "[Class Master]";
+mes "เจ้ามีเลเวลไม่พอ";
+mes "ต้องการเลเวล ^FF000045^000000";
+close;
+
+needlv2:
+mes "[Class Master]";
+mes "เจ้ามีเลเวลไม่พอ";
+mes "ต้องการเลเวล ^FF000099^000000";
+close;
+
+needjob:
+mes "[Class Master]";
+mes "เจ้ามีเลเวลทักษะไม่พอ";
+mes "ต้องการทักษะเลเวล ^FF000010^000000";
+close;
+
+needjob2:
+mes "[Class Master]";
+mes "เจ้ามีเลเวลทักษะไม่พอ";
+mes "ต้องการทักษะเลเวล ^FF000040^000000";
+close;
+
+needdata:
+mes "[Class Master]";
+mes "กลับมาหาข้าใหม่ได้";
+mes "ท่าเจ้ต้องการเปลี่ยนอาชีพ";
+close;
+
+//-------------------------------------------------
+
+//========Class Baby==============================
+
+ClaB:
+mes "[BaBy Class]"; 
+mes "อ่า อยากเป้นเด็กหรือไง"; 
+mes "เจ้ามาหาข้า เจ้า มีความต้องการเปง Baby Job ใช่ หรือ ไม่"; 
+next; 
+menu "ใช่แล้ว",babyup,"มาคุยเฉยๆ",Cancel; 
+Cancel:
+close; 
+
+babyup: 
+if(joblevel < 10) goto Nojob1; 
+mes "[BaBy Class]"; 
+mes "OK....เจ้าพร้อมแล้ว"; 
+mes "เลือกอาชีพที่อยากเปง"; 
+next; 
+if(class > 0) goto NoChangeB; 
+menu "Baby Sword",SwdB,
+"Baby Magician",MagB,
+"Baby Archer",ArcB,
+"Baby Acolyte",AcoB,
+"Baby Merchant",MerB,
+"Baby Thief",ThiB,
+"Baby Super Novice",SupB;
+
+SwdB: 
+jobchange 4024; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Sword^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+MagB: 
+jobchange 4025; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Magician^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+ArcB: 
+jobchange 4026; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Archer^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+AcoB: 
+jobchange 4027; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Acolyte^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+MerB: 
+jobchange 4028; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Merchant^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+ThiB: 
+jobchange 4029; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Thief^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+//=======job2=============
+
+ClassB1:
+mes "เจ้าอยากเป็นอะไร"; 
+next;
+menu "Baby Knight",KniB,"Baby Crusader",CruB;
+
+KniB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4030; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Knight^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+CruB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4037; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Crusader^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+ClassB2:
+mes "เจ้าอยากเป็นอะไร";
+next;
+menu "Baby Wizard",WizB,"Baby Sage ",SagB;
+
+WizB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4032; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Wizard^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+SagB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4039; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Sage^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+ClassB3:
+mes "เจ้าอยากเป็นอะไร";
+next;
+menu "Baby Hunter",HunB,"Baby Bard-Dancer ",DanB;
+
+
+HunB:
+if(joblevel < 40) goto Nojob;
+jobchange 4034; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Hunter^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+DanB:
+if(joblevel < 40) goto Nojob;
+if(Sex==1) goto BarB;
+jobchange 4043; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Dancer^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+BarB:
+if(joblevel < 40) goto Nojob;
+jobchange 4042; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Bard^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+ClassB4:
+mes "เจ้าอยากเป็นอะไร";
+next;
+menu "Baby Priest",PriB,"Baby Monk ",MonB;
+
+PriB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4031; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Priest^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close;
+
+MonB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4038; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby monk^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+ClassB5:
+mes "เจ้าอยากเป็นอะไร";
+next;
+menu "Baby Blacksmith",BlaB,"Baby Alchemist ",AlcB;
+
+
+BlaB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4033; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Blacksmith^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+AlcB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4041; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Alchemist^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+ClassB6:
+mes "เจ้าอยากเป็นอะไร";
+next;
+menu "Baby Assassin",AssB,"Baby Rogue ",RogB;
+
+
+AssB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4035; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Assassin^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+RogB: 
+if(joblevel < 40) goto Nojob;
+jobchange 4040; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Rogue^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+SupB: 
+if(joblevel < 10) goto Nojob;
+if(baselevel < 45) goto Nolv;
+jobchange 4045; 
+percentheal 100,100; 
+next; 
+mes "[Class Master]"; 
+mes "เจ้าได้เป็น"; 
+mes "^bb0000Baby Super Novice^000000"; 
+mes "เรียบร้อยแล้ว"; 
+close; 
+
+Nojob1: 
+mes "[Class Master]"; 
+mes "เจ้าต้องมี Job 10 "; 
+close; 
+
+Nojob: 
+mes "[Class Master]"; 
+mes "เจ้าต้องมี Job 40 ขึ้นไป "; 
+close; 
+
+Nolv: 
+mes "[Class Master]"; 
+mes "เจ้าต้องมี Level 45 ขึ้นไป "; 
+close; 
+
+NoChangeB:
+mes "[Class Master]"; 
+mes "เจ้าเลยวัยอันสมควรแล้ว"; 
+close; 
+
+//-------------------------------Class3------------------------------------------------------------
+L_0:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Lord Knight^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Rune Knight^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4060;
+	close;
+
+L_1:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000High Priest^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Arch Bishop^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4063;
+	close;
+
+L_2:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000High Wizard^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Warlock^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4061;
+	close;
+
+L_3:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Whitesmith^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Mechanic^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4064;
+	close;
+   
+L_4:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Sniper^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Ranger^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	setoption 0;
+	jobchange 4062;
+	getitem 6124,1;
+	close;
+  
+L_5:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Assassin Cross^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Guillotine Cross^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4065;
+	close;
+
+L_6:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Paladin^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Royal Guard^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4073;
+	close;
+
+L_7:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Champion^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Sura^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4077;
+	close;
+
+L_8:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Professor^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Sorcerer^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4074;
+	close;
+
+L_9:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Stalker^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Shadow Chaser^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4079;
+	close;
+
+L_10:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Creator^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Genetic^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4078;
+	close;
+
+L_11:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Clown^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Minstrel^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4075;
+	close;
+
+L_12:
+	mes "[Class Master]";
+	mes "ขณะนี้ท่านเป็น ^FF0000Gypsy^000000";
+	mes "ต้องการจะเปลี่ยนเป็น^FF0000Wanderer^000000";
+	mes "ใช่ไหม?";
+	menu "แน่นอน",-,"ไม่เปลี่ยน",L_End;
+	if(baselevel != 99) goto L_cant;
+	if(joblevel != 70) goto L_cant;
+	jobchange 4076;
+	close;
+
+L_cant:
+	mes "[Class Master]";
+	mes "เจ้าต้องเป็น Hi Lv 99 Job 70";
+	mes "ถึงจะเปลี่ยนได้";
+	close;
+L_End:
+	next;
+	mes $@JC_NpcName$;
+	mes "ขอบคุณที่ใช้บริการ";
+	emotion 15;
+	close2;
+	cutin "",255;
+end;
+}

@@ -1,0 +1,35 @@
+-	script	Msevent::waraldeg	-1,{
+set @GID,getcastledata("aldeg_cas01",1);
+if (strcharinfo(0) == getguildmaster(@GID)) goto Lpass;
+if (getcharid(2) == @GID) goto Lnotpass;
+mes "[War Award]";
+mes "Master Guild ^ff0000[" + getguildmaster(@GID) + "]^000000";
+close;
+Lpass:
+mes "[War Award]";
+mes "นำไปแจกลูกกิลด์ของท่านนะครับ";
+next;
+getitem 25144,1;
+mes "[War Award]";
+mes "เรียบร้อยครับ ยินดีให้บริการครับ";
+disablenpc "Item War#1";
+close;
+Lnotpass:
+mes "[War Award]";
+mes "Master Guild ^5533FF["+ getguildmaster(@GID)+"]^000000";
+mes "ท่านไม่ใช่ Master Guild ครับ";
+close;
+}
+god_town,0,0,4	script	visible	-1,{
+OnInit:
+disablenpc "Item War#1";
+end;
+OnAgitEnd:
+if($SW_Status == 3) end;
+enablenpc "Item War#1";
+end;
+OnAgitStart:
+if($SW_Status == 1) end;
+disablenpc "Item War#1";
+end;
+}

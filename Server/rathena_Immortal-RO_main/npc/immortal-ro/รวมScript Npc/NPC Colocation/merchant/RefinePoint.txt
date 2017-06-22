@@ -1,0 +1,380 @@
+//-------------------------------------------------------------------
+//—>===============================================================<—
+//-> BY : |-Security-|-Service-|
+//—>===============================================================<—
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+//homes10,41,56,6	script	HighRefine	951,{
+//-------------------------------------------------------------------
+set $namenpcpoint$,"HighRefine";
+//-------------------------------------------------------------------
+main:
+	mes "["+$namenpcpoint$+"]";
+	mes "สวัสดีค่ะ ยินดีให้บริการค่ะ";
+	mes "คุณต้องการตีบวก 100% มั้ยค่ะ";
+	next;
+switch( select( "^009933•^000000 ต้องการ","^FF0000•^000000 รายละเอียด","^FF0000•^000000 Cancel ^000000") )
+{
+	case 1:
+	goto refine;
+	end;
+
+	case 2:
+	mes "["+$namenpcpoint$+"]";
+	mes "+5 [^FF000025^000000] Point";
+	mes "+6 [^FF000025^000000] Point";
+	mes "+7 [^FF000025^000000] Point";
+	mes "+8 [^FF000050^000000] Point";
+	mes "+9 [^FF000090^000000] Point";
+	next;
+	goto main;
+	end;
+
+
+	case 3:
+	mes "["+$namenpcpoint$+"]";
+	mes "ยินดีให้บริการค่ะ";
+	close;
+
+}
+//-------------------------------------------------------------------
+refine:
+mes "เลือก Item ที่ต้องการตีบวกค่ะ";
+next;
+menu ""+getequipname(1)+"",hat,
+""+getequipname(2)+"",armor,
+""+getequipname(3)+"",left,
+""+getequipname(4)+"",right,
+""+getequipname(5)+"",garment,
+""+getequipname(6)+"",shoes,
+"- Cancel",Can;
+//-------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------
+// ควบคุมการทำงานของ ส่วน HAT[หมวก]
+hat:
+menu "+5",fiveh,
+"+6",sixh,
+"+7",sevenh,
+"+8",eighth,
+"+9",nineh,
+"- Cancel",Can;
+
+fiveh:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(1)<4){mes "Item คุณมีระดับน้อยกว่า 4 ค่ะ";close;}
+if(getequiprefinerycnt(1)>=5){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 5 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 256 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sixh:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(1)<5){mes "Item คุณมีระดับน้อยกว่า 5 ค่ะ";close;}
+if(getequiprefinerycnt(1)>=6){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 6 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 256 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sevenh:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(1)<6){mes "Item คุณมีระดับน้อยกว่า 6 ค่ะ";close;}
+if(getequiprefinerycnt(1)>=7){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 7 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 256 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+eighth:
+if(#CASHPOINTS<50){mes "คุณมี Cash น้อยกว่า 50 ค่ะ"; close;}
+if(getequiprefinerycnt(1)<7){mes "Item คุณมีระดับน้อยกว่า 7 ค่ะ";close;}
+if(getequiprefinerycnt(1)>=8){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 8 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 256 1";
+atcommand strcharinfo(0)+"@cash -50";
+close;
+nineh:
+if(#CASHPOINTS<90){mes "คุณมี Cash น้อยกว่า 90 ค่ะ"; close;}
+if(getequiprefinerycnt(1)<8){mes "Item คุณมีระดับน้อยกว่า 8 ค่ะ";close;}
+if(getequiprefinerycnt(1)>=9){mes "ตีบวกได้ไม่เกินระดับ 9 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 256 1";
+atcommand strcharinfo(0)+"@cash -90";
+close;
+// จบการทำงาน HAT[หมวก]
+//-------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------
+// ควบคุมการทำงาน armor[เกราะ]
+armor:
+menu "+5",fivem,
+"+6",sixm,
+"+7",sevenm,
+"+8",eightm,
+"+9",ninem,
+"- Cancel",Can;
+
+fivem:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(2)<4){mes "Item คุณมีระดับน้อยกว่า 4 ค่ะ";close;}
+if(getequiprefinerycnt(2)>=5){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 5 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 16 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sixm:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(2)<5){mes "Item คุณมีระดับน้อยกว่า 5 ค่ะ";close;}
+if(getequiprefinerycnt(2)>=6){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 6 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 16 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sevenm:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(2)<6){mes "Item คุณมีระดับน้อยกว่า 6 ค่ะ";close;}
+if(getequiprefinerycnt(2)>=7){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 7 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 16 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+eightm:
+if(#CASHPOINTS<50){mes "คุณมี Cash น้อยกว่า 50 ค่ะ"; close;}
+if(getequiprefinerycnt(2)<7){mes "Item คุณมีระดับน้อยกว่า 7 ค่ะ";close;}
+if(getequiprefinerycnt(2)>=8){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 8 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 16 1";
+atcommand strcharinfo(0)+"@cash -50";
+close;
+ninem:
+if(#CASHPOINTS<90){mes "คุณมี Cash น้อยกว่า 90 ค่ะ"; close;}
+if(getequiprefinerycnt(2)<8){mes "Item คุณมีระดับน้อยกว่า 8 ค่ะ";close;}
+if(getequiprefinerycnt(2)>=9){mes "ตีบวกได้ไม่เกินระดับ 9 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 16 1";
+atcommand strcharinfo(0)+"@cash -90";
+close;
+
+// จบการทำงาน armor[เกราะ]
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// ควบคุมการทำงานของ Left [มือซ้าย]
+left:
+menu "+5",fivel,
+"+6",sixl,
+"+7",sevenl,
+"+8",eightl,
+"+9",ninel,
+"- Cancel",Can;
+
+fivel:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(3)<4){mes "Item คุณมีระดับน้อยกว่า 4 ค่ะ";close;}
+if(getequiprefinerycnt(3)>=5){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 5 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 32 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sixl:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(3)<5){mes "Item คุณมีระดับน้อยกว่า 5 ค่ะ";close;}
+if(getequiprefinerycnt(3)>=6){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 6 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 32 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sevenl:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(3)<6){mes "Item คุณมีระดับน้อยกว่า 6 ค่ะ";close;}
+if(getequiprefinerycnt(3)>=7){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 7 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 32 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+eightl:
+if(#CASHPOINTS<50){mes "คุณมี Cash น้อยกว่า 50 ค่ะ"; close;}
+if(getequiprefinerycnt(3)<7){mes "Item คุณมีระดับน้อยกว่า 7 ค่ะ";close;}
+if(getequiprefinerycnt(3)>=8){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 8 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 32 1";
+atcommand strcharinfo(0)+"@cash -50";
+close;
+ninel:
+if(#CASHPOINTS<90){mes "คุณมี Cash น้อยกว่า 90 ค่ะ"; close;}
+if(getequiprefinerycnt(3)<8){mes "Item คุณมีระดับน้อยกว่า 8 ค่ะ";close;}
+if(getequiprefinerycnt(3)>=9){mes "ตีบวกได้ไม่เกินระดับ 9 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 32 1";
+atcommand strcharinfo(0)+"@cash -90";
+close;
+// จบการทำงานของ Left [มือซ้าย]
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// ควบคุมการทำงานของ right [มือขวา]
+right:
+menu "+5",fiver,
+"+6",sixr,
+"+7",sevenr,
+"+8",eightr,
+"+9",niner,
+"- Cancel",Can;
+
+fiver:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(4)<4){mes "Item คุณมีระดับน้อยกว่า 4 ค่ะ";close;}
+if(getequiprefinerycnt(4)>=5){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 5 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 2 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sixr:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(4)<5){mes "Item คุณมีระดับน้อยกว่า 5 ค่ะ";close;}
+if(getequiprefinerycnt(4)>=6){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 6 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 2 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sevenr:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(4)<6){mes "Item คุณมีระดับน้อยกว่า 6 ค่ะ";close;}
+if(getequiprefinerycnt(4)>=7){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 7 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 2 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+eightr:
+if(#CASHPOINTS<50){mes "คุณมี Cash น้อยกว่า 50 ค่ะ"; close;}
+if(getequiprefinerycnt(4)<7){mes "Item คุณมีระดับน้อยกว่า 7 ค่ะ";close;}
+if(getequiprefinerycnt(4)>=8){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 8 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 2 1";
+atcommand strcharinfo(0)+"@cash -50";
+close;
+niner:
+if(#CASHPOINTS<90){mes "คุณมี Cash น้อยกว่า 90 ค่ะ"; close;}
+if(getequiprefinerycnt(4)<8){mes "Item คุณมีระดับน้อยกว่า 8 ค่ะ";close;}
+if(getequiprefinerycnt(4)>=9){mes "ตีบวกได้ไม่เกินระดับ 9 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 2 1";
+atcommand strcharinfo(0)+"@cash -90";
+close;
+// จบการทำงานของ right [มือขวา]
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// ควบคุมการทำงานของ garment [มัฟ]
+garment:
+menu "+5",fiveg,
+"+6",sixg,
+"+7",seveng,
+"+8",eightg,
+"+9",nineg,
+"- Cancel",Can;
+
+fiveg:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(5)<4){mes "Item คุณมีระดับน้อยกว่า 4 ค่ะ";close;}
+if(getequiprefinerycnt(5)>=5){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 5 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 4 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sixg:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(5)<5){mes "Item คุณมีระดับน้อยกว่า 5 ค่ะ";close;}
+if(getequiprefinerycnt(5)>=6){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 6 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 4 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+seveng:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(5)<6){mes "Item คุณมีระดับน้อยกว่า 6 ค่ะ";close;}
+if(getequiprefinerycnt(5)>=7){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 7 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 4 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+eightg:
+if(#CASHPOINTS<50){mes "คุณมี Cash น้อยกว่า 50 ค่ะ"; close;}
+if(getequiprefinerycnt(5)<7){mes "Item คุณมีระดับน้อยกว่า 7 ค่ะ";close;}
+if(getequiprefinerycnt(5)>=8){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 8 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 4 1";
+atcommand strcharinfo(0)+"@cash -50";
+close;
+nineg:
+if(#CASHPOINTS<90){mes "คุณมี Cash น้อยกว่า 90 ค่ะ"; close;}
+if(getequiprefinerycnt(5)<8){mes "Item คุณมีระดับน้อยกว่า 8 ค่ะ";close;}
+if(getequiprefinerycnt(5)>=9){mes "ตีบวกได้ไม่เกินระดับ 9 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 4 1";
+atcommand strcharinfo(0)+"@cash -90";
+close;
+// จบการทำงานของ garment [มัฟ]
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// ควบคุมการทำงานของ Shoes [รองเท้า]
+Shoes:
+menu "+5",fives,
+"+6",sixs,
+"+7",sevens,
+"+8",eights,
+"+9",nines,
+"- Cancel",Can;
+
+fives:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(6)<4){mes "Item คุณมีระดับน้อยกว่า 4 ค่ะ";close;}
+if(getequiprefinerycnt(6)>=5){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 5 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 64 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sixs:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(6)<5){mes "Item คุณมีระดับน้อยกว่า 5 ค่ะ";close;}
+if(getequiprefinerycnt(6)>=6){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 6 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 64 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+sevens:
+if(#CASHPOINTS<25){mes "คุณมี Cash น้อยกว่า 25 ค่ะ"; close;}
+if(getequiprefinerycnt(6)<6){mes "Item คุณมีระดับน้อยกว่า 6 ค่ะ";close;}
+if(getequiprefinerycnt(6)>=7){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 7 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 64 1";
+atcommand strcharinfo(0)+"@cash -25";
+close;
+eights:
+if(#CASHPOINTS<50){mes "คุณมี Cash น้อยกว่า 50 ค่ะ"; close;}
+if(getequiprefinerycnt(6)<7){mes "Item คุณมีระดับน้อยกว่า 7 ค่ะ";close;}
+if(getequiprefinerycnt(6)>=8){mes "Item คุณมีระดับมากกว่าหรือเท่ากับ 8 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 64 1";
+atcommand strcharinfo(0)+"@cash -50";
+close;
+nines:
+if(#CASHPOINTS<90){mes "คุณมี Cash น้อยกว่า 90 ค่ะ"; close;}
+if(getequiprefinerycnt(6)<8){mes "Item คุณมีระดับน้อยกว่า 8 ค่ะ";close;}
+if(getequiprefinerycnt(6)>=9){mes "ตีบวกได้ไม่เกินระดับ 9 ค่ะ";close;}
+mes "เรียบร้อยค่ะ ยินดีให้บริการค่ะ";
+atcommand strcharinfo(0)+"@refine 64 1";
+atcommand strcharinfo(0)+"@cash -90";
+close;
+// จบการทำงานของ Shoes [รองเท้า]
+//-------------------------------------------------------------------
+
+Can:
+mes "["+$namenpcpoint$+"]";
+mes "ยินดีให้บริการค่ะ";
+close;
+
+}

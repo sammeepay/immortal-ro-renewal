@@ -1,0 +1,23 @@
+xmas_fild01.gat,0,0,0,0	monster	Maya	1147,1,0,0,1
+xmas_fild01.gat,0,0,0,0	monster	Ghostring	1120,1,0,0,1
+xmas_fild01.gat,0,0,0,0	monster	Phreeoni	1159,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Turtle Generial	1312,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	GoldenBug	1086,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Drake	1112,1,0,0,1
+xmas_fild01.gat,0,0,0,0	monster	Angeling	1096,1,0,0,1
+xmas_fild01.gat,0,0,0,0	monster	Stormy Knigh	1251,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Eddga 	1115,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Orc hero		1087,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Orc lord	1190,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	MISTRESS	1059,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Dark lord		1272,1,0,0,0
+xmas_fild01.gat,0,0,0,0	 monster	Lord of Death	1373,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Dark Snake Lord	1418,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Osiris	1038,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Doppelganger	1046,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Incantation Samurai	1492,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Dracula	1389,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	MOONLIGHT	1150,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	Baphomet		1039,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	PHARAOH	1157,1,0,0,0
+xmas_fild01.gat,0,0,0,0	monster	GARM	1252,1,0,0,0

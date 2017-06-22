@@ -1,0 +1,443 @@
+-	script	Option Ranking	-1,{ close; OnInit: 
+//========================== Set Option ==========================
+setarray $minpoint[0] ,1,1,1;
+set $optionmvp ,1;
+end; }
+
+
+-	script	Auto Ranking	-1,{
+OnNPCKillEvent:
+set @aritems,7227; // รหัสไอเทมที่ให้ดรอปจาก MVP (100%)
+set @arimounts,1; // จำนวนไอเทมที่ดรอปจาก MVP (100%)
+if ( $optionmvp == 1 && ( killedrid == 1086 || killedrid == 1112 || killedrid == 1115 || killedrid == 1150 || killedrid == 1159 || killedrid == 1252 || killedrid == 1583 || killedrid == 1038 || killedrid == 1046 || killedrid == 1087 || killedrid == 1147 || killedrid == 1251 || killedrid == 1492 || killedrid == 1157 || killedrid == 1312 || killedrid == 1389 || killedrid == 1418 || killedrid == 1658 || killedrid == 1885 || killedrid == 1039 || killedrid == 1190 || killedrid == 1373 || killedrid == 1272 || killedrid == 1623 || killedrid == 1630 || killedrid == 1685 || killedrid == 1719 || killedrid == 1785 || killedrid == 1734 || killedrid == 1059 || killedrid == 1511 || killedrid == 1688 || killedrid == 1708 || killedrid == 1646 || killedrid == 1648 || killedrid == 1647 || killedrid == 1649 || killedrid == 1751 || killedrid == 1779 || killedrid == 1650 || killedrid == 1871 || killedrid == 1768 || killedrid == 1651 || killedrid == 1832 || killedrid == 1874 || killedrid == 1916 || killedrid == 1956 ) ) {
+set MKPoint,MKPoint+1; dispbottom "คุณได้รับคะแนนจากการฆ่า MvP เพิ่มขึ้นอีก 1 Point รวมเป็น "+MKpoint+" Point"; if ( MKPoint >= $minpoint[0] ) getitem @aritems,@arimounts; callfunc "F_rankpoint",0; }
+end;
+OnPCKillEvent:
+getmapxy @mapname$,@mapx,@mapy,0,strcharinfo(0);
+if((@mapname$ == "pvp_y_8-2") || (@mapname$ == "pvp_2vs2") || (@mapname$ == "guild_vs2") || (@mapname$ == "knight_1-1.gat") || (@mapname$ == "guild_vs3") || (@mapname$ == "knight_3-1")) { sleep2 1;
+set PKPoint,PKPoint+1;
+set @kill,@kill+1;
+if(@kill == 1){ Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] First Bloods ["+$@Diename$+"]",bc_map,0xFF8600; }
+else if(@kill == 2) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] DoubleKill ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill == 3) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] TripleKill ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill == 4) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] Domaining ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill == 5) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] Mega Kill ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill == 6) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] Wicked Sick ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill == 7) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] Monster Kill ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill == 8) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] God Like ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill == 9) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] Beyond Godlike ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill == 10) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] Beyond Godlike ["+$@Diename$+"]",bc_map,0xFF8600;
+else if(@kill >= 11) Mapannounce ""+@mapname$+"","["+strcharinfo(0)+"] Beyond Godlike ["+$@Diename$+"]",bc_map,0xFF8600;
+if ( PKPoint >= $minpoint[1] ) callfunc "F_rankpoint",1;
+}
+dispbottom "คุณได้รับคะแนนจากการฆ่าผู้เล่น เพิ่มขึ้นอีก 1 Point รวมเป็น "+PKpoint+" Point";
+end;
+OnPCDieEvent:
+set $@Diename$,strcharinfo(0);
+OnPCLoadMapEvent:
+set @kill,0;
+end;
+OnPCLoginEvent:
+if ( resetpvp < $resetpvp ) { set PKpoint,0; set resetpvp,$resetpvp; }
+if ( resetmvp < $resetmvp ) { set MKpoint,0; set resetmvp,$resetmvp; }
+if ( resetempe < $resetempe ) { set EKpoint,0; set resetempe,$resetempe; }
+end;
+}
+
+function	script	F_rankpoint	{ sleep2 1;
+//============================== Set Rank ========================================
+set @player$,strcharinfo(0); 
+if(getarg(0) == 0){ set @SamePoint[0],MKPoint;
+copyarray @Samepoint[1],$MKpoint[1],10;
+copyarray @Samename$[1],$MKname$[1],10;
+}
+else if(getarg(0) == 1){ set @SamePoint[0],PKPoint;
+copyarray @Samepoint[1],$PKpoint[1],10;
+copyarray @Samename$[1],$PKname$[1],10;
+}
+else if(getarg(0) == 2){ set @SamePoint[0],EKPoint;
+copyarray @Samepoint[1],$EKpoint[1],10;
+copyarray @Samename$[1],$EKname$[1],10; }
+//============================== 1 ========================================
+if (@SamePoint[0] > @Samepoint[1]) { sleep2 1;
+if (@Samename$[1] == @player$) { set @Samepoint[1],@SamePoint[0]; } 
+else if (@Samename$[2] == @player$) { set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; } 
+else if (@Samename$[3] == @player$) { set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2];
+set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; } 
+else if (@Samename$[4] == @player$) { set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2];
+set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; }
+else if (@Samename$[5] == @player$) { set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2];
+set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; }
+else if (@Samename$[6] == @player$) { set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2];
+set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; } 
+else if (@Samename$[7] == @player$) { set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2];
+set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; }
+else if (@Samename$[8] == @player$) { set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2];
+set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; }
+else if (@Samename$[9] == @player$) { set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2];
+set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; } 
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9];
+set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2];
+set @Samename$[2],@Samename$[1]; set @SamePoint[2],@SamePoint[1]; }
+set @Samename$[1],@player$; set @SamePoint[1],@SamePoint[0]; }
+//============================== 2 ========================================
+else if ((@SamePoint[0] < @SamePoint[1]) && (@SamePoint[0] > @SamePoint[2])) { sleep2 1;
+if (@Samename$[2] == @player$) { set @Samepoint[2],@SamePoint[0]; } 
+else if (@Samename$[3] == @player$) { set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2]; } 
+else if (@Samename$[4] == @player$) { set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2]; } 
+else if (@Samename$[5] == @player$) { set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2]; }
+else if (@Samename$[6] == @player$) { set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2]; }
+else if (@Samename$[7] == @player$) { set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2]; } 
+else if (@Samename$[8] == @player$) { set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2]; }
+else if (@Samename$[9] == @player$) { set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2]; }
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9];
+set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3];
+set @Samename$[3],@Samename$[2]; set @SamePoint[3],@SamePoint[2]; }
+set @Samename$[2],@player$; set @SamePoint[2],@SamePoint[0]; }
+//============================== 3 ========================================
+else if ((@SamePoint[0] < @SamePoint[2]) && (@SamePoint[0] > @SamePoint[3])) { sleep2 1;
+if (@Samename$[3] == @player$) { set @Samepoint[3],@SamePoint[0]; } 
+else if (@Samename$[4] == @player$) { set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3]; } 
+else if (@Samename$[5] == @player$) { set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3]; } 
+else if (@Samename$[6] == @player$) { set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3]; }
+else if (@Samename$[7] == @player$) { set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3]; }
+else if (@Samename$[8] == @player$) { set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3]; } 
+else if (@Samename$[9] == @player$) { set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3]; }
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9];
+set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4];
+set @Samename$[4],@Samename$[3]; set @SamePoint[4],@SamePoint[3]; }
+set @Samename$[3],@player$; set @SamePoint[3],@SamePoint[0]; }
+//============================== 4 ========================================
+else if ((@SamePoint[0] < @SamePoint[3]) && (@SamePoint[0] > @SamePoint[4])) { sleep2 1;
+if (@Samename$[4] == @player$) { set @Samepoint[4],@SamePoint[0]; } 
+else if (@Samename$[5] == @player$) { set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4]; } 
+else if (@Samename$[6] == @player$) { set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4]; } 
+else if (@Samename$[7] == @player$) { set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4]; }
+else if (@Samename$[8] == @player$) { set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4]; }
+else if (@Samename$[9] == @player$) { set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4]; } 
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9];
+set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5];
+set @Samename$[5],@Samename$[4]; set @SamePoint[5],@SamePoint[4]; }
+set @Samename$[4],@player$; set @SamePoint[4],@SamePoint[0]; }
+//============================== 5 ========================================
+else if ((@SamePoint[0] < @SamePoint[4]) && (@SamePoint[0] > @SamePoint[5])) { sleep2 1;
+if (@Samename$[5] == @player$) { set @Samepoint[5],@SamePoint[0]; } 
+else if (@Samename$[6] == @player$) { set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5]; } 
+else if (@Samename$[7] == @player$) { set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5]; } 
+else if (@Samename$[8] == @player$) { set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5]; }
+else if (@Samename$[9] == @player$) { set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5]; }
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9];
+set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6];
+set @Samename$[6],@Samename$[5]; set @SamePoint[6],@SamePoint[5]; }
+set @Samename$[5],@player$; set @SamePoint[5],@SamePoint[0]; }
+//============================== 6 ========================================
+else if ((@SamePoint[0] < @SamePoint[5]) && (@SamePoint[0] > @SamePoint[6])) { sleep2 1;
+if (@Samename$[6] == @player$) { set @Samepoint[6],@SamePoint[0]; } 
+else if (@Samename$[7] == @player$) { set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6]; } 
+else if (@Samename$[8] == @player$) { set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6]; } 
+else if (@Samename$[9] == @player$) { set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6]; }
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9];
+set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7];
+set @Samename$[7],@Samename$[6]; set @SamePoint[7],@SamePoint[6]; }
+set @Samename$[6],@player$; set @SamePoint[6],@SamePoint[0]; }
+//============================== 7 ========================================
+else if ((@SamePoint < @SamePoint[6]) && (@SamePoint[0] > @SamePoint[7])) { sleep2 1;
+if (@Samename$[7] == @player$) { set @Samepoint[7],@SamePoint[0]; } 
+else if (@Samename$[8] == @player$) { set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7]; } 
+else if (@Samename$[9] == @player$) { set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7]; } 
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9];
+set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8];
+set @Samename$[8],@Samename$[7]; set @SamePoint[8],@SamePoint[7]; }
+set @Samename$[7],@player$; set @SamePoint[7],@SamePoint[0]; }
+//============================== 8 ========================================
+else if ((@SamePoint[0] < @SamePoint[7]) && (@SamePoint[0] > @SamePoint[8])) { sleep2 1;
+if (@Samename$[8] == @player$) { set @Samepoint[8],@SamePoint[0]; } 
+else if (@Samename$[9] == @player$) { set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8]; } 
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9];
+set @Samename$[9],@Samename$[8]; set @SamePoint[9],@SamePoint[8]; } 
+set @Samename$[8],@player$; set @SamePoint[8],@SamePoint[0]; }
+//============================== 9 ========================================
+else if ((@SamePoint[0] < @SamePoint[8]) && (@SamePoint[0] > @SamePoint[9])) { sleep2 1;
+if (@Samename$[9] == @player$) { set @Samepoint[9],@SamePoint[0]; } 
+else { set @Samename$[10],@Samename$[9]; set @SamePoint[10],@SamePoint[9]; } 
+set @Samename$[9],@player$; set @SamePoint[9],@SamePoint[0]; }
+//============================== 10 ========================================
+else if ((@SamePoint[0] < @SamePoint[9]) && (@SamePoint[0] > @SamePoint[10])) { sleep2 1;
+if (@Samename$[10] == @player$) { set @Samepoint[10],@SamePoint[0]; } 
+else { set @Samename$[10],@player$; set @SamePoint[10],@SamePoint[0]; } }
+//============================= Update =======================================
+else { sleep2 1;
+if (@Samename$[1] == @player$) { set @Samepoint[1],@SamePoint[0]; }
+else if (@Samename$[2] == @player$) { set @Samepoint[2],@SamePoint[0]; }
+else if (@Samename$[3] == @player$) { set @Samepoint[3],@SamePoint[0]; }
+else if (@Samename$[4] == @player$) { set @Samepoint[4],@SamePoint[0]; }
+else if (@Samename$[5] == @player$) { set @Samepoint[5],@SamePoint[0]; }
+else if (@Samename$[6] == @player$) { set @Samepoint[6],@SamePoint[0]; }
+else if (@Samename$[7] == @player$) { set @Samepoint[7],@SamePoint[0]; }
+else if (@Samename$[8] == @player$) { set @Samepoint[8],@SamePoint[0]; }
+else if (@Samename$[9] == @player$) { set @Samepoint[9],@SamePoint[0]; }
+else if (@Samename$[10] == @player$) { set @Samepoint[10],@SamePoint[0]; } }
+sleep2 1;
+//============================== Set กลับ ====================================
+if(getarg(0) == 0){ copyarray $MKpoint[1],@Samepoint[1],10; copyarray $MKname$[1],@Samename$[1],10; }
+else if(getarg(0) == 1){ copyarray $PKpoint[1],@Samepoint[1],10; copyarray $PKname$[1],@Samename$[1],10; }
+else if(getarg(0) == 2){ copyarray $EKpoint[1],@Samepoint[1],10; copyarray $EKname$[1],@Samename$[1],10; }
+return;
+}
+//==*==*==*==*==*==*==*==*==*==*==* Ranking Board *==*==*==*==*==*==*==*==*==*==*==*
+-	script	ranking::RKG	-1,{
+set $@name_rk$,"^000080[ Ranking System ]^000000";
+if ($@ActiveSv == 0) end;
+mes $@name_rk$;
+if (getgmlevel() > 90){ 
+mes "สวัสดี GM ^FF0000 "+strcharinfo(0)+" ^000000 ";
+mes "เลือกเมนูที่ท่านต้องการ";
+next;
+menu "^FF0000-^000000 ตรวจสอบอันดับ และ คะแนน",-,"^FF0000-^000000 Reset จัดอันดับ",R_reset;
+}
+else { 
+mes "สวัสดี ^FF0000 "+strcharinfo(0)+" ^000000 ";
+mes "ท่านต้องการตรวจสอบอะไร ?";
+}
+next;
+menu "^FF0000-^000000 Ranking PVP",R_pvp,"^FF0000-^000000 Ranking MVP",R_mvp,"^FF0000-^000000 Ranking Emperium",R_empe,"^FF0000-^000000 ตรวจสอบคะแนนตนเอง",R_check,"^FF0000-^000000 วิธีตรวจสอบคะแนนโดยคำสั่ง",checkranking1;
+
+checkranking1:
+mes "^000080[ Ranking System ]^000000";
+mes "ชื่อผู้กระซิบพิมว่า [ npc:ranking ]";
+mes "คำสั่งเช็คมีดังต่อไปนี้";
+mes "เช็คอันดับ PvP = p";
+mes "เช็คอันดับ MvP = m";
+mes "เช็คอันดับ GuildWar = e";
+mes "เช็คอันดับ ตัวเอง = c";
+close;
+
+OnWhisperGlobal: 
+if (@whispervar0$ == "mvp" || @whispervar0$ == "m") {
+R_mvp:
+dispbottom "======================= MVP RANKING =======================";
+dispbottom " [01] "+$MKpoint[1]+" Point : " +$MKname$[1]+"";
+dispbottom " [02] "+$MKpoint[2]+" Point : " +$MKname$[2]+"";
+dispbottom " [03] "+$MKpoint[3]+" Point : " +$MKname$[3]+"";
+dispbottom " [04] "+$MKpoint[4]+" Point : " +$MKname$[4]+"";
+dispbottom " [05] "+$MKpoint[5]+" Point : " +$MKname$[5]+"";
+dispbottom " [06] "+$MKpoint[6]+" Point : " +$MKname$[6]+"";
+dispbottom " [07] "+$MKpoint[7]+" Point : " +$MKname$[7]+"";
+dispbottom " [08] "+$MKpoint[8]+" Point : " +$MKname$[8]+"";
+dispbottom " [09] "+$MKpoint[9]+" Point : " +$MKname$[9]+"";
+dispbottom " [10] "+$MKpoint[10]+" Point : " +$MKname$[10]+"";
+dispbottom "========================================================";
+close;
+}
+else if (@whispervar0$ == "pvp" || @whispervar0$ == "p") {
+R_pvp:
+dispbottom "======================= PVP RANKING =======================";
+dispbottom " [01] "+$PKpoint[1]+" Point : " +$PKname$[1]+"";
+dispbottom " [02] "+$PKpoint[2]+" Point : " +$PKname$[2]+"";
+dispbottom " [03] "+$PKpoint[3]+" Point : " +$PKname$[3]+"";
+dispbottom " [04] "+$PKpoint[4]+" Point : " +$PKname$[4]+"";
+dispbottom " [05] "+$PKpoint[5]+" Point : " +$PKname$[5]+"";
+dispbottom " [06] "+$PKpoint[6]+" Point : " +$PKname$[6]+"";
+dispbottom " [07] "+$PKpoint[7]+" Point : " +$PKname$[7]+"";
+dispbottom " [08] "+$PKpoint[8]+" Point : " +$PKname$[8]+"";
+dispbottom " [09] "+$PKpoint[9]+" Point : " +$PKname$[9]+"";
+dispbottom " [10] "+$PKpoint[10]+" Point : " +$PKname$[10]+"";
+dispbottom "========================================================";
+close;
+}
+else if (@whispervar0$ == "emperium" || @whispervar0$ == "e") {
+R_empe:
+dispbottom "==================== Emperium RANKING =======================";
+dispbottom " [01] "+$EKpoint[1]+" Point : " +$EKname$[1]+"";
+dispbottom " [02] "+$EKpoint[2]+" Point : " +$EKname$[2]+"";
+dispbottom " [03] "+$EKpoint[3]+" Point : " +$EKname$[3]+"";
+dispbottom " [04] "+$EKpoint[4]+" Point : " +$EKname$[4]+"";
+dispbottom " [05] "+$EKpoint[5]+" Point : " +$EKname$[5]+"";
+dispbottom " [06] "+$EKpoint[6]+" Point : " +$EKname$[6]+"";
+dispbottom " [07] "+$EKpoint[7]+" Point : " +$EKname$[7]+"";
+dispbottom " [08] "+$EKpoint[8]+" Point : " +$EKname$[8]+"";
+dispbottom " [09] "+$EKpoint[9]+" Point : " +$EKname$[9]+"";
+dispbottom " [10] "+$EKpoint[10]+" Point : " +$EKname$[10]+"";
+dispbottom "========================================================";
+close;
+}
+else if (@whispervar0$ == "check" || @whispervar0$ == "c") {
+R_check:
+dispbottom "======================= Point Report ========================";
+dispbottom " Name : "+strcharinfo(0)+"";
+dispbottom " Pvp Point : "+PKPoint+" point";
+dispbottom " Mvp Point : "+MKPoint+" point";
+dispbottom " Emperium Point : "+EKPoint+" point";
+dispbottom "========================================================";
+close;
+}
+else if (@whispervar0$ == "reset" || @whispervar0$ == "r") {
+R_reset:
+if (getgmlevel() < 90){ dispbottom "คำสั่งนี้ใช้งานได้เฉพาะ GM ระดับ 90 ขึ้นไปเท่านั้น !!"; close; }
+mes $@name_rk$;
+mes "ท่านต้องการ Reset Rank อะไร ?";
+next;
+menu "^FF0000-^000000 Reset Ranking PVP",R_repvp,"^FF0000-^000000 Reset Ranking MVP",R_remvp,"^FF0000-^000000 Reset Ranking Emperium",R_reempe,"^FF0000-^000000 Reset Ranking ทั้งหมด",R_reall;
+R_repvp:
+mes $@name_rk$;
+mes "ท่านต้องการ Reset PVP Point";
+mes "ของผู้เล่นด้วยหรือไม่ ?";
+menu "^FF0000-^000000 Reset Ranking PVP อย่างเดียว",R_resetpvp,"^FF0000-^000000 Reset PVP Point ของผู้เล่นด้วย",-;
+set $resetpvp,$resetpvp+1;
+R_resetpvp:
+setarray $PKname$[1],"None","None","None","None","None","None","None","None","None","None";
+setarray $PKpoint[1],0,0,0,0,0,0,0,0,0,0;
+goto R_finish;
+R_remvp:
+mes $@name_rk$;
+mes "ท่านต้องการ Reset MVP Point";
+mes "ของผู้เล่นด้วยหรือไม่ ?";
+menu "^FF0000-^000000 Reset Ranking MVP อย่างเดียว",R_resetmvp,"^FF0000-^000000 Reset MVP Point ของผู้เล่นด้วย",-;
+set $resetmvp,$resetmvp+1;
+R_resetmvp:
+setarray $MKname$[1],"None","None","None","None","None","None","None","None","None","None";
+setarray $MKpoint[1],0,0,0,0,0,0,0,0,0,0;
+goto R_finish;
+R_reempe:
+mes $@name_rk$;
+mes "ท่านต้องการ Reset Emperium Point";
+mes "ของผู้เล่นด้วยหรือไม่ ?";
+menu "^FF0000-^000000 Reset Ranking Emperium อย่างเดียว",R_resetempe,"^FF0000-^000000 Reset Emperium Point ของผู้เล่นด้วย",-;
+set $resetempe,$resetempe+1;
+R_resetempe:
+setarray $EKname$[1],"None","None","None","None","None","None","None","None","None","None";
+setarray $EKpoint[1],0,0,0,0,0,0,0,0,0,0;
+goto R_finish;
+R_reall:
+mes $@name_rk$;
+mes "ท่านต้องการ Reset Point ทั้งหมด";
+mes "ของผู้เล่นด้วยหรือไม่ ?";
+menu "^FF0000-^000000 Reset Ranking ทั้งหมดอย่างเดียว",R_resetall,"^FF0000-^000000 Reset Point ของผู้เล่นทั้งหมดด้วย",-;
+set $resetpvp,$resetpvp+1; set $resetmvp,$resetmvp+1; set $resetempe,$resetempe+1;
+R_resetall:
+setarray $PKname$[1],"None","None","None","None","None","None","None","None","None","None";
+setarray $PKpoint[1],0,0,0,0,0,0,0,0,0,0;
+setarray $MKname$[1],"None","None","None","None","None","None","None","None","None","None";
+setarray $MKpoint[1],0,0,0,0,0,0,0,0,0,0;
+setarray $EKname$[1],"None","None","None","None","None","None","None","None","None","None";
+setarray $EKpoint[1],0,0,0,0,0,0,0,0,0,0;
+R_finish:
+mes " ";
+mes "ดำเนินการ Reset เป็นที่เรียบร้อย !";
+close;
+}
+else if (@whispervar0$ == "B") {
+input @Megaphone$;
+next; 
+atcommand strcharinfo(0)+ " : " + @Megaphone$;
+close;
+}
+
+else { dispbottom "ranking : กรุณาใส่คำสั่งให้ถูกต้อง ( pvp , p , mvp , m , emperium , e , check , c , reset , r )"; close; }
+OnInit: 
+if($MKpoint[1] == 0) set $MKname$[1],"None"; if($MKpoint[2] == 0) set $MKname$[2],"None"; if($MKpoint[3] == 0) set $MKname$[3],"None"; if($MKpoint[4] == 0) set $MKname$[4],"None"; if($MKpoint[5] == 0) set $MKname$[5],"None";
+if($MKpoint[6] == 0) set $MKname$[6],"None"; if($MKpoint[7] == 0) set $MKname$[7],"None"; if($MKpoint[8] == 0) set $MKname$[8],"None"; if($MKpoint[9] == 0) set $MKname$[9],"None"; if($MKpoint[10] == 0) set $MKname$[10],"None";
+if($PKpoint[1] == 0) set $PKname$[1],"None"; if($PKpoint[2] == 0) set $PKname$[2],"None"; if($PKpoint[3] == 0) set $PKname$[3],"None"; if($PKpoint[4] == 0) set $PKname$[4],"None"; if($PKpoint[5] == 0) set $PKname$[5],"None";
+if($PKpoint[6] == 0) set $PKname$[6],"None"; if($PKpoint[7] == 0) set $PKname$[7],"None"; if($PKpoint[8] == 0) set $PKname$[8],"None"; if($PKpoint[9] == 0) set $PKname$[9],"None"; if($PKpoint[10] == 0) set $PKname$[10],"None";
+if($EKpoint[1] == 0) set $EKname$[1],"None"; if($EKpoint[2] == 0) set $EKname$[2],"None"; if($EKpoint[3] == 0) set $EKname$[3],"None"; if($EKpoint[4] == 0) set $EKname$[4],"None"; if($EKpoint[5] == 0) set $EKname$[5],"None";
+if($EKpoint[6] == 0) set $EKname$[6],"None"; if($EKpoint[7] == 0) set $EKname$[7],"None"; if($EKpoint[8] == 0) set $EKname$[8],"None"; if($EKpoint[9] == 0) set $EKname$[9],"None"; if($EKpoint[10] == 0) set $EKname$[10],"None";
+end;
+}

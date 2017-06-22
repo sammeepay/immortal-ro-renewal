@@ -1,0 +1,24 @@
+//===== Developers Script ===================================
+//= Server Rate
+//===== Current Version =====================================
+//= 1.0
+//===== Description =========================================
+//= Server Rate
+//===== Additional Comments =================================
+//= 1.0 Start Version
+//= 1.1 Edit By Ragnarok PVP GVG
+//===========================================================
+rtc_ro,93,21,4	script	Up Level Guild	933,{
+
+mes "^0000FFUp Level Guild^000000";
+mes "ข้าเพิ่ม Level Guild ให้เจ้า";
+mes "เรียบร้อยแล้ว";
+atcommand strcharinfo(0) + "@guildlvlup 50";
+close;
+
+OnInit:
+waitingroom "   Up Level Guild",0;
+end;
+
+end;
+}

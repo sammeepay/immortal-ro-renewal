@@ -1,0 +1,78 @@
+//===================================================================
+// NPC : PCBangbuff
+// Design By : I n C e - E x c e l l e n t
+// Contact : Badboy_Love_Girl@hotmail.com
+//===================================================================
+
+rachel.gat,141,121,4	script	PCbangbuff	405,{
+mes "^FF0000~• PCbangbuff •~^000000";
+mes "สวัสดีค่ะคุณ [ ^8B0000 " + strcharinfo(0) + " ^000000 ]";
+mes "นี่คือ บริการ PCbangbuff";
+mes "Buff Support พิเศษจากเซิฟเวอร์";
+mes "รายละเอียด...";
+mes "Matk & Atk + 50 5 นาที";
+mes "All Stats + 6 5 นาที";
+mes "Assumptio Skill 5 นาที";
+mes "Full Chemical Protection Skill 5 นาที";
+mes "Speed of walking 5 นาที";
+mes "^FF0000ถ้าบัพไม่โชว์ไอคอน ให้ดูที่ Alt+A";
+mes "________________________________^000000";
+mes "ทุกๆครั้งที่ใช้ บริการ PCbangbuff Support";
+mes "จะต้องใช้  Skull 5 ea. ทุกๆครั้ง";
+mes "ท่านต้องการใช้บริการนี้ไหมล่ะ";
+next;
+menu 
+"- ใช้บริการ PCbangbuff",UsedPCBuff,
+"Exit",cancel;
+
+
+
+UsedPCBuff:
+if(countitem(7420)<5) goto nohave;
+mes "^FF0000~• PCbangbuff •~^000000";
+mes "ขอบคุณที่ใช้บริการ ขอบคุณค่ะ";
+sc_start SC_STRFood,300000,6;
+sc_start SC_AGIFood,300000,6;
+sc_start SC_VITFood,300000,6;
+sc_start SC_INTFood,300000,6;
+sc_start SC_DEXFood,300000,6;
+sc_start SC_LUKFood,300000,6;
+sc_start SC_SpeedUp1,300000,0;
+sc_start SC_ASSUMPTIO,300000,5; 
+sc_start SC_ATKPOTION,300000,50; 
+sc_start SC_MATKPOTION,300000,50; 
+sc_start SC_CP_HELM,300000,5;
+sc_start SC_CP_SHIELD,300000,5;
+sc_start SC_CP_ARMOR,300000,5;
+sc_start SC_CP_WEAPON,300000,5;
+specialeffect2 507; sc_start SC_SpeedUp1,30000,0;
+percentheal 100,100;
+delitem 7420,5;
+specialeffect2 (635);
+specialeffect2 (8);
+specialeffect2 (636);
+specialeffect2 (17);
+specialeffect2 (375);
+close;
+
+
+
+nohave:
+mes "^FF0000~• PCbangbuff •~^000000";
+mes "ท่านมี Skull ไม่ครบ";
+mes "ตามจำนวนที่ต้องการค่ะ";
+close;
+
+
+
+cancel:
+mes "^FF0000~• PCbangbuff •~^000000";
+mes "แล้วพบกันใหม่";
+close;
+
+
+
+OnInit:
+waitingroom "PCbangbuff",0;
+end;
+}

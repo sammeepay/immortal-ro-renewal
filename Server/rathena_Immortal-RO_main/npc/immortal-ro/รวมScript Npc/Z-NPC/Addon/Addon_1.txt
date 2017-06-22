@@ -1,0 +1,38 @@
+//====================================
+//     = Server By exsoulionzzz =
+//====================================
+
+
+prt_maze02,0,0,0,0	boss_monster	Eye One Evil	2728,1,14400000,0,1
+pay_fild09,0,0,0,0	boss_monster	Beast Vincento	2706,1,14400000,0,1
+cmd_fild07,0,0,0,0	boss_monster	Captain Skull	2708,1,14400000,0,1
+c_tower1,0,0,0,0	boss_monster	Cherry Blue	2709,1,14400000,0,1
+odin_tem01,0,0,0,0	boss_monster	Guardian Angel	2710,1,14400000,0,1
+moc_fild21,0,0,0,0	boss_monster	Cyan Satan	2713,1,14400000,0,1
+ayo_fild01,0,0,0,0	boss_monster	Daehyon	2715,1,14400000,0,1
+ice_dun02,0,0,0,0	boss_monster	Dancer Isabelle	2717,1,14400000,0,1
+
+um_fild01,0,0,0,0	boss_monster	Elf Men	2726,1,14400000,0,1
+beach_dun3,0,0,0,0	boss_monster	Fabilsag	2729,1,14400000,0,1
+mag_dun02,0,0,0,0	boss_monster	Fight Man	2730,1,14400000,0,1
+gon_dun03,0,0,0,0	boss_monster	Gentle Sting	2735,1,14400000,0,1
+iz_dun04,0,0,0,0	boss_monster	Kraken	2750,1,14400000,0,1
+gef_fild07,0,0,0,0	boss_monster	Larva	2751,1,14400000,0,1
+ra_fild06,0,0,0,0	boss_monster	Madame Chiffon	2753,1,14400000,0,1
+orcsdun01,0,0,0,0	boss_monster	Maiden Ghost	2755,1,14400000,0,1
+
+iz_dun04,0,0,0,0	boss_monster	Office Killer	2769,1,14400000,0,1
+gef_dun02,0,0,0,0	boss_monster	Okto	2770,1,14400000,0,1
+c_tower4,0,0,0,0	boss_monster	Phoenix	2772,1,14400000,0,1
+in_sphinx4,0,0,0,0	boss_monster	Queen Mummy	2777,1,14400000,0,1
+beach_dun2,0,0,0,0	boss_monster	Sea Elephant	2780,1,14400000,0,1
+iz_dun03,0,0,0,0	boss_monster	Siren Mermaid	2783,1,14400000,0,1
+
+mag_dun01,0,0,0,0	boss_monster	Thor Valkyrie	2794,1,14400000,0,1
+pay_dun03,0,0,0,0	boss_monster	Werepot	2805,1,14400000,0,1
+mjo_dun03,0,0,0,0	boss_monster	Bangungot	2810,1,14400000,0,1
+gef_fild03,0,0,0,0	boss_monster	Bungisngis	2811,1,14400000,0,1
+pay_dun04,0,0,0,0	boss_monster	Pyuriel	2812,1,14400000,0,1
+pay_fild04,0,0,0,0	boss_monster	Soheon	2813,1,14400000,0,1
+anthell01,0,0,0,0	boss_monster	Arrow Men	2814,1,14400000,0,1
+

@@ -215,26 +215,26 @@ moc_para01,27,35,5	script	Secretary Lime Evenor	952,{
 
 -	script	Eden Teleport Officer#0::eto	-1,{
 	mes "[Eden Teleport Officer]";
-	mes "Those who are wandering around this strange world with aimless eyes listen up and come to me!";
-	mes "Eden group is here to help you and will show you the great future.";
+	mes "ใครที่กำลังจะออกเดินทางไปยังสถานที่แปลกใหม่ และยังไม่มีจุดหมายปลายทาง ฟังทางนี้และมากับข้า!";
+	mes "Eden group จะช่วยท่านและแสดงให้เห็นถึงอนาคตที่ดีกว่า";
 	next;
 	mes "[Eden Teleport Officer]";
-	mes "You have nothing to do but waste your time?";
-	mes "You are eager to do something good but no one offers you work?";
-	mes "Would you like to be a problem solver?";
-	mes "Eden group is here to solve your problem.";
+	mes "ท่านเคยรู้สึกว่าปล่อยเวลาให้สูญไป โดยเปล่าประโยชน์ไหม?";
+	mes "ท่านเป็นคนที่มีความกระตือรือร้น แต่ไม่มีใครหยิบยื่นงานดีๆให้ทำ หรือเปล่า?";
+	mes "ท่านต้องการผู้ที่สามารถแก้ปัญหา เหล่านี้ได้หรือไม่?";
+	mes "Eden group สามารถช่วยแก้ไขปัญหาต่างๆ เหล่านี้ให้ท่านได้";
 	next;
-	switch (select("Move to Eden Group.:Don't want to talk anymore.")) {
+	switch (select("ไปยัง Eden Group.:ไม่อยากพูดอะไรแล้ว")) {
 	case 1:
 		mes "[Eden Teleport Officer]";
-		mes "Let's go to our secret base!";
+		mes "ไปยังฐานลับของเรากันเลยยยย!";
 		set nak_warp,strnpcinfo(2);
 		close2;
 		warp "moc_para01",31,14;
 		end;
 	case 2:
 		mes "[Eden Teleport Officer]";
-		mes "If you don't know what to do for your future, don't hesitate to tell me. Just drop by and talk to me! Ok?";
+		mes "ถ้าท่านไม่รู้ว่าจะทำยังไงกับอนาคต ของท่านดี อย่าลังเลที่จะบอกข้า ทิ้งมันไปสะ แล้วบอกข้า! ตกลงนะ?";
 		close;
 	}
 }

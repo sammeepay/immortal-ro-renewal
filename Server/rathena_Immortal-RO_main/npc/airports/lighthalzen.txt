@@ -14,19 +14,22 @@
 
 lhz_airport,143,43,5	script	Airport Staff#lhz_air1a::lhz_airport1	90,{
 	mes "[Airport Staff]";
-	mes "Welcome to the";
-	mes "Lighthalzen Airport,";
-	mes "where we offer nonstop";
-	mes "flights to Einbroch, Juno and Hugel.";
+	mes "ยินดีต้อนรับสู่!!";
+	mes "Lighthalzen แอร์พอร์ท";
+	mes "เราให้บริการเที่ยวบิน";
+	mes "ตลอด 24 ช.ม. สำหรับผู้คน";
+	mes "ต้องการเดินทางไปยังเมือง";
+	mes "Einbroch,Juno และ Hugel";
 	next;
-	if (select("Board the Airship.:Cancel.") == 1) {
+	if (select("ขึ้นเรือเหาะ:ยกเลิก") == 1) {
 		mes "[Airport Staff]";
-		mes "The boarding fee is";
-		mes "1,200 zeny, but you can";
-		mes "waive the fee if you redeem";
-		mes "a Free Ticket for Airship.";
+		mes "ค่าบริการคือ";
+		mes "1,200 zeny แต่เรา";
+		mes "จะไม่เก็บค่าบริการถ้าคุณมี";
+		mes "Free Ticket for Airship";
+		mes "คุณตกลงที่จะใช้บริการไหม?";
 		next;
-		if (select("Yes:No") == 1) {
+		if (select("ใช่:ไม่") == 1) {
 			if (countitem(7311) > 0) {
 				delitem 7311,1; //Free_Flying_Ship_Ticket
 				warp "lhz_airport",148,51;
@@ -38,16 +41,15 @@ lhz_airport,143,43,5	script	Airport Staff#lhz_air1a::lhz_airport1	90,{
 				end;
 			}
 			mes "[Airship Staff]";
-			mes "I'm sorry, but you don't";
-			mes "have 1,200 zeny to pay";
-			mes "for the boarding fee.";
+			mes "ขออภัยแต่คุณมี Zeny ไม่พอ";
+			mes "ค่าบริการคือ 1200 Zeny";
+			mes "กรุณากลับมาใหม่ภายหลัง";
 			close;
 		}
 	}
 	mes "[Airport Staff]";
-	mes "Thank you and";
-	mes "please come again.";
-	mes "Have a good day~";
+	mes "ขอบคุณที่ใช้บริการ";
+	mes "ขอให้เดินทางปลอดถัย~";
 	close;
 }
 
@@ -56,28 +58,29 @@ lhz_airport,126,43,5	duplicate(lhz_airport1)	Airship Staff#lhz_air1c	90
 
 lhz_airport,143,49,3	script	Arrival Staff#lhz_air2a::lhz_airport2	90,{
 	mes "[Arrival Staff]";
-	mes "Welcome to Lighthalzen Airport.";
-	mes "Please let me guide you to the";
-	mes "main terminal if you are arriving from your flight. Otherwise, please";
-	mes "board the departing Airship to reach your intended destination.";
+	mes "ยินดีต้อนรับสู่!!";
+	mes "Lighthalzen แอร์พอร์ท";
+	mes "หากคุณมาจากเที่ยวบิน";
+	mes "ให้ฉันนำคุณไปยังอาคารผู้โดยสารหลัก";
+	mes "หรือหากคุณจะขึ้นเรือเหาะ เมืองต่อไปคือ";
+	mes "Einbroch,Juno และ Hugel";
 	next;
-	if (select("Exit to main terminal.:Cancel.") == 1) {
+	if (select("ออกไปยังอาคารผู้โดยสารหลัก:ยกเลิก") == 1) {
 		mes "[Arrival Staff]";
-		mes "Once you're in the main terminal, you will need to pay the fee again";
-		mes "to board an Airship. You should";
-		mes "only exit if Lighthalzen is your intended destination. Shall we";
-		mes "proceed to the main terminal?";
+		mes "หากคุณไปที่อาคารผู้โดยสาร";
+		mes "แล้วอยากกลับมาขึ้นเรือเหาะ";
+		mes "คุณต้องจ่ายค่าบริการใหม่";
+		mes "อยากไปอาคารผู้โดยสารหลักไหม?";
 		next;
-		if (select("Yes:No") == 1) {
+		if (select("ใช่:ไม่") == 1) {
 			warp "lhz_airport",142,40;
 			end;
 		}
 	}
 	mes "[Arrival Staff]";
-	mes "Alright, thank you";
-	mes "for your patronage";
-	mes "and I hope you have";
-	mes "a pleasant flight~";
+	mes "ขอบคุณที่ใช้บริการ";
+	mes "ฉันหวังว่าคุณจะมี";
+	mes "ความสุขที่ได้บินกับเรา";
 	close;
 }
 

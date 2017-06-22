@@ -35,13 +35,17 @@
 // - Open player's storage.
 // - No arguments.
 function	script	F_CashStore	{
+	setarray @K_MC_Storage0$[0],"^0000ffเปิดคลังเก็บของหลัก^000000","เปิดคลังเก็บของที่ 2 - ^ff0000Yggdrasil^000000","เปิดคลังเก็บของที่ 3 - ^ff0000Valkyrie^000000";
+	set .@menu$, "";
+	for (set .@i, 0; .@i < getarraysize(@K_MC_Storage0$); set .@i, .@i + 1)
+		set .@menu$, .@menu$ + @K_MC_Storage0$[.@i] + ":";
+	set .@j, select (.@menu$) - 1;
 	cutin "kafra_01",2;
-	mes "[Kafra Employee]";
-	mes "Welcome to the Kafra Corporation.";
-	mes "Here, let me open your Storage for you.";
-	close2;
-	openstorage;
-	cutin "",255;
+	callfunc("F_CheckKafCode");	//check your storage password, if set
+	if(@K_MC_Storage0$[.@j] == "^0000ffเปิดคลังเก็บของหลัก^000000") openstorage;
+	else if(@K_MC_Storage0$[.@j] == "เปิดคลังเก็บของที่ 2 - ^ff0000Yggdrasil^000000") openstorage2 1,STOR_MODE_GET|STOR_MODE_PUT;
+	else if(@K_MC_Storage0$[.@j] == "เปิดคลังเก็บของที่ 3 - ^ff0000Valkyrie^000000") openstorage2 2,STOR_MODE_GET|STOR_MODE_PUT;
+	cutin "", 255;
 	return;
 }
 

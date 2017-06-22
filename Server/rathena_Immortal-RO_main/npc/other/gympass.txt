@@ -19,37 +19,37 @@
 
 payon,173,141,4	script	Ripped Cabus#GymPass	899,{
 	mes "[Ripped]";
-	mes "Hey, there. People aren't";
-	mes "as physically active as they";
-	mes "used to be. Even if you fight";
-	mes "for a living, your body might";
-	mes "be weak and flabby in some";
-	mes "areas. Know what I mean?";
+	mes "ว่าไง ร่างกายของคนเรา";
+	mes "ไม่แข็งแรงเหมือนแต่ก่อนว่าไหม";
+	mes "แม้ว่าเจ้าจะต่อสู้เพื่อ";
+	mes "ความอยู่รอด ร่างกายเจ้าก็จะ";
+	mes "อ่อนแอและหมดแรงลงได้";
+	mes "เจ้ารู้ใช่ไหมว่าข้าหมายถึงอะไร?";
 	next;
 	mes "[Ripped]";
-	mes "Hey, train with me, and I can";
-	mes "guarantee that you'll be able";
-	mes "to lift and carry more of your";
-	mes "stuff. Just gimme your";
-	mes "^FF0000Gym Pass^000000 each time,";
-	mes "and we'll be good to go.";
+	mes "นี่ ถ้าเจ้ามาฝึกกับข้านะ";
+	mes "ข้ารับรองได้ว่าเจ้าจะสามารถ";
+	mes "ถือของได้มากขึ้นกว่าเดิม";
+	mes "เพียงแค่เจ้าเอา";
+	mes "^FF0000Gym Pass^000000 มาด้วยทุกครั้ง";
+	mes "และทุกอย่างจะเรียบร้อย";
 	next;
 	mes "[Ripped]";
-	mes "But don't get too excited:";
-	mes "no matter how much training";
-	mes "I take you through, you can";
-	mes "overdo it. You ever hear of";
-	mes "anyone that got too buff?";
-	mes "That's cuz they're dead. See?";
+	mes "แต่ไม่ต้องตื่นเต้นนะ:";
+	mes "ไม่ว่าข้าจะฝึกเจ้าหนัก";
+	mes "แค่ไหน เจ้าก็ผ่านไปได้";
+	mes "เจ้าเคยได้ยินพวกที่";
+	mes "อึดมากๆ มั่งไหม?";
+	mes "รู้ไหมว่าพวกนั้นตายไปหมดแล้ว?";
 	next;
 	mes "[Ripped]";
-	mes "I'd say that it'd be safe";
-	mes "for you to seriously train";
-	mes "with me and increase your";
-	mes "item carrying capacity ^FF000010 times^000000.";
-	mes "So... Are you ready to sweat?";
+	mes "ข้าเพียงจะบอกว่าเจ้าว่า";
+	mes "การฝึกกับข้าเจ้าจะปลอดภัย";
+	mes "และเพิ่มความสามารถ";
+	mes "ในการแบงของเพิ่มขึ้น ^FF000010 เท่า^000000";
+	mes "เอาล่ะ...พร้อมที่จะเหนื่อยหรือยัง?";
 	next;
-	switch(select("Yes:No:Um, my workouts wore off.")) {
+	switch(select("พร้อมแล้ว:ยัง:เอ่อ พลังของข้าสูญหายไป")) {
 	case 1:
 		if (gympassmemory < 10) {
 			set .@add_carry,gympassmemory + 1;
@@ -84,11 +84,11 @@ payon,173,141,4	script	Ripped Cabus#GymPass	899,{
 			}
 			else {
 				mes "[Ripped]";
-				mes "Dude, what'd I tell you?";
-				mes "You gotta bring me your";
-				mes "^FF0000Gym Pass^000000 if you wanna";
-				mes "work out, and build up your";
-				mes "item carrying muscles.";
+				mes "เพื่อนรัก ข้าบอกเจ้าไปแล้วนี่?";
+				mes "เจ้าจะต้องเอา";
+				mes "^FF0000Gym Pass^000000 มาให้ข้าด้วย";
+				mes "หากเจ้าต้องการที่จะ";
+				mes "เพิ่มความแข็งแกร่งของกล้ามเนื้อเจ้า";
 				close;
 			}
 		}
@@ -104,12 +104,12 @@ payon,173,141,4	script	Ripped Cabus#GymPass	899,{
 		}
 	case 2:
 		mes "[Ripped]";
-		mes "Aw, that's too bad.";
-		mes "Well, come back if you";
-		mes "change your mind. Tell";
-		mes "your friends about me:";
-		mes "if they're flabby, I'll help";
-		mes "get them in shape.";
+		mes "อ่า แย่จัง";
+		mes "งั้นถ้าเจ้าเปลี่ยนใจ";
+		mes "ก็กลับมาได้นะ";
+		mes "บอกเพื่อนๆ เจ้าด้วย";
+		mes "ถ้าพวกเขาไม่มีเรี่ยวแรง";
+		mes "ข้าช่วยพวกเขาได้";
 		close;
 	case 3:
 		if (gympassmemory > 0) {
@@ -140,10 +140,10 @@ payon,173,141,4	script	Ripped Cabus#GymPass	899,{
 		}
 		else {
 			mes "[Ripped]";
-			mes "Uhh...";
-			mes "We didn't work out";
-			mes "together before.";
-			mes "I'm sure about that.";
+			mes "อ่า...";
+			mes "พวกเราไม่เคยได้ฝึกฝน";
+			mes "ด้วยกันมาก่อนนี่น่า";
+			mes "ข้ามั่นใจ";
 			close;
 		}
 	}

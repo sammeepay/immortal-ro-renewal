@@ -281,11 +281,22 @@ function	script	F_KafStor	{
 			mes "your Storage for you.";
 			mes "Thank you for using";
 			mes "the Kafra Service.";
+			mes "^ff0000 ***คลังเก็บของที่ 2 นี้สามารถเปิดใช้งานได้สมาชิก VIP เท่านั้น. คลังเก็บของที่ 3 นี้สามารถเข้าถึงได้ด้วยไอเท็ม Kafra Card.*** ^000000";
 		}
 	}
+	next;
+	if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+		setarray @K_M_Storage0$[0],"^0000ffMain Storage^000000";
+	} else { //VIP
+		setarray @K_M_Storage0$[0],"^0000ffMain Storage^000000","Storage 2 - ^ff0000Yggdrasil^000000";
+	}
+	set .@menu$, "";
+	for (set .@i, 0; .@i < getarraysize(@K_M_Storage0$); set .@i, .@i + 1)
+		set .@menu$, .@menu$ + @K_M_Storage0$[.@i] + ":";
+	set .@j, select (.@menu$) - 1;
 	callfunc("F_CheckKafCode");	//check your storage password, if set
-	close2;
-	openstorage;
+	if(@K_M_Storage0$[.@j] == "^0000ffMain Storage^000000") { close2; openstorage; }
+	else if(@K_M_Storage0$[.@j] == "Storage 2 - ^ff0000Yggdrasil^000000") { close2; openstorage2 1,STOR_MODE_GET|STOR_MODE_PUT; }
 	cutin "", 255;
 	end;
 }
@@ -610,58 +621,118 @@ function	script	F_KafSet	{
 	cleararray @viewpX[0],"",getarraysize(@viewpX);
 	cleararray @viewpY[0],"",getarraysize(@viewpY);
 	if (strnpcinfo(4) == "prontera") {
-		setarray @wrpD$[0], "Izlude", "Geffen", "Payon", "Morroc", "Orc Dungeon", "Alberta";
-		setarray @wrpP[0], 600, 1200, 1200, 1200, 1700, 1800;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Izlude", "Geffen", "Payon", "Morroc", "Alberta", "Al De Baran", "Comodo", "Umbala";
+			setarray @wrpP[0], 2000, 2000, 2000, 2000, 2000, 2000, 3000, 3000;
+		} else { //VIP
+			setarray @wrpD$[0], "Izlude", "Geffen", "Payon", "Morroc", "Orc Dungeon", "Alberta", "Al De Baran", "Comodo", "Umbala";
+			setarray @wrpP[0], 600, 1200, 1200, 1200, 1700, 1800, 2000, 3000, 3000;
+		}
 		setarray @viewpX[0], 151, 29, 282, 152;
 		setarray @viewpY[0], 29, 207, 200, 326;
 	} else if (strnpcinfo(4) == "alberta") {
-		setarray @wrpP[0], 1200, 1800, 1800;
-		setarray @wrpD$[0], "Payon", "Morroc", "Prontera";
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpP[0], 2000;
+			setarray @wrpD$[0], "Payon";
+		} else { //VIP
+			setarray @wrpP[0], 1200, 1800, 1800;
+			setarray @wrpD$[0], "Payon", "Morroc", "Prontera";
+		}
 		setarray @viewpX[0], 28, 113, 0, 0;
 		setarray @viewpY[0], 229, 60, 0, 0;
 	} else if (strnpcinfo(4) == "aldebaran") {
-		setarray @wrpP[0], 1200, 1200, 1800, 1700;
-		setarray @wrpD$[0], "Geffen", "Juno" , "Izlude", "Mjolnir Dead Pit";
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpP[0], 2000;
+			setarray @wrpD$[0], "Geffen";
+		} else { //VIP
+			setarray @wrpP[0], 1800, 1200, 1200, 1800, 1700;
+			setarray @wrpD$[0], "Prontera", "Geffen", "Juno" , "Izlude", "Mjolnir Dead Pit";
+		}
 	} else if (strnpcinfo(4) == "comodo" ) {
-		setarray @wrpD$[0], "Morroc", "Comodo Pharos Beacon", "Umbala";
-		setarray @wrpP[0], 1800, 1200, 1800;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Morroc";
+			setarray @wrpP[0], 2000;
+		} else { //VIP
+			setarray @wrpD$[0], "Morroc", "Comodo Pharos Beacon", "Umbala";
+			setarray @wrpP[0], 1800, 1200, 1800;
+		}
 	} else if (strnpcinfo(4) == "cmd_fild07") {
-		setarray @wrpD$[0], "Comodo", "Morroc";
-		setarray @wrpP[0], 1200, 1200;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Comodo", "Morroc";
+			setarray @wrpP[0], 1200, 1200;
+		} else { //VIP
+			setarray @wrpD$[0], "Comodo", "Morroc";
+			setarray @wrpP[0], 1200, 1200;
+		}
 	} else if (strnpcinfo(4) == "geffen") {
-		setarray @wrpD$[0], "Prontera", "Al De Baran", "Orc Dungeon", "Mjolnir Dead Pit";
-		setarray @wrpP[0], 1200, 1200, 1700, 1700;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Prontera";
+			setarray @wrpP[0], 2000;
+		} else { //VIP
+			setarray @wrpD$[0], "Prontera", "Al De Baran", "Payon", "Morroc", "Orc Dungeon", "Mjolnir Dead Pit";
+			setarray @wrpP[0], 1200, 1200, 1200, 1200, 1700, 1700;
+		}
 		setarray @viewpX[0], 120, 203;
 		setarray @viewpY[0], 62, 123;
 	} else if (strnpcinfo(4) == "izlude") {
-		setarray @wrpD$[0], "Geffen", "Payon", "Morroc", "Al De Baran";
-		setarray @wrpP[0], 1200, 1200, 1200, 1800;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Prontera";
+			setarray @wrpP[0], 2000;
+		} else { //VIP
+			setarray @wrpD$[0], "Prontera", "Geffen", "Payon", "Morroc", "Al De Baran";
+			setarray @wrpP[0], 600, 1200, 1200, 1200, 1800;
+		}
 	} else if (strnpcinfo(4) == "morocc") {
-		setarray @wrpD$[0], "Prontera", "Payon", "Alberta", "Comodo", "Comodo Pharos Beacon";
-		setarray @wrpP[0], 1200, 1200, 1800, 1800, 1200;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Prontera";
+			setarray @wrpP[0], 2000;
+		} else { //VIP
+			setarray @wrpD$[0], "Prontera", "Payon", "Alberta", "Geffen", "Al De Baran", "Comodo", "Comodo Pharos Beacon";
+			setarray @wrpP[0], 1200, 1200, 1200, 1200, 1800, 1800, 1200;
+		}
 		setarray @viewpX[0], 156, 163, 28, 292;
 		setarray @viewpY[0], 97, 260, 167, 211;
 	} else if (strnpcinfo(4) == "umbala") {
-		setarray @wrpD$[0], "Comodo";
-		setarray @wrpP[0], 1800;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Comodo";
+			setarray @wrpP[0], 3000;
+		} else { //VIP
+			setarray @wrpD$[0], "Comodo";
+			setarray @wrpP[0], 1800;
+		}
 	} else if (strnpcinfo(4) == "payon") {
-		setarray @wrpD$[0], "Prontera", "Alberta", "Morroc";
-		setarray @wrpP[0], 1200, 1200, 1200;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Prontera";
+			setarray @wrpP[0], 2000;
+		} else { //VIP
+			setarray @wrpD$[0], "Prontera", "Geffen", "Al De Baran", "Alberta", "Morroc";
+			setarray @wrpP[0], 1200, 1200, 1200, 1200, 1200;
+		}
 	} else if (strnpcinfo(4) == "yuno") {
-		setarray @wrpD$[0], "Al De Baran";
-		setarray @wrpP[0], 1200;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Einbroch", "Lighthalzen", "Hugel", "Rachel";
+			setarray @wrpP[0], 2000, 2000, 2000, 2000;
+		} else { //VIP
+			setarray @wrpD$[0], "Al De Baran", "Einbroch", "Lighthalzen", "Hugel", "Rachel";
+			setarray @wrpP[0], 1200, 1200, 1200, 1200, 1200;
+		}
 		setarray @viewpX[0], 328, 278, 153, 0;
 		setarray @viewpY[0], 108, 221, 187, 0;
 	} else if (strnpcinfo(4) == "job3_rune01") {
-		setarray @wrpD$[0], "Izlude", "Geffen", "Payon", "Morroc", "Alberta";
-		setarray @wrpP[0], 600, 1200, 1200, 1200, 1800;
+		if (VIP_SCRIPT && !vip_status(1)) { //NON-VIP
+			setarray @wrpD$[0], "Izlude", "Geffen", "Payon", "Morroc", "Alberta";
+			setarray @wrpP[0], 600, 1200, 1200, 1200, 1800;
+		} else { //VIP
+			setarray @wrpD$[0], "Izlude", "Geffen", "Payon", "Morroc", "Alberta";
+			setarray @wrpP[0], 600, 1200, 1200, 1200, 1800;
+		}
 	}
 
 	// VIP pricing varies across the regional servers; this is most practical.
-	if (VIP_SCRIPT && !vip_status(VIP_STATUS_ACTIVE)) {
-		for (set .@i, 0; .@i < getarraysize(@wrpD$); set .@i, .@i + 1)
-			setd "@wrpP["+.@i+"]",getd("@wrpP["+.@i+"]") * 2;
-	}
+	//if (VIP_SCRIPT && !vip_status(VIP_STATUS_ACTIVE)) {
+	//	for (set .@i, 0; .@i < getarraysize(@wrpD$); set .@i, .@i + 1)
+	//		setd "@wrpP["+.@i+"]",getd("@wrpP["+.@i+"]") * 2;
+	//}
 
 	for (set .@i, 0; .@i < getarraysize(@wrpD$); set .@i, .@i + 1)
 		setd "@wrpC$["+.@i+"]",getd("@wrpD$["+.@i+"]")+" -> "+getd("@wrpP["+.@i+"]")+" z";

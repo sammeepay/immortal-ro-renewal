@@ -14,20 +14,21 @@
 
 -	script	::Airship_Staff_izlude	-1,{
 	mes "[Airship Staff]";
-	mes "Welcome! Would you like";
-	mes "to board the Airship that";
-	mes "departs on the flight wich stops";
-	mes "in Juno and Rachel?";
+	mes "ยินดีต้อนรับ!!";
+	mes "คุณต้องการที่จะเดินทาง";
+	mes "กับเรือเหาะของเราหรือเปล่า";
+	mes "เที่ยวบินนี้จะหยุดที่เมือง";
+	mes "Juno และ Rachel";
 	next;
-	if (select("Board the Airship to Juno/Rachel.:Cancel.") == 1) {
+	if (select("ไปเมือง Juno และ Rachel:ยกเลิก") == 1) {
 		mes "[Airship Staff]";
-		mes "The boarding fee is";
-		mes "1,200 zeny. However, this";
-		mes "charged is waived if you use";
-		mes "a Free Ticket for Airship. Now,";
-		mes "would you still like to board?";
+		mes "ค่าบริการคือ";
+		mes "1,200 zeny แต่เรา";
+		mes "จะไม่เก็บค่าบริการถ้าคุณมี";
+		mes "Free Ticket for Airship";
+		mes "คุณตกลงที่จะใช้บริการไหม?";
 		next;
-		if (select("Yes:No") == 1) {
+		if (select("ใช่:ไม่ใช่") == 1) {
 			if (countitem(7311) > 0) {
 				delitem 7311,1; //Free_Flying_Ship_Ticket
 				warp "airplane_01",244,58;
@@ -39,15 +40,14 @@
 				end;
 			}
 			mes "[Airship Staff]";
-			mes "I'm sorry, but you don't";
-			mes "have 1,200 zeny to pay";
-			mes "for the boarding fee.";
+			mes "ขออภัยแต่คุณมี Zeny ไม่พอ";
+			mes "ค่าบริการคือ 1200 Zeny";
+			mes "กรุณากลับมาใหม่ภายหลัง";
 			close;
 		}
 	}
 	mes "[Airship Staff]";
-	mes "Thank you and";
-	mes "please come again.";
-	mes "Have a good day~";
+	mes "ขอบคุณที่ใช้บริการ";
+	mes "ขอให้เดินทางปลอดถัย~";
 	close;
 }

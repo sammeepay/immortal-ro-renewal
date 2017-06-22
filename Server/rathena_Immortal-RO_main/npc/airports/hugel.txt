@@ -15,10 +15,12 @@
 hugel,178,142,0	script	toairplane#hugel	45,1,1,{
 	end;
 OnTouch:
-	mes "To use the airship, you are required to pay 1,200 zeny or a Free Airship Ticket.";
-	mes "Would you like to use the service?";
+	mes "หากต้องการใช้เรือเหาะ";
+	mes "ค่าบิการคือ 1200 Zeny";
+	mes "หรือใช่ Free Airship Ticket";
+	mes "คุณต้องการใช้บริการไหม";
 	next;
-	if (select("Yes:No") == 1) {
+	if (select("ใช่:ไม่") == 1) {
 		if (countitem(7311) > 0) {
 			delitem 7311,1; //Free_Flying_Ship_Ticket
 			warp "airplane",244,58;
@@ -29,10 +31,11 @@ OnTouch:
 			warp "airplane",244,58;
 			end;
 		}
-		mes "I am sorry, but you do not have enough money.";
-		mes "Please remember, you are required to pay 1,200 zeny to use the service.";
+		mes "ขออภัยแต่คุณมี Zeny ไม่พอ";
+		mes "ค่าบริการคือ 1200 Zeny";
+		mes "กรุณากลับมาใหม่ภายหลัง";
 		close;
 	}
-	mes "Thank you, please come again.";
+	mes "ขอบคุณ แล้วพบกันใหม่นะ";
 	close;
 }

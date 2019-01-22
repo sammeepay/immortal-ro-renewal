@@ -1,9 +1,0 @@
-//-----------------------------------------------------------------
-//파일명		DB 명(스크립트에서 부를때 사용하는 이름)
-//-----------------------------------------------------------------
-4_f_thaiayo.spr		4_F_THAIAYO
-4_f_thaigirl.spr	4_F_THAIGIRL
-4_f_thaishaman.spr	4_F_THAISHAMAN
-4_m_thaiayo.spr		4_M_THAIAYO
-4_m_thaiold.spr		4_M_THAIOLD
-4_m_thaiongbak.spr	4_M_THAIONGBAK

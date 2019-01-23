@@ -253,13 +253,13 @@ function GetSkillAttackRange(in_SKID, in_Level, in_curMaxLv)
 	if obj ~= nil then
 		attackRange = SKILL_INFO_LIST[in_SKID].AttackRange[in_Level]
 	end
-	if maxLv ~= nil and in_curMaxLv > maxLv then
+	if in_curMaxLv == nil then
 		in_curMaxLv = maxLv
 	end
-	obj = SKILL_INFO_LIST[in_SKID]
-	if (obj ~= nil and obj.AttackRange ~= nil) then
-		attackRangeOfMaxLv = SKILL_INFO_LIST[in_SKID].AttackRange[in_curMaxLv]
+	if maxLv ~= nil and maxLv < in_curMaxLv then
+		in_curMaxLv = maxLv
 	end
+	attackRangeOfMaxLv = SKILL_INFO_LIST[in_SKID].AttackRange[in_curMaxLv]
 	if attackRangeOfMaxLv == nil then
 		attackRangeOfMaxLv = 0
 	end
@@ -267,4 +267,50 @@ function GetSkillAttackRange(in_SKID, in_Level, in_curMaxLv)
 		return attackRange, attackRangeOfMaxLv
 	end
 	return 1, attackRangeOfMaxLv
+end
+
+function GetSkillScale(in_SKID, in_Level)
+	local obj = SKILL_INFO_LIST[in_SKID]
+	local x = 0
+	local y = 0
+	if nil ~= obj then
+		obj = SKILL_INFO_LIST[in_SKID].SkillScale
+	end
+	if nil ~= obj then
+		obj = SKILL_INFO_LIST[in_SKID].SkillScale[in_Level]
+	end
+	if nil ~= obj then
+		x = SKILL_INFO_LIST[in_SKID].SkillScale[in_Level].x
+		if nil == x then
+			return 0, 0
+		end
+		y = SKILL_INFO_LIST[in_SKID].SkillScale[in_Level].y
+		if nil == y then
+			return 0, 0
+		end
+	end
+	return x, y
+end
+
+JobSkillTab = {}
+function JobSkillTab.ChangeSkillTabName(in_job, in_1sttab, in_2ndtab, in_3rdtab)
+	local tbl = {
+		job = in_job,
+		TabName1st = in_1sttab,
+		TabName2nd = in_2ndtab,
+		TabName3rd = in_3rdtab
+	}
+	JobSkillTab[#JobSkillTab + 1] = tbl
+end
+
+function JobSkillTab_GetTabName(in_job)
+	if nil == JobSkillTab then
+		return nil
+	end
+	local size = #JobSkillTab
+	for seq = 1, size do
+		if in_job == JobSkillTab[seq].job then
+			return JobSkillTab[seq].TabName1st, JobSkillTab[seq].TabName2nd, JobSkillTab[seq].TabName3rd
+		end
+	end
 end

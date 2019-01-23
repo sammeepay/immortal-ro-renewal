@@ -67,7 +67,10 @@ ForceRenderEffect = {
 	833,
 	837,
 	1072,
-	1110
+	1110,
+	1135,
+	321,
+	1185
 }
 
 function IsForceRenderEffect(in_effectID)

@@ -6,10 +6,10 @@
 	<hideaccountlist></hideaccountlist>
 	<extendedslot></extendedslot>
 	<connection>
-		<display>Immortal-RO</display>
-      		<address>127.0.0.1</address>
+		<display>Immortal Ragnarok Online</display>
+      		<address>119.59.126.106</address>
       		<port>6900</port>
-      		<version>52</version>
+      		<version>20180620</version>
       		<langtype>5</langtype>
 		<registrationweb>www.immortal-ro.com</registrationweb>
 		<aid>

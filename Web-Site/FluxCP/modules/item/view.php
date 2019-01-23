@@ -1,8 +1,6 @@
 <?php
 if (!defined('FLUX_ROOT')) exit;
 
-//$this->loginRequired();
-
 $title = 'Viewing Item';
 
 require_once 'Flux/TemporaryTable.php';
@@ -18,20 +16,6 @@ $shopTable = Flux::config('FluxTables.ItemShopTable');
 $itemDescTable = Flux::config('FluxTables.ItemDescTable');
 
 $itemID = $params->get('id');
-
-/* ITEM SHOP */
-try {
-	$sql = 'select * from shops_sells s left join npcs n on s.id_shop = n.id where s.item = ?';
-	$sth = $server->connection->getStatement($sql);
-	$sth->execute(array($itemID));
-	if((int)$sth->stmt->errorCode()){
-		throw new Flux_Error('db not found');
-	}
-	$itemShop = $sth->fetchAll();
-} catch(Exception $e){
-	$itemShop = false;
-}
-/* ITEM SHOP */
 
 $col  = 'items.id AS item_id, name_english AS identifier, ';
 $col .= 'name_japanese AS name, type, ';
@@ -113,8 +97,6 @@ if ($item) {
 	$sql .= 'MVP1id = ? OR ';
 	$sql .= 'MVP2id = ? OR ';
 	$sql .= 'MVP3id = ? ';
-	
-	//$sql .= 'GROUP BY ID, iName';
 	
 	$sth  = $server->connection->getStatement($sql);
 	$res = $sth->execute(array_fill(0, 13, $itemID));

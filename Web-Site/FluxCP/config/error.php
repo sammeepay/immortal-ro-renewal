@@ -7,7 +7,7 @@
 // your MySQL user and password when unable to connect. Please keep it at false
 // in a production environment.
 
-$adminEmail      = 'admin@immortal-ro.com'; // Administrator e-mail address.
+$adminEmail      = 'admin@localhost'; // Administrator e-mail address.
 $errorFile       = 'error.php';       // Error file to render.
 $showExceptions  = true;              // Whether or not to show exceptions (only applies to error.php)
 ?>

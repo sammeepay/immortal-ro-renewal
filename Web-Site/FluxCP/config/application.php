@@ -2,15 +2,15 @@
 // This is the application configuration file. All values have been set to
 // the default, and should be changed as needed.
 return array(
-	'ServerAddress'				=> 'immortal-ro.com',				// This value is the hostname:port under which Flux runs. (e.g., example.com or example.com:80)
-	'BaseURI'					=> 'immortalro',						// The base URI is the base web root on which your application lies.
+	'ServerAddress'				=> 'localhost',				// This value is the hostname:port under which Flux runs. (e.g., example.com or example.com:80)
+	'BaseURI'					=> 'fluxcp',						// The base URI is the base web root on which your application lies.
 	'InstallerPassword'			=> 'secretpassword',		// Installer/updater password.
 	'RequireOwnership'			=> true,					// Require the executing user to be owner of the FLUX_ROOT/data/ directory tree? (Better for security)
 															// WARNING: This will be mostly IGNORED on non-POSIX-compliant OSes (e.g. Windows).
 	'DefaultLoginGroup'			=> null,
 	'DefaultCharMapServer'		=> null,
-	'DefaultLanguage'			=> 'th_th',					// Specify the default control panel language (see FLUX_ROOT/lang/ directory for available languages.)
-	'SiteTitle'					=> 'Immortal-RO Control Panel',	// This value is only used if the theme decides to use it.
+	'DefaultLanguage'			=> 'en_us',					// Specify the default control panel language (see FLUX_ROOT/lang/ directory for available languages.)
+	'SiteTitle'					=> 'Flux Control Panel',	// This value is only used if the theme decides to use it.
 	'ThemeName'					=> array('default', 'bootstrap'), // Names of the themes you would like list for use in the footer. Themes are in FLUX_ROOT/themes.
 	'ScriptTimeLimit'			=> 0,						// Script execution time limit. Specifies (in seconds) how long a page should run before timing out. (0 means forever)
 	'MissingEmblemBMP'			=> 'empty.bmp',				//
@@ -22,7 +22,7 @@ return array(
 	'EmblemCacheInterval'		=> 12,						// Hourly interval to re-cache guild emblems (set to 0 to disable emblem cache).
 	'SessionCookieExpire'		=> 48,						// Duration in hours.
 	'AdminMenuGroupLevel'		=> AccountLevel::LOWGM,		// The starting group ID for which module actions are moved into the admin menu for display.
-	'DateDefaultTimezone'		=> 'Asia/Bangkok',					// The default timezone, consult the PHP manual for valid timezones: http://php.net/timezones (null for defaut system TZ)
+	'DateDefaultTimezone'		=> 'UTC',					// The default timezone, consult the PHP manual for valid timezones: http://php.net/timezones (null for defaut system TZ)
 	'DateFormat'				=> 'Y-m-d',					// Default DATE format to be displayed in pages.
 	'DateTimeFormat'			=> 'Y-m-d H:i:s',			// Default DATETIME format to be displayed in pages.
 	'ShowSinglePage'			=> true,					// Whether or not to show the page numbers even if there's only one page.
@@ -38,11 +38,11 @@ return array(
 															// PCRE Pattern Ref: http://php.net/manual/en/pcre.pattern.php
 	'MinUsernameLength'			=> 4,						// Minimum username length.
 	'MaxUsernameLength'			=> 23,						// Maximum username length.
-	'MinPasswordLength'			=> 6,						// Minimum password length.
+	'MinPasswordLength'			=> 8,						// Minimum password length.
 	'MaxPasswordLength'			=> 31,						// Maximum password length.
-	'PasswordMinUpper'			=> 0,						// Number of upper-case letters to require in passwords.
-	'PasswordMinLower'			=> 0,						// Number of lower-case letters to require in passwords.
-	'PasswordMinNumber'			=> 0,						// Number of numbers to require in passwords.
+	'PasswordMinUpper'			=> 1,						// Number of upper-case letters to require in passwords.
+	'PasswordMinLower'			=> 1,						// Number of lower-case letters to require in passwords.
+	'PasswordMinNumber'			=> 1,						// Number of numbers to require in passwords.
 	'PasswordMinSymbol'			=> 0,						// Number of symbols to require in passwords.
 	'GMMinPasswordLength'		=> 8,						// Minimum password length for GM accounts.
 	'GMPasswordMinUpper'		=> 1,						// Number of upper-case letters to require in passwords for GM accounts.
@@ -56,8 +56,8 @@ return array(
 	'RequireChangeConfirm'		=> false,					// Require confirmation when changing e-mail addresses.
 	'EmailConfirmExpire'		=> 48,						// E-mail confirmations expire hours. Unconfirmed accounts will expire after this period of time.
 	'PincodeEnabled'		=> true,					// Whether or not the pincode system is enabled in your server. (Check your char_athena.conf file. Enabled by default.)
-	'MailerFromAddress'			=> 'info@immortal-ro.com',		// The e-mail address displayed in the From field.
-	'MailerFromName'			=> 'Information Immortal-RO',			// The name displayed with the From e-mail address.
+	'MailerFromAddress'			=> 'noreply@localhost',		// The e-mail address displayed in the From field.
+	'MailerFromName'			=> 'MailerName',			// The name displayed with the From e-mail address.
 	'MailerUseSMTP'				=> false,					// Whether or not to use a separate SMTP server for sending mail.
 	'MailerSMTPUseSSL'			=> false,					// Whether or not mailer should connect using SSL (yes for GMail).
 	'MailerSMTPUseTLS'			=> false,					// Same as above SSL setting, but for TLS.  This setting will override the SSL setting.
@@ -67,7 +67,7 @@ return array(
 	'MailerSMTPPassword'		=> null,					// When MailerUseSMTP is true: Authorized password for SMTP server (for above user).
 	'ServerStatusCache'			=> 2,						// Store a cached server status and refresh every X minutes.  Default: 2 minutes (value is measured in minutes).
 	'ServerStatusTimeout'		=> 2,						// For each server, spend X amount of seconds to determine whether it's up or not.
-	'SessionKey'				=> 'ImmortalROSessionData',		// Shouldn't be changed, just specifies the session key to be used for session data.
+	'SessionKey'				=> 'fluxSessionData',		// Shouldn't be changed, just specifies the session key to be used for session data.
 	'DefaultModule'				=> 'main',					// This is the module to execute when none has been specified.
 	'DefaultAction'				=> 'index',					// This is the default action for any module, probably should leave this alone. (Deprecated)
 	'GzipCompressOutput'		=> false,					// Whether or not to compress output using zlib.
@@ -90,7 +90,7 @@ return array(
 	'ColumnSortDescending'		=> ' ▼',					// (Visual) Text displayed for descending sorted column names.
 	'CreditExchangeRate'		=> 1.0,						// The rate at which credits are exchanged for dollars.
 	'MinDonationAmount'			=> 2.0,						// Minimum donation amount. (NOTE: Actual donations made that are less than this account won't be exchanged)
-	'DonationCurrency'			=> 'THB',					// Preferred donation currency. Only donations made in this currency will be processed for credit deposits.
+	'DonationCurrency'			=> 'USD',					// Preferred donation currency. Only donations made in this currency will be processed for credit deposits.
 	'MoneyDecimalPlaces'		=> 2,						// (Visual) Number of decimal places to display in amount.
 	'MoneyThousandsSymbol'		=> ',',						// (Visual) Thousandths place separator (a period in European currencies).
 	'MoneyDecimalSymbol'		=> '.',						// (Visual) Decimal separator (a comma in European currencies).
@@ -260,12 +260,11 @@ return array(
 			'MapStaticsLabel'=> array('module' => 'character', 'action' => 'mapstats'),
 			'RankingInfoLabel'	=> array('module' => 'ranking', 'action' => 'character'),
 			'VendingInfoLabel'	=> array('module' => 'vending'),
+			'BuyingstoreInfoLabel'	=> array('module' => 'buyingstore'),
 		),
 		'DatabaseLabel'		=> array(
 			'ItemDatabaseLabel'	=> array('module' => 'item'),
 			'MobDatabaseLabel'	=> array('module' => 'monster'),
-			'Maps Database' 	=> array('module' => 'map'),
-			'NPCs Database' 	=> array('module' => 'npcs'),
 		),
 		'SocialLabel'		=> array(
 			'JoinUsInFacebookLabel'	=> array('exturl' => 'https://www.facebook.com/<change_me>'),
@@ -286,7 +285,7 @@ return array(
 			'ReInstallLabel'	=> array('module' => 'install', 'action' => 'reinstall'),
 			'SendMailLabel'		=> array('module' => 'mail'),
 			'WCTitleLabel'		=> array('module' => 'webcommands'),
-			'Map Database Edit' => array('module' => 'admin_spawn'),
+			'Cash Shop'			=> array('module' => 'cashshop'),
 			//'Auction'		=> array('module' => 'auction'),
 			//'Economy'		=> array('module' => 'economy')
 		)
@@ -295,14 +294,6 @@ return array(
 	// Sub-menu items that are displayed for any action belonging to a
 	// particular module. The format it simple.
 	'SubMenuItems'	=> array(
-		'map' => array(
-			'index' => 'Map List',
-			'view' => 'View Map',
-		),
-		'npcs' => array(
-			'index' => 'NPC List',
-			'view' => 'View NPC',
-		),
 		'history'		=> array(
 			'gamelogin'		=> 'Game Logins',
 			'cplogin'		=> 'CP Logins',
@@ -335,8 +326,10 @@ return array(
 		'logdata'		=> array(
 			'branch'		=> 'Branches',
 			'char'			=> 'Characters',
+			'cashpoints'	=> 'CashPoints',
 			'chat'			=> 'Chat Messages',
 			'command'		=> 'Commands',
+			'feeding'		=> 'Feeding',
 			'inter'			=> 'Interactions',
 			'pick'			=> 'Item Picks',
 			'login'			=> 'Logins',
@@ -400,9 +393,11 @@ return array(
 			'staffsettings'	=> 'Staff Settings',
 			'catcontrol'	=> 'Category Control',
 		),
-		
 		'vending'			=> array(
 			'index'			=> 'Vendors',
+		),
+		'buyingstore'		=> array(
+			'index'			=> 'Buyers',
 		),
 	),
 	
@@ -480,8 +475,14 @@ return array(
 	// Item shop categories.
 	'ShopCategories'				=> include('shopcategories.php'),
 
+	// Cash shop categories.
+	'CashShopCategories'			=> include('cashshopcategories.php'),
+
 	// Item pick and zeny log types.
 	'PickTypes'						=> include('picktypes.php'),
+
+	// Type of feeding
+	'FeedingTypes'					=> include('feedingtypes.php'),
 
 	// Castle names.
 	'CastleNames'					=> include('castlenames.php'),

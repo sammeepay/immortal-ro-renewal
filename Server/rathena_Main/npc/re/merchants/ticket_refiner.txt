@@ -1,0 +1,178 @@
+//===== rAthena Script ======================================= 
+//= Ticket Refiner
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Refiner that uses +5~9/+11 refine tickets to refine
+//= equipment with no chance of failure.
+//= NOTE: This NPC is currently disabled on official servers.
+//===== Additional Comments: =================================
+//= 1.0 First version. [Euphy]
+//= 1.1 Do not refine above ticket level. [Euphy]
+//============================================================
+
+// Main NPC :: safety_Ref_NPC
+//============================================================
+prontera,184,177,6	script	Refine Master	851,{
+	disable_items;
+	if (countitem(6238) || countitem(6228) || countitem(6229) || countitem(6230) || countitem(6231) || countitem(6456))
+		set .@bWeaponUp,1;
+	if (countitem(6239) || countitem(6232) || countitem(6233) || countitem(6234) || countitem(6235) || countitem(6457))
+		set .@bArmorUp,1;
+	if (!.@bWeaponUp && !.@bArmorUp) {
+		mes "[Refine Master]";
+		mes "หวัดดี!";
+		mes "สบายดีบ่ ?";
+		mes "ข้ามีความสามารถพิเศษ";
+		mes "ในการตีบวกไอเท็ม,";
+		mes "แต่ข้าไม่อยากทำงานน่ะสิ.";
+		next;
+		switch(select("ข้าจะไปตามทางของข้าต่อ.:หืมม... มันทำให้อยากรู้อยากเห็นอ่ะ.")) {
+		case 1:
+			mes "[Refine Master]";
+			mes "รักษาตัวด้วย, นักผจญภัย.";
+			close;
+		case 2:
+			mes "[Refine Master]";
+			mes "แท้จริงแล้ว, บางครั้งข้าก็ตีบวกของให้กับนักผจญภัยที่มี ^006400Refine Ticket^000000...";
+			mes "Bye bye~!";
+			close;
+		}
+	}
+	emotion ET_SURPRISE;
+	mes "[Refine Master]";
+	mes "สบายดีบ่ !";
+	mes "ข้าสามารถตีบวกไอเท็ม ^006400ให้มีค่าบวกเท่ากับตั๋วของเจ้าได้^000000.";
+	mes "เจ้าไม่ต้องกังวลไป! ไอเท็มมันไม่มีโอกาสแตก.";
+	next;
+	if(select("ข้าจะกลับมาใหม่.:ตีบวกโดยใช้ตั๋ว.") == 1) {
+		mes "[Refine Master]";
+		mes "Okay.";
+		mes "เจ้ากลับมาหาได้เสมอ.";
+		close;
+	}
+	mes "[Refine Master]";
+	mes "เลือกของสวมใส่ที่เจ้าจะตีบวก ?";
+	next;
+	setarray .@position$[1],"Head upper","Armor","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head middle","Head lower";
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
+	for(set .@i,1; .@i<=10; set .@i,.@i+1)
+		set .@menu$, .@menu$+((getequipisequiped(.@indices[.@i]))?getequipname(.@indices[.@i]):.@position$[.@i]+"- [ว่าง]")+":";
+	set .@part, .@indices[ select(.@menu$) ];
+	if (!getequipisequiped(.@part)) {
+		mes "[Refine Master]";
+		mes "เจ้าต้องสวมใส่ไอเท็มที่เจ้าอยากจะตีบวกสิ.";
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		emotion ET_OTL;
+		mes "[Refine Master]";
+		mes "Oh, ข้าขอโทษ.";
+		mes "ไอเท็มนี้มันตีบวกไม่ได้.";
+		close;
+	}
+	.@refineitemid = getequipid(.@part); // save id of the item
+	.@refinerycnt = getequiprefinerycnt(.@part); //save refinery count
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	switch(getequipweaponlv(.@part)) {
+	default:
+	case 0:
+		setarray .@tickets[0],6457,6235,6234,6233,6232,6239;
+		setarray .@levels[0],5,6,7,8,9,11;
+		set .@type$,"Armor";
+		set .@check,.@bArmorUp;
+		break;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		setarray .@tickets[0],6456,6231,6230,6229,6228,6238;
+		setarray .@levels[0],5,6,7,8,9,11;
+		set .@type$,"Weapon";
+		set .@check,.@bWeaponUp;
+		break;
+	}
+	if (!.@check) {
+		emotion ET_THINK;
+		mes "[Refine Master]";
+		mes "ถ้าเจ้าอยากจะบวก ^006400"+.@type$+"^000000, เจ้าต้องมี ^006400"+.@type$+" Refine Ticket^000000 มาด้วย.";
+		mes "แล้วพบกันใหม่!";
+		close;
+	}
+	mes "[Refine Master]";
+	mes "กรุณาเลือก ^006400"+.@type$+" Refine Ticket^000000 ที่เจ้าต้องการจะใช้.";
+	next;
+	set .@menu$,"";
+	for(set .@i,0; .@i<getarraysize(.@tickets); set .@i,.@i+1)
+		set .@menu$, .@menu$+getitemname(.@tickets[.@i])+":";
+	set .@select, select(.@menu$)-1;
+	set .@ticket_lv, .@levels[.@select];
+	set .@ticket_id, .@tickets[.@select];
+	if (countitem(.@ticket_id) == 0) {
+		emotion ET_QUESTION;
+		mes "[Refine Master]";
+		mes getitemname(.@ticket_id)+" ไม่มีในกระเป๋า. เจ้าอาจจะลืมไว้ในคลัง ?";
+		mes "ลองไปหาดู.";
+		mes "แล้วค่อยเจอกันใหม่!";
+		close;
+	}
+	if (getequiprefinerycnt(.@part) >= .@ticket_lv) {
+		emotion ET_PROFUSELY_SWEAT;
+		mes "[Refine Master]";
+		mes "^8B4513ไอเท็มชิ้นนี้มีค่าบวกตามที่เจ้าต้องการแล้ว.^000000";
+		mes "ลองไปหาไอเท็มที่มีค่าบวกต่ำกว่าตั๋วของเจ้ามา.";
+		close;
+	}
+	mes "[Refine Master]";
+	mes "จะให้ข้าบวก ^006400"+getequipname(.@part)+"^8B4513 ให้ขึ้นระดับ +"+.@ticket_lv+" level^000000 ด้วย ^006400"+getitemname(.@ticket_id)+"^000000.";
+	mes "จะให้ทำเลยไหม ?";
+	next;
+	if(select("ไม่.:ได้เลย.") == 1) {
+		emotion ET_THINK;
+		mes "[Refine Master]";
+		mes "โอ้, เจ้าเปลี่ยนใจ.";
+		mes "Ok.";
+		mes "กลับมาใหม่ได้เสมอ.";
+		close;
+	}
+	mes "[Refine Master]";
+	mes "เยี่ยม.";
+	mes "จัดให้ตามคำขอ!";
+	mes "ข้าจะใช้ความสามารถพิเศษในการบวกล่ะน่ะ...";
+	mes ".......กา บู้ม!";
+	specialeffect EF_SUI_EXPLOSION;
+	if (countitem(.@ticket_id)) {
+		delitem .@ticket_id,1;
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) ||
+			callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3])) {
+			mes "[Refine Master]";
+			emotion ET_FRET;
+			mes "รอสักครู่ ... ";
+			mes "คิดว่าข้าโง่เหรอ!";
+			mes "เจ้าเปลี่ยนรายการในขณะที่ข้าไม่ได้มองหา! ออกไปจากที่นี่!";
+			close;
+		}
+	} else {
+		next;
+		mes "ผิดพลาด!";
+		mes "กรุณารายงานข้อผิดพลาด.";
+		close;
+	}
+	successrefitem .@part, .@ticket_lv - getequiprefinerycnt(.@part);
+	next;
+	emotion ET_DELIGHT;
+	mes "[Refine Master]";
+	mes "ไม่เป็นไร, มันอยู่นี้~";
+	mes "เยี่ยมเลย, ^0000FF"+strcharinfo(0)+"^000000!";
+	mes "มันประสบความสำเร็จ ในการตีบวก "+.@type$+".";
+	mes "เจ้าดูดีใจน่ะ!";
+	mes "บาย~!";
+	close;
+}

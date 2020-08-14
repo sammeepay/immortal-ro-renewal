@@ -66,14 +66,15 @@ class Flux_LoginServer extends Flux_BaseServer {
 	 */
 	public function isAuth($username, $password)
 	{
-		if ($this->config->get('UseMD5')) {
-			$password = Flux::hashPassword($password);
-		}
 		
 		if (trim($username) == '' || trim($password) == '') {
 			return false;
 		}
-		
+
+     	if ($this->config->get('UseMD5')) {
+			$password = Flux::hashPassword($password);
+		}
+        
 		$sql  = "SELECT userid FROM {$this->loginDatabase}.login WHERE sex != 'S' AND group_id >= 0 ";
 		if ($this->config->getNoCase()) {
 			$sql .= 'AND LOWER(userid) = LOWER(?) ';
@@ -109,7 +110,7 @@ class Flux_LoginServer extends Flux_BaseServer {
 			throw new Flux_RegisterError('Username is too long', Flux_RegisterError::USERNAME_TOO_LONG);
 		}
 		elseif (!Flux::config('AllowUserInPassword') && stripos($password, $username) !== false) {
-			throw new Flux_RegisterError('Password contains username', Flux_RegisterError::USERNAME_IN_PASSWORD);
+			throw new Flux_RegisterError('Password contains username', Flux_RegisterError::PASSWORD_HAS_USERNAME);
 		}
 		elseif (!ctype_graph($password)) {
 			throw new Flux_RegisterError('Invalid character(s) used in password', Flux_RegisterError::INVALID_PASSWORD);
@@ -124,16 +125,16 @@ class Flux_LoginServer extends Flux_BaseServer {
 			throw new Flux_RegisterError('Passwords do not match', Flux_RegisterError::PASSWORD_MISMATCH);
 		}
 		elseif (Flux::config('PasswordMinUpper') > 0 && preg_match_all('/[A-Z]/', $password, $matches) < Flux::config('PasswordMinUpper')) {
-			throw new Flux_RegisterError('Passwords must contain at least ' + intval(Flux::config('PasswordMinUpper')) + ' uppercase letter(s)', Flux_RegisterError::PASSWORD_NEED_UPPER);
+			throw new Flux_RegisterError('Passwords must contain at least ' . intval(Flux::config('PasswordMinUpper')) . ' uppercase letter(s)', Flux_RegisterError::PASSWORD_NEED_UPPER);
 		}
 		elseif (Flux::config('PasswordMinLower') > 0 && preg_match_all('/[a-z]/', $password, $matches) < Flux::config('PasswordMinLower')) {
-			throw new Flux_RegisterError('Passwords must contain at least ' + intval(Flux::config('PasswordMinLower')) + ' lowercase letter(s)', Flux_RegisterError::PASSWORD_NEED_LOWER);
+			throw new Flux_RegisterError('Passwords must contain at least ' . intval(Flux::config('PasswordMinLower')) . ' lowercase letter(s)', Flux_RegisterError::PASSWORD_NEED_LOWER);
 		}
 		elseif (Flux::config('PasswordMinNumber') > 0 && preg_match_all('/[0-9]/', $password, $matches) < Flux::config('PasswordMinNumber')) {
-			throw new Flux_RegisterError('Passwords must contain at least ' + intval(Flux::config('PasswordMinNumber')) + ' number(s)', Flux_RegisterError::PASSWORD_NEED_NUMBER);
+			throw new Flux_RegisterError('Passwords must contain at least ' . intval(Flux::config('PasswordMinNumber')) . ' number(s)', Flux_RegisterError::PASSWORD_NEED_NUMBER);
 		}
 		elseif (Flux::config('PasswordMinSymbol') > 0 && preg_match_all('/[^A-Za-z0-9]/', $password, $matches) < Flux::config('PasswordMinSymbol')) {
-			throw new Flux_RegisterError('Passwords must contain at least ' + intval(Flux::config('PasswordMinSymbol')) + ' symbol(s)', Flux_RegisterError::PASSWORD_NEED_SYMBOL);
+			throw new Flux_RegisterError('Passwords must contain at least ' . intval(Flux::config('PasswordMinSymbol')) . ' symbol(s)', Flux_RegisterError::PASSWORD_NEED_SYMBOL);
 		}
 		elseif (!preg_match('/^(.+?)@(.+?)$/', $email)) {
 			throw new Flux_RegisterError('Invalid e-mail address', Flux_RegisterError::INVALID_EMAIL_ADDRESS);
@@ -246,7 +247,7 @@ class Flux_LoginServer extends Flux_BaseServer {
 		$table = Flux::config('FluxTables.AccountBanTable');
 		
 		$sql  = "INSERT INTO {$this->loginDatabase}.$table (account_id, banned_by, ban_type, ban_until, ban_date, ban_reason) ";
-		$sql .= "VALUES (?, ?, 2, '0000-00-00 00:00:00', NOW(), ?)";
+		$sql .= "VALUES (?, ?, 2, '9999-12-31 23:59:59', NOW(), ?)";
 		$sth  = $this->connection->getStatement($sql);
 		
 		if ($sth->execute(array($accountID, $bannedBy, $banReason))) {
@@ -268,7 +269,7 @@ class Flux_LoginServer extends Flux_BaseServer {
 		$createTable = Flux::config('FluxTables.AccountCreateTable');
 		
 		$sql  = "INSERT INTO {$this->loginDatabase}.$table (account_id, banned_by, ban_type, ban_until, ban_date, ban_reason) ";
-		$sql .= "VALUES (?, ?, 0, '0000-00-00 00:00:00', NOW(), ?)";
+		$sql .= "VALUES (?, ?, 0, '1000-01-01 00:00:00', NOW(), ?)";
 		$sth  = $this->connection->getStatement($sql);
 		
 		if ($sth->execute(array($accountID, $unbannedBy, $unbanReason))) {
@@ -338,7 +339,7 @@ class Flux_LoginServer extends Flux_BaseServer {
 		$table = Flux::config('FluxTables.IpBanTable');
 		
 		$sql  = "INSERT INTO {$this->loginDatabase}.$table (ip_address, banned_by, ban_type, ban_until, ban_date, ban_reason) ";
-		$sql .= "VALUES (?, ?, 0, '0000-00-00 00:00:00', NOW(), ?)";
+		$sql .= "VALUES (?, ?, 0, '1000-01-01 00:00:00', NOW(), ?)";
 		$sth  = $this->connection->getStatement($sql);
 		
 		if ($sth->execute(array($ipAddress, $unbannedBy, $unbanReason))) {

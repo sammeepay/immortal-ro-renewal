@@ -12,7 +12,6 @@ function OffsetItemPos.AddOffsetForDoram(in_classNum, in_direction, in_offset, i
 	}
 	OffsetItemPos.Doram[#OffsetItemPos.Doram + 1] = tbl
 end
-
 function OffsetItemPos.AddUppingBottomItem(in_classNum, in_nearOow, in_FarOow)
 	local tbl = {
 		ClassNum = in_classNum,
@@ -21,21 +20,18 @@ function OffsetItemPos.AddUppingBottomItem(in_classNum, in_nearOow, in_FarOow)
 	}
 	OffsetItemPos.UppingBottomItem[#OffsetItemPos.UppingBottomItem + 1] = tbl
 end
-
 function OffsetItemPos_GetSizeInDoramTable()
 	if nil == OffsetItemPos.Doram then
 		return nil
 	end
 	return #OffsetItemPos.Doram
 end
-
 function OffsetItemPos_GetSizeInUppingBottomItemTable()
 	if nil == OffsetItemPos.UppingBottomItem then
 		return nil
 	end
 	return #OffsetItemPos.UppingBottomItem
 end
-
 function OffsetItemPos_GetOffsetForDoram(in_classNum, in_direction, in_sex)
 	if nil == OffsetItemPos.Doram then
 		return nil
@@ -59,7 +55,6 @@ function OffsetItemPos_GetOffsetForDoram(in_classNum, in_direction, in_sex)
 	end
 	return nil
 end
-
 function OffsetItemPos_GetUppingBottomItem(in_classNum)
 	if nil == OffsetItemPos.UppingBottomItem then
 		return nil

@@ -1,0 +1,200 @@
+//===== rAthena Script =======================================
+//= Advanced Refiner
+//===== Description: =========================================
+//= [Official Conversion]
+//= Refiner that uses Enriched ores to increase upgrade success.
+//===== Changelog: ===========================================
+//= 1.0 Added Malangdo Refiner "Holink". [Euphy]
+//= 1.1 Removed re-roll behavior. [Secret]
+//= 1.2 Added db-based material ID [Secret]
+//============================================================
+
+// Main NPC :: mal_jerun
+//============================================================
+malangdo,221,174,6	script	Holink#mal_cash	559,{
+	disable_items;
+	mes "[Holink]";
+	mes "เมี๊ยว ข้าคือช่างตีบวก Holink~";
+	mes "ปรมาจารย์แห่งการตีบวก, Holink~";
+	mes "ข้าเป็นแมวพิเศษที่ได้ร่ำเรียนจาก Morroc, Holink~";
+	mes "ลูกสาวของข้าเป็นคนที่น่าภาคภูมิใจมาก, Holink~";
+	mes "เจ้าจะตีบวกอะไรในวันนี้ ? Holink~";
+	next;
+
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
+	for (set .@i,1; .@i<=10; set .@i,.@i+1)
+		set .@menu$, .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[Empty]" ) +":";
+	set .@part, .@indices[ select(.@menu$) ];
+
+	if (!getequipisequiped(.@part)) {
+		mes "[Holink]";
+		switch(.@part) {
+		case EQI_HEAD_TOP:
+			mes "เมี๊ยว อาจารย์ของข้า Aragam เคยบอกว่า~";
+			mes "ไม่มียารักษาสำหรับโรคโง่...";
+			break;
+		case EQI_ARMOR:
+			mes "ไม่เห็นมีอะไรเลย, เมี๊ยว!!";
+			break;
+		case EQI_HAND_L:
+			mes "เมี๊ยว? เจ้าต้องการให้ข้าทำอะไรกับมือซ้าย...?";
+			break;
+		case EQI_HAND_R:
+			mes "เมี๊ยว? เจ้าต้องการให้ข้าทำอะไรกับมือขวา...?";
+			break;
+		case EQI_GARMENT:
+			mes "เมี๊ยว? เจ้ามาตัวเปล่านิ.";
+			break;
+		case EQI_SHOES:
+			mes "คิย๊า~! อย่ายุ่งกับจมูกที่อ่อนไหวง่ายของข้า, เมี๊ยว~.";
+			break;
+		case EQI_ACC_L:
+		case EQI_ACC_R:
+			mes "เมี๊ยว? ไหนละประดับ ?";
+			break;
+		case EQI_HEAD_MID:
+		case EQI_HEAD_LOW:
+			mes "เมี๊ยว? เจ้าอยากจะคุยเกี่ยวกับหมวกส่วนอื่นๆ, เมี๊ยว?~";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[Holink]";
+		mes "ให้อาจารย์ Aragam มาตีก็ตีบวกไม่ได้, เมี๊ยว.";
+		close;
+	}
+	if (getequiprefinerycnt(.@part) >= 10) {
+		mes "[Holink]";
+		mes "เมี๊ยว~ ค่าตีบวกสูงสุดแล้ว. อาจารย์ Aragam ทำให้หรอ, เมี๊ยว?~";
+		close;
+	}
+	mes "[Holink]";
+	.@refineitemid = getequipid(.@part); // save id of the item
+	.@refinerycnt = getequiprefinerycnt(.@part); //save refinery count
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	.@price = getequiprefinecost(.@part, REFINE_COST_HOLINK, REFINE_ZENY_COST);
+	.@material = getequiprefinecost(.@part, REFINE_COST_HOLINK, REFINE_MATERIAL_ID);
+
+	switch(getequipweaponlv(.@part)) {
+	default:
+	case 0: // Armor
+		.@type$ = "armor";
+		mes "เจ้าเลือกชุดเกราะ, เมี๊ยว~";
+		break;
+	case 1: // Level 1 Weapon
+		.@type$ = "weapon";
+		mes "อาวุธเลเวล 1...?";
+		break;
+	case 2: // Level 2 Weapon
+		.@type$ = "weapon";
+		mes "เมี๊ยว, อาวุธเลเวล 2...?";
+		break;
+	case 3: // Level 3 Weapon
+		.@type$ = "weapon";
+		mes "เมี๊ยว เมี๊ยว~~ อาวุธเลเวล 3~~";
+		break;
+	case 4: // Level 4 Weapon
+		.@type$ = "weapon";
+		mes "มะ-เมี๊ยว!... อาวุธเลเวล 4...!";
+		mes "ข้าเคยเห็นมันมาก่อนและ";
+		mes "ได้เรียนมันมาจากอาจารย์ Aragam แล้ว... มะ-เมี๊ยว!!";
+		break;
+	}
+	mes "เจ้าต้องมี ^ff9999"+getitemname(.@material)+"^000000 และ ^ff9999"+.@price+"^000000 Zeny เป็นค่าบริการ, เมี๊ยว~";
+	mes "จะทำต่อไหม, เมี๊ยว?~";
+	next;
+	if(select("ใช่!!:ไม่!!") == 2) {
+		mes "[Holink]";
+		mes "คิย๊า!!";
+		mes "เจ้าไม่เชื่อมั่นในตัวของ Holink หรอ, เมี๊ยว?~";
+		close;
+	}
+	if (getequippercentrefinery(.@part, REFINE_COST_ENRICHED) < 100) {
+		mes "[Holink]";
+		mes "Meow!!";
+		if (.@type$ == "armor")
+			mes "เกราะนี้ถูกตีบวกมาหลายครั้งแล้ว, เมี๊ยว.";
+		else {
+			mes "อันตราย. อันตราย~";
+			mes "อาวุธนี้ถูกตีบวกมาเยอะมาก, เมี๊ยว~";
+			next;
+			mes "[Holink]";
+		}
+		mes "มันจะแตกได้ถ้าเจ้าจะทำต่อ";
+		mes "ลองตีใหม่ครั้งหน้าไหม, เมี๊ยว.";
+		next;
+		mes "[Holink]";
+		mes "ถ้า "+.@type$+" นี้แตก, เจ้าจะไม่สามารถ";
+		mes "ใช้มันได้อีกเลย, เมี๊ยว. ทั้งปัจจุบัน... และอนาคต";
+		mes "^ff0000การ์ดและออฟชั่นจะหายไปด้วยแน่นอน^000000.";
+		mes "เจ้ายังอยากทำต่อไหม, เมี๊ยว~?";
+		next;
+		if(select("ใช่, อยากทำ!!:ลืมมันไปซะ!!") == 2) {
+			mes "[Holink]";
+			mes "เมี๊ยว! เลือกได้ดี, เมี๊ยว.";
+			mes "แต่!!";
+			mes "ข้าไม่พอใจนักที่เจ้าไม่เชื่อฝีมือข้า Holink, เมี๊ยว~";
+			close;
+		}
+	}
+	if (countitem(.@material) == 0 || Zeny < .@price) {
+		mes "[Holink]";
+		mes "เจ้ามีของไม่ครบ.";
+		mes "เจ้าต้องมี ^ff9999"+getitemname(.@material)+"^000000 และ ^ff9999"+.@price+"^000000 Zeny, เมี๊ยว~";
+		mes "ไปเอามันมา, เมี๊ยว~";
+		close;
+	}
+	delitem .@material,1;
+	set Zeny, Zeny-.@price;
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) ||
+		callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt)) {
+		mes "[Holink]";
+		emotion ET_FRET;
+		mes "รอสักครู่...";
+		mes "เจ้าคิดว่าข้าโง่หรอ?!";
+		mes "เจ้าแอบสลับของตอนที่ข้าไม่เห็น! ไปให้พ้นซะ!";
+		close;
+	}
+
+	if (getequippercentrefinery(.@part, REFINE_COST_ENRICHED) > rand(100)) {
+		successrefitem .@part;
+		mes "[Holink]";
+		mes "มะ~ มะ~ เมี๊ยว! ตีบวกสนุกจังเลย~";
+		next;
+		emotion ET_CHUP;
+		mes "[Holink]";
+		mes "ยอดเยี่ยม!! ยอดเยี่ยม, เมี๊ยว!!";
+		mes "ข้าคือลูกศิษย์ของ Aragam~";
+		mes "Holink!!";
+		mes "วันอื่นข้าก็ตีสำเร็จได้, เมี๊ยว!!";
+		close;
+	}
+	failedrefitem .@part;
+	mes "[Holink]";
+	mes "มาว~ เมี๊ยว~ คิย๊า!!";
+	next;
+	switch(rand(1,5)) {
+		case 1: emotion ET_CRY; break;
+		case 2: emotion ET_PROFUSELY_SWEAT; break;
+		case 3: emotion ET_KEK; break;
+		case 4: emotion ET_SCRATCH; break;
+		case 5: emotion ET_BIGTHROB; break;
+	}
+	mes "[Holink]";
+	mes "เมี๊ยว!! อ๊ากกกกก~~!!!!";
+	mes "คิย๊า!! ข้าทำพลาด, เมี๊ยว!!";
+	next;
+	mes "[Holink]";
+	mes "......";
+	mes "......";
+	mes "ทั้งหมด~ มัน~ แตกแล้ว, เมี๊ยว...";
+	next;
+	mes "[Holink]";
+	mes "เมี๊ยว.... อาจารย์ Aragam เคยบอกว่า,";
+	mes "จงเรียนรู้จากความผิดพลาด...";
+	mes "เจ้ามนุษย์, ความผิดพลาดในครั้งนี้จะเป็นความสำเร็จในครั้งหน้า.";
+	close;
+}

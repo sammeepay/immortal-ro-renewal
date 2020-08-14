@@ -1,0 +1,396 @@
+//===== rAthena Script =======================================
+//= HD Refiners
+//===== Description: =========================================
+//= [Official Conversion]
+//= Refiners that use HD ores to refine equipment. Upon
+//= failure, the equipment is not destroyed; rather, its
+//= refine level decreases by 1. The success rate is identical
+//= to that for Enriched ores.
+//= - "Blacksmith Mighty Hammer" only refines from +7~9.
+//= - "Basta" only refines from +10 and up.
+//===== Changelog: ===========================================
+//= 1.0 First version. [Euphy]
+//= 1.1 Removed re-roll behavior. [Secret]
+//============================================================
+
+// Blacksmith Mighty Hammer (+7~9) :: cash_smelting79
+//============================================================
+-	script	::MightyHammer	-1,{
+	disable_items;
+	mes "[Blacksmith Mighty Hammer]";
+	mes "ข้าคือช่างตีบวกที่จำกัดจำนวนในการตีบวก.";
+	mes "โดยข้าจะตีบวกเฉพาะ ^CC0000+7 ถึง +9^000000 เท่านั้น.";
+	next;
+	mes "[Blacksmith Mighty Hammer]";
+	mes "ความสามารถพิเศษของข้าคือถ้าข้าตีบวกล้มเหลว, ค่าบวกจะลดลง 1 โดยที่ของไม่หาย. เจ๋งป่ะล่ะ ?";
+	next;
+	mes "[Blacksmith Mighty Hammer]";
+	mes "ดังนั้นเจ้าอย่าทำตัวใจเสาะ, จงเลือกไอเท็มที่เจ้าอยากจะตีบวก ?";
+	next;
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
+	for ( .@i = 1; .@i <= 10; ++.@i )
+		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) + "-[ไม่ได้สวมใส่]" ) + ":";
+	.@part = .@indices[ select(.@menu$) ];
+	if (!getequipisequiped(.@part)) {
+		mes "[Blacksmith Mighty Hammer]";
+		switch(.@part) {
+		case EQI_HEAD_TOP:
+			mes "ข้าคือช่างตีบวก, ไม่ใช่ช่างตัดผม.";
+			break;
+		case EQI_ARMOR:
+			mes "ค้อนในมือข้า, จะทำให้เจ้าเห็นดาวบนท้องฟ้า.";
+			break;
+		case EQI_HAND_L:
+		case EQI_HAND_R:
+			mes "การทำมือเทียมไม่ใช่ความสามารถพิเศษของข้า.";
+			break;
+		case EQI_GARMENT:
+			mes "ใส่ไอเท็มมาด้วยไม่งั้นข้าจะตีบวกยังไง!";
+			break;
+		case EQI_SHOES:
+			mes "รองเท้าเจ้าอยู่ไหน ?";
+			break;
+		case EQI_ACC_L:
+		case EQI_ACC_R:
+			mes "ไหนละ ประดับไม่เห็นมี ?";
+			break;
+		case EQI_HEAD_MID:
+			mes "เจ้าอยากให้ข้าตีบวกอะไร ?";
+			break;
+		case EQI_HEAD_LOW:
+			mes "หึ ? เจ้าต้องการอะไรจากข้า ?";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[Blacksmith Mighty Hammer]";
+		mes "ไอเท็มนี้ตีบวกไม่ได้.";
+		close;
+	}
+	.@weapon_lvl = getequipweaponlv(.@part);
+	.@bb = getblacksmithblessing(.@weapon_lvl,.@refine_count);
+	if (!.@bb) {
+		mes "[Blacksmith Mighty Hammer]";
+		mes "ข้าตีบวกเฉพาะไอเท็ม +7 ถึง +9 เท่านั้น.";
+		close;
+	}
+
+	.@refineitemid = getequipid(.@part); // save id of the item
+	.@refinerycnt = getequiprefinerycnt(.@part); //save refinery count
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	.@price = getequiprefinecost(.@part, REFINE_COST_HD, REFINE_ZENY_COST);
+	.@material = getequiprefinecost(.@part, REFINE_COST_HD, REFINE_MATERIAL_ID);
+
+	mes "[Blacksmith Mighty Hammer]";
+	mes "ในการตีบวก ข้าต้องการ ^ff9999" + getitemname(.@material) + "^000000 และ 20,000 zeny เป็นค่าบริการ.";
+	mes "เจ้าพร้อมที่จะตีบวกยัง ?";
+	next;
+	if(select("ใช่:ไม่") == 2) {
+		mes "[Blacksmith Mighty Hammer]";
+		mes "ข้าจะรอวันที่เจ้าพร้อม.";
+		close;
+	}
+	if (getequippercentrefinery(.@part, REFINE_COST_HD) < 100) {
+		mes "[Blacksmith Mighty Hammer]";
+		mes "มันดูเหมือนว่าไอเท็มชิ้นนี้จะล้มเหลวได้ถ้าตีบวกต่อ.";
+		mes "ไม่ต้องกังวลไป ถ้ามันล้มเหลว, ค่าตีบวกจะลดลงแค่ 1 เลเวล.";
+		mes "เจ้าอยากตีบวกต่อไหม ?";
+		next;
+		if (countitem(.@refinebb[0]) < .@refinebb[1])
+			setarray .@menu$[1], "ใช่", "ไม่";
+		else {
+			mes "[Blacksmith Mighty Hammer]";
+			mes "Ah! ^0000ffBlacksmith Blessing^000000?";
+			mes "ด้วยพรของช่างตีเหล็กอุปกรณ์จะไม่หายไปหากการปรับแต่งล้มเหลว!";
+			next;
+			mes "[Blacksmith Mighty Hammer]";
+			if (.@weapon_lvl < 1 || .@weapon_lvl > 4)
+				mes "สำหรับ +" + getequiprefinerycnt(.@part) + " อุปกรณ์, ตีบวกด้วย^316AC5 " + .@refinebb[1] + " unit(s) Blacksmith Blessing^000000 สามารถป้องกันไม่ให้อุปกรณ์เสียหายได้คุณต้องการใช้หรือไม่ เพื่อตีบวก?";
+			else
+				mes "สำหรับ +" + getequiprefinerycnt(.@part) + " อาวุธ, ตีบวกด้วย^316AC5 " + .@refinebb[1] + " unit(s) Blacksmith Blessing^000000 สามารถป้องกันไม่ให้อุปกรณ์เสียหายได้คุณต้องการใช้หรือไม่ เพื่อตีบวก?";
+			next;
+			setarray .@menu$[0], "ใช้เพื่อตีบวก","ตีบวกโดยตรงโดยไม่ใช้มัน","ไม่ตีบวกแล้ว";
+		}
+		switch( select(.@menu$[0], .@menu$[1], .@menu$[2]) ) {
+		case 1:
+			.@bless_who = 1;
+			break;
+		case 2:
+			break;
+		case 3:
+			mes "[Blacksmith Mighty Hammer]";
+			mes "เฉพาะผู้ที่เอาชนะความกลัวความล้มเหลวเท่านั้นที่จะได้รับผลงานชิ้นเอก";
+			close;
+		}
+	}
+	if ((.@bless_who && countitem(.@refinebb[0]) < .@refinebb[1]) || countitem(.@material) == 0 || Zeny < .@price) {
+		mes "[Blacksmith Mighty Hammer]";
+		mes "เจ้ามีของไม่ครบ ?";
+		close;
+	}
+	if (.@bless_who)
+		delitem .@refinebb[0],.@refinebb[1];
+	delitem .@material,1;
+	Zeny = Zeny - .@price;
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) ||
+		callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt)) {
+		mes "[Blacksmith Mighty Hammer]";
+		emotion ET_FRET;
+		mes "แป็ปหนึ่งน่ะ...";
+		mes "เจ้าคิดว่าข้าโง่หรอ ?!";
+		mes "เจ้าแอบสลับของตอนข้าเผลอ! ไปให้พ้นหน้าซะ!";
+		close;
+	}
+
+	mes "[Blacksmith Mighty Hammer]";
+	mes "ก็อง! ก็อง! ก็อง!";
+	if (getequippercentrefinery(.@part, REFINE_COST_HD) > rand(100)) {
+		successrefitem .@part;
+		next;
+		emotion ET_BEST;
+		mes "[Blacksmith Mighty Hammer]";
+		mes "มันเป็นเสียงที่ทำให้ข้าชื่นใจทุกครั้งที่ได้ยิน.";
+		mes "เอาไป, มันตีบวกสำเร็จด้วยดี!";
+		close;
+	}
+	if (.@bless_who == 1) {
+		specialeffect EF_HOLYHIT;
+		next;
+		emotion ET_HUK;
+		mes "[Blacksmith Mighty Hammer]";
+		mes "อะไรนะ !!";
+		next;
+		mes "[Blacksmith Mighty Hammer]";
+		mes "Aiya! ข้าไม่สามารถทำอะไรได้แล้วตอนนี้อืม .... ";
+		close;
+	}
+	downrefitem .@part;
+	next;
+	emotion ET_HUK;
+	mes "[Blacksmith Mighty Hammer]";
+	mes "อุบส์!!";
+	next;
+	mes "[Blacksmith Mighty Hammer]";
+	mes "ข้ารู้ว่าเจ้าไม่ชอบ แต่มันลดไป 1 เลเวลการตีบวกอ่ะ.";
+	close;
+}
+prt_in,59,54,3	duplicate(MightyHammer)	Mighty Hammer#prt	4_M_DWARF
+morocc_in,65,30,3	duplicate(MightyHammer)	Mighty Hammer#morocc	4_M_DWARF
+payon,148,176,3	duplicate(MightyHammer)	Mighty Hammer#pay	4_M_DWARF
+alberta_in,16,56,3	duplicate(MightyHammer)	Mighty Hammer#alb	4_M_DWARF
+yuno_in01,171,18,3	duplicate(MightyHammer)	Mighty Hammer#yuno	4_M_DWARF
+ein_in01,22,82,3	duplicate(MightyHammer)	Mighty Hammer#ein	4_M_DWARF
+lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
+
+// iRO NPC locations:
+// payon,174,133,4	duplicate(MightyHammer)	Mighty Hammer#im	4_M_DWARF
+
+// Basta (+10 and up) :: cash_smelting
+//============================================================
+-	script	::Basta	-1,{
+	disable_items;
+	mes "[Basta]";
+	mes "ข้าคือช่างตีบวกที่เก่งที่สุดในโลก, นามว่า Basta.";
+	mes "ข้าไม่ตีบวกของดาดๆ ทั่วไป.";
+	mes "แต่ข้าตีบวกเฉพาะของ ^CC0000ที่บวกเกิน +10^000000 ขึ้นไปเท่านั้น.";
+	next;
+	mes "[Basta]";
+	mes "ของชิ้นไหนที่เจ้าอยากจะตีบวก ?";
+	next;
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
+	for ( .@i = 1; .@i <= 10; ++.@i )
+		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) + "-[ไม่ได้สวมใส่]" ) + ":";
+	.@part = .@indices[ select(.@menu$) ];
+	if (!getequipisequiped(.@part)) {
+		mes "[Basta]";
+		switch(.@part) {
+		case EQI_HEAD_TOP:
+			mes "อยากให้ตีหัวเจ้าแทนหรอ ?";
+			break;
+		case EQI_ARMOR:
+			mes "เจ้าต้องการอะไรจากข้า ?";
+			break;
+		case EQI_HAND_L:
+		case EQI_HAND_R:
+			mes "การทำมือเทียมไม่ใช่ความสามารถพิเศษของข้า.";
+			break;
+		case EQI_GARMENT:
+			mes "เจ้ารู้จักผ้าคลุมไหม ?";
+			break;
+		case EQI_SHOES:
+			mes "ถ้าเจ้าอยากตีบวกเท้า, อย่ามาหาข้า, เจ้าควรไปวิ่งมาราธอนแทน.";
+			break;
+		case EQI_ACC_L:
+		case EQI_ACC_R:
+			mes "ไม่เห็นมีประดับ ?";
+			break;
+		case EQI_HEAD_MID:
+			mes "ข้าไม่เห็นของที่เจ้าอยากตีบวกเลย.";
+			break;
+		case EQI_HEAD_LOW:
+			mes "ข้าทำให้เจ้าฉลาดขึ้นไม่ได้หรอก. ทำไมไม่ลองไปเรียนอนุบาลดูล่ะ.";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[Basta]";
+		mes "ข้าตีบวกไอเท็มนี้ไม่ได้.";
+		close;
+	}
+	.@refine_count = getequiprefinerycnt(.@part);
+	if (.@refine_count < 10) {
+		mes "[Basta]";
+		mes "ข้าได้บอกเจ้ายัง ? ว่าข้าตีบวกเฉพาะไอเท็ม +10 ขึ้นไปเท่านั้น.";
+		close;
+	}
+	.@weapon_lvl = getequipweaponlv(.@part);
+	.@bb = getblacksmithblessing(.@weapon_lvl,.@refine_count);
+	if (!.@bb) {
+		mes "[Basta]";
+		mes "มันเพอร์เฟคแล้ว, ไม่สามารถตีบวกมากกว่านี้ได้แล้ว~";
+		close;
+	}
+	.@refineitemid = getequipid(.@part); // save id of the item
+	.@refinerycnt = getequiprefinerycnt(.@part); //save refinery count
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	.@price = getequiprefinecost(.@part, REFINE_COST_OVER10_HD, REFINE_ZENY_COST);
+	.@material = getequiprefinecost(.@part, REFINE_COST_OVER10_HD, REFINE_MATERIAL_ID);
+
+	if (.@weapon_lvl < 1 || .@weapon_lvl > 4)
+		.@type$ = "armor";
+	else
+		.@type$ = "weapon";
+	mes "[Basta]";
+	mes "หืมมม... เจ้าอยากตีบวกอันนี้ใช่ไหม ?";
+	mes "ในการตีบวก, ข้าต้องการ 1 ^ff9999" + getitemname(.@material) + "^000000 และ " + callfunc("F_InsertComma",.@price) + " zeny เป็นค่าบริการ.";
+	mes "เจ้าพร้อมที่จะตีบวกยัง ?";
+	next;
+	if(select("ใช่:ไม่") == 2) {
+		mes "[Basta]";
+		mes "ไม่มีปัญหา. ถ้าเจ้ายังไม่พร้อม...";
+		close;
+	}
+	if (getequippercentrefinery(.@part, REFINE_COST_OVER10_HD) < 100) {
+		mes "[Basta]";
+		mes "ของชิ้นนี้ " + .@type$ + " มีเลเวลการตีบวกที่สูงแล้ว.";
+		mes "ถ้าเจ้าอยากตีบวกต่อ, มันอาจจะลดเลเวลตีบวกลงได้.";
+		next;
+		mes "[Basta]";
+		mes "ข้าแตกต่างจากช่างตีบวกคนอื่นๆ.";
+		mes "เมื่อล้มเหลว เลเวลการตีบวกจะลดลง, อาจจะ, 3 หรือ 4... มันฟังดูน่ากลัวเนอะ.";
+		mes "แต่สำหรับข้ามันจะลดลงแค่ 1 เลเวล.";
+		next;
+		if (.@refinebb[1] == 0 || countitem(.@refinebb[0]) < .@refinebb[1]) {
+			mes "[Basta]";
+			mes "เมื่อเทียบกับช่างตีบวกคนอื่น ๆ ความเสี่ยงของข้าดูจะน้อยกว่า.";
+			mes "เจ้าต้องการตีบวกต่อไหม ?";
+			next;
+			setarray .@menu$[1], "ใช่", "ไม่";
+		}
+		else {
+			mes "[Basta]";
+			mes "ว้า ~ มันคือ ^316AC5Blacksmith Blessing^000000 หรือเปล่ามันยากที่จะได้มา~ แต่คุณได้รับมันแล้ว!";
+			next;
+			mes "[Basta]";
+			mes "สำหรับ +" + .@refine_count + " " + .@type$ + " ต้องการ ^316AC5" + .@refinebb[1] + " ชิ้น Blacksmith Blessing^000000 สามารถป้องกันไม่ให้อุปกรณ์เสียหายไป เจ้าต้องการตีบวกด้วย Blacksmith Blessing หรือไม่?";
+			next;
+			setarray .@menu$[0], "ตีบวกด้วย Blacksmith Blessing", "ตีบวกโดยไม่ใช้ Blacksmith Blessing", "อย่าตีบวกนะ";
+		}
+		switch( select(.@menu$[0], .@menu$[1], .@menu$[2]) ) {
+		case 1:
+			.@bless_who = 1;
+			break;
+		case 2:
+			break;
+		case 3:
+			mes "[Basta]";
+			mes "อืม ~";
+			mes "การไม่ท้าทายเลยอาจเป็นภูมิปัญญาในชีวิตก็ได้";
+			close;
+		}
+	}
+	if ((.@bless_who && countitem(.@refinebb[0]) < .@refinebb[1]) || countitem(.@material) == 0 || Zeny < .@price) {
+		mes "[Basta]";
+		mes "หืมมม... เจ้ามีของไม่ครบ.";
+		mes "กลับมาใหม่เมื่อเจ้ามีของพร้อม.";
+		close;
+	}
+	if (.@bless_who)
+		delitem .@refinebb[0],.@refinebb[1];
+	delitem .@material,1;
+	Zeny = Zeny - .@price;
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) ||
+		callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt)) {
+		mes "[Basta]";
+		emotion ET_FRET;
+		mes "แป็ปหนึ่งน่ะ...";
+		mes "เจ้าคิดว่าข้าโง่หรอ?!";
+		mes "เจ้าแอบสลับของตอนข้าเผลอ! ไปให้พ้นหน้าซะ!";
+		close;
+	}
+
+	mes "ก็อง! ก็อง! ก็อง! ก็อง!";
+	if (getequippercentrefinery(.@part, REFINE_COST_OVER10_HD) > rand(100)) {
+		successrefitem .@part;
+		next;
+		emotion ET_BEST;
+		mes "[Basta]";
+		mes "ยอดเยี่ยมจริงๆ!!";
+		mes "เพราะว่าข้าคือช่างตีบวกที่เก่งที่สุดในโลก!";
+		close;
+	}
+	if (.@bless_who == 1) {
+		specialeffect EF_HOLYHIT;
+		next;
+		emotion (!rand(5))?ET_MONEY:ET_HUK;
+		mes "[Basta]";
+		mes "Aaaaaaaaaaak!!!";
+		next;
+		mes "[Basta]";
+		mes "แย่จริง!";
+		mes "ตีบวกล้มเหลวและค่าตีบวกลด!";
+		mes "ขนาดว่าข้าคือช่างตีบวกที่เก่งที่สุดในโลกยังไม่สำเร็จ 100% เลย!";
+	}
+	else {
+		downrefitem .@part;
+		next;
+		emotion (!rand(5))?ET_MONEY:ET_HUK;
+		mes "[Basta]";
+		mes "Aaaaaaaaaaak!!!";
+		next;
+		mes "[Basta]";
+		mes "แย่จริง!";
+		mes "ตีบวกล้มเหลวและค่าตีบวกลด!";
+		mes "ขนาดว่าข้าคือช่างตีบวกที่เก่งที่สุดในโลกยังไม่สำเร็จ 100% เลย!";
+	}
+	mes "แย่มากๆ.";
+	next;
+	mes "[Basta]";
+	mes "ข้าจะทำให้ดีขึ้นในครั้งต่อไป! อย่ากังวลเลย!";
+	close;
+}
+
+prt_in,57,54,3	duplicate(Basta)	Basta#prt	4_M_DWARF
+morocc_in,68,30,3	duplicate(Basta)	Basta#morocc	4_M_DWARF
+payon,148,174,3	duplicate(Basta)	Basta#payon	4_M_DWARF
+alberta_in,18,56,3	duplicate(Basta)	Basta#alberta	4_M_DWARF
+yuno_in01,173,18,3	duplicate(Basta)	Basta#yuno	4_M_DWARF
+ein_in01,24,82,3	duplicate(Basta)	Basta#einbroch	4_M_DWARF
+lhz_in02,280,17,3	duplicate(Basta)	Basta#lighthalzen	4_M_DWARF
+
+// Refine UI makes these NPCs useless
+-	script	RefineUI_Init	-1,{
+	end;
+OnInit:
+	if (getbattleflag("feature.refineui") == 3) {
+		unloadnpc "Basta";
+		unloadnpc "MightyHammer";
+	}
+	end;
+}

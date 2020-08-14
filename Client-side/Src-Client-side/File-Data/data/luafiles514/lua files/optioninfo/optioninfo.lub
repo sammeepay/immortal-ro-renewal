@@ -1,4 +1,5 @@
 CmdOnOffOderList = {
+
 	"/notrade", 
 	"/noshift", 
 	"/noctrl", 
@@ -28,6 +29,7 @@ CmdOnOffOderList = {
 }
 
 CmdOnOffList = {
+
 	["/battlemode"] = 0,
 	["/notrade"] = 0,
 	["/noshift"] = 0,
@@ -58,6 +60,8 @@ CmdOnOffList = {
 }
 
 CmdHelpList = {
+
+	--Orderlist Desc Start
 	["/battlemode"] = MsgStrID.MSI_BATTLEMODE,
 	["/notrade"] = MsgStrID.MSI_NOTRADE,
 	["/noshift"] = MsgStrID.MSI_NOSHIFT,
@@ -86,6 +90,7 @@ CmdHelpList = {
 	["/merai"] = MsgStrID.MSI_MERAI,
 	["/camera"] = MsgStrID.MSI_CAMERA,
 	["/btg"] = MsgStrID.MSI_BTG,
+	--Orderlist Desc End
 	["/hi"] = MsgStrID.MSI_HI,
 	["/blacksmith"] = MsgStrID.MSI_BLACKSMITH,
 	["/alchemist"] = MsgStrID.MSI_ALCHEMIST,
@@ -110,6 +115,7 @@ CmdHelpList = {
 }
 
 OptionInfoList = {
+
 	["Window_XPos"] = -1,
 	["Window_YPos"] = -1,
 	["Trilinear"] = 0,

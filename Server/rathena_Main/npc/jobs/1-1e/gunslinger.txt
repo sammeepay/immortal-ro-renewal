@@ -1,0 +1,423 @@
+//===== rAthena Script ======================================= 
+//= Gunslinger Job Quest
+//===== By: ================================================== 
+//= erKURITA, RockmanEXE, Kisuka
+//===== Current Version: ===================================== 
+//= 2.2
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Gunslinger Job Change Quest
+//===== Additional Comments: ================================= 
+//= 1.0 Made the NPC [erKURITA]
+//= 1.5 Couple fixes to the npc, aswell as adding the missing
+//=     3 green herbs. [erKURITA]
+//= 1.6 job number->const, commonized variable name,
+//=     optimized [Lupus]
+//= 1.7 Now uses only ONE variable GUNS_Q [Lupus]
+//= 1.7a Grammar fixes, few spelling fixes, etc [CBMaster]
+//= 1.7b Parenthesis fixes [KarLaeda]
+//= 1.8 Fixed the reward you can get [Playtester]
+//= 1.9 Removed some 'clever' script constructs [ultramage]
+//= 2.0 Updated to official version - Thanks to Omega for
+//=     his first try [SinSloth] 1.10b - removed .GATs [Lupus]
+//= 2.1 Wise Bull Horn now deletes all items. Thanks to yyCC. [L0ne_W0lf]
+//= 2.1a Corrected a Typo error ";;". [Samuray22]
+//= 2.1b Corrected some typos errors. (bugreport:1549) [Samuray22]
+//= 2.1c Fixed some missing/messed up item checks. (bugreport:2693) [Kisuka]
+//= 2.2 Updated to match AEGIS script and Added Quest Log commands. [Kisuka]
+//============================================================ 
+
+que_ng,152,167,3	script	Master Miller	901,{
+	if (Upper == 2) {
+		mes "[Master Miller]";
+		mes "ท่านเป็นเด็กน้อย";
+		mes "ที่น่ารักใช่ไหม~";
+		mes "แม่ของท่านอยู่ที่ใด?";
+		mes "สถานที่นี้เป็นที่อันตราย ดังนั้น";
+		mes "โปรดกลับบ้านเร็ว ๆ โอเคไหม?";
+		close;
+	}
+	if (Class == Job_Novice) {
+		if (!callfunc("F_CanChangeJob")) {
+			mes "[Master Miller]";
+			mes "สนใจที่จะเป็น Gunslinger";
+			mes "ใช่มั้ย? ท่านมีศักยภาพ";
+			mes "แต่ท่านยังมีประสบการณ์";
+			mes "ไม่เพียงพอ  เพียงแค่ฝึก";
+			mes "ตัวเองให้มากขึ้น แล้ว";
+			mes "กลับมาใหม่ ท่านได้ยินไหม?";
+			close;
+		}
+		if (GUNS_Q == 0) {
+			mes "[Master Miller]";
+			mes "ข้า Miller, ผู้ฝึกสอน";
+			mes "Gunslinger เต็มเวลา";
+			mes "ผู้พิทักษ์ Lady Selena";
+			mes "ตอนนี้ ท่านต้องการอะไร";
+			mes "ถ้ามันไม่สำคัญล่ะก็ ข้าไม่มีเวลาให้กับท่าน";
+			next;
+			if(select("ไม่มีอะไร:ข้าอยากเป็น Gunslinger") == 1) {
+				mes "[Master Miller]";
+				mes "อย่าเสียเวลาของข้า";
+				mes "หากท่านต้องการ";
+				mes "เป็น Gunslinger";
+				mes "ค่อยกลับมาคุยกับข้าใหม่";
+				close;
+			}
+			mes "[Master Miller]";
+			mes "ฮึ่ม ท่านยังเด็กมาก แต่ดวงตาของท่าน";
+			mes "บอกข้าว่า ท่านค่อนข้างทะเยอทะยาน";
+			mes "ท่านจะต้องผ่านการสัมภาษณ์ และ";
+			mes "หลักสูตรการศึกษาของเราเพื่อเป็น Gunslinger ท่านต้องการสมัครหรือไม่?";
+			next;
+			if(select("ให้เวลาข้าคิดบ้าง:แน่นอน!") == 1) {
+				mes "[Master Miller]";
+				mes "ข้าเข้าใจ";
+				mes "หากท่านตัดสินใจว่า";
+				mes "ท่านต้องการเป็น";
+				mes "Gunslinger จากนั้น";
+				mes "แจ้งให้เราทราบทันที";
+				mes "ข้าจะให้ท่านเริ่มต้น";
+				close;
+			}
+			mes "[Master Miller]";
+			mes "เยี่ยมมาก เอาล่ะ";
+			mes "เรามาเริ่มกันเลยดีกว่า";
+			mes "นำจดหมายนี้ไปให้กับ";
+			mes "Mr. Wise Bull ใน Payon";
+			mes "เขาเป็นนักเวทย์ที่จะตัดสินว่า";
+			mes "ท่านมีคุณสมบัติที่จะเป็น Gunslinger หรือไม่";
+			set GUNS_Q,1;
+			setquest 6020;
+			close;
+		}
+		else if (GUNS_Q == 1) {
+			mes "[Master Miller]";
+			mes "นำจดหมายแนะนำตัว";
+			mes "ที่ข้าเขียนให้ท่าน ไปให้กับ";
+			mes "Mr. Wise Bull Horn";
+			mes "ใน Payon เขาจะทดสอบท่าน";
+			mes "เพื่อดูว่า ท่านมีคุณสมบัติ";
+			mes "ที่จะเป็น Gunslinger หรือไม่";
+			close;
+		}
+		else if (GUNS_Q == 2) {
+			mes "[Master Miller]";
+			mes "Hmm... Wise Bull Horn";
+			mes "asked you to collect the";
+			mes "items you need to make the";
+			mes "voucher? Hm. I guess that's";
+			mes "part of his qualification test.";
+			close;
+		}
+		else if (GUNS_Q == 3) {
+			mes "[Master Miller]";
+			mes "Wise Bull Horn";
+			mes "ขอให้ท่าน นำ Milk";
+			mes "มาให้เขาบ้าง เขาจะต้อง";
+			mes "ชอบท่าน ถ้าเขาร้องขอ";
+			mes "ความช่วยเหลือ ขอให้โชคดีเพื่อน";
+			close;
+		}
+		else if (GUNS_Q == 4) {
+			mes "[Master Miller]";
+			mes "ข้าคาดหวังว่าจะได้ยินข่าวดี";
+			mes "จากท่านในไม่ช้า ท่านรู้ไหม";
+			mes "ข้าไม่สงสัยเลยว่าท่าน";
+			mes "จะกลายเป็น Gunslinger";
+			close;
+		}
+		else if (GUNS_Q == 5) {
+			if (SkillPoint != 0) {
+				mes "[Master Miller]";
+				mes "เฮ้ ท่านมี";
+				mes "แต้ม Skill เหลืออยู่";
+				mes "ท่านควรใช้มันให้หมด";
+				mes "ก่อนที่จะมาคุยกับข้า";
+				close;
+			}
+			mes "[Master Miller]";
+			mes "โอ้ ท่านได้นำ";
+			mes "บัตรกำนัลจาก Wise Bull Horn?";
+			mes "ไม่นานมานี้ เขาให้";
+			mes "ใครซักคน ดังนั้น";
+			mes "ข้าภูมิใจในตัวท่านจริงๆ!";
+			next;
+			mes "[Master Miller]";
+			mes "ถ้า Wise Bull Horn";
+			mes "อนุมัติ ข้าก็ไม่มีเหตุผล";
+			mes "ที่จะปฏิเสธท่าน เอาล่ะ";
+			mes "ข้าจะทำให้ท่านเป็น";
+			mes "Gunslinger แต่ก่อนอื่น";
+			mes "ให้ข้าอธิบายงานของเราอย่างละเอียด";
+			next;
+			mes "[Master Miller]";
+			mes "ในฐานะที่เป็น Gunslinger";
+			mes "ท่านต้องเก็บปืนไว้กับท่าน";
+			mes "สมาคม Gunslinger";
+			mes "ต้องใช้ปืนและกระสุน";
+			mes "ดังนั้น ท่านสามารถรับได้";
+			mes "จากสมาชิกกิลด์ของเราเท่านั้น";
+			next;
+			mes "[Master Miller]";
+			mes "ไม่ต้องกังวล Gunslinger";
+			mes "Guildsmen สามารถพบได้เกือบทุกที่";
+			mes "ในทุกวันนี้ อย่างไรก็ตามมันจะต้องเป็นเช่นนี้";
+			mes "ตามคำสั่งของหัวหน้าสมาคมของเรา Lady Selena";
+			next;
+			mes "[Master Miller]";
+			mes "ท่านอาจได้รับโอกาสพบเธอสักวันหนึ่ง";
+			mes "อย่างไรก็ตามตอนนี้ เราต้องควบคุม";
+			mes "การขายปืนและกระสุน เพื่อให้พวกเขาให้";
+			mes "อยู่ห่างจากชนเผ่าที่ชั่วร้าย";
+			mes "หรือ ขาดความรับผิดชอบ";
+			next;
+			mes "[Master Miller]";
+			mes "ไม่ว่าในกรณีใด";
+			mes "มันเป็นความสุขที่ข้า";
+			mes "จะได้คุยกับ Gunslinger";
+			mes "คนอื่นให้ติดต่อกัน ดังนั้น";
+			mes "ขอให้พลังของโลกปกป้อง";
+			mes "ท่านในทุกการผจญภัยของท่าน~";
+			callfunc "Job_Change",Job_Gunslinger;
+			set GUNS_Q,6;
+			completequest 6024;
+			if (rand(1,2) == 1) {
+				getitem 13100,1; // Six_Shooter
+			} else {
+				getitem 13150,1; // Branch
+			}
+			close;
+		}
+	} else {
+		if (Class == Job_Gunslinger) {
+			mes "[Master Miller]";
+			mes "โอ้ว! ไม่ได้พบท่านนาน,";
+			mes "ท่านเป็นอย่างไรบ้าง?";
+			mes "ข้าหวังว่า ท่านคงเก็บ";
+			mes "รักษาปืนของท่านไว้";
+			mes "เป็นอย่างดี ดูแลมันดี ๆ";
+			mes "แล้วมันจะดูแลท่าน จำเอาไว้";
+			close;
+		} else {
+			mes "[Master Miller]";
+			mes "หากท่าน";
+			mes "ไม่มีธุระกับข้า";
+			mes "โปรดไปตามทางของท่าน";
+			close;
+		}
+	}
+}
+
+payon,184,65,3	script	Wise Bull Horn	866,{
+	if (GUNS_Q == 1) {
+		mes "[Wise Bull Horn]";
+		mes "สวัสดี หมาป่าน้อย";
+		mes "มีธุระอะไร นำ";
+		mes "ท่านมาหาข้า?";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Mr. Miller ให้ข้า";
+		mes "ส่งจดหมายนี้ถึงท่าน";
+		mes "จริง ๆ แล้ว ข้าสนใจ";
+		mes "ที่จะเป็น Gunslinger...";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "Miller, ท่านพูดว่า?";
+		mes "อืม Black Fox ไม่ได้";
+		mes "ให้คำแนะนำกับใครก็ตาม";
+		mes "ที่เขาไม่เชื่อ ว่าจะสร้างปืนที่ดี";
+		mes "ใช่ ข้าคิดว่าข้ารู้ว่าทำไม";
+		mes "เขาถึงส่งท่านมาหาข้า";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "ข้าเห็นมันในสายตาของท่าน:";
+		mes "ท่านมีหัวใจที่อบอุ่น และมี";
+		mes "ความรับผิดชอบสูง สิ่งที่";
+		mes "ท่านต้องการ คือ";
+		mes "พรของโลก เพื่อปกป้อง";
+		mes "ท่าน ในฐานะ Gunslinger";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "ข้าสามารถทำบัตรกำนัล";
+		mes "ที่จะแสดงให้เห็นถึงความปรารถนา";
+		mes "ของท่าน ที่จะกลายเป็น";
+		mes "นักรบของโลก เพื่อให้ท่าน";
+		mes "นำเสนอให้กับนักวิจัย Gunslinger";
+		mes "ข้าต้องการรายการเหล่านี้...";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "^3355FF1 Trunk^000000,";
+		mes "^3355FF3 Fluffs^000000,";
+		mes "^3355FF3 Zargons^000000,";
+		mes "^3355FF10 Shells^000000,";
+		mes "^3355FF3 Green Herbs^000000, และ";
+		mes "^3355FF3 Rainbow Shells^000000.";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "หลังจากที่ข้า ทำ";
+		mes "บัตรกำนัลเสร็จ ท่าน";
+		mes "สามารถนำไปให้กับ Black Fox";
+		mes "และเขาจะช่วยให้ท่าน";
+		mes "บรรลุเป้าหมายในการเป็น";
+		mes "Gunslinger";
+		set GUNS_Q,2;
+		changequest 6020,6021;
+		close;
+	}
+	else if (GUNS_Q == 2) {
+		if (countitem(912) < 3 || countitem(914) < 3 || countitem(1019) < 1 || countitem(935) < 10 || countitem(511) < 3 || countitem(1013) < 3) {
+			mes "[Wise Bull Horn]";
+			mes "ข้าสามารถทำบัตรกำนัล";
+			mes "ที่จะแสดงให้เห็นถึงความปรารถนา";
+			mes "ของท่าน ที่จะกลายเป็น";
+			mes "นักรบของโลก เพื่อให้ท่าน";
+			mes "นำเสนอให้กับนักวิจัย Gunslinger";
+			mes "ข้าต้องการรายการเหล่านี้...";
+			next;
+			mes "[Wise Bull Horn]";
+			mes "^3355FF1 Trunk^000000,";
+			mes "^3355FF3 Fluffs^000000,";
+			mes "^3355FF3 Zargons^000000,";
+			mes "^3355FF10 Shells^000000,";
+			mes "^3355FF3 Green Herbs^000000, และ";
+			mes "^3355FF3 Rainbow Shells^000000.";
+			next;
+			mes "[Wise Bull Horn]";
+			mes "หลังจากที่ข้า ทำ";
+			mes "บัตรกำนัลเสร็จ ท่าน";
+			mes "สามารถนำไปให้กับ Black Fox";
+			mes "และเขาจะช่วยให้ท่าน";
+			mes "บรรลุเป้าหมายในการเป็น";
+			mes "Gunslinger";
+			close;
+		}
+		delitem 912,3; // Zargon
+		delitem 914,3; // Fluff
+		delitem 1019,1; // Wooden_Block
+		delitem 935,10; // Shell
+		delitem 511,3; // Green_Herb
+		delitem 1013,3; // Colorful_Shell
+		set GUNS_Q,3;
+		changequest 6021,6022;
+		mes "[Wise Bull Horn]";
+		mes "อ๊า ท่านกลับมา";
+		mes "พร้อมกับทุกสิ่ง";
+		mes "ที่ข้าต้องการ โปรด";
+		mes "ให้เวลาข้าทำบัตรกำนัล";
+		mes "หากท่านกลับมาอีกครั้ง";
+		mes "ข้าควรจะทำมันเสร็จ";
+		close;
+	}
+	else if (GUNS_Q == 3) {
+		mes "[Wise Bull Horn]";
+		mes "โอ้ ท่านมาถึงทันเวลา";
+		mes "เป็นเวลานานแล้วที่ข้าได้ทำ";
+		mes "บัตรกำนัลเหล่านี้มาหนึ่งใบ ดังนั้นอาจจะเป็นสนิมเล็กน้อย";
+		mes "ถึงกระนั้น สิ่งนี้ก็พาข้ากลับไปสู่ยุคของเด็ก ๆ";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "ข้าได้รับใช้ตำแหน่งนี้";
+		mes "ในการเลือกผู้รับบัตรกำนัล";
+		mes "บัตรกำนัล Gunslinger";
+		mes "มาหลายสิบปีแล้ว";
+		mes "แต่ก่อนหน้านั้น ข้าเป็น";
+		mes "นักผจญภัยหนุ่มอย่างท่าน";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "รู้สึกเหมือนเป็นเพียง";
+		mes "เมื่อวานนี้เท่านั้น เมื่อข้าถือบัตร";
+		mes "กำนัลของข้าในฐานะ Gunslinger";
+		mes "นักรบของโลก นั่นคือเมื่อข้า";
+		mes "ได้พบพ่อของ Selena...";
+		mes "เวลาผ่านไปอย่างรวดเร็วได้อย่างไร?";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "อ่า... ข้าซาบซึ้ง";
+		mes "Selena และ Black Fox มาก";
+		mes "สำหรับความช่วยเหลือในการสรรหา";
+		mes "Gunslingers รุ่นเยาว์ ตอนนี้ข้าแก่มาก";
+		mes "และไม่สามารถทำทุกอย่างด้วยตัวเองได้ *ถอนหายใจ...* นั่นคือชีวิต";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "ก่อนออกเดินทาง ข้าขอ";
+		mes "ความกรุณาจากท่านหน่อย";
+		mes "ได้ไหม? ข้ากระหายน้ำ และ";
+		mes "ต้องการ Milk เย็น ๆ สักแก้ว";
+		mes "ท่านช่วยหามาให้ข้าสักหน่อยได้ไหม?";
+		set GUNS_Q,4;
+		changequest 6022,6023;
+		close;
+	}
+	else if (GUNS_Q == 4) {
+		if (countitem(519) < 1) {
+			mes "[Wise Bull Horn]";
+			mes "ข้าเป็นชายชรา ที่จะ";
+			mes "กลับมารวมตัวกับโลก";
+			mes "ในไม่ช้า ท่าน Gunslinger";
+			mes "ช่วยนำ Milk เย็น ๆ";
+			mes "มาให้ข้าได้ไหม?";
+			close;
+		}
+		delitem 519,1; // Milk
+		set GUNS_Q,5;
+		changequest 6023,6024;
+		mes "[Wise Bull Horn]";
+		mes "โอ้ ขอบคุณสำหรับ";
+		mes "ความเอื้ออาทร-- ข้าเห็นว่า";
+		mes "ท่านได้นำ Milk มาให้ข้า";
+		mes "อ๊ะ อร่อยจัง~";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "ข้าชื่นชมความอดทน";
+		mes "ความอ่อนโยน และความเมตตา";
+		mes "ที่ท่านได้พิสูจน์แล้ว จากการนำสิ่งนี้มาให้ข้า";
+		mes "ใช่ นั่นคือลักษณะที่เราทุกคนต้องการให้ Gunslingers มี";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "ตอนนี้ โปรดนำบัตรกำนัลนี้";
+		mes "ไปให้ Miller, Black Fox";
+		mes "โดยได้รับการอนุมัติจากใจของข้า";
+		mes "ข้าหวังว่า ท่านจะใช้ปืนของท่าน";
+		mes "เพื่อส่งเสริมความยุติธรรม";
+		mes "ในฐานะ นักรบผู้สูงศักดิ์ของโลก";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "Eeh~Yeah~Eeh~Hooom";
+		mes "Eeh~Yeah~Eeh~Hooom";
+		mes "Maaaaarrraaa Neeey~";
+		mes "Yippee Yippee Yai Yocaiyay~";
+		close;
+	}
+	else if (GUNS_Q == 5) {
+		mes "[Wise Bull Horn]";
+		mes "ตอนนี้ โปรดนำบัตรกำนัลนี้";
+		mes "ไปให้ Miller, Black Fox";
+		mes "โดยได้รับการอนุมัติจากใจของข้า";
+		mes "ข้าหวังว่า ท่านจะใช้ปืนของท่าน";
+		mes "เพื่อส่งเสริมความยุติธรรม";
+		mes "ในฐานะ นักรบผู้สูงศักดิ์ของโลก";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "Eeh~Yeah~Eeh~Hooom";
+		mes "Eeh~Yeah~Eeh~Hooom";
+		mes "Maaaaarrraaa Neeey~";
+		mes "Yippee Yippee Yai Yocaiyay~";
+		close;
+	}
+	else if (GUNS_Q == 6) {
+		mes "[Wise Bull Horn]";
+		mes "อ่า ไม่ได้เจอกันนาน";
+		mes "ข้าหวังว่า ท่านจะกลายเป็น";
+		mes "สัตว์ร้าย และใช้พลังของท่าน";
+		mes "ในฐานะนักแม่นปืน เพื่อปกป้องสิ่งที่ดีและยุติธรรม";
+		close;
+	}
+	else {
+		mes "[Wise Bull Horn]";
+		mes "Zzzzzz~";
+		mes "^333333*Phew*^000000";
+		close;
+	}
+}

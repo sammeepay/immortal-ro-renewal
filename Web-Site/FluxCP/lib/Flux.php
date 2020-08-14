@@ -107,7 +107,6 @@ class Flux {
 	 */
 	public static function initialize($options = array())
 	{
-		//$required = array('appConfigFile', 'serversConfigFile', 'messagesConfigFile');
 		$required = array('appConfigFile', 'serversConfigFile');
 		foreach ($required as $option) {
 			if (!array_key_exists($option, $options)) {
@@ -120,7 +119,6 @@ class Flux {
 		// below methods for more details on what's being done.
 		self::$appConfig      = self::parseAppConfigFile($options['appConfigFile']);
 		self::$serversConfig  = self::parseServersConfigFile($options['serversConfigFile']);
-		//self::$messagesConfig = self::parseMessagesConfigFile($options['messagesConfigFile']); // Deprecated.
 		
 		// Using newer language system.
 		self::$messagesConfig = self::parseLanguageConfigFile();
@@ -476,7 +474,15 @@ class Flux {
 		if ($lang=self::config('DefaultLanguage')) {
 			$current = $addonName ? FLUX_ADDON_DIR."/$addonName/lang/$lang.php" : FLUX_LANG_DIR."/$lang.php";
 		}
-		
+
+		$languages = self::getAvailableLanguages();
+
+		if(!empty($_COOKIE["language"]) && array_key_exists($_COOKIE["language"], $languages))
+		{
+			$lang = $_COOKIE["language"];
+			$current = $addonName ? FLUX_ADDON_DIR."/$addonName/lang/$lang.php" : FLUX_LANG_DIR."/$lang.php";
+		}
+
 		if (file_exists($default)) {
 			$def = self::parseConfigFile($default);
 		}
@@ -540,7 +546,7 @@ class Flux {
 	/**
 	 * Get Flux_LoginAthenaGroup server object by its ServerName.
 	 *
-	 * @param string
+	 * @param string $serverName Server group name.
 	 * @return mixed Returns Flux_LoginAthenaGroup instance or false on failure.
 	 * @access public
 	 */
@@ -707,7 +713,6 @@ class Flux {
 	public static function processHeldCredits()
 	{
 		$txnLogTable            = self::config('FluxTables.TransactionTable');
-		$creditsTable           = self::config('FluxTables.CreditsTable');
 		$trustTable             = self::config('FluxTables.DonationTrustTable');
 		$loginAthenaGroups      = self::$loginAthenaGroupRegistry;
 		list ($cancel, $accept) = array(array(), array());
@@ -780,7 +785,6 @@ class Flux {
 	public static function pruneUnconfirmedAccounts()
 	{
 		$tbl    = Flux::config('FluxTables.AccountCreateTable');
-		$expire = (int)Flux::config('EmailConfirmExpire');
 		
 		foreach (self::$loginAthenaGroupRegistry as $loginAthenaGroup) {
 			$db   = $loginAthenaGroup->loginDatabase;
@@ -937,6 +941,22 @@ class Flux {
 	{
 		$size = Flux::config("MonsterSizes.$size");
 		return $size;
+	}
+
+	public static function getAvailableLanguages()
+	{
+		$langs_available = array_diff(scandir(FLUX_LANG_DIR), array('..', '.'));
+
+		$dictionary = [];
+		foreach($langs_available as $lang_file) {
+			$lang_key = str_replace('.php', '', $lang_file);
+			$lang_conf = self::parseConfigFile(FLUX_LANG_DIR.'/'.$lang_file);
+			$lang_name = $lang_conf->get('Language');
+
+			$dictionary[$lang_key] = $lang_name;
+		}
+
+		return $dictionary;
 	}
 }
 ?>

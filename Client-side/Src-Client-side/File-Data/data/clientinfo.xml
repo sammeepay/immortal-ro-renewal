@@ -3,24 +3,33 @@
 	<desc>Ragnarok Client Information</desc>
 	<servicetype>thai</servicetype>
 	<servertype>primary</servertype>
-	<hideaccountlist></hideaccountlist>
-	<extendedslot></extendedslot>
+	<hideaccountlist />
+    <passwordencrypt />
+    <passwordencrypt2 />
+    <extendedslot />
+    <readfolder />
 	<connection>
-		<display>Immortal-RO</display>
-      		<address>127.0.0.1</address>
+		<display>SV-RO</display>
+      		<address>203.151.166.118</address>
       		<port>6900</port>
-      		<version>52</version>
+      		<version>20180620</version>
       		<langtype>5</langtype>
-		<registrationweb>www.immortal-ro.com</registrationweb>
-		<aid>
-			<admin>2000000</admin>
-		</aid>
+		<registrationweb>cp.miss-ro.online</registrationweb>
 		<loading>
 			<image>loading00.jpg</image>
 			<image>loading01.jpg</image>
 			<image>loading02.jpg</image>
 			<image>loading03.jpg</image>
 			<image>loading04.jpg</image>
+			<image>loading05.jpg</image>
+			<image>loading06.jpg</image>
 		</loading>
+		<aid>
+			<admin>2000000</admin>
+
+		</aid>
+		<yellow>
+			<admin>2000000</admin>
+		</yellow>
    	</connection>
 </clientinfo>

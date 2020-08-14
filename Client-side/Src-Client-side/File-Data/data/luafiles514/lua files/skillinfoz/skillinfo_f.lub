@@ -13,7 +13,6 @@ function GetInheritJob(job)
 	return i
 end
 All_NeedSkillList = {}
-
 function CheckNeedSkillList(skillInfo, skillDepth)
 	if All_NeedSkillList ~= nil and skillInfo ~= nil then
 		local depth = 0
@@ -38,7 +37,6 @@ function CheckNeedSkillList(skillInfo, skillDepth)
 	end
 	return false
 end
-
 function SetNeedSkillList(SKID, depth)
 	local skillInfo = SKILL_INFO_LIST[SKID]
 	if skillInfo ~= nill then
@@ -76,7 +74,6 @@ function SetNeedSkillList(SKID, depth)
 		end
 	end
 end
-
 function GetSkillInfo(SKID)
 	All_NeedSkillList = nil
 	All_NeedSkillList = {}
@@ -94,7 +91,6 @@ function GetSkillInfo(SKID)
 	end
 	return "", "", -1, -1
 end
-
 function AddNeedSkillList(SKID)
 	if All_NeedSkillList ~= nil then
 		local depth = 0
@@ -113,7 +109,6 @@ function AddNeedSkillList(SKID)
 		end
 	end
 end
-
 function InitSkillTreeView(jobID, arrayNum)
 	local skillList = SKILL_TREEVIEW_FOR_JOB[jobID]
 	if skillList ~= nil then
@@ -133,7 +128,6 @@ function InitSkillTreeView(jobID, arrayNum)
 		end
 	end
 end
-
 function GetSkillIdName(SkillID)
 	local obj = SKILL_INFO_LIST[SkillID]
 	if obj ~= nil then
@@ -144,7 +138,6 @@ function GetSkillIdName(SkillID)
 	end
 	return ""
 end
-
 function GetSkillName(SkillID)
 	local obj = SKILL_INFO_LIST[SkillID]
 	if obj ~= nil then
@@ -155,7 +148,6 @@ function GetSkillName(SkillID)
 	end
 	return ""
 end
-
 function IsLevelUseSkill(SkillID)
 	local skillInfo = SKILL_INFO_LIST[SkillID]
 	local rst
@@ -171,7 +163,6 @@ function IsLevelUseSkill(SkillID)
 	end
 	return false
 end
-
 function GetLevelUseSpAmount(SkillID, idx)
 	local obj = SKILL_INFO_LIST[SkillID]
 	if obj ~= nil then
@@ -185,7 +176,6 @@ function GetLevelUseSpAmount(SkillID, idx)
 	end
 	return 0
 end
-
 function GetSkillDescript(JobID, SKID, bChangeColor)
 	local descript = ""
 	local obj = SKILL_DESCRIPT[SKID]
@@ -222,7 +212,6 @@ function GetSkillDescript(JobID, SKID, bChangeColor)
 	end
 	return descript
 end
-
 function TestFile(saveFileName)
 	saveFile = io.open(saveFileName, "w")
 	if saveFile ~= nil and All_NeedSkillList ~= nil then
@@ -240,7 +229,6 @@ function TestFile(saveFileName)
 	end
 	io.close(saveFile)
 end
-
 function GetSkillAttackRange(in_SKID, in_Level, in_curMaxLv)
 	local attackRange = 1
 	local attackRangeOfMaxLv = 0
@@ -253,13 +241,13 @@ function GetSkillAttackRange(in_SKID, in_Level, in_curMaxLv)
 	if obj ~= nil then
 		attackRange = SKILL_INFO_LIST[in_SKID].AttackRange[in_Level]
 	end
-	if maxLv ~= nil and in_curMaxLv > maxLv then
+	if in_curMaxLv == nil then
 		in_curMaxLv = maxLv
 	end
-	obj = SKILL_INFO_LIST[in_SKID]
-	if (obj ~= nil and obj.AttackRange ~= nil) then
-		attackRangeOfMaxLv = SKILL_INFO_LIST[in_SKID].AttackRange[in_curMaxLv]
+	if maxLv ~= nil and maxLv < in_curMaxLv then
+		in_curMaxLv = maxLv
 	end
+	attackRangeOfMaxLv = SKILL_INFO_LIST[in_SKID].AttackRange[in_curMaxLv]
 	if attackRangeOfMaxLv == nil then
 		attackRangeOfMaxLv = 0
 	end
@@ -267,4 +255,47 @@ function GetSkillAttackRange(in_SKID, in_Level, in_curMaxLv)
 		return attackRange, attackRangeOfMaxLv
 	end
 	return 1, attackRangeOfMaxLv
+end
+function GetSkillScale(in_SKID, in_Level)
+	local obj = SKILL_INFO_LIST[in_SKID]
+	local x = 0
+	local y = 0
+	if nil ~= obj then
+		obj = SKILL_INFO_LIST[in_SKID].SkillScale
+	end
+	if nil ~= obj then
+		obj = SKILL_INFO_LIST[in_SKID].SkillScale[in_Level]
+	end
+	if nil ~= obj then
+		x = SKILL_INFO_LIST[in_SKID].SkillScale[in_Level].x
+		if nil == x then
+			return 0, 0
+		end
+		y = SKILL_INFO_LIST[in_SKID].SkillScale[in_Level].y
+		if nil == y then
+			return 0, 0
+		end
+	end
+	return x, y
+end
+JobSkillTab = {}
+function JobSkillTab.ChangeSkillTabName(in_job, in_1sttab, in_2ndtab, in_3rdtab)
+	local tbl = {
+		job = in_job,
+		TabName1st = in_1sttab,
+		TabName2nd = in_2ndtab,
+		TabName3rd = in_3rdtab
+	}
+	JobSkillTab[#JobSkillTab + 1] = tbl
+end
+function JobSkillTab_GetTabName(in_job)
+	if nil == JobSkillTab then
+		return nil
+	end
+	local size = #JobSkillTab
+	for seq = 1, size do
+		if in_job == JobSkillTab[seq].job then
+			return JobSkillTab[seq].TabName1st, JobSkillTab[seq].TabName2nd, JobSkillTab[seq].TabName3rd
+		end
+	end
 end

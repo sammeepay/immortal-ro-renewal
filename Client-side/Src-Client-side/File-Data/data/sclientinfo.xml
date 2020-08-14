@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<clientinfo>
+	<desc>Ragnarok Client Information</desc>
+	<servicetype>thai</servicetype>
+	<servertype>primary</servertype>
+	<hideaccountlist />
+    <passwordencrypt />
+    <passwordencrypt2 />
+    <extendedslot />
+    <readfolder />
+	<connection>
+		<display>SV-RO</display>
+      		<address>203.151.166.118</address>
+      		<port>6900</port>
+      		<version>20180820</version>
+      		<langtype>5</langtype>
+		<registrationweb>www.ragnarok.com</registrationweb>
+		<loading>
+			<image>loading00.jpg</image>
+			<image>loading01.jpg</image>
+			<image>loading02.jpg</image>
+			<image>loading03.jpg</image>
+			<image>loading04.jpg</image>
+			<image>loading05.jpg</image>
+			<image>loading06.jpg</image>
+		</loading>
+		<aid>
+			<admin>100903</admin>
+
+		</aid>
+		<yellow>
+			<admin>100903</admin>
+		</yellow>
+   	</connection>
+</clientinfo>

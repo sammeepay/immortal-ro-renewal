@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 		<title>FluxCP: Install &amp; Update</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!--[if lt IE 9]>
@@ -20,6 +21,8 @@
 			}
 			.header { padding: 10px 0 130px 30px; background-color: #3c6994; margin-bottom: -125px; }
 			.spacer30 {	padding-top:30px; }
+			.uptodate { color: #008000; }
+			.needtoupdate { color: #ff0000; }
 		</style>
 	</head>
 	

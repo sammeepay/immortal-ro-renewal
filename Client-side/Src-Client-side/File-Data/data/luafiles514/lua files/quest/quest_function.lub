@@ -1,105 +1,130 @@
+-- Guide: http://herc.ws/board/topic/11668-guide-add-custom-quest-in-any-tab/
+-- Tabs:
+-- 		EVENT
+-- 		LOCAL
+-- 		EP
+-- 		NEW
+-- 		RECOMMENDED
+-- Please Check the Guide to know how to use this file.
+
+
+-- Do Not Touch This FILE
+-- Tab Tables
+__RECOMMENDED_QuestList = {}
+__NEW_QuestList = {}
+__EVENT_QuestList = {}
 __LOCAL_QuestList = {}
 __EP_QuestList = {}
+
+-- Full QuestTable
 QuestTable = {}
 
-function makeLocalQuestList(Quest_list)
-	for episodeId,episode in ipairs(Quest_list) do
-		episodeId  = getTableSize(__LOCAL_QuestList) + 1
-		__LOCAL_QuestList[episodeId] = episode
-		episode.id = episodeId
+-- Tab ID's
+RECOMMENDED_TABID = 2
+EP_TABID = 3
+LOCAL_TABID = 4
+EVENT_TABID = 5
+NEW_TABID = 6
 
+
+-- Custom Function [By Dastgir/Hercules]
+function getQuestTable(tab)
+	if (tabid == EVENT_TABID) then
+		return __EVENT_QuestList
+	elseif (tabid == LOCAL_TABID) then
+		return __LOCAL_QuestList
+	elseif (tabid == EP_TABID) then
+		return __EP_QuestList
+	elseif (tabid == RECOMMENDED_TABID) then
+		return __RECOMMENDED_QuestList
+	elseif (tabid == NEW_TABID) then
+		return __NEW_QuestList
+	end
+end
+
+-- Optimized Function [By Dastgir/Hercules]
+function generateQuestList(Quest_list, questListTemp)
+	for episodeId,episode in ipairs(Quest_list) do
+		episodeId  = getTableSize(questListTemp) + 1
+		questListTemp[episodeId] = episode
+		episode.id = episodeId
+			
 		for chapterId,chapter in ipairs(episode.list) do
-			__LOCAL_QuestList[episodeId][chapterId] = chapter
+			questListTemp[episodeId][chapterId] = chapter
 			chapter.id = chapterId
 
 			for questId,quest in ipairs(chapter.list) do
-				__LOCAL_QuestList[episodeId][chapterId][questId] = quest
+				questListTemp[episodeId][chapterId][questId] = quest
 				quest.id = questId
 			end
 		end
 	end
+	return questListTemp
 end
 
-function makeEPQuestList(Quest_list)
-	for episodeId,episode in ipairs(Quest_list) do
-		episodeId  = getTableSize(__EP_QuestList) + 1
-		__EP_QuestList[episodeId] = episode
-		episode.id = episodeId
-
-		for chapterId,chapter in ipairs(episode.list) do
-			__EP_QuestList[episodeId][chapterId] = chapter
-			chapter.id = chapterId
-
-			for questId,quest in ipairs(chapter.list) do
-				__EP_QuestList[episodeId][chapterId][questId] = quest
-				quest.id = questId
-			end
-		end
+-- Custom Function [By Dastgir/Hercules]
+function makeQuestList(Quest_list, QuestInfo)
+	if (QuestInfo == "EVENT") then
+		__EVENT_QuestList = generateQuestList(Quest_list, __EVENT_QuestList)
+		QuestTable.func_tab_add_pack( QuestTable.tab_event, Quest_list );
+	elseif (QuestInfo == "LOCAL") then
+		__LOCAL_QuestList = generateQuestList(Quest_list, __LOCAL_QuestList)
+		QuestTable.func_tab_add_pack( QuestTable.tab_local, Quest_list );
+	elseif (QuestInfo == "EP") then
+		__EP_QuestList = generateQuestList(Quest_list, __EP_QuestList)
+		QuestTable.func_tab_add_pack( QuestTable.tab_episode, Quest_list );
+	elseif (QuestInfo == "NEW") then
+		__NEW_QuestList = generateQuestList(Quest_list, __NEW_QuestList)
+		QuestTable.func_tab_add_pack( QuestTable.tab_new, Quest_list );
+	elseif (QuestInfo == "RECOMMENDED") then
+		__RECOMMENDED_QuestList = generateQuestList(Quest_list, __RECOMMENDED_QuestList)
+		QuestTable.func_tab_add_pack( QuestTable.tab_recommend, Quest_list );
 	end
 end
 
+-- Optimized Function [By Dastgir/Hercules]
 function queryEpisode(tabid,episodeId)
-	if( tabid == 4 ) then
-		if(__LOCAL_QuestList[episodeId] == nil) then return nil,nil,nil,nil end
-
-		return __LOCAL_QuestList[episodeId].id,
-				__LOCAL_QuestList[episodeId].name,
-				__LOCAL_QuestList[episodeId].imagefile,
-				getChapterIterator(episodeId,__LOCAL_QuestList)
-    elseif( tabid == 3 ) then
-		if(__EP_QuestList[episodeId] == nil) then return nil,nil,nil,nil end
-
-		return __EP_QuestList[episodeId].id,
-				__EP_QuestList[episodeId].name,
-				__EP_QuestList[episodeId].imagefile,
-				getChapterIterator(episodeId,__EP_QuestList)
+	quest_table = getQuestTable(tabid)	-- Get Suitable Table
+	if(quest_table == nil or quest_table[episodeId] == nil) then
+		return nil,nil,nil,nil
 	end
+	return quest_table[episodeId].id,
+		quest_table[episodeId].name,
+		quest_table[episodeId].imagefile,
+		getChapterIterator(quest_table)
+
 end
 
+-- Optimized Function [By Dastgir/Hercules]
 function queryChapter(tabid,episodeId,chapterId)
-	if( tabid == 4 ) then
-		if(__LOCAL_QuestList[episodeId] == nil) then return nil,nil,nil,nil end
-		if(__LOCAL_QuestList[episodeId][chapterId] == nil) then return nil,nil,nil,nil end
-
-		return __LOCAL_QuestList[episodeId].id,
-				__LOCAL_QuestList[episodeId][chapterId].id,
-				__LOCAL_QuestList[episodeId][chapterId].name,
-				getQuestIterator(episodeId,chapterId,__LOCAL_QuestList)
-	elseif( tabid == 3 ) then
-		if(__EP_QuestList[episodeId] == nil) then return nil,nil,nil,nil end
-		if(__EP_QuestList[episodeId][chapterId] == nil) then return nil,nil,nil,nil end
-
-		return __EP_QuestList[episodeId].id,
-				__EP_QuestList[episodeId][chapterId].id,
-				__EP_QuestList[episodeId][chapterId].name,
-				getQuestIterator(episodeId,chapterId,__EP_QuestList)
+	quest_table = getQuestTable(tabid)	-- Get Suitable Table
+	if(quest_table == nil or quest_table[episodeId] == nil) then
+		return nil,nil,nil,nil
+	elseif(quest_table[episodeId][chapterId] == nil) then
+		return nil,nil,nil,nil
 	end
+	return quest_table[episodeId].id,
+			quest_table[episodeId][chapterId].id,
+			quest_table[episodeId][chapterId].name,
+			getQuestIterator(episodeId,chapterId,quest_table)
 end
 
+-- Optimized Function [By Dastgir/Hercules]
 function queryQuest(tabid,episodeId,chapterId,questId)
-	if( tabid == 4 ) then
-		if(__LOCAL_QuestList[episodeId] == nil) then return nil,nil,nil,nil,nil,nil end
-		if(__LOCAL_QuestList[episodeId][chapterId] == nil) then return nil,nil,nil,nil,nil,nil end
-		if(__LOCAL_QuestList[episodeId][chapterId][questId] == nil) then return nil,nil,nil,nil,nil,nil end
-
-		return __LOCAL_QuestList[episodeId].id,
-				__LOCAL_QuestList[episodeId][chapterId].id,
-				__LOCAL_QuestList[episodeId][chapterId][questId].id,
-				__LOCAL_QuestList[episodeId][chapterId][questId].name,
-				__LOCAL_QuestList[episodeId][chapterId][questId].scrfilename,
-				__LOCAL_QuestList[episodeId][chapterId][questId].questID 
-	elseif( tabid == 3 ) then
-		if(__EP_QuestList[episodeId] == nil) then return nil,nil,nil,nil,nil,nil end
-		if(__EP_QuestList[episodeId][chapterId] == nil) then return nil,nil,nil,nil,nil,nil end
-		if(__EP_QuestList[episodeId][chapterId][questId] == nil) then return nil,nil,nil,nil,nil,nil end
-
-		return __EP_QuestList[episodeId].id,
-				__EP_QuestList[episodeId][chapterId].id,
-				__EP_QuestList[episodeId][chapterId][questId].id,
-				__EP_QuestList[episodeId][chapterId][questId].name,
-				__EP_QuestList[episodeId][chapterId][questId].scrfilename,
-				__EP_QuestList[episodeId][chapterId][questId].questID 
+	quest_table = getQuestTable(tabid)	-- Get Suitable Table
+	if(quest_table == nil or quest_table[episodeId] == nil) then
+		return nil,nil,nil,nil
+	elseif(quest_table[episodeId][chapterId] == nil) then
+		return nil,nil,nil,nil
+	elseif(quest_table[episodeId][chapterId][questId] == nil) then
+		return nil,nil,nil,nil,nil,nil
 	end
+	return quest_table[episodeId].id,
+			quest_table[episodeId][chapterId].id,
+			quest_table[episodeId][chapterId][questId].id,
+			quest_table[episodeId][chapterId][questId].name,
+			quest_table[episodeId][chapterId][questId].scrfilename,
+			quest_table[episodeId][chapterId][questId].questID 
 end
 
 function getEpisodeIterator(__QuestList)
@@ -150,11 +175,9 @@ function getQuestIterator(episodeId,chapterId,__QuestList)
 end
 
 function queryQuestID(tableName , questID)
-	
 	returnTable = QuestTable[tableName]
 
 	if(returnTable[questID] == nil) then return nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil end
-
 	return  returnTable[questID].NPCFromName,
 		returnTable[questID].NPCFromMap,
 		returnTable[questID].NPCFromSpr,
@@ -177,42 +200,20 @@ function queryQuestID(tableName , questID)
 		returnTable[questID].Lv
 end
 
--- 항목 퀘스트 파일이 추가 될때마다 이곳에 추가 시켜 준다. 
-makeLocalQuestList(LOCAL_MalayaQuest_List)
-makeLocalQuestList(LOCAL_DewataQuest_List)
-makeEPQuestList(EP_141Quest_List)
-
-
--- 개별 퀘스트 파일이 추가 될때마다 이곳에 추가 시켜준다.
-QuestTable.malayaQuest = malayaQuest_List
-QuestTable.epsoid141Quest = epsoid141Quest_List
-QuestTable.DewataQuest = DewataQuest_List
-
--- 끝
--- key: 퀘스트아이디 value: 퀘스트설명테이블
 QuestTable.quest = {}; 
--- key: 에피소드일련번호 
--- val: key: 챕터일련번호
---      val: key:퀘스트일련번호
---           val: 퀘스트요약정보테이블
+
 QuestTable.tab_recommend = {};
 QuestTable.tab_episode   = {};
 QuestTable.tab_local     = {};
 QuestTable.tab_event     = {};
 QuestTable.tab_new       = {};	
 
-
-
--- 요약집(summary book)를 등록합니다.
 QuestTable.func_tab_add =
 function( tbl, summarybook )	
-	-- episode 는 기존에 이미 존재할 수 있으므로 seqid 를 재할당 해야 합니다.	
 	summarybookseqId  = #tbl + 1
 	tbl[ summarybookseqId ] = summarybook
 	summarybook.seqid = summarybookseqId
 
-	-- chaper는 항상 새로 만들어지는 것이므로 seqid 를 재할당 할 필요가 없다.
-	-- 이미 1부터 순차적인 번호로 저장되어 있다.
 	for chapterseqId, chapter in ipairs( summarybook.list ) do
 		tbl[ summarybookseqId ][ chapterseqId ] = chapter
 		chapter.seqid = chapterseqId
@@ -224,48 +225,30 @@ function( tbl, summarybook )
 	end	
 end
 
--- 요약집(summary book)을 묶음단위로 추가합니다.
--- 하위버젼을 위해 만든 함수 입니다.
-QuestTable.func_tab_add_pack =
-function( tbl, tabpack )	
-	-- episode 는 기존에 이미 존재할 수 있으므로 seqid 를 재할당 해야 합니다.
+QuestTable.func_tab_add_pack = function( tbl, tabpack )	
 	for summarybookseqId, summarybook in ipairs( tabpack ) do		
 		QuestTable.func_tab_add( tbl, summarybook );
 	end
 end
 
 
-
-
-
-
--- 하위호환성 처리함수
--- string.sub( s, i, j ) 문자열s의 i번째에서 j번째문자까지 추출한다.
--- string.format( foramt, ...) 형식문자열을 구성한다.
--- string.find( s, "hello", 검색시작색인(선택적) ) 문자열 s에서 "hello" 문자열을 찾아서 그 시작값과 끝값을 리턴한다.없으면 nil 을 리턴한다.
 QuestTable.func_quest_lower_exchange_imagetag = 
 function( msg )
 
-	-- 문자열에서 [[< image = "1234" >]] 형태부분을 찾는다.
 	local imagetag_front_startpos, imagetag_front_endpos = string.find( msg, [[<%s*image%s*=%s*"%d*"%s*>]] );
 	if( nil == imagetag_front_startpos or nil == imagetag_front_endpos ) then return msg; end
 	local imagetag_front = string.sub( msg, imagetag_front_startpos, imagetag_front_endpos );
 
-	-- 문자열에서 [[<\end>]] 형태부분을 찾는다.
 	local imagetag_rear_startpos, imagetag_rear_endpos = string.find( msg, [[<%s*\end%s*>]], imagetag_front_endpos + 1  );
 	if( nil == imagetag_rear_startpos or nil == imagetag_rear_endpos ) then return msg; end
 	local imagetag_rear = string.sub( msg, imagetag_rear_startpos, imagetag_rear_endpos );
 
-	-- 이미지TAG에서 이름부분만 축출합니다.	
 	local name = string.sub( msg, imagetag_front_endpos + 1, imagetag_rear_startpos - 1 );
 
-	-- 이미지TAG에서 번호만 축출합니다.
 	local num_startpos, num_endpos = string.find( imagetag_front, [["%d*"]] );
 	if( nil == num_startpos or nil == num_endpos ) then return msg; end
 	local itidstr = string.sub( imagetag_front, num_startpos + 1, num_endpos - 1 );
 
-	-- 새로운 아이템TAG를 구성합니다.
-	-- <ITEM>사과<INFO>506</INFO></ITEM>
 	local tagstr = string.format( [[<ITEM>%s<INFO>%s</INFO></ITEM>]], name, itidstr );
 	local final = "";
 	if( imagetag_front_startpos > 1 ) then final = final .. string.sub( msg, 1, imagetag_front_startpos - 1 ); end
@@ -276,33 +259,23 @@ function( msg )
 
 end
 
--- 하위호환성 처리함수
--- string.sub( s, i, j ) 문자열s의 i번째에서 j번째문자까지 추출한다.
--- string.format( foramt, ...) 형식문자열을 구성한다.
--- string.find( s, "hello", 검색시작색인(선택적) ) 문자열 s에서 "hello" 문자열을 찾아서 그 시작값과 끝값을 리턴한다.없으면 nil 을 리턴한다.
 QuestTable.func_quest_lower_exchange_linktag = 
 function ( msg )
 
-	-- 문자열에서 [[< link = "TIYANAK">]] 형태부분을 찾는다.
 	local linktag_front_startpos, linktag_front_endpos = string.find( msg, [[<%s*link%s*=%s*".*">]] );
 	if( nil == linktag_front_startpos or nil == linktag_front_endpos ) then return msg; end
 	local linktag_front = string.sub( msg, linktag_front_startpos, linktag_front_endpos );
 
-	-- 문자열에서 [[<\end>]] 형태부분을 찾는다.
 	local linktag_rear_startpos, linktag_rear_endpos = string.find( msg, [[<%s*\end%s*>]], linktag_front_endpos + 1  );
 	if( nil == linktag_rear_startpos or nil == linktag_rear_endpos ) then return msg; end
 	local linktag_rear = string.sub( msg, linktag_rear_startpos, linktag_rear_endpos );
 
-	-- 이미지TAG에서 이름부분만 축출합니다.	
 	local name = string.sub( msg, linktag_front_endpos + 1, linktag_rear_startpos - 1 );
 
-	-- 링크TAG에서 스프라이트명만 축출합니다.
 	local spritename_startpos, spritename_endpos = string.find( linktag_front, [[".*"]] );
 	if( nil == spritename_startpos or nil == spritename_endpos ) then return msg; end
 	local spritename = string.sub( linktag_front, spritename_startpos + 1, spritename_endpos - 1 );
 
-	-- 새로운 네비TAG를 구성합니다.
-	-- <NAVI>[미믹]<INFO>MIMIC,0,0,3,-222</INFO></NAVI>
 	local tagstr = string.format( [[<NAVI>%s<INFO>%s,0,0,3,-222</INFO></NAVI>]], name, spritename );
 	local final = "";
 	if( linktag_front_startpos > 1 ) then final = final .. string.sub( msg, 1, linktag_front_startpos - 1 ); end
@@ -314,10 +287,7 @@ function ( msg )
 
 end
 
--- 퀘스트묶음을 개별단위로 등록합니다.
--- 테이블 QuestTable 에 키는 퀘스트아이디 값은 퀘스트설명
-QuestTable.func_quest_lower_add = 
-function( questPack )
+QuestTable.func_quest_lower_add = function( questPack )
 	for questId, questDesc in pairs( questPack ) do
 
 		if( nil ~= questDesc.Item )     then questDesc.Item      = QuestTable.func_quest_lower_exchange_imagetag( QuestTable.func_quest_lower_exchange_linktag( questDesc.Item ) );	end	
@@ -331,29 +301,14 @@ function( questPack )
 	end
 end
 
-
--- 퀘스트묶음을 개별단위로 등록합니다.
--- 테이블 QuestTable 에 키는 퀘스트아이디 값은 퀘스트설명
-QuestTable.func_quest_add = 
-function( questPack )
+QuestTable.func_quest_add = function( questPack )
 	for questId, questDesc in pairs( questPack ) do
 		QuestTable.quest[ questId ] = questDesc		
 	end
 end
 
--- 하위버젼을 위해 만들어놓았던 퀘스트 정보들을 등록합니다.
-QuestTable.func_quest_lower_add( malayaQuest_List );
-QuestTable.func_quest_lower_add( epsoid141Quest_List );
-QuestTable.func_quest_lower_add( DewataQuest_List );
-QuestTable.func_tab_add_pack( QuestTable.tab_episode, EP_141Quest_List );
-QuestTable.func_tab_add_pack( QuestTable.tab_local, LOCAL_MalayaQuest_List );
-QuestTable.func_tab_add_pack( QuestTable.tab_local, LOCAL_DewataQuest_List );
-
-
--- 지정된 퀘스트에 대한 설명을 리턴한다.
 function query_quest_desc( questID )
-
-	if( QuestTable.quest[ questID ] == nil) then return end -- 그냥리턴하면 모두 nil 이다.
+	if( QuestTable.quest[ questID ] == nil) then return end
 	return  
 		QuestTable.quest[ questID ].NPCFromName,
 		QuestTable.quest[ questID ].NPCFromMap,
@@ -368,13 +323,11 @@ function query_quest_desc( questID )
 		QuestTable.quest[ questID ].Item,
 		QuestTable.quest[ questID ].PrizeItem,
 		QuestTable.quest[ questID ].Title,
-		QuestTable.quest[ questID ].QuickInfo,
 		QuestTable.quest[ questID ].Info,
 		QuestTable.quest[ questID ].Hunt1,
 		QuestTable.quest[ questID ].Hunt2,
 		QuestTable.quest[ questID ].Hunt3,
-		QuestTable.quest[ questID ].Time,
-		QuestTable.quest[ questID ].Lv
+		QuestTable.quest[ questID ].Time
 end
 
 function query_quest_tab_episode( tabname, episodeseqId )
@@ -405,5 +358,25 @@ function query_quest_tab_summary( tabname, episodeseqId, chapterseqId, questseqI
 
 	local summary = QuestTable[ tabname ][ episodeseqId ][ chapterseqId][ questseqId ];
 	return summary.name, summary.questID;
-	
 end
+
+-- Custom Function [By Dastgir/Hercules]
+function QuestTable.add(questList, label_name)
+	makeQuestList(questList, label_name)
+end
+
+-- Custom Function [By Dastgir/Hercules]
+function QuestTable.addList(name, listTable)
+	QuestTable[name] = listTable
+	QuestTable.func_quest_lower_add(listTable)
+end
+
+
+-- Custom Function Calls(Don't Edit Below) [By Dastgir/Hercules]
+makeQuestList(LOCAL_MalayaQuest_List, "LOCAL")
+makeQuestList(LOCAL_DewataQuest_List, "LOCAL")
+makeQuestList(EP_141Quest_List, "EP")
+
+QuestTable.addList("malayaQuest", malayaQuest_List)
+QuestTable.addList("epsoid141Quest", epsoid141Quest_List)
+QuestTable.addList("DewataQuest", DewataQuest_List)

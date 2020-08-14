@@ -9,8 +9,11 @@ achievement_tbl = {
 			summary = "The Bullseye midnight snack at 1 AM",
 			details = "Bring the food to Bigfoot at this hour."
 		},
-		resource = { [1] = { text = "Bring the food to Bigfoot at this hour" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Bring the food to Bigfoot at this hour",
+			}
+		},
 		score = 10
 	},
 	[110001] = {
@@ -24,15 +27,28 @@ achievement_tbl = {
 			details = "Let's meet all the gathered polarity fans of Wigner."
 		},
 		resource = {
-			[1] = { text = "Lady of the house" },
-			[2] = { text = "Beautiful fine anak" },
-			[3] = { text = "Mistress in ambience" },
-			[4] = { text = "Beautiful wife and children" },
-			[5] = { text = "Down town Bachelor" },
-			[6] = { text = "Great act ability anak" },
-			[7] = { text = "Great attack power bachelor" }
+			[1] = {
+				text = "Lady of the house",
+			},
+			[2] = {
+				text = "Beautiful fine anak",
+			},
+			[3] = {
+				text = "Mistress in ambience",
+			},
+			[4] = {
+				text = "Beautiful wife and children",
+			},
+			[5] = {
+				text = "Down town Bachelor",
+			},
+			[6] = {
+				text = "Great act ability anak",
+			},
+			[7] = {
+				text = "Great attack power bachelor",
+			}
 		},
-		reward = {},
 		score = 10
 	},
 	[120001] = {
@@ -45,8 +61,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120002] = {
@@ -59,8 +81,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120003] = {
@@ -73,8 +101,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120004] = {
@@ -87,8 +121,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding west prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding west prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding west prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120005] = {
@@ -101,8 +141,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding west prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding west prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding west prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120006] = {
@@ -115,8 +161,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding east prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding east prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding east prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120007] = {
@@ -129,8 +181,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120008] = {
@@ -143,8 +201,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120009] = {
@@ -157,8 +221,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120010] = {
@@ -171,8 +241,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south prontera field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south prontera field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south prontera field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120011] = {
@@ -185,8 +261,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding east geffen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding east geffen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding east geffen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120012] = {
@@ -199,8 +281,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding southeast geffen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding southeast geffen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding southeast geffen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120013] = {
@@ -213,8 +301,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding northwest geffen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding northwest geffen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding northwest geffen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120014] = {
@@ -227,8 +321,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding northwest geffen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding northwest geffen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding northwest geffen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120015] = {
@@ -241,8 +341,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding northwest geffen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding northwest geffen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding northwest geffen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120016] = {
@@ -255,8 +361,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south geffen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south geffen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south geffen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120017] = {
@@ -269,8 +381,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south geffen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south geffen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south geffen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120018] = {
@@ -283,8 +401,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding sograt desert field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding sograt desert field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding sograt desert field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120019] = {
@@ -297,8 +421,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding sograt desert field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding sograt desert field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding sograt desert field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120020] = {
@@ -311,8 +441,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding sograt desert field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding sograt desert field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding sograt desert field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120021] = {
@@ -325,8 +461,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding sograt desert field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding sograt desert field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding sograt desert field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120022] = {
@@ -339,8 +481,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding sograt desert field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding sograt desert field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding sograt desert field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120023] = {
@@ -353,8 +501,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding sograt desert field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding sograt desert field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding sograt desert field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120024] = {
@@ -367,8 +521,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding southwest payon field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding southwest payon field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding southwest payon field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120025] = {
@@ -381,8 +541,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding southwest payon field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding southwest payon field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding southwest payon field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120026] = {
@@ -395,8 +561,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding southwest payon field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding southwest payon field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding southwest payon field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120027] = {
@@ -409,8 +581,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding southwest payon field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding southwest payon field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding southwest payon field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120028] = {
@@ -423,8 +601,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding east payon field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding east payon field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding east payon field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120029] = {
@@ -437,8 +621,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding east payon field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding east payon field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding east payon field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120030] = {
@@ -451,8 +641,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding east payon field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding east payon field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding east payon field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120031] = {
@@ -465,8 +661,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding east payon field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding east payon field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding east payon field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120032] = {
@@ -479,8 +681,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120033] = {
@@ -493,8 +701,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120034] = {
@@ -507,8 +721,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120035] = {
@@ -521,8 +741,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120036] = {
@@ -535,8 +761,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120037] = {
@@ -549,8 +781,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120038] = {
@@ -563,8 +801,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120039] = {
@@ -577,8 +821,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120040] = {
@@ -591,8 +841,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120041] = {
@@ -605,8 +861,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120042] = {
@@ -619,8 +881,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south mjolnir field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south mjolnir field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south mjolnir field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120043] = {
@@ -633,8 +901,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south aldebaran field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south aldebaran field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south aldebaran field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120044] = {
@@ -647,8 +921,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120045] = {
@@ -661,8 +941,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120046] = {
@@ -675,8 +961,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120047] = {
@@ -689,8 +981,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120048] = {
@@ -703,8 +1001,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120049] = {
@@ -717,8 +1021,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120050] = {
@@ -731,8 +1041,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120051] = {
@@ -745,8 +1061,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120052] = {
@@ -759,8 +1081,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding border checkpoint field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding border checkpoint field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding border checkpoint field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120053] = {
@@ -773,8 +1101,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding border checkpoint field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding border checkpoint field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding border checkpoint field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120054] = {
@@ -787,8 +1121,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding kiel hyre mansion field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding kiel hyre mansion field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding kiel hyre mansion field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120055] = {
@@ -801,8 +1141,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding el mes plateau field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding el mes plateau field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding el mes plateau field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120056] = {
@@ -815,8 +1161,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding el mes plateau field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding el mes plateau field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding el mes plateau field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120057] = {
@@ -829,8 +1181,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding el mes plateau field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding el mes plateau field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding el mes plateau field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120058] = {
@@ -843,8 +1201,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding el mes gorge field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding el mes gorge field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding el mes gorge field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120059] = {
@@ -857,8 +1221,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding kiel hyre academy field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding kiel hyre academy field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding kiel hyre academy field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120060] = {
@@ -871,8 +1241,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding guard camp field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding guard camp field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding guard camp field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120061] = {
@@ -885,8 +1261,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding yuno field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding yuno field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding yuno field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120062] = {
@@ -899,8 +1281,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding front of thanatos tower field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding front of thanatos tower field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding front of thanatos tower field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120063] = {
@@ -913,8 +1301,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding hugel field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding hugel field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding hugel field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120064] = {
@@ -927,8 +1321,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding hugel field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding hugel field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding hugel field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120065] = {
@@ -941,8 +1341,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding hugel field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding hugel field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding hugel field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120066] = {
@@ -955,8 +1361,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding abyss lake field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding abyss lake field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding abyss lake field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120067] = {
@@ -969,8 +1381,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Einbroch field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Einbroch field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Einbroch field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120068] = {
@@ -983,8 +1401,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Einbroch field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Einbroch field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Einbroch field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120069] = {
@@ -997,8 +1421,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Einbroch field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Einbroch field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Einbroch field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120070] = {
@@ -1011,8 +1441,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Einbroch field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Einbroch field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Einbroch field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120071] = {
@@ -1025,8 +1461,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Einbroch field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Einbroch field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Einbroch field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120072] = {
@@ -1039,8 +1481,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Einbroch field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Einbroch field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Einbroch field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120073] = {
@@ -1053,8 +1501,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Einbroch field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Einbroch field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Einbroch field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120074] = {
@@ -1067,8 +1521,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Einbroch field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Einbroch field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Einbroch field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120075] = {
@@ -1081,8 +1541,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding lighthalzen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding lighthalzen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding lighthalzen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120076] = {
@@ -1095,8 +1561,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding lighthalzen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding lighthalzen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding lighthalzen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120077] = {
@@ -1109,8 +1581,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding lighthalzen field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding lighthalzen field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding lighthalzen field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120078] = {
@@ -1123,8 +1601,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding rachel audhumbla plains field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding rachel audhumbla plains field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding rachel audhumbla plains field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120079] = {
@@ -1137,8 +1621,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding rachel plains field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding rachel plains field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding rachel plains field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120080] = {
@@ -1151,8 +1641,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding rachel plains field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding rachel plains field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding rachel plains field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120081] = {
@@ -1165,8 +1661,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding rachel plains field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding rachel plains field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding rachel plains field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120082] = {
@@ -1179,8 +1681,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding rachel audhumbla grassland field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding rachel audhumbla grassland field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding rachel audhumbla grassland field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120083] = {
@@ -1193,8 +1701,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding rachel audhumbla grassland field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding rachel audhumbla grassland field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding rachel audhumbla grassland field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120084] = {
@@ -1207,8 +1721,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding portus luna field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding portus luna field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding portus luna field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120085] = {
@@ -1221,8 +1741,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding veins field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding veins field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding veins field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120086] = {
@@ -1235,8 +1761,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding veins field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding veins field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding veins field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120087] = {
@@ -1249,8 +1781,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding veins field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding veins field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding veins field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120088] = {
@@ -1263,8 +1801,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding veins field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding veins field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding veins field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120089] = {
@@ -1277,8 +1821,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding veins field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding veins field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding veins field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120090] = {
@@ -1291,8 +1841,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding eclage field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding eclage field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding eclage field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120091] = {
@@ -1305,8 +1861,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding north bitfrost field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding north bitfrost field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding north bitfrost field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120092] = {
@@ -1319,8 +1881,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding south bitfrost field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding south bitfrost field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding south bitfrost field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120093] = {
@@ -1333,8 +1901,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding splendide field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding splendide field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding splendide field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120094] = {
@@ -1347,8 +1921,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding splendide field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding splendide field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding splendide field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120095] = {
@@ -1361,8 +1941,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding splendide field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding splendide field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding splendide field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120096] = {
@@ -1375,8 +1961,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding manuk field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding manuk field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding manuk field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120097] = {
@@ -1389,8 +1981,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding manuk field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding manuk field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding manuk field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120098] = {
@@ -1403,8 +2001,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding manuk field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding manuk field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding manuk field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120099] = {
@@ -1417,8 +2021,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding outskirts of kamidal field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding outskirts of kamidal field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding outskirts of kamidal field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120100] = {
@@ -1431,8 +2041,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding outskirts of kamidal field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding outskirts of kamidal field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding outskirts of kamidal field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120101] = {
@@ -1445,8 +2061,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding amatsu field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding amatsu field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding amatsu field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120102] = {
@@ -1459,8 +2081,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding kunlun field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding kunlun field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding kunlun field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120103] = {
@@ -1473,8 +2101,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding gonryun field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding gonryun field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding gonryun field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120104] = {
@@ -1487,8 +2121,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding ayothaya field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding ayothaya field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding ayothaya field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120105] = {
@@ -1501,8 +2141,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding moscovia field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding moscovia field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding moscovia field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120106] = {
@@ -1515,8 +2161,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding brasilis field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding brasilis field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding brasilis field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120107] = {
@@ -1529,8 +2181,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding dewata field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding dewata field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding dewata field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120108] = {
@@ -1543,8 +2201,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding malaya field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding malaya field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding malaya field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120109] = {
@@ -1557,8 +2221,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding malaya field"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding malaya field" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding malaya field",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 10
 	},
 	[120110] = {
@@ -1571,8 +2241,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding abbey underground dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding abbey underground dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding abbey underground dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120111] = {
@@ -1585,8 +2261,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding abyss lake dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding abyss lake dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding abyss lake dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120112] = {
@@ -1599,8 +2281,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding clock tower dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding clock tower dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding clock tower dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120113] = {
@@ -1613,8 +2301,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding amatsu dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding amatsu dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding amatsu dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120114] = {
@@ -1627,8 +2321,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding ant hell dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding ant hell dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding ant hell dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120115] = {
@@ -1641,8 +2341,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding ayothaya dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding ayothaya dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding ayothaya dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120116] = {
@@ -1655,8 +2361,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding comodo dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding comodo dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding comodo dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120117] = {
@@ -1669,8 +2381,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding brasilis dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding brasilis dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding brasilis dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120118] = {
@@ -1683,8 +2401,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding clock tower dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding clock tower dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding clock tower dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120119] = {
@@ -1697,8 +2421,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding istana dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding istana dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding istana dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120120] = {
@@ -1711,8 +2441,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding scaraba hole dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding scaraba hole dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding scaraba hole dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120121] = {
@@ -1725,8 +2461,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding bitfrost dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding bitfrost dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding bitfrost dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120122] = {
@@ -1739,8 +2481,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding einbroch dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding einbroch dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding einbroch dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120123] = {
@@ -1753,8 +2501,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding geffen underground dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding geffen underground dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding geffen underground dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120124] = {
@@ -1767,8 +2521,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding glastheim dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding glastheim dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding glastheim dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120125] = {
@@ -1781,8 +2541,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding glastheim dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding glastheim dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding glastheim dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120126] = {
@@ -1795,8 +2561,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding glastheim dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding glastheim dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding glastheim dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120127] = {
@@ -1809,8 +2581,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding glastheim dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding glastheim dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding glastheim dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120128] = {
@@ -1823,8 +2601,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Kunlun dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Kunlun dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Kunlun dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120129] = {
@@ -1837,8 +2621,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding rachel dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding rachel dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding rachel dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120130] = {
@@ -1851,8 +2641,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding sphinx dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding sphinx dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding sphinx dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120131] = {
@@ -1865,8 +2661,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding izlude dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding izlude dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding izlude dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120132] = {
@@ -1879,8 +2681,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding robot factory dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding robot factory dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding robot factory dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120133] = {
@@ -1893,8 +2701,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding bio lab dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding bio lab dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding bio lab dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120134] = {
@@ -1907,8 +2721,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding gonryun dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding gonryun dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding gonryun dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120135] = {
@@ -1921,8 +2741,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding nogg road dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding nogg road dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding nogg road dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120136] = {
@@ -1935,8 +2761,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding Coal mine dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding Coal mine dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding Coal mine dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120137] = {
@@ -1949,8 +2781,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding pyramid dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding pyramid dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding pyramid dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120138] = {
@@ -1963,8 +2801,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding orc dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding orc dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding orc dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120139] = {
@@ -1977,8 +2821,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding payon dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding payon dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding payon dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120140] = {
@@ -1991,8 +2841,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding labyrinth dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding labyrinth dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding labyrinth dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120141] = {
@@ -2005,8 +2861,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding undersea tunnel dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding undersea tunnel dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding undersea tunnel dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120142] = {
@@ -2019,8 +2881,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding thanatos tower dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding thanatos tower dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding thanatos tower dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120143] = {
@@ -2033,8 +2901,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding thor volcano dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding thor volcano dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding thor volcano dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120144] = {
@@ -2047,8 +2921,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding sunken ship dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding sunken ship dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding sunken ship dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120145] = {
@@ -2061,8 +2941,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding turtle dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding turtle dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding turtle dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[120146] = {
@@ -2075,8 +2961,14 @@ achievement_tbl = {
 			summary = "Discover hidden treasure",
 			details = "Discover the treasure surrounding toy factory dungeon"
 		},
-		resource = { [1] = { text = "Discover the treasure surrounding toy factory dungeon" } },
-		reward = { item = 22876 },
+		resource = {
+			[1] = {
+				text = "Discover the treasure surrounding toy factory dungeon",
+			}
+		},
+		reward = {
+			item = 22876
+		},
 		score = 20
 	},
 	[127001] = {
@@ -2090,11 +2982,26 @@ achievement_tbl = {
 			details = "Prontera evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2109,11 +3016,26 @@ achievement_tbl = {
 			details = "Geffen evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2128,11 +3050,26 @@ achievement_tbl = {
 			details = "Morocc evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2147,11 +3084,26 @@ achievement_tbl = {
 			details = "Payon evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2166,11 +3118,26 @@ achievement_tbl = {
 			details = "Yuno evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2185,11 +3152,26 @@ achievement_tbl = {
 			details = "Lighthalzen evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2204,11 +3186,26 @@ achievement_tbl = {
 			details = "Einbroch evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2223,11 +3220,26 @@ achievement_tbl = {
 			details = "Rachel evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2242,11 +3254,26 @@ achievement_tbl = {
 			details = "Veins evaluation about you"
 		},
 		resource = {
-			[1] = { text = "Stranger", count = 3000 },
-			[2] = { text = "Village Freshman", count = 6000 },
-			[3] = { text = "Neighbor", count = 12000 },
-			[4] = { text = "Celebrity", count = 20000 },
-			[5] = { text = "City Dictator", count = 1000 }
+			[1] = {
+				text = "Stranger",
+				count = 3000,
+			},
+			[2] = {
+				text = "Village Freshman",
+				count = 6000,
+			},
+			[3] = {
+				text = "Neighbor",
+				count = 12000,
+			},
+			[4] = {
+				text = "Celebrity",
+				count = 20000,
+			},
+			[5] = {
+				text = "City Dictator",
+				count = 1000,
+			}
 		},
 		score = 10
 	},
@@ -2260,8 +3287,12 @@ achievement_tbl = {
 			summary = "Eliminate Celine Kimmy",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Celine Kimmy", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Celine Kimmy",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128001] = {
@@ -2274,8 +3305,12 @@ achievement_tbl = {
 			summary = "Eliminate Celine Kimmy",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Celine Kimmy", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Celine Kimmy",
+				count = 10,
+			}
+		},
 		score = 10
 	},
 	[128002] = {
@@ -2288,8 +3323,12 @@ achievement_tbl = {
 			summary = "Eliminate Celine Kimmy",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 25 Celine Kimmy", count = 25 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 25 Celine Kimmy",
+				count = 25,
+			}
+		},
 		score = 20
 	},
 	[128003] = {
@@ -2302,8 +3341,12 @@ achievement_tbl = {
 			summary = "Eliminate Celine Kimmy",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Celine Kimmy", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Celine Kimmy",
+				count = 50,
+			}
+		},
 		score = 30
 	},
 	[128004] = {
@@ -2316,8 +3359,12 @@ achievement_tbl = {
 			summary = "Eliminate Celine Kimmy",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 100 Celine Kimmy", count = 100 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 100 Celine Kimmy",
+				count = 100,
+			}
+		},
 		score = 50
 	},
 	[128005] = {
@@ -2330,8 +3377,12 @@ achievement_tbl = {
 			summary = "Eliminate Bakonawa",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Bakonawa", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Bakonawa",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128006] = {
@@ -2344,8 +3395,12 @@ achievement_tbl = {
 			summary = "Eliminate Bakonawa",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Bakonawa", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Bakonawa",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128007] = {
@@ -2358,8 +3413,12 @@ achievement_tbl = {
 			summary = "Eliminate Bakonawa",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Bakonawa", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Bakonawa",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128008] = {
@@ -2372,8 +3431,12 @@ achievement_tbl = {
 			summary = "Eliminate Baphomet",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Baphomet", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Baphomet",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128009] = {
@@ -2386,8 +3449,12 @@ achievement_tbl = {
 			summary = "Eliminate Baphomet",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Baphomet", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Baphomet",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128010] = {
@@ -2400,8 +3467,12 @@ achievement_tbl = {
 			summary = "Eliminate Baphomet",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Baphomet", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Baphomet",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128011] = {
@@ -2414,8 +3485,12 @@ achievement_tbl = {
 			summary = "Eliminate Grim Reaper Ankou",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Grim Reaper Ankou", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Grim Reaper Ankou",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128012] = {
@@ -2428,8 +3503,12 @@ achievement_tbl = {
 			summary = "Eliminate Grim Reaper Ankou",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Grim Reaper Ankou", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Grim Reaper Ankou",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128013] = {
@@ -2442,8 +3521,12 @@ achievement_tbl = {
 			summary = "Eliminate Grim Reaper Ankou",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Grim Reaper Ankou", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Grim Reaper Ankou",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128014] = {
@@ -2456,8 +3539,12 @@ achievement_tbl = {
 			summary = "Eliminate Buwaya",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Buwaya", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Buwaya",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128015] = {
@@ -2470,8 +3557,12 @@ achievement_tbl = {
 			summary = "Eliminate Buwaya",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Buwaya", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Buwaya",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128016] = {
@@ -2484,8 +3575,12 @@ achievement_tbl = {
 			summary = "Eliminate Buwaya",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Buwaya", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Buwaya",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128017] = {
@@ -2498,8 +3593,12 @@ achievement_tbl = {
 			summary = "Eliminate God of Despair Morocc",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 God of Despair Morocc", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 God of Despair Morocc",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128018] = {
@@ -2512,8 +3611,12 @@ achievement_tbl = {
 			summary = "Eliminate God of Despair Morocc",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 God of Despair Morocc", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 God of Despair Morocc",
+				count = 10,
+			}
+		},
 		score = 10
 	},
 	[128019] = {
@@ -2526,8 +3629,12 @@ achievement_tbl = {
 			summary = "Eliminate God of Despair Morocc",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 25 God of Despair Morocc", count = 25 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 25 God of Despair Morocc",
+				count = 25,
+			}
+		},
 		score = 20
 	},
 	[128020] = {
@@ -2540,8 +3647,12 @@ achievement_tbl = {
 			summary = "Eliminate God of Despair Morocc",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 God of Despair Morocc", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 God of Despair Morocc",
+				count = 50,
+			}
+		},
 		score = 30
 	},
 	[128021] = {
@@ -2554,8 +3665,12 @@ achievement_tbl = {
 			summary = "Eliminate God of Despair Morocc",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 100 God of Despair Morocc", count = 100 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 100 God of Despair Morocc",
+				count = 100,
+			}
+		},
 		score = 50
 	},
 	[128022] = {
@@ -2568,8 +3683,12 @@ achievement_tbl = {
 			summary = "Eliminate Morocc necromancer",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Morocc necromancer", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Morocc necromancer",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128023] = {
@@ -2582,8 +3701,12 @@ achievement_tbl = {
 			summary = "Eliminate Morocc necromancer",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate Morocc 10 necromancer", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate Morocc 10 necromancer",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128024] = {
@@ -2596,8 +3719,12 @@ achievement_tbl = {
 			summary = "Eliminate Morocc necromancer",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate Morocc 50 necromancer", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate Morocc 50 necromancer",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128025] = {
@@ -2610,8 +3737,12 @@ achievement_tbl = {
 			summary = "Eliminate Faceworm Queen",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Faceworm Queen", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Faceworm Queen",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128026] = {
@@ -2624,8 +3755,12 @@ achievement_tbl = {
 			summary = "Eliminate Earth Faceworm Queen",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Earth Faceworm Queen", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Earth Faceworm Queen",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128027] = {
@@ -2638,8 +3773,12 @@ achievement_tbl = {
 			summary = "Eliminate Water Faceworm Queen",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Water Faceworm Queen", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Water Faceworm Queen",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128028] = {
@@ -2652,8 +3791,12 @@ achievement_tbl = {
 			summary = "Eliminate Wind Faceworm Queen",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Wind Faceworm Queen", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Wind Faceworm Queen",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128029] = {
@@ -2666,8 +3809,12 @@ achievement_tbl = {
 			summary = "Eliminate Amdarais",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Amdarais", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Amdarais",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128030] = {
@@ -2680,8 +3827,12 @@ achievement_tbl = {
 			summary = "Eliminate Amdarais",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Amdarais", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Amdarais",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128031] = {
@@ -2694,8 +3845,12 @@ achievement_tbl = {
 			summary = "Eliminate Amdarais",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Amdarais", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Amdarais",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128032] = {
@@ -2708,8 +3863,12 @@ achievement_tbl = {
 			summary = "Eliminate Amdarais (Superior)",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Amdarais (Superior)", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Amdarais (Superior)",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128033] = {
@@ -2722,8 +3881,12 @@ achievement_tbl = {
 			summary = "Eliminate Amdarais (Superior)",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Amdarais (Superior)", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Amdarais (Superior)",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128034] = {
@@ -2736,8 +3899,12 @@ achievement_tbl = {
 			summary = "Eliminate Amdarais (Superior)",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Amdarais (Superior)", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Amdarais (Superior)",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128035] = {
@@ -2750,8 +3917,12 @@ achievement_tbl = {
 			summary = "Eliminate Sarah Irene",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Sarah Irene", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Sarah Irene",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128036] = {
@@ -2764,8 +3935,12 @@ achievement_tbl = {
 			summary = "Eliminate Sarah Irene",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Sarah Irene", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Sarah Irene",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128037] = {
@@ -2778,8 +3953,12 @@ achievement_tbl = {
 			summary = "Eliminate Sarah Irene",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Sarah Irene", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Sarah Irene",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128038] = {
@@ -2792,8 +3971,12 @@ achievement_tbl = {
 			summary = "Eliminate Ferlock",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Ferlock", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Ferlock",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128039] = {
@@ -2806,8 +3989,12 @@ achievement_tbl = {
 			summary = "Eliminate Ferlock",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Ferlock", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Ferlock",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128040] = {
@@ -2820,8 +4007,12 @@ achievement_tbl = {
 			summary = "Eliminate Ferlock",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Ferlock", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Ferlock",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128041] = {
@@ -2834,8 +4025,12 @@ achievement_tbl = {
 			summary = "Eliminate Ferlock",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Ferlock", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Ferlock",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128042] = {
@@ -2848,8 +4043,12 @@ achievement_tbl = {
 			summary = "Eliminate Ferlock",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Ferlock", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Ferlock",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128043] = {
@@ -2862,8 +4061,12 @@ achievement_tbl = {
 			summary = "Eliminate Ferlock",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Ferlock", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Ferlock",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128044] = {
@@ -2876,8 +4079,12 @@ achievement_tbl = {
 			summary = "Eliminate Fenrir",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Fenrir", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Fenrir",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128045] = {
@@ -2890,8 +4097,12 @@ achievement_tbl = {
 			summary = "Eliminate Fenrir",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Fenrir", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Fenrir",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128046] = {
@@ -2904,8 +4115,12 @@ achievement_tbl = {
 			summary = "Eliminate Fenrir",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Fenrir", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Fenrir",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128047] = {
@@ -2918,8 +4133,12 @@ achievement_tbl = {
 			summary = "Eliminate Naght Sieger",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Naght Sieger", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Naght Sieger",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128048] = {
@@ -2932,8 +4151,12 @@ achievement_tbl = {
 			summary = "Eliminate Naght Sieger",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Naght Sieger", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Naght Sieger",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128049] = {
@@ -2946,8 +4169,12 @@ achievement_tbl = {
 			summary = "Eliminate Naght Sieger",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Naght Sieger", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Naght Sieger",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[128050] = {
@@ -2960,8 +4187,12 @@ achievement_tbl = {
 			summary = "Eliminate Bangungot soul pillar",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 1 Bangungot soul pillar", count = 1 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 1 Bangungot soul pillar",
+				count = 1,
+			}
+		},
 		score = 10
 	},
 	[128051] = {
@@ -2974,8 +4205,12 @@ achievement_tbl = {
 			summary = "Eliminate Bangungot soul pillar",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 10 Bangungot soul pillar", count = 10 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 10 Bangungot soul pillar",
+				count = 10,
+			}
+		},
 		score = 20
 	},
 	[128052] = {
@@ -2988,8 +4223,12 @@ achievement_tbl = {
 			summary = "Eliminate Bangungot soul pillar",
 			details = "Proceed until the end of the Dungeon"
 		},
-		resource = { [1] = { text = "Eliminate 50 Bangungot soul pillar", count = 50 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Eliminate 50 Bangungot soul pillar",
+				count = 50,
+			}
+		},
 		score = 50
 	},
 	[129001] = {
@@ -3003,18 +4242,50 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Prontera"
 		},
 		resource = {
-			[1] = { text = "North Prontera Field Exploration(1) completed", shortcut = 120001 },
-			[2] = { text = "North Prontera Field Exploration(2) completed", shortcut = 120002 },
-			[3] = { text = "North Prontera Field Exploration(3) completed", shortcut = 120003 },
-			[4] = { text = "West Prontera Field Exploration(1) completed", shortcut = 120004 },
-			[5] = { text = "West Prontera Field Exploration(2) completed", shortcut = 120005 },
-			[6] = { text = "East Prontera Field Exploration(1) completed", shortcut = 120006 },
-			[7] = { text = "South Prontera Field Exploration(1) completed", shortcut = 120007 },
-			[8] = { text = "South Prontera Field Exploration(2) completed", shortcut = 120008 },
-			[9] = { text = "South Prontera Field Exploration(3) completed", shortcut = 120009 },
-			[10] = { text = "South Prontera Field Exploration(4) completed", shortcut = 120010 }
+			[1] = {
+				text = "North Prontera Field Exploration(1) completed",
+				shortcut = 120001
+			},
+			[2] = {
+				text = "North Prontera Field Exploration(2) completed",
+				shortcut = 120002
+			},
+			[3] = {
+				text = "North Prontera Field Exploration(3) completed",
+				shortcut = 120003
+			},
+			[4] = {
+				text = "West Prontera Field Exploration(1) completed",
+				shortcut = 120004
+			},
+			[5] = {
+				text = "West Prontera Field Exploration(2) completed",
+				shortcut = 120005
+			},
+			[6] = {
+				text = "East Prontera Field Exploration(1) completed",
+				shortcut = 120006
+			},
+			[7] = {
+				text = "South Prontera Field Exploration(1) completed",
+				shortcut = 120007
+			},
+			[8] = {
+				text = "South Prontera Field Exploration(2) completed",
+				shortcut = 120008
+			},
+			[9] = {
+				text = "South Prontera Field Exploration(3) completed",
+				shortcut = 120009
+			},
+			[10] = {
+				text = "South Prontera Field Exploration(4) completed",
+				shortcut = 120010
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129002] = {
@@ -3028,15 +4299,38 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Geffen"
 		},
 		resource = {
-			[1] = { text = "East Geffen Field Exploration(1) completed", shortcut = 120011 },
-			[2] = { text = "Southeast Geffen Field Exploration(1) completed", shortcut = 120012 },
-			[3] = { text = "Northwest Geffen Field Exploration(1) completed", shortcut = 120013 },
-			[4] = { text = "Northwest Geffen Field Exploration(2) completed", shortcut = 120014 },
-			[5] = { text = "Northwest Geffen Field Exploration(3) completed", shortcut = 120015 },
-			[6] = { text = "South Geffen Field Exploration(1) completed", shortcut = 120016 },
-			[7] = { text = "South Geffen Field Exploration(2) completed", shortcut = 120017 }
+			[1] = {
+				text = "East Geffen Field Exploration(1) completed",
+				shortcut = 120011
+			},
+			[2] = {
+				text = "Southeast Geffen Field Exploration(1) completed",
+				shortcut = 120012
+			},
+			[3] = {
+				text = "Northwest Geffen Field Exploration(1) completed",
+				shortcut = 120013
+			},
+			[4] = {
+				text = "Northwest Geffen Field Exploration(2) completed",
+				shortcut = 120014
+			},
+			[5] = {
+				text = "Northwest Geffen Field Exploration(3) completed",
+				shortcut = 120015
+			},
+			[6] = {
+				text = "South Geffen Field Exploration(1) completed",
+				shortcut = 120016
+			},
+			[7] = {
+				text = "South Geffen Field Exploration(2) completed",
+				shortcut = 120017
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129003] = {
@@ -3050,14 +4344,34 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Sograt Desert"
 		},
 		resource = {
-			[1] = { text = "Sograt Desert Field Exploration(1) completed", shortcut = 120018 },
-			[2] = { text = "Sograt Desert Field Exploration(2) completed", shortcut = 120019 },
-			[3] = { text = "Sograt Desert Field Exploration(3) completed", shortcut = 120020 },
-			[4] = { text = "Sograt Desert Field Exploration(4) completed", shortcut = 120021 },
-			[5] = { text = "Sograt Desert Field Exploration(5) completed", shortcut = 120022 },
-			[6] = { text = "Sograt Desert Field Exploration(6) completed", shortcut = 120023 }
+			[1] = {
+				text = "Sograt Desert Field Exploration(1) completed",
+				shortcut = 120018
+			},
+			[2] = {
+				text = "Sograt Desert Field Exploration(2) completed",
+				shortcut = 120019
+			},
+			[3] = {
+				text = "Sograt Desert Field Exploration(3) completed",
+				shortcut = 120020
+			},
+			[4] = {
+				text = "Sograt Desert Field Exploration(4) completed",
+				shortcut = 120021
+			},
+			[5] = {
+				text = "Sograt Desert Field Exploration(5) completed",
+				shortcut = 120022
+			},
+			[6] = {
+				text = "Sograt Desert Field Exploration(6) completed",
+				shortcut = 120023
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129004] = {
@@ -3071,16 +4385,42 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Payon"
 		},
 		resource = {
-			[1] = { text = "Southwest Payon Field Exploration(1) completed", shortcut = 120024 },
-			[2] = { text = "Southwest Payon Field Exploration(2) completed", shortcut = 120025 },
-			[3] = { text = "Southwest Payon Field Exploration(3) completed", shortcut = 120026 },
-			[4] = { text = "Southwest Payon Field Exploration(4) completed", shortcut = 120027 },
-			[5] = { text = "East Payon Field Exploration(1) completed", shortcut = 120028 },
-			[6] = { text = "East Payon Field Exploration(2) completed", shortcut = 120029 },
-			[7] = { text = "East Payon Field Exploration(3) completed", shortcut = 120030 },
-			[8] = { text = "East Payon Field Exploration(4) completed", shortcut = 120031 }
+			[1] = {
+				text = "Southwest Payon Field Exploration(1) completed",
+				shortcut = 120024
+			},
+			[2] = {
+				text = "Southwest Payon Field Exploration(2) completed",
+				shortcut = 120025
+			},
+			[3] = {
+				text = "Southwest Payon Field Exploration(3) completed",
+				shortcut = 120026
+			},
+			[4] = {
+				text = "Southwest Payon Field Exploration(4) completed",
+				shortcut = 120027
+			},
+			[5] = {
+				text = "East Payon Field Exploration(1) completed",
+				shortcut = 120028
+			},
+			[6] = {
+				text = "East Payon Field Exploration(2) completed",
+				shortcut = 120029
+			},
+			[7] = {
+				text = "East Payon Field Exploration(3) completed",
+				shortcut = 120030
+			},
+			[8] = {
+				text = "East Payon Field Exploration(4) completed",
+				shortcut = 120031
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129005] = {
@@ -3094,13 +4434,30 @@ achievement_tbl = {
 			details = "Complete exploring surrounding North Mjolnir"
 		},
 		resource = {
-			[1] = { text = "North Mjolnir Field Exploration(1) completed", shortcut = 120032 },
-			[2] = { text = "North Mjolnir Field Exploration(2) completed", shortcut = 120033 },
-			[3] = { text = "North Mjolnir Field Exploration(3) completed", shortcut = 120034 },
-			[4] = { text = "North Mjolnir Field Exploration(4) completed", shortcut = 120035 },
-			[5] = { text = "North Mjolnir Field Exploration(5) completed", shortcut = 120036 }
+			[1] = {
+				text = "North Mjolnir Field Exploration(1) completed",
+				shortcut = 120032
+			},
+			[2] = {
+				text = "North Mjolnir Field Exploration(2) completed",
+				shortcut = 120033
+			},
+			[3] = {
+				text = "North Mjolnir Field Exploration(3) completed",
+				shortcut = 120034
+			},
+			[4] = {
+				text = "North Mjolnir Field Exploration(4) completed",
+				shortcut = 120035
+			},
+			[5] = {
+				text = "North Mjolnir Field Exploration(5) completed",
+				shortcut = 120036
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129006] = {
@@ -3114,15 +4471,38 @@ achievement_tbl = {
 			details = "Complete exploring surrounding South Mjolnir"
 		},
 		resource = {
-			[1] = { text = "South Mjolnir Field Exploration(1) completed", shortcut = 120037 },
-			[2] = { text = "South Mjolnir Field Exploration(2) completed", shortcut = 120038 },
-			[3] = { text = "South Mjolnir Field Exploration(3) completed", shortcut = 120039 },
-			[4] = { text = "South Mjolnir Field Exploration(4) completed", shortcut = 120040 },
-			[5] = { text = "South Mjolnir Field Exploration(5) completed", shortcut = 120041 },
-			[6] = { text = "South Mjolnir Field Exploration(6) completed", shortcut = 120042 },
-			[7] = { text = "South Aldebaran Field Exploration(1) completed", shortcut = 120043 }
+			[1] = {
+				text = "South Mjolnir Field Exploration(1) completed",
+				shortcut = 120037
+			},
+			[2] = {
+				text = "South Mjolnir Field Exploration(2) completed",
+				shortcut = 120038
+			},
+			[3] = {
+				text = "South Mjolnir Field Exploration(3) completed",
+				shortcut = 120039
+			},
+			[4] = {
+				text = "South Mjolnir Field Exploration(4) completed",
+				shortcut = 120040
+			},
+			[5] = {
+				text = "South Mjolnir Field Exploration(5) completed",
+				shortcut = 120041
+			},
+			[6] = {
+				text = "South Mjolnir Field Exploration(6) completed",
+				shortcut = 120042
+			},
+			[7] = {
+				text = "South Aldebaran Field Exploration(1) completed",
+				shortcut = 120043
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129007] = {
@@ -3136,16 +4516,42 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Comodo"
 		},
 		resource = {
-			[1] = { text = "Comodo Field Exploration(1) completed", shortcut = 120044 },
-			[2] = { text = "Comodo Field Exploration(2) completed", shortcut = 120045 },
-			[3] = { text = "Comodo Field Exploration(3) completed", shortcut = 120046 },
-			[4] = { text = "Comodo Field Exploration(4) completed", shortcut = 120047 },
-			[5] = { text = "Comodo Field Exploration(5) completed", shortcut = 120048 },
-			[6] = { text = "Comodo Field Exploration(6) completed", shortcut = 120049 },
-			[7] = { text = "Comodo Field Exploration(7) completed", shortcut = 120050 },
-			[8] = { text = "Comodo Field Exploration(8) completed", shortcut = 120051 }
+			[1] = {
+				text = "Comodo Field Exploration(1) completed",
+				shortcut = 120044
+			},
+			[2] = {
+				text = "Comodo Field Exploration(2) completed",
+				shortcut = 120045
+			},
+			[3] = {
+				text = "Comodo Field Exploration(3) completed",
+				shortcut = 120046
+			},
+			[4] = {
+				text = "Comodo Field Exploration(4) completed",
+				shortcut = 120047
+			},
+			[5] = {
+				text = "Comodo Field Exploration(5) completed",
+				shortcut = 120048
+			},
+			[6] = {
+				text = "Comodo Field Exploration(6) completed",
+				shortcut = 120049
+			},
+			[7] = {
+				text = "Comodo Field Exploration(7) completed",
+				shortcut = 120050
+			},
+			[8] = {
+				text = "Comodo Field Exploration(8) completed",
+				shortcut = 120051
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129008] = {
@@ -3159,15 +4565,38 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Rune Midgard"
 		},
 		resource = {
-			[1] = { text = "Prontera Explorer", shortcut = 129001 },
-			[2] = { text = "Geffen Explorer", shortcut = 129002 },
-			[3] = { text = "Sograt Desert Explorer", shortcut = 129003 },
-			[4] = { text = "Payon Explorer", shortcut = 129004 },
-			[5] = { text = "North Mjolnir Explorer", shortcut = 129005 },
-			[6] = { text = "South Mjolnir Explorer", shortcut = 129006 },
-			[7] = { text = "Comodo Explorer", shortcut = 129007 }
+			[1] = {
+				text = "Prontera Explorer",
+				shortcut = 129001
+			},
+			[2] = {
+				text = "Geffen Explorer",
+				shortcut = 129002
+			},
+			[3] = {
+				text = "Sograt Desert Explorer",
+				shortcut = 129003
+			},
+			[4] = {
+				text = "Payon Explorer",
+				shortcut = 129004
+			},
+			[5] = {
+				text = "North Mjolnir Explorer",
+				shortcut = 129005
+			},
+			[6] = {
+				text = "South Mjolnir Explorer",
+				shortcut = 129006
+			},
+			[7] = {
+				text = "Comodo Explorer",
+				shortcut = 129007
+			}
 		},
-		reward = { item = 617 },
+		reward = {
+			item = 617
+		},
 		score = 50
 	},
 	[129009] = {
@@ -3181,18 +4610,50 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Yuno"
 		},
 		resource = {
-			[1] = { text = "Border Checkpoint Field Exploration(1) completed", shortcut = 120052 },
-			[2] = { text = "Border Checkpoint Field Exploration(2) completed", shortcut = 120053 },
-			[3] = { text = "Kiel Hyre Mansion Field Exploration(1) completed", shortcut = 120054 },
-			[4] = { text = "El Mes Plateau Field Exploration(1) completed", shortcut = 120055 },
-			[5] = { text = "El Mes Plateau Field Exploration(2) completed", shortcut = 120056 },
-			[6] = { text = "El Mes Plateau Field Exploration(3) completed", shortcut = 120057 },
-			[7] = { text = "El Mes Gorge Field Exploration(1) completed", shortcut = 120058 },
-			[8] = { text = "Kiel Hyre Academy Field Exploration(1) completed", shortcut = 120059 },
-			[9] = { text = "Guard Camp Field Exploration(1) completed", shortcut = 120060 },
-			[10] = { text = "Yuno Field Exploration(1) completed", shortcut = 120061 }
+			[1] = {
+				text = "Border Checkpoint Field Exploration(1) completed",
+				shortcut = 120052
+			},
+			[2] = {
+				text = "Border Checkpoint Field Exploration(2) completed",
+				shortcut = 120053
+			},
+			[3] = {
+				text = "Kiel Hyre Mansion Field Exploration(1) completed",
+				shortcut = 120054
+			},
+			[4] = {
+				text = "El Mes Plateau Field Exploration(1) completed",
+				shortcut = 120055
+			},
+			[5] = {
+				text = "El Mes Plateau Field Exploration(2) completed",
+				shortcut = 120056
+			},
+			[6] = {
+				text = "El Mes Plateau Field Exploration(3) completed",
+				shortcut = 120057
+			},
+			[7] = {
+				text = "El Mes Gorge Field Exploration(1) completed",
+				shortcut = 120058
+			},
+			[8] = {
+				text = "Kiel Hyre Academy Field Exploration(1) completed",
+				shortcut = 120059
+			},
+			[9] = {
+				text = "Guard Camp Field Exploration(1) completed",
+				shortcut = 120060
+			},
+			[10] = {
+				text = "Yuno Field Exploration(1) completed",
+				shortcut = 120061
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129010] = {
@@ -3206,13 +4667,30 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Hugel"
 		},
 		resource = {
-			[1] = { text = "Front of Thanatos Tower Field Exploration(1) completed", shortcut = 120062 },
-			[2] = { text = "Hugel Field Exploration(1) completed", shortcut = 120063 },
-			[3] = { text = "Hugel Field Exploration(2) completed", shortcut = 120064 },
-			[4] = { text = "Hugel Field Exploration(3) completed", shortcut = 120065 },
-			[5] = { text = "Abyss Lake Field Exploration(1) completed", shortcut = 120066 }
+			[1] = {
+				text = "Front of Thanatos Tower Field Exploration(1) completed",
+				shortcut = 120062
+			},
+			[2] = {
+				text = "Hugel Field Exploration(1) completed",
+				shortcut = 120063
+			},
+			[3] = {
+				text = "Hugel Field Exploration(2) completed",
+				shortcut = 120064
+			},
+			[4] = {
+				text = "Hugel Field Exploration(3) completed",
+				shortcut = 120065
+			},
+			[5] = {
+				text = "Abyss Lake Field Exploration(1) completed",
+				shortcut = 120066
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129011] = {
@@ -3226,16 +4704,42 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Einbroch"
 		},
 		resource = {
-			[1] = { text = "Einbroch Field Exploration(1) completed", shortcut = 120067 },
-			[2] = { text = "Einbroch Field Exploration(2) completed", shortcut = 120068 },
-			[3] = { text = "Einbroch Field Exploration(3) completed", shortcut = 120069 },
-			[4] = { text = "Einbroch Field Exploration(4) completed", shortcut = 120070 },
-			[5] = { text = "Einbroch Field Exploration(5) completed", shortcut = 120071 },
-			[6] = { text = "Einbroch Field Exploration(6) completed", shortcut = 120072 },
-			[7] = { text = "Einbroch Field Exploration(7) completed", shortcut = 120073 },
-			[8] = { text = "Einbroch Field Exploration(8) completed", shortcut = 120074 }
+			[1] = {
+				text = "Einbroch Field Exploration(1) completed",
+				shortcut = 120067
+			},
+			[2] = {
+				text = "Einbroch Field Exploration(2) completed",
+				shortcut = 120068
+			},
+			[3] = {
+				text = "Einbroch Field Exploration(3) completed",
+				shortcut = 120069
+			},
+			[4] = {
+				text = "Einbroch Field Exploration(4) completed",
+				shortcut = 120070
+			},
+			[5] = {
+				text = "Einbroch Field Exploration(5) completed",
+				shortcut = 120071
+			},
+			[6] = {
+				text = "Einbroch Field Exploration(6) completed",
+				shortcut = 120072
+			},
+			[7] = {
+				text = "Einbroch Field Exploration(7) completed",
+				shortcut = 120073
+			},
+			[8] = {
+				text = "Einbroch Field Exploration(8) completed",
+				shortcut = 120074
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129012] = {
@@ -3249,11 +4753,22 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Lighthalzen"
 		},
 		resource = {
-			[1] = { text = "Lighthalzen Field Exploration(1) completed", shortcut = 120075 },
-			[2] = { text = "Lighthalzen Field Exploration(2) completed", shortcut = 120076 },
-			[3] = { text = "Lighthalzen Field Exploration(3) completed", shortcut = 120077 }
+			[1] = {
+				text = "Lighthalzen Field Exploration(1) completed",
+				shortcut = 120075
+			},
+			[2] = {
+				text = "Lighthalzen Field Exploration(2) completed",
+				shortcut = 120076
+			},
+			[3] = {
+				text = "Lighthalzen Field Exploration(3) completed",
+				shortcut = 120077
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129013] = {
@@ -3267,12 +4782,26 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Schwarzwald"
 		},
 		resource = {
-			[1] = { text = "Yuno Explorer", shortcut = 129009 },
-			[2] = { text = "Hugel Explorer", shortcut = 129010 },
-			[3] = { text = "Einbroch Explorer", shortcut = 129011 },
-			[4] = { text = "Lighthalzen Explorer", shortcut = 129012 }
+			[1] = {
+				text = "Yuno Explorer",
+				shortcut = 129009
+			},
+			[2] = {
+				text = "Hugel Explorer",
+				shortcut = 129010
+			},
+			[3] = {
+				text = "Einbroch Explorer",
+				shortcut = 129011
+			},
+			[4] = {
+				text = "Lighthalzen Explorer",
+				shortcut = 129012
+			}
 		},
-		reward = { item = 617 },
+		reward = {
+			item = 617
+		},
 		score = 50
 	},
 	[129014] = {
@@ -3286,15 +4815,38 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Rachel"
 		},
 		resource = {
-			[1] = { text = "Rachel Audhumbla Plains Field Exploration(1) completed", shortcut = 120078 },
-			[2] = { text = "Rachel Plains Field Exploration(1) completed", shortcut = 120079 },
-			[3] = { text = "Rachel Plains Field Exploration(2) completed", shortcut = 120080 },
-			[4] = { text = "Rachel Plains Field Exploration(3) completed", shortcut = 120081 },
-			[5] = { text = "Rachel Audhumbla Grassland Field Exploration(1) completed", shortcut = 120082 },
-			[6] = { text = "Rachel Audhumbla Grassland Field Exploration(2) completed", shortcut = 120083 },
-			[7] = { text = "Portus Luna Field Exploration(1) completed", shortcut = 120084 }
+			[1] = {
+				text = "Rachel Audhumbla Plains Field Exploration(1) completed",
+				shortcut = 120078
+			},
+			[2] = {
+				text = "Rachel Plains Field Exploration(1) completed",
+				shortcut = 120079
+			},
+			[3] = {
+				text = "Rachel Plains Field Exploration(2) completed",
+				shortcut = 120080
+			},
+			[4] = {
+				text = "Rachel Plains Field Exploration(3) completed",
+				shortcut = 120081
+			},
+			[5] = {
+				text = "Rachel Audhumbla Grassland Field Exploration(1) completed",
+				shortcut = 120082
+			},
+			[6] = {
+				text = "Rachel Audhumbla Grassland Field Exploration(2) completed",
+				shortcut = 120083
+			},
+			[7] = {
+				text = "Portus Luna Field Exploration(1) completed",
+				shortcut = 120084
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129015] = {
@@ -3308,13 +4860,30 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Veins"
 		},
 		resource = {
-			[1] = { text = "Veins Field Exploration(1) completed", shortcut = 120085 },
-			[2] = { text = "Veins Field Exploration(2) completed", shortcut = 120086 },
-			[3] = { text = "Veins Field Exploration(3) completed", shortcut = 120087 },
-			[4] = { text = "Veins Field Exploration(4) completed", shortcut = 120088 },
-			[5] = { text = "Veins Field Exploration(5) completed", shortcut = 120089 }
+			[1] = {
+				text = "Veins Field Exploration(1) completed",
+				shortcut = 120085
+			},
+			[2] = {
+				text = "Veins Field Exploration(2) completed",
+				shortcut = 120086
+			},
+			[3] = {
+				text = "Veins Field Exploration(3) completed",
+				shortcut = 120087
+			},
+			[4] = {
+				text = "Veins Field Exploration(4) completed",
+				shortcut = 120088
+			},
+			[5] = {
+				text = "Veins Field Exploration(5) completed",
+				shortcut = 120089
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129016] = {
@@ -3328,10 +4897,18 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Arunafeltz"
 		},
 		resource = {
-			[1] = { text = "Rachel Explorer", shortcut = 129014 },
-			[2] = { text = "Veins Explorer", shortcut = 129015 }
+			[1] = {
+				text = "Rachel Explorer",
+				shortcut = 129014
+			},
+			[2] = {
+				text = "Veins Explorer",
+				shortcut = 129015
+			}
 		},
-		reward = { item = 617 },
+		reward = {
+			item = 617
+		},
 		score = 50
 	},
 	[129017] = {
@@ -3345,14 +4922,34 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Laphine"
 		},
 		resource = {
-			[1] = { text = "Eclage Field Exploration(1) completed", shortcut = 120090 },
-			[2] = { text = "North Bitfrost Field Exploration(1) completed", shortcut = 120091 },
-			[3] = { text = "South Bitfrost Field Exploration(1) completed", shortcut = 120092 },
-			[4] = { text = "Splendide Field Exploration(1) completed", shortcut = 120093 },
-			[5] = { text = "Splendide Field Exploration(2) completed", shortcut = 120094 },
-			[6] = { text = "Splendide Field Exploration(3) completed", shortcut = 120095 }
+			[1] = {
+				text = "Eclage Field Exploration(1) completed",
+				shortcut = 120090
+			},
+			[2] = {
+				text = "North Bitfrost Field Exploration(1) completed",
+				shortcut = 120091
+			},
+			[3] = {
+				text = "South Bitfrost Field Exploration(1) completed",
+				shortcut = 120092
+			},
+			[4] = {
+				text = "Splendide Field Exploration(1) completed",
+				shortcut = 120093
+			},
+			[5] = {
+				text = "Splendide Field Exploration(2) completed",
+				shortcut = 120094
+			},
+			[6] = {
+				text = "Splendide Field Exploration(3) completed",
+				shortcut = 120095
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129018] = {
@@ -3366,13 +4963,30 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Manuk"
 		},
 		resource = {
-			[1] = { text = "Manuk Field Exploration(1) completed", shortcut = 120096 },
-			[2] = { text = "Manuk Field Exploration(2) completed", shortcut = 120097 },
-			[3] = { text = "Manuk Field Exploration(3) completed", shortcut = 120098 },
-			[4] = { text = "Outskirts of Kamidal Field Exploration(1) completed", shortcut = 120099 },
-			[5] = { text = "Outskirts of Kamidal Field Exploration(2) completed", shortcut = 120100 }
+			[1] = {
+				text = "Manuk Field Exploration(1) completed",
+				shortcut = 120096
+			},
+			[2] = {
+				text = "Manuk Field Exploration(2) completed",
+				shortcut = 120097
+			},
+			[3] = {
+				text = "Manuk Field Exploration(3) completed",
+				shortcut = 120098
+			},
+			[4] = {
+				text = "Outskirts of Kamidal Field Exploration(1) completed",
+				shortcut = 120099
+			},
+			[5] = {
+				text = "Outskirts of Kamidal Field Exploration(2) completed",
+				shortcut = 120100
+			}
 		},
-		reward = { item = 644 },
+		reward = {
+			item = 644
+		},
 		score = 20
 	},
 	[129019] = {
@@ -3386,10 +5000,18 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Eclage"
 		},
 		resource = {
-			[1] = { text = "Laphine Explorer", shortcut = 129017 },
-			[2] = { text = "Manuk Explorer", shortcut = 120918 }
+			[1] = {
+				text = "Laphine Explorer",
+				shortcut = 129017
+			},
+			[2] = {
+				text = "Manuk Explorer",
+				shortcut = 129018
+			}
 		},
-		reward = { item = 617 },
+		reward = {
+			item = 617
+		},
 		score = 50
 	},
 	[129020] = {
@@ -3403,18 +5025,68 @@ achievement_tbl = {
 			details = "Complete exploring surrounding Localizing fields"
 		},
 		resource = {
-			[1] = { text = "Amatsu Field Exploration(1) completed", shortcut = 120101 },
-			[2] = { text = "Kunlun Field Exploration(1) completed", shortcut = 120102 },
-			[3] = { text = "Gonryun Field Exploration(1) completed", shortcut = 120103 },
-			[4] = { text = "Ayothaya Field Exploration(1) completed", shortcut = 120104 },
-			[5] = { text = "Moscovia Field Exploration(1) completed", shortcut = 120105 },
-			[6] = { text = "Brasilis Field Exploration(1) completed", shortcut = 120106 },
-			[7] = { text = "Dewata Field Exploration(1) completed", shortcut = 120107 },
-			[8] = { text = "Malaya Field Exploration(1) completed", shortcut = 120108 },
-			[9] = { text = "Malaya Field Exploration(2) completed", shortcut = 120109 }
+			[1] = {
+				text = "Amatsu Field Exploration(1) completed",
+				shortcut = 120101
+			},
+			[2] = {
+				text = "Kunlun Field Exploration(1) completed",
+				shortcut = 120102
+			},
+			[3] = {
+				text = "Gonryun Field Exploration(1) completed",
+				shortcut = 120103
+			},
+			[4] = {
+				text = "Ayothaya Field Exploration(1) completed",
+				shortcut = 120104
+			},
+			[5] = {
+				text = "Moscovia Field Exploration(1) completed",
+				shortcut = 120105
+			},
+			[6] = {
+				text = "Brasilis Field Exploration(1) completed",
+				shortcut = 120106
+			},
+			[7] = {
+				text = "Dewata Field Exploration(1) completed",
+				shortcut = 120107
+			},
+			[8] = {
+				text = "Malaya Field Exploration(1) completed",
+				shortcut = 120108
+			},
+			[9] = {
+				text = "Malaya Field Exploration(2) completed",
+				shortcut = 120109
+			}
 		},
-		reward = { item = 617 },
+		reward = {
+			item = 617
+		},
 		score = 50
+	},
+	[129021] = {
+		UI_Type = 1,
+		group = "BATTLE",
+		major = 5,
+		minor = 0,
+		title = "글래스트 헤임 도전모드",
+		content = {
+			summary = "글래스트 헤임 도전모드 공략 완료",
+			details = "메모리얼 던전을 끝까지 진행"
+		},
+		resource = {
+			[1] = {
+				text = "도전 성공 횟수",
+				count = 100
+			}
+		},
+		reward = {
+			title = 1045
+		},
+		score = 10
 	},
 	[130000] = {
 		UI_Type = 0,
@@ -3427,15 +5099,51 @@ achievement_tbl = {
 			details = "Visit the seven Royal Family in the east and west detached palace."
 		},
 		resource = {
-			[1] = { text = "Visit Heine Royal Family and start conversation" },
-			[2] = { text = "Visit Nerius Royal Family and start conversation" },
-			[3] = { text = "Visit Walter Royal Family and start conversation" },
-			[4] = { text = "Visit Wigner Royal Family and start conversation" },
-			[5] = { text = "Visit Richard Royal Family and start conversation" },
-			[6] = { text = "Visit Gaebolg Royal Family and start conversation" },
-			[7] = { text = "Visit Lugenburg Royal Family and start conversation" }
+			[1] = {
+				text = "Visit Heine Royal Family and start conversation",
+			},
+			[2] = {
+				text = "Visit Nerius Royal Family and start conversation",
+			},
+			[3] = {
+				text = "Visit Walter Royal Family and start conversation",
+			},
+			[4] = {
+				text = "Visit Wigner Royal Family and start conversation",
+			},
+			[5] = {
+				text = "Visit Richard Royal Family and start conversation",
+			},
+			[6] = {
+				text = "Visit Gaebolg Royal Family and start conversation",
+			},
+			[7] = {
+				text = "Visit Lugenburg Royal Family and start conversation",
+			}
 		},
-		reward = { title = 1034 },
+		reward = {
+			title = 1034
+		},
+		score = 10
+	},
+	[130005] = {
+		UI_Type = 0,
+		group = "CHATTING",
+		major = 4,
+		minor = 0,
+		title = "왕을 만든 자",
+		content = {
+			summary = "내가 만든 나의 왕",
+			details = "테라 글로리아의 영광을 되찾고 그 영광의 주역에게 왕관을 씌우라."
+		},
+		resource = {
+			[1] = {
+				text = "룬-미드가츠의 새로운 국왕이 탄생하는 대관식을 참관한다."
+			}
+		},
+		reward = {
+			title = 1046
+		},
 		score = 10
 	},
 	[170000] = {
@@ -3448,8 +5156,11 @@ achievement_tbl = {
 			summary = "Listening the secret song of court musician",
 			details = "Listen the secret song of five recomended court musician"
 		},
-		resource = { [1] = { text = "Listen the secret song of five recomended court musician" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Listen the secret song of five recomended court musician",
+			}
+		},
 		score = 10
 	},
 	[190000] = {
@@ -3463,12 +5174,23 @@ achievement_tbl = {
 			details = "Do you want to challenge all requests of Merchant city alliance? Then work harder! merchant city is not place for pushy."
 		},
 		resource = {
-			[1] = { text = "Novice Amethyst class", count = 1 },
-			[2] = { text = "Expert Sardonyx class", count = 10 },
-			[3] = { text = "Competence Person Aquamarine class", count = 30 },
-			[4] = { text = "Sparkling Diamond class", count = 100 }
+			[1] = {
+				text = "Novice Amethyst class",
+				count = 1,
+			},
+			[2] = {
+				text = "Expert Sardonyx class",
+				count = 10,
+			},
+			[3] = {
+				text = "Competence Person Aquamarine class",
+				count = 30,
+			},
+			[4] = {
+				text = "Sparkling Diamond class",
+				count = 100,
+			}
 		},
-		reward = {},
 		score = 50
 	},
 	[200000] = {
@@ -3481,8 +5203,16 @@ achievement_tbl = {
 			summary = "Achieve Base Level 99!",
 			details = "Achieve base level 99."
 		},
-		resource = { [1] = { text = "Base level 99" } },
-		reward = { title = 1000, buff = 10, item = 12549 },
+		resource = {
+			[1] = {
+				text = "Base level 99",
+			}
+		},
+		reward = {
+			title = 1000,
+			buff = 10,
+			item = 12549
+		},
 		score = 50
 	},
 	[200001] = {
@@ -3495,8 +5225,16 @@ achievement_tbl = {
 			summary = "Achieve Base Level 150!",
 			details = "Achieve base level 150."
 		},
-		resource = { [1] = { text = "Base level 150" } },
-		reward = { title = 1001, buff = 10, item = 5364 },
+		resource = {
+			[1] = {
+				text = "Base level 150",
+			}
+		},
+		reward = {
+			title = 1001,
+			buff = 10,
+			item = 5364
+		},
 		score = 60
 	},
 	[200002] = {
@@ -3509,8 +5247,16 @@ achievement_tbl = {
 			summary = "Achieve Base Level 175!",
 			details = "Achieve base level 175."
 		},
-		resource = { [1] = { text = "Base level 175" } },
-		reward = { title = 1002, buff = 10, item = 18880 },
+		resource = {
+			[1] = {
+				text = "Base level 175",
+			}
+		},
+		reward = {
+			title = 1002,
+			buff = 10,
+			item = 18880
+		},
 		score = 70
 	},
 	[200003] = {
@@ -3523,8 +5269,16 @@ achievement_tbl = {
 			summary = "Achieve Job Level 50!",
 			details = "Achieve job level 50."
 		},
-		resource = { [1] = { text = "Job level 50" } },
-		reward = { title = 1003, buff = 10, item = 617 },
+		resource = {
+			[1] = {
+				text = "Job level 50",
+			}
+		},
+		reward = {
+			title = 1003,
+			buff = 10,
+			item = 617
+		},
 		score = 30
 	},
 	[200004] = {
@@ -3537,8 +5291,16 @@ achievement_tbl = {
 			summary = "Achieve Job Level 70!",
 			details = "Achieve job level 70."
 		},
-		resource = { [1] = { text = "Job level 70" } },
-		reward = { title = 1004, buff = 10, item = 12817 },
+		resource = {
+			[1] = {
+				text = "Job level 70",
+			}
+		},
+		reward = {
+			title = 1004,
+			buff = 10,
+			item = 12817
+		},
 		score = 50
 	},
 	[200005] = {
@@ -3551,8 +5313,14 @@ achievement_tbl = {
 			summary = "Job change to first class.",
 			details = "Acolyte, Merchant, Swordman, Mage, Thief or Archer."
 		},
-		resource = { [1] = { text = "Job change to first class" } },
-		reward = { buff = 12 },
+		resource = {
+			[1] = {
+				text = "Job change to first class",
+			}
+		},
+		reward = {
+			buff = 12
+		},
 		score = 10
 	},
 	[200006] = {
@@ -3565,8 +5333,14 @@ achievement_tbl = {
 			summary = "First step of job change",
 			details = "Acolyte, Merchant, Swordman, Mage, Thief or Archer."
 		},
-		resource = { [1] = { text = "First step of job change" } },
-		reward = { buff = 12 },
+		resource = {
+			[1] = {
+				text = "First step of job change",
+			}
+		},
+		reward = {
+			buff = 12
+		},
 		score = 20
 	},
 	[200007] = {
@@ -3579,8 +5353,14 @@ achievement_tbl = {
 			summary = "Job change to 2-1 classes",
 			details = "Knight, Blacksmith, Assassin, Wizard, Priest or Hunter."
 		},
-		resource = { [1] = { text = "Job change to 2-1 classes" } },
-		reward = { buff = 12 },
+		resource = {
+			[1] = {
+				text = "Job change to 2-1 classes",
+			}
+		},
+		reward = {
+			buff = 12
+		},
 		score = 25
 	},
 	[200008] = {
@@ -3593,8 +5373,14 @@ achievement_tbl = {
 			summary = "Job change to 2-2 classes",
 			details = "Crusader, Alchemist, Rogue, Sage, Monk, Bard or Dancer."
 		},
-		resource = { [1] = { text = "Job change to 2-2 classes" } },
-		reward = { buff = 12 },
+		resource = {
+			[1] = {
+				text = "Job change to 2-2 classes",
+			}
+		},
+		reward = {
+			buff = 12
+		},
 		score = 25
 	},
 	[200009] = {
@@ -3607,8 +5393,14 @@ achievement_tbl = {
 			summary = "Job change to transcendent 2-1 classes",
 			details = "Lord Knight, White Smith, Assassin Cross, High Wizard, High Priest or Sniper."
 		},
-		resource = { [1] = { text = "Job change to transcendent 2-1 classes" } },
-		reward = { buff = 12 },
+		resource = {
+			[1] = {
+				text = "Job change to transcendent 2-1 classes",
+			}
+		},
+		reward = {
+			buff = 12
+		},
 		score = 30
 	},
 	[200010] = {
@@ -3621,8 +5413,14 @@ achievement_tbl = {
 			summary = "Job change to transcendent 2-2 classes",
 			details = "Paladin, Creator, Stalker, Proffesor, Champion, Clown or Gypsi."
 		},
-		resource = { [1] = { text = "Job change to transcendent 2-2 classes" } },
-		reward = { buff = 12 },
+		resource = {
+			[1] = {
+				text = "Job change to transcendent 2-2 classes",
+			}
+		},
+		reward = {
+			buff = 12
+		},
 		score = 30
 	},
 	[200011] = {
@@ -3635,8 +5433,15 @@ achievement_tbl = {
 			summary = "Job change to 3-1 classes",
 			details = "Rune Knight, Mechanic, Guillotine Cross, Warlock, Arch Bishop or Ranger."
 		},
-		resource = { [1] = { text = "Job change to 3-1 classes" } },
-		reward = { buff = 12, item = 16483 },
+		resource = {
+			[1] = {
+				text = "Job change to 3-1 classes",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 16483
+		},
 		score = 50
 	},
 	[200012] = {
@@ -3649,8 +5454,15 @@ achievement_tbl = {
 			summary = "Job change to 3-1 classes after transcendent",
 			details = "Rune Knight, Mechanic, Guillotine Cross, Warlock, Arch Bishop or Ranger after transcendent."
 		},
-		resource = { [1] = { text = "Job change to 3-1 classes after transcendent" } },
-		reward = { buff = 12, item = 16483 },
+		resource = {
+			[1] = {
+				text = "Job change to 3-1 classes after transcendent",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 16483
+		},
 		score = 60
 	},
 	[200013] = {
@@ -3663,8 +5475,15 @@ achievement_tbl = {
 			summary = "Job change to 3-2 classes",
 			details = "Royal Guard, Geneticist, Shadow Chaser, Sorcerer, Sura, Minstrel or Wanderer."
 		},
-		resource = { [1] = { text = "Job change to 3-2 classes" } },
-		reward = { buff = 12, item = 16483 },
+		resource = {
+			[1] = {
+				text = "Job change to 3-2 classes",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 16483
+		},
 		score = 50
 	},
 	[200014] = {
@@ -3677,8 +5496,15 @@ achievement_tbl = {
 			summary = "Job change to 3-2 classes after transcendent",
 			details = "Royal Guard, Geneticist, Shadow Chaser, Sorcerer, Sura, Minstrel or Wanderer after transcendent."
 		},
-		resource = { [1] = { text = "Job change to 3-2 classes after transcendent" } },
-		reward = { buff = 12, item = 16483 },
+		resource = {
+			[1] = {
+				text = "Job change to 3-2 classes after transcendent",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 16483
+		},
 		score = 60
 	},
 	[200015] = {
@@ -3691,8 +5517,14 @@ achievement_tbl = {
 			summary = "Job change to expanded classes",
 			details = "Taekwondo, Gunslinger, Super Novice or Ninja."
 		},
-		resource = { [1] = { text = "Job change to expanded classes" } },
-		reward = { buff = 12 },
+		resource = {
+			[1] = {
+				text = "Job change to expanded classes",
+			}
+		},
+		reward = {
+			buff = 12
+		},
 		score = 10
 	},
 	[200016] = {
@@ -3705,8 +5537,15 @@ achievement_tbl = {
 			summary = "Job change to expanded 2nd classes",
 			details = "Soul Linker, Star Gladiator, Rebellion, Oboro or Kagerou."
 		},
-		resource = { [1] = { text = "Expanded 2nd classes" } },
-		reward = { buff = 12, item = 16483 },
+		resource = {
+			[1] = {
+				text = "Expanded 2nd classes",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 16483
+		},
 		score = 20
 	},
 	[200017] = {
@@ -3719,8 +5558,11 @@ achievement_tbl = {
 			summary = "Achieve base STR 90",
 			details = "Achieve 90 base STR or higher."
 		},
-		resource = { [1] = { text = "Achieve base STR 90�" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Achieve base STR 90º",
+			}
+		},
 		score = 10
 	},
 	[200018] = {
@@ -3733,8 +5575,11 @@ achievement_tbl = {
 			summary = "Achieve base INT 90",
 			details = "Achieve 90 base INT or higher."
 		},
-		resource = { [1] = { text = "Achieve base INT 90" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Achieve base INT 90",
+			}
+		},
 		score = 10
 	},
 	[200019] = {
@@ -3747,8 +5592,11 @@ achievement_tbl = {
 			summary = "Achieve base VIT 90",
 			details = "Achieve 90 base VIT or higher."
 		},
-		resource = { [1] = { text = "Achieve base VIT 90" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Achieve base VIT 90",
+			}
+		},
 		score = 10
 	},
 	[200020] = {
@@ -3761,8 +5609,11 @@ achievement_tbl = {
 			summary = "Achieve base AGI 90",
 			details = "Achieve 90 base AGI or higher."
 		},
-		resource = { [1] = { text = "Achieve base AGI 90" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Achieve base AGI 90",
+			}
+		},
 		score = 10
 	},
 	[200021] = {
@@ -3775,8 +5626,11 @@ achievement_tbl = {
 			summary = "Achieve base DEX 90",
 			details = "Achieve 90 base DEX or higher."
 		},
-		resource = { [1] = { text = "Achieve base DEX 90" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Achieve base DEX 90",
+			}
+		},
 		score = 10
 	},
 	[200022] = {
@@ -3789,8 +5643,11 @@ achievement_tbl = {
 			summary = "Achieve base LUK 90",
 			details = "Achieve 90 base LUK or higher."
 		},
-		resource = { [1] = { text = "Achieve base LUK 90" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Achieve base LUK 90",
+			}
+		},
 		score = 10
 	},
 	[200023] = {
@@ -3803,8 +5660,14 @@ achievement_tbl = {
 			summary = "Achieve base STR 125",
 			details = "Achieve 125 base STR or higher."
 		},
-		resource = { [1] = { text = "Achieve base STR 125" } },
-		reward = { buff = 319 },
+		resource = {
+			[1] = {
+				text = "Achieve base STR 125",
+			}
+		},
+		reward = {
+			buff = 319
+		},
 		score = 20
 	},
 	[200024] = {
@@ -3817,8 +5680,14 @@ achievement_tbl = {
 			summary = "Achieve base INT 125",
 			details = "Achieve 125 base INT or higher."
 		},
-		resource = { [1] = { text = "Achieve base INT 125" } },
-		reward = { buff = 611 },
+		resource = {
+			[1] = {
+				text = "Achieve base INT 125",
+			}
+		},
+		reward = {
+			buff = 611
+		},
 		score = 20
 	},
 	[200025] = {
@@ -3831,8 +5700,14 @@ achievement_tbl = {
 			summary = "Achieve base VIT 125",
 			details = "Achieve 125 base VIT or higher."
 		},
-		resource = { [1] = { text = "Achieve base VIT 125" } },
-		reward = { buff = 293 },
+		resource = {
+			[1] = {
+				text = "Achieve base VIT 125",
+			}
+		},
+		reward = {
+			buff = 293
+		},
 		score = 20
 	},
 	[200026] = {
@@ -3845,8 +5720,14 @@ achievement_tbl = {
 			summary = "Achieve base AGI 125",
 			details = "Achieve 125 base AGI or higher."
 		},
-		resource = { [1] = { text = "Achieve base AGI 125" } },
-		reward = { buff = 296 },
+		resource = {
+			[1] = {
+				text = "Achieve base AGI 125",
+			}
+		},
+		reward = {
+			buff = 296
+		},
 		score = 20
 	},
 	[200027] = {
@@ -3859,8 +5740,14 @@ achievement_tbl = {
 			summary = "Achieve base DEX 125",
 			details = "Achieve 125 base DEX or higher."
 		},
-		resource = { [1] = { text = "Achieve base DEX 125" } },
-		reward = { buff = 295 },
+		resource = {
+			[1] = {
+				text = "Achieve base DEX 125",
+			}
+		},
+		reward = {
+			buff = 295
+		},
 		score = 20
 	},
 	[200028] = {
@@ -3873,8 +5760,14 @@ achievement_tbl = {
 			summary = "Achieve base LUK 125",
 			details = "Achieve 125 base LUK or higher."
 		},
-		resource = { [1] = { text = "Achieve base LUK 125" } },
-		reward = { buff = 21 },
+		resource = {
+			[1] = {
+				text = "Achieve base LUK 125",
+			}
+		},
+		reward = {
+			buff = 21
+		},
 		score = 20
 	},
 	[200029] = {
@@ -3887,8 +5780,15 @@ achievement_tbl = {
 			summary = "Achieve 99 base level as Novice",
 			details = "Achieve 99 base level as Novice class."
 		},
-		resource = { [1] = { text = "Achieve 99 base level as Novice�" } },
-		reward = { buff = 10, item = 16483 },
+		resource = {
+			[1] = {
+				text = "Achieve 99 base level as Noviceº",
+			}
+		},
+		reward = {
+			buff = 10,
+			item = 16483
+		},
 		score = 30
 	},
 	[200030] = {
@@ -3901,8 +5801,15 @@ achievement_tbl = {
 			summary = "Achieve 99 base level as 1st classes",
 			details = "Achieve 99 base level as 1st classes."
 		},
-		resource = { [1] = { text = "Achieve 99 base level as 1st classes" } },
-		reward = { buff = 10, item = 16504 },
+		resource = {
+			[1] = {
+				text = "Achieve 99 base level as 1st classes",
+			}
+		},
+		reward = {
+			buff = 10,
+			item = 16504
+		},
 		score = 30
 	},
 	[200031] = {
@@ -3915,444 +5822,76 @@ achievement_tbl = {
 			summary = "Job change to transcendent Novice",
 			details = "Talk with Valkyrie to job change to transcendent Novice."
 		},
-		resource = { [1] = { text = "Job change to transcendent Novice" } },
-		reward = { buff = 12, item = 22808 },
+		resource = {
+			[1] = {
+				text = "Job change to transcendent Novice",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 22808
+		},
 		score = 10
 	},
-	[230100] = {
+	[200032] = {
 		UI_Type = 0,
 		group = "GOAL_LEVEL",
-		major = 3,
-		minor = 1,
-		title = "Poring is Love",
+		major = 1,
+		minor = 0,
+		title = "또 다른 모험의 시작!",
 		content = {
-			summary = "Complete all objective tasks",
-			details = "You're the true enthusiasts of poring things!"
+			summary = "Base Lv100 달성!",
+			details = "베이스 100레벨을 달성한다."
 		},
 		resource = {
-			[1] = { text = "Complete 'Poring - taming' challenge", shortcut = 230101 },
-			[2] = { text = "Complete 'Drops - taming' challenge", shortcut = 230102 },
-			[3] = { text = "Complete 'Poporing - taming' challenge", shortcut = 230103 },
-			[4] = { text = "Complete 'Novice Poring - taming' challenge", shortcut = 230104 }
+			[1] = {
+				text = "베이스 레벨 100",
+			}
 		},
-		reward = { title = 1025, buff = 12 },
-		score = 50
+		reward = {
+			item = 23585
+		},
+		score = 10
 	},
-	[230110] = {
+	[200033] = {
 		UI_Type = 0,
 		group = "GOAL_LEVEL",
-		major = 3,
-		minor = 1,
-		title = "Entomologist",
+		major = 1,
+		minor = 0,
+		title = "새로운 마음가짐으로!(1)",
 		content = {
-			summary = "Complete all objective tasks",
-			details = "You're awakened with the idea of collecting bugs to become a true Entomologist!"
+			summary = "3-1차 직업으로 Base Lv170 달성!",
+			details = "3-1차 직업으로 베이스 170레벨을 달성한다."
 		},
 		resource = {
-			[1] = { text = "Complete 'Chonchon - taming' challenge", shortcut = 230111 },
-			[2] = { text = "Complete 'Steel Chonchon - taming' challenge", shortcut = 230112 },
-			[3] = { text = "Complete 'Hunter Fly - taming' challenge", shortcut = 230113 },
-			[4] = { text = "Complete 'Rocker - taming' challenge", shortcut = 230114 },
-			[5] = { text = "Complete 'Spore - taming' challenge", shortcut = 230115 },
-			[6] = { text = "Complete 'Poison Spore - taming' challenge", shortcut = 230116 }
+			[1] = {
+				text = "베이스 레벨 170"
+			}
 		},
-		reward = { title = 1026, buff = 12 },
+		reward = {
+			item = 6959
+		},
 		score = 50
 	},
-	[230120] = {
+	[200034] = {
 		UI_Type = 0,
 		group = "GOAL_LEVEL",
-		major = 3,
-		minor = 1,
-		title = "Animals are also our friend",
+		major = 1,
+		minor = 0,
+		title = "새로운 마음가짐으로!(2)",
 		content = {
-			summary = "Complete all objective tasks",
-			details = "You're awakened with the idea of becoming the true animal lover!"
+			summary = "3-2차 직업으로 Base Lv170 달성!",
+			details = "3-2차 직업으로 베이스 170레벨을 달성한다."
 		},
 		resource = {
-			[1] = { text = "Complete 'Lunatic - taming' challenge", shortcut = 230121 },
-			[2] = { text = "Complete 'Picky - taming' challenge", shortcut = 230122 },
-			[3] = { text = "Complete 'Savage Bebe - taming' challenge", shortcut = 230123 },
-			[4] = { text = "Complete 'Baby Desert Wolf - taming' challenge", shortcut = 230124 },
-			[5] = { text = "Complete 'Smokie - taming' challenge", shortcut = 230125 },
-			[6] = { text = "Complete 'Yoyo - taming' challenge", shortcut = 230126 },
-			[7] = { text = "Complete 'Peco Peco - taming' challenge", shortcut = 230127 },
-			[8] = { text = "Complete 'Petite - taming' challenge", shortcut = 230128 }
+			[1] = {
+				text = "베이스 레벨 170"
+			}
 		},
-		reward = { title = 1027, buff = 12 },
+		reward = {
+			item = 6959
+		},
 		score = 50
-	},
-	[230140] = {
-		UI_Type = 0,
-		group = "GOAL_LEVEL",
-		major = 3,
-		minor = 1,
-		title = "Monster Girls Unite!!",
-		content = {
-			summary = "Complete all objective tasks",
-			details = "You're awakened with the idea of becoming the producer of monster girls!"
-		},
-		resource = {
-			[1] = { text = "Complete 'Munak - taming' challenge", shortcut = 230141 },
-			[2] = { text = "Complete 'Isis - taming' challenge", shortcut = 230142 },
-			[3] = { text = "Complete 'Sohee - taming' challenge", shortcut = 230143 },
-			[4] = { text = "Complete 'Zherlthsh - taming' challenge", shortcut = 230144 },
-			[5] = { text = "Complete 'Alice - taming' challenge", shortcut = 230145 },
-			[6] = { text = "Complete 'Succubus - taming' challenge", shortcut = 230146 },
-			[7] = { text = "Complete 'Loli Ruri - taming' challenge", shortcut = 230147 }
-		},
-		reward = { title = 1029, buff = 12 },
-		score = 50
-	},
-	[230101] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Poring - taming",
-		content = {
-			summary = "Succeed on Taming Poring",
-			details = "Let's get a Poring pet. You can use 'Unripe Apple'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Poring" } },
-		reward = {},
-		score = 10
-	},
-	[230102] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Drops - taming",
-		content = {
-			summary = "Succeed on Taming Drops",
-			details = "Let's get a Drops pet. You can use 'Orange Juice'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Drops" } },
-		reward = {},
-		score = 10
-	},
-	[230103] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Poporing - taming",
-		content = {
-			summary = "Succeed on Taming Poporing",
-			details = "Let's get a Poporing pet. You can use 'Bitter Herb'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Poporing" } },
-		reward = {},
-		score = 10
-	},
-	[230104] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Novice Poring - taming",
-		content = {
-			summary = "Succeed on Taming Novice Poring",
-			details = "Let's get a Novice Poring pet. You can use 'Little Unripe Apple'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Novice Poring" } },
-		reward = {},
-		score = 10
-	},
-	[230111] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Chonchon - taming",
-		content = {
-			summary = "Succeed on Taming Chonchon",
-			details = "Let's get a Chonchon pet. You can use 'Rotten Fish'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Chonchon" } },
-		reward = {},
-		score = 10
-	},
-	[230112] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Steel Chonchon - taming",
-		content = {
-			summary = "Succeed on Taming Steel Chonchon",
-			details = "Let's get a Steel Chonchon pet. You can use 'Rusty Iron'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Steel Chonchon" } },
-		reward = {},
-		score = 10
-	},
-	[230113] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Hunter Fly - taming",
-		content = {
-			summary = "Succeed on Taming Hunter Fly",
-			details = "Let's get a Hunter Fly pet. You can use 'Monster Juice'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Hunter Fly" } },
-		reward = {},
-		score = 10
-	},
-	[230114] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Rocker - taming",
-		content = {
-			summary = "Succeed on Taming Rocker",
-			details = "Let's get a Rocker pet. You can use 'Singing Flower'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Rocker" } },
-		reward = {},
-		score = 10
-	},
-	[230115] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Spore - taming",
-		content = {
-			summary = "Succeed on Taming Spore",
-			details = "Let's get a Spore pet. You can use 'Dew Laden Moss'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Spore" } },
-		reward = {},
-		score = 10
-	},
-	[230116] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Poison Spore - taming",
-		content = {
-			summary = "Succeed on Taming Poison Spore",
-			details = "Let's get a Poison Spore pet. You can use 'Deadly Noxious Herb'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Poison Spore" } },
-		reward = {},
-		score = 10
-	},
-	[230121] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Lunatic - taming",
-		content = {
-			summary = "Succeed on Taming Lunatic",
-			details = "Let's get a Lunatic pet. You can use 'Rainbow Carrot'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Lunatic" } },
-		reward = {},
-		score = 10
-	},
-	[230122] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Picky - taming",
-		content = {
-			summary = "Succeed on Taming Picky",
-			details = "Let's get a Picky pet. You can use 'Earthworm the Dude'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Picky" } },
-		reward = {},
-		score = 10
-	},
-	[230123] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Savage Bebe - taming",
-		content = {
-			summary = "Succeed on Taming Savage Bebe",
-			details = "Let's get a Savage Bebe pet. You can use 'Sweet Milk'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Savage Bebe" } },
-		reward = {},
-		score = 10
-	},
-	[230124] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Baby Desert Wolf - taming",
-		content = {
-			summary = "Succeed on Taming Baby Desert Wolf",
-			details = "Let's get a Baby Desert Wolf pet. You can use 'Well-Dried Bone'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Baby Desert Wolf" } },
-		reward = {},
-		score = 10
-	},
-	[230125] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Smokie - taming",
-		content = {
-			summary = "Succeed on Taming Smokie",
-			details = "Let's get a Smokie pet. You can use 'Baked Yam'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Smokie" } },
-		reward = {},
-		score = 10
-	},
-	[230126] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Yoyo - taming",
-		content = {
-			summary = "Succeed on Taming Yoyo",
-			details = "Let's get a Yoyo pet. You can use 'Tropical Banana'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Yoyo" } },
-		reward = {},
-		score = 10
-	},
-	[230127] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Peco Peco - taming",
-		content = {
-			summary = "Succeed on Taming Peco Peco",
-			details = "Let's get a Peco Peco pet. You can use 'Fatty Chubby Earthworm'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Peco Peco" } },
-		reward = {},
-		score = 10
-	},
-	[230128] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Petite - taming",
-		content = {
-			summary = "Succeed on Taming Petite",
-			details = "Let's get a Petite pet. You can use 'Shining Stone'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Petite" } },
-		reward = {},
-		score = 10
-	},
-	[230141] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Munak - taming",
-		content = {
-			summary = "Succeed on Taming Munak",
-			details = "Let's get a Munak pet. You can use 'No Recipient'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Munak" } },
-		reward = {},
-		score = 10
-	},
-	[230142] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Isis - taming",
-		content = {
-			summary = "Succeed on Taming Isis",
-			details = "Let's get a Isis pet. You can use 'Armlet of Obedience'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Isis" } },
-		reward = {},
-		score = 10
-	},
-	[230143] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Sohee - taming",
-		content = {
-			summary = "Succeed on Taming Sohee",
-			details = "Let's get a Sohee pet. You can use 'Silver Knife of Chastity'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Sohee" } },
-		reward = {},
-		score = 10
-	},
-	[230144] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Zherlthsh - taming",
-		content = {
-			summary = "Succeed on Taming Zherlthsh",
-			details = "Let's get a Zherlthsh pet. You can use 'Forbidden Red Candle'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Zherlthsh" } },
-		reward = {},
-		score = 10
-	},
-	[230145] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Alice - taming",
-		content = {
-			summary = "Succeed on Taming Alice",
-			details = "Let's get a Alice pet. You can use 'Soft Apron'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Alice" } },
-		reward = {},
-		score = 10
-	},
-	[230146] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Succubus - taming",
-		content = {
-			summary = "Succeed on Taming Succubus",
-			details = "Let's get a Succubus pet. You can use 'Boy's Pure Heart'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Succubus" } },
-		reward = {},
-		score = 10
-	},
-	[230147] = {
-		UI_Type = 0,
-		group = "TAMING",
-		major = 3,
-		minor = 1,
-		title = "Loli Ruri - taming",
-		content = {
-			summary = "Succeed on Taming Loli Ruri",
-			details = "Let's get a Loli Ruri pet. You can use 'Very Red Juice'."
-		},
-		resource = { [1] = { text = "Succeed on Taming Loli Ruri" } },
-		reward = {},
-		score = 10
 	},
 	[220000] = {
 		UI_Type = 0,
@@ -4364,8 +5903,11 @@ achievement_tbl = {
 			summary = "Create a chatroom",
 			details = "Let's create a chatroom. Press keyboard shortcut Alt+C."
 		},
-		resource = { [1] = { text = "Create a chatroom" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Create a chatroom",
+			}
+		},
 		score = 10
 	},
 	[220001] = {
@@ -4378,8 +5920,11 @@ achievement_tbl = {
 			summary = "Create a chatroom when KO'ed",
 			details = "Create a chatroom when KO'ed. Press keyboard shortcut Alt+C."
 		},
-		resource = { [1] = { text = "Create a chatroom when KO'ed" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Create a chatroom when KO'ed",
+			}
+		},
 		score = 10
 	},
 	[220002] = {
@@ -4392,8 +5937,11 @@ achievement_tbl = {
 			summary = "Fill the chatroom with 20 people",
 			details = "Gather people and start chatting. Fill the chatroom with 20 people."
 		},
-		resource = { [1] = { text = "Fill the chatroom with 20 people" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Fill the chatroom with 20 people",
+			}
+		},
 		score = 10
 	},
 	[220003] = {
@@ -4406,8 +5954,11 @@ achievement_tbl = {
 			summary = "Add 1 person as a friend",
 			details = "Let's recruit a friend and start a journey together. Add 1 person as a friend."
 		},
-		resource = { [1] = { text = "Add 1 person as a friend" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Add 1 person as a friend",
+			}
+		},
 		score = 10
 	},
 	[220004] = {
@@ -4420,8 +5971,11 @@ achievement_tbl = {
 			summary = "Add 10 person as a friend",
 			details = "Let's recruit a friend and start a journey together. Add 10 person as a friend."
 		},
-		resource = { [1] = { text = "Add 10 person as a friend" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Add 10 person as a friend",
+			}
+		},
 		score = 10
 	},
 	[220005] = {
@@ -4434,8 +5988,11 @@ achievement_tbl = {
 			summary = "Create a party",
 			details = "Adventuring alone is tough! Let's create a party."
 		},
-		resource = { [1] = { text = "Create a party" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Create a party",
+			}
+		},
 		score = 10
 	},
 	[220006] = {
@@ -4448,8 +6005,14 @@ achievement_tbl = {
 			summary = "Succeed on marriage",
 			details = "Living in this world is tough, let's fill it with love. Let's get married with someone you love."
 		},
-		resource = { [1] = { text = "Succeed on marriage" } },
-		reward = { title = 1022 },
+		resource = {
+			[1] = {
+				text = "Succeed on marriage",
+			}
+		},
+		reward = {
+			title = 1022
+		},
 		score = 20
 	},
 	[220007] = {
@@ -4462,8 +6025,14 @@ achievement_tbl = {
 			summary = "Adopted by parents",
 			details = "Overcome the tough world with the help of parents."
 		},
-		resource = { [1] = { text = "Adopted by parents" } },
-		reward = { title = 1032 },
+		resource = {
+			[1] = {
+				text = "Adopted by parents",
+			}
+		},
+		reward = {
+			title = 1032
+		},
 		score = 20
 	},
 	[220008] = {
@@ -4476,8 +6045,14 @@ achievement_tbl = {
 			summary = "Adopt a children",
 			details = "Get a happy children and create a beatiful family story through adoption."
 		},
-		resource = { [1] = { text = "Adopt a child" } },
-		reward = { title = 1033 },
+		resource = {
+			[1] = {
+				text = "Adopt a child",
+			}
+		},
+		reward = {
+			title = 1033
+		},
 		score = 20
 	},
 	[220009] = {
@@ -4490,8 +6065,12 @@ achievement_tbl = {
 			summary = "Spend 10,000 zeny on vending merchant",
 			details = "There is turn around money law. Spend 10,000 zeny on vending merchant."
 		},
-		resource = { [1] = { text = "Spend 10,000 zeny on vending merchant", count = 10000 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Spend 10,000 zeny on vending merchant",
+				count = 10000,
+			}
+		},
 		score = 10
 	},
 	[220010] = {
@@ -4504,8 +6083,12 @@ achievement_tbl = {
 			summary = "Spend 100,000 zeny on vending merchant",
 			details = "There is turn around money law. Spend 100,000 zeny on vending merchant."
 		},
-		resource = { [1] = { text = "Spend 100,000 zeny on vending merchant", count = 100000 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Spend 100,000 zeny on vending merchant",
+				count = 1000000,
+			}
+		},
 		score = 15
 	},
 	[220011] = {
@@ -4518,8 +6101,12 @@ achievement_tbl = {
 			summary = "Spend 500,000 zeny on vending merchant",
 			details = "There is turn around money law. Spend 500,000 zeny on vending merchant."
 		},
-		resource = { [1] = { text = "Spend 500,000 zeny on vending merchant", count = 500000 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Spend 500,000 zeny on vending merchant",
+				count = 5000000,
+			}
+		},
 		score = 20
 	},
 	[220012] = {
@@ -4529,11 +6116,15 @@ achievement_tbl = {
 		minor = 1,
 		title = "Activating the market economy (4)",
 		content = {
-			summary = "Spend 1,000,000 zeny on vending merchant",
-			details = "There is turn around money law. Spend 1,000,000 zeny on vending merchant."
+			summary = "Spend 1.000,000 zeny on vending merchant",
+			details = "There is turn around money law. Spend 1.000,000 zeny on vending merchant."
 		},
-		resource = { [1] = { text = "Spend 1,000,000 zeny on vending merchant", count = 1000000 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Spend 1.000,000 zeny on vending merchant",
+				count = 100000000,
+			}
+		},
 		score = 30
 	},
 	[220013] = {
@@ -4543,11 +6134,15 @@ achievement_tbl = {
 		minor = 1,
 		title = "Activating the market economy (5)",
 		content = {
-			summary = "Spend 5,000,000 zeny on vending merchant",
-			details = "There is turn around money law. Spend 5,000,000 zeny on vending merchant."
+			summary = "Spend 5.000,000 zeny on vending merchant",
+			details = "There is turn around money law. Spend 5.000,000 zeny on vending merchant."
 		},
-		resource = { [1] = { text = "Spend 5,000,000 zeny on vending merchant", count = 5000000 } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Spend 5.000,000 zeny on vending merchant",
+				count = 500000000,
+			}
+		},
 		score = 50
 	},
 	[220014] = {
@@ -4560,8 +6155,11 @@ achievement_tbl = {
 			summary = "Succeed on refining level 1 weapon to +7",
 			details = "Where is my luck? Succeed on refining level 1 weapon to +7."
 		},
-		resource = { [1] = { text = "Succeed on refining level 1 weapon to +7" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Succeed on refining level 1 weapon to +7",
+			}
+		},
 		score = 10
 	},
 	[220015] = {
@@ -4574,8 +6172,11 @@ achievement_tbl = {
 			summary = "Succeed on refining level 1 weapon to +12",
 			details = "Where is my luck? Succeed on refining level 1 weapon to +12."
 		},
-		resource = { [1] = { text = "Succeed on refining level 1 weapon to +12" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Succeed on refining level 1 weapon to +12",
+			}
+		},
 		score = 15
 	},
 	[220016] = {
@@ -4588,8 +6189,11 @@ achievement_tbl = {
 			summary = "Succeed on refining level 2 weapon to +7",
 			details = "Where is my luck? Succeed on refining level 2 weapon to +7."
 		},
-		resource = { [1] = { text = "Succeed on refining level 2 weapon to +7" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Succeed on refining level 2 weapon to +7",
+			}
+		},
 		score = 10
 	},
 	[220017] = {
@@ -4602,8 +6206,11 @@ achievement_tbl = {
 			summary = "Succeed on refining level 2 weapon to +12",
 			details = "Where is my luck? Succeed on refining level 2 weapon to +12."
 		},
-		resource = { [1] = { text = "Succeed on refining level 2 weapon to +12" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Succeed on refining level 2 weapon to +12",
+			}
+		},
 		score = 15
 	},
 	[220018] = {
@@ -4616,8 +6223,11 @@ achievement_tbl = {
 			summary = "Succeed on refining level 3 weapon to +7",
 			details = "Where is my luck? Succeed on refining level 3 weapon to +7."
 		},
-		resource = { [1] = { text = "Succeed on refining level 3 weapon to +7" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Succeed on refining level 3 weapon to +7",
+			}
+		},
 		score = 15
 	},
 	[220019] = {
@@ -4630,8 +6240,11 @@ achievement_tbl = {
 			summary = "Succeed on refining level 3 weapon to +12",
 			details = "Where is my luck? Succeed on refining level 3 weapon to +12."
 		},
-		resource = { [1] = { text = "Succeed on refining level 3 weapon to +12" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Succeed on refining level 3 weapon to +12",
+			}
+		},
 		score = 20
 	},
 	[220020] = {
@@ -4644,8 +6257,11 @@ achievement_tbl = {
 			summary = "Succeed on refining level 4 weapon to +7",
 			details = "Where is my luck? Succeed on refining level 4 weapon to +7."
 		},
-		resource = { [1] = { text = "Succeed on refining level 4 weapon to +7" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Succeed on refining level 4 weapon to +7",
+			}
+		},
 		score = 20
 	},
 	[220021] = {
@@ -4658,8 +6274,11 @@ achievement_tbl = {
 			summary = "Succeed on refining level 4 weapon to +12",
 			details = "Where is my luck? Succeed on refining level 4 weapon to +12."
 		},
-		resource = { [1] = { text = "Succeed on refining level 4 weapon to +12" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Succeed on refining level 4 weapon to +12",
+			}
+		},
 		score = 30
 	},
 	[220022] = {
@@ -4672,8 +6291,11 @@ achievement_tbl = {
 			summary = "Experience the fail of refining",
 			details = "Human's greed has no ending and it's always repeat. But let's take a lesson from the mistake. Experience the fail of refining."
 		},
-		resource = { [1] = { text = "Experience the fail of refining" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Experience the fail of refining",
+			}
+		},
 		score = 10
 	},
 	[220023] = {
@@ -4686,8 +6308,11 @@ achievement_tbl = {
 			summary = "Obtain an item with worth of more than 100 zeny",
 			details = "I have a luck too! Obtain an item with worth of more than 100 zeny when sold to an NPC."
 		},
-		resource = { [1] = { text = "Obtain an item with worth of more than 100 zeny" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Obtain an item with worth of more than 100 zeny",
+			}
+		},
 		score = 10
 	},
 	[220024] = {
@@ -4700,8 +6325,11 @@ achievement_tbl = {
 			summary = "Obtain an item with worth of more than 1,000 zeny",
 			details = "I have a luck too! Obtain an item with worth of more than 1,000 zeny when sold to an NPC."
 		},
-		resource = { [1] = { text = "Obtain an item with worth of more than 1,000 zeny" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Obtain an item with worth of more than 1,000 zeny",
+			}
+		},
 		score = 10
 	},
 	[220025] = {
@@ -4714,8 +6342,11 @@ achievement_tbl = {
 			summary = "Obtain an item with worth of more than 5,000 zeny",
 			details = "I have a luck too! Obtain an item with worth of more than 5,000 zeny when sold to an NPC."
 		},
-		resource = { [1] = { text = "Obtain an item with worth of more than 5,000 zeny" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Obtain an item with worth of more than 5,000 zeny",
+			}
+		},
 		score = 15
 	},
 	[220026] = {
@@ -4728,8 +6359,11 @@ achievement_tbl = {
 			summary = "Obtain an item with worth of more than 10,000 zeny",
 			details = "I have a luck too! Obtain an item with worth of more than 10,000 zeny when sold to an NPC."
 		},
-		resource = { [1] = { text = "Obtain an item with worth of more than 10,000 zeny" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Obtain an item with worth of more than 10,000 zeny",
+			}
+		},
 		score = 15
 	},
 	[220027] = {
@@ -4742,8 +6376,11 @@ achievement_tbl = {
 			summary = "Obtain an item with worth of more than 50,000 zeny",
 			details = "I have a luck too! Obtain an item with worth of more than 50,000 zeny when sold to an NPC."
 		},
-		resource = { [1] = { text = "Obtain an item with worth of more than 50,000 zeny" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Obtain an item with worth of more than 50,000 zeny",
+			}
+		},
 		score = 20
 	},
 	[220028] = {
@@ -4756,8 +6393,11 @@ achievement_tbl = {
 			summary = "Obtain an item with worth of more than 100,000 zeny",
 			details = "I have a luck too! Obtain an item with worth of more than 100,000 zeny when sold to an NPC."
 		},
-		resource = { [1] = { text = "Obtain an item with worth of more than 100,000 zeny" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Obtain an item with worth of more than 100,000 zeny",
+			}
+		},
 		score = 20
 	},
 	[220029] = {
@@ -4770,8 +6410,11 @@ achievement_tbl = {
 			summary = "Obtain an item with worth of more than 150,000 zeny",
 			details = "I have a luck too! Obtain an item with worth of more than 150,000 zeny when sold to an NPC."
 		},
-		resource = { [1] = { text = "Obtain an item with worth of more than 150,000 zeny" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Obtain an item with worth of more than 150,000 zeny",
+			}
+		},
 		score = 30
 	},
 	[220030] = {
@@ -4784,8 +6427,11 @@ achievement_tbl = {
 			summary = "Hold more than 10,000 zeny in pocket",
 			details = "Money is not everything, that because you're poor. Hold more than 10,000 zeny in pocket."
 		},
-		resource = { [1] = { text = "Hold more than 10,000 zeny in pocket" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Hold more than 10,000 zeny in pocket",
+			}
+		},
 		score = 10
 	},
 	[220031] = {
@@ -4798,8 +6444,11 @@ achievement_tbl = {
 			summary = "Hold more than 100,000 zeny in pocket",
 			details = "Money is not everything, that because you're poor. Hold more than 100,000 zeny in pocket."
 		},
-		resource = { [1] = { text = "Hold more than 100,000 zeny in pocket" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Hold more than 100,000 zeny in pocket",
+			}
+		},
 		score = 15
 	},
 	[220032] = {
@@ -4812,8 +6461,11 @@ achievement_tbl = {
 			summary = "Hold more than 1,000,000 zeny in pocket",
 			details = "Money is not everything, that because you're poor. Hold more than 1,000,000 zeny in pocket."
 		},
-		resource = { [1] = { text = "Hold more than 1,000,000 zeny in pocket" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Hold more than 1,000,000 zeny in pocket",
+			}
+		},
 		score = 20
 	},
 	[220033] = {
@@ -4826,8 +6478,11 @@ achievement_tbl = {
 			summary = "Hold more than 10,000,000 zeny in pocket",
 			details = "Money is not everything, that because you're poor. Hold more than 10,000,000 zeny in pocket."
 		},
-		resource = { [1] = { text = "Hold more than 10,000,000 zeny in pocket" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Hold more than 10,000,000 zeny in pocket",
+			}
+		},
 		score = 25
 	},
 	[220034] = {
@@ -4840,8 +6495,11 @@ achievement_tbl = {
 			summary = "Hold more than 100,000,000 zeny in pocket",
 			details = "Money is not everything, that because you're poor. Hold more than 100,000,000 zeny in pocket."
 		},
-		resource = { [1] = { text = "Hold more than 100,000,000 zeny in pocket" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Hold more than 100,000,000 zeny in pocket",
+			}
+		},
 		score = 30
 	},
 	[220035] = {
@@ -4854,9 +6512,609 @@ achievement_tbl = {
 			summary = "Hold more than 1,000,000,000 zeny in pocket",
 			details = "Money is not everything, that because you're poor. Hold more than 1,000,000,000 zeny in pocket."
 		},
-		resource = { [1] = { text = "Hold more than 1,000,000,000 zeny in pocket" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Hold more than 1,000,000,000 zeny in pocket",
+			}
+		},
 		score = 40
+	},
+	[230100] = {
+		UI_Type = 0,
+		group = "GOAL_LEVEL",
+		major = 3,
+		minor = 1,
+		title = "Poring is Love",
+		content = {
+			summary = "Complete all objective tasks",
+			details = "You're the true enthusiasts of poring things!"
+		},
+		resource = {
+			[1] = {
+				text = "Complete 'Poring - taming' challenge",
+				shortcut = 230101
+			},
+			[2] = {
+				text = "Complete 'Drops - taming' challenge",
+				shortcut = 230102
+			},
+			[3] = {
+				text = "Complete 'Poporing - taming' challenge",
+				shortcut = 230103
+			},
+			[4] = {
+				text = "Complete 'Novice Poring - taming' challenge",
+				shortcut = 230104
+			}
+		},
+		reward = {
+			title = 1025,
+			buff = 12
+		},
+		score = 50
+	},
+	[230101] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Poring - taming",
+		content = {
+			summary = "Succeed on Taming Poring",
+			details = "Let's get a Poring pet. You can use 'Unripe Apple'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Poring",
+			}
+		},
+		score = 10
+	},
+	[230102] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Drops - taming",
+		content = {
+			summary = "Succeed on Taming Drops",
+			details = "Let's get a Drops pet. You can use 'Orange Juice'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Drops",
+			}
+		},
+		score = 10
+	},
+	[230103] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Poporing - taming",
+		content = {
+			summary = "Succeed on Taming Poporing",
+			details = "Let's get a Poporing pet. You can use 'Bitter Herb'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Poporing",
+			}
+		},
+		score = 10
+	},
+	[230104] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Novice Poring - taming",
+		content = {
+			summary = "Succeed on Taming Novice Poring",
+			details = "Let's get a Novice Poring pet. You can use 'Little Unripe Apple'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Novice Poring",
+			}
+		},
+		score = 10
+	},
+	[230110] = {
+		UI_Type = 0,
+		group = "GOAL_LEVEL",
+		major = 3,
+		minor = 1,
+		title = "Entomologist",
+		content = {
+			summary = "Complete all objective tasks",
+			details = "You're awakened with the idea of collecting bugs to become a true Entomologist!"
+		},
+		resource = {
+			[1] = {
+				text = "Complete 'Chonchon - taming' challenge",
+				shortcut = 230111
+			},
+			[2] = {
+				text = "Complete 'Steel Chonchon - taming' challenge",
+				shortcut = 230112
+			},
+			[3] = {
+				text = "Complete 'Hunter Fly - taming' challenge",
+				shortcut = 230113
+			},
+			[4] = {
+				text = "Complete 'Rocker - taming' challenge",
+				shortcut = 230114
+			},
+			[5] = {
+				text = "Complete 'Spore - taming' challenge",
+				shortcut = 230115
+			},
+			[6] = {
+				text = "Complete 'Poison Spore - taming' challenge",
+				shortcut = 230116
+			}
+		},
+		reward = {
+			title = 1026,
+			buff = 12
+		},
+		score = 50
+	},
+	[230111] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Chonchon - taming",
+		content = {
+			summary = "Succeed on Taming Chonchon",
+			details = "Let's get a Chonchon pet. You can use 'Rotten Fish'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Chonchon",
+			}
+		},
+		score = 10
+	},
+	[230112] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Steel Chonchon - taming",
+		content = {
+			summary = "Succeed on Taming Steel Chonchon",
+			details = "Let's get a Steel Chonchon pet. You can use 'Rusty Iron'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Steel Chonchon",
+			}
+		},
+		score = 10
+	},
+	[230113] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Hunter Fly - taming",
+		content = {
+			summary = "Succeed on Taming Hunter Fly",
+			details = "Let's get a Hunter Fly pet. You can use 'Monster Juice'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Hunter Fly",
+			}
+		},
+		score = 10
+	},
+	[230114] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Rocker - taming",
+		content = {
+			summary = "Succeed on Taming Rocker",
+			details = "Let's get a Rocker pet. You can use 'Singing Flower'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Rocker",
+			}
+		},
+		score = 10
+	},
+	[230115] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Spore - taming",
+		content = {
+			summary = "Succeed on Taming Spore",
+			details = "Let's get a Spore pet. You can use 'Dew Laden Moss'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Spore",
+			}
+		},
+		score = 10
+	},
+	[230116] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Poison Spore - taming",
+		content = {
+			summary = "Succeed on Taming Poison Spore",
+			details = "Let's get a Poison Spore pet. You can use 'Deadly Noxious Herb'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Poison Spore",
+			}
+		},
+		score = 10
+	},
+	[230120] = {
+		UI_Type = 0,
+		group = "GOAL_LEVEL",
+		major = 3,
+		minor = 1,
+		title = "Animals are also our friend",
+		content = {
+			summary = "Complete all objective tasks",
+			details = "You're awakened with the idea of becoming the true animal lover!"
+		},
+		resource = {
+			[1] = {
+				text = "Complete 'Lunatic - taming' challenge",
+				shortcut = 230121
+			},
+			[2] = {
+				text = "Complete 'Picky - taming' challenge",
+				shortcut = 230122
+			},
+			[3] = {
+				text = "Complete 'Savage Bebe - taming' challenge",
+				shortcut = 230123
+			},
+			[4] = {
+				text = "Complete 'Baby Desert Wolf - taming' challenge",
+				shortcut = 230124
+			},
+			[5] = {
+				text = "Complete 'Smokie - taming' challenge",
+				shortcut = 230125
+			},
+			[6] = {
+				text = "Complete 'Yoyo - taming' challenge",
+				shortcut = 230126
+			},
+			[7] = {
+				text = "Complete 'Peco Peco - taming' challenge",
+				shortcut = 230127
+			},
+			[8] = {
+				text = "Complete 'Petite - taming' challenge",
+				shortcut = 230128
+			}
+		},
+		reward = {
+			title = 1027,
+			buff = 12
+		},
+		score = 50
+	},
+	[230121] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Lunatic - taming",
+		content = {
+			summary = "Succeed on Taming Lunatic",
+			details = "Let's get a Lunatic pet. You can use 'Rainbow Carrot'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Lunatic",
+			}
+		},
+		score = 10
+	},
+	[230122] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Picky - taming",
+		content = {
+			summary = "Succeed on Taming Picky",
+			details = "Let's get a Picky pet. You can use 'Earthworm the Dude'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Picky",
+			}
+		},
+		score = 10
+	},
+	[230123] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Savage Bebe - taming",
+		content = {
+			summary = "Succeed on Taming Savage Bebe",
+			details = "Let's get a Savage Bebe pet. You can use 'Sweet Milk'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Savage Bebe",
+			}
+		},
+		score = 10
+	},
+	[230124] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Baby Desert Wolf - taming",
+		content = {
+			summary = "Succeed on Taming Baby Desert Wolf",
+			details = "Let's get a Baby Desert Wolf pet. You can use 'Well-Dried Bone'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Baby Desert Wolf",
+			}
+		},
+		score = 10
+	},
+	[230125] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Smokie - taming",
+		content = {
+			summary = "Succeed on Taming Smokie",
+			details = "Let's get a Smokie pet. You can use 'Baked Yam'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Smokie",
+			}
+		},
+		score = 10
+	},
+	[230126] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Yoyo - taming",
+		content = {
+			summary = "Succeed on Taming Yoyo",
+			details = "Let's get a Yoyo pet. You can use 'Tropical Banana'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Yoyo",
+			}
+		},
+		score = 10
+	},
+	[230127] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Peco Peco - taming",
+		content = {
+			summary = "Succeed on Taming Peco Peco",
+			details = "Let's get a Peco Peco pet. You can use 'Fatty Chubby Earthworm'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Peco Peco",
+			}
+		},
+		score = 10
+	},
+	[230128] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Petite - taming",
+		content = {
+			summary = "Succeed on Taming Petite",
+			details = "Let's get a Petite pet. You can use 'Shining Stone'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Petite",
+			}
+		},
+		score = 10
+	},
+	[230140] = {
+		UI_Type = 0,
+		group = "GOAL_LEVEL",
+		major = 3,
+		minor = 1,
+		title = "Monster Girls Unite!!",
+		content = {
+			summary = "Complete all objective tasks",
+			details = "You're awakened with the idea of becoming the producer of monster girls!"
+		},
+		resource = {
+			[1] = {
+				text = "Complete 'Munak - taming' challenge",
+				shortcut = 230141
+			},
+			[2] = {
+				text = "Complete 'Isis - taming' challenge",
+				shortcut = 230142
+			},
+			[3] = {
+				text = "Complete 'Sohee - taming' challenge",
+				shortcut = 230143
+			},
+			[4] = {
+				text = "Complete 'Zherlthsh - taming' challenge",
+				shortcut = 230144
+			},
+			[5] = {
+				text = "Complete 'Alice - taming' challenge",
+				shortcut = 230145
+			},
+			[6] = {
+				text = "Complete 'Succubus - taming' challenge",
+				shortcut = 230146
+			},
+			[7] = {
+				text = "Complete 'Loli Ruri - taming' challenge",
+				shortcut = 230147
+			}
+		},
+		reward = {
+			title = 1029,
+			buff = 12
+		},
+		score = 50
+	},
+	[230141] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Munak - taming",
+		content = {
+			summary = "Succeed on Taming Munak",
+			details = "Let's get a Munak pet. You can use 'No Recipient'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Munak",
+			}
+		},
+		score = 10
+	},
+	[230142] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Isis - taming",
+		content = {
+			summary = "Succeed on Taming Isis",
+			details = "Let's get a Isis pet. You can use 'Armlet of Obedience'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Isis",
+			}
+		},
+		score = 10
+	},
+	[230143] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Sohee - taming",
+		content = {
+			summary = "Succeed on Taming Sohee",
+			details = "Let's get a Sohee pet. You can use 'Silver Knife of Chastity'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Sohee",
+			}
+		},
+		score = 10
+	},
+	[230144] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Zherlthsh - taming",
+		content = {
+			summary = "Succeed on Taming Zherlthsh",
+			details = "Let's get a Zherlthsh pet. You can use 'Forbidden Red Candle'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Zherlthsh",
+			}
+		},
+		score = 10
+	},
+	[230145] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Alice - taming",
+		content = {
+			summary = "Succeed on Taming Alice",
+			details = "Let's get a Alice pet. You can use 'Soft Apron'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Alice",
+			}
+		},
+		score = 10
+	},
+	[230146] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Succubus - taming",
+		content = {
+			summary = "Succeed on Taming Succubus",
+			details = "Let's get a Succubus pet. You can use 'Boy's Pure Heart'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Succubus",
+			}
+		},
+		score = 10
+	},
+	[230147] = {
+		UI_Type = 0,
+		group = "TAMING",
+		major = 3,
+		minor = 1,
+		title = "Loli Ruri - taming",
+		content = {
+			summary = "Succeed on Taming Loli Ruri",
+			details = "Let's get a Loli Ruri pet. You can use 'Very Red Juice'."
+		},
+		resource = {
+			[1] = {
+				text = "Succeed on Taming Loli Ruri",
+			}
+		},
+		score = 10
 	},
 	[230200] = {
 		UI_Type = 0,
@@ -4869,11 +7127,19 @@ achievement_tbl = {
 			details = "Poring is a strange creature, neither plant nor animal. To learn more about Poring, the best way is to experience face-to-face directly."
 		},
 		resource = {
-			[1] = { text = "Complete 'Exploring Poring's life (1)' challenge", shortcut = 230201 },
-			[2] = { text = "Complete 'Exploring Poring's life (2)' challenge", shortcut = 230202 },
-			[3] = { text = "Complete 'Exploring Poring's life (3)' challenge", shortcut = 230203 }
+			[1] = {
+				text = "Complete 'Exploring Poring's life (1)' challenge",
+				shortcut = 230201
+			},
+			[2] = {
+				text = "Complete 'Exploring Poring's life (2)' challenge",
+				shortcut = 230202
+			},
+			[3] = {
+				text = "Complete 'Exploring Poring's life (3)' challenge",
+				shortcut = 230203
+			}
 		},
-		reward = {},
 		score = 10
 	},
 	[230201] = {
@@ -4887,13 +7153,27 @@ achievement_tbl = {
 			details = "The appearance of poring affected by their habitat. Let's face an easy opponent."
 		},
 		resource = {
-			[1] = { text = "Hunt 10 Poring", count = 10 },
-			[2] = { text = "Hunt 10 Novice Poring", count = 10 },
-			[3] = { text = "Hunt 10 Drops", count = 10 },
-			[4] = { text = "Hunt 10 Poporing", count = 10 },
-			[5] = { text = "Hunt 10 Marin", count = 10 }
+			[1] = {
+				text = "Hunt 10 Poring",
+				count = 10,
+			},
+			[2] = {
+				text = "Hunt 10 Novice Poring",
+				count = 10,
+			},
+			[3] = {
+				text = "Hunt 10 Drops",
+				count = 10,
+			},
+			[4] = {
+				text = "Hunt 10 Poporing",
+				count = 10,
+			},
+			[5] = {
+				text = "Hunt 10 Marin",
+				count = 10,
+			}
 		},
-		reward = {},
 		score = 10
 	},
 	[230202] = {
@@ -4907,14 +7187,28 @@ achievement_tbl = {
 			details = "There is also a strong one in Poring world. Let's not directly face the strong one."
 		},
 		resource = {
-			[1] = { text = "Hunt 1 Mastering", count = 1 },
-			[2] = { text = "Hunt 1 Devilring", count = 1 },
-			[3] = { text = "Hunt 1 Angelring", count = 1 },
-			[4] = { text = "Hunt 1 Arch Angelring", count = 1 },
-			[5] = { text = "Hunt 1 Ghostring", count = 1 }
+			[1] = {
+				text = "Hunt 1 Mastering",
+				count = 1,
+			},
+			[2] = {
+				text = "Hunt 1 Devilring",
+				count = 1,
+			},
+			[3] = {
+				text = "Hunt 1 Angelring",
+				count = 1,
+			},
+			[4] = {
+				text = "Hunt 1 Arch Angelring",
+				count = 1,
+			},
+			[5] = {
+				text = "Hunt 1 Ghostring",
+				count = 1,
+			}
 		},
-		reward = {},
-		score = 15
+		score = 20
 	},
 	[230203] = {
 		UI_Type = 1,
@@ -4927,10 +7221,19 @@ achievement_tbl = {
 			details = "In Poring family, there are porings that has a glowing appearance. A further research is required."
 		},
 		resource = {
-			[1] = { text = "Hunt 5 Metalring", count = 5 },
-			[2] = { text = "Hunt 5 Heavy Metalring", count = 5 },
-			[3] = { text = "Hunt 5 Magmaring", count = 5 } },
-		reward = {},
+			[1] = {
+				text = "Hunt 5 Metalring",
+				count = 5,
+			},
+			[2] = {
+				text = "Hunt 5 Heavy Metalring",
+				count = 5,
+			},
+			[3] = {
+				text = "Hunt 5 Magmaring",
+				count = 5,
+			}
+		},
 		score = 20
 	},
 	[240000] = {
@@ -4943,8 +7246,11 @@ achievement_tbl = {
 			summary = "Complete challenges after first introduction.",
 			details = "Complete challenges after first introduction."
 		},
-		resource = { [1] = { text = "Complete challenges after first introduction" } },
-		reward = {},
+		resource = {
+			[1] = {
+				text = "Complete challenges after first introduction",
+			}
+		},
 		score = 10
 	},
 	[240001] = {
@@ -4952,13 +7258,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 1",
+		title = "Achieve Level 1",
 		content = {
-			summary = "Reaching Level 1 achievement",
-			details = "Reaching Level 1 achievement"
+			summary = "Reach Rank 1",
+			details = "Reach Rank 1."
 		},
-		resource = { [1] = { text = "Reaching Level 1 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 1",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240002] = {
@@ -4966,13 +7279,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 2",
+		title = "Achieve Level 2",
 		content = {
-			summary = "Reaching Level 2 achievement",
-			details = "Reaching Level 2 achievement"
+			summary = "Reach Rank 2",
+			details = "Reach Rank 2."
 		},
-		resource = { [1] = { text = "Reaching Level 2 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 2",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240003] = {
@@ -4980,13 +7300,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 3",
+		title = "Achieve Level 3",
 		content = {
-			summary = "Reaching Level 3 achievement",
-			details = "Reaching Level 3 achievement"
+			summary = "Reach Rank 3",
+			details = "Reach Rank 3."
 		},
-		resource = { [1] = { text = "Reaching Level 3 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 3",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240004] = {
@@ -4994,13 +7321,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 4",
+		title = "Achieve Level 4",
 		content = {
-			summary = "Reaching Level 4 achievement",
-			details = "Reaching Level 4 achievement"
+			summary = "Reach Rank 4",
+			details = "Reach Rank 4."
 		},
-		resource = { [1] = { text = "Reaching Level 4 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 4",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240005] = {
@@ -5008,13 +7342,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 5",
+		title = "Achieve Level 5",
 		content = {
-			summary = "Reaching Level 5 achievement",
-			details = "Reaching Level 5 achievement"
+			summary = "Reach Rank 5",
+			details = "Reach Rank 5."
 		},
-		resource = { [1] = { text = "Reaching Level 5 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 5",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240006] = {
@@ -5022,13 +7363,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 6",
+		title = "Achieve Level 6",
 		content = {
-			summary = "Reaching Level 6 achievement",
-			details = "Reaching Level 6 achievement"
+			summary = "Reach Rank 6",
+			details = "Reach Rank 6."
 		},
-		resource = { [1] = { text = "Reaching Level 6 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 6",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240007] = {
@@ -5036,13 +7384,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 7",
+		title = "Achieve Level 7",
 		content = {
-			summary = "Reaching Level 7 achievement",
-			details = "Reaching Level 7 achievement"
+			summary = "Reach Rank 7",
+			details = "Reach Rank 7."
 		},
-		resource = { [1] = { text = "Reaching Level 7 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 7",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240008] = {
@@ -5050,13 +7405,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 8",
+		title = "Achieve Level 8",
 		content = {
-			summary = "Reaching Level 8 achievement",
-			details = "Reaching Level 8 achievement"
+			summary = "Reach Rank 8",
+			details = "Reach Rank 8."
 		},
-		resource = { [1] = { text = "Reaching Level 8 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 8",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240009] = {
@@ -5064,13 +7426,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 9",
+		title = "Achieve Level 9",
 		content = {
-			summary = "Reaching Level 9 achievement",
-			details = "Reaching Level 9 achievement"
+			summary = "Reach Rank 9",
+			details = "Reach Rank 9."
 		},
-		resource = { [1] = { text = "Reaching Level 9 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 9",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240010] = {
@@ -5078,13 +7447,21 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 10",
+		title = "Achieve Level 10",
 		content = {
-			summary = "Reaching Level 10 achievement",
-			details = "Reaching Level 10 achievement. You will be rewarded with a title."
+			summary = "Reach Rank 10",
+			details = "Reach Rank 10. Title will be rewarded."
 		},
-		resource = { [1] = { text = "Reaching Level 10 achievement" } },
-		reward = { title = 1023, buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 10",
+			}
+		},
+		reward = {
+			title = 1023,
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240011] = {
@@ -5092,13 +7469,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 11",
+		title = "Achieve Level 11",
 		content = {
-			summary = "Reaching Level 11 achievement",
-			details = "Reaching Level 11 achievement"
+			summary = "Reach Rank 11",
+			details = "Reach Rank 11."
 		},
-		resource = { [1] = { text = "Reaching Level 11 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 11",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240012] = {
@@ -5106,13 +7490,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 12",
+		title = "Achieve Level 12",
 		content = {
-			summary = "Reaching Level 12 achievement",
-			details = "Reaching Level 12 achievement"
+			summary = "Reach Rank 12",
+			details = "Reach Rank 12."
 		},
-		resource = { [1] = { text = "Reaching Level 12 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 12",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240013] = {
@@ -5120,13 +7511,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 13",
+		title = "Achieve Level 13",
 		content = {
-			summary = "Reaching Level 13 achievement",
-			details = "Reaching Level 13 achievement"
+			summary = "Reach Rank 13",
+			details = "Reach Rank 13."
 		},
-		resource = { [1] = { text = "Reaching Level 13 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 13",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240014] = {
@@ -5134,13 +7532,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 14",
+		title = "Achieve Level 14",
 		content = {
-			summary = "Reaching Level 14 achievement",
-			details = "Reaching Level 14 achievement"
+			summary = "Reach Rank 14",
+			details = "Reach Rank 14."
 		},
-		resource = { [1] = { text = "Reaching Level 14 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 14",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240015] = {
@@ -5148,13 +7553,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 15",
+		title = "Achieve Level 15",
 		content = {
-			summary = "Reaching Level 15 achievement",
-			details = "Reaching Level 15 achievement"
+			summary = "Reach Rank 15",
+			details = "Reach Rank 15."
 		},
-		resource = { [1] = { text = "Reaching Level 15 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 15",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240016] = {
@@ -5162,13 +7574,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 16",
+		title = "Achieve Level 16",
 		content = {
-			summary = "Reaching Level 16 achievement",
-			details = "Reaching Level 16 achievement"
+			summary = "Reach Rank 16",
+			details = "Reach Rank 16."
 		},
-		resource = { [1] = { text = "Reaching Level 16 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 16",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240017] = {
@@ -5176,13 +7595,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 17",
+		title = "Achieve Level 17",
 		content = {
-			summary = "Reaching Level 17 achievement",
-			details = "Reaching Level 17 achievement"
+			summary = "Reach Rank 17",
+			details = "Reach Rank 17."
 		},
-		resource = { [1] = { text = "Reaching Level 17 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 17",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240018] = {
@@ -5190,13 +7616,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 18",
+		title = "Achieve Level 18",
 		content = {
-			summary = "Reaching Level 18 achievement",
-			details = "Reaching Level 18 achievement"
+			summary = "Reach Rank 18",
+			details = "Reach Rank 18."
 		},
-		resource = { [1] = { text = "Reaching Level 18 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 18",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240019] = {
@@ -5204,13 +7637,20 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 19",
+		title = "Achieve Level 19",
 		content = {
-			summary = "Reaching Level 19 achievement",
-			details = "Reaching Level 19 achievement"
+			summary = "Reach Rank 19",
+			details = "Reach Rank 19."
 		},
-		resource = { [1] = { text = "Reaching Level 19 achievement" } },
-		reward = { buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 19",
+			}
+		},
+		reward = {
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
 	[240020] = {
@@ -5218,43 +7658,23 @@ achievement_tbl = {
 		group = "GOAL_ACHIEVE",
 		major = 6,
 		minor = 0,
-		title = "Reaching Level 20",
+		title = "Achieve Level 20",
 		content = {
-			summary = "Reaching Level 20 achievement",
-			details = "Reaching Level 20 achievement. You will be rewarded with a title."
+			summary = "Reach Rank 20",
+			details = "Reach Rank 20. Title will be rewarded."
 		},
-		resource = { [1] = { text = "Reaching Level 20 achievement" } },
-		reward = { title = 1024, buff = 12, item = 644 },
+		resource = {
+			[1] = {
+				text = "Achieving Rank 20",
+			}
+		},
+		reward = {
+			title = 1024,
+			buff = 12,
+			item = 644
+		},
 		score = 10
 	},
-	[220036] = {
-		UI_Type = 0,
-		group = "EAT",
-		major = 1,
-		minor = 2,
-		title = "The beginning of outdoor",
-		content = {
-			summary = "Obtain Outdoor Cooking Kit",
-			details = "Obtain Outdoor Cooking Kit"
-		},
-		resource = { [1] = { text = "Obtain Outdoor Cooking Kit" } },
-		reward = {},
-		score = 20
-	},
-	[220037] = {
-		UI_Type = 0,
-		group = "EAT",
-		major = 1,
-		minor = 2,
-		title = "The first step becoming a chef",
-		content = {
-			summary = "Obtain Level 1 Cooking",
-			details = "Obtain Level 1 Cooking"
-		},
-		resource = { [1] = { text = "Obtain Level 1 Cooking" } },
-		reward = {},
-		score = 20
-	}
 }
 
 function main()

@@ -14,7 +14,7 @@ if (count($_POST)) {
 	require_once 'Flux/RegisterError.php';
 	
 	try {
-		$server    = $params->get('server');
+		$serverGroupName = $params->get('server');
 		$username  = $params->get('username');
 		$password  = $params->get('password');
 		$confirm   = $params->get('confirm_password');
@@ -24,7 +24,7 @@ if (count($_POST)) {
 		$birthdate = $params->get('birthdate_date');
 		$code      = $params->get('security_code');
 		
-		if (!($server = Flux::getServerGroupByName($server))) {
+		if (!($server = Flux::getServerGroupByName($serverGroupName))) {
 			throw new Flux_RegisterError('Invalid server', Flux_RegisterError::INVALID_SERVER);
 		}
 		
@@ -63,24 +63,26 @@ if (count($_POST)) {
 				
 				if ($sent) {
 					$message  = Flux::message('AccountCreateEmailSent');
+					$discordMessage = 'Confirmation email has been sent.';
 				}
 				else {
 					$message  = Flux::message('AccountCreateFailed');
+					$discordMessage = 'Failed to send the Confirmation email.';
 				}
 				
 				$session->setMessageData($message);
-				$this->redirect();
 			}
 			else {
 				$session->login($server->serverName, $username, $password, false);
 				$session->setMessageData(Flux::message('AccountCreated'));
-				if(Flux::config('DiscordUseWebhook')) {
-					if(Flux::config('DiscordSendOnRegister')) {
-						sendtodiscord(Flux::config('DiscordWebhookURL'), 'New User registration: '. $username);
-					}
-				}
-				$this->redirect();
+				$discordMessage = 'Account Created.';
 			}
+			if(Flux::config('DiscordUseWebhook')) {
+				if(Flux::config('DiscordSendOnRegister')) {
+					sendtodiscord(Flux::config('DiscordWebhookURL'), 'New User registration: "'. $username . '" , ' . $discordMessage);
+				}
+			}
+			$this->redirect();
 		}
 		else {
 			exit('Uh oh, what happened?');

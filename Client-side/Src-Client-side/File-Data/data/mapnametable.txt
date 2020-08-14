@@ -1,3 +1,95 @@
+//-- 최종갱신 사크라이 2019-05-20
+
+// 글래스트 헤임 도전모드
+1@gl_he.rsw#오염된 차원#
+
+// EDDA 생체연구소 - 원정의 여로
+1@gol1.rsw#생체 실험동#
+1@gol2.rsw#시체 보관소#
+
+// 일루전 오브 라비린스
+prt_mz03_i.rsw#뒤틀린 미궁 숲#
+
+// 2018 할로윈
+1@halo.rsw#할로윈 축제장#
+
+// EDDA 글래스트 헤임의 몰락
+1@gl_prq.rsw#글래스트 헤임의 몰락#
+
+// 레벨확장 컨텐츠
+mag_dun03.rsw#유노 노그로드 3층#
+gl_cas01_.rsw#글래스트헤임 성 어비스 1층#
+
+// 에피소드 17.1 태동, 일루시온 
+1@cor.rsw#코르 메모리얼#
+1@os_a.rsw#오스 점령전#
+1@os_b.rsw#봉쇄된 오스#
+1@rgsr.rsw#레겐쉬름#
+rgsr_in.rsw#레켄베르 부설 연구소#
+pub_cat.rsw#총알 탄 야옹이#
+sp_cor.rsw#특수경계지역 코르#
+sp_os.rsw#특수경계지역 오스#
+sp_rudus.rsw#폐기실험체 유기장 루두스 1층#
+sp_rudus2.rsw#폐기실험체 유기장 루두스 2층#
+sp_rudus3.rsw#폐기실험체 유기장 루두스 3층#
+
+// 성제 전직
+star_frst.rsw#유성림#
+star_in.rsw#유성림 실내#
+
+// 소울리퍼 전직
+1@soul.rsw#영혼의 통로#
+
+// 일루전 오브 루안다
+com_d02_i.rsw#북쪽 동굴 루안다#
+
+// 일루전 테디베어 나사리안 제국
+ein_d02_i.rsw#나사리안 제국#
+
+//-- 환영의 회랑
+vis_h01.rsw#환영의 회랑 1층#
+vis_h02.rsw#환영의 회랑 2층#
+vis_h03.rsw#환영의 회랑 3층#
+vis_h04.rsw#환영의 회랑 4층#
+
+//고성 상급 메모리얼던전
+2@gl_kh.rsw#옛기사단2층#
+1@gl_kh.rsw#옛기사단1층#
+
+// 11월 사냥대회
+hu_fild03.rsw#사냥터#
+prt_evt_in.rsw#사냥터의 오두막#
+
+// 꿈과 그림자 (지터벅 개편)
+1@jtb.rsw#꿈과 그림자#
+
+// X주년
+x_prt.rsw#차원너머의 프론테라#
+x_lhz.rsw#차원너머의 리히타르젠#
+x_ra.rsw#차원너머의 라헬#
+
+// 7월 국수 축제
+lasa_sea.rsw#냐일굴#
+1@drdo.rsw#전설의 도라도#
+
+//닌자 건슬 전직소
+que_ng.rsw#알 수 없는 곳#
+
+//화산섬 코로도
+1@crd.rsw#화산섬 코로도#
+
+// 일루전 거북섬 (구양궁)
+tur_d03_i.rsw#쓸쓸한 양거촌#
+tur_d04_i.rsw#스산한 구양궁#
+
+//포링마을
+1@begi.rsw#포링 마을#
+
+// 수상한 난파선
+1@tre.rsw#수상한 난파선#
+
+// Illusion of Frozen
+ice_d03_i.rsw#Frozen Memory#
 
 // Illusion Geffen (Vampire)
 gef_d01_i.rsw#250 Pages#
@@ -31,7 +123,6 @@ rockrdg2.rsw#Kiwawa Desert#
 que_swat.rsw#Heart Hunter military base#
 slabw01.rsw#Werner Institute#
 rebel_in.rsw#Clara Nemieri#
-
 // Half moon in the daylight
 1@pop1.rsw#Pope's Office#
 1@pop2.rsw#Way Back Home#
@@ -69,6 +160,7 @@ prt_lib_q.rsw#Memorial of Past Royal Family#
 prt_q.rsw#Invaded Prontera#
 prt_pri00.rsw#Prontera Prison#
 
+
 // Clan MD
 1@ffp.rsw#Remnant Hideout#
 
@@ -104,7 +196,7 @@ ver_tunn.rsw#Verus, Tunnel Outskirts#
 verus04.rsw#Verus, Excavation Site#
 verus03.rsw#Verus, Central Plaza#
 
-1@mcd.rsw#Charleston Factory#
+1@mcd.rsw#In King's Heel#
 
 //Operations Team Event
 e_hugel.rsw#Invaded Hugel#
@@ -115,7 +207,7 @@ c_tower3_.rsw#Clock Tower, 3nd Floor#
 
 silk_lair.rsw#Pythons Lair#
 
-moro_vol.rsw#Flaming Basin#
+moro_vol.rsw#Fire Basin#
 moro_cav.rsw#Fire Cave#
 1@dth1.rsw#Bios Island#
 1@dth2.rsw#Bios Island#
@@ -145,22 +237,22 @@ evt_bomb.rsw#Labyrinth Events#
 
 gl_cas02_.rsw#Corridor 2nd Floor#
 gl_chyard_.rsw#Monastery Cemetery#
-2@gl_k.rsw#Old Glast Heim Chivalry 1st floor#
-1@gl_k.rsw#Old Glast Heim Chivalry 2nd floor#
+2@gl_k.rsw#1st floor of Old Glast Heim Chivalry#
+1@gl_k.rsw#2nd floor of Old Glast Heim Chivalry#
 
 te_prt_gld.rsw#Gloria#
 te_prtcas01.rsw#Gae Bolg#
 te_prtcas02.rsw#Richard#
 te_prtcas03.rsw#Wigner#
-te_prtcas04.rsw#Heine#
-te_prtcas05.rsw#Nerious#
+te_prtcas04.rsw#Hein#
+te_prtcas05.rsw#Aquarius#
 teg_dun01.rsw#Guild Underground Dungeon#
 te_alde_gld.rsw#Kafra's Den#
-te_aldecas01.rsw#Glaris#
-te_aldecas02.rsw#Defolty#
+te_aldecas01.rsw#Glarice#
+te_aldecas02.rsw#Deporte#
 te_aldecas03.rsw#Sorin#
-te_aldecas04.rsw#Bennit#
-te_aldecas05.rsw#W#
+te_aldecas04.rsw#Vinit#
+te_aldecas05.rsw#Curly Sue#
 teg_dun02.rsw#Guild Underground Dungeon#
 
 prt_fild08d.rsw#Prontera Field#
@@ -345,11 +437,11 @@ que_qaru02.rsw#Fallacious Okolnir#
 que_qaru03.rsw#Fallacious Okolnir#
 que_qaru04.rsw#Fallacious Okolnir#
 que_qaru05.rsw#Fallacious Okolnir#
-arug_cas01.rsw#Valfreyja Guild#
-arug_cas02.rsw#Valfreyja Guild#
-arug_cas03.rsw#Valfreyja Guild#
-arug_cas04.rsw#Valfreyja Guild#
-arug_cas05.rsw#Valfreyja Guild#
+arug_cas01.rsw#Valfreyja#
+arug_cas02.rsw#Valfreyja#
+arug_cas03.rsw#Valfreyja#
+arug_cas04.rsw#Valfreyja#
+arug_cas05.rsw#Valfreyja#
 aru_gld.rsw#Valfreyja#
 moscovia.rsw#Moscovia#
 mosk_in.rsw#Inside Moscovia#
@@ -360,11 +452,11 @@ mosk_dun01.rsw#Les Forest#
 mosk_dun02.rsw#Temny Forest#
 mosk_dun03.rsw#Dremuci Forest#
 mosk_que.rsw#Marozka's Cave#
-schg_cas01.rsw#Nidhoggur Guild#
-schg_cas02.rsw#Nidhoggur Guild#
-schg_cas03.rsw#Nidhoggur Guild#
-schg_cas04.rsw#Nidhoggur Guild#
-schg_cas05.rsw#Nidhoggur Guild#
+schg_cas01.rsw#Nidhoggur#
+schg_cas02.rsw#Nidhoggur#
+schg_cas03.rsw#Nidhoggur#
+schg_cas04.rsw#Nidhoggur#
+schg_cas05.rsw#Nidhoggur#
 sch_gld.rsw#Nidhoggur#
 cave.rsw#Cave Village#
 moc_fild20.rsw#Sograt Desert - Continental Guard Quarantine#
@@ -626,28 +718,28 @@ gld_dun04.rsw#Britoniah Guild Dungeon#
 gld_dun03.rsw#Valkyrie Guild Dungeon#
 gld_dun02.rsw#Luina Guild Dungeon#
 gld_dun01.rsw#Baldur Guild Dungeon#
-payg_cas05.rsw#Greenwood Lake Guild#
-payg_cas04.rsw#Greenwood Lake Guild#
-payg_cas03.rsw#Greenwood Lake Guild#
-payg_cas02.rsw#Greenwood Lake Guild#
-payg_cas01.rsw#Greenwood Lake Guild#
+payg_cas05.rsw#Greenwood Lake#
+payg_cas04.rsw#Greenwood Lake#
+payg_cas03.rsw#Greenwood Lake#
+payg_cas02.rsw#Greenwood Lake#
+payg_cas01.rsw#Greenwood Lake#
 pay_gld.rsw#Greenwood Lake#
-aldeg_cas05.rsw#Luina Guild#
-aldeg_cas04.rsw#Luina Guild#
-aldeg_cas03.rsw#Luina Guild#
-aldeg_cas02.rsw#Luina Guild#
-aldeg_cas01.rsw#Luina Guild#
+aldeg_cas05.rsw#Luina#
+aldeg_cas04.rsw#Luina#
+aldeg_cas03.rsw#Luina#
+aldeg_cas02.rsw#Luina#
+aldeg_cas01.rsw#Luina#
 alde_gld.rsw#Luina, the satellite of Aldebaran#
-gefg_cas05.rsw#Britoniah Guild#
-gefg_cas04.rsw#Britoniah Guild#
-gefg_cas03.rsw#Britoniah Guild#
-gefg_cas02.rsw#Britoniah Guild#
-gefg_cas01.rsw#Britoniah Guild#
-prtg_cas05.rsw#Valkyrie Realm Guild#
-prtg_cas04.rsw#Valkyrie Realm Guild#
-prtg_cas03.rsw#Valkyrie Realm Guild#
-prtg_cas02.rsw#Valkyrie Realm Guild#
-prtg_cas01.rsw#Valkyrie Realm Guild#
+gefg_cas05.rsw#Britoniah#
+gefg_cas04.rsw#Britoniah#
+gefg_cas03.rsw#Britoniah#
+gefg_cas02.rsw#Britoniah#
+gefg_cas01.rsw#Britoniah#
+prtg_cas05.rsw#Valkyrie Realm#
+prtg_cas04.rsw#Valkyrie Realm#
+prtg_cas03.rsw#Valkyrie Realm#
+prtg_cas02.rsw#Valkyrie Realm#
+prtg_cas01.rsw#Valkyrie Realm#
 prt_gld.rsw#Valkyrie Realm#
 tur_dun01.rsw#Turtle Island#
 tur_dun02.rsw#Turtle Island Dungeon#
@@ -1131,7 +1223,7 @@ poring_c02.rsw#Poring Market#
 // France event map.
 gl_in01_ev.rsw#Event Crazy Drops#
 
-// Halloween 2008 
+// Halloween 2008
 evt_zombie.rsw#Run From Zombies#
 
 arcadanias.rsw#Arcadanias, Satellite World#

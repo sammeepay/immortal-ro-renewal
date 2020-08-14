@@ -1,0 +1,428 @@
+//===== rAthena Script =======================================
+//= Rock Ridge npcs
+//===== Additional Comments: =================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+// enchant npc
+har_in01,17,74,7	script	Contraband Processor#pa	4_DR_SOLDIER,{
+	disable_items;
+	mes "[Contraband Processor]";
+	mes "เจ้าได้ลองซื้อไอเท็มต้องห้ามด้วย Rock Ridge Coins หรือยัง ? ข้าทำให้ไอเท็มต้องห้ามของเจ้าแหล่มขึ้นได้น่ะ.";
+	next;
+	.@reset = select( "ทำให้ดีขึ้น ? วิธีไหน ?", "ออฟไอเท็มต้องห้าม.", "ลบออฟไอเท็มต้องห้าม." ) - 2;
+	if (.@reset == -1) {
+		mes "[Contraband Processor]";
+		mes "อ่า, เราเคยเจอกันมาก่อนไหม ? ข้าเจอผู้คนมากมายทุกวัน นั่นทำให้ข้าจดจำใบหน้าใครไม่ได้เลย. เจ้าทักข้าก่อนได้ทันที.";
+		next;
+		mes "[Contraband Processor]";
+		mes "ข้าสามารถออฟของสวมใส่ที่เจ้าซื้อด้วย Rock Ridge Coins ได้, 3 ช่องสำหรับชุดเกราะและผ้าคลุมและ 2 ช่องสำหรับประดับ.";
+		next;
+		mes "[Contraband Processor]";
+		mes "ข้าใช้ 2 Rock Ridge Coins ต่อหนึ่งช่องสำหรับออฟและลบออฟ.";
+		next;
+		mes "[Contraband Processor]";
+		mes "โอ้, และจำเอาไว้ด้วยว่าไอเท็มต้องห้ามมีโอกาสเสียหาย, โดยเฉพาะอย่างยิ่งตอนที่ลบออฟ.";
+		close;
+	}
+	switch( select( "ยกเลิก", "ชุดเกราะ", "ผ้าคลุม", "ประดับ (มือขวา)" ) ) {
+	case 1:
+		mes "[Contraband Processor]";
+		mes "เจ้ามันโง่.";
+		close;
+	case 2:
+		.@part = EQI_ARMOR;
+		break;
+	case 3:
+		.@part = EQI_GARMENT;
+		break;
+	case 4:
+		.@part = EQI_ACC_R;
+		break;
+	}
+	.@equip_id = getequipid(.@part);
+	switch( .@equip_id ) {
+	case 15176:	// Vigilante_Suit
+	case 15177:	// Elemental_Robe
+	case 15178:	// Golden_Ninja_Suit
+	case 15179:	// Mine_Worker's_Vest
+	case 15180:	// Hippie Clothes
+
+	case 20820:	// Elemental_Cape
+	case 20821:	// Golden_Scarf
+	case 20822:	// Mine_Worker's_Backpack
+
+	case 28441:	// Vigilante_Badge
+	case 28442:	// Hippie_Feather
+		break;
+	case -1:
+		mes "[Contraband Processor]";
+		mes "ทำไมข้าต้องมาเสียเวลาไปกับเจ้า ? ไปสวมใส่ของมาก่อน.";
+		close;
+	default:
+		mes "[Contraband Processor]";
+		mes "ข้าทำไอเท็มชิ้นนี้ไม่ได้.";
+		close;
+	}
+	.@refine = getequiprefinerycnt(.@part);
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	copyarray .@tmp_card[0], .@card[0], 4;
+	if ((.@card[1] && callfunc("F_IsCharm",.@card[1]) == false) || (.@card[2] && callfunc("F_IsCharm",.@card[2]) == false) || (.@card[3] && callfunc("F_IsCharm",.@card[3]) == false)) {// armor enchant system custom check
+		mes "[Contraband Processor]";
+		mes "มีบางสิ่งผิดพลาดเกิดขึ้น.";
+		close;
+	}
+	switch( .@reset ) {
+	case TRUE:
+		if (.@card[3] == 0) {
+			mes "[Contraband Processor]";
+			mes "มันไม่เคยออฟมาก่อน. เจ้าจะให้ข้าลบอะไร ?";
+			close;
+		}
+		mes "[Contraband Processor]";
+		mes "โอ้, เจ้าพร้อมที่จะลบมันหรือยัง ? ข้าจะบอกกับเจ้าก่อน, ว่าของมีโอกาสถูกทำลาย.";
+		if (select( "ข้าจะกลับมาใหม่.", "ทำมันเลย." ) == 1) {
+			mes "[Contraband Processor]";
+			mes "เข้าใจแล้ว, กลับมาถ้าเจ้าเปลี่ยนใจ.";
+			close;
+		}
+		if (.@part == EQI_ACC_R)
+			.@chance_of_breaking_on_reset = 45;
+		else
+			.@chance_of_breaking_on_reset = 30;
+		.@card[1] = .@card[2] = .@card[3] = 0;
+		break;
+	case FALSE:
+		switch( .@part ) {
+		case EQI_ARMOR:
+		case EQI_GARMENT:
+			if (.@card[1] > 0) {
+				mes "[Contraband Processor]";
+				mes "ไอเท็มได้ถูกออฟเต็มทุกช่องแล้ว. เจ้าควรที่จะลบมันก่อน.";
+				close;
+			}
+			if (.@card[3] == 0)
+				.@enchant_slot = 3;
+			else if (.@card[2] == 0)
+				.@enchant_slot = 2;
+			else
+				.@enchant_slot = 1;
+			if (.@refine >= 9) {
+				setarray .@enchant_list[0],
+					4701,	// Strength2
+					4711,	// Inteligence2
+					4721,	// Dexterity2
+					4731,	// Agility2
+					4892,	// Mdef5
+					29026,	// Def20
+					4940,	// Cricital3
+					4762,	// Evasion6
+					4832,	// Expert_Archer1
+					4833,	// Expert_Archer2
+					4834,	// Expert_Archer3
+					4835,	// Expert_Archer4
+					4863,	// Fatal1
+					4864,	// Fatal2
+					4865,	// Fatal3
+					4866,	// Fatal4
+					4812,	// Spell4
+					4813,	// Spell3
+					4814,	// Spell2
+					4815,	// Spell1
+					4869,	// Attack_Delay_1
+					4872;	// Attack_Delay_2
+			}
+			else {
+				setarray .@enchant_list[0],
+					4700,	// Strength1
+					4701,	// Strength2
+					4710,	// Inteligence1
+					4711,	// Inteligence2
+					4720,	// Dexterity1
+					4721,	// Dexterity2
+					4730,	// Agility1
+					4731,	// Agility2
+					4786,	// Mdef2
+					4892,	// Mdef5
+					4893,	// Def15
+					29026,	// Def20
+					4926,	// Critical1
+					4940,	// Critical3
+					4860,	// Evasion3
+					4762,	// Evasion6
+					4832,	// Expert_Archer1
+					4833,	// Expert_Archer2
+					4863,	// Fatal1
+					4864,	// Fatal2
+					4814,	// Spell2
+					4815;	// Spell1
+			}
+			break;
+		case EQI_ACC_R:
+			if (.@card[2] > 0) {
+				mes "[Contraband Processor]";
+				mes "ไอเท็มได้ถูกออฟเต็มทุกช่องแล้ว. เจ้าควรที่จะลบมันก่อน.";
+				close;
+			}
+			if (.@card[3] == 0)
+				.@enchant_slot = 3;
+			else
+				.@enchant_slot = 2;
+			setarray .@enchant_list[0],
+				4700,	// Strength1
+				4701,	// Strength2
+				4730,	// Agility1
+				4731,	// Agility2
+				4740,	// Vitality1
+				4741,	// Vitality2
+				4710,	// Inteligence1
+				4711,	// Inteligence2
+				4720,	// Dexterity1
+				4721,	// Dexterity2
+				4750,	// Luck1
+				4751,	// Luck2
+				4795,	// HP100
+				4796,	// HP200
+				4800,	// SP50
+				4801,	// SP100
+				4832,	// Expert_Archer1
+				4815,	// Spell1
+				4811,	// Fighting_Spirit1
+				4869,	// Attack_Delay_1
+				4863,	// Fatal1
+				4807;	// Atk_Speed1
+			break;
+		default:
+			mes "[Contraband Processor]";
+			mes "มีบางสิ่งผิดพลาดเกิดขึ้น.";
+			close;
+		}
+		.@card[ .@enchant_slot ] = .@enchant_list[ rand( getarraysize(.@enchant_list) ) ];	// unknown rates
+		break;
+	}
+	if (countitem(25250) < 2) {
+		mes "[Contraband Processor]";
+		mes "ข้าใช้ 2 Rock Ridge Coins เป็นค่าบริการ. นำมันมาให้ข้าด้วย.";
+		close;
+	}
+	delitem 25250,2;// Rock_Ridge_Coin
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipRefineHack", .@part, .@refine) || callfunc("F_IsEquipCardHack", .@part, .@tmp_card[0], .@tmp_card[1], .@tmp_card[2], .@tmp_card[3]))
+		close;
+
+	delequip .@part;
+	if (rand(100) < .@chance_of_breaking_on_reset) {
+		specialeffect2 EF_LORD;
+		mes "[Contraband Processor]";
+		mes "อ่า, มันไม่ได้แย่เท่าไร.";
+		mes "เยี่ยม, โชคดีของข้า.";
+		close;
+	}
+	specialeffect2 EF_REPAIRWEAPON;
+	getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+	mes "[Contraband Processor]";
+	mes "เรียบร้อย. ลองตรวจสอบดู.";
+	close;
+}
+
+
+har_in01,24,69,3	script	Affable Lady#rockridge0	1_F_MERCHANT_02,{
+	mes "[Affable Lady]";
+	mes "เจ้าเป็นนักผจญภัยหรอ. ข้าชอบคนที่น่าหลงใหลแบบเจ้า.";
+	mes "ดังนั้น, เจ้ามาที่นี้เพราะ ^0000CDมัน^000000 สินะ ?";
+	next;
+	if (select( "เพราะอะไรนะ ?", "ใช่แล้ว." ) == 1) {
+		mes "[Affable Lady]";
+		mes "หืม, อาการเหมือนเจ้าจะไม่รู้. ข้าจะบอกให้ที่นี้มีของสวมใส่ที่พิเศษที่เจ้าหาซื้อได้ใน Rock Ridge.";
+		next;
+		mes "[Affable Lady]";
+		mes "ร้านขายชุดเกราะจะมีของใหม่ๆลงทุกวันศุกร์, และมันก็ถูกขายออกจนหมด, ทุกครั้ง.";
+		close;
+	}
+	mes "[Affable Lady]";
+	mes "*หึหึ* เจ้าต้องการแบบไหน: แบบที่ใส่กับ ^0000CDไหล่^000000, ^0000CDคอ, หรืออก^000000 ของเจ้า ?";
+	next;
+	switch( select( "อืม, ไม่อ่ะ.", "สำหรับไหล่ของข้า", "สำหรับคอหรืออกของข้า" ) ) {
+	case 1:
+		mes "[Affable Lady]";
+		mes "*หึหึ* แน่ใจ, คนหนุ่มสาวมักจะดูดี, ไม่ว่าจะสวมใส่อะไรก็ตาม.";
+		mes "แต่ถ้าเจ้าต้องการของที่พิเศษ, ไปดูได้ที่ร้านขายชุดเกราะ.";
+		close;
+	case 2:
+		mes "[Affable Lady]";
+		mes "เลือกของที่เจ้าชอบ, แล้วข้าจะบอกเจ้าเกี่ยวกับมัน.";
+		mes "ของทุกชิ้นราคา ^0000CD3,000,000 Zeny^000000 เท่ากันหมด.";
+		next;
+		.@cost = 3000000;
+		setarray .@item_id[0],20820,20821,20822;
+		setarray .@item_name$[0], "Elemental Cape", "Golden Scarf", "Mine Worker Backpack";
+		.@s = select( "Elemental Cape", "Golden Scarf", "Mine Worker Backpack", "ข้าไม่รู้ว่าเจ้ากำลังพูดถึงอะไร." ) - 1;
+		break;
+	case 3:
+		mes "[Affable Lady]";
+		mes "เลือกของที่เจ้าชอบ, แล้วข้าจะบอกเจ้าเกี่ยวกับมัน.";
+		mes "ของทุกชิ้นราคา ^0000CD1,500,000 Zeny^000000 เท่ากันหมด.";
+		next;
+		.@cost = 1500000;
+		setarray .@item_id[0],28441,28442;
+		setarray .@item_name$[0], "Vigilante Badge", "Hippie Feather";
+		.@s = select( "Vigilante Badge", "Hippie Feather", "ข้าไม่รู้ว่าเจ้ากำลังพูดถึงอะไร." ) - 1;
+		break;
+	}
+	if (.@item_id[.@s] == 0) {
+		mes "[Affable Lady]";
+		mes "อุปส์, ข้าเดาว่าเจ้าแกล้งไม่ได้ยินสิ่งที่ข้าพูด.";
+		mes "เจ้าควรที่จะลืมมันเสีย, เพื่อผลดีต่อตัวเจ้าเอง.";
+		close;
+	}
+	mes "[Affable Lady]";
+	mes "อ่า, เจ้าสนใจใน";
+	mes "[<ITEM>" + .@item_name$[.@s] + "<INFO>" + .@item_id[.@s] + "</INFO></ITEM>].";
+	mes "กดที่ชื่อมันจะแสดงรายละเอียดออกมาให้.";
+	mes "ข้าจะบอกเจ้าอีก, ว่ามันราคา ^0000CD3,000,000 Zeny^000000. เจ้าต้องการซื้อมันไหม ?";
+	next;
+	if (select( "ใช่.", "ไม่." ) == 2) {
+		mes "[Affable Lady]";
+		mes "หะ. ข้าพ่นลมหายใจไปเปล่าประโยชน์กับคนที่ไม่ซื้อของ.";
+		mes "ของสวมใส่ทุกชิ้นที่นี้มันมีเรื่องราว, และมันคงเสียใจถ้าเจ้าไม่ได้เอามันไปด้วย.";
+		next;
+		mes "[Affable Lady]";
+		mes "ข้าแนะนำเจ้าว่าอย่าไปบอกใครเกี่ยวกับมัน,";
+		mes "และสัญญากับข้าว่าเจ้าจะกลับมา. ข้าจะเก็บของไว้ให้เจ้า.";
+		close;
+	}
+	if (Zeny < .@cost) {
+		mes "[Affable Lady]";
+		mes "โอ้-ไม่, เจ้ามีเงินไม่พอที่จะซื้อมัน.";
+		mes "ทำไมเจ้าไม่กลับมาภายหลัง ? ข้าอยู่ตรงนี้ตลอด.";
+		close;
+	}
+	mes "[Affable Lady]";
+	mes "แน่ใจ. เจ้าต้องการ " + .@item_name$[.@s] + ".";
+	Zeny = Zeny - .@cost;
+	getitem .@item_id[.@s],1;
+	next;
+	mes "[Affable Lady]";
+	mes "ผู้คนส่วนมากมักจะปล่อยให้ความคิดหลอกพวกเขา. ใครจะไปคิดว่าหญิงแก่อย่างข้าจะขายของที่พิเศษแบบนี้.";
+	mes "กลับมาถ้าเจ้าต้องการเพิ่ม. ข้าอยู่ตรงนี้ตลอด. *หึหึ*";
+	close;
+}
+
+har_in01,34,81,5	script	Howard#rr	4_M_TATIO,{
+	mes "[Howard]";
+	mes "หวัดดี. วันนี้มีอะไรให้ข้าช่วยไหม ?";
+	next;
+	mes "[Howard]";
+	mes "อ่า, เจ้ามีเหรียญ.";
+	mes "ขอบคุณที่ช่วย Rock Ridge ไว้.";
+	mes "ลองมองดูรอบๆอาจมีสิ่งที่เจ้าสนใจก็ได้.";
+	next;
+	mes "[Howard]";
+	mes "เจ้าชอบของชิ้นไหน ?";
+	next;
+	setarray .@data$[0],
+		 24, 15176, "Vigilante Suit",	// <cost>, <item ID>, <item name>
+		 24, 15177, "Elemental Robe",
+		 24, 15178, "Golden Ninja Suit",
+		 24, 15179, "Mine Worker Vest",
+		 24, 15180, "Hippie Clothes",
+		150, 20834, "Drifter's Cape",
+		150, 22131, "Spurred Boots",
+		180, 16060, "Liquor Bottle",
+		300, 26107, "Elder Staff",
+		100, 31140, "Costume Black Cowboy Hat",
+		100, 31141, "Costume Cactus Flower Corsage";
+
+	.@size = getarraysize(.@data$);
+	for ( .@i = 0; .@i < .@size; .@i += 3 )
+		.@menu$ += .@data$[.@i+2] + ":";
+	.@s = ( select(.@menu$) - 1 ) * 3;
+
+	mes "[Howard]";
+	mes "<ITEM>" + .@data$[.@s+2] + "<INFO>" + .@data$[.@s+1] + "</INFO></ITEM>, ชิ้นนี้.";
+	mes "มันใช้ " + .@data$[.@s] + " Rock Ridge Coins.";
+	mes "เจ้าแน่ใจไหมว่าต้องการของชิ้นนี้ ?";
+	next;
+	if (select( "ใช่.", "ไม่." ) == 2) {
+		mes "[Howard]";
+		mes "ถ้าเจ้าเปลี่ยนใจ, ให้กลับมาคุยกับข้าอีกครั้ง.";
+		close;
+	}
+	if (countitem(25250) < atoi(.@data$[.@s])) {
+		mes "[Howard]";
+		mes "เจ้ามีเหรียญไม่พอ.";
+		mes "ไปนำมันมามากกว่านี้.";
+		close;
+	}
+	mes "[Howard]";
+	mes "เอามันไปได้เลย!";
+	delitem 25250, atoi(.@data$[.@s]);// Rock Ridge Coin
+	getitem atoi(.@data$[.@s+1]),1;
+	close;
+}
+
+-	shop	shotguns_rockridge	-1,13154:-1,13155:-1,13192:-1,13193:-1,13194:-1
+-	shop	revolvers_rockridge	-1,13102:-1,13120:-1,13122:-1
+-	shop	bullets_rockridge	-1,13200:-1,13221:-1,13222:-1,13228:-1,13229:-1,13230:-1,13231:-1,13232:-1
+-	shop	armor_rockridge	-1,2247:500000,2248:500000,5018:700000
+
+har_in01,19,86,4	script	Weapon Dealer#rockridge	1_F_02,{
+	mes "[Weapon Dealer]";
+	mes "ข้าพก shotguns, revolvers, และ bullets ติดตัวมา.";
+	mes "บอกข้าถึงสิ่งที่เจ้าต้องการ, แล้วข้าจะโชว์ให้เจ้าดู.";
+	next;
+	switch( select( "Shotguns", "Revolvers", "Bullets", "ขายของ.", "ยกเลิก." ) ) {
+	case 1:
+		mes "[Weapon Dealer]";
+		mes "เจ้าต้องการดู shotguns ? ข้าเข้าใจแล้ว.";
+		mes "ข้าจะโชว์ของดีให้ดู.";
+		close2;
+		callshop "shotguns_rockridge", 1;
+		end;
+	case 2:
+		mes "[Weapon Dealer]";
+		mes "เจ้าต้องการดู revolvers ? ข้าเข้าใจแล้ว.";
+		mes "ข้าเพิ่งรับของดีๆมาสองสามชิ้น.";
+		close2;
+		callshop "revolvers_rockridge", 1;
+		end;
+	case 3:
+		mes "[Weapon Dealer]";
+		mes "เจ้าต้องการ bullets, ข้าเข้าใจแล้ว.";
+		mes "ลูกกระสุนทั้งหมดของข้าคัดมาแล้วทั้งนั้น.";
+		close2;
+		callshop "bullets_rockridge", 1;
+		end;
+	case 4:
+		mes "[Weapon Dealer]";
+		mes "แน่นอน, ถ้าเจ้ามีของที่ข้าขายได้.";
+		mes "โชว์ให้ข้าดูว่าเจ้ามีอะไรบ้าง.";
+		close2;
+		callshop "armor_rockridge", 2;
+		end;
+	case 5:
+		mes "[Weapon Dealer]";
+		mes "กลับมาอีกครั้ง.";
+		close;
+	}
+}
+
+har_in01,16,86,4	script	Armor Dealer#rockridge0	1_M_04,{
+	mes "[Armor Dealer]";
+	mes "หวัดดี. ยินดีต้อนรับสู่ร้านชุดเกราะ Rock Ridge.";
+	mes "วันนี้,Sombreros, Indian Headbands, และ Cowboy Hatsare ยังมีอยู่ในสต๊อก.";
+	next;
+	mes "[Armor Dealer]";
+	mes "เกราะมีค่ามากกว่าอาวุธ, ดังนั้นข้าจึงกำหนดของที่จะขายในทุกสัปดาห์.";
+	mes "ข้าจะโชว์ของที่มี. ^0000CDถ้ามันว่างเปล่า, แปลว่าของขายออกไปหมดแล้ว^000000.";
+	next;
+	mes "[Armor Dealer]";
+	mes "และด้วยเหตุผลเดียวกัน, ข้าไม่สามารถ ^0000CDลดราคาให้ได้^000000.";
+	mes "แต่ ^0000CDสินค้าทั้งหมดของข้าไม่สามารถหาได้ที่อื่น^000000. ทำไมเจ้าไม่ลองดูสักหน่อย ?";
+	close2;
+	callshop "armor_rockridge", 1;
+	end;
+}
+
+har_in01,34,84,3	shop	Tool Dealer#rockridge00	1_F_03,611:-1,645:-1,656:-1,601:-1,602:-1,1065:-1,610:-1

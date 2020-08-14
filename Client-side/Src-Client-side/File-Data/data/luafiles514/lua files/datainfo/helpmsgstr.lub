@@ -74,5 +74,8 @@ HelpMsgStr = {
 	" -------------- Navigation Search Commands ------- ",
 	"$$all         : Outputs all the results (Type of navigation can be specified).",
 	"$$lv30       : Monsters of that level are displayed (Amount may vary).",
-	"$$lv20~30  : Monster of that level range are displayed (Amount may vary)."
+	"$$lv20~30  : Monster of that level range are displayed (Amount may vary).",
+	"/환복 : Disable event clothing such as weddings and Santa outfits",
+	"/zoom: Zoom Out can be turned On Off",
+	"/노점보기 : 내 화면에서의 모든 노점창을 전체 On하거나 Off합니다."
 }

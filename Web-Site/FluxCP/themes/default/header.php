@@ -8,6 +8,7 @@
 		<meta http-equiv="refresh" content="<?php echo $metaRefresh['seconds'] ?>; URL=<?php echo $metaRefresh['location'] ?>" />
 		<?php endif ?>
 		<title><?php echo Flux::config('SiteTitle'); if (isset($title)) echo ": $title" ?></title>
+        <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 		<link rel="stylesheet" href="<?php echo $this->themePath('css/flux.css') ?>" type="text/css" media="screen" title="" charset="utf-8" />
 		<link href="<?php echo $this->themePath('css/flux/unitip.css') ?>" rel="stylesheet" type="text/css" media="screen" title="" charset="utf-8" />
 		<?php if (Flux::config('EnableReCaptcha')): ?>
@@ -86,7 +87,13 @@
 				document.preferred_theme_form.preferred_theme.value = preferred;
 				document.preferred_theme_form.submit();
 			}
-			
+
+            function updatePreferredLanguage(sel){
+                var preferred = sel.options[sel.selectedIndex].value;
+                setCookie('language', preferred);
+                reload();
+            }
+
 			// Preload spinner image.
 			var spinner = new Image();
 			spinner.src = '<?php echo $this->themePath('img/spinner.gif') ?>';
@@ -106,6 +113,12 @@
 				//$('.search-form').toggle();
 				$('.search-form').slideToggle('fast');
 			}
+
+            function setCookie(key, value) {
+                var expires = new Date();
+                expires.setTime(expires.getTime() + expires.getTime()); // never expires
+                document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+            }
 		</script>
 		
 		<?php if (Flux::config('EnableReCaptcha')): ?>
@@ -169,4 +182,3 @@
 								
 								<!-- Credit balance -->
 								<?php if (in_array($params->get('module'), array('donate', 'purchase'))) include $this->themePath('main/balance.php', true) ?>
-

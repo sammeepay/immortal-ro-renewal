@@ -1,0 +1,38 @@
+-- Generated with Secret's Attendance Generator version 1.1.0
+Config = { StartDate = 20200527, EndDate = 20210527 }
+Reward = {
+    { 1, 22979, 10 },
+    { 2, 14901, 1 },
+    { 3, 23340, 5 },
+    { 4, 12913, 1 },
+    { 5, 12914, 1 },
+    { 6, 13610, 1 },
+    { 7, 13611, 1 },
+    { 8, 7776, 1 },
+    { 9, 13711, 1 },
+    { 10, 13746, 1 },
+    { 11, 616, 5 },
+    { 12, 12213, 1 },
+    { 13, 12016, 10 },
+    { 14, 12211, 5 },
+    { 15, 607, 10 },
+    { 16, 617, 5 },
+    { 17, 12265, 5 },
+    { 18, 12264, 5 },
+    { 19, 12263, 5 },
+    { 20, 12246, 5 }
+}
+
+main = function()
+    result, msg = InsertCheckAttendanceConfig(Config.EvendOnOff, Config.StartDate, Config.EndDate)
+    if not result == true then
+        return false, msg
+    end
+    for k, rewardtbl in pairs(Reward) do
+        result, msg = InsertCheckAttendanceReward(rewardtbl[1], rewardtbl[2], rewardtbl[3])
+        if not result == true then
+            return false, msg
+        end
+    end
+    return true, "success"
+end
